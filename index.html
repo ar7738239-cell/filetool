@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>File Resize Tool</title>
+<title>FileTool - Home</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -12,39 +12,47 @@
 
 <div class="container">
 
-<h1>📁 File Resize Tool</h1>
+<h1>📁 FileTool</h1>
 
-<input type="file" id="image" accept="image/*">
+<p>Select a Tool</p>
 
-<br><br>
-
-<label>Width</label>
-
-<input type="number" id="width" placeholder="800">
-
-<label>Height</label>
-
-<input type="number" id="height" placeholder="600">
-
-<br><br>
-
-<button onclick="resizeImage()">
-Resize Image
-</button>
-
-<br><br>
-
-<canvas id="canvas"></canvas>
-
-<br>
-
-<a id="download" style="display:none;">
-Download Image
+<div class="tool">
+<a href="tools/image-resizer.html">
+🖼️ Image Resizer
 </a>
-
 </div>
 
-<script src="script.js"></script>
+<div class="tool">
+<a href="tools/pdf-compress.html">
+📄 PDF Compress
+</a>
+</div>
+
+<div class="tool">
+<a href="tools/pdf-merge.html">
+📑 PDF Merge
+</a>
+</div>
+
+<div class="tool">
+<a href="tools/pdf-split.html">
+✂️ PDF Split
+</a>
+</div>
+
+<div class="tool">
+<a href="tools/image-to-pdf.html">
+🖼️ Image to PDF
+</a>
+</div>
+
+<div class="tool">
+<a href="tools/passport-photo.html">
+🪪 Passport Photo Maker
+</a>
+</div>
+
+</div>
 
 </body>
 </html>
