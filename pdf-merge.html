@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF Merge</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📑 PDF Merge</h1>
+
+<p>Select two or more PDF files</p>
+
+<input
+type="file"
+id="pdfFiles"
+accept=".pdf"
+multiple>
+
+<br><br>
+
+<button onclick="mergePDFs()">
+
+📄 Merge PDF
+
+</button>
+
+<br><br>
+
+<a
+id="download"
+style="display:none;"
+download="merged.pdf">
+
+📥 Download PDF
+
+</a>
+
+</div>
+
+<script>
+  async function mergePDFs() {
+
+const files = document.getElementById("pdfFiles").files;
+
+if (files.length < 2) {
+    alert("Please select at least 2 PDF files.");
+    return;
+}
+
+const mergedPdf = await PDFLib.PDFDocument.create();
+
+for (const file of files) {
+
+    const bytes = await file.arrayBuffer();
+
+    const pdf = await PDFLib.PDFDocument.load(bytes);
+
+    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+
+    copiedPages.forEach(page => mergedPdf.addPage(page));
+
+}
+
+const mergedBytes = await mergedPdf.save();
+
+const blob = new Blob([mergedBytes], { type: "application/pdf" });
+
+const url = URL.createObjectURL(blob);
+
+const download = document.getElementById("download");
+
+download.href = url;
+download.style.display = "inline-block";
+
+}
+
+</script>
+
+</body>
+</html>
