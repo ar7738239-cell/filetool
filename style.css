@@ -86,3 +86,32 @@ transition:.3s;
 .tool a:hover{
 background:#1565C0;
 }
+/* ===== Dark Mode ===== */
+
+body.dark{
+background:#121212;
+color:white;
+}
+
+body.dark .container{
+background:#1e1e1e;
+}
+
+body.dark .tool a{
+background:#2d2d2d;
+color:white;
+border:1px solid #444;
+}
+
+body.dark input,
+body.dark select{
+background:#2d2d2d;
+color:white;
+border:1px solid #555;
+}
+
+body.dark h1,
+body.dark h2,
+body.dark p{
+color:white;
+}
