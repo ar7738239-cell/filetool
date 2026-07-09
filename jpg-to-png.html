@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JPG ↔ PNG Converter | AdiyogiTools</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🖼️ JPG ↔ PNG Converter</h1>
+
+<p>Select an image and convert it instantly.</p>
+
+<input
+type="file"
+id="imageInput"
+accept="image/png,image/jpeg">
+
+<br><br>
+
+<label>Convert To</label>
+
+<br><br>
+
+<select id="format">
+
+<option value="png">
+PNG
+</option>
+
+<option value="jpeg">
+JPG
+</option>
+
+</select>
+
+<br><br>
+
+<button onclick="convertImage()">
+🔄 Convert Image
+</button>
+
+<br><br>
+
+<canvas
+id="canvas"
+style="display:none;">
+</canvas>
+
+<a
+id="download"
+style="display:none;"
+download="converted-image">
+📥 Download Image
+</a>
+
+</div>
+<script>
+
+function convertImage(){
+
+const file=document.getElementById("imageInput").files[0];
+
+if(!file){
+alert("Please select an image.");
+return;
+}
+
+const reader=new FileReader();
+
+reader.onload=function(e){
+
+const img=new Image();
+
+img.onload=function(){
+
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=img.width;
+canvas.height=img.height;
+
+ctx.drawImage(img,0,0);
+
+const format=document.getElementById("format").value;
+
+const download=document.getElementById("download");
+
+download.href=canvas.toDataURL("image/"+format,1.0);
+
+download.download="converted-image."+format;
+
+download.style.display="inline-block";
+
+};
+
+img.src=e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>
+  
