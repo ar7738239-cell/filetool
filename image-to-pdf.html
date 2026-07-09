@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -9,6 +11,7 @@
 <link rel="stylesheet" href="../style.css">
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 </head>
 
 <body>
@@ -17,74 +20,78 @@
 
 <h1>🖼️ Image to PDF</h1>
 
-<input type="file" id="image" accept="image/*" multiple>
+<p>Select one or more images</p>
+
+<input
+type="file"
+id="image"
+accept="image/*"
+multiple>
 
 <br><br>
 
 <button onclick="convertPDF()">
-Create PDF
+
+📄 Create PDF
+
 </button>
 
 </div>
 
 <script>
-
-
-
-async function convertPDF(){
+  async function convertPDF() {
 
 const files = document.getElementById("image").files;
 
-if(files.length===0){
-alert("Select Image First");
-return;
+if (files.length === 0) {
+    alert("Please select at least one image.");
+    return;
 }
 
 const { jsPDF } = window.jspdf;
+const pdf = new jsPDF("p", "mm", "a4");
 
-const pdf = new jsPDF();
+for (let i = 0; i < files.length; i++) {
 
-for(let i=0;i<files.length;i++){
+    const file = files[i];
 
-const file=files[i];
+    const dataUrl = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = e => resolve(e.target.result);
+        reader.readAsDataURL(file);
+    });
 
-const dataURL = await new Promise((resolve)=>{
+    const img = await new Promise((resolve) => {
+        const image = new Image();
+        image.onload = () => resolve(image);
+        image.src = dataUrl;
+    });
 
-const reader=new FileReader();
+    const pageWidth = pdf.internal.pageSize.getWidth();
+    const pageHeight = pdf.internal.pageSize.getHeight();
 
-reader.onload=e=>resolve(e.target.result);
+    let imgWidth = pageWidth;
+    let imgHeight = (img.height * imgWidth) / img.width;
 
-reader.readAsDataURL(file);
+    if (imgHeight > pageHeight) {
+        imgHeight = pageHeight;
+        imgWidth = (img.width * imgHeight) / img.height;
+    }
 
-});
+    const x = (pageWidth - imgWidth) / 2;
+    const y = (pageHeight - imgHeight) / 2;
 
-const img = await new Promise((resolve)=>{
+    if (i > 0) {
+        pdf.addPage();
+    }
 
-const image=new Image();
-
-image.onload=()=>resolve(image);
-
-image.src=dataURL;
-
-});
-
-const pageWidth=210;
-const pageHeight=(img.height*pageWidth)/img.width;
-
-if(i>0){
-pdf.addPage();
-}
-
-pdf.addImage(img,"JPEG",0,0,pageWidth,pageHeight);
+    pdf.addImage(dataUrl, "JPEG", x, y, imgWidth, imgHeight);
 
 }
 
 pdf.save("images.pdf");
 
 }
-
-
-
 
 </script>
 
