@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>QR Code Generator | AdiyogiTools</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>📱 QR Code Generator</h1>
+
+<p>Enter any text or website link.</p>
+
+<input
+type="text"
+id="qrText"
+placeholder="Enter text or URL">
+
+<br><br>
+
+<button onclick="generateQR()">
+⚡ Generate QR Code
+</button>
+
+<br><br>
+
+<div id="qrcode"></div>
+
+</div>
+
+<script>
+
+function generateQR(){
+
+const text=document.getElementById("qrText").value;
+
+if(text===""){
+alert("Please enter text.");
+return;
+}
+
+document.getElementById("qrcode").innerHTML="";
+
+new QRCode(document.getElementById("qrcode"),{
+text:text,
+width:250,
+height:250
+});
+
+}
+
+</script>
+
+</body>
+</html>
