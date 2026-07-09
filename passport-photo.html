@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Passport Photo Maker</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🪪 Passport Photo Maker</h1>
+
+<p>Select your photo</p>
+
+<input
+type="file"
+id="photo"
+accept="image/*">
+
+<br><br>
+
+<label>Select Size</label>
+
+<br><br>
+
+<select id="size">
+
+<option value="35x45">
+3.5 × 4.5 cm
+</option>
+
+<option value="2x2">
+2 × 2 Inch
+</option>
+
+<option value="4x4">
+4 × 4 cm
+</option>
+
+</select>
+
+<br><br>
+
+<button onclick="createPassport()">
+
+🪪 Create Passport Photo
+
+</button>
+
+<br><br>
+
+<canvas
+id="canvas"
+style="display:none;">
+</canvas>
+
+<a
+id="download"
+download="passport-photo.jpg"
+style="display:none;">
+
+📥 Download
+
+</a>
+
+</div>
+
+<script>
+  function createPassport() {
+
+const file = document.getElementById("photo").files[0];
+
+if (!file) {
+    alert("Please select a photo.");
+    return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e) {
+
+    const img = new Image();
+
+    img.onload = function() {
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        const size = document.getElementById("size").value;
+
+        if (size === "35x45") {
+            canvas.width = 413;
+            canvas.height = 531;
+        }
+        else if (size === "2x2") {
+            canvas.width = 600;
+            canvas.height = 600;
+        }
+        else {
+            canvas.width = 472;
+            canvas.height = 472;
+        }
+
+        ctx.fillStyle = "white";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+        const download = document.getElementById("download");
+
+        download.href = canvas.toDataURL("image/jpeg", 1.0);
+        download.style.display = "inline-block";
+    };
+
+    img.src = e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>
