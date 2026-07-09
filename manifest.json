@@ -1,0 +1,11 @@
+{
+  "name": "AdiyogiTools",
+  "short_name": "AdiyogiTools",
+  "description": "All-in-One Image, PDF & Form Tools",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#2563eb",
+  "orientation": "portrait",
+  "icons": []
+}
