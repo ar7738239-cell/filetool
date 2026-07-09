@@ -29,44 +29,62 @@ Create PDF
 
 <script>
 
+<script>
+
 async function convertPDF(){
 
-const file=document.getElementById("image").files[0];
+const files = document.getElementById("image").files;
 
-if(!file){
+if(files.length===0){
 alert("Select Image First");
 return;
 }
 
+const { jsPDF } = window.jspdf;
+
+const pdf = new jsPDF();
+
+for(let i=0;i<files.length;i++){
+
+const file=files[i];
+
+const dataURL = await new Promise((resolve)=>{
+
 const reader=new FileReader();
 
-reader.onload=function(e){
-
-const img=new Image();
-
-img.onload=function(){
-
-const {jsPDF}=window.jspdf;
-
-const pdf=new jsPDF();
-
-const pageWidth=210;
-
-const pageHeight=(img.height*pageWidth)/img.width;
-
-pdf.addImage(img,"JPEG",0,0,pageWidth,pageHeight);
-
-pdf.save("image.pdf");
-
-};
-
-img.src=e.target.result;
-
-};
+reader.onload=e=>resolve(e.target.result);
 
 reader.readAsDataURL(file);
 
+});
+
+const img = await new Promise((resolve)=>{
+
+const image=new Image();
+
+image.onload=()=>resolve(image);
+
+image.src=dataURL;
+
+});
+
+const pageWidth=210;
+const pageHeight=(img.height*pageWidth)/img.width;
+
+if(i>0){
+pdf.addPage();
 }
+
+pdf.addImage(img,"JPEG",0,0,pageWidth,pageHeight);
+
+}
+
+pdf.save("images.pdf");
+
+}
+
+</script>
+
 
 </script>
 
