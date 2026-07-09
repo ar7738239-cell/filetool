@@ -86,32 +86,47 @@ transition:.3s;
 .tool a:hover{
 background:#1565C0;
 }
-/* ===== Dark Mode ===== */
+
+/* ===== Premium Dark Mode ===== */
 
 body.dark{
-background:#121212;
-color:white;
+    background:#0f172a;
+    color:#ffffff;
 }
 
 body.dark .container{
-background:#1e1e1e;
+    background:#1e293b;
 }
 
 body.dark .tool a{
-background:#2d2d2d;
-color:white;
-border:1px solid #444;
+    background:#2563eb;
+    color:#ffffff;
+    border:none;
 }
 
 body.dark input,
 body.dark select{
-background:#2d2d2d;
-color:white;
-border:1px solid #555;
+    background:#334155;
+    color:#ffffff;
+    border:1px solid #475569;
 }
 
-body.dark h1,
-body.dark h2,
+body.dark h1{
+    color:#38bdf8;
+}
+
+body.dark h2{
+    color:#7dd3fc;
+}
+
 body.dark p{
-color:white;
+    color:#cbd5e1;
+}
+
+body.dark hr{
+    border-color:#475569;
+}
+
+body.dark footer{
+    color:#cbd5e1;
 }
