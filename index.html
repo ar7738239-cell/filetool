@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FileTool - Home</title>
+
+<title>🕉️ AdiyogiTools</title>
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <div class="container">
-
 
 <h1>🕉️ AdiyogiTools</h1>
 
@@ -20,45 +23,87 @@
 <input
 type="text"
 id="searchBox"
-placeholder="🔍 Search Tools..."
-style="width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;margin-top:15px;margin-bottom:20px;">
+placeholder="🔍 Search Tools...">
+
 <h2>🖼️ Image Tools</h2>
-    
-<div class="tool">
-    <a href="image-resizer.html">🖼️ Image Resizer</a>
-</div>
 
-    
 <div class="tool">
-    <a href="image-to-pdf.html">🖼️ Image to PDF</a>
-</div>
-<div class="tool">
-    <a href="image-resize-kb.html">📏 Image Resize by KB</a>
-</div>
-<div class="tool">
-    <a href="pdf-compress.html">📄 PDF Compress</a>
+<a href="image-resizer.html">🖼️ Image Resizer</a>
 </div>
 
 <div class="tool">
-    <a href="pdf-merge.html">📑 PDF Merge</a>
+<a href="image-to-pdf.html">🖼️ Image to PDF</a>
 </div>
 
 <div class="tool">
-    <a href="pdf-split.html">✂️ PDF Split</a>
+<a href="image-resize-kb.html">📏 Image Resize by KB</a>
 </div>
 
 <div class="tool">
-    <a href="passport-photo.html">🪪 Passport Photo Maker</a>
-</div>
-<div class="tool">
-    <a href="signature-resize.html">✍️ Signature Resize</a>
-</div>
-<div class="tool">
-    <a href="image-crop.html">✂️ Image Crop</a>
+<a href="image-crop.html">✂️ Image Crop</a>
 </div>
 
-    
+<h2>📄 PDF Tools</h2>
+
+<div class="tool">
+<a href="pdf-compress.html">📄 PDF Compress</a>
 </div>
+
+<div class="tool">
+<a href="pdf-merge.html">📑 PDF Merge</a>
+</div>
+
+<div class="tool">
+<a href="pdf-split.html">✂️ PDF Split</a>
+</div>
+
+<h2>🪪 Form Tools</h2>
+
+<div class="tool">
+<a href="passport-photo.html">🪪 Passport Photo Maker</a>
+</div>
+
+<div class="tool">
+<a href="signature-resize.html">✍️ Signature Resize</a>
+</div>
+
+<hr>
+
+<footer>
+
+<p><b>🕉️ AdiyogiTools</b></p>
+
+<p>Developed by <b>Abhay Raj</b></p>
+
+<p>Version 2.0</p>
+
+</footer>
+
+<script>
+    const searchBox = document.getElementById("searchBox");
+
+searchBox.addEventListener("keyup", function () {
+
+const value = this.value.toLowerCase();
+
+const tools = document.querySelectorAll(".tool");
+
+tools.forEach(tool => {
+
+const text = tool.innerText.toLowerCase();
+
+if (text.includes(value)) {
+tool.style.display = "block";
+} else {
+tool.style.display = "none";
+}
+
+});
+
+});
+
+</script>
 
 </body>
+
 </html>
