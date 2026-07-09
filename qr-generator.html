@@ -33,6 +33,15 @@ placeholder="Enter text or URL">
 
 <div id="qrcode"></div>
 
+<br>
+
+<a
+id="downloadQR"
+style="display:none;"
+download="AdiyogiTools-QR.png">
+📥 Download QR Code
+</a>
+  
 </div>
 
 <script>
@@ -54,6 +63,24 @@ width:250,
 height:250
 });
 
+setTimeout(() => {
+
+const img = document.querySelector("#qrcode img");
+const canvas = document.querySelector("#qrcode canvas");
+const download = document.getElementById("downloadQR");
+
+if(img){
+download.href = img.src;
+download.style.display = "inline-block";
+}
+
+if(canvas){
+download.href = canvas.toDataURL("image/png");
+download.style.display = "inline-block";
+}
+
+},1000);
+  
 }
 
 </script>
