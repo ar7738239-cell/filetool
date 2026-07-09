@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Image Crop Tool</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>✂️ Image Crop Tool</h1>
+
+<p>Select an image to crop</p>
+
+<input
+type="file"
+id="image"
+accept="image/*">
+
+<br><br>
+
+<label>Crop Width (px)</label>
+
+<br>
+
+<input
+type="number"
+id="cropWidth"
+placeholder="300">
+
+<br><br>
+
+<label>Crop Height (px)</label>
+
+<br>
+
+<input
+type="number"
+id="cropHeight"
+placeholder="300">
+
+<br><br>
+
+<button onclick="cropImage()">
+
+✂️ Crop Image
+
+</button>
+
+<br><br>
+
+<canvas
+id="canvas"
+style="display:none;">
+</canvas>
+
+<a
+id="download"
+download="cropped-image.jpg"
+style="display:none;">
+
+📥 Download Image
+
+</a>
+
+</div>
+
+<script>
+  function cropImage() {
+
+const file = document.getElementById("image").files[0];
+
+if (!file) {
+    alert("Please select an image.");
+    return;
+}
+
+const cropWidth = parseInt(document.getElementById("cropWidth").value);
+const cropHeight = parseInt(document.getElementById("cropHeight").value);
+
+if (!cropWidth || !cropHeight) {
+    alert("Please enter crop width and height.");
+    return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e) {
+
+    const img = new Image();
+
+    img.onload = function() {
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = cropWidth;
+        canvas.height = cropHeight;
+
+        ctx.drawImage(
+            img,
+            0,
+            0,
+            cropWidth,
+            cropHeight,
+            0,
+            0,
+            cropWidth,
+            cropHeight
+        );
+
+        const download = document.getElementById("download");
+
+        download.href = canvas.toDataURL("image/jpeg", 0.95);
+        download.style.display = "inline-block";
+
+    };
+
+    img.src = e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>
