@@ -1,1 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Image Resize by KB</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📏 Image Resize by KB</h1>
+
+<p>Select an image and target size.</p>
+
+<input type="file" id="image" accept="image/*">
+
+<br><br>
+
+<label>Target Size (KB)</label>
+
+<br><br>
+
+<input
+type="number"
+id="targetKB"
+placeholder="Example: 100">
+
+<br><br>
+
+<button onclick="compressImage()">
+
+📥 Compress Image
+
+</button>
+
+<br><br>
+
+<canvas id="canvas" style="display:none;"></canvas>
+
+<a
+id="download"
+style="display:none;"
+download="compressed.jpg">
+
+Download Image
+
+</a>
+
+</div>
+
+<script>
+  async function compressImage() {
+
+const file = document.getElementById("image").files[0];
+const targetKB = parseInt(document.getElementById("targetKB").value);
+
+if (!file) {
+    alert("Please select an image.");
+    return;
+}
+
+if (!targetKB || targetKB <= 0) {
+    alert("Enter target size in KB.");
+    return;
+}
+
+const reader = new FileReader();
+
+reader.onload = function(e) {
+
+    const img = new Image();
+
+    img.onload = function() {
+
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+
+        canvas.width = img.width;
+        canvas.height = img.height;
+
+        ctx.drawImage(img, 0, 0);
+
+        let quality = 0.9;
+        let output = "";
+
+        function compress() {
+
+            output = canvas.toDataURL("image/jpeg", quality);
+
+            const sizeKB = Math.round((output.length * 3 / 4) / 1024);
+
+            if (sizeKB > targetKB && quality > 0.05) {
+
+                quality -= 0.05;
+                compress();
+
+            } else {
+
+                const download = document.getElementById("download");
+
+                download.href = output;
+                download.style.display = "inline-block";
+                download.innerHTML = "📥 Download (" + sizeKB + " KB)";
+            }
+
+        }
+
+        compress();
+
+    };
+
+    img.src = e.target.result;
+
+};
+
+reader.readAsDataURL(file);
+
+}
+
+</script>
+
+</body>
+</html>
