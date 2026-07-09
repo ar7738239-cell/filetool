@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PDF Split</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>✂️ PDF Split</h1>
+
+<p>Select a PDF and choose page range.</p>
+
+<input
+type="file"
+id="pdfFile"
+accept=".pdf">
+
+<br><br>
+
+<label>Start Page</label>
+
+<br>
+
+<input
+type="number"
+id="startPage"
+placeholder="Example: 1">
+
+<br><br>
+
+<label>End Page</label>
+
+<br>
+
+<input
+type="number"
+id="endPage"
+placeholder="Example: 5">
+
+<br><br>
+
+<button onclick="splitPDF()">
+
+✂️ Split PDF
+
+</button>
+
+<br><br>
+
+<a
+id="download"
+style="display:none;"
+download="split.pdf">
+
+📥 Download PDF
+
+</a>
+
+</div>
+
+<script>
+  async function splitPDF() {
+
+const file = document.getElementById("pdfFile").files[0];
+
+if (!file) {
+    alert("Please select a PDF.");
+    return;
+}
+
+const start = parseInt(document.getElementById("startPage").value);
+const end = parseInt(document.getElementById("endPage").value);
+
+if (isNaN(start) || isNaN(end) || start < 1 || end < start) {
+    alert("Enter a valid page range.");
+    return;
+}
+
+const bytes = await file.arrayBuffer();
+
+const pdfDoc = await PDFLib.PDFDocument.load(bytes);
+
+const totalPages = pdfDoc.getPageCount();
+
+if (end > totalPages) {
+    alert("This PDF has only " + totalPages + " pages.");
+    return;
+}
+
+const newPdf = await PDFLib.PDFDocument.create();
+
+const copiedPages = await newPdf.copyPages(
+    pdfDoc,
+    Array.from({ length: end - start + 1 }, (_, i) => start - 1 + i)
+);
+
+copiedPages.forEach(page => newPdf.addPage(page));
+
+const pdfBytes = await newPdf.save();
+
+const blob = new Blob([pdfBytes], {
+    type: "application/pdf"
+});
+
+const url = URL.createObjectURL(blob);
+
+const download = document.getElementById("download");
+
+download.href = url;
+download.style.display = "inline-block";
+
+}
+
+</script>
+
+</body>
+</html>
