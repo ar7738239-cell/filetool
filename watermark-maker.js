@@ -280,20 +280,21 @@ drawCanvas();
 textColor.addEventListener("input",drawCanvas);
 logoSize.addEventListener("input", () => {
 
-logoOpacity.addEventListener("input", () => {
 
-    logoAlpha = Number(logoOpacity.value) / 100;
-
-    logoOpacityValue.innerText = logoOpacity.value + "%";
-
-    drawCanvas();
-
-});
     
     logoWidth = Number(logoSize.value);
     logoHeight = Number(logoSize.value);
 
     logoSizeValue.innerText = logoSize.value + " px";
+
+    drawCanvas();
+
+});
+logoOpacity.addEventListener("input", () => {
+
+    logoAlpha = Number(logoOpacity.value) / 100;
+
+    logoOpacityValue.innerText = logoOpacity.value + "%";
 
     drawCanvas();
 
