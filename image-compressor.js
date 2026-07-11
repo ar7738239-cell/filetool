@@ -30,10 +30,25 @@ originalSize.textContent = (file.size / 1024).toFixed(2) + " KB";
       const canvas = document.createElement("canvas");
       const ctx = canvas.getContext("2d");
 
-      canvas.width = img.width;
-      canvas.height = img.height;
+      let maxWidth = 1920;
+let maxHeight = 1920;
 
-      ctx.drawImage(img, 0, 0);
+let width = img.width;
+let height = img.height;
+
+if (width > maxWidth || height > maxHeight) {
+
+    const ratio = Math.min(maxWidth / width, maxHeight / height);
+
+    width = Math.round(width * ratio);
+    height = Math.round(height * ratio);
+
+}
+
+canvas.width = width;
+canvas.height = height;
+
+      ctx.drawImage(img, 0, 0, width, height);
 
       let quality = qualitySlider.value / 100;
 
@@ -60,25 +75,27 @@ if (targetSize.value == "0") {
 
     const targetBytes = Number(targetSize.value) * 1024;
 
-    let low = 0.05;
-    let high = 1.0;
+    let bestImage = "";
+let bestQuality = 1;
+let bestDiff = Number.MAX_VALUE;
 
-    for (let i = 0; i < 10; i++) {
+for (let q = 0.95; q >= 0.05; q -= 0.05) {
 
-        let mid = (low + high) / 2;
+    let test = canvas.toDataURL("image/jpeg", q);
 
-        let test = canvas.toDataURL("image/jpeg", mid);
+    let size = Math.round((test.length * 3) / 4);
 
-        let size = Math.round((test.length * 3) / 4);
+    let diff = Math.abs(size - targetBytes);
 
-        if (size > targetBytes) {
-            high = mid;
-        } else {
-            low = mid;
-            compressed = test;
-        }
-
+    if (diff < bestDiff) {
+        bestDiff = diff;
+        bestImage = test;
+        bestQuality = q;
     }
+
+}
+
+compressed = bestImage;
 
     if (compressed === "") {
         compressed = canvas.toDataURL("image/jpeg", low);
