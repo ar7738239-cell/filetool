@@ -150,9 +150,6 @@ drawCanvas();
 });
 
 textColor.addEventListener("input",drawCanvas);
-
-downloadBtn.addEventListener("click",()=>{
-
 logoSize.addEventListener("input", () => {
 
     logoWidth = Number(logoSize.value);
@@ -163,6 +160,13 @@ logoSize.addEventListener("input", () => {
     drawCanvas();
 
 });
+
+downloadBtn.addEventListener("click",()=>{
+
+if (!mainImage) {
+    alert("Please upload an image first.");
+    return;
+}
     
 const a=document.createElement("a");
 
