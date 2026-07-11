@@ -49,21 +49,56 @@ if (targetSize.value != "0") {
 
 }
 
-      const compressed = canvas.toDataURL("image/jpeg", quality);
-const compressedBytes = Math.round((compressed.length * 3) / 4);
+      let compressed = "";
+let compressedBytes = 0;
+
+if (targetSize.value == "0") {
+
+    compressed = canvas.toDataURL("image/jpeg", quality);
+
+} else {
+
+    const targetBytes = Number(targetSize.value) * 1024;
+
+    let low = 0.05;
+    let high = 1.0;
+
+    for (let i = 0; i < 10; i++) {
+
+        let mid = (low + high) / 2;
+
+        let test = canvas.toDataURL("image/jpeg", mid);
+
+        let size = Math.round((test.length * 3) / 4);
+
+        if (size > targetBytes) {
+            high = mid;
+        } else {
+            low = mid;
+            compressed = test;
+        }
+
+    }
+
+    if (compressed === "") {
+        compressed = canvas.toDataURL("image/jpeg", low);
+    }
+
+}
+
+compressedBytes = Math.round((compressed.length * 3) / 4);
 
 compressedSize.textContent =
 (compressedBytes / 1024).toFixed(2) + " KB";
 
 savedPercent.textContent =
-(
-((file.size - compressedBytes) / file.size) * 100
-).toFixed(1) + "%";
-      preview.src = compressed;
-      preview.style.display = "block";
+(((file.size - compressedBytes) / file.size) * 100).toFixed(1) + "%";
 
-      downloadBtn.href = compressed;
-      downloadBtn.style.display = "inline-block";
+preview.src = compressed;
+preview.style.display = "block";
+
+downloadBtn.href = compressed;
+downloadBtn.style.display = "inline-block";
     };
 
     img.src = e.target.result;
