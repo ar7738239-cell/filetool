@@ -4,6 +4,7 @@ const qualityValue = document.getElementById("qualityValue");
 const preview = document.getElementById("preview");
 const downloadBtn = document.getElementById("downloadBtn");
 const compressBtn = document.getElementById("compressBtn");
+const targetSize = document.getElementById("targetSize");
 const originalSize = document.getElementById("originalSize");
 const compressedSize = document.getElementById("compressedSize");
 const savedPercent = document.getElementById("savedPercent");
@@ -34,7 +35,19 @@ originalSize.textContent = (file.size / 1024).toFixed(2) + " KB";
 
       ctx.drawImage(img, 0, 0);
 
-      const quality = qualitySlider.value / 100;
+      let quality = qualitySlider.value / 100;
+
+if (targetSize.value != "0") {
+
+    const targetKB = Number(targetSize.value);
+
+    if (targetKB <= 20) quality = 0.15;
+    else if (targetKB <= 50) quality = 0.35;
+    else if (targetKB <= 100) quality = 0.55;
+    else if (targetKB <= 200) quality = 0.75;
+    else quality = 0.90;
+
+}
 
       const compressed = canvas.toDataURL("image/jpeg", quality);
 const compressedBytes = Math.round((compressed.length * 3) / 4);
