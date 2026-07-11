@@ -27,6 +27,10 @@ let logoY = 100;
 
 let logoWidth = 150;
 let logoHeight = 150;
+let dragging = false;
+
+let offsetX = 0;
+let offsetY = 0;
 
 imageInput.addEventListener("change", e=>{
 
@@ -46,6 +50,16 @@ canvas.width=mainImage.width;
 canvas.height=mainImage.height;
 
 drawCanvas();
+    function isInsideLogo(x, y) {
+
+    return (
+        x >= logoX &&
+        x <= logoX + logoWidth &&
+        y >= logoY &&
+        y <= logoY + logoHeight
+    );
+
+}
 
 }
 
