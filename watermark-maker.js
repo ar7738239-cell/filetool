@@ -50,16 +50,7 @@ canvas.width=mainImage.width;
 canvas.height=mainImage.height;
 
 drawCanvas();
-    function isInsideLogo(x, y) {
-
-    return (
-        x >= logoX &&
-        x <= logoX + logoWidth &&
-        y >= logoY &&
-        y <= logoY + logoHeight
-    );
-
-}
+    
 
 }
 
@@ -98,6 +89,17 @@ logoInput.addEventListener("change", e => {
 });
 
 function drawCanvas(){
+function isInsideLogo(x, y) {
+
+    return (
+        x >= logoX &&
+        x <= logoX + logoWidth &&
+        y >= logoY &&
+        y <= logoY + logoHeight
+    );
+
+}
+    
 
 if(!mainImage) return;
 
