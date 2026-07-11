@@ -154,13 +154,16 @@ function isInsideLogo(x, y) {
 }
 
 canvas.addEventListener("touchstart", (e) => {
-
+e.preventDefault();
     if (!logoImage) return;
 
     const rect = canvas.getBoundingClientRect();
 
-    const x = e.touches[0].clientX - rect.left;
-    const y = e.touches[0].clientY - rect.top;
+    const scaleX = canvas.width / rect.width;
+const scaleY = canvas.height / rect.height;
+
+const x = (e.touches[0].clientX - rect.left) * scaleX;
+const y = (e.touches[0].clientY - rect.top) * scaleY;
 
     if (isInsideLogo(x, y)) {
 
@@ -181,9 +184,11 @@ canvas.addEventListener("touchmove", (e) => {
 
     const rect = canvas.getBoundingClientRect();
 
-    logoX = e.touches[0].clientX - rect.left - offsetX;
-    logoY = e.touches[0].clientY - rect.top - offsetY;
+    const scaleX = canvas.width / rect.width;
+const scaleY = canvas.height / rect.height;
 
+logoX = ((e.touches[0].clientX - rect.left) * scaleX) - offsetX;
+logoY = ((e.touches[0].clientY - rect.top) * scaleY) - offsetY;
     drawCanvas();
 
 });
