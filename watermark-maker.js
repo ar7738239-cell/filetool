@@ -89,6 +89,9 @@ if(!mainImage) return;
 
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
+ctx.imageSmoothingEnabled = true;
+ctx.imageSmoothingQuality = "high";
+
 ctx.drawImage(mainImage,0,0);
 
 ctx.save();
@@ -170,7 +173,7 @@ if (!mainImage) {
     
 const a=document.createElement("a");
 
-a.href=canvas.toDataURL("image/png");
+a.href = canvas.toDataURL("image/png", 1.0);
 
 a.download="watermarked-image.png";
 
