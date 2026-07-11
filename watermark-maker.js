@@ -127,6 +127,10 @@ ctx.restore();
 
 if (logoImage) {
 
+    ctx.save();
+
+    ctx.globalAlpha = logoAlpha;
+
     ctx.drawImage(
         logoImage,
         logoX,
@@ -134,6 +138,8 @@ if (logoImage) {
         logoWidth,
         logoHeight
     );
+
+    ctx.restore();
 
 }
   
@@ -274,6 +280,16 @@ drawCanvas();
 textColor.addEventListener("input",drawCanvas);
 logoSize.addEventListener("input", () => {
 
+logoOpacity.addEventListener("input", () => {
+
+    logoAlpha = Number(logoOpacity.value) / 100;
+
+    logoOpacityValue.innerText = logoOpacity.value + "%";
+
+    drawCanvas();
+
+});
+    
     logoWidth = Number(logoSize.value);
     logoHeight = Number(logoSize.value);
 
