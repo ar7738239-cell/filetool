@@ -153,6 +153,17 @@ textColor.addEventListener("input",drawCanvas);
 
 downloadBtn.addEventListener("click",()=>{
 
+logoSize.addEventListener("input", () => {
+
+    logoWidth = Number(logoSize.value);
+    logoHeight = Number(logoSize.value);
+
+    logoSizeValue.innerText = logoSize.value + " px";
+
+    drawCanvas();
+
+});
+    
 const a=document.createElement("a");
 
 a.href=canvas.toDataURL("image/png");
