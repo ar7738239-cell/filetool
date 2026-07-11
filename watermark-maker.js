@@ -153,6 +153,47 @@ function isInsideLogo(x, y) {
 
 }
 
+canvas.addEventListener("touchstart", (e) => {
+
+    if (!logoImage) return;
+
+    const rect = canvas.getBoundingClientRect();
+
+    const x = e.touches[0].clientX - rect.left;
+    const y = e.touches[0].clientY - rect.top;
+
+    if (isInsideLogo(x, y)) {
+
+        dragging = true;
+
+        offsetX = x - logoX;
+        offsetY = y - logoY;
+
+    }
+
+});
+
+canvas.addEventListener("touchmove", (e) => {
+
+    if (!dragging) return;
+
+    e.preventDefault();
+
+    const rect = canvas.getBoundingClientRect();
+
+    logoX = e.touches[0].clientX - rect.left - offsetX;
+    logoY = e.touches[0].clientY - rect.top - offsetY;
+
+    drawCanvas();
+
+});
+
+canvas.addEventListener("touchend", () => {
+
+    dragging = false;
+
+});
+
 opacity.addEventListener("input",()=>{
 
 opacityValue.innerText=opacity.value+"%";
