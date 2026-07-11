@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Watermark Maker | AdiyogiTools</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="watermark-maker.css">
+
+</head>
+
+<body>
+
+<div class="wm-container">
+
+<h1>🖼 Watermark Maker Pro</h1>
+
+<p>Add Text or Logo Watermark to your Images</p>
+
+<div class="upload-box">
+
+<input
+type="file"
+id="imageInput"
+accept="image/*">
+
+<input
+type="file"
+id="logoInput"
+accept="image/*">
+
+</div>
+
+<div class="canvas-box">
+
+<canvas id="canvas"></canvas>
+
+</div>
+
+<div class="tool-panel">
+
+<h2>Text Watermark</h2>
+
+<input
+type="text"
+id="watermarkText"
+placeholder="Enter Watermark">
+
+<label>Font Size</label>
+
+<input
+type="range"
+id="fontSize"
+min="20"
+max="150"
+value="50">
+
+<span id="fontSizeValue">50 px</span>
+
+<label>Opacity</label>
+
+<input
+type="range"
+id="opacity"
+min="0"
+max="100"
+value="60">
+
+<span id="opacityValue">60%</span>
+
+<label>Rotation</label>
+
+<input
+type="range"
+id="rotation"
+min="-180"
+max="180"
+value="-30">
+
+<span id="rotationValue">-30°</span>
+
+<label>Text Color</label>
+
+<input
+type="color"
+id="textColor"
+value="#ffffff">
+
+<button id="downloadBtn">
+
+📥 Download Image
+
+</button>
+
+</div>
+
+</div>
+
+<script src="watermark-maker.js"></script>
+
+</body>
+</html>
