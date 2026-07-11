@@ -4,6 +4,9 @@ const qualityValue = document.getElementById("qualityValue");
 const preview = document.getElementById("preview");
 const downloadBtn = document.getElementById("downloadBtn");
 const compressBtn = document.getElementById("compressBtn");
+const originalSize = document.getElementById("originalSize");
+const compressedSize = document.getElementById("compressedSize");
+const savedPercent = document.getElementById("savedPercent");
 
 qualitySlider.addEventListener("input", () => {
   qualityValue.textContent = qualitySlider.value + "%";
@@ -11,7 +14,7 @@ qualitySlider.addEventListener("input", () => {
 
 compressBtn.addEventListener("click", () => {
   const file = imageInput.files[0];
-
+originalSize.textContent = (file.size / 1024).toFixed(2) + " KB";
   if (!file) {
     alert("Please select an image.");
     return;
@@ -34,7 +37,15 @@ compressBtn.addEventListener("click", () => {
       const quality = qualitySlider.value / 100;
 
       const compressed = canvas.toDataURL("image/jpeg", quality);
+const compressedBytes = Math.round((compressed.length * 3) / 4);
 
+compressedSize.textContent =
+(compressedBytes / 1024).toFixed(2) + " KB";
+
+savedPercent.textContent =
+(
+((file.size - compressedBytes) / file.size) * 100
+).toFixed(1) + "%";
       preview.src = compressed;
       preview.style.display = "block";
 
