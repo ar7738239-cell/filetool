@@ -15,6 +15,8 @@ const opacityValue = document.getElementById("opacityValue");
 const rotationValue = document.getElementById("rotationValue");
 
 const downloadBtn = document.getElementById("downloadBtn");
+const logoSize = document.getElementById("logoSize");
+const logoSizeValue = document.getElementById("logoSizeValue");
 
 let mainImage = null;
 
