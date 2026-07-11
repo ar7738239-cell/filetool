@@ -25,10 +25,6 @@ type="file"
 id="imageInput"
 accept="image/*">
 
-<input
-type="file"
-id="logoInput"
-accept="image/*">
 
 </div>
 
@@ -86,7 +82,25 @@ value="-30">
 type="color"
 id="textColor"
 value="#ffffff">
+<h2>Logo Watermark</h2>
 
+<label>Select Logo</label>
+
+<input
+type="file"
+id="logoInput"
+accept="image/*">
+
+<label>Logo Size</label>
+
+<input
+type="range"
+id="logoSize"
+min="20"
+max="300"
+value="150">
+
+<span id="logoSizeValue">150 px</span>
 <button id="downloadBtn">
 
 📥 Download Image
