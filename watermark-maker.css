@@ -55,6 +55,7 @@ border:2px dashed #ccc;
 border-radius:12px;
 background:#fafafa;
 cursor:move;
+  touch-action:none;
 }
 
 .tool-panel{
