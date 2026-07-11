@@ -17,6 +17,8 @@ const rotationValue = document.getElementById("rotationValue");
 const downloadBtn = document.getElementById("downloadBtn");
 const logoSize = document.getElementById("logoSize");
 const logoSizeValue = document.getElementById("logoSizeValue");
+const logoOpacity = document.getElementById("logoOpacity");
+const logoOpacityValue = document.getElementById("logoOpacityValue");
 
 let mainImage = null;
 
@@ -27,6 +29,8 @@ let logoY = 100;
 
 let logoWidth = 150;
 let logoHeight = 150;
+let logoAlpha = 1;
+
 let dragging = false;
 
 let offsetX = 0;
