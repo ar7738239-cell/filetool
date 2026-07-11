@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Compressor | AdiyogiTools</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🖼️ Image Compressor</h1>
+
+<p>Compress JPG, PNG and WebP images instantly.</p>
+
+<input type="file" id="imageInput" accept="image/*">
+
+<br><br>
+
+<label>Compression Quality</label>
+
+<br>
+
+<input type="range"
+id="quality"
+min="10"
+max="100"
+value="80">
+
+<p id="qualityValue">80%</p>
+
+<button id="compressBtn">
+📦 Compress Image
+</button>
+
+<br><br>
+
+<img
+id="preview"
+style="max-width:100%;display:none;border-radius:10px;">
+
+<br><br>
+
+<a
+id="downloadBtn"
+style="display:none;"
+download="compressed-image.jpg">
+📥 Download Compressed Image
+</a>
+
+</div>
+
+<script src="image-compressor.js"></script>
+
+</body>
+</html>
