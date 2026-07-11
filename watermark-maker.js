@@ -31,6 +31,8 @@ let dragging = false;
 
 let offsetX = 0;
 let offsetY = 0;
+let mouseX = 0;
+let mouseY = 0;
 
 imageInput.addEventListener("change", e=>{
 
@@ -194,6 +196,56 @@ logoY = ((e.touches[0].clientY - rect.top) * scaleY) - offsetY;
 });
 
 canvas.addEventListener("touchend", () => {
+
+    dragging = false;
+
+});
+canvas.addEventListener("mousedown", (e) => {
+
+    if (!logoImage) return;
+
+    const rect = canvas.getBoundingClientRect();
+
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    mouseX = (e.clientX - rect.left) * scaleX;
+    mouseY = (e.clientY - rect.top) * scaleY;
+
+    if (isInsideLogo(mouseX, mouseY)) {
+
+        dragging = true;
+
+        offsetX = mouseX - logoX;
+        offsetY = mouseY - logoY;
+
+    }
+
+});
+
+canvas.addEventListener("mousemove", (e) => {
+
+    if (!dragging) return;
+
+    const rect = canvas.getBoundingClientRect();
+
+    const scaleX = canvas.width / rect.width;
+    const scaleY = canvas.height / rect.height;
+
+    logoX = ((e.clientX - rect.left) * scaleX) - offsetX;
+    logoY = ((e.clientY - rect.top) * scaleY) - offsetY;
+
+    drawCanvas();
+
+});
+
+canvas.addEventListener("mouseup", () => {
+
+    dragging = false;
+
+});
+
+canvas.addEventListener("mouseleave", () => {
 
     dragging = false;
 
