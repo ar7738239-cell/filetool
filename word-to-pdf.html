@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Word to PDF | AdiyogiTools</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="word-to-pdf.css">
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>📄 Word to PDF</h1>
+
+<p>Convert DOCX files to PDF instantly.</p>
+
+<div class="upload-box">
+
+<input
+type="file"
+id="wordInput"
+accept=".doc,.docx">
+
+</div>
+
+<div class="preview-box">
+
+<p id="fileName">
+No file selected
+</p>
+
+</div>
+
+<button id="convertBtn">
+
+Convert to PDF
+
+</button>
+
+<a
+id="downloadBtn"
+style="display:none;"
+download="converted.pdf">
+
+⬇ Download PDF
+
+</a>
+
+</div>
+
+<script src="word-to-pdf.js"></script>
+
+</body>
+</html>
