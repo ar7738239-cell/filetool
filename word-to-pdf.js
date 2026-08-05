@@ -6,87 +6,78 @@ const downloadBtn = document.getElementById("downloadBtn");
 let selectedFile = null;
 
 wordInput.addEventListener("change", () => {
-
     selectedFile = wordInput.files[0];
 
     if (selectedFile) {
         fileName.innerText = selectedFile.name;
+        downloadBtn.style.display = "none";
     } else {
         fileName.innerText = "No file selected";
     }
-
 });
 
 convertBtn.addEventListener("click", () => {
 
     if (!selectedFile) {
-
-        alert("Please select a Word file first.");
-
+        alert("Please select a DOCX file first.");
         return;
-
     }
 
     const { jsPDF } = window.jspdf;
+    const reader = new FileReader();
 
-const reader = new FileReader();
+    reader.onload = function(event) {
 
-reader.onload = function (event) {
+        mammoth.extractRawText({
+            arrayBuffer: event.target.result
+        })
 
-    mammoth.extractRawText({
-        arrayBuffer: event.target.result
-    })
+                .then(function(result) {
 
-    .then(function(result) {
+            const text = result.value;
 
-        const text = result.value;
+            const pdf = new jsPDF();
 
-        const pdf = new jsPDF();
+            pdf.setFont("helvetica");
+            pdf.setFontSize(12);
 
-        pdf.setFont("helvetica");
+            const pageWidth = 180;
+            const lines = pdf.splitTextToSize(text, pageWidth);
 
-        pdf.setFontSize(12);
-        
-        const pageWidth = 180;
+            let y = 20;
 
-        const lines = pdf.splitTextToSize(text, pageWidth);
+            lines.forEach(line => {
 
-        let y = 20;
+                if (y > 280) {
+                    pdf.addPage();
+                    y = 20;
+                }
 
-        lines.forEach(line => {
+                pdf.text(line, 15, y);
 
-            if (y > 280) {
+                y += 8;
 
-                pdf.addPage();
+            });
 
-                y = 20;
+            const pdfBlob = pdf.output("blob");
 
-            }
+            const url = URL.createObjectURL(pdfBlob);
 
-            pdf.text(line, 15, y);
+            downloadBtn.href = url;
+            downloadBtn.download = "converted.pdf";
+            downloadBtn.style.display = "inline-block";
 
-            y += 8;
+        })
+
+        .catch(function(error) {
+
+            alert("Conversion failed!\n\n" + error.message);
 
         });
 
-        const pdfBlob = pdf.output("blob");
+    };
 
-        const url = URL.createObjectURL(pdfBlob);
+    reader.readAsArrayBuffer(selectedFile);
 
-        downloadBtn.href = url;
-
-        downloadBtn.style.display = "inline-block";
-        
 });
-
-    })
-
-    .catch(function(error) {
-        alert("Conversion failed: " + error);
-    });
-
-};
-
-reader.readAsArrayBuffer(selectedFile);
-
-});    
+                      
