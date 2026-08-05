@@ -27,6 +27,54 @@ convertBtn.addEventListener("click", () => {
 
     }
 
-    alert("Step 4 Complete ✅\n\nNext step me conversion library add karenge.");
+    const { jsPDF } = window.jspdf;
 
+const reader = new FileReader();
+
+reader.onload = function (event) {
+
+    mammoth.extractRawText({
+        arrayBuffer: event.target.result
+    })
+
+    .then(function(result) {
+
+        const text = result.value;
+
+        const pdf = new jsPDF();
+
+        pdf.setFont("helvetica");
+
+        pdf.setFontSize(12);
+        
+        const pageWidth = 180;
+
+        const lines = pdf.splitTextToSize(text, pageWidth);
+
+        let y = 20;
+
+        lines.forEach(line => {
+
+            if (y > 280) {
+
+                pdf.addPage();
+
+                y = 20;
+
+            }
+
+            pdf.text(line, 15, y);
+
+            y += 8;
+
+        });
+
+        const pdfBlob = pdf.output("blob");
+
+        const url = URL.createObjectURL(pdfBlob);
+
+        downloadBtn.href = url;
+
+        downloadBtn.style.display = "inline-block";
+        
 });
