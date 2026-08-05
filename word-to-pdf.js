@@ -78,3 +78,15 @@ reader.onload = function (event) {
         downloadBtn.style.display = "inline-block";
         
 });
+
+    })
+
+    .catch(function(error) {
+        alert("Conversion failed: " + error);
+    });
+
+};
+
+reader.readAsArrayBuffer(selectedFile);
+
+});    
