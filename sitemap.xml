@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
@@ -12,7 +11,7 @@
 </url>
 
 <url>
-<loc>https://adiyogitools.in/contact.html </loc>
+<loc>https://adiyogitools.in/contact.html</loc>
 </url>
 
 <url>
@@ -21,6 +20,62 @@
 
 <url>
 <loc>https://adiyogitools.in/terms.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/image-resizer.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/image-to-pdf.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/image-resize-kb.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/image-crop.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/image-compressor.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/jpg-to-png.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/watermark-maker.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/pdf-compress.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/pdf-merge.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/pdf-split.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/passport-photo.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/signature-resize.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/qr-generator.html</loc>
+</url>
+
+<url>
+<loc>https://adiyogitools.in/word-to-pdf.html</loc>
 </url>
 
 </urlset>
