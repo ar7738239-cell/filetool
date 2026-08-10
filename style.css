@@ -231,3 +231,44 @@ footer{
         font-size: 15px;
     }
 }
+
+
+/* ===== Image to PDF Vertical Layout ===== */
+
+.image-pdf-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-pdf-page .container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.image-pdf-page .seo-content,
+.image-pdf-page .related-tools {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+@media (max-width: 600px) {
+
+    .image-pdf-page {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .image-pdf-page .container,
+    .image-pdf-page .seo-content,
+    .image-pdf-page .related-tools {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
