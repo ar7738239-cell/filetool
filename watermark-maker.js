@@ -1,47 +1,107 @@
 /* =========================================
-   WATERMARK MAKER PRO - ADVANCED EDITOR
+   ADIYOGITOOLS WATERMARK MAKER PRO
+   Complete JS
 ========================================= */
 
-const imageInput = document.getElementById("imageInput");
-const logoInput = document.getElementById("logoInput");
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+/* =========================================
+   ELEMENTS
+========================================= */
 
-const emptyMessage = document.getElementById("emptyMessage");
-const imageName = document.getElementById("imageName");
+const imageInput =
+    document.getElementById("imageInput");
 
-const watermarkText = document.getElementById("watermarkText");
-const fontFamily = document.getElementById("fontFamily");
-const fontSize = document.getElementById("fontSize");
-const fontSizeValue = document.getElementById("fontSizeValue");
+const logoInput =
+    document.getElementById("logoInput");
 
-const opacity = document.getElementById("opacity");
-const opacityValue = document.getElementById("opacityValue");
+const canvas =
+    document.getElementById("canvas");
 
-const rotation = document.getElementById("rotation");
-const rotationValue = document.getElementById("rotationValue");
+const ctx =
+    canvas.getContext("2d");
 
-const textColor = document.getElementById("textColor");
+const emptyMessage =
+    document.getElementById("emptyMessage");
 
-const logoSize = document.getElementById("logoSize");
-const logoSizeValue = document.getElementById("logoSizeValue");
+const imageName =
+    document.getElementById("imageName");
 
-const logoOpacity = document.getElementById("logoOpacity");
-const logoOpacityValue = document.getElementById("logoOpacityValue");
 
-const logoRotation = document.getElementById("logoRotation");
-const logoRotationValue = document.getElementById("logoRotationValue");
+/* TEXT */
 
-const tileWatermark = document.getElementById("tileWatermark");
+const watermarkText =
+    document.getElementById("watermarkText");
 
-const tileSpacing = document.getElementById("tileSpacing");
-const tileSpacingValue = document.getElementById("tileSpacingValue");
+const fontFamily =
+    document.getElementById("fontFamily");
 
-const shadowToggle = document.getElementById("shadowToggle");
-const outlineToggle = document.getElementById("outlineToggle");
+const fontSize =
+    document.getElementById("fontSize");
 
-const qualitySelect = document.getElementById("qualitySelect");
+const fontSizeValue =
+    document.getElementById("fontSizeValue");
+
+const opacity =
+    document.getElementById("opacity");
+
+const opacityValue =
+    document.getElementById("opacityValue");
+
+const rotation =
+    document.getElementById("rotation");
+
+const rotationValue =
+    document.getElementById("rotationValue");
+
+const textColor =
+    document.getElementById("textColor");
+
+
+/* LOGO */
+
+const logoSize =
+    document.getElementById("logoSize");
+
+const logoSizeValue =
+    document.getElementById("logoSizeValue");
+
+const logoOpacity =
+    document.getElementById("logoOpacity");
+
+const logoOpacityValue =
+    document.getElementById("logoOpacityValue");
+
+const logoRotation =
+    document.getElementById("logoRotation");
+
+const logoRotationValue =
+    document.getElementById("logoRotationValue");
+
+
+/* OTHER */
+
+const tileWatermark =
+    document.getElementById("tileWatermark");
+
+const tileSpacing =
+    document.getElementById("tileSpacing");
+
+const tileSpacingValue =
+    document.getElementById("tileSpacingValue");
+
+const shadowToggle =
+    document.getElementById("shadowToggle");
+
+const outlineToggle =
+    document.getElementById("outlineToggle");
+
+const qualitySelect =
+    document.getElementById("qualitySelect");
+
+
+/* =========================================
+   VARIABLES
+========================================= */
 
 let image = null;
 let logo = null;
@@ -51,207 +111,361 @@ let logoObject = null;
 
 let activeObject = null;
 
-let dragging = false;
-let dragMode = null;
-
-let dragOffsetX = 0;
-let dragOffsetY = 0;
-
 let isBold = false;
 let isItalic = false;
 
-let startDistance = 0;
-let startSize = 0;
 
-let startAngle = 0;
-let startRotation = 0;
+/* DRAG */
+
+let dragging = false;
+
+let dragObject = null;
+
+let dragStartX = 0;
+let dragStartY = 0;
+
+let objectStartX = 0;
+let objectStartY = 0;
+
+
+/* =========================================
+   CANVAS TOUCH SETTINGS
+========================================= */
+
+canvas.style.touchAction = "none";
+
+canvas.style.userSelect = "none";
+
+canvas.style.webkitUserSelect = "none";
+
+canvas.style.webkitTouchCallout = "none";
 
 
 /* =========================================
    IMAGE UPLOAD
 ========================================= */
 
-imageInput.addEventListener("change", function () {
+imageInput.addEventListener(
+    "change",
+    function () {
 
-    const file = this.files[0];
+        const file =
+            this.files[0];
 
-    if (!file) return;
+        if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
 
-        alert("Please select a valid image.");
+        if (!file.type.startsWith("image/")) {
 
-        this.value = "";
+            alert(
+                "Please select a valid image."
+            );
 
-        return;
+            this.value = "";
+
+            return;
+        }
+
+
+        if (imageName) {
+
+            imageName.textContent =
+                file.name;
+
+        }
+
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function (event) {
+
+                const img =
+                    new Image();
+
+
+                img.onload =
+                    function () {
+
+                        image = img;
+
+
+                        /* Canvas size */
+
+                        canvas.width =
+                            img.naturalWidth;
+
+                        canvas.height =
+                            img.naturalHeight;
+
+
+                        /* Reset watermark */
+
+                        textObject = null;
+
+                        logoObject = null;
+
+                        logo = null;
+
+                        activeObject = null;
+
+                        dragging = false;
+
+                        dragObject = null;
+
+
+                        /* Hide empty message */
+
+                        if (emptyMessage) {
+
+                            emptyMessage.style.display =
+                                "none";
+
+                        }
+
+
+                        draw();
+
+                    };
+
+
+                img.onerror =
+                    function () {
+
+                        alert(
+                            "Unable to load this image."
+                        );
+
+                    };
+
+
+                img.src =
+                    event.target.result;
+
+            };
+
+
+        reader.onerror =
+            function () {
+
+                alert(
+                    "Unable to read this image."
+                );
+
+            };
+
+
+        reader.readAsDataURL(file);
+
     }
-
-    imageName.textContent = file.name;
-
-    const reader = new FileReader();
-
-    reader.onload = function (event) {
-
-        const img = new Image();
-
-        img.onload = function () {
-
-            image = img;
-
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-
-            emptyMessage.style.display = "none";
-
-            textObject = null;
-            logoObject = null;
-            logo = null;
-            activeObject = null;
-
-            draw();
-
-        };
-
-        img.onerror = function () {
-
-            alert("Unable to load this image.");
-
-        };
-
-        img.src = event.target.result;
-
-    };
-
-    reader.onerror = function () {
-
-        alert("Unable to read this image.");
-
-    };
-
-    reader.readAsDataURL(file);
-
-});
+);
 
 
 /* =========================================
    LOGO UPLOAD
 ========================================= */
 
-logoInput.addEventListener("change", function () {
+logoInput.addEventListener(
+    "change",
+    function () {
 
-    const file = this.files[0];
+        const file =
+            this.files[0];
 
-    if (!file) return;
+        if (!file) return;
 
-    if (!file.type.startsWith("image/")) {
 
-        alert("Please select a valid logo image.");
+        if (!file.type.startsWith("image/")) {
 
-        this.value = "";
+            alert(
+                "Please select a valid logo image."
+            );
 
-        return;
-    }
+            this.value = "";
 
-    if (!image) {
+            return;
+        }
 
-        alert("Please upload the main image first.");
 
-        this.value = "";
+        if (!image) {
 
-        return;
-    }
+            alert(
+                "Please upload the main image first."
+            );
 
-    const reader = new FileReader();
+            this.value = "";
 
-    reader.onload = function (event) {
+            return;
+        }
 
-        const img = new Image();
 
-        img.onload = function () {
+        const reader =
+            new FileReader();
 
-            logo = img;
 
-            const initialSize =
-                Math.min(
-                    parseInt(logoSize.value),
-                    canvas.width * 0.35
-                );
+        reader.onload =
+            function (event) {
 
-            logoSize.value = initialSize;
+                const img =
+                    new Image();
 
-            logoSizeValue.textContent =
-                initialSize + " px";
 
-            logoObject = {
+                img.onload =
+                    function () {
 
-                x: canvas.width / 2,
-                y: canvas.height / 2,
-                size: initialSize,
-                rotation: parseInt(logoRotation.value)
+                        logo = img;
+
+
+                        let initialSize =
+                            parseInt(
+                                logoSize.value
+                            );
+
+
+                        if (!initialSize) {
+
+                            initialSize = 150;
+
+                        }
+
+
+                        /* Maximum initial size */
+
+                        const maxSize =
+                            Math.min(
+                                canvas.width,
+                                canvas.height
+                            ) * 0.35;
+
+
+                        initialSize =
+                            Math.min(
+                                initialSize,
+                                maxSize
+                            );
+
+
+                        logoSize.value =
+                            Math.round(
+                                initialSize
+                            );
+
+
+                        logoSizeValue.textContent =
+                            Math.round(
+                                initialSize
+                            ) + " px";
+
+
+                        logoObject = {
+
+                            x:
+                                canvas.width / 2,
+
+                            y:
+                                canvas.height / 2,
+
+                            size:
+                                initialSize,
+
+                            rotation:
+                                parseInt(
+                                    logoRotation.value
+                                ) || 0
+
+                        };
+
+
+                        activeObject =
+                            logoObject;
+
+
+                        draw();
+
+                    };
+
+
+                img.onerror =
+                    function () {
+
+                        alert(
+                            "Unable to load the logo."
+                        );
+
+                    };
+
+
+                img.src =
+                    event.target.result;
 
             };
 
-            activeObject = logoObject;
 
-            draw();
+        reader.readAsDataURL(file);
 
-        };
-
-        img.onerror = function () {
-
-            alert("Unable to load the logo.");
-
-        };
-
-        img.src = event.target.result;
-
-    };
-
-    reader.readAsDataURL(file);
-
-});
+    }
+);
 
 
 /* =========================================
-   ADD / UPDATE TEXT
+   ADD TEXT
 ========================================= */
 
 document
-.getElementById("addTextBtn")
-.addEventListener("click", function () {
+    .getElementById("addTextBtn")
+    .addEventListener(
+        "click",
+        function () {
 
-    if (!image) {
+            if (!image) {
 
-        alert("Please upload an image first.");
+                alert(
+                    "Please upload an image first."
+                );
 
-        return;
-    }
+                return;
+            }
 
-    if (!watermarkText.value.trim()) {
 
-        alert("Please enter watermark text.");
+            if (
+                !watermarkText.value.trim()
+            ) {
 
-        watermarkText.focus();
+                alert(
+                    "Please enter watermark text."
+                );
 
-        return;
-    }
+                watermarkText.focus();
 
-    if (!textObject) {
+                return;
+            }
 
-        textObject = {
 
-            x: canvas.width / 2,
-            y: canvas.height / 2
+            if (!textObject) {
 
-        };
+                textObject = {
 
-    }
+                    x:
+                        canvas.width / 2,
 
-    activeObject = textObject;
+                    y:
+                        canvas.height / 2
 
-    draw();
+                };
 
-});
+            }
+
+
+            activeObject =
+                textObject;
+
+
+            draw();
+
+        }
+    );
 
 
 /* =========================================
@@ -259,23 +473,27 @@ document
 ========================================= */
 
 document
-.getElementById("removeTextBtn")
-.addEventListener("click", function () {
+    .getElementById("removeTextBtn")
+    .addEventListener(
+        "click",
+        function () {
 
-    if (activeObject === textObject) {
+            if (
+                activeObject === textObject
+            ) {
 
-        textObject = null;
-        activeObject = null;
+                activeObject = null;
 
-    } else {
+            }
 
-        textObject = null;
 
-    }
+            textObject = null;
 
-    draw();
 
-});
+            draw();
+
+        }
+    );
 
 
 /* =========================================
@@ -283,124 +501,194 @@ document
 ========================================= */
 
 document
-.getElementById("removeLogoBtn")
-.addEventListener("click", function () {
+    .getElementById("removeLogoBtn")
+    .addEventListener(
+        "click",
+        function () {
 
-    if (activeObject === logoObject) {
+            if (
+                activeObject === logoObject
+            ) {
 
-        logoObject = null;
-        logo = null;
-        activeObject = null;
+                activeObject = null;
 
-    } else {
-
-        logoObject = null;
-        logo = null;
-
-    }
-
-    logoInput.value = "";
-
-    draw();
-
-});
+            }
 
 
-/* =========================================
-   TEXT CONTROLS
-========================================= */
+            logo = null;
 
-fontSize.addEventListener("input", function () {
-
-    fontSizeValue.textContent =
-        this.value + " px";
-
-    draw();
-
-});
+            logoObject = null;
 
 
-opacity.addEventListener("input", function () {
-
-    opacityValue.textContent =
-        this.value + "%";
-
-    draw();
-
-});
+            logoInput.value = "";
 
 
-rotation.addEventListener("input", function () {
+            draw();
 
-    rotationValue.textContent =
-        this.value + "°";
-
-    draw();
-
-});
+        }
+    );
 
 
 /* =========================================
-   LOGO CONTROLS
+   TEXT SIZE
 ========================================= */
 
-logoSize.addEventListener("input", function () {
+fontSize.addEventListener(
+    "input",
+    function () {
 
-    logoSizeValue.textContent =
-        this.value + " px";
+        fontSizeValue.textContent =
+            this.value + " px";
 
-    if (logoObject) {
-
-        logoObject.size =
-            parseInt(this.value);
-
-    }
-
-    draw();
-
-});
-
-
-logoOpacity.addEventListener("input", function () {
-
-    logoOpacityValue.textContent =
-        this.value + "%";
-
-    draw();
-
-});
-
-
-logoRotation.addEventListener("input", function () {
-
-    logoRotationValue.textContent =
-        this.value + "°";
-
-    if (logoObject) {
-
-        logoObject.rotation =
-            parseInt(this.value);
+        draw();
 
     }
-
-    draw();
-
-});
+);
 
 
 /* =========================================
-   TILE
+   TEXT OPACITY
 ========================================= */
 
-tileSpacing.addEventListener("input", function () {
+opacity.addEventListener(
+    "input",
+    function () {
 
-    tileSpacingValue.textContent =
-        this.value + " px";
+        opacityValue.textContent =
+            this.value + "%";
 
-    draw();
+        draw();
 
-});
+    }
+);
 
+
+/* =========================================
+   TEXT ROTATION
+========================================= */
+
+rotation.addEventListener(
+    "input",
+    function () {
+
+        rotationValue.textContent =
+            this.value + "°";
+
+        draw();
+
+    }
+);
+
+
+/* =========================================
+   TEXT COLOR
+========================================= */
+
+textColor.addEventListener(
+    "input",
+    draw
+);
+
+
+/* =========================================
+   FONT
+========================================= */
+
+fontFamily.addEventListener(
+    "change",
+    draw
+);
+
+
+/* =========================================
+   LOGO SIZE
+========================================= */
+
+logoSize.addEventListener(
+    "input",
+    function () {
+
+        logoSizeValue.textContent =
+            this.value + " px";
+
+
+        if (logoObject) {
+
+            logoObject.size =
+                parseInt(this.value);
+
+        }
+
+
+        draw();
+
+    }
+);
+
+
+/* =========================================
+   LOGO OPACITY
+========================================= */
+
+logoOpacity.addEventListener(
+    "input",
+    function () {
+
+        logoOpacityValue.textContent =
+            this.value + "%";
+
+        draw();
+
+    }
+);
+
+
+/* =========================================
+   LOGO ROTATION
+========================================= */
+
+logoRotation.addEventListener(
+    "input",
+    function () {
+
+        logoRotationValue.textContent =
+            this.value + "°";
+
+
+        if (logoObject) {
+
+            logoObject.rotation =
+                parseInt(this.value);
+
+        }
+
+
+        draw();
+
+    }
+);
+
+
+/* =========================================
+   TILE SPACING
+========================================= */
+
+tileSpacing.addEventListener(
+    "input",
+    function () {
+
+        tileSpacingValue.textContent =
+            this.value + " px";
+
+        draw();
+
+    }
+);
+
+
+/* =========================================
+   TILE CHECKBOX
+========================================= */
 
 tileWatermark.addEventListener(
     "change",
@@ -409,28 +697,18 @@ tileWatermark.addEventListener(
 
 
 /* =========================================
-   TEXT SETTINGS
+   SHADOW
 ========================================= */
-
-watermarkText.addEventListener(
-    "input",
-    draw
-);
-
-fontFamily.addEventListener(
-    "change",
-    draw
-);
-
-textColor.addEventListener(
-    "input",
-    draw
-);
 
 shadowToggle.addEventListener(
     "change",
     draw
 );
+
+
+/* =========================================
+   OUTLINE
+========================================= */
 
 outlineToggle.addEventListener(
     "change",
@@ -443,19 +721,25 @@ outlineToggle.addEventListener(
 ========================================= */
 
 document
-.getElementById("boldBtn")
-.addEventListener("click", function () {
+    .getElementById("boldBtn")
+    .addEventListener(
+        "click",
+        function () {
 
-    isBold = !isBold;
+            isBold =
+                !isBold;
 
-    this.style.background =
-        isBold
-            ? "#bfdbfe"
-            : "#e2e8f0";
 
-    draw();
+            this.style.background =
+                isBold
+                    ? "#bfdbfe"
+                    : "#e2e8f0";
 
-});
+
+            draw();
+
+        }
+    );
 
 
 /* =========================================
@@ -463,28 +747,35 @@ document
 ========================================= */
 
 document
-.getElementById("italicBtn")
-.addEventListener("click", function () {
+    .getElementById("italicBtn")
+    .addEventListener(
+        "click",
+        function () {
 
-    isItalic = !isItalic;
+            isItalic =
+                !isItalic;
 
-    this.style.background =
-        isItalic
-            ? "#bfdbfe"
-            : "#e2e8f0";
 
-    draw();
+            this.style.background =
+                isItalic
+                    ? "#bfdbfe"
+                    : "#e2e8f0";
 
-});
+
+            draw();
+
+        }
+    );
 
 
 /* =========================================
    DRAW
 ========================================= */
 
-function draw(showSelection = true) {
+function draw() {
 
     if (!image) return;
+
 
     ctx.clearRect(
         0,
@@ -492,6 +783,9 @@ function draw(showSelection = true) {
         canvas.width,
         canvas.height
     );
+
+
+    /* Original image */
 
     ctx.drawImage(
         image,
@@ -502,12 +796,16 @@ function draw(showSelection = true) {
     );
 
 
+    /* Text */
+
     if (
         textObject &&
         watermarkText.value.trim()
     ) {
 
-        if (tileWatermark.checked) {
+        if (
+            tileWatermark.checked
+        ) {
 
             drawTextTile();
 
@@ -523,9 +821,16 @@ function draw(showSelection = true) {
     }
 
 
-    if (logo && logoObject) {
+    /* Logo */
 
-        if (tileWatermark.checked) {
+    if (
+        logo &&
+        logoObject
+    ) {
+
+        if (
+            tileWatermark.checked
+        ) {
 
             drawLogoTile();
 
@@ -537,24 +842,6 @@ function draw(showSelection = true) {
             );
 
         }
-
-    }
-
-
-    /*
-     * Selection UI is shown only
-     * while editing.
-     */
-
-    if (
-        showSelection &&
-        activeObject &&
-        !tileWatermark.checked
-    ) {
-
-        drawSelectionBox(
-            activeObject
-        );
 
     }
 
@@ -570,21 +857,32 @@ function drawText(x, y) {
     const size =
         parseInt(fontSize.value);
 
+
     const angle =
         parseInt(rotation.value);
+
 
     const alpha =
         parseInt(opacity.value) / 100;
 
+
     ctx.save();
 
-    ctx.translate(x, y);
+
+    ctx.translate(
+        x,
+        y
+    );
+
 
     ctx.rotate(
         angle * Math.PI / 180
     );
 
-    ctx.globalAlpha = alpha;
+
+    ctx.globalAlpha =
+        alpha;
+
 
     ctx.font =
         (isItalic ? "italic " : "") +
@@ -593,35 +891,52 @@ function drawText(x, y) {
         "px " +
         fontFamily.value;
 
-    ctx.textAlign = "center";
 
-    ctx.textBaseline = "middle";
+    ctx.textAlign =
+        "center";
 
 
-    if (shadowToggle.checked) {
+    ctx.textBaseline =
+        "middle";
+
+
+    /* Shadow */
+
+    if (
+        shadowToggle.checked
+    ) {
 
         ctx.shadowColor =
             "rgba(0,0,0,.55)";
 
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur =
+            10;
 
-        ctx.shadowOffsetX = 3;
+        ctx.shadowOffsetX =
+            3;
 
-        ctx.shadowOffsetY = 3;
+        ctx.shadowOffsetY =
+            3;
 
     }
 
 
-    if (outlineToggle.checked) {
+    /* Outline */
+
+    if (
+        outlineToggle.checked
+    ) {
 
         ctx.strokeStyle =
             "rgba(0,0,0,.7)";
+
 
         ctx.lineWidth =
             Math.max(
                 2,
                 size / 15
             );
+
 
         ctx.strokeText(
             watermarkText.value,
@@ -632,14 +947,18 @@ function drawText(x, y) {
     }
 
 
+    /* Text */
+
     ctx.fillStyle =
         textColor.value;
+
 
     ctx.fillText(
         watermarkText.value,
         0,
         0
     );
+
 
     ctx.restore();
 
@@ -652,43 +971,67 @@ function drawText(x, y) {
 
 function drawLogo(x, y) {
 
-    if (!logo || !logoObject) return;
+    if (
+        !logo ||
+        !logoObject
+    ) return;
+
 
     const size =
         logoObject.size;
+
 
     const ratio =
         logo.naturalWidth /
         logo.naturalHeight;
 
-    const width = size;
+
+    const width =
+        size;
+
 
     const height =
         size / ratio;
 
+
     ctx.save();
 
-    ctx.translate(x, y);
+
+    ctx.translate(
+        x,
+        y
+    );
+
 
     ctx.rotate(
         logoObject.rotation *
         Math.PI / 180
     );
 
+
     ctx.globalAlpha =
-        parseInt(logoOpacity.value) / 100;
+        parseInt(
+            logoOpacity.value
+        ) / 100;
 
 
-    if (shadowToggle.checked) {
+    /* Shadow */
+
+    if (
+        shadowToggle.checked
+    ) {
 
         ctx.shadowColor =
             "rgba(0,0,0,.4)";
 
-        ctx.shadowBlur = 12;
+        ctx.shadowBlur =
+            12;
 
-        ctx.shadowOffsetX = 3;
+        ctx.shadowOffsetX =
+            3;
 
-        ctx.shadowOffsetY = 3;
+        ctx.shadowOffsetY =
+            3;
 
     }
 
@@ -700,6 +1043,7 @@ function drawLogo(x, y) {
         width,
         height
     );
+
 
     ctx.restore();
 
@@ -713,7 +1057,13 @@ function drawLogo(x, y) {
 function drawTextTile() {
 
     const spacing =
-        parseInt(tileSpacing.value);
+        Math.max(
+            50,
+            parseInt(
+                tileSpacing.value
+            )
+        );
+
 
     for (
         let y = spacing / 2;
@@ -727,7 +1077,10 @@ function drawTextTile() {
             x += spacing
         ) {
 
-            drawText(x, y);
+            drawText(
+                x,
+                y
+            );
 
         }
 
@@ -743,7 +1096,13 @@ function drawTextTile() {
 function drawLogoTile() {
 
     const spacing =
-        parseInt(tileSpacing.value);
+        Math.max(
+            50,
+            parseInt(
+                tileSpacing.value
+            )
+        );
+
 
     for (
         let y = spacing / 2;
@@ -757,341 +1116,14 @@ function drawLogoTile() {
             x += spacing
         ) {
 
-            drawLogo(x, y);
+            drawLogo(
+                x,
+                y
+            );
 
         }
 
     }
-
-}
-
-
-/* =========================================
-   OBJECT DIMENSIONS
-========================================= */
-
-function getObjectBounds(obj) {
-
-    if (obj === logoObject && logo) {
-
-        const width =
-            logoObject.size;
-
-        const height =
-            width *
-            (
-                logo.naturalHeight /
-                logo.naturalWidth
-            );
-
-        return {
-
-            width: width,
-            height: height,
-            rotation: logoObject.rotation
-
-        };
-
-    }
-
-
-    if (
-        obj === textObject &&
-        watermarkText.value.trim()
-    ) {
-
-        const size =
-            parseInt(fontSize.value);
-
-        ctx.save();
-
-        ctx.font =
-            (isItalic ? "italic " : "") +
-            (isBold ? "bold " : "") +
-            size +
-            "px " +
-            fontFamily.value;
-
-        const width =
-            ctx.measureText(
-                watermarkText.value
-            ).width;
-
-        ctx.restore();
-
-        return {
-
-            width: width + 20,
-            height: size * 1.25,
-            rotation: parseInt(rotation.value)
-
-        };
-
-    }
-
-    return {
-
-        width: 0,
-        height: 0,
-        rotation: 0
-
-    };
-
-}
-
-
-/* =========================================
-   SELECTION BOX
-========================================= */
-
-function drawSelectionBox(obj) {
-
-    const bounds =
-        getObjectBounds(obj);
-
-    if (
-        !bounds.width ||
-        !bounds.height
-    ) {
-
-        return;
-
-    }
-
-    const x = obj.x;
-    const y = obj.y;
-
-    const angle =
-        bounds.rotation *
-        Math.PI / 180;
-
-    const hw =
-        bounds.width / 2;
-
-    const hh =
-        bounds.height / 2;
-
-
-    const points = [
-
-        rotatePoint(
-            x - hw,
-            y - hh,
-            x,
-            y,
-            angle
-        ),
-
-        rotatePoint(
-            x + hw,
-            y - hh,
-            x,
-            y,
-            angle
-        ),
-
-        rotatePoint(
-            x + hw,
-            y + hh,
-            x,
-            y,
-            angle
-        ),
-
-        rotatePoint(
-            x - hw,
-            y + hh,
-            x,
-            y,
-            angle
-        )
-
-    ];
-
-
-    ctx.save();
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        points[0].x,
-        points[0].y
-    );
-
-    for (
-        let i = 1;
-        i < points.length;
-        i++
-    ) {
-
-        ctx.lineTo(
-            points[i].x,
-            points[i].y
-        );
-
-    }
-
-    ctx.closePath();
-
-    ctx.strokeStyle =
-        "#2563eb";
-
-    ctx.lineWidth = 3;
-
-    ctx.setLineDash([8, 5]);
-
-    ctx.stroke();
-
-    ctx.setLineDash([]);
-
-
-    /*
-     * Corner handles
-     */
-
-    points.forEach(function (p) {
-
-        drawHandle(
-            p.x,
-            p.y
-        );
-
-    });
-
-
-    /*
-     * Rotation handle
-     */
-
-    const topCenter =
-        rotatePoint(
-            x,
-            y - hh,
-            x,
-            y,
-            angle
-        );
-
-    const rotatePointPosition =
-        rotatePoint(
-            x,
-            y - hh - 55,
-            x,
-            y,
-            angle
-        );
-
-
-    ctx.beginPath();
-
-    ctx.moveTo(
-        topCenter.x,
-        topCenter.y
-    );
-
-    ctx.lineTo(
-        rotatePointPosition.x,
-        rotatePointPosition.y
-    );
-
-    ctx.strokeStyle =
-        "#2563eb";
-
-    ctx.lineWidth = 3;
-
-    ctx.stroke();
-
-
-    ctx.beginPath();
-
-    ctx.arc(
-        rotatePointPosition.x,
-        rotatePointPosition.y,
-        11,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fillStyle =
-        "#2563eb";
-
-    ctx.fill();
-
-    ctx.strokeStyle =
-        "#ffffff";
-
-    ctx.lineWidth = 3;
-
-    ctx.stroke();
-
-
-    ctx.restore();
-
-}
-
-
-/* =========================================
-   HANDLE
-========================================= */
-
-function drawHandle(x, y) {
-
-    ctx.beginPath();
-
-    ctx.arc(
-        x,
-        y,
-        9,
-        0,
-        Math.PI * 2
-    );
-
-    ctx.fillStyle =
-        "#ffffff";
-
-    ctx.fill();
-
-    ctx.strokeStyle =
-        "#2563eb";
-
-    ctx.lineWidth = 3;
-
-    ctx.stroke();
-
-}
-
-
-/* =========================================
-   ROTATE POINT
-========================================= */
-
-function rotatePoint(
-    px,
-    py,
-    cx,
-    cy,
-    angle
-) {
-
-    const dx =
-        px - cx;
-
-    const dy =
-        py - cy;
-
-    return {
-
-        x:
-            cx +
-            dx * Math.cos(angle) -
-            dy * Math.sin(angle),
-
-        y:
-            cy +
-            dx * Math.sin(angle) +
-            dy * Math.cos(angle)
-
-    };
 
 }
 
@@ -1101,622 +1133,233 @@ function rotatePoint(
 ========================================= */
 
 document
-.querySelectorAll(".position-grid button")
-.forEach(function (button) {
+    .querySelectorAll(
+        ".position-grid button"
+    )
+    .forEach(
+        function (button) {
 
-    button.addEventListener(
-        "click",
-        function () {
+            button.addEventListener(
+                "click",
+                function () {
 
-            if (!activeObject) {
+                    if (!activeObject) {
 
-                if (textObject) {
+                        if (textObject) {
 
-                    activeObject =
-                        textObject;
+                            activeObject =
+                                textObject;
 
-                } else if (logoObject) {
+                        } else if (logoObject) {
 
-                    activeObject =
-                        logoObject;
+                            activeObject =
+                                logoObject;
 
-                } else {
+                        } else {
 
-                    alert(
-                        "Please add text or logo first."
-                    );
+                            alert(
+                                "Please add text or logo first."
+                            );
 
-                    return;
+                            return;
+
+                        }
+
+                    }
+
+
+                    const pos =
+                        this.dataset.position;
+
+
+                    const margin =
+                        Math.min(
+                            canvas.width,
+                            canvas.height
+                        ) * 0.12;
+
+
+                    let x =
+                        canvas.width / 2;
+
+                    let y =
+                        canvas.height / 2;
+
+
+                    if (
+                        pos.includes("left")
+                    ) {
+
+                        x = margin;
+
+                    }
+
+
+                    if (
+                        pos.includes("right")
+                    ) {
+
+                        x =
+                            canvas.width -
+                            margin;
+
+                    }
+
+
+                    if (
+                        pos.includes("top")
+                    ) {
+
+                        y = margin;
+
+                    }
+
+
+                    if (
+                        pos.includes("bottom")
+                    ) {
+
+                        y =
+                            canvas.height -
+                            margin;
+
+                    }
+
+
+                    if (
+                        pos === "top-center"
+                    ) {
+
+                        x =
+                            canvas.width / 2;
+
+                        y = margin;
+
+                    }
+
+
+                    if (
+                        pos === "center"
+                    ) {
+
+                        x =
+                            canvas.width / 2;
+
+                        y =
+                            canvas.height / 2;
+
+                    }
+
+
+                    if (
+                        pos === "bottom-center"
+                    ) {
+
+                        x =
+                            canvas.width / 2;
+
+                        y =
+                            canvas.height -
+                            margin;
+
+                    }
+
+
+                    if (
+                        pos === "center-left"
+                    ) {
+
+                        x = margin;
+
+                        y =
+                            canvas.height / 2;
+
+                    }
+
+
+                    if (
+                        pos === "center-right"
+                    ) {
+
+                        x =
+                            canvas.width -
+                            margin;
+
+                        y =
+                            canvas.height / 2;
+
+                    }
+
+
+                    activeObject.x =
+                        x;
+
+                    activeObject.y =
+                        y;
+
+
+                    draw();
 
                 }
-
-            }
-
-
-            const pos =
-                this.dataset.position;
-
-            const margin =
-                Math.min(
-                    canvas.width,
-                    canvas.height
-                ) * 0.12;
-
-            let x =
-                canvas.width / 2;
-
-            let y =
-                canvas.height / 2;
-
-
-            if (pos.includes("left")) {
-
-                x = margin;
-
-            }
-
-            if (pos.includes("right")) {
-
-                x =
-                    canvas.width - margin;
-
-            }
-
-            if (pos.includes("top")) {
-
-                y = margin;
-
-            }
-
-            if (pos.includes("bottom")) {
-
-                y =
-                    canvas.height - margin;
-
-            }
-
-
-            if (pos === "center") {
-
-                x =
-                    canvas.width / 2;
-
-                y =
-                    canvas.height / 2;
-
-            }
-
-
-            if (pos === "top-center") {
-
-                x =
-                    canvas.width / 2;
-
-                y = margin;
-
-            }
-
-
-            if (pos === "bottom-center") {
-
-                x =
-                    canvas.width / 2;
-
-                y =
-                    canvas.height - margin;
-
-            }
-
-
-            if (pos === "center-left") {
-
-                x = margin;
-
-                y =
-                    canvas.height / 2;
-
-            }
-
-
-            if (pos === "center-right") {
-
-                x =
-                    canvas.width - margin;
-
-                y =
-                    canvas.height / 2;
-
-            }
-
-
-            activeObject.x = x;
-            activeObject.y = y;
-
-            draw();
-
-        }
-    );
-
-});
-
-
-/* =========================================
-   CANVAS POINTER DOWN
-========================================= */
-
-/* =========================================
-   MOBILE DRAG TEXT + LOGO
-========================================= */
-
-canvas.style.touchAction = "none";
-
-canvas.addEventListener("pointerdown", function(e){
-
-    if(!image) return;
-
-    e.preventDefault();
-
-    const point = getCanvasPoint(e);
-
-    const selected = findObjectAtPoint(
-        point.x,
-        point.y
-    );
-
-    if(!selected) return;
-
-    activeObject = selected;
-    dragObject = selected;
-
-    dragOffsetX =
-        point.x - selected.x;
-
-    dragOffsetY =
-        point.y - selected.y;
-
-    dragging = true;
-
-    canvas.setPointerCapture(e.pointerId);
-
-});
-
-
-canvas.addEventListener("pointermove", function(e){
-
-    if(!dragging || !dragObject) return;
-
-    e.preventDefault();
-
-    const point = getCanvasPoint(e);
-
-    dragObject.x =
-        point.x - dragOffsetX;
-
-    dragObject.y =
-        point.y - dragOffsetY;
-
-    draw();
-
-});
-
-
-canvas.addEventListener("pointerup", function(e){
-
-    e.preventDefault();
-
-    dragging = false;
-    dragObject = null;
-
-    try{
-        canvas.releasePointerCapture(e.pointerId);
-    }catch(err){}
-
-});
-
-
-canvas.addEventListener("pointercancel", function(){
-
-    dragging = false;
-    dragObject = null;
-
-});
-
-/* =========================================
-   POINTER MOVE
-========================================= */
-
-canvas.addEventListener(
-    "pointermove",
-    function (e) {
-
-        if (
-            !dragging ||
-            !activeObject
-        ) {
-
-            return;
-
-        }
-
-        const point =
-            getCanvasPoint(e);
-
-
-        /* MOVE */
-
-        if (dragMode === "move") {
-
-            activeObject.x =
-                point.x - dragOffsetX;
-
-            activeObject.y =
-                point.y - dragOffsetY;
-
-            keepInsideCanvas(
-                activeObject
             );
 
         }
-
-
-        /* RESIZE */
-
-        else if (
-            dragMode === "resize"
-        ) {
-
-            const currentDistance =
-                distance(
-                    point,
-                    {
-                        x: activeObject.x,
-                        y: activeObject.y
-                    }
-                );
-
-            let newSize =
-                startSize *
-                (
-                    currentDistance /
-                    startDistance
-                );
-
-
-            if (activeObject === logoObject) {
-
-                newSize =
-                    Math.max(
-                        30,
-                        Math.min(
-                            1000,
-                            newSize
-                        )
-                    );
-
-                logoObject.size =
-                    newSize;
-
-                logoSize.value =
-                    Math.round(newSize);
-
-                logoSizeValue.textContent =
-                    Math.round(newSize) +
-                    " px";
-
-            }
-
-
-            else {
-
-                newSize =
-                    Math.max(
-                        15,
-                        Math.min(
-                            300,
-                            newSize
-                        )
-                    );
-
-                fontSize.value =
-                    Math.round(newSize);
-
-                fontSizeValue.textContent =
-                    Math.round(newSize) +
-                    " px";
-
-            }
-
-        }
-
-
-        /* ROTATE */
-
-        else if (
-            dragMode === "rotate"
-        ) {
-
-            const currentAngle =
-                Math.atan2(
-                    point.y -
-                    activeObject.y,
-
-                    point.x -
-                    activeObject.x
-                );
-
-
-            const delta =
-                (
-                    currentAngle -
-                    startAngle
-                )
-                *
-                180 /
-                Math.PI;
-
-
-            let newRotation =
-                startRotation +
-                delta;
-
-
-            if (
-                activeObject ===
-                logoObject
-            ) {
-
-                logoObject.rotation =
-                    newRotation;
-
-                logoRotation.value =
-                    Math.round(newRotation);
-
-                logoRotationValue.textContent =
-                    Math.round(newRotation) +
-                    "°";
-
-            }
-
-
-            else {
-
-                rotation.value =
-                    Math.round(newRotation);
-
-                rotationValue.textContent =
-                    Math.round(newRotation) +
-                    "°";
-
-            }
-
-        }
-
-
-        draw();
-
-        e.preventDefault();
-
-    }
-);
+    );
 
 
 /* =========================================
-   POINTER UP
+   FIND TEXT OR LOGO
 ========================================= */
 
-function stopPointer(e) {
-
-    dragging = false;
-
-    dragMode = null;
-
-    try {
-
-        canvas.releasePointerCapture(
-            e.pointerId
-        );
-
-    } catch (error) {}
-
-}
-
-
-canvas.addEventListener(
-    "pointerup",
-    stopPointer
-);
-
-canvas.addEventListener(
-    "pointercancel",
-    stopPointer
-);
-
-
-/* =========================================
-   DETECT HANDLE
-========================================= */
-
-function detectHandle(
+function findObjectAtPoint(
     x,
-    y,
-    obj
+    y
 ) {
 
-    const bounds =
-        getObjectBounds(obj);
 
-    const angle =
-        bounds.rotation *
-        Math.PI /
-        180;
-
-
-    const hw =
-        bounds.width / 2;
-
-    const hh =
-        bounds.height / 2;
-
-
-    const corners = [
-
-        {
-            name: "resize",
-            point:
-                rotatePoint(
-                    obj.x - hw,
-                    obj.y - hh,
-                    obj.x,
-                    obj.y,
-                    angle
-                )
-        },
-
-        {
-            name: "resize",
-            point:
-                rotatePoint(
-                    obj.x + hw,
-                    obj.y - hh,
-                    obj.x,
-                    obj.y,
-                    angle
-                )
-        },
-
-        {
-            name: "resize",
-            point:
-                rotatePoint(
-                    obj.x + hw,
-                    obj.y + hh,
-                    obj.x,
-                    obj.y,
-                    angle
-                )
-        },
-
-        {
-            name: "resize",
-            point:
-                rotatePoint(
-                    obj.x - hw,
-                    obj.y + hh,
-                    obj.x,
-                    obj.y,
-                    angle
-                )
-        }
-
-    ];
-
-
-    for (
-        let i = 0;
-        i < corners.length;
-        i++
-    ) {
-
-        if (
-            distance(
-                {
-                    x: x,
-                    y: y
-                },
-                corners[i].point
-            ) < 30
-        ) {
-
-            return "resize";
-
-        }
-
-    }
-
-
-    const rotatePosition =
-        rotatePoint(
-            obj.x,
-            obj.y - hh - 55,
-            obj.x,
-            obj.y,
-            angle
-        );
-
-
-    if (
-        distance(
-            {
-                x: x,
-                y: y
-            },
-            rotatePosition
-        ) < 30
-    ) {
-
-        return "rotate";
-
-    }
-
-
-    return null;
-
-}
-
-
-/* =========================================
-   FIND OBJECT
-========================================= */
-
-function findObjectAtPoint(x, y) {
-
-    /*
-     * Logo gets priority.
-     */
+    /* =====================================
+       LOGO
+    ===================================== */
 
     if (
         logo &&
         logoObject
     ) {
 
-        const bounds =
-            getObjectBounds(
-                logoObject
-            );
+        const width =
+            logoObject.size;
 
 
-        const angle =
-            -bounds.rotation *
-            Math.PI /
-            180;
+        const ratio =
+            logo.naturalHeight /
+            logo.naturalWidth;
 
 
-        const local =
-            rotatePoint(
-                x,
-                y,
-                logoObject.x,
-                logoObject.y,
-                angle
+        const height =
+            width * ratio;
+
+
+        const padding =
+            Math.max(
+                30,
+                width * 0.12
             );
 
 
         if (
             Math.abs(
-                local.x -
-                logoObject.x
+                x - logoObject.x
             )
             <=
-            bounds.width / 2 + 25
+            width / 2 + padding
 
             &&
 
             Math.abs(
-                local.y -
-                logoObject.y
+                y - logoObject.y
             )
             <=
-            bounds.height / 2 + 25
+            height / 2 + padding
         ) {
 
             return logoObject;
@@ -1726,53 +1369,64 @@ function findObjectAtPoint(x, y) {
     }
 
 
-    /*
-     * Text
-     */
+    /* =====================================
+       TEXT
+    ===================================== */
 
     if (
         textObject &&
         watermarkText.value.trim()
     ) {
 
-        const bounds =
-            getObjectBounds(
-                textObject
+        const size =
+            parseInt(
+                fontSize.value
             );
 
 
-        const angle =
-            -bounds.rotation *
-            Math.PI /
-            180;
+        ctx.save();
 
 
-        const local =
-            rotatePoint(
-                x,
-                y,
-                textObject.x,
-                textObject.y,
-                angle
+        ctx.font =
+            (isItalic ? "italic " : "") +
+            (isBold ? "bold " : "") +
+            size +
+            "px " +
+            fontFamily.value;
+
+
+        const textWidth =
+            ctx.measureText(
+                watermarkText.value
+            ).width;
+
+
+        ctx.restore();
+
+
+        const padding =
+            Math.max(
+                40,
+                size * 0.35
             );
 
 
         if (
             Math.abs(
-                local.x -
-                textObject.x
+                x - textObject.x
             )
             <=
-            bounds.width / 2 + 25
+            textWidth / 2 +
+            padding
 
             &&
 
             Math.abs(
-                local.y -
-                textObject.y
+                y - textObject.y
             )
             <=
-            bounds.height / 2 + 25
+            size / 2 +
+            padding
         ) {
 
             return textObject;
@@ -1788,55 +1442,364 @@ function findObjectAtPoint(x, y) {
 
 
 /* =========================================
-   KEEP OBJECT INSIDE IMAGE
+   CANVAS COORDINATES
 ========================================= */
 
-function keepInsideCanvas(obj) {
+function getCanvasPoint(
+    clientX,
+    clientY
+) {
 
-    obj.x =
-        Math.max(
-            0,
-            Math.min(
-                canvas.width,
-                obj.x
-            )
-        );
+    const rect =
+        canvas.getBoundingClientRect();
 
-    obj.y =
-        Math.max(
-            0,
-            Math.min(
-                canvas.height,
-                obj.y
+
+    return {
+
+        x:
+            (
+                clientX -
+                rect.left
             )
-        );
+            *
+            (
+                canvas.width /
+                rect.width
+            ),
+
+
+        y:
+            (
+                clientY -
+                rect.top
+            )
+            *
+            (
+                canvas.height /
+                rect.height
+            )
+
+    };
 
 }
 
 
 /* =========================================
-   DISTANCE
+   START DRAG
 ========================================= */
 
-function distance(a, b) {
+function startDrag(
+    clientX,
+    clientY
+) {
 
-    return Math.sqrt(
+    if (!image) return false;
 
-        Math.pow(
-            a.x - b.x,
-            2
-        )
 
-        +
+    const point =
+        getCanvasPoint(
+            clientX,
+            clientY
+        );
 
-        Math.pow(
-            a.y - b.y,
-            2
-        )
 
-    );
+    const selected =
+        findObjectAtPoint(
+            point.x,
+            point.y
+        );
+
+
+    if (!selected) {
+
+        return false;
+
+    }
+
+
+    activeObject =
+        selected;
+
+
+    dragObject =
+        selected;
+
+
+    dragging = true;
+
+
+    dragStartX =
+        point.x;
+
+
+    dragStartY =
+        point.y;
+
+
+    objectStartX =
+        selected.x;
+
+
+    objectStartY =
+        selected.y;
+
+
+    return true;
 
 }
+
+
+/* =========================================
+   MOVE DRAG
+========================================= */
+
+function moveDrag(
+    clientX,
+    clientY
+) {
+
+    if (
+        !dragging ||
+        !dragObject
+    ) {
+
+        return;
+
+    }
+
+
+    const point =
+        getCanvasPoint(
+            clientX,
+            clientY
+        );
+
+
+    const deltaX =
+        point.x -
+        dragStartX;
+
+
+    const deltaY =
+        point.y -
+        dragStartY;
+
+
+    dragObject.x =
+        objectStartX +
+        deltaX;
+
+
+    dragObject.y =
+        objectStartY +
+        deltaY;
+
+
+    /* Keep inside canvas */
+
+    dragObject.x =
+        Math.max(
+            0,
+            Math.min(
+                canvas.width,
+                dragObject.x
+            )
+        );
+
+
+    dragObject.y =
+        Math.max(
+            0,
+            Math.min(
+                canvas.height,
+                dragObject.y
+            )
+        );
+
+
+    draw();
+
+}
+
+
+/* =========================================
+   STOP DRAG
+========================================= */
+
+function stopDrag() {
+
+    dragging = false;
+
+    dragObject = null;
+
+}
+
+
+/* =========================================
+   MOBILE TOUCH START
+========================================= */
+
+canvas.addEventListener(
+    "touchstart",
+    function (e) {
+
+        if (!e.touches.length)
+            return;
+
+
+        const touch =
+            e.touches[0];
+
+
+        const started =
+            startDrag(
+                touch.clientX,
+                touch.clientY
+            );
+
+
+        if (started) {
+
+            e.preventDefault();
+
+        }
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================================
+   MOBILE TOUCH MOVE
+========================================= */
+
+canvas.addEventListener(
+    "touchmove",
+    function (e) {
+
+        if (!dragging)
+            return;
+
+
+        if (!e.touches.length)
+            return;
+
+
+        e.preventDefault();
+
+
+        const touch =
+            e.touches[0];
+
+
+        moveDrag(
+            touch.clientX,
+            touch.clientY
+        );
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================================
+   MOBILE TOUCH END
+========================================= */
+
+canvas.addEventListener(
+    "touchend",
+    function (e) {
+
+        if (dragging) {
+
+            e.preventDefault();
+
+        }
+
+
+        stopDrag();
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================================
+   TOUCH CANCEL
+========================================= */
+
+canvas.addEventListener(
+    "touchcancel",
+    function () {
+
+        stopDrag();
+
+    }
+);
+
+
+/* =========================================
+   DESKTOP MOUSE DOWN
+========================================= */
+
+canvas.addEventListener(
+    "mousedown",
+    function (e) {
+
+        e.preventDefault();
+
+
+        startDrag(
+            e.clientX,
+            e.clientY
+        );
+
+    }
+);
+
+
+/* =========================================
+   DESKTOP MOUSE MOVE
+========================================= */
+
+window.addEventListener(
+    "mousemove",
+    function (e) {
+
+        if (!dragging)
+            return;
+
+
+        e.preventDefault();
+
+
+        moveDrag(
+            e.clientX,
+            e.clientY
+        );
+
+    }
+);
+
+
+/* =========================================
+   DESKTOP MOUSE UP
+========================================= */
+
+window.addEventListener(
+    "mouseup",
+    function () {
+
+        stopDrag();
+
+    }
+);
 
 
 /* =========================================
@@ -1844,100 +1807,110 @@ function distance(a, b) {
 ========================================= */
 
 document
-.getElementById("downloadBtn")
-.addEventListener(
-    "click",
-    function () {
+    .getElementById("downloadBtn")
+    .addEventListener(
+        "click",
+        function () {
 
-        if (!image) {
+            if (!image) {
 
-            alert(
-                "Please upload an image first."
-            );
+                alert(
+                    "Please upload an image first."
+                );
 
-            return;
+                return;
 
-        }
-
-
-        /*
-         * IMPORTANT:
-         * Draw without selection box.
-         */
-
-        draw(false);
+            }
 
 
-        const quality =
-            parseFloat(
-                qualitySelect.value
-            );
+            /* Remove any selection state */
+
+            activeObject = null;
 
 
-        canvas.toBlob(
-            function (blob) {
-
-                if (!blob) {
-
-                    alert(
-                        "Unable to create image."
-                    );
-
-                    return;
-
-                }
+            draw();
 
 
-                const url =
-                    URL.createObjectURL(
-                        blob
-                    );
-
-
-                const a =
-                    document.createElement(
-                        "a"
-                    );
-
-
-                a.href = url;
-
-                a.download =
-                    "adiyogitools-watermarked-image.jpg";
-
-
-                document.body.appendChild(a);
-
-                a.click();
-
-                a.remove();
-
-
-                setTimeout(
-                    function () {
-
-                        URL.revokeObjectURL(
-                            url
-                        );
-
-                    },
-                    1000
+            let quality =
+                parseFloat(
+                    qualitySelect.value
                 );
 
 
-                /*
-                 * Bring editing UI back.
-                 */
+            if (
+                isNaN(quality) ||
+                quality <= 0 ||
+                quality > 1
+            ) {
 
-                draw(true);
+                quality = 0.92;
 
-            },
-            "image/jpeg",
-            quality
-        );
+            }
 
-    }
-);
+
+            canvas.toBlob(
+                function (blob) {
+
+                    if (!blob) {
+
+                        alert(
+                            "Unable to create image."
+                        );
+
+                        return;
+
+                    }
+
+
+                    const url =
+                        URL.createObjectURL(
+                            blob
+                        );
+
+
+                    const link =
+                        document.createElement(
+                            "a"
+                        );
+
+
+                    link.href =
+                        url;
+
+
+                    link.download =
+                        "adiyogitools-watermarked-image.jpg";
+
+
+                    document.body.appendChild(
+                        link
+                    );
+
+
+                    link.click();
+
+
+                    link.remove();
+
+
+                    setTimeout(
+                        function () {
+
+                            URL.revokeObjectURL(
+                                url
+                            );
+
+                        },
+                        1000
+                    );
+
+                },
+                "image/jpeg",
+                quality
+            );
+
+        }
+    );
 
 
 /* =========================================
@@ -1945,73 +1918,125 @@ document
 ========================================= */
 
 document
-.getElementById("resetBtn")
-.addEventListener(
-    "click",
-    function () {
+    .getElementById("resetBtn")
+    .addEventListener(
+        "click",
+        function () {
 
-        image = null;
+            image = null;
 
-        logo = null;
+            logo = null;
 
-        textObject = null;
+            textObject = null;
 
-        logoObject = null;
+            logoObject = null;
 
-        activeObject = null;
+            activeObject = null;
 
-        dragging = false;
+            dragging = false;
 
-        dragMode = null;
-
-
-        imageInput.value = "";
-
-        logoInput.value = "";
-
-        watermarkText.value = "";
+            dragObject = null;
 
 
-        imageName.textContent =
-            "No image selected";
+            imageInput.value = "";
+
+            logoInput.value = "";
 
 
-        emptyMessage.style.display =
-            "block";
+            watermarkText.value = "";
 
 
-        ctx.clearRect(
-            0,
-            0,
-            canvas.width,
-            canvas.height
-        );
+            if (imageName) {
 
-    }
-);
+                imageName.textContent =
+                    "No image selected";
+
+            }
+
+
+            if (emptyMessage) {
+
+                emptyMessage.style.display =
+                    "block";
+
+            }
+
+
+            ctx.clearRect(
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+
+        }
+    );
 
 
 /* =========================================
    INITIAL VALUES
 ========================================= */
 
-fontSizeValue.textContent =
-    fontSize.value + " px";
+if (fontSizeValue) {
 
-opacityValue.textContent =
-    opacity.value + "%";
+    fontSizeValue.textContent =
+        fontSize.value + " px";
 
-rotationValue.textContent =
-    rotation.value + "°";
+}
 
-logoSizeValue.textContent =
-    logoSize.value + " px";
 
-logoOpacityValue.textContent =
-    logoOpacity.value + "%";
+if (opacityValue) {
 
-logoRotationValue.textContent =
-    logoRotation.value + "°";
+    opacityValue.textContent =
+        opacity.value + "%";
 
-tileSpacingValue.textContent =
-    tileSpacing.value + " px";
+}
+
+
+if (rotationValue) {
+
+    rotationValue.textContent =
+        rotation.value + "°";
+
+}
+
+
+if (logoSizeValue) {
+
+    logoSizeValue.textContent =
+        logoSize.value + " px";
+
+}
+
+
+if (logoOpacityValue) {
+
+    logoOpacityValue.textContent =
+        logoOpacity.value + "%";
+
+}
+
+
+if (logoRotationValue) {
+
+    logoRotationValue.textContent =
+        logoRotation.value + "°";
+
+}
+
+
+if (tileSpacingValue) {
+
+    tileSpacingValue.textContent =
+        tileSpacing.value + " px";
+
+}
+
+
+/* =========================================
+   DONE
+========================================= */
+
+console.log(
+    "AdiyogiTools Watermark Maker loaded successfully."
+);
