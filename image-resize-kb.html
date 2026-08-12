@@ -4,34 +4,224 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Image Resize by KB</title>
+<title>Resize Image to Specific KB Online | Free Image Compressor | AdiyogiTools</title>
+
+<meta name="description" content="Resize and compress images to a specific KB size online for free with AdiyogiTools. Reduce JPG, PNG and other images for forms, applications and uploads.">
+
+<meta name="keywords" content="Resize Image by KB, Image Resize by KB, Compress Image to 100 KB, Compress Image to 50 KB, Image Compressor, JPG Compressor, PNG Compressor, Reduce Image Size, Resize Image Online, AdiyogiTools">
+
+<meta name="author" content="AdiyogiTools">
+
+<link rel="canonical" href="https://adiyogitools.in/image-resize-kb.html">
+
+<meta name="robots" content="index, follow">
+
+
+<!-- Open Graph -->
+
+<meta property="og:title" content="Resize Image to Specific KB Online | AdiyogiTools">
+
+<meta property="og:description" content="Compress and resize images to a target KB size online for free with AdiyogiTools. Useful for forms, applications and online uploads.">
+
+<meta property="og:url" content="https://adiyogitools.in/image-resize-kb.html">
+
+<meta property="og:type" content="website">
+
+<meta property="og:site_name" content="AdiyogiTools">
+
+<meta property="og:image" content="https://adiyogitools.in/icons/icon-512.png">
+
+<meta property="og:image:alt" content="AdiyogiTools Image Resize by KB Tool">
+
+
+<!-- Twitter -->
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Resize Image to Specific KB Online | AdiyogiTools">
+
+<meta name="twitter:description" content="Compress images to a target KB size online for free with AdiyogiTools.">
+
+<meta name="twitter:image" content="https://adiyogitools.in/icons/icon-512.png">
+
+<meta name="twitter:image:alt" content="AdiyogiTools Image Resize by KB Tool">
+
+
+<!-- Application -->
+
+<meta name="application-name" content="AdiyogiTools">
+
+<meta name="apple-mobile-web-app-title" content="AdiyogiTools">
+
+<meta name="theme-color" content="#0f172a">
+
+<meta name="format-detection" content="telephone=no">
+
+
+<!-- Structured Data -->
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Image Resize by KB",
+  "url": "https://adiyogitools.in/image-resize-kb.html",
+  "description": "Free online tool to compress images toward a target file size in KB.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+
+</script>
+
+
+<!-- Stylesheet -->
 
 <link rel="stylesheet" href="style.css">
 
+
+<style>
+
+.kb-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.kb-content,
+.related-tools {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.12);
+    text-align: left;
+}
+
+.kb-content h2,
+.related-tools h2 {
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.kb-content h3 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.kb-content p,
+.kb-content li,
+.related-tools p,
+.related-tools li {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.kb-content ul,
+.kb-content ol,
+.related-tools ul {
+    padding-left: 22px;
+}
+
+.related-tools a {
+    display: block;
+    margin: 8px 0;
+    padding: 10px 14px;
+    background: #2196F3;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.related-tools a:hover {
+    background: #1565C0;
+}
+
+@media (max-width: 600px) {
+
+    .kb-page {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .kb-page .container,
+    .kb-content,
+    .related-tools {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .kb-content,
+    .related-tools {
+        padding: 16px;
+        margin: 12px 0;
+    }
+
+    .kb-content h2,
+    .related-tools h2 {
+        font-size: 22px;
+    }
+
+    .kb-content p,
+    .kb-content li,
+    .related-tools p,
+    .related-tools li {
+        font-size: 15px;
+    }
+
+}
+
+</style>
+
 </head>
 
+
 <body>
+
+<div class="kb-page">
+
+
+<!-- Image Resize by KB Tool -->
 
 <div class="container">
 
 <h1>📏 Image Resize by KB</h1>
 
-<p>Select an image and target size.</p>
+<p>Select an image and enter your target file size.</p>
 
-<input type="file" id="image" accept="image/*">
+<input
+type="file"
+id="image"
+accept="image/*"
+>
 
 <br><br>
 
-<label>Target Size (KB)</label>
+<label for="targetKB">
+Target Size (KB)
+</label>
 
 <br><br>
 
 <input
 type="number"
 id="targetKB"
-placeholder="Example: 100">
+placeholder="Example: 100"
+min="1"
+>
 
 <br><br>
 
@@ -43,7 +233,10 @@ placeholder="Example: 100">
 
 <br><br>
 
-<canvas id="canvas" style="display:none;"></canvas>
+<canvas
+id="canvas"
+style="display:none;">
+</canvas>
 
 <a
 id="download"
@@ -56,76 +249,292 @@ Download Image
 
 </div>
 
+
+<!-- Related Tools -->
+
+<section class="related-tools">
+
+<h2>Related Tools</h2>
+
+<p>Explore more free tools from AdiyogiTools:</p>
+
+<ul>
+
+<li>
+<a href="image-resizer.html">
+Image Resizer
+</a>
+</li>
+
+<li>
+<a href="image-to-pdf.html">
+Image to PDF
+</a>
+</li>
+
+<li>
+<a href="image-compressor.html">
+Image Compressor
+</a>
+</li>
+
+<li>
+<a href="jpg-to-png.html">
+JPG to PNG Converter
+</a>
+</li>
+
+<li>
+<a href="passport-photo.html">
+Passport Photo Maker
+</a>
+</li>
+
+</ul>
+
+</section>
+
+
+<!-- SEO Content -->
+
+<section class="kb-content">
+
+<h2>Resize Image to Specific KB Online</h2>
+
+<p>
+Use the free Image Resize by KB tool from AdiyogiTools to reduce an image toward a target file size. Select an image, enter the required size in KB and compress the image directly in your web browser.
+</p>
+
+<p>
+This tool can be useful when an online form, application, website or document upload requires an image below a particular file size. You can use it on mobile phones, tablets and computers.
+</p>
+
+
+<h2>How to Resize an Image by KB?</h2>
+
+<ol>
+
+<li>Select an image from your device.</li>
+
+<li>Enter your required target size in KB.</li>
+
+<li>Click the <strong>Compress Image</strong> button.</li>
+
+<li>The tool will reduce the image quality until it reaches the target range.</li>
+
+<li>Click the download button to save the compressed image.</li>
+
+</ol>
+
+
+<h2>Features of Image Resize by KB</h2>
+
+<ul>
+
+<li>Set a target image size in KB.</li>
+
+<li>Compress images directly in your browser.</li>
+
+<li>Useful for online forms and applications.</li>
+
+<li>No registration is required.</li>
+
+<li>Works on mobile phones, tablets and computers.</li>
+
+<li>Download the compressed image easily.</li>
+
+</ul>
+
+
+<h2>Why Reduce an Image to a Specific KB Size?</h2>
+
+<p>
+Many websites, online forms and applications limit the maximum size of uploaded images. Reducing an image to a smaller file size can make it easier to upload while saving storage space and reducing upload time.
+</p>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section class="kb-content">
+
+<h2>Frequently Asked Questions</h2>
+
+
+<h3>Can I resize an image to 100 KB?</h3>
+
+<p>
+Yes. Enter 100 as the target size in the KB field and use the Compress Image button. The actual final file size can vary depending on the original image and its content.
+</p>
+
+
+<h3>Can I compress an image to 50 KB?</h3>
+
+<p>
+Yes. You can enter 50 KB as the target size. The tool adjusts image quality to reduce the file size toward the selected target.
+</p>
+
+
+<h3>Which image formats can I use?</h3>
+
+<p>
+You can select common image formats supported by your web browser, such as JPG and PNG.
+</p>
+
+
+<h3>Is the Image Resize by KB tool free?</h3>
+
+<p>
+Yes. AdiyogiTools provides this image compression tool free of charge.
+</p>
+
+
+<h3>Can I use this tool on my phone?</h3>
+
+<p>
+Yes. The tool is designed to work through a modern web browser on mobile phones, tablets and computers.
+</p>
+
+
+<h3>Do I need to install software?</h3>
+
+<p>
+No. The image is processed directly in your browser, so additional software installation is not required.
+</p>
+
+</section>
+
+
+</div>
+
+
 <script>
-  async function compressImage() {
 
-const file = document.getElementById("image").files[0];
-const targetKB = parseInt(document.getElementById("targetKB").value);
+async function compressImage() {
 
-if (!file) {
-    alert("Please select an image.");
-    return;
-}
+    const file = document.getElementById("image").files[0];
 
-if (!targetKB || targetKB <= 0) {
-    alert("Enter target size in KB.");
-    return;
-}
+    const targetKB =
+        parseInt(document.getElementById("targetKB").value);
 
-const reader = new FileReader();
 
-reader.onload = function(e) {
+    if (!file) {
 
-    const img = new Image();
+        alert("Please select an image.");
 
-    img.onload = function() {
+        return;
 
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
+    }
 
-        canvas.width = img.width;
-        canvas.height = img.height;
 
-        ctx.drawImage(img, 0, 0);
+    if (!targetKB || targetKB <= 0) {
 
-        let quality = 0.9;
-        let output = "";
+        alert("Enter target size in KB.");
 
-        function compress() {
+        return;
 
-            output = canvas.toDataURL("image/jpeg", quality);
+    }
 
-            const sizeKB = Math.round((output.length * 3 / 4) / 1024);
 
-            if (sizeKB > targetKB && quality > 0.05) {
+    const reader = new FileReader();
 
-                quality -= 0.05;
-                compress();
 
-            } else {
+    reader.onload = function(e) {
 
-                const download = document.getElementById("download");
+        const img = new Image();
 
-                download.href = output;
-                download.style.display = "inline-block";
-                download.innerHTML = "📥 Download (" + sizeKB + " KB)";
+
+        img.onload = function() {
+
+            const canvas =
+                document.getElementById("canvas");
+
+            const ctx =
+                canvas.getContext("2d");
+
+
+            canvas.width = img.width;
+
+            canvas.height = img.height;
+
+
+            ctx.drawImage(
+                img,
+                0,
+                0
+            );
+
+
+            let quality = 0.9;
+
+            let output = "";
+
+            let sizeKB = 0;
+
+
+            function compress() {
+
+                output =
+                    canvas.toDataURL(
+                        "image/jpeg",
+                        quality
+                    );
+
+
+                sizeKB =
+                    Math.round(
+                        (output.length * 3 / 4) / 1024
+                    );
+
+
+                if (
+                    sizeKB > targetKB &&
+                    quality > 0.05
+                ) {
+
+                    quality -= 0.05;
+
+                    compress();
+
+                } else {
+
+                    const download =
+                        document.getElementById("download");
+
+
+                    download.href = output;
+
+                    download.style.display =
+                        "inline-block";
+
+                    download.innerHTML =
+                        "📥 Download (" +
+                        sizeKB +
+                        " KB)";
+
+                }
+
             }
 
-        }
 
-        compress();
+            compress();
+
+        };
+
+
+        img.src = e.target.result;
 
     };
 
-    img.src = e.target.result;
 
-};
-
-reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
 
 }
 
 </script>
 
+
 </body>
+
 </html>
