@@ -1,77 +1,1072 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Image Compressor | AdiyogiTools</title>
+
+
+<title>Free Image Compressor Online | Compress JPG PNG WebP | AdiyogiTools</title>
+
+<meta name="description" content="Compress JPG, PNG and WebP images online for free with AdiyogiTools. Reduce image size, choose target KB or quality and download compressed images easily.">
+
+<meta name="keywords" content="Image Compressor, Compress Image Online, Free Image Compressor, JPG Compressor, PNG Compressor, WebP Compressor, Reduce Image Size, Image Compression, AdiyogiTools">
+
+<meta name="author" content="AdiyogiTools">
+
+<link rel="canonical" href="https://adiyogitools.in/image-compressor.html">
+
+<meta name="robots" content="index, follow">
+
+
+<!-- Open Graph -->
+
+<meta property="og:title" content="Free Image Compressor Online | AdiyogiTools">
+
+<meta property="og:description" content="Compress JPG, PNG and WebP images online for free. Reduce image size and download compressed images easily.">
+
+<meta property="og:url" content="https://adiyogitools.in/image-compressor.html">
+
+<meta property="og:type" content="website">
+
+<meta property="og:site_name" content="AdiyogiTools">
+
+<meta property="og:image" content="https://adiyogitools.in/icons/icon-512.png">
+
+<meta property="og:image:alt" content="AdiyogiTools Free Image Compressor">
+
+
+<!-- Twitter -->
+
+<meta name="twitter:card" content="summary_large_image">
+
+<meta name="twitter:title" content="Free Image Compressor Online | AdiyogiTools">
+
+<meta name="twitter:description" content="Compress JPG, PNG and WebP images online for free.">
+
+<meta name="twitter:image" content="https://adiyogitools.in/icons/icon-512.png">
+
+<meta name="twitter:image:alt" content="AdiyogiTools Free Image Compressor">
+
+
+<!-- Application -->
+
+<meta name="application-name" content="AdiyogiTools">
+
+<meta name="apple-mobile-web-app-title" content="AdiyogiTools">
+
+<meta name="theme-color" content="#0f172a">
+
+<meta name="format-detection" content="telephone=no">
+
+
+<!-- Structured Data -->
+
+<script type="application/ld+json">
+
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Free Image Compressor",
+  "url": "https://adiyogitools.in/image-compressor.html",
+  "description": "Free online image compressor for JPG, PNG and WebP images.",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Any",
+  "isAccessibleForFree": true,
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  }
+}
+
+</script>
+
+
 <link rel="stylesheet" href="style.css">
+
+
+<style>
+
+/* =====================================
+   IMAGE COMPRESSOR PAGE
+===================================== */
+
+.compressor-page {
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+
+/* Main Tool */
+
+.compressor-tool {
+    width: 100%;
+    background: white;
+    padding: 25px;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.12);
+    text-align: center;
+}
+
+
+.compressor-tool h1 {
+    margin-bottom: 10px;
+}
+
+
+.compressor-tool > p {
+    margin-bottom: 20px;
+}
+
+
+/* Controls */
+
+.control-box {
+    margin: 18px 0;
+    text-align: left;
+}
+
+
+.control-box label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+
+.control-box select,
+.control-box input[type="range"] {
+    width: 100%;
+}
+
+
+.control-box select {
+    padding: 11px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: white;
+}
+
+
+/* Quality */
+
+.quality-value {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 5px;
+}
+
+
+/* Button */
+
+#compressBtn {
+    margin-top: 10px;
+}
+
+
+/* Preview */
+
+.preview-box {
+    margin-top: 25px;
+}
+
+
+.preview-box img {
+    display: none;
+    max-width: 100%;
+    max-height: 500px;
+    margin: auto;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+
+/* Results */
+
+.results {
+    display: none;
+    margin-top: 25px;
+    padding: 18px;
+    border-radius: 12px;
+    background: #f7f7f7;
+    text-align: left;
+}
+
+
+.result-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.result-row:last-child {
+    border-bottom: none;
+}
+
+
+.download-btn {
+    display: block;
+    text-align: center;
+    margin-top: 18px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 18px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+
+/* SEO */
+
+.seo-content,
+.related-tools {
+    width: 100%;
+    margin: 20px 0;
+    padding: 22px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.12);
+}
+
+
+.seo-content h2,
+.related-tools h2 {
+    color: #333;
+    margin-bottom: 12px;
+}
+
+
+.seo-content h3 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+
+.seo-content p,
+.seo-content li {
+    line-height: 1.7;
+}
+
+
+.seo-content ul,
+.seo-content ol,
+.related-tools ul {
+    padding-left: 22px;
+}
+
+
+.related-tools a {
+    display: block;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: #2196F3;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+}
+
+
+.related-tools a:hover {
+    background: #1565C0;
+}
+
+
+/* Mobile */
+
+@media (max-width:600px) {
+
+    body {
+        padding: 10px;
+    }
+
+
+    .compressor-page {
+        width: 100%;
+    }
+
+
+    .compressor-tool,
+    .seo-content,
+    .related-tools {
+        padding: 16px;
+        border-radius: 12px;
+    }
+
+
+    .result-row {
+        flex-direction: column;
+        gap: 3px;
+    }
+
+}
+
+</style>
+
 </head>
+
 
 <body>
 
-<div class="container">
+
+<div class="compressor-page">
+
+
+<!-- =====================================
+     COMPRESSOR TOOL
+===================================== -->
+
+<section class="compressor-tool">
+
 
 <h1>🖼️ Image Compressor</h1>
 
-<p>Compress JPG, PNG and WebP images instantly.</p>
 
-<input type="file" id="imageInput" accept="image/*">
+<p>
+Compress JPG, PNG and WebP images online for free.
+</p>
 
-<br><br>
 
-<label><b>Target Size</b></label>
+<input
+type="file"
+id="imageInput"
+accept="image/*"
+>
+
+
+<!-- Target Size -->
+
+<div class="control-box">
+
+<label for="targetSize">
+Target Size
+</label>
+
 
 <select id="targetSize">
-    <option value="0">Use Quality Slider</option>
-    <option value="20">20 KB</option>
-    <option value="50">50 KB</option>
-    <option value="100">100 KB</option>
-    <option value="200">200 KB</option>
-    <option value="500">500 KB</option>
+
+<option value="0">
+Use Quality Slider
+</option>
+
+<option value="20">
+20 KB
+</option>
+
+<option value="50">
+50 KB
+</option>
+
+<option value="100">
+100 KB
+</option>
+
+<option value="200">
+200 KB
+</option>
+
+<option value="500">
+500 KB
+</option>
+
 </select>
-
-<br><br>
-  
-<label>Compression Quality</label>
-
-<br>
-
-<input type="range"
-id="quality"
-min="10"
-max="100"
-value="80">
-
-<p id="qualityValue">80%</p>
-
-<button id="compressBtn">
-📦 Compress Image
-</button>
-
-<br><br>
-
-<img
-id="preview"
-style="max-width:100%;display:none;border-radius:10px;">
-
-<br><br>
-
-<p><b>Original Size:</b> <span id="originalSize">0 KB</span></p>
-
-<p><b>Compressed Size:</b> <span id="compressedSize">0 KB</span></p>
-
-<p><b>Saved:</b> <span id="savedPercent">0%</span></p>
-  
-<a
-id="downloadBtn"
-style="display:none;"
-download="compressed-image.jpg">
-📥 Download Compressed Image
-</a>
 
 </div>
 
-<script src="image-compressor.js"></script>
+
+<!-- Quality -->
+
+<div class="control-box">
+
+<label for="quality">
+Compression Quality
+</label>
+
+
+<input
+type="range"
+id="quality"
+min="10"
+max="100"
+value="80"
+>
+
+
+<p
+class="quality-value"
+id="qualityValue">
+80%
+</p>
+
+</div>
+
+
+<!-- Compress -->
+
+<button
+id="compressBtn"
+onclick="compressImage()">
+
+📦 Compress Image
+
+</button>
+
+
+<!-- Preview -->
+
+<div class="preview-box">
+
+<img
+id="preview"
+alt="Image preview"
+>
+
+</div>
+
+
+<!-- Results -->
+
+<div
+class="results"
+id="results">
+
+
+<div class="result-row">
+
+<strong>Original Size</strong>
+
+<span id="originalSize">
+0 KB
+</span>
+
+</div>
+
+
+<div class="result-row">
+
+<strong>Compressed Size</strong>
+
+<span id="compressedSize">
+0 KB
+</span>
+
+</div>
+
+
+<div class="result-row">
+
+<strong>Saved</strong>
+
+<span id="savedPercent">
+0%
+</span>
+
+</div>
+
+
+<a
+id="downloadBtn"
+class="download-btn"
+download="compressed-image.jpg">
+
+📥 Download Compressed Image
+
+</a>
+
+
+</div>
+
+
+</section>
+
+
+<!-- =====================================
+     RELATED TOOLS
+===================================== -->
+
+<section class="related-tools">
+
+<h2>Related Tools</h2>
+
+<p>
+Explore more free tools from AdiyogiTools:
+</p>
+
+
+<ul>
+
+<li>
+<a href="image-resizer.html">
+Image Resizer
+</a>
+</li>
+
+
+<li>
+<a href="image-resize-kb.html">
+Image Resize by KB
+</a>
+</li>
+
+
+<li>
+<a href="image-crop.html">
+Image Cropper
+</a>
+</li>
+
+
+<li>
+<a href="image-to-pdf.html">
+Image to PDF
+</a>
+</li>
+
+
+<li>
+<a href="jpg-to-png.html">
+JPG to PNG Converter
+</a>
+</li>
+
+</ul>
+
+</section>
+
+
+<!-- =====================================
+     SEO CONTENT
+===================================== -->
+
+<section class="seo-content">
+
+
+<h2>Free Image Compressor Online</h2>
+
+
+<p>
+Compress images online quickly and easily with the free Image Compressor from AdiyogiTools. Reduce the file size of JPG, PNG and WebP images without installing additional software.
+</p>
+
+
+<p>
+You can choose a target file size such as 20 KB, 50 KB, 100 KB, 200 KB or 500 KB. You can also use the quality slider when you want more control over compression.
+</p>
+
+
+<h2>How to Compress an Image?</h2>
+
+
+<ol>
+
+<li>
+Select an image from your device.
+</li>
+
+<li>
+Choose a target file size or use the quality slider.
+</li>
+
+<li>
+Click the <strong>Compress Image</strong> button.
+</li>
+
+<li>
+Wait for the compression process to finish.
+</li>
+
+<li>
+Check the original and compressed file sizes.
+</li>
+
+<li>
+Click <strong>Download Compressed Image</strong>.
+</li>
+
+</ol>
+
+
+<h2>Features of Our Image Compressor</h2>
+
+
+<ul>
+
+<li>
+Free online image compression.
+</li>
+
+<li>
+Supports common image formats.
+</li>
+
+<li>
+Target size options from 20 KB to 500 KB.
+</li>
+
+<li>
+Adjustable compression quality.
+</li>
+
+<li>
+Shows original and compressed file size.
+</li>
+
+<li>
+Shows percentage of space saved.
+</li>
+
+<li>
+Works on mobile phones and computers.
+</li>
+
+<li>
+No registration required.
+</li>
+
+</ul>
+
+
+<h2>Why Compress Images?</h2>
+
+
+<p>
+Large image files can take longer to upload and may use more storage space. Compressing images can reduce their file size and make them easier to upload, share and store.
+</p>
+
+
+<h2>Frequently Asked Questions</h2>
+
+
+<h3>What is image compression?</h3>
+
+<p>
+Image compression reduces the file size of an image while trying to maintain acceptable visual quality.
+</p>
+
+
+<h3>Can I compress JPG images?</h3>
+
+<p>
+Yes. JPG images can be compressed using the Image Compressor.
+</p>
+
+
+<h3>Can I compress PNG images?</h3>
+
+<p>
+Yes. PNG images can be selected and processed by the tool. The compressed output is generated as a JPEG image.
+</p>
+
+
+<h3>Can I choose a target size?</h3>
+
+<p>
+Yes. You can select target sizes such as 20 KB, 50 KB, 100 KB, 200 KB and 500 KB.
+</p>
+
+
+<h3>Is this image compressor free?</h3>
+
+<p>
+Yes. AdiyogiTools provides this image compressor free of charge.
+</p>
+
+
+<h3>Can I use this tool on my phone?</h3>
+
+<p>
+Yes. The tool is designed to work in modern web browsers on mobile phones, tablets and computers.
+</p>
+
+
+</section>
+
+
+</div>
+
+
+<script>
+
+
+/* =====================================
+   QUALITY SLIDER
+===================================== */
+
+document
+.getElementById("quality")
+.addEventListener(
+"input",
+function() {
+
+    document
+    .getElementById("qualityValue")
+    .innerText = this.value + "%";
+
+}
+);
+
+
+/* =====================================
+   FILE SIZE
+===================================== */
+
+function getSizeKB(dataURL) {
+
+    const base64 =
+        dataURL.split(",")[1];
+
+    const bytes =
+        Math.ceil(
+            (base64.length * 3) / 4
+        );
+
+    return bytes / 1024;
+
+}
+
+
+/* =====================================
+   IMAGE COMPRESSOR
+===================================== */
+
+function compressImage() {
+
+
+    const file =
+        document
+        .getElementById("imageInput")
+        .files[0];
+
+
+    if (!file) {
+
+        alert("Please select an image.");
+
+        return;
+
+    }
+
+
+    const targetKB =
+        parseInt(
+            document
+            .getElementById("targetSize")
+            .value
+        );
+
+
+    const qualitySlider =
+        parseInt(
+            document
+            .getElementById("quality")
+            .value
+        );
+
+
+    const originalKB =
+        file.size / 1024;
+
+
+    const reader =
+        new FileReader();
+
+
+    reader.onload =
+    function(event) {
+
+
+        const img =
+            new Image();
+
+
+        img.onload =
+        function() {
+
+
+            const canvas =
+                document.createElement("canvas");
+
+
+            const ctx =
+                canvas.getContext("2d");
+
+
+            /*
+             * Keep original dimensions
+             * initially.
+             */
+
+            let width =
+                img.naturalWidth;
+
+
+            let height =
+                img.naturalHeight;
+
+
+            /*
+             * Prevent extremely large
+             * canvas sizes.
+             */
+
+            const maxDimension = 3000;
+
+
+            if (
+                width > maxDimension ||
+                height > maxDimension
+            ) {
+
+
+                const scale =
+                    Math.min(
+                        maxDimension / width,
+                        maxDimension / height
+                    );
+
+
+                width =
+                    Math.round(width * scale);
+
+
+                height =
+                    Math.round(height * scale);
+
+            }
+
+
+            canvas.width = width;
+
+            canvas.height = height;
+
+
+            ctx.drawImage(
+                img,
+                0,
+                0,
+                width,
+                height
+            );
+
+
+            /*
+             * If target size is selected,
+             * automatically search for
+             * suitable quality.
+             */
+
+            if (targetKB > 0) {
+
+
+                let low = 0.05;
+
+                let high = 0.95;
+
+                let bestOutput = "";
+
+                let bestSize = Infinity;
+
+
+                for (
+                    let i = 0;
+                    i < 10;
+                    i++
+                ) {
+
+
+                    const quality =
+                        (low + high) / 2;
+
+
+                    const output =
+                        canvas.toDataURL(
+                            "image/jpeg",
+                            quality
+                        );
+
+
+                    const sizeKB =
+                        getSizeKB(output);
+
+
+                    /*
+                     * Keep closest result
+                     * to target.
+                     */
+
+                    if (
+                        Math.abs(
+                            sizeKB - targetKB
+                        )
+                        <
+                        Math.abs(
+                            bestSize - targetKB
+                        )
+                    ) {
+
+                        bestOutput = output;
+
+                        bestSize = sizeKB;
+
+                    }
+
+
+                    if (
+                        sizeKB > targetKB
+                    ) {
+
+                        high = quality;
+
+                    } else {
+
+                        low = quality;
+
+                    }
+
+                }
+
+
+                finishCompression(
+                    bestOutput,
+                    originalKB
+                );
+
+
+            } else {
+
+
+                /*
+                 * Normal quality mode.
+                 */
+
+                const quality =
+                    qualitySlider / 100;
+
+
+                const output =
+                    canvas.toDataURL(
+                        "image/jpeg",
+                        quality
+                    );
+
+
+                finishCompression(
+                    output,
+                    originalKB
+                );
+
+            }
+
+        };
+
+
+        img.onerror =
+        function() {
+
+            alert(
+                "Unable to load this image."
+            );
+
+        };
+
+
+        img.src =
+            event.target.result;
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+
+/* =====================================
+   FINISH COMPRESSION
+===================================== */
+
+function finishCompression(
+    output,
+    originalKB
+) {
+
+
+    const compressedKB =
+        getSizeKB(output);
+
+
+    const saved =
+        Math.max(
+            0,
+            ((originalKB - compressedKB)
+            / originalKB) * 100
+        );
+
+
+    document
+    .getElementById("preview")
+    .src = output;
+
+
+    document
+    .getElementById("preview")
+    .style.display = "block";
+
+
+    document
+    .getElementById("originalSize")
+    .innerText =
+        originalKB.toFixed(2) + " KB";
+
+
+    document
+    .getElementById("compressedSize")
+    .innerText =
+        compressedKB.toFixed(2) + " KB";
+
+
+    document
+    .getElementById("savedPercent")
+    .innerText =
+        saved.toFixed(1) + "%";
+
+
+    const download =
+        document
+        .getElementById("downloadBtn");
+
+
+    download.href = output;
+
+
+    download.style.display =
+        "block";
+
+
+    document
+    .getElementById("results")
+    .style.display =
+        "block";
+
+
+    document
+    .getElementById("results")
+    .scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+
+}
+
+</script>
+
 
 </body>
+
 </html>
