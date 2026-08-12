@@ -527,3 +527,48 @@ font-size:15px;
 }
 
 
+
+/* =========================================================
+   UNDO / REDO BUTTONS
+========================================================= */
+
+.history-controls {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin: 15px 0;
+}
+
+.history-controls button {
+    flex: 1;
+    min-height: 48px;
+
+    border: none;
+    border-radius: 12px;
+
+    background: #e2e8f0;
+    color: #0f172a;
+
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.15s ease,
+        background 0.2s ease,
+        opacity 0.2s ease;
+}
+
+.history-controls button:not(:disabled):active {
+    transform: scale(0.96);
+}
+
+.history-controls button:not(:disabled):hover {
+    background: #cbd5e1;
+}
+
+.history-controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
