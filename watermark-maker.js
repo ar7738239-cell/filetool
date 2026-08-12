@@ -2104,3 +2104,478 @@ if (tileSpacingValue) {
 console.log(
     "AdiyogiTools Watermark Maker Pro loaded successfully."
 );
+
+/* =========================================================
+   UNDO / REDO SYSTEM
+========================================================= */
+
+const undoBtn = document.getElementById("undoBtn");
+const redoBtn = document.getElementById("redoBtn");
+
+let undoStack = [];
+let redoStack = [];
+
+
+/* =========================================================
+   SAVE CURRENT STATE
+========================================================= */
+
+function getWatermarkState() {
+
+    return JSON.stringify({
+
+        text: textObject
+            ? {
+                x: textObject.x,
+                y: textObject.y,
+                rotation: textObject.rotation
+            }
+            : null,
+
+        logo: logoObject
+            ? {
+                x: logoObject.x,
+                y: logoObject.y,
+                size: logoObject.size,
+                rotation: logoObject.rotation
+            }
+            : null,
+
+        textValue: watermarkText.value,
+
+        fontSize: fontSize.value,
+
+        opacity: opacity.value,
+
+        rotation: rotation.value,
+
+        logoSize: logoSize.value,
+
+        logoOpacity: logoOpacity.value,
+
+        logoRotation: logoRotation.value,
+
+        bold: isBold,
+
+        italic: isItalic
+
+    });
+
+}
+
+
+/* =========================================================
+   RESTORE STATE
+========================================================= */
+
+function restoreWatermarkState(state) {
+
+    if (!state) return;
+
+    const data =
+        JSON.parse(state);
+
+
+    /* TEXT */
+
+    if (data.text) {
+
+        textObject = {
+
+            x: data.text.x,
+
+            y: data.text.y,
+
+            rotation:
+                data.text.rotation
+
+        };
+
+    } else {
+
+        textObject = null;
+
+    }
+
+
+    /* LOGO */
+
+    if (data.logo) {
+
+        logoObject = {
+
+            x: data.logo.x,
+
+            y: data.logo.y,
+
+            size: data.logo.size,
+
+            rotation:
+                data.logo.rotation
+
+        };
+
+    } else {
+
+        logoObject = null;
+
+    }
+
+
+    /* VALUES */
+
+    watermarkText.value =
+        data.textValue || "";
+
+
+    fontSize.value =
+        data.fontSize;
+
+
+    opacity.value =
+        data.opacity;
+
+
+    rotation.value =
+        data.rotation;
+
+
+    logoSize.value =
+        data.logoSize;
+
+
+    logoOpacity.value =
+        data.logoOpacity;
+
+
+    logoRotation.value =
+        data.logoRotation;
+
+
+    isBold =
+        data.bold;
+
+
+    isItalic =
+        data.italic;
+
+
+    /* DISPLAY */
+
+    fontSizeValue.textContent =
+        fontSize.value + " px";
+
+
+    opacityValue.textContent =
+        opacity.value + "%";
+
+
+    rotationValue.textContent =
+        rotation.value + "°";
+
+
+    logoSizeValue.textContent =
+        logoSize.value + " px";
+
+
+    logoOpacityValue.textContent =
+        logoOpacity.value + "%";
+
+
+    logoRotationValue.textContent =
+        logoRotation.value + "°";
+
+
+    activeObject =
+        textObject ||
+        logoObject ||
+        null;
+
+
+    draw();
+
+    updateHistoryButtons();
+
+}
+
+
+/* =========================================================
+   SAVE HISTORY
+========================================================= */
+
+function saveHistory() {
+
+    const state =
+        getWatermarkState();
+
+
+    if (
+        undoStack.length > 0 &&
+        undoStack[
+            undoStack.length - 1
+        ] === state
+    ) {
+
+        return;
+
+    }
+
+
+    undoStack.push(state);
+
+
+    if (undoStack.length > 50) {
+
+        undoStack.shift();
+
+    }
+
+
+    redoStack = [];
+
+
+    updateHistoryButtons();
+
+}
+
+
+/* =========================================================
+   UNDO
+========================================================= */
+
+undoBtn.addEventListener(
+    "click",
+    function () {
+
+        if (
+            undoStack.length <= 1
+        ) {
+
+            return;
+
+        }
+
+
+        const current =
+            getWatermarkState();
+
+
+        redoStack.push(current);
+
+
+        undoStack.pop();
+
+
+        const previous =
+            undoStack[
+                undoStack.length - 1
+            ];
+
+
+        restoreWatermarkState(
+            previous
+        );
+
+    }
+);
+
+
+/* =========================================================
+   REDO
+========================================================= */
+
+redoBtn.addEventListener(
+    "click",
+    function () {
+
+        if (
+            redoStack.length === 0
+        ) {
+
+            return;
+
+        }
+
+
+        const current =
+            getWatermarkState();
+
+
+        undoStack.push(current);
+
+
+        const next =
+            redoStack.pop();
+
+
+        restoreWatermarkState(
+            next
+        );
+
+    }
+);
+
+
+/* =========================================================
+   BUTTON STATUS
+========================================================= */
+
+function updateHistoryButtons() {
+
+    undoBtn.disabled =
+        undoStack.length <= 1;
+
+
+    redoBtn.disabled =
+        redoStack.length === 0;
+
+}
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+setTimeout(
+    function () {
+
+        undoStack = [
+            getWatermarkState()
+        ];
+
+        redoStack = [];
+
+        updateHistoryButtons();
+
+    },
+    200
+);
+
+
+/* =========================================================
+   AUTOMATIC HISTORY
+========================================================= */
+
+let historyTimer = null;
+
+
+function makeHistoryPoint() {
+
+    clearTimeout(
+        historyTimer
+    );
+
+
+    historyTimer =
+        setTimeout(
+            function () {
+
+                saveHistory();
+
+            },
+            500
+        );
+
+}
+
+
+/* =========================================================
+   TRACK CONTROLS
+========================================================= */
+
+[
+    watermarkText,
+    fontSize,
+    opacity,
+    rotation,
+    logoSize,
+    logoOpacity,
+    logoRotation
+].forEach(
+    function (element) {
+
+        if (!element) return;
+
+        element.addEventListener(
+            "input",
+            makeHistoryPoint
+        );
+
+    }
+);
+
+
+/* =========================================================
+   TRACK TOUCH ACTIONS
+========================================================= */
+
+canvas.addEventListener(
+    "touchend",
+    function () {
+
+        setTimeout(
+            function () {
+
+                saveHistory();
+
+            },
+            100
+        );
+
+    }
+);
+
+
+/* =========================================================
+   KEYBOARD SHORTCUTS
+========================================================= */
+
+document.addEventListener(
+    "keydown",
+    function (e) {
+
+        /* CTRL + Z */
+
+        if (
+            (e.ctrlKey || e.metaKey) &&
+            e.key.toLowerCase() === "z" &&
+            !e.shiftKey
+        ) {
+
+            e.preventDefault();
+
+            undoBtn.click();
+
+        }
+
+
+        /* CTRL + Y */
+
+        if (
+            (e.ctrlKey || e.metaKey) &&
+            e.key.toLowerCase() === "y"
+        ) {
+
+            e.preventDefault();
+
+            redoBtn.click();
+
+        }
+
+
+        /* CTRL + SHIFT + Z */
+
+        if (
+            (e.ctrlKey || e.metaKey) &&
+            e.shiftKey &&
+            e.key.toLowerCase() === "z"
+        ) {
+
+            e.preventDefault();
+
+            redoBtn.click();
+
+        }
+
+    }
+);
