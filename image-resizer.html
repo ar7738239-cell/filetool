@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
@@ -83,8 +84,419 @@
 </script>
 
 
-<!-- Stylesheet -->
-
 <link rel="stylesheet" href="style.css">
 
+
+<style>
+
+/* Image Resizer Page */
+
+.image-resizer-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.image-resizer-page .container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.resizer-content,
+.related-tools {
+    width: 100%;
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.12);
+    text-align: left;
+}
+
+.resizer-content h2,
+.related-tools h2 {
+    margin-bottom: 12px;
+    color: #333;
+}
+
+.resizer-content h3 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.resizer-content p,
+.resizer-content li,
+.related-tools p,
+.related-tools li {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.resizer-content ul,
+.resizer-content ol,
+.related-tools ul {
+    padding-left: 22px;
+}
+
+.related-tools a {
+    display: block;
+    margin: 8px 0;
+    padding: 10px 14px;
+    background: #2196F3;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.related-tools a:hover {
+    background: #1565C0;
+}
+
+#canvas {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 600px) {
+
+    .image-resizer-page {
+        width: 100%;
+        align-items: stretch;
+    }
+
+    .image-resizer-page .container,
+    .resizer-content,
+    .related-tools {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .resizer-content,
+    .related-tools {
+        padding: 16px;
+        margin: 12px 0;
+    }
+
+    .resizer-content h2,
+    .related-tools h2 {
+        font-size: 22px;
+    }
+
+    .resizer-content p,
+    .resizer-content li,
+    .related-tools p,
+    .related-tools li {
+        font-size: 15px;
+    }
+}
+
+</style>
+
 </head>
+
+
+<body>
+
+<div class="image-resizer-page">
+
+
+<!-- Image Resizer Tool -->
+
+<div class="container">
+
+<h1>🖼️ Image Resizer</h1>
+
+<p>Select an image and enter the desired dimensions.</p>
+
+<input
+type="file"
+id="image"
+accept="image/*"
+>
+
+<br><br>
+
+<label for="width">Width</label>
+
+<input
+type="number"
+id="width"
+placeholder="800"
+min="1"
+>
+
+<label for="height">Height</label>
+
+<input
+type="number"
+id="height"
+placeholder="600"
+min="1"
+>
+
+<br><br>
+
+<button onclick="resizeImage()">
+Resize Image
+</button>
+
+<br><br>
+
+<canvas id="canvas"></canvas>
+
+<br>
+
+<a
+id="download"
+style="display:none;"
+download="resized-image.png"
+>
+Download Image
+</a>
+
+</div>
+
+
+<!-- Related Tools -->
+
+<section class="related-tools">
+
+<h2>Related Tools</h2>
+
+<p>Explore more free tools from AdiyogiTools:</p>
+
+<ul>
+
+<li>
+<a href="image-to-pdf.html">
+Image to PDF
+</a>
+</li>
+
+<li>
+<a href="pdf-compress.html">
+PDF Compressor
+</a>
+</li>
+
+<li>
+<a href="pdf-merge.html">
+PDF Merge
+</a>
+</li>
+
+<li>
+<a href="pdf-split.html">
+PDF Split
+</a>
+</li>
+
+<li>
+<a href="jpg-to-png.html">
+JPG to PNG Converter
+</a>
+</li>
+
+</ul>
+
+</section>
+
+
+<!-- SEO Content -->
+
+<section class="resizer-content">
+
+<h2>Free Image Resizer Online</h2>
+
+<p>
+Resize images online quickly and easily with the free Image Resizer from AdiyogiTools. Upload an image, enter your preferred width and height, and create a resized image directly in your browser.
+</p>
+
+<p>
+This image resizing tool is useful when you need to reduce or change the dimensions of JPG, PNG and other common image files. You can use it on mobile phones, tablets and computers without installing additional software.
+</p>
+
+
+<h2>How to Resize an Image?</h2>
+
+<ol>
+
+<li>Select an image from your device.</li>
+
+<li>Enter the desired width in pixels.</li>
+
+<li>Enter the desired height in pixels.</li>
+
+<li>Click the <strong>Resize Image</strong> button.</li>
+
+<li>Preview the resized image on the page.</li>
+
+<li>Click <strong>Download Image</strong> to save the resized image.</li>
+
+</ol>
+
+
+<h2>Features of Our Image Resizer</h2>
+
+<ul>
+
+<li>Resize images by entering custom width and height.</li>
+
+<li>Works with common image formats supported by your browser.</li>
+
+<li>Simple and easy-to-use interface.</li>
+
+<li>Works directly in your web browser.</li>
+
+<li>No registration is required.</li>
+
+<li>Works on mobile phones, tablets and computers.</li>
+
+<li>Download the resized image after processing.</li>
+
+</ul>
+
+
+<h2>Why Resize an Image?</h2>
+
+<p>
+Changing image dimensions can be useful when a website, application, form or social media platform requires a specific image size. Resizing an image can also make it easier to upload, share or use in digital documents.
+</p>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section class="resizer-content">
+
+<h2>Frequently Asked Questions</h2>
+
+
+<h3>What is an image resizer?</h3>
+
+<p>
+An image resizer is a tool that changes the width and height of an image while creating a new version of the image with the selected dimensions.
+</p>
+
+
+<h3>Can I resize JPG and PNG images?</h3>
+
+<p>
+Yes. You can select JPG, PNG and other image formats supported by your web browser.
+</p>
+
+
+<h3>Is this image resizer free?</h3>
+
+<p>
+Yes. The AdiyogiTools Image Resizer is available free of charge.
+</p>
+
+
+<h3>Can I use the image resizer on my phone?</h3>
+
+<p>
+Yes. The tool is designed to work in modern web browsers on mobile phones, tablets and computers.
+</p>
+
+
+<h3>Do I need to install software?</h3>
+
+<p>
+No. You can resize images directly through your web browser without installing additional software.
+</p>
+
+</section>
+
+
+</div>
+
+
+<script>
+
+function resizeImage() {
+
+    const fileInput = document.getElementById("image");
+
+    const widthInput = document.getElementById("width");
+
+    const heightInput = document.getElementById("height");
+
+    const canvas = document.getElementById("canvas");
+
+    const download = document.getElementById("download");
+
+
+    if (fileInput.files.length === 0) {
+
+        alert("Please select an image.");
+
+        return;
+
+    }
+
+
+    const width = parseInt(widthInput.value);
+
+    const height = parseInt(heightInput.value);
+
+
+    if (!width || !height || width <= 0 || height <= 0) {
+
+        alert("Please enter a valid width and height.");
+
+        return;
+
+    }
+
+
+    const file = fileInput.files[0];
+
+    const reader = new FileReader();
+
+
+    reader.onload = function(event) {
+
+        const img = new Image();
+
+
+        img.onload = function() {
+
+            canvas.width = width;
+
+            canvas.height = height;
+
+
+            const ctx = canvas.getContext("2d");
+
+            ctx.clearRect(0, 0, width, height);
+
+            ctx.drawImage(img, 0, 0, width, height);
+
+
+            download.href = canvas.toDataURL("image/png");
+
+            download.style.display = "inline-block";
+
+        };
+
+
+        img.src = event.target.result;
+
+    };
+
+
+    reader.readAsDataURL(file);
+
+}
+
+</script>
+
+
+</body>
+
+</html>
