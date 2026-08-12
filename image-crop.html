@@ -9,9 +9,9 @@
 
 <title>Free Image Cropper Online | Crop JPG & PNG Images | AdiyogiTools</title>
 
-<meta name="description" content="Crop JPG, PNG and other images online for free with AdiyogiTools. Enter custom crop width and height, preview the cropped image and download it easily.">
+<meta name="description" content="Crop JPG, PNG and other images online for free with AdiyogiTools. Drag, resize, zoom and rotate your image, choose an aspect ratio and download the cropped image.">
 
-<meta name="keywords" content="Image Cropper, Image Crop Tool, Crop Image Online, Free Image Cropper, Crop JPG, Crop PNG, Online Image Cropper, AdiyogiTools">
+<meta name="keywords" content="Image Cropper, Image Crop Tool, Crop Image Online, Free Image Cropper, Crop JPG, Crop PNG, Online Image Cropper, Photo Cropper, AdiyogiTools">
 
 <meta name="author" content="AdiyogiTools">
 
@@ -24,7 +24,7 @@
 
 <meta property="og:title" content="Free Image Cropper Online | AdiyogiTools">
 
-<meta property="og:description" content="Crop JPG, PNG and other images online for free with custom width and height.">
+<meta property="og:description" content="Crop, resize, zoom and rotate images online for free with AdiyogiTools.">
 
 <meta property="og:url" content="https://adiyogitools.in/image-crop.html">
 
@@ -43,7 +43,7 @@
 
 <meta name="twitter:title" content="Free Image Cropper Online | AdiyogiTools">
 
-<meta name="twitter:description" content="Crop images online for free with AdiyogiTools.">
+<meta name="twitter:description" content="Crop, resize, zoom and rotate images online for free with AdiyogiTools.">
 
 <meta name="twitter:image" content="https://adiyogitools.in/icons/icon-512.png">
 
@@ -61,7 +61,7 @@
 <meta name="format-detection" content="telephone=no">
 
 
-<!-- Structured Data -->
+<!-- Software Application Schema -->
 
 <script type="application/ld+json">
 
@@ -70,7 +70,7 @@
   "@type": "SoftwareApplication",
   "name": "Free Image Cropper",
   "url": "https://adiyogitools.in/image-crop.html",
-  "description": "Free online image cropper for JPG, PNG and other images.",
+  "description": "Free online image cropper for JPG, PNG and other image formats.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
   "isAccessibleForFree": true,
@@ -84,111 +84,254 @@
 </script>
 
 
+<!-- Cropper.js -->
+
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css"
+>
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js">
+</script>
+
+
+<!-- Main Stylesheet -->
+
 <link rel="stylesheet" href="style.css">
 
 
 <style>
 
-/* Image Crop Page */
+/* =========================================
+   PROFESSIONAL IMAGE CROPPER
+========================================= */
 
 .crop-page {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    max-width: 1000px;
+    margin: auto;
 }
 
-.crop-content,
-.related-tools {
-    width: 100%;
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 20px;
+.crop-tool {
     background: white;
-    border-radius: 15px;
+    padding: 20px;
+    border-radius: 16px;
     box-shadow: 0 5px 20px rgba(0,0,0,.12);
-    text-align: left;
+    text-align: center;
 }
 
-.crop-content h2,
-.related-tools h2 {
-    margin-bottom: 12px;
+.crop-tool h1 {
+    margin-bottom: 10px;
+}
+
+.crop-tool > p {
+    margin-bottom: 18px;
+}
+
+
+/* Upload */
+
+.upload-box {
+    margin-bottom: 20px;
+}
+
+.upload-box input[type="file"] {
+    width: 100%;
+    max-width: 500px;
+}
+
+
+/* Editor */
+
+.editor {
+    display: none;
+    margin-top: 20px;
+}
+
+
+/* Image area */
+
+.image-area {
+    width: 100%;
+    max-width: 850px;
+    margin: auto;
+    background: #111827;
+    border-radius: 12px;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-area img {
+    display: block;
+    max-width: 100%;
+}
+
+
+/* Controls */
+
+.crop-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.crop-controls button {
+    width: auto;
+    min-width: 90px;
+    padding: 10px 14px;
+    font-size: 14px;
+}
+
+
+/* Aspect Ratio */
+
+.aspect-section {
+    margin-top: 18px;
+}
+
+.aspect-section p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.aspect-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+}
+
+.aspect-buttons button {
+    width: auto;
+    min-width: 75px;
+    padding: 9px 12px;
+    font-size: 14px;
+}
+
+
+/* Crop button */
+
+.crop-action {
+    margin-top: 20px;
+}
+
+.crop-action button {
+    max-width: 300px;
+}
+
+
+/* Result */
+
+.result {
+    display: none;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+
+.result img {
+    max-width: 100%;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+}
+
+.download-btn {
+    display: inline-block;
+    margin-top: 15px;
+    background: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+
+/* Related + SEO */
+
+.related-tools,
+.seo-content {
+    width: 100%;
+    margin: 20px 0;
+    padding: 22px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.12);
+}
+
+.related-tools h2,
+.seo-content h2 {
     color: #333;
+    margin-bottom: 12px;
 }
 
-.crop-content h3 {
+.seo-content h3 {
     margin-top: 20px;
     margin-bottom: 8px;
-    color: #333;
 }
 
-.crop-content p,
-.crop-content li,
-.related-tools p,
-.related-tools li {
-    font-size: 16px;
-    line-height: 1.6;
+.seo-content p,
+.seo-content li {
+    line-height: 1.7;
 }
 
-.crop-content ul,
-.crop-content ol,
+.seo-content ul,
+.seo-content ol,
 .related-tools ul {
     padding-left: 22px;
 }
 
 .related-tools a {
     display: block;
+    padding: 12px 15px;
     margin: 8px 0;
-    padding: 10px 14px;
     background: #2196F3;
     color: white;
-    border-radius: 8px;
     text-decoration: none;
+    border-radius: 8px;
 }
 
 .related-tools a:hover {
     background: #1565C0;
 }
 
-#canvas {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    margin: 15px auto;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
+
+/* Mobile */
 
 @media (max-width: 600px) {
 
+    body {
+        padding: 10px;
+    }
+
     .crop-page {
         width: 100%;
-        align-items: stretch;
     }
 
-    .crop-page .container,
-    .crop-content,
-    .related-tools {
+    .crop-tool,
+    .related-tools,
+    .seo-content {
+        padding: 15px;
+        border-radius: 12px;
+    }
+
+    .image-area {
+        min-height: 250px;
+    }
+
+    .crop-controls button,
+    .aspect-buttons button {
+        flex: 1 1 calc(50% - 8px);
+        min-width: 0;
+    }
+
+    .crop-action button {
         width: 100%;
-        max-width: 100%;
-    }
-
-    .crop-content,
-    .related-tools {
-        padding: 16px;
-        margin: 12px 0;
-    }
-
-    .crop-content h2,
-    .related-tools h2 {
-        font-size: 22px;
-    }
-
-    .crop-content p,
-    .crop-content li,
-    .related-tools p,
-    .related-tools li {
-        font-size: 15px;
     }
 
 }
@@ -200,92 +343,185 @@
 
 <body>
 
+
 <div class="crop-page">
 
 
-<!-- Crop Tool -->
+<!-- =========================================
+     CROP TOOL
+========================================= -->
 
-<div class="container">
+<section class="crop-tool">
 
-<h1>✂️ Image Cropper</h1>
+<h1>✂️ Professional Image Cropper</h1>
 
-<p>Select an image and enter the crop dimensions.</p>
+<p>
+Crop, resize, zoom and rotate your image easily.
+</p>
 
+
+<!-- Upload -->
+
+<div class="upload-box">
 
 <input
 type="file"
-id="image"
+id="imageInput"
 accept="image/*"
 >
 
+</div>
 
-<br><br>
 
+<!-- Editor -->
 
-<label for="cropWidth">
-Crop Width (px)
-</label>
-
-<input
-type="number"
-id="cropWidth"
-placeholder="300"
-min="1"
+<div
+class="editor"
+id="editor"
 >
 
 
-<label for="cropHeight">
-Crop Height (px)
-</label>
+<div class="image-area">
 
-<input
-type="number"
-id="cropHeight"
-placeholder="300"
-min="1"
+<img
+id="cropImage"
+alt="Image crop preview"
 >
 
+</div>
 
-<br><br>
 
+<!-- Main Controls -->
 
-<button onclick="cropImage()">
+<div class="crop-controls">
 
-✂️ Crop Image
-
+<button
+type="button"
+onclick="zoomIn()">
+🔍 Zoom +
 </button>
 
+<button
+type="button"
+onclick="zoomOut()">
+🔎 Zoom −
+</button>
 
-<br><br>
+<button
+type="button"
+onclick="rotateLeft()">
+↩️ Rotate
+</button>
+
+<button
+type="button"
+onclick="rotateRight()">
+↪️ Rotate
+</button>
+
+<button
+type="button"
+onclick="resetCrop()">
+🔄 Reset
+</button>
+
+</div>
 
 
-<p id="originalSize"></p>
+<!-- Aspect Ratio -->
+
+<div class="aspect-section">
+
+<p>Aspect Ratio</p>
+
+<div class="aspect-buttons">
+
+<button
+type="button"
+onclick="setRatio(NaN)">
+Free
+</button>
+
+<button
+type="button"
+onclick="setRatio(1)">
+1 : 1
+</button>
+
+<button
+type="button"
+onclick="setRatio(4 / 3)">
+4 : 3
+</button>
+
+<button
+type="button"
+onclick="setRatio(16 / 9)">
+16 : 9
+</button>
+
+</div>
+
+</div>
 
 
-<canvas
-id="canvas">
-</canvas>
+<!-- Crop -->
 
+<div class="crop-action">
+
+<button
+type="button"
+onclick="cropImage()">
+✂️ Crop Image
+</button>
+
+</div>
+
+
+</div>
+
+
+<!-- Result -->
+
+<div
+class="result"
+id="result"
+>
+
+<h2>Cropped Image</h2>
+
+<img
+id="resultImage"
+alt="Cropped image result"
+>
+
+<br>
 
 <a
 id="download"
+class="download-btn"
 download="cropped-image.jpg"
-style="display:none;">
-
+>
 📥 Download Cropped Image
-
 </a>
 
 </div>
 
 
-<!-- Related Tools -->
+</section>
+
+
+<!-- =========================================
+     RELATED TOOLS
+========================================= -->
 
 <section class="related-tools">
 
 <h2>Related Tools</h2>
 
-<p>Explore more free tools from AdiyogiTools:</p>
+<p>
+Explore more free tools from AdiyogiTools:
+</p>
 
 <ul>
 
@@ -324,18 +560,20 @@ JPG to PNG Converter
 </section>
 
 
-<!-- SEO Content -->
+<!-- =========================================
+     SEO CONTENT
+========================================= -->
 
-<section class="crop-content">
+<section class="seo-content">
 
 <h2>Free Image Cropper Online</h2>
 
 <p>
-Crop images online quickly and easily with the free Image Cropper from AdiyogiTools. Select an image, enter the desired crop width and height, and create a cropped image directly in your browser.
+Crop images online quickly and easily with the free Image Cropper from AdiyogiTools. Upload an image, adjust the crop area with your mouse or finger, zoom and rotate the image, choose an aspect ratio and download the cropped result.
 </p>
 
 <p>
-The tool is useful for cropping photos and preparing images for websites, forms, documents and other online uses.
+The tool works directly in your web browser and is designed for mobile phones, tablets and computers.
 </p>
 
 
@@ -343,17 +581,37 @@ The tool is useful for cropping photos and preparing images for websites, forms,
 
 <ol>
 
-<li>Select an image from your device.</li>
+<li>
+Select an image from your device.
+</li>
 
-<li>Enter the desired crop width in pixels.</li>
+<li>
+Move the crop box to select the area you want.
+</li>
 
-<li>Enter the desired crop height in pixels.</li>
+<li>
+Drag the corners or edges to change the crop area.
+</li>
 
-<li>Click the <strong>Crop Image</strong> button.</li>
+<li>
+Use Zoom to adjust the image.
+</li>
 
-<li>Preview the cropped image.</li>
+<li>
+Use Rotate if the image needs rotation.
+</li>
 
-<li>Click <strong>Download Cropped Image</strong> to save it.</li>
+<li>
+Choose an aspect ratio if required.
+</li>
+
+<li>
+Click <strong>Crop Image</strong>.
+</li>
+
+<li>
+Download the cropped image.
+</li>
 
 </ol>
 
@@ -362,62 +620,96 @@ The tool is useful for cropping photos and preparing images for websites, forms,
 
 <ul>
 
-<li>Crop images using custom width and height.</li>
+<li>
+Touch-friendly image cropping.
+</li>
 
-<li>Works with common image formats supported by your browser.</li>
+<li>
+Mouse and touch support.
+</li>
 
-<li>Shows the cropped image before downloading.</li>
+<li>
+Zoom in and zoom out.
+</li>
 
-<li>No registration is required.</li>
+<li>
+Rotate images.
+</li>
 
-<li>Works on mobile phones, tablets and computers.</li>
+<li>
+Free aspect ratio cropping.
+</li>
 
-<li>Download the cropped image easily.</li>
+<li>
+1:1, 4:3 and 16:9 aspect ratios.
+</li>
+
+<li>
+Live crop preview.
+</li>
+
+<li>
+Download cropped images.
+</li>
+
+<li>
+Works on mobile phones and computers.
+</li>
 
 </ul>
 
-</section>
+
+<h2>Why Use an Online Image Cropper?</h2>
+
+<p>
+An online image cropper can help remove unwanted areas from photographs and prepare images for websites, forms, documents and social media. AdiyogiTools provides a simple browser-based way to crop images without installing additional software.
+</p>
 
 
 <!-- FAQ -->
 
-<section class="crop-content">
-
 <h2>Frequently Asked Questions</h2>
 
 
-<h3>What is an image cropper?</h3>
+<h3>Can I crop an image using my phone?</h3>
 
 <p>
-An image cropper removes unwanted areas from an image and creates a new image containing the selected area.
+Yes. The crop area can be moved and resized using touch controls on supported mobile browsers.
 </p>
 
 
-<h3>Can I crop JPG and PNG images?</h3>
+<h3>Can I zoom and rotate an image?</h3>
 
 <p>
-Yes. You can select JPG, PNG and other image formats supported by your browser.
+Yes. The tool provides zoom and rotation controls before cropping.
 </p>
 
 
-<h3>Can I choose custom crop dimensions?</h3>
+<h3>Can I crop an image to 1:1?</h3>
 
 <p>
-Yes. Enter the desired crop width and height in pixels before clicking the Crop Image button.
+Yes. Select the 1:1 aspect ratio to create a square crop.
+</p>
+
+
+<h3>Can I use 4:3 or 16:9 cropping?</h3>
+
+<p>
+Yes. The tool provides 4:3 and 16:9 aspect ratio options.
 </p>
 
 
 <h3>Is this image cropper free?</h3>
 
 <p>
-Yes. AdiyogiTools provides this image cropper free of charge.
+Yes. The AdiyogiTools Image Cropper is available free of charge.
 </p>
 
 
-<h3>Can I use the cropper on my phone?</h3>
+<h3>Do I need to install software?</h3>
 
 <p>
-Yes. The tool is designed to work in modern web browsers on mobile phones, tablets and computers.
+No. The cropper works directly in your web browser.
 </p>
 
 </section>
@@ -426,180 +718,261 @@ Yes. The tool is designed to work in modern web browsers on mobile phones, table
 </div>
 
 
+<!-- =========================================
+     CROPPER SCRIPT
+========================================= -->
+
 <script>
 
-function cropImage() {
+let cropper = null;
 
-    const file =
-        document.getElementById("image").files[0];
 
-    const cropWidth =
-        parseInt(
-            document.getElementById("cropWidth").value
-        );
+/* =========================================
+   IMAGE UPLOAD
+========================================= */
 
-    const cropHeight =
-        parseInt(
-            document.getElementById("cropHeight").value
-        );
+document
+.getElementById("imageInput")
+.addEventListener(
+"change",
+function(event) {
 
+    const file = event.target.files[0];
 
     if (!file) {
+        return;
+    }
 
-        alert("Please select an image.");
+
+    if (!file.type.startsWith("image/")) {
+
+        alert("Please select a valid image.");
 
         return;
 
     }
 
 
-    if (
-        !cropWidth ||
-        !cropHeight ||
-        cropWidth <= 0 ||
-        cropHeight <= 0
-    ) {
-
-        alert("Please enter valid crop width and height.");
-
-        return;
-
-    }
+    const image =
+        document.getElementById("cropImage");
 
 
-    const reader = new FileReader();
+    const editor =
+        document.getElementById("editor");
 
 
-    reader.onload = function(e) {
-
-        const img = new Image();
-
-
-        img.onload = function() {
-
-            const originalWidth = img.naturalWidth;
-
-            const originalHeight = img.naturalHeight;
+    const result =
+        document.getElementById("result");
 
 
-            document.getElementById("originalSize").innerText =
-                "Original image: " +
-                originalWidth +
-                " × " +
-                originalHeight +
-                " px";
+    result.style.display = "none";
 
 
-            /*
-             * Crop size cannot be larger
-             * than the original image.
-             */
+    const objectURL =
+        URL.createObjectURL(file);
 
-            if (
-                cropWidth > originalWidth ||
-                cropHeight > originalHeight
-            ) {
 
-                alert(
-                    "Crop size cannot be larger than the original image.\n\n" +
-                    "Original: " +
-                    originalWidth +
-                    " × " +
-                    originalHeight +
-                    " px"
-                );
+    image.src = objectURL;
 
-                return;
+
+    editor.style.display = "block";
+
+
+    image.onload = function() {
+
+        if (cropper) {
+
+            cropper.destroy();
+
+        }
+
+
+        cropper =
+        new Cropper(
+            image,
+            {
+
+                viewMode: 1,
+
+                dragMode: "move",
+
+                autoCropArea: 0.8,
+
+                responsive: true,
+
+                restore: true,
+
+                guides: true,
+
+                center: true,
+
+                highlight: true,
+
+                cropBoxMovable: true,
+
+                cropBoxResizable: true,
+
+                toggleDragModeOnDblclick: false
 
             }
-
-
-            const canvas =
-                document.getElementById("canvas");
-
-            const ctx =
-                canvas.getContext("2d");
-
-
-            canvas.width = cropWidth;
-
-            canvas.height = cropHeight;
-
-
-            /*
-             * Center crop
-             */
-
-            const sourceX =
-                (originalWidth - cropWidth) / 2;
-
-            const sourceY =
-                (originalHeight - cropHeight) / 2;
-
-
-            ctx.clearRect(
-                0,
-                0,
-                cropWidth,
-                cropHeight
-            );
-
-
-            ctx.drawImage(
-
-                img,
-
-                sourceX,
-                sourceY,
-
-                cropWidth,
-                cropHeight,
-
-                0,
-                0,
-
-                cropWidth,
-                cropHeight
-
-            );
-
-
-            const output =
-                canvas.toDataURL(
-                    "image/jpeg",
-                    0.95
-                );
-
-
-            const download =
-                document.getElementById("download");
-
-
-            download.href = output;
-
-            download.style.display =
-                "inline-block";
-
-
-            download.innerHTML =
-                "📥 Download Cropped Image";
-
-        };
-
-
-        img.onerror = function() {
-
-            alert("Unable to load this image. Please try another image.");
-
-        };
-
-
-        img.src = e.target.result;
+        );
 
     };
 
+});
 
-    reader.readAsDataURL(file);
+
+/* =========================================
+   ZOOM
+========================================= */
+
+function zoomIn() {
+
+    if (!cropper) {
+        return;
+    }
+
+    cropper.zoom(0.1);
+
+}
+
+
+function zoomOut() {
+
+    if (!cropper) {
+        return;
+    }
+
+    cropper.zoom(-0.1);
+
+}
+
+
+/* =========================================
+   ROTATE
+========================================= */
+
+function rotateLeft() {
+
+    if (!cropper) {
+        return;
+    }
+
+    cropper.rotate(-90);
+
+}
+
+
+function rotateRight() {
+
+    if (!cropper) {
+        return;
+    }
+
+    cropper.rotate(90);
+
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+function resetCrop() {
+
+    if (!cropper) {
+        return;
+    }
+
+    cropper.reset();
+
+}
+
+
+/* =========================================
+   ASPECT RATIO
+========================================= */
+
+function setRatio(ratio) {
+
+    if (!cropper) {
+        return;
+    }
+
+    cropper.setAspectRatio(ratio);
+
+}
+
+
+/* =========================================
+   CROP IMAGE
+========================================= */
+
+function cropImage() {
+
+    if (!cropper) {
+
+        alert("Please select an image first.");
+
+        return;
+
+    }
+
+
+    const canvas =
+        cropper.getCroppedCanvas({
+
+            imageSmoothingEnabled: true,
+
+            imageSmoothingQuality: "high"
+
+        });
+
+
+    if (!canvas) {
+
+        alert("Unable to create cropped image.");
+
+        return;
+
+    }
+
+
+    const resultImage =
+        document.getElementById("resultImage");
+
+
+    const download =
+        document.getElementById("download");
+
+
+    const result =
+        document.getElementById("result");
+
+
+    const output =
+        canvas.toDataURL(
+            "image/jpeg",
+            0.95
+        );
+
+
+    resultImage.src = output;
+
+
+    download.href = output;
+
+
+    result.style.display = "block";
+
+
+    result.scrollIntoView({
+
+        behavior: "smooth",
+
+        block: "center"
+
+    });
 
 }
 
