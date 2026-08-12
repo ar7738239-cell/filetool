@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Watermark Maker | AdiyogiTools</title>
+
+<title>Free Watermark Maker Online | Add Text & Logo Watermark | AdiyogiTools</title>
+
+<meta name="description"
+content="Add professional text and logo watermarks to images online for free. Move, resize, rotate and customize watermarks easily with AdiyogiTools.">
+
+<meta name="keywords"
+content="Watermark Maker, Add Watermark, Image Watermark, Logo Watermark, Text Watermark, Free Watermark Tool">
+
+<meta name="robots" content="index,follow">
+
+<link rel="canonical"
+href="https://adiyogitools.in/watermark-maker.html">
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="watermark-maker.css">
@@ -14,58 +28,138 @@
 
 <div class="wm-container">
 
-<h1>🖼 Watermark Maker Pro</h1>
+<header class="wm-header">
 
-<p>Add Text or Logo Watermark to your Images</p>
+<h1>💧 Watermark Maker Pro</h1>
 
-<div class="upload-box">
+<p>
+Add text or logo watermark to your images.
+Drag, resize, rotate and customize easily.
+</p>
+
+</header>
+
+
+<!-- IMAGE UPLOAD -->
+
+<div class="upload-card">
+
+<label class="upload-button">
+
+📁 Choose Image
 
 <input
 type="file"
 id="imageInput"
-accept="image/*">
+accept="image/*"
+hidden>
 
+</label>
+
+<p id="imageName">
+No image selected
+</p>
 
 </div>
 
-<div class="canvas-box">
+
+<!-- EDITOR -->
+
+<div class="editor-section">
+
+<div class="canvas-wrapper">
 
 <canvas id="canvas"></canvas>
 
+<div id="emptyMessage">
+
+🖼️
+
+<p>Upload an image to start</p>
+
 </div>
 
-<div class="tool-panel">
+</div>
 
-<h2>Text Watermark</h2>
+</div>
+
+
+<!-- MAIN CONTROLS -->
+
+<div class="controls">
+
+
+<!-- TEXT WATERMARK -->
+
+<div class="control-card">
+
+<h2>✍️ Text Watermark</h2>
+
+<label>Watermark Text</label>
 
 <input
 type="text"
 id="watermarkText"
-placeholder="Enter Watermark">
+placeholder="Enter your watermark">
+
+
+<label>Font</label>
+
+<select id="fontFamily">
+
+<option value="Arial">Arial</option>
+<option value="Georgia">Georgia</option>
+<option value="Times New Roman">Times New Roman</option>
+<option value="Verdana">Verdana</option>
+<option value="Trebuchet MS">Trebuchet MS</option>
+<option value="Courier New">Courier New</option>
+
+</select>
+
 
 <label>Font Size</label>
+
+<div class="range-row">
 
 <input
 type="range"
 id="fontSize"
-min="20"
-max="150"
-value="50">
+min="15"
+max="200"
+value="60">
 
-<span id="fontSizeValue">50 px</span>
+<span id="fontSizeValue">60 px</span>
+
+</div>
+
+
+<label>Text Color</label>
+
+<input
+type="color"
+id="textColor"
+value="#ffffff">
+
 
 <label>Opacity</label>
+
+<div class="range-row">
 
 <input
 type="range"
 id="opacity"
 min="0"
 max="100"
-value="60">
+value="65">
 
-<span id="opacityValue">60%</span>
+<span id="opacityValue">65%</span>
+
+</div>
+
 
 <label>Rotation</label>
+
+<div class="range-row">
 
 <input
 type="range"
@@ -76,33 +170,74 @@ value="-30">
 
 <span id="rotationValue">-30°</span>
 
-<label>Text Color</label>
+</div>
 
-<input
-type="color"
-id="textColor"
-value="#ffffff">
-  <br><br>
-<h2>Logo Watermark</h2>
 
-<label>Select Logo</label>
+<div class="button-row">
+
+<button id="boldBtn">
+<b>B</b> Bold
+</button>
+
+<button id="italicBtn">
+<i>I</i> Italic
+</button>
+
+</div>
+
+
+<button id="addTextBtn" class="primary-btn">
+
+➕ Add / Update Text
+
+</button>
+
+<button id="removeTextBtn" class="danger-btn">
+
+🗑 Remove Text
+
+</button>
+
+</div>
+
+
+<!-- LOGO -->
+
+<div class="control-card">
+
+<h2>🖼️ Logo Watermark</h2>
+
+<label class="small-upload">
+
+📁 Choose Logo
 
 <input
 type="file"
 id="logoInput"
 accept="image/*">
 
+</label>
+
+
 <label>Logo Size</label>
+
+<div class="range-row">
 
 <input
 type="range"
 id="logoSize"
-min="20"
-max="300"
-value="150">
+min="30"
+max="600"
+value="180">
 
-<span id="logoSizeValue">150 px</span>
+<span id="logoSizeValue">180 px</span>
+
+</div>
+
+
 <label>Logo Opacity</label>
+
+<div class="range-row">
 
 <input
 type="range"
@@ -112,18 +247,175 @@ max="100"
 value="100">
 
 <span id="logoOpacityValue">100%</span>
-  
-<button id="downloadBtn">
 
-📥 Download Image
+</div>
+
+
+<label>Logo Rotation</label>
+
+<div class="range-row">
+
+<input
+type="range"
+id="logoRotation"
+min="-180"
+max="180"
+value="0">
+
+<span id="logoRotationValue">0°</span>
+
+</div>
+
+
+<button id="removeLogoBtn" class="danger-btn">
+
+🗑 Remove Logo
 
 </button>
 
 </div>
 
+
+<!-- POSITION -->
+
+<div class="control-card">
+
+<h2>📍 Position</h2>
+
+<p class="hint">
+You can also drag the watermark directly with your finger.
+</p>
+
+
+<div class="position-grid">
+
+<button data-position="top-left">↖</button>
+
+<button data-position="top-center">↑</button>
+
+<button data-position="top-right">↗</button>
+
+<button data-position="center-left">←</button>
+
+<button data-position="center">●</button>
+
+<button data-position="center-right">→</button>
+
+<button data-position="bottom-left">↙</button>
+
+<button data-position="bottom-center">↓</button>
+
+<button data-position="bottom-right">↘</button>
+
 </div>
+
+</div>
+
+
+<!-- TILE -->
+
+<div class="control-card">
+
+<h2>🔳 Watermark Pattern</h2>
+
+<label class="switch-row">
+
+<input
+type="checkbox"
+id="tileWatermark">
+
+<span>Repeat watermark across image</span>
+
+</label>
+
+
+<label>Pattern Spacing</label>
+
+<div class="range-row">
+
+<input
+type="range"
+id="tileSpacing"
+min="50"
+max="500"
+value="180">
+
+<span id="tileSpacingValue">180 px</span>
+
+</div>
+
+</div>
+
+
+<!-- OPTIONS -->
+
+<div class="control-card">
+
+<h2>⚙️ Options</h2>
+
+<label class="switch-row">
+
+<input
+type="checkbox"
+id="shadowToggle"
+checked>
+
+<span>Watermark Shadow</span>
+
+</label>
+
+
+<label class="switch-row">
+
+<input
+type="checkbox"
+id="outlineToggle">
+
+<span>Text Outline</span>
+
+</label>
+
+
+<label>Export Quality</label>
+
+<select id="qualitySelect">
+
+<option value="0.7">Standard</option>
+<option value="0.85" selected>High</option>
+<option value="0.95">Very High</option>
+<option value="1">Maximum</option>
+
+</select>
+
+</div>
+
+
+<!-- ACTIONS -->
+
+<div class="action-card">
+
+<button id="resetBtn" class="secondary-btn">
+
+↩ Reset
+
+</button>
+
+<button id="downloadBtn" class="download-btn">
+
+📥 Download Watermarked Image
+
+</button>
+
+</div>
+
+
+</div>
+
+</div>
+
 
 <script src="watermark-maker.js"></script>
 
 </body>
+
 </html>
