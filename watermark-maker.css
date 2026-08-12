@@ -352,3 +352,128 @@ font-size:15px;
 }
 
 }
+
+/* =========================================
+   PROFESSIONAL OBJECT SELECTION
+========================================= */
+
+.selection-info{
+    position:absolute;
+    pointer-events:none;
+    border:2px solid #2563eb;
+    box-shadow:0 0 0 1px rgba(255,255,255,.8);
+    display:none;
+    z-index:5;
+}
+
+.selection-handle{
+    position:absolute;
+    width:14px;
+    height:14px;
+    background:#fff;
+    border:2px solid #2563eb;
+    border-radius:50%;
+    pointer-events:auto;
+}
+
+.selection-handle.tl{
+    left:-8px;
+    top:-8px;
+    cursor:nwse-resize;
+}
+
+.selection-handle.tr{
+    right:-8px;
+    top:-8px;
+    cursor:nesw-resize;
+}
+
+.selection-handle.bl{
+    left:-8px;
+    bottom:-8px;
+    cursor:nesw-resize;
+}
+
+.selection-handle.br{
+    right:-8px;
+    bottom:-8px;
+    cursor:nwse-resize;
+}
+
+.rotate-handle{
+    position:absolute;
+    width:16px;
+    height:16px;
+    border-radius:50%;
+    background:#2563eb;
+    border:2px solid white;
+    left:50%;
+    top:-42px;
+    transform:translateX(-50%);
+    cursor:grab;
+}
+
+.rotate-line{
+    position:absolute;
+    width:2px;
+    height:25px;
+    background:#2563eb;
+    left:50%;
+    top:-25px;
+    transform:translateX(-50%);
+}
+
+.delete-selected{
+    position:absolute;
+    right:-45px;
+    top:-45px;
+    width:30px;
+    height:30px;
+    padding:0;
+    border-radius:50%;
+    background:#ef4444;
+    color:white;
+    font-size:15px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.canvas-wrapper{
+    position:relative;
+}
+
+@media(max-width:700px){
+
+    .selection-handle{
+        width:18px;
+        height:18px;
+    }
+
+    .selection-handle.tl{
+        left:-9px;
+        top:-9px;
+    }
+
+    .selection-handle.tr{
+        right:-9px;
+        top:-9px;
+    }
+
+    .selection-handle.bl{
+        left:-9px;
+        bottom:-9px;
+    }
+
+    .selection-handle.br{
+        right:-9px;
+        bottom:-9px;
+    }
+
+    .rotate-handle{
+        width:20px;
+        height:20px;
+    }
+
+}
