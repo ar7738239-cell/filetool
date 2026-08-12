@@ -2040,3 +2040,494 @@ if (tileSpacingValue) {
 console.log(
     "AdiyogiTools Watermark Maker loaded successfully."
 );
+
+
+/* =========================================
+   ADVANCED RESIZE + ROTATE
+========================================= */
+
+let editMode = null;
+let editStartX = 0;
+let editStartY = 0;
+let editStartSize = 0;
+let editStartRotation = 0;
+let editStartAngle = 0;
+
+
+/* ---------- OBJECT SIZE ---------- */
+
+function getActiveSize() {
+
+    if (activeObject === logoObject && logoObject) {
+
+        return logoObject.size;
+
+    }
+
+    if (activeObject === textObject) {
+
+        return parseInt(fontSize.value);
+
+    }
+
+    return 0;
+
+}
+
+
+/* ---------- OBJECT ROTATION ---------- */
+
+function getActiveRotation() {
+
+    if (activeObject === logoObject && logoObject) {
+
+        return logoObject.rotation;
+
+    }
+
+    if (activeObject === textObject) {
+
+        return parseInt(rotation.value);
+
+    }
+
+    return 0;
+
+}
+
+
+/* ---------- SET SIZE ---------- */
+
+function setActiveSize(value) {
+
+    value = Math.round(value);
+
+    if (activeObject === logoObject && logoObject) {
+
+        value = Math.max(30, Math.min(1000, value));
+
+        logoObject.size = value;
+
+        logoSize.value = value;
+
+        logoSizeValue.textContent =
+            value + " px";
+
+    }
+
+    else if (activeObject === textObject) {
+
+        value = Math.max(15, Math.min(300, value));
+
+        fontSize.value = value;
+
+        fontSizeValue.textContent =
+            value + " px";
+
+    }
+
+}
+
+
+/* ---------- SET ROTATION ---------- */
+
+function setActiveRotation(value) {
+
+    value = Math.round(value);
+
+    if (activeObject === logoObject && logoObject) {
+
+        logoObject.rotation = value;
+
+        logoRotation.value = value;
+
+        logoRotationValue.textContent =
+            value + "°";
+
+    }
+
+    else if (activeObject === textObject) {
+
+        rotation.value = value;
+
+        rotationValue.textContent =
+            value + "°";
+
+    }
+
+}
+
+
+/* =========================================
+   TWO FINGER / CORNER RESIZE
+========================================= */
+
+canvas.addEventListener(
+    "touchstart",
+    function(e) {
+
+        if (!activeObject) return;
+
+        /*
+         * Two fingers = resize
+         */
+
+        if (e.touches.length === 2) {
+
+            e.preventDefault();
+
+            editMode = "resize";
+
+            const p1 = {
+
+                x: e.touches[0].clientX,
+                y: e.touches[0].clientY
+
+            };
+
+            const p2 = {
+
+                x: e.touches[1].clientX,
+                y: e.touches[1].clientY
+
+            };
+
+            editStartX =
+                (p1.x + p2.x) / 2;
+
+            editStartY =
+                (p1.y + p2.y) / 2;
+
+            editStartSize =
+                getActiveSize();
+
+            editStartRotation =
+                getActiveRotation();
+
+            editStartAngle =
+                Math.atan2(
+                    p2.y - p1.y,
+                    p2.x - p1.x
+                );
+
+        }
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================================
+   TWO FINGER RESIZE MOVE
+========================================= */
+
+canvas.addEventListener(
+    "touchmove",
+    function(e) {
+
+        if (
+            editMode !== "resize" ||
+            e.touches.length !== 2
+        ) {
+
+            return;
+
+        }
+
+        e.preventDefault();
+
+        const p1 = {
+
+            x: e.touches[0].clientX,
+            y: e.touches[0].clientY
+
+        };
+
+        const p2 = {
+
+            x: e.touches[1].clientX,
+            y: e.touches[1].clientY
+
+        };
+
+
+        const currentDistance =
+            Math.sqrt(
+
+                Math.pow(
+                    p2.x - p1.x,
+                    2
+                )
+
+                +
+
+                Math.pow(
+                    p2.y - p1.y,
+                    2
+                )
+
+            );
+
+
+        /*
+         * Initial finger distance
+         */
+
+        if (!window.resizeInitialDistance) {
+
+            window.resizeInitialDistance =
+                currentDistance;
+
+        }
+
+
+        const scale =
+            currentDistance /
+            window.resizeInitialDistance;
+
+
+        const newSize =
+            editStartSize * scale;
+
+
+        setActiveSize(newSize);
+
+        draw();
+
+    },
+    {
+        passive: false
+    }
+);
+
+
+/* =========================================
+   TOUCH END
+========================================= */
+
+canvas.addEventListener(
+    "touchend",
+    function() {
+
+        editMode = null;
+
+        window.resizeInitialDistance = null;
+
+    }
+);
+
+
+/* =========================================
+   DESKTOP SHIFT + DRAG = RESIZE
+========================================= */
+
+canvas.addEventListener(
+    "mousedown",
+    function(e) {
+
+        if (
+            !activeObject ||
+            !e.shiftKey
+        ) {
+
+            return;
+
+        }
+
+
+        e.preventDefault();
+
+        editMode = "desktopResize";
+
+        editStartX = e.clientX;
+
+        editStartY = e.clientY;
+
+        editStartSize =
+            getActiveSize();
+
+    }
+);
+
+
+/* =========================================
+   DESKTOP RESIZE MOVE
+========================================= */
+
+window.addEventListener(
+    "mousemove",
+    function(e) {
+
+        if (
+            editMode !==
+            "desktopResize"
+        ) {
+
+            return;
+
+        }
+
+
+        const delta =
+            e.clientX -
+            editStartX;
+
+
+        const newSize =
+            editStartSize +
+            delta;
+
+
+        setActiveSize(newSize);
+
+        draw();
+
+    }
+);
+
+
+/* =========================================
+   DESKTOP RESIZE END
+========================================= */
+
+window.addEventListener(
+    "mouseup",
+    function() {
+
+        if (
+            editMode ===
+            "desktopResize"
+        ) {
+
+            editMode = null;
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   ROTATE USING ALT + DRAG
+========================================= */
+
+canvas.addEventListener(
+    "mousedown",
+    function(e) {
+
+        if (
+            !activeObject ||
+            !e.altKey
+        ) {
+
+            return;
+
+        }
+
+
+        e.preventDefault();
+
+        editMode = "rotate";
+
+        editStartAngle =
+            Math.atan2(
+                e.clientY -
+                canvas.getBoundingClientRect().top,
+                
+                e.clientX -
+                canvas.getBoundingClientRect().left
+            );
+
+        editStartRotation =
+            getActiveRotation();
+
+    }
+);
+
+
+/* =========================================
+   ROTATION MOVE
+========================================= */
+
+window.addEventListener(
+    "mousemove",
+    function(e) {
+
+        if (
+            editMode !==
+            "rotate"
+        ) {
+
+            return;
+
+        }
+
+
+        const rect =
+            canvas.getBoundingClientRect();
+
+
+        const point = {
+
+            x:
+                e.clientX -
+                rect.left,
+
+            y:
+                e.clientY -
+                rect.top
+
+        };
+
+
+        const angle =
+            Math.atan2(
+                point.y,
+                point.x
+            );
+
+
+        const delta =
+            (
+                angle -
+                editStartAngle
+            )
+            *
+            180 /
+            Math.PI;
+
+
+        setActiveRotation(
+            editStartRotation +
+            delta
+        );
+
+
+        draw();
+
+    }
+);
+
+
+/* =========================================
+   ROTATION END
+========================================= */
+
+window.addEventListener(
+    "mouseup",
+    function() {
+
+        if (
+            editMode ===
+            "rotate"
+        ) {
+
+            editMode = null;
+
+        }
+
+    }
+);
+
