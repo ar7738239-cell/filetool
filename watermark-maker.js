@@ -1244,128 +1244,82 @@ document
    CANVAS POINTER DOWN
 ========================================= */
 
-canvas.addEventListener(
-    "pointerdown",
-    function (e) {
+/* =========================================
+   MOBILE DRAG TEXT + LOGO
+========================================= */
 
-        if (!image) return;
+canvas.style.touchAction = "none";
 
-        const point =
-            getCanvasPoint(e);
+canvas.addEventListener("pointerdown", function(e){
 
+    if(!image) return;
 
-        /*
-         * First check selected object's
-         * handles.
-         */
+    e.preventDefault();
 
-        if (activeObject) {
+    const point = getCanvasPoint(e);
 
-            const action =
-                detectHandle(
-                    point.x,
-                    point.y,
-                    activeObject
-                );
+    const selected = findObjectAtPoint(
+        point.x,
+        point.y
+    );
 
-            if (action) {
+    if(!selected) return;
 
-                dragMode =
-                    action;
+    activeObject = selected;
+    dragObject = selected;
 
-                dragging = true;
+    dragOffsetX =
+        point.x - selected.x;
 
-                startDistance =
-                    distance(
-                        point,
-                        {
-                            x: activeObject.x,
-                            y: activeObject.y
-                        }
-                    );
+    dragOffsetY =
+        point.y - selected.y;
 
-                startSize =
-                    activeObject === logoObject
-                        ? logoObject.size
-                        : parseInt(fontSize.value);
+    dragging = true;
 
-                startAngle =
-                    Math.atan2(
-                        point.y - activeObject.y,
-                        point.x - activeObject.x
-                    );
+    canvas.setPointerCapture(e.pointerId);
 
-                startRotation =
-                    activeObject === logoObject
-                        ? logoObject.rotation
-                        : parseInt(rotation.value);
-
-                canvas.setPointerCapture(
-                    e.pointerId
-                );
-
-                e.preventDefault();
-
-                return;
-
-            }
-
-        }
+});
 
 
-        /*
-         * Otherwise select object.
-         */
+canvas.addEventListener("pointermove", function(e){
 
-        const selected =
-            findObjectAtPoint(
-                point.x,
-                point.y
-            );
+    if(!dragging || !dragObject) return;
 
+    e.preventDefault();
 
-        if (selected) {
+    const point = getCanvasPoint(e);
 
-            activeObject =
-                selected;
+    dragObject.x =
+        point.x - dragOffsetX;
 
-            dragMode =
-                "move";
+    dragObject.y =
+        point.y - dragOffsetY;
 
-            dragging = true;
+    draw();
 
-            dragOffsetX =
-                point.x -
-                selected.x;
-
-            dragOffsetY =
-                point.y -
-                selected.y;
-
-            canvas.setPointerCapture(
-                e.pointerId
-            );
-
-            e.preventDefault();
-
-            draw();
-
-            return;
-
-        }
+});
 
 
-        /*
-         * Empty canvas = deselect.
-         */
+canvas.addEventListener("pointerup", function(e){
 
-        activeObject = null;
+    e.preventDefault();
 
-        draw();
+    dragging = false;
+    dragObject = null;
 
-    }
-);
+    try{
+        canvas.releasePointerCapture(e.pointerId);
+    }catch(err){}
 
+});
+
+
+canvas.addEventListener("pointercancel", function(){
+
+    dragging = false;
+    dragObject = null;
+
+});
 
 /* =========================================
    POINTER MOVE
