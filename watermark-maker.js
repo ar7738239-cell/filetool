@@ -681,141 +681,249 @@ draw();
 
 });
 
-
 /* =========================
-CANVAS TOUCH / MOUSE
+   DRAG TEXT + LOGO
 ========================= */
 
-canvas.addEventListener("pointerdown",function(e){
+let dragObject = null;
+let dragOffsetX = 0;
+let dragOffsetY = 0;
 
-if(!image) return;
 
-const point = getCanvasPoint(e);
+/* POINTER DOWN */
 
-const selected = findObject(point.x,point.y);
+canvas.addEventListener("pointerdown", function(e){
 
-if(selected){
+    if(!image) return;
 
-activeObject = selected;
+    const point = getCanvasPoint(e);
 
-dragging = true;
+    const selected = findObjectAtPoint(
+        point.x,
+        point.y
+    );
 
-dragOffsetX =
-point.x-selected.x;
+    if(!selected) return;
 
-dragOffsetY =
-point.y-selected.y;
+    dragObject = selected;
+    activeObject = selected;
 
-canvas.setPointerCapture(e.pointerId);
+    dragOffsetX =
+        point.x - selected.x;
+
+    dragOffsetY =
+        point.y - selected.y;
+
+    dragging = true;
+
+    canvas.setPointerCapture(
+        e.pointerId
+    );
+
+});
+
+
+/* POINTER MOVE */
+
+canvas.addEventListener("pointermove", function(e){
+
+    if(!dragging || !dragObject) return;
+
+    const point = getCanvasPoint(e);
+
+    dragObject.x =
+        point.x - dragOffsetX;
+
+    dragObject.y =
+        point.y - dragOffsetY;
+
+    /* Keep inside canvas */
+
+    dragObject.x = Math.max(
+        0,
+        Math.min(
+            canvas.width,
+            dragObject.x
+        )
+    );
+
+    dragObject.y = Math.max(
+        0,
+        Math.min(
+            canvas.height,
+            dragObject.y
+        )
+    );
+
+    draw();
+
+});
+
+
+/* POINTER UP */
+
+canvas.addEventListener("pointerup", function(e){
+
+    dragging = false;
+    dragObject = null;
+
+    try{
+        canvas.releasePointerCapture(
+            e.pointerId
+        );
+    }catch(err){}
+
+});
+
+
+canvas.addEventListener(
+    "pointercancel",
+    function(){
+
+        dragging = false;
+        dragObject = null;
+
+    }
+);
+
+
+/* =========================
+   FIND OBJECT
+========================= */
+
+function findObjectAtPoint(x,y){
+
+    /*
+     * Check logo first
+     */
+
+    if(logo && logoObject){
+
+        const logoWidth =
+            logoObject.size;
+
+        const logoHeight =
+            logoObject.size *
+            (
+                logo.naturalHeight /
+                logo.naturalWidth
+            );
+
+        const logoHitWidth =
+            logoWidth / 2;
+
+        const logoHitHeight =
+            logoHeight / 2;
+
+        if(
+            Math.abs(
+                x - logoObject.x
+            ) <= logoHitWidth
+            &&
+            Math.abs(
+                y - logoObject.y
+            ) <= logoHitHeight
+        ){
+
+            return logoObject;
+
+        }
+
+    }
+
+
+    /*
+     * Check text
+     */
+
+    if(
+        textObject &&
+        watermarkText.value.trim()
+    ){
+
+        const size =
+            parseInt(fontSize.value);
+
+        ctx.save();
+
+        ctx.font =
+            (isItalic ? "italic " : "") +
+            (isBold ? "bold " : "") +
+            size +
+            "px " +
+            fontFamily.value;
+
+        const textWidth =
+            ctx.measureText(
+                watermarkText.value
+            ).width;
+
+        ctx.restore();
+
+
+        /*
+         * Add some extra area around
+         * text so it is easy to grab
+         * with a finger.
+         */
+
+        const padding = 25;
+
+
+        if(
+            Math.abs(
+                x - textObject.x
+            )
+            <=
+            (textWidth / 2) + padding
+
+            &&
+
+            Math.abs(
+                y - textObject.y
+            )
+            <=
+            (size / 2) + padding
+        ){
+
+            return textObject;
+
+        }
+
+    }
+
+
+    return null;
 
 }
 
-});
-
-
-canvas.addEventListener("pointermove",function(e){
-
-if(!dragging || !activeObject) return;
-
-const point = getCanvasPoint(e);
-
-activeObject.x =
-point.x-dragOffsetX;
-
-activeObject.y =
-point.y-dragOffsetY;
-
-draw();
-
-});
-
-
-canvas.addEventListener("pointerup",function(){
-
-dragging = false;
-
-});
-
-
-canvas.addEventListener("pointercancel",function(){
-
-dragging = false;
-
-});
-
 
 /* =========================
-GET CANVAS POINT
+   CANVAS COORDINATES
 ========================= */
 
 function getCanvasPoint(e){
 
-const rect = canvas.getBoundingClientRect();
-
-return {
-
-x:
-(e.clientX-rect.left) *
-(canvas.width/rect.width),
-
-y:
-(e.clientY-rect.top) *
-(canvas.height/rect.height)
-
-};
-
-}
+    const rect =
+        canvas.getBoundingClientRect();
 
 
-/* =========================
-SELECT OBJECT
-========================= */
+    return {
 
-function findObject(x,y){
+        x:
+        (e.clientX - rect.left)
+        *
+        (canvas.width / rect.width),
 
-if(logoObject && logo){
+        y:
+        (e.clientY - rect.top)
+        *
+        (canvas.height / rect.height)
 
-const size = logoObject.size;
-
-if(
-
-Math.abs(x-logoObject.x)<size &&
-Math.abs(y-logoObject.y)<size
-
-){
-
-return logoObject;
+    };
 
 }
 
-}
-
-
-if(textObject && watermarkText.value.trim()){
-
-const size = parseInt(fontSize.value);
-
-const textWidth =
-ctx.measureText(
-watermarkText.value
-).width;
-
-if(
-
-Math.abs(x-textObject.x)<textWidth/2 &&
-Math.abs(y-textObject.y)<size
-
-){
-
-return textObject;
-
-}
-
-}
-
-return null;
-
-}
 
 
 /* =========================
