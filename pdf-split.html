@@ -6,46 +6,44 @@
 <meta charset="UTF-8">
 
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0">
+content="width=device-width, initial-scale=1.0">
 
 <title>PDF Split Online Free | Split PDF Pages | AdiyogiTools</title>
 
 <meta name="description"
-      content="Split PDF online for free. Extract selected pages, split every page into separate PDFs, or divide a PDF into page chunks directly in your browser.">
+content="Split PDF online for free. Extract selected pages, split every page into separate PDFs, or divide a PDF into smaller parts directly in your browser.">
 
 <meta name="keywords"
-      content="PDF split, split PDF, split PDF online, extract PDF pages, separate PDF pages, PDF splitter, free PDF split">
+content="PDF split, split PDF, PDF splitter, split PDF online, extract PDF pages, separate PDF pages, free PDF split">
 
 <meta name="robots"
-      content="index, follow">
+content="index, follow">
 
 <link rel="canonical"
-      href="https://adiyogitools.in/pdf-split.html">
+href="https://adiyogitools.in/pdf-split.html">
 
 <meta property="og:title"
-      content="PDF Split Online Free | AdiyogiTools">
+content="PDF Split Online Free | AdiyogiTools">
 
 <meta property="og:description"
-      content="Split and extract PDF pages directly in your browser.">
+content="Split and extract PDF pages directly in your browser.">
 
 <meta property="og:type"
-      content="website">
+content="website">
 
 <meta property="og:url"
-      content="https://adiyogitools.in/pdf-split.html">
+content="https://adiyogitools.in/pdf-split.html">
 
 <meta name="twitter:card"
-      content="summary">
-
+content="summary">
 
 <link rel="stylesheet"
-      href="style.css">
-
+href="style.css">
 
 <style>
 
 /* =========================================
-   PDF SPLIT PRO
+   PDF SPLIT
 ========================================= */
 
 .split-page{
@@ -53,11 +51,6 @@
     margin:auto;
     padding:20px;
 }
-
-
-/* =========================================
-   HERO
-========================================= */
 
 .split-hero{
     text-align:center;
@@ -75,9 +68,7 @@
 }
 
 
-/* =========================================
-   UPLOAD
-========================================= */
+/* UPLOAD */
 
 .upload-box{
     background:#fff;
@@ -85,8 +76,8 @@
     border-radius:20px;
     padding:35px 20px;
     text-align:center;
-    transition:.2s;
     margin-bottom:20px;
+    transition:.2s;
 }
 
 .upload-box.dragover{
@@ -114,7 +105,6 @@
     border-radius:12px;
     font-weight:700;
     cursor:pointer;
-    margin-top:10px;
 }
 
 #pdfFile{
@@ -122,11 +112,10 @@
 }
 
 
-/* =========================================
-   TOOL CARD
-========================================= */
+/* CARD */
 
-.tool-card{
+.tool-card,
+.info-section{
     background:#fff;
     border-radius:18px;
     padding:20px;
@@ -134,14 +123,8 @@
     box-shadow:0 5px 20px rgba(0,0,0,.06);
 }
 
-.tool-card h2{
-    margin-top:0;
-}
 
-
-/* =========================================
-   FILE INFO
-========================================= */
+/* FILE INFO */
 
 .file-info{
     display:none;
@@ -154,7 +137,6 @@
 .file-name{
     font-weight:800;
     word-break:break-word;
-    color:#0f172a;
 }
 
 .file-meta{
@@ -164,14 +146,11 @@
 }
 
 
-/* =========================================
-   MODE BUTTONS
-========================================= */
+/* MODE */
 
 .mode-grid{
     display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
+    grid-template-columns:repeat(3,1fr);
     gap:12px;
     margin-bottom:20px;
 }
@@ -182,9 +161,7 @@
     border-radius:14px;
     padding:16px 10px;
     cursor:pointer;
-    text-align:center;
     font-weight:700;
-    transition:.2s;
 }
 
 .mode-btn.active{
@@ -200,17 +177,14 @@
 
 .mode-description{
     display:block;
+    color:#64748b;
     font-size:12px;
     font-weight:400;
-    color:#64748b;
     margin-top:5px;
-    line-height:1.4;
 }
 
 
-/* =========================================
-   PANELS
-========================================= */
+/* PANELS */
 
 .mode-panel{
     display:none;
@@ -221,14 +195,11 @@
 }
 
 
-/* =========================================
-   INPUT GROUP
-========================================= */
+/* INPUT */
 
 .input-grid{
     display:grid;
-    grid-template-columns:
-        repeat(2,1fr);
+    grid-template-columns:1fr 1fr;
     gap:15px;
 }
 
@@ -247,35 +218,16 @@
     font-size:16px;
 }
 
-
-/* =========================================
-   RANGE INFO
-========================================= */
-
 .range-info{
     margin-top:15px;
     padding:13px;
     background:#eff6ff;
     color:#1e40af;
     border-radius:10px;
-    line-height:1.5;
 }
 
 
-/* =========================================
-   CHUNK
-========================================= */
-
-.chunk-help{
-    color:#64748b;
-    font-size:14px;
-    line-height:1.5;
-}
-
-
-/* =========================================
-   ACTIONS
-========================================= */
+/* ACTIONS */
 
 .actions{
     display:flex;
@@ -290,7 +242,6 @@
     padding:13px 18px;
     font-weight:700;
     cursor:pointer;
-    font-size:14px;
 }
 
 .split-btn{
@@ -314,9 +265,7 @@
 }
 
 
-/* =========================================
-   PROGRESS
-========================================= */
+/* PROGRESS */
 
 .progress-wrap{
     display:none;
@@ -325,7 +274,6 @@
 
 .progress-bar{
     height:10px;
-    width:100%;
     background:#e2e8f0;
     border-radius:20px;
     overflow:hidden;
@@ -346,9 +294,7 @@
 }
 
 
-/* =========================================
-   RESULT
-========================================= */
+/* RESULT */
 
 .result-box{
     display:none;
@@ -358,13 +304,10 @@
     background:#f0fdf4;
     border:1px solid #bbf7d0;
     color:#166534;
-    line-height:1.6;
 }
 
 
-/* =========================================
-   OUTPUT LIST
-========================================= */
+/* OUTPUT */
 
 .output-list{
     display:none;
@@ -402,17 +345,7 @@
 }
 
 
-/* =========================================
-   INFO SECTION
-========================================= */
-
-.info-section{
-    background:#fff;
-    border-radius:18px;
-    padding:25px;
-    margin-top:25px;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
+/* INFO */
 
 .info-section h2{
     margin-top:0;
@@ -438,18 +371,12 @@
 }
 
 
-/* =========================================
-   MOBILE
-========================================= */
+/* MOBILE */
 
 @media(max-width:700px){
 
     .split-page{
         padding:12px;
-    }
-
-    .upload-box{
-        padding:25px 15px;
     }
 
     .mode-grid{
@@ -481,15 +408,9 @@
 <div class="split-page">
 
 
-<!-- =========================================
-     HERO
-========================================= -->
-
 <section class="split-hero">
 
-<h1>
-✂️ PDF Split
-</h1>
+<h1>✂️ PDF Split</h1>
 
 <p>
 Split PDF pages, extract selected pages,
@@ -500,103 +421,75 @@ or divide a PDF into smaller PDF files.
 
 
 <!-- =========================================
-     UPLOAD
+UPLOAD
 ========================================= -->
 
-<div
-    class="upload-box"
-    id="uploadBox">
+<div class="upload-box" id="uploadBox">
 
-<div class="upload-icon">
-📄
-</div>
+<div class="upload-icon">📄</div>
 
-<h2>
-Choose a PDF
-</h2>
+<h2>Choose a PDF</h2>
 
 <p>
-Select a PDF file or drag & drop it here.
+Select a PDF file or drag and drop it here.
 </p>
 
-<label
-    class="upload-btn"
-    for="pdfFile">
-
+<label class="upload-btn" for="pdfFile">
 📁 Choose PDF
-
 </label>
 
 <input
-    type="file"
-    id="pdfFile"
-    accept="application/pdf,.pdf">
+type="file"
+id="pdfFile"
+accept="application/pdf,.pdf">
 
 </div>
 
 
 <!-- =========================================
-     TOOL
+TOOL
 ========================================= -->
 
 <div class="tool-card">
 
 
-<!-- FILE INFO -->
+<div class="file-info" id="fileInfo">
 
-<div
-    class="file-info"
-    id="fileInfo">
+<div class="file-name" id="fileName"></div>
 
-<div
-    class="file-name"
-    id="fileName">
-</div>
-
-<div
-    class="file-meta"
-    id="fileMeta">
-</div>
+<div class="file-meta" id="fileMeta"></div>
 
 </div>
 
 
-<h2>
-Choose Split Method
-</h2>
+<h2>Choose Split Method</h2>
 
-
-<!-- =========================================
-     MODES
-========================================= -->
 
 <div class="mode-grid">
 
 
 <button
-    class="mode-btn active"
-    data-mode="range">
+type="button"
+class="mode-btn active"
+data-mode="range">
 
-<span class="mode-icon">
-📑
-</span>
+<span class="mode-icon">📑</span>
 
 Extract Pages
 
 <span class="mode-description">
-Create one PDF from a selected page range
+Create one PDF from selected pages
 </span>
 
 </button>
 
 
 <button
-    class="mode-btn"
-    data-mode="every">
+type="button"
+class="mode-btn"
+data-mode="every">
 
-<span class="mode-icon">
-✂️
-</span>
+<span class="mode-icon">✂️</span>
 
 Every Page
 
@@ -608,17 +501,16 @@ Create one PDF for every page
 
 
 <button
-    class="mode-btn"
-    data-mode="chunks">
+type="button"
+class="mode-btn"
+data-mode="chunks">
 
-<span class="mode-icon">
-📚
-</span>
+<span class="mode-icon">📚</span>
 
 Split Into Chunks
 
 <span class="mode-description">
-Divide PDF into groups of pages
+Divide PDF into page groups
 </span>
 
 </button>
@@ -626,20 +518,15 @@ Divide PDF into groups of pages
 </div>
 
 
-<!-- =========================================
-     RANGE PANEL
-========================================= -->
+<!-- RANGE -->
 
 <div
-    class="mode-panel active"
-    id="rangePanel">
+class="mode-panel active"
+id="rangePanel">
 
-<h3>
-📑 Extract Page Range
-</h3>
+<h3>📑 Extract Page Range</h3>
 
 <div class="input-grid">
-
 
 <div class="input-group">
 
@@ -648,10 +535,10 @@ Start Page
 </label>
 
 <input
-    type="number"
-    id="startPage"
-    min="1"
-    placeholder="Example: 1">
+type="number"
+id="startPage"
+min="1"
+placeholder="Example: 1">
 
 </div>
 
@@ -663,10 +550,10 @@ End Page
 </label>
 
 <input
-    type="number"
-    id="endPage"
-    min="1"
-    placeholder="Example: 5">
+type="number"
+id="endPage"
+min="1"
+placeholder="Example: 5">
 
 </div>
 
@@ -674,8 +561,8 @@ End Page
 
 
 <div
-    class="range-info"
-    id="rangeInfo">
+class="range-info"
+id="rangeInfo">
 
 Upload a PDF to select pages.
 
@@ -684,38 +571,30 @@ Upload a PDF to select pages.
 </div>
 
 
-<!-- =========================================
-     EVERY PAGE PANEL
-========================================= -->
+<!-- EVERY PAGE -->
 
 <div
-    class="mode-panel"
-    id="everyPanel">
+class="mode-panel"
+id="everyPanel">
 
-<h3>
-✂️ Split Every Page
-</h3>
+<h3>✂️ Split Every Page</h3>
 
 <p>
-Every page of your PDF will become a separate
-PDF file. All generated PDFs can be downloaded
-together as a ZIP file.
+Every page will become a separate PDF file.
+The generated PDFs will be packed into one ZIP
+file for easy download.
 </p>
 
 </div>
 
 
-<!-- =========================================
-     CHUNKS PANEL
-========================================= -->
+<!-- CHUNKS -->
 
 <div
-    class="mode-panel"
-    id="chunksPanel">
+class="mode-panel"
+id="chunksPanel">
 
-<h3>
-📚 Split Into Chunks
-</h3>
+<h3>📚 Split Into Chunks</h3>
 
 <div class="input-group">
 
@@ -724,35 +603,30 @@ Pages Per PDF
 </label>
 
 <input
-    type="number"
-    id="chunkSize"
-    min="1"
-    placeholder="Example: 5">
+type="number"
+id="chunkSize"
+min="1"
+placeholder="Example: 5">
 
 </div>
 
-
-<p class="chunk-help">
-
-Example: A 20-page PDF with 5 pages per PDF
-will create 4 separate PDF files:
-1–5, 6–10, 11–15 and 16–20.
-
+<p>
+Example: A 20-page PDF with 5 pages per part
+creates 1–5, 6–10, 11–15 and 16–20.
 </p>
 
 </div>
 
 
-<!-- =========================================
-     ACTIONS
-========================================= -->
+<!-- ACTIONS -->
 
 <div class="actions">
 
 <button
-    class="action-btn split-btn"
-    id="splitBtn"
-    disabled>
+type="button"
+class="action-btn split-btn"
+id="splitBtn"
+disabled>
 
 ✂️ Split PDF
 
@@ -760,9 +634,10 @@ will create 4 separate PDF files:
 
 
 <button
-    class="action-btn download-btn"
-    id="downloadBtn"
-    disabled>
+type="button"
+class="action-btn download-btn"
+id="downloadBtn"
+disabled>
 
 📥 Download
 
@@ -770,8 +645,9 @@ will create 4 separate PDF files:
 
 
 <button
-    class="action-btn reset-btn"
-    id="resetBtn">
+type="button"
+class="action-btn reset-btn"
+id="resetBtn">
 
 🔄 Reset
 
@@ -780,26 +656,24 @@ will create 4 separate PDF files:
 </div>
 
 
-<!-- =========================================
-     PROGRESS
-========================================= -->
+<!-- PROGRESS -->
 
 <div
-    class="progress-wrap"
-    id="progressWrap">
+class="progress-wrap"
+id="progressWrap">
 
 <div class="progress-bar">
 
 <div
-    class="progress-fill"
-    id="progressFill">
+class="progress-fill"
+id="progressFill">
 </div>
 
 </div>
 
 <div
-    class="progress-text"
-    id="progressText">
+class="progress-text"
+id="progressText">
 
 Preparing...
 
@@ -808,36 +682,28 @@ Preparing...
 </div>
 
 
-<!-- =========================================
-     RESULT
-========================================= -->
+<!-- RESULT -->
 
 <div
-    class="result-box"
-    id="resultBox">
+class="result-box"
+id="resultBox">
 
 ✅ <b>PDF split successfully!</b>
 
 <br>
 
-<span id="resultText">
-Your files are ready.
-</span>
+<span id="resultText"></span>
 
 </div>
 
 
-<!-- =========================================
-     OUTPUT LIST
-========================================= -->
+<!-- OUTPUT -->
 
 <div
-    class="output-list"
-    id="outputList">
+class="output-list"
+id="outputList">
 
-<h3>
-📂 Generated Files
-</h3>
+<h3>📂 Generated Files</h3>
 
 <div id="outputItems"></div>
 
@@ -848,112 +714,81 @@ Your files are ready.
 
 
 <!-- =========================================
-     INFORMATION
+INFO
 ========================================= -->
 
 <section class="info-section">
 
-<h2>
-Free Online PDF Splitter
-</h2>
+<h2>Free Online PDF Splitter</h2>
 
 <p>
 AdiyogiTools PDF Split lets you extract selected
-pages, split every page into individual PDF files,
-or divide a large PDF into smaller groups of pages.
-The processing happens directly in your browser.
+pages, split every page into individual PDFs,
+or divide a large PDF into smaller groups.
+Processing happens directly in your browser.
 </p>
 
 
-<h3>
-How to split a PDF?
-</h3>
+<h3>How to split a PDF?</h3>
 
 <ol>
 
-<li>
-Choose your PDF file.
-</li>
+<li>Choose your PDF.</li>
 
-<li>
-Select <b>Extract Pages</b>, <b>Every Page</b>,
-or <b>Split Into Chunks</b>.
-</li>
+<li>Select a split method.</li>
 
-<li>
-Set the required page range or chunk size.
-</li>
+<li>Enter the required page range or chunk size.</li>
 
-<li>
-Click <b>Split PDF</b>.
-</li>
+<li>Click Split PDF.</li>
 
-<li>
-Download the generated PDF files.
-</li>
+<li>Download the generated file or ZIP.</li>
 
 </ol>
 
 
-<h3>
-Can I extract specific pages from a PDF?
-</h3>
+<h3>Can I extract specific pages?</h3>
 
 <p>
-Yes. Use the Extract Pages option and enter the
-start and end page numbers.
+Yes. Use Extract Pages and enter the start and
+end page numbers.
 </p>
 
 
-<h3>
-Can every PDF page be separated?
-</h3>
+<h3>Can I split every page?</h3>
 
 <p>
-Yes. The Every Page option creates a separate
-PDF file for each page.
+Yes. Every Page creates one PDF for each page.
 </p>
 
 
-<h3>
-Can I split a large PDF into equal parts?
-</h3>
+<h3>Can I split a PDF into groups?</h3>
 
 <p>
-Yes. Use Split Into Chunks and specify how many
-pages each output PDF should contain.
+Yes. Split Into Chunks lets you specify how many
+pages should be included in each PDF.
 </p>
 
 
-<h3>
-Are my PDF files uploaded?
-</h3>
+<h3>Are my PDFs uploaded?</h3>
 
 <p>
-The PDF processing is performed directly in your
-browser. Your PDF does not need to be uploaded to
-an AdiyogiTools processing server.
+No server upload is required for processing.
+The PDF is processed directly in your browser.
 </p>
 
 </section>
 
 
-<!-- =========================================
-     FAQ
-========================================= -->
+<!-- FAQ -->
 
 <section class="info-section">
 
-<h2>
-Frequently Asked Questions
-</h2>
+<h2>Frequently Asked Questions</h2>
 
 
 <div class="faq-item">
 
-<h3>
-Is PDF Split free?
-</h3>
+<h3>Is PDF Split free?</h3>
 
 <p>
 Yes. AdiyogiTools PDF Split is designed as a
@@ -965,13 +800,11 @@ free browser-based PDF splitting tool.
 
 <div class="faq-item">
 
-<h3>
-Can I extract only selected PDF pages?
-</h3>
+<h3>Can I extract selected pages?</h3>
 
 <p>
-Yes. Select Extract Pages and enter the required
-start and end page numbers.
+Yes. Use Extract Pages and enter the desired
+start and end pages.
 </p>
 
 </div>
@@ -979,13 +812,11 @@ start and end page numbers.
 
 <div class="faq-item">
 
-<h3>
-Can I split every page into a separate PDF?
-</h3>
+<h3>Can I split every page?</h3>
 
 <p>
-Yes. Select Every Page to create an individual
-PDF for each page.
+Yes. Every Page creates a separate PDF for
+each page.
 </p>
 
 </div>
@@ -993,27 +824,11 @@ PDF for each page.
 
 <div class="faq-item">
 
-<h3>
-Can I split a PDF into groups of pages?
-</h3>
+<h3>Can I split a PDF into parts?</h3>
 
 <p>
-Yes. Select Split Into Chunks and enter the number
-of pages you want in each output PDF.
-</p>
-
-</div>
-
-
-<div class="faq-item">
-
-<h3>
-Are my PDF files uploaded to a server?
-</h3>
-
-<p>
-No server upload is required for the PDF splitting
-process. Processing is performed in your browser.
+Yes. Use Split Into Chunks and enter the
+number of pages per PDF.
 </p>
 
 </div>
@@ -1025,20 +840,23 @@ process. Processing is performed in your browser.
 
 
 <!-- =========================================
-     LIBRARIES
+LIBRARIES
 ========================================= -->
 
-<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js">
+</script>
 
-<script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+<script
+src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js">
+</script>
 
 
 <script>
 
 /* =========================================
-   PDF SPLIT PRO
+   ELEMENTS
 ========================================= */
-
 
 const pdfInput =
 document.getElementById("pdfFile");
@@ -1064,9 +882,6 @@ document.getElementById("downloadBtn");
 const resetBtn =
 document.getElementById("resetBtn");
 
-const rangeInfo =
-document.getElementById("rangeInfo");
-
 const startPage =
 document.getElementById("startPage");
 
@@ -1075,6 +890,9 @@ document.getElementById("endPage");
 
 const chunkSize =
 document.getElementById("chunkSize");
+
+const rangeInfo =
+document.getElementById("rangeInfo");
 
 const progressWrap =
 document.getElementById("progressWrap");
@@ -1114,94 +932,24 @@ let generatedFiles = [];
 
 let generatedZipBlob = null;
 
-let generatedDownloadBlob = null;
-
-let generatedDownloadName = "";
-
 
 /* =========================================
-   MODE SWITCH
-========================================= */
-
-document
-.querySelectorAll(".mode-btn")
-.forEach(
-function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-document
-.querySelectorAll(".mode-btn")
-.forEach(
-function(btn){
-
-btn.classList.remove(
-"active"
-);
-
-}
-);
-
-document
-.querySelectorAll(".mode-panel")
-.forEach(
-function(panel){
-
-panel.classList.remove(
-"active"
-);
-
-}
-);
-
-
-button.classList.add(
-"active"
-);
-
-
-currentMode =
-button.dataset.mode;
-
-
-document
-.getElementById(
-currentMode + "Panel"
-)
-.classList.add(
-"active"
-);
-
-
-clearGenerated();
-
-updateRangeInfo();
-
-}
-);
-
-}
-);
-
-
-/* =========================================
-   FILE SELECT
+   FILE INPUT
 ========================================= */
 
 pdfInput.addEventListener(
 "change",
 function(){
 
-const file =
-this.files[0];
+const file = this.files[0];
 
-if(file){
+if(!file){
 
-loadPDF(file);
+return;
 
 }
+
+loadPDF(file);
 
 }
 );
@@ -1211,19 +959,11 @@ loadPDF(file);
    DRAG DROP
 ========================================= */
 
-[
-"dragenter",
-"dragover"
-].forEach(
-function(eventName){
-
 uploadBox.addEventListener(
-eventName,
+"dragover",
 function(e){
 
 e.preventDefault();
-
-e.stopPropagation();
 
 uploadBox.classList.add(
 "dragover"
@@ -1232,29 +972,13 @@ uploadBox.classList.add(
 }
 );
 
-}
-);
-
-
-[
-"dragleave",
-"drop"
-].forEach(
-function(eventName){
 
 uploadBox.addEventListener(
-eventName,
-function(e){
-
-e.preventDefault();
-
-e.stopPropagation();
+"dragleave",
+function(){
 
 uploadBox.classList.remove(
 "dragover"
-);
-
-}
 );
 
 }
@@ -1264,6 +988,12 @@ uploadBox.classList.remove(
 uploadBox.addEventListener(
 "drop",
 function(e){
+
+e.preventDefault();
+
+uploadBox.classList.remove(
+"dragover"
+);
 
 const file =
 e.dataTransfer.files[0];
@@ -1285,12 +1015,8 @@ loadPDF(file);
 async function loadPDF(file){
 
 if(
-file.type !==
-"application/pdf"
-&&
-!/\.pdf$/i.test(
-file.name
-)
+file.type !== "application/pdf" &&
+!/\.pdf$/i.test(file.name)
 ){
 
 alert(
@@ -1303,6 +1029,9 @@ return;
 
 
 try{
+
+progressWrap.style.display =
+"none";
 
 const bytes =
 await file.arrayBuffer();
@@ -1327,10 +1056,8 @@ pdf.getPageCount();
 fileInfo.style.display =
 "block";
 
-
 fileName.textContent =
 file.name;
-
 
 fileMeta.textContent =
 formatBytes(file.size) +
@@ -1356,7 +1083,6 @@ Math.min(
 totalPages
 );
 
-
 chunkSize.value =
 Math.min(
 5,
@@ -1364,19 +1090,17 @@ totalPages
 );
 
 
-updateRangeInfo();
-
 clearGenerated();
+
+updateRangeInfo();
 
 
 }catch(error){
 
-console.error(
-error
-);
+console.error(error);
 
 alert(
-"Unable to open this PDF. It may be damaged, encrypted or unsupported."
+"Unable to open this PDF. Please try another PDF."
 );
 
 }
@@ -1385,7 +1109,75 @@ alert(
 
 
 /* =========================================
-   RANGE UPDATE
+   MODE
+========================================= */
+
+document
+.querySelectorAll(".mode-btn")
+.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+document
+.querySelectorAll(".mode-btn")
+.forEach(
+function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+}
+);
+
+
+document
+.querySelectorAll(".mode-panel")
+.forEach(
+function(panel){
+
+panel.classList.remove(
+"active"
+);
+
+}
+);
+
+
+this.classList.add(
+"active"
+);
+
+
+currentMode =
+this.dataset.mode;
+
+
+document
+.getElementById(
+currentMode + "Panel"
+)
+.classList.add(
+"active"
+);
+
+
+clearGenerated();
+
+updateRangeInfo();
+
+}
+);
+
+}
+);
+
+
+/* =========================================
+   RANGE
 ========================================= */
 
 startPage.addEventListener(
@@ -1412,14 +1204,10 @@ return;
 
 
 const start =
-parseInt(
-startPage.value
-);
+parseInt(startPage.value);
 
 const end =
-parseInt(
-endPage.value
-);
+parseInt(endPage.value);
 
 
 if(
@@ -1428,7 +1216,7 @@ isNaN(end)
 ){
 
 rangeInfo.textContent =
-"Enter a valid page range.";
+"Enter a page range.";
 
 return;
 
@@ -1442,7 +1230,7 @@ end > totalPages
 ){
 
 rangeInfo.textContent =
-"Please enter a valid range between 1 and " +
+"Enter a valid range from 1 to " +
 totalPages +
 ".";
 
@@ -1456,7 +1244,6 @@ end - start + 1;
 
 
 rangeInfo.innerHTML =
-
 "Selected pages: <b>" +
 start +
 "–" +
@@ -1473,7 +1260,7 @@ count === 1
 
 
 /* =========================================
-   SPLIT
+   SPLIT BUTTON
 ========================================= */
 
 splitBtn.addEventListener(
@@ -1482,12 +1269,13 @@ splitPDF
 );
 
 
+/* =========================================
+   MAIN SPLIT
+========================================= */
+
 async function splitPDF(){
 
-if(
-!sourcePdf ||
-!selectedFile
-){
+if(!sourcePdf){
 
 alert(
 "Please select a PDF first."
@@ -1499,7 +1287,6 @@ return;
 
 
 clearGenerated();
-
 
 splitBtn.disabled =
 true;
@@ -1513,31 +1300,22 @@ progressWrap.style.display =
 progressFill.style.width =
 "0%";
 
-progressText.textContent =
-"Preparing...";
-
 
 try{
 
-
-/* =========================================
+/* =====================================
    RANGE
-========================================= */
+===================================== */
 
 if(
-currentMode ===
-"range"
+currentMode === "range"
 ){
 
 const start =
-parseInt(
-startPage.value
-);
+parseInt(startPage.value);
 
 const end =
-parseInt(
-endPage.value
-);
+parseInt(endPage.value);
 
 
 if(
@@ -1549,43 +1327,45 @@ end > totalPages
 ){
 
 throw new Error(
-"Invalid page range."
+"Please enter a valid page range."
 );
 
 }
 
 
 progressText.textContent =
-"Extracting selected pages...";
+"Extracting pages...";
 
 
 const newPdf =
 await PDFLib.PDFDocument.create();
 
 
+const indices =
+[];
+
+for(
+let i = start - 1;
+i < end;
+i++
+){
+
+indices.push(i);
+
+}
+
+
 const pages =
 await newPdf.copyPages(
 sourcePdf,
-Array.from(
-{
-length:
-end - start + 1
-},
-function(_,i){
-
-return start - 1 + i;
-
-}
-)
+indices
 );
 
 
 pages.forEach(
 function(page){
 
-newPdf.addPage(
-page
-);
+newPdf.addPage(page);
 
 }
 );
@@ -1595,32 +1375,27 @@ const bytes =
 await newPdf.save();
 
 
-generatedDownloadBlob =
+const blob =
 new Blob(
 [bytes],
 {
-type:
-"application/pdf"
+type:"application/pdf"
 }
 );
-
-
-generatedDownloadName =
-"adiyogitools-pages-" +
-start +
-"-" +
-end +
-".pdf";
 
 
 generatedFiles = [
 
 {
 name:
-generatedDownloadName,
+"adiyogitools-pages-" +
+start +
+"-" +
+end +
+".pdf",
 
 blob:
-generatedDownloadBlob,
+blob,
 
 pages:
 end - start + 1
@@ -1633,7 +1408,6 @@ end - start + 1
 progressFill.style.width =
 "100%";
 
-
 progressText.textContent =
 "Complete";
 
@@ -1642,12 +1416,7 @@ resultText.textContent =
 (
 end - start + 1
 ) +
-(
-end - start + 1 === 1
-? " page has"
-: " pages have"
-) +
-" been extracted successfully.";
+" page(s) extracted successfully.";
 
 
 renderOutputs();
@@ -1657,13 +1426,12 @@ return;
 }
 
 
-/* =========================================
+/* =====================================
    EVERY PAGE
-========================================= */
+===================================== */
 
 if(
-currentMode ===
-"every"
+currentMode === "every"
 ){
 
 const files = [];
@@ -1696,28 +1464,14 @@ sourcePdf,
 pages.forEach(
 function(page){
 
-newPdf.addPage(
-page
-);
+newPdf.addPage(page);
 
 }
-
-
 );
 
 
 const bytes =
 await newPdf.save();
-
-
-const blob =
-new Blob(
-[bytes],
-{
-type:
-"application/pdf"
-}
-);
 
 
 files.push({
@@ -1728,10 +1482,14 @@ name:
 ".pdf",
 
 blob:
-blob,
+new Blob(
+[bytes],
+{
+type:"application/pdf"
+}
+),
 
-pages:
-1
+pages:1
 
 });
 
@@ -1740,12 +1498,12 @@ progressFill.style.width =
 (
 (i + 1) /
 totalPages *
-90
+80
 ) +
 "%";
 
 
-await pause(15);
+await pause(10);
 
 }
 
@@ -1754,7 +1512,7 @@ generatedFiles =
 files;
 
 
-await createZip();
+await createZIP();
 
 
 progressFill.style.width =
@@ -1766,7 +1524,7 @@ progressText.textContent =
 
 resultText.textContent =
 totalPages +
-" separate PDF files were created and packed into a ZIP file.";
+" separate PDF files created.";
 
 
 renderOutputs();
@@ -1776,19 +1534,16 @@ return;
 }
 
 
-/* =========================================
+/* =====================================
    CHUNKS
-========================================= */
+===================================== */
 
 if(
-currentMode ===
-"chunks"
+currentMode === "chunks"
 ){
 
 const size =
-parseInt(
-chunkSize.value
-);
+parseInt(chunkSize.value);
 
 
 if(
@@ -1797,7 +1552,7 @@ size < 1
 ){
 
 throw new Error(
-"Enter a valid chunk size."
+"Enter a valid pages-per-PDF value."
 );
 
 }
@@ -1805,9 +1560,7 @@ throw new Error(
 
 const files = [];
 
-
-let part =
-1;
+let part = 1;
 
 
 for(
@@ -1833,8 +1586,7 @@ const newPdf =
 await PDFLib.PDFDocument.create();
 
 
-const indices =
-[];
+const indices = [];
 
 
 for(
@@ -1858,9 +1610,7 @@ indices
 pages.forEach(
 function(page){
 
-newPdf.addPage(
-page
-);
+newPdf.addPage(page);
 
 }
 );
@@ -1870,31 +1620,24 @@ const bytes =
 await newPdf.save();
 
 
-const blob =
-new Blob(
-[bytes],
-{
-type:
-"application/pdf"
-}
-);
-
-
 files.push({
 
 name:
 "part-" +
 part +
 "-pages-" +
-(
-start + 1
-) +
+(start + 1) +
 "-" +
 end +
 ".pdf",
 
 blob:
-blob,
+new Blob(
+[bytes],
+{
+type:"application/pdf"
+}
+),
 
 pages:
 end - start
@@ -1909,12 +1652,12 @@ progressFill.style.width =
 (
 end /
 totalPages *
-90
+80
 ) +
 "%";
 
 
-await pause(15);
+await pause(10);
 
 }
 
@@ -1923,7 +1666,7 @@ generatedFiles =
 files;
 
 
-await createZip();
+await createZIP();
 
 
 progressFill.style.width =
@@ -1935,7 +1678,7 @@ progressText.textContent =
 
 resultText.textContent =
 files.length +
-" PDF parts were created and packed into a ZIP file.";
+" PDF parts created.";
 
 
 renderOutputs();
@@ -1944,17 +1687,15 @@ renderOutputs();
 
 }catch(error){
 
-console.error(
-error
-);
+console.error(error);
 
 alert(
 error.message ||
-"Unable to split this PDF."
+"Unable to split PDF."
 );
 
 progressText.textContent =
-"Split failed";
+"Failed";
 
 }finally{
 
@@ -1967,10 +1708,10 @@ splitBtn.disabled =
 
 
 /* =========================================
-   CREATE ZIP
+   ZIP
 ========================================= */
 
-async function createZip(){
+async function createZIP(){
 
 if(
 generatedFiles.length <= 1
@@ -1979,6 +1720,10 @@ generatedFiles.length <= 1
 return;
 
 }
+
+
+progressText.textContent =
+"Creating ZIP file...";
 
 
 const zip =
@@ -2000,30 +1745,13 @@ file.blob
 generatedZipBlob =
 await zip.generateAsync(
 {
-type:
-"blob",
-compression:
-"DEFLATE",
-compressionOptions:
-{
-level:
-6
-}
+type:"blob",
+compression:"DEFLATE"
 },
 function(metadata){
 
 progressFill.style.width =
-Math.min(
-95,
-metadata.percent
-) +
-"%";
-
-progressText.textContent =
-"Creating ZIP " +
-Math.round(
-metadata.percent
-) +
+metadata.percent +
 "%";
 
 }
@@ -2049,11 +1777,6 @@ return;
 }
 
 
-/*
- * Multiple files
- * → ZIP
- */
-
 if(
 generatedFiles.length > 1
 ){
@@ -2061,7 +1784,7 @@ generatedFiles.length > 1
 if(!generatedZipBlob){
 
 alert(
-"ZIP is still being prepared."
+"ZIP is not ready yet."
 );
 
 return;
@@ -2079,10 +1802,6 @@ return;
 }
 
 
-/*
- * Single file
- */
-
 downloadBlob(
 generatedFiles[0].blob,
 generatedFiles[0].name
@@ -2093,7 +1812,7 @@ generatedFiles[0].name
 
 
 /* =========================================
-   RENDER OUTPUTS
+   OUTPUT
 ========================================= */
 
 function renderOutputs(){
@@ -2103,7 +1822,7 @@ outputItems.innerHTML =
 
 
 generatedFiles.forEach(
-function(file,index){
+function(file){
 
 const item =
 document.createElement(
@@ -2114,32 +1833,69 @@ item.className =
 "output-item";
 
 
-item.innerHTML = `
-
-<div class="output-icon">
-📄
-</div>
-
-<div class="output-info">
-
-<div class="output-name">
-${escapeHTML(file.name)}
-</div>
-
-<div class="output-meta">
-${file.pages}
-${file.pages === 1 ? " page" : " pages"}
- • ${formatBytes(file.blob.size)}
-</div>
-
-</div>
-
-`;
-
-
-outputItems.appendChild(
-item
+const icon =
+document.createElement(
+"div"
 );
+
+icon.className =
+"output-icon";
+
+icon.textContent =
+"📄";
+
+
+const info =
+document.createElement(
+"div"
+);
+
+info.className =
+"output-info";
+
+
+const name =
+document.createElement(
+"div"
+);
+
+name.className =
+"output-name";
+
+name.textContent =
+file.name;
+
+
+const meta =
+document.createElement(
+"div"
+);
+
+meta.className =
+"output-meta";
+
+meta.textContent =
+file.pages +
+(
+file.pages === 1
+? " page"
+: " pages"
+) +
+" • " +
+formatBytes(
+file.blob.size
+);
+
+
+info.appendChild(name);
+
+info.appendChild(meta);
+
+item.appendChild(icon);
+
+item.appendChild(info);
+
+outputItems.appendChild(item);
 
 }
 );
@@ -2148,17 +1904,17 @@ item
 outputList.style.display =
 "block";
 
-downloadBtn.disabled =
-false;
-
 resultBox.style.display =
 "block";
+
+downloadBtn.disabled =
+false;
 
 }
 
 
 /* =========================================
-   CLEAR GENERATED
+   CLEAR
 ========================================= */
 
 function clearGenerated(){
@@ -2166,10 +1922,6 @@ function clearGenerated(){
 generatedFiles = [];
 
 generatedZipBlob = null;
-
-generatedDownloadBlob = null;
-
-generatedDownloadName = "";
 
 outputItems.innerHTML =
 "";
@@ -2180,14 +1932,11 @@ outputList.style.display =
 resultBox.style.display =
 "none";
 
-progressWrap.style.display =
-"none";
+downloadBtn.disabled =
+true;
 
 progressFill.style.width =
 "0%";
-
-downloadBtn.disabled =
-true;
 
 }
 
@@ -2200,17 +1949,15 @@ resetBtn.addEventListener(
 "click",
 function(){
 
-selectedFile =
-null;
+selectedFile = null;
 
-sourcePdf =
-null;
+sourcePdf = null;
 
-totalPages =
-0;
+totalPages = 0;
 
-pdfInput.value =
-"";
+currentMode = "range";
+
+pdfInput.value = "";
 
 fileInfo.style.display =
 "none";
@@ -2235,9 +1982,11 @@ true;
 
 clearGenerated();
 
+progressWrap.style.display =
+"none";
 
-currentMode =
-"range";
+rangeInfo.textContent =
+"Upload a PDF to select pages.";
 
 
 document
@@ -2267,10 +2016,6 @@ index === 0
 }
 );
 
-
-rangeInfo.textContent =
-"Upload a PDF to select pages.";
-
 }
 );
 
@@ -2281,41 +2026,31 @@ rangeInfo.textContent =
 
 function downloadBlob(
 blob,
-name
+filename
 ){
 
 const url =
-URL.createObjectURL(
-blob
-);
+URL.createObjectURL(blob);
 
 
-const link =
-document.createElement(
-"a"
-);
+const a =
+document.createElement("a");
 
-link.href =
-url;
+a.href = url;
 
-link.download =
-name;
+a.download = filename;
 
-document.body.appendChild(
-link
-);
+document.body.appendChild(a);
 
-link.click();
+a.click();
 
-link.remove();
+a.remove();
 
 
 setTimeout(
 function(){
 
-URL.revokeObjectURL(
-url
-);
+URL.revokeObjectURL(url);
 
 },
 1000
@@ -2326,11 +2061,10 @@ url
 
 /* =========================================
    PAUSE
+   IMPORTANT: COMPLETE FUNCTION
 ========================================= */
 
-function pause(
-ms
-){
+function pause(ms){
 
 return new Promise(
 function(resolve){
@@ -2343,51 +2077,16 @@ ms
 }
 );
 
-
-/* =========================================
-   ESCAPE HTML
-========================================= */
-
-function escapeHTML(
-value
-){
-
-return value
-.replace(
-/&/g,
-"&amp;"
-)
-.replace(
-/</g,
-"&lt;"
-)
-.replace(
-/>/g,
-"&gt;"
-)
-.replace(
-/"/g,
-"&quot;"
-)
-.replace(
-/'/g,
-"&#039;"
-);
-
 }
 
 
 /* =========================================
-   FORMAT BYTES
+   FORMAT SIZE
 ========================================= */
 
-function formatBytes(
-bytes
-){
+function formatBytes(bytes){
 
-if(
-bytes === 0
-){
+if(bytes === 0){
 
 return "0 Bytes";
 
@@ -2438,7 +2137,7 @@ clearGenerated();
 
 
 <!-- =========================================
-     STRUCTURED DATA
+STRUCTURED DATA
 ========================================= -->
 
 <script type="application/ld+json">
@@ -2479,37 +2178,28 @@ clearGenerated();
 
 {
 "@type":"Question",
-"name":"Can I extract only selected PDF pages?",
+"name":"Can I extract selected PDF pages?",
 "acceptedAnswer":{
 "@type":"Answer",
-"text":"Yes. Select Extract Pages and enter the required start and end page numbers."
+"text":"Yes. Use Extract Pages and enter the desired start and end pages."
 }
 },
 
 {
 "@type":"Question",
-"name":"Can I split every page into a separate PDF?",
+"name":"Can I split every PDF page?",
 "acceptedAnswer":{
 "@type":"Answer",
-"text":"Yes. Select Every Page to create an individual PDF for each page."
+"text":"Yes. Every Page creates a separate PDF for each page."
 }
 },
 
 {
 "@type":"Question",
-"name":"Can I split a PDF into groups of pages?",
+"name":"Can I split a PDF into parts?",
 "acceptedAnswer":{
 "@type":"Answer",
-"text":"Yes. Select Split Into Chunks and enter the number of pages you want in each output PDF."
-}
-},
-
-{
-"@type":"Question",
-"name":"Are my PDF files uploaded to a server?",
-"acceptedAnswer":{
-"@type":"Answer",
-"text":"No server upload is required for the PDF splitting process. Processing is performed in your browser."
+"text":"Yes. Split Into Chunks allows you to choose the number of pages per PDF."
 }
 }
 
