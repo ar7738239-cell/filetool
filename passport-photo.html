@@ -4,32 +4,545 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Passport Photo Maker</title>
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<title>Passport Photo Maker Online Free | AdiyogiTools</title>
+
+<meta name="description"
+content="Create passport size photos online for free. Crop, resize, rotate and adjust your photo with standard passport photo sizes. Download high-quality photos directly in your browser.">
+
+<meta name="keywords"
+content="passport photo maker, passport size photo maker, passport photo online, passport photo resize, 35x45 passport photo, 2x2 photo maker">
+
+<meta name="robots"
+content="index, follow">
+
+<link rel="canonical"
+href="https://adiyogitools.in/passport-photo-maker.html">
+
+<meta property="og:title"
+content="Passport Photo Maker Online Free | AdiyogiTools">
+
+<meta property="og:description"
+content="Create and download passport size photos online with crop, zoom and rotation controls.">
+
+<meta property="og:type"
+content="website">
+
+<meta property="og:url"
+content="https://adiyogitools.in/passport-photo-maker.html">
+
+<meta name="twitter:card"
+content="summary">
+
+<link rel="stylesheet"
+href="style.css">
+
+
+<style>
+
+/* =========================================
+   PASSPORT PHOTO MAKER PRO
+========================================= */
+
+.passport-page{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+
+/* HERO */
+
+.passport-hero{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.passport-hero h1{
+    font-size:clamp(28px,5vw,44px);
+    margin-bottom:10px;
+}
+
+.passport-hero p{
+    color:#64748b;
+    line-height:1.6;
+}
+
+
+/* UPLOAD */
+
+.upload-box{
+    background:#fff;
+    border:2px dashed #2563eb;
+    border-radius:20px;
+    padding:35px 20px;
+    text-align:center;
+    margin-bottom:20px;
+    transition:.2s;
+}
+
+.upload-box.dragover{
+    background:#eff6ff;
+    transform:scale(1.01);
+}
+
+.upload-icon{
+    font-size:55px;
+}
+
+.upload-box h2{
+    margin:8px 0;
+}
+
+.upload-box p{
+    color:#64748b;
+}
+
+.upload-btn{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:14px 25px;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+#photo{
+    display:none;
+}
+
+
+/* MAIN GRID */
+
+.editor-grid{
+    display:grid;
+    grid-template-columns:
+        minmax(0,1.4fr)
+        minmax(300px,1fr);
+    gap:20px;
+}
+
+
+/* CARD */
+
+.tool-card{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.06);
+}
+
+.tool-card h2{
+    margin-top:0;
+}
+
+
+/* PREVIEW */
+
+.preview-area{
+    background:#0f172a;
+    border-radius:15px;
+    padding:15px;
+    min-height:400px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    overflow:hidden;
+}
+
+#canvas{
+    max-width:100%;
+    max-height:650px;
+    width:auto;
+    height:auto;
+
+    background:white;
+
+    box-shadow:
+        0 5px 25px rgba(0,0,0,.3);
+
+    touch-action:none;
+}
+
+
+/* EMPTY PREVIEW */
+
+.empty-preview{
+    color:#cbd5e1;
+    text-align:center;
+}
+
+.empty-preview .big{
+    font-size:60px;
+}
+
+
+/* CONTROL GROUP */
+
+.control-group{
+    margin-bottom:20px;
+}
+
+.control-group label{
+    display:block;
+    font-weight:700;
+    margin-bottom:7px;
+}
+
+
+/* SELECT */
+
+select,
+input[type="number"]{
+    width:100%;
+    box-sizing:border-box;
+    padding:12px;
+
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+
+    font-size:15px;
+
+    background:white;
+}
+
+
+/* RANGE */
+
+.range-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.range-row input{
+    flex:1;
+}
+
+.range-value{
+    min-width:55px;
+    text-align:right;
+    font-size:13px;
+    color:#64748b;
+}
+
+
+/* BUTTON GRID */
+
+.button-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+}
+
+.control-btn{
+    border:1px solid #cbd5e1;
+    background:#f8fafc;
+    border-radius:9px;
+    padding:10px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.control-btn:hover{
+    background:#eff6ff;
+}
+
+
+/* BACKGROUND */
+
+.bg-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(5,1fr);
+
+    gap:8px;
+}
+
+.bg-btn{
+    height:38px;
+    border-radius:8px;
+    border:2px solid #cbd5e1;
+    cursor:pointer;
+}
+
+.bg-btn.active{
+    border-color:#2563eb;
+    box-shadow:
+        0 0 0 2px #bfdbfe;
+}
+
+
+/* ACTIONS */
+
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.action-btn{
+    border:none;
+    border-radius:11px;
+    padding:13px 18px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.generate-btn{
+    background:#16a34a;
+    color:white;
+}
+
+.download-btn{
+    background:#2563eb;
+    color:white;
+}
+
+.reset-btn{
+    background:#f1f5f9;
+    color:#334155;
+}
+
+.action-btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+
+/* PRINT SHEET */
+
+.sheet-section{
+    margin-top:20px;
+}
+
+.sheet-info{
+    background:#eff6ff;
+    color:#1e40af;
+    padding:13px;
+    border-radius:10px;
+    line-height:1.5;
+}
+
+
+/* STATUS */
+
+.status-box{
+    display:none;
+    margin-top:15px;
+    padding:14px;
+
+    border-radius:12px;
+
+    background:#f0fdf4;
+    border:1px solid #bbf7d0;
+
+    color:#166534;
+}
+
+
+/* INFO */
+
+.info-section{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    margin-top:25px;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.05);
+}
+
+.info-section h2{
+    margin-top:0;
+}
+
+.info-section h3{
+    margin-bottom:5px;
+}
+
+.info-section p,
+.info-section li{
+    color:#475569;
+    line-height:1.7;
+}
+
+.faq-item{
+    border-bottom:1px solid #e2e8f0;
+    padding:15px 0;
+}
+
+.faq-item:last-child{
+    border-bottom:none;
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+    .passport-page{
+        padding:12px;
+    }
+
+    .editor-grid{
+        grid-template-columns:1fr;
+    }
+
+    .preview-area{
+        min-height:300px;
+    }
+
+    .button-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+    .action-btn{
+        width:100%;
+    }
+
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-<div class="container">
 
-<h1>🪪 Passport Photo Maker</h1>
+<div class="passport-page">
 
-<p>Select your photo</p>
+
+<!-- =========================================
+HERO
+========================================= -->
+
+<section class="passport-hero">
+
+<h1>
+🪪 Passport Photo Maker
+</h1>
+
+<p>
+Create passport-size photos online with crop,
+zoom, rotation, background and print-sheet controls.
+</p>
+
+</section>
+
+
+<!-- =========================================
+UPLOAD
+========================================= -->
+
+<div
+class="upload-box"
+id="uploadBox">
+
+<div class="upload-icon">
+📸
+</div>
+
+<h2>
+Upload Your Photo
+</h2>
+
+<p>
+Choose an image or drag & drop it here.
+</p>
+
+<label
+class="upload-btn"
+for="photo">
+
+📁 Choose Photo
+
+</label>
 
 <input
 type="file"
 id="photo"
-accept="image/*">
+accept="image/jpeg,image/png,image/webp">
 
-<br><br>
+</div>
 
-<label>Select Size</label>
 
-<br><br>
+<!-- =========================================
+EDITOR
+========================================= -->
+
+<div class="editor-grid">
+
+
+<!-- PREVIEW -->
+
+<div class="tool-card">
+
+<h2>
+👀 Live Preview
+</h2>
+
+<div class="preview-area">
+
+<div
+class="empty-preview"
+id="emptyPreview">
+
+<div class="big">
+📸
+</div>
+
+Upload a photo to start
+
+</div>
+
+
+<canvas
+id="canvas"
+style="display:none;">
+</canvas>
+
+</div>
+
+<p style="color:#64748b;font-size:13px;text-align:center;">
+On mobile, use the controls below to adjust your photo.
+</p>
+
+</div>
+
+
+<!-- CONTROLS -->
+
+<div class="tool-card">
+
+<h2>
+⚙️ Photo Settings
+</h2>
+
+
+<!-- SIZE -->
+
+<div class="control-group">
+
+<label for="size">
+Photo Size
+</label>
 
 <select id="size">
 
@@ -38,97 +551,1868 @@ accept="image/*">
 </option>
 
 <option value="2x2">
-2 × 2 Inch
+2 × 2 inch
 </option>
 
 <option value="4x4">
 4 × 4 cm
 </option>
 
+<option value="custom">
+Custom Size
+</option>
+
 </select>
-
-<br><br>
-
-<button onclick="createPassport()">
-
-🪪 Create Passport Photo
-
-</button>
-
-<br><br>
-
-<canvas
-id="canvas"
-style="display:none;">
-</canvas>
-
-<a
-id="download"
-download="passport-photo.jpg"
-style="display:none;">
-
-📥 Download
-
-</a>
 
 </div>
 
+
+<!-- CUSTOM -->
+
+<div
+id="customPanel"
+style="display:none;">
+
+<div class="control-group">
+
+<label>
+Custom Width (mm)
+</label>
+
+<input
+type="number"
+id="customWidth"
+min="10"
+max="500"
+value="35">
+
+</div>
+
+
+<div class="control-group">
+
+<label>
+Custom Height (mm)
+</label>
+
+<input
+type="number"
+id="customHeight"
+min="10"
+max="500"
+value="45">
+
+</div>
+
+</div>
+
+
+<!-- ZOOM -->
+
+<div class="control-group">
+
+<label>
+🔍 Zoom
+</label>
+
+<div class="range-row">
+
+<input
+type="range"
+id="zoom"
+min="50"
+max="200"
+value="100">
+
+<span
+class="range-value"
+id="zoomValue">
+100%
+</span>
+
+</div>
+
+</div>
+
+
+<!-- HORIZONTAL -->
+
+<div class="control-group">
+
+<label>
+↔️ Horizontal Position
+</label>
+
+<div class="range-row">
+
+<input
+type="range"
+id="posX"
+min="-100"
+max="100"
+value="0">
+
+<span
+class="range-value"
+id="posXValue">
+0
+</span>
+
+</div>
+
+</div>
+
+
+<!-- VERTICAL -->
+
+<div class="control-group">
+
+<label>
+↕️ Vertical Position
+</label>
+
+<div class="range-row">
+
+<input
+type="range"
+id="posY"
+min="-100"
+max="100"
+value="0">
+
+<span
+class="range-value"
+id="posYValue">
+0
+</span>
+
+</div>
+
+</div>
+
+
+<!-- ROTATION -->
+
+<div class="control-group">
+
+<label>
+🔄 Rotation
+</label>
+
+<div class="range-row">
+
+<input
+type="range"
+id="rotation"
+min="-180"
+max="180"
+value="0">
+
+<span
+class="range-value"
+id="rotationValue">
+0°
+</span>
+
+</div>
+
+</div>
+
+
+<!-- QUICK ROTATION -->
+
+<div class="control-group">
+
+<label>
+Quick Controls
+</label>
+
+<div class="button-grid">
+
+<button
+type="button"
+class="control-btn"
+id="rotateLeft">
+↶ 90°
+</button>
+
+<button
+type="button"
+class="control-btn"
+id="rotateRight">
+↷ 90°
+</button>
+
+<button
+type="button"
+class="control-btn"
+id="centerPhoto">
+🎯 Center
+</button>
+
+<button
+type="button"
+class="control-btn"
+id="fitPhoto">
+🖼️ Fit
+</button>
+
+</div>
+
+</div>
+
+
+<!-- BACKGROUND -->
+
+<div class="control-group">
+
+<label>
+🎨 Background
+</label>
+
+<div class="bg-grid">
+
+<button
+type="button"
+class="bg-btn active"
+data-color="#ffffff"
+style="background:#ffffff;">
+</button>
+
+<button
+type="button"
+class="bg-btn"
+data-color="#f8fafc"
+style="background:#f8fafc;">
+</button>
+
+<button
+type="button"
+class="bg-btn"
+data-color="#e2e8f0"
+style="background:#e2e8f0;">
+</button>
+
+<button
+type="button"
+class="bg-btn"
+data-color="#bfdbfe"
+style="background:#bfdbfe;">
+</button>
+
+<button
+type="button"
+class="bg-btn"
+data-color="#000000"
+style="background:#000000;">
+</button>
+
+</div>
+
+</div>
+
+
+<!-- QUALITY -->
+
+<div class="control-group">
+
+<label for="quality">
+JPEG Quality
+</label>
+
+<select id="quality">
+
+<option value="1">
+Maximum
+</option>
+
+<option value="0.95">
+High
+</option>
+
+<option value="0.85">
+Balanced
+</option>
+
+<option value="0.75">
+Smaller File
+</option>
+
+</select>
+
+</div>
+
+
+<!-- PRINT SHEET -->
+
+<div class="sheet-section">
+
+<h3>
+🖨️ Print Sheet
+</h3>
+
+<label
+style="display:block;margin-bottom:8px;">
+
+<input
+type="checkbox"
+id="printSheet">
+
+Create A4 print sheet
+</label>
+
+
+<div
+class="sheet-info"
+id="sheetInfo">
+
+Enable this option to place multiple passport
+photos on an A4-size printable sheet.
+
+</div>
+
+</div>
+
+
+<!-- ACTIONS -->
+
+<div class="actions">
+
+<button
+type="button"
+class="action-btn generate-btn"
+id="generateBtn"
+disabled>
+
+🪪 Create Photo
+
+</button>
+
+
+<button
+type="button"
+class="action-btn download-btn"
+id="downloadBtn"
+disabled>
+
+📥 Download
+
+</button>
+
+
+<button
+type="button"
+class="action-btn reset-btn"
+id="resetBtn">
+
+🔄 Reset
+
+</button>
+
+</div>
+
+
+<div
+class="status-box"
+id="statusBox">
+
+<span id="statusText"></span>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+INFO
+========================================= -->
+
+<section class="info-section">
+
+<h2>
+Free Online Passport Photo Maker
+</h2>
+
+<p>
+AdiyogiTools Passport Photo Maker helps you create
+standard passport-size photos directly in your browser.
+You can adjust the photo size, zoom, position, rotation
+and background before downloading.
+</p>
+
+
+<h3>
+Available Photo Sizes
+</h3>
+
+<ul>
+
+<li>
+3.5 × 4.5 cm
+</li>
+
+<li>
+2 × 2 inch
+</li>
+
+<li>
+4 × 4 cm
+</li>
+
+<li>
+Custom dimensions
+</li>
+
+</ul>
+
+
+<h3>
+How to create a passport photo?
+</h3>
+
+<ol>
+
+<li>
+Upload your photo.
+</li>
+
+<li>
+Select the required passport photo size.
+</li>
+
+<li>
+Adjust zoom and position.
+</li>
+
+<li>
+Adjust rotation if required.
+</li>
+
+<li>
+Choose a suitable background.
+</li>
+
+<li>
+Click Create Photo.
+</li>
+
+<li>
+Download the generated image.
+</li>
+
+</ol>
+
+
+<h3>
+Is the photo uploaded to a server?
+</h3>
+
+<p>
+No server upload is required for the photo processing.
+The image is processed directly in your browser.
+</p>
+
+
+<h3>
+Can I create an A4 print sheet?
+</h3>
+
+<p>
+Yes. Enable the A4 Print Sheet option to arrange
+multiple copies of your selected passport photo on
+a printable A4 sheet.
+</p>
+
+</section>
+
+
+<!-- =========================================
+FAQ
+========================================= -->
+
+<section class="info-section">
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+
+<div class="faq-item">
+
+<h3>
+What is a passport-size photo?
+</h3>
+
+<p>
+A passport-size photo is a small identification
+photograph whose required dimensions depend on the
+country or organization requesting it.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Can I create a 35 × 45 mm photo?
+</h3>
+
+<p>
+Yes. Select the 3.5 × 4.5 cm option.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Can I create a 2 × 2 inch photo?
+</h3>
+
+<p>
+Yes. Select the 2 × 2 inch option.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Can I change the background?
+</h3>
+
+<p>
+Yes. You can select from the available background
+colors before generating the final photo.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Is this passport photo maker free?
+</h3>
+
+<p>
+Yes. The tool is designed to create passport-size
+photos directly in your browser for free.
+</p>
+
+</div>
+
+</section>
+
+
+</div>
+
+
 <script>
-  function createPassport() {
 
-const file = document.getElementById("photo").files[0];
+/* =========================================
+   ELEMENTS
+========================================= */
 
-if (!file) {
-    alert("Please select a photo.");
-    return;
+const photoInput =
+document.getElementById("photo");
+
+const uploadBox =
+document.getElementById("uploadBox");
+
+const canvas =
+document.getElementById("canvas");
+
+const ctx =
+canvas.getContext("2d");
+
+const emptyPreview =
+document.getElementById("emptyPreview");
+
+const sizeSelect =
+document.getElementById("size");
+
+const customPanel =
+document.getElementById("customPanel");
+
+const customWidth =
+document.getElementById("customWidth");
+
+const customHeight =
+document.getElementById("customHeight");
+
+const zoom =
+document.getElementById("zoom");
+
+const zoomValue =
+document.getElementById("zoomValue");
+
+const posX =
+document.getElementById("posX");
+
+const posXValue =
+document.getElementById("posXValue");
+
+const posY =
+document.getElementById("posY");
+
+const posYValue =
+document.getElementById("posYValue");
+
+const rotation =
+document.getElementById("rotation");
+
+const rotationValue =
+document.getElementById("rotationValue");
+
+const quality =
+document.getElementById("quality");
+
+const printSheet =
+document.getElementById("printSheet");
+
+const generateBtn =
+document.getElementById("generateBtn");
+
+const downloadBtn =
+document.getElementById("downloadBtn");
+
+const resetBtn =
+document.getElementById("resetBtn");
+
+const statusBox =
+document.getElementById("statusBox");
+
+const statusText =
+document.getElementById("statusText");
+
+const rotateLeft =
+document.getElementById("rotateLeft");
+
+const rotateRight =
+document.getElementById("rotateRight");
+
+const centerPhoto =
+document.getElementById("centerPhoto");
+
+const fitPhoto =
+document.getElementById("fitPhoto");
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let image = null;
+
+let backgroundColor =
+"#ffffff";
+
+let finalBlob = null;
+
+
+/* =========================================
+   IMAGE UPLOAD
+========================================= */
+
+photoInput.addEventListener(
+"change",
+function(){
+
+const file =
+this.files[0];
+
+if(!file){
+
+return;
+
 }
 
-const reader = new FileReader();
 
-reader.onload = function(e) {
+if(
+!file.type.startsWith("image/")
+){
 
-    const img = new Image();
+alert(
+"Please select a valid image."
+);
 
-    img.onload = function() {
+this.value = "";
 
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
+return;
 
-        const size = document.getElementById("size").value;
+}
 
-        if (size === "35x45") {
-            canvas.width = 413;
-            canvas.height = 531;
-        }
-        else if (size === "2x2") {
-            canvas.width = 600;
-            canvas.height = 600;
-        }
-        else {
-            canvas.width = 472;
-            canvas.height = 472;
-        }
 
-        ctx.fillStyle = "white";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+const reader =
+new FileReader();
 
-        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 
-        const download = document.getElementById("download");
+reader.onload =
+function(e){
 
-        download.href = canvas.toDataURL("image/jpeg", 1.0);
-        download.style.display = "inline-block";
-    };
+const img =
+new Image();
 
-    img.src = e.target.result;
+
+img.onload =
+function(){
+
+image = img;
+
+emptyPreview.style.display =
+"none";
+
+canvas.style.display =
+"block";
+
+generateBtn.disabled =
+false;
+
+resetAdjustments();
+
+drawPreview();
+
+showStatus(
+"Photo loaded successfully."
+);
 
 };
+
+
+img.onerror =
+function(){
+
+alert(
+"Unable to load this image."
+);
+
+};
+
+
+img.src =
+e.target.result;
+
+};
+
+
+reader.readAsDataURL(file);
+
+}
+);
+
+
+/* =========================================
+   DRAG DROP
+========================================= */
+
+uploadBox.addEventListener(
+"dragover",
+function(e){
+
+e.preventDefault();
+
+uploadBox.classList.add(
+"dragover"
+);
+
+}
+);
+
+
+uploadBox.addEventListener(
+"dragleave",
+function(){
+
+uploadBox.classList.remove(
+"dragover"
+);
+
+}
+);
+
+
+uploadBox.addEventListener(
+"drop",
+function(e){
+
+e.preventDefault();
+
+uploadBox.classList.remove(
+"dragover"
+);
+
+const file =
+e.dataTransfer.files[0];
+
+if(!file){
+
+return;
+
+}
+
+
+if(
+!file.type.startsWith("image/")
+){
+
+alert(
+"Please drop a valid image."
+);
+
+return;
+
+}
+
+
+photoInput.files =
+e.dataTransfer.files;
+
+
+loadDroppedImage(file);
+
+}
+);
+
+
+/* =========================================
+   DROPPED IMAGE
+========================================= */
+
+function loadDroppedImage(file){
+
+const reader =
+new FileReader();
+
+
+reader.onload =
+function(e){
+
+const img =
+new Image();
+
+
+img.onload =
+function(){
+
+image = img;
+
+emptyPreview.style.display =
+"none";
+
+canvas.style.display =
+"block";
+
+generateBtn.disabled =
+false;
+
+resetAdjustments();
+
+drawPreview();
+
+showStatus(
+"Photo loaded successfully."
+);
+
+};
+
+
+img.src =
+e.target.result;
+
+};
+
 
 reader.readAsDataURL(file);
 
 }
 
+
+/* =========================================
+   SIZE
+========================================= */
+
+sizeSelect.addEventListener(
+"change",
+function(){
+
+customPanel.style.display =
+this.value === "custom"
+? "block"
+: "none";
+
+drawPreview();
+
+}
+);
+
+
+/* =========================================
+   CONTROLS
+========================================= */
+
+[
+zoom,
+posX,
+posY,
+rotation
+].forEach(
+function(control){
+
+control.addEventListener(
+"input",
+function(){
+
+updateValues();
+
+drawPreview();
+
+}
+);
+
+}
+);
+
+
+/* =========================================
+   BACKGROUND
+========================================= */
+
+document
+.querySelectorAll(".bg-btn")
+.forEach(
+function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+document
+.querySelectorAll(".bg-btn")
+.forEach(
+function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+}
+);
+
+
+this.classList.add(
+"active"
+);
+
+backgroundColor =
+this.dataset.color;
+
+drawPreview();
+
+}
+);
+
+}
+);
+
+
+/* =========================================
+   QUICK ROTATE
+========================================= */
+
+rotateLeft.addEventListener(
+"click",
+function(){
+
+let value =
+parseInt(rotation.value);
+
+value -= 90;
+
+if(value < -180){
+
+value += 360;
+
+}
+
+rotation.value =
+value;
+
+updateValues();
+
+drawPreview();
+
+}
+);
+
+
+rotateRight.addEventListener(
+"click",
+function(){
+
+let value =
+parseInt(rotation.value);
+
+value += 90;
+
+if(value > 180){
+
+value -= 360;
+
+}
+
+rotation.value =
+value;
+
+updateValues();
+
+drawPreview();
+
+}
+);
+
+
+/* =========================================
+   CENTER
+========================================= */
+
+centerPhoto.addEventListener(
+"click",
+function(){
+
+posX.value =
+0;
+
+posY.value =
+0;
+
+updateValues();
+
+drawPreview();
+
+}
+);
+
+
+/* =========================================
+   FIT
+========================================= */
+
+fitPhoto.addEventListener(
+"click",
+function(){
+
+zoom.value =
+100;
+
+posX.value =
+0;
+
+posY.value =
+0;
+
+rotation.value =
+0;
+
+updateValues();
+
+drawPreview();
+
+}
+);
+
+
+/* =========================================
+   UPDATE VALUES
+========================================= */
+
+function updateValues(){
+
+zoomValue.textContent =
+zoom.value + "%";
+
+posXValue.textContent =
+posX.value;
+
+posYValue.textContent =
+posY.value;
+
+rotationValue.textContent =
+rotation.value + "°";
+
+}
+
+
+/* =========================================
+   GET SIZE
+========================================= */
+
+function getPhotoSize(){
+
+if(
+sizeSelect.value === "35x45"
+){
+
+return {
+width:413,
+height:531
+};
+
+}
+
+
+if(
+sizeSelect.value === "2x2"
+){
+
+return {
+width:600,
+height:600
+};
+
+}
+
+
+if(
+sizeSelect.value === "4x4"
+){
+
+return {
+width:472,
+height:472
+};
+
+}
+
+
+let w =
+parseFloat(
+customWidth.value
+);
+
+let h =
+parseFloat(
+customHeight.value
+);
+
+
+if(
+!w ||
+!h ||
+w <= 0 ||
+h <= 0
+){
+
+w = 35;
+
+h = 45;
+
+}
+
+
+const dpi =
+300;
+
+return {
+width:Math.round(
+w / 25.4 * dpi
+),
+height:Math.round(
+h / 25.4 * dpi
+)
+};
+
+}
+
+
+/* =========================================
+   DRAW PREVIEW
+========================================= */
+
+function drawPreview(){
+
+if(!image){
+
+return;
+
+}
+
+
+const size =
+getPhotoSize();
+
+
+canvas.width =
+size.width;
+
+canvas.height =
+size.height;
+
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+
+/* BACKGROUND */
+
+ctx.fillStyle =
+backgroundColor;
+
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+
+/* IMAGE */
+
+const scale =
+Math.max(
+canvas.width /
+image.naturalWidth,
+
+canvas.height /
+image.naturalHeight
+);
+
+
+const zoomFactor =
+parseInt(
+zoom.value
+) / 100;
+
+
+const drawWidth =
+image.naturalWidth *
+scale *
+zoomFactor;
+
+
+const drawHeight =
+image.naturalHeight *
+scale *
+zoomFactor;
+
+
+const offsetX =
+(
+canvas.width -
+drawWidth
+) / 2
++
+(
+parseInt(posX.value) /
+100
+*
+canvas.width *
+0.5
+);
+
+
+const offsetY =
+(
+canvas.height -
+drawHeight
+) / 2
++
+(
+parseInt(posY.value) /
+100
+*
+canvas.height *
+0.5
+);
+
+
+ctx.save();
+
+
+ctx.translate(
+canvas.width / 2,
+canvas.height / 2
+);
+
+
+ctx.rotate(
+parseInt(rotation.value) *
+Math.PI /
+180
+);
+
+
+ctx.drawImage(
+image,
+-offsetX -
+canvas.width / 2,
+-offsetY -
+canvas.height / 2,
+drawWidth,
+drawHeight
+);
+
+
+ctx.restore();
+
+}
+
+
+/* =========================================
+   CREATE PHOTO
+========================================= */
+
+generateBtn.addEventListener(
+"click",
+function(){
+
+if(!image){
+
+alert(
+"Please upload a photo first."
+);
+
+return;
+
+}
+
+
+drawPreview();
+
+
+if(
+printSheet.checked
+){
+
+createPrintSheet();
+
+}else{
+
+createNormalPhoto();
+
+}
+
+}
+);
+
+
+/* =========================================
+   NORMAL PHOTO
+========================================= */
+
+function createNormalPhoto(){
+
+canvas.toBlob(
+function(blob){
+
+if(!blob){
+
+alert(
+"Unable to create photo."
+);
+
+return;
+
+}
+
+
+finalBlob =
+blob;
+
+downloadBtn.disabled =
+false;
+
+showStatus(
+"Passport photo created successfully."
+);
+
+},
+"image/jpeg",
+parseFloat(
+quality.value
+)
+);
+
+}
+
+
+/* =========================================
+   A4 PRINT SHEET
+========================================= */
+
+function createPrintSheet(){
+
+const photoWidth =
+canvas.width;
+
+const photoHeight =
+canvas.height;
+
+
+/*
+ * A4 at 300 DPI
+ */
+
+const sheetWidth =
+2480;
+
+const sheetHeight =
+3508;
+
+
+const sheet =
+document.createElement(
+"canvas"
+);
+
+sheet.width =
+sheetWidth;
+
+sheet.height =
+sheetHeight;
+
+
+const sheetCtx =
+sheet.getContext(
+"2d"
+);
+
+
+/* WHITE A4 */
+
+sheetCtx.fillStyle =
+"#ffffff";
+
+sheetCtx.fillRect(
+0,
+0,
+sheetWidth,
+sheetHeight
+);
+
+
+/*
+ * Small margin
+ */
+
+const margin =
+120;
+
+const gap =
+35;
+
+
+const columns =
+Math.max(
+1,
+Math.floor(
+(
+sheetWidth -
+2 * margin +
+gap
+) /
+(
+photoWidth +
+gap
+)
+)
+);
+
+
+const rows =
+Math.max(
+1,
+Math.floor(
+(
+sheetHeight -
+2 * margin +
+gap
+) /
+(
+photoHeight +
+gap
+)
+)
+);
+
+
+const count =
+columns *
+rows;
+
+
+let index = 0;
+
+
+for(
+let row = 0;
+row < rows;
+row++
+){
+
+for(
+let col = 0;
+col < columns;
+col++
+){
+
+const x =
+margin +
+col *
+(
+photoWidth +
+gap
+);
+
+const y =
+margin +
+row *
+(
+photoHeight +
+gap
+);
+
+
+if(
+x +
+photoWidth >
+sheetWidth -
+margin
+){
+
+continue;
+
+}
+
+
+if(
+y +
+photoHeight >
+sheetHeight -
+margin
+){
+
+continue;
+
+}
+
+
+sheetCtx.drawImage(
+canvas,
+x,
+y,
+photoWidth,
+photoHeight
+);
+
+
+index++;
+
+}
+
+}
+
+
+sheet.toBlob(
+function(blob){
+
+finalBlob =
+blob;
+
+downloadBtn.disabled =
+false;
+
+showStatus(
+"A4 print sheet created with " +
+index +
+" photo(s)."
+);
+
+},
+"image/jpeg",
+parseFloat(
+quality.value
+)
+);
+
+}
+
+
+/* =========================================
+   DOWNLOAD
+========================================= */
+
+downloadBtn.addEventListener(
+"click",
+function(){
+
+if(!finalBlob){
+
+alert(
+"Create the photo first."
+);
+
+return;
+
+}
+
+
+const url =
+URL.createObjectURL(
+finalBlob
+);
+
+
+const a =
+document.createElement(
+"a"
+);
+
+
+a.href =
+url;
+
+
+a.download =
+printSheet.checked
+? "adiyogitools-passport-photo-sheet.jpg"
+: "adiyogitools-passport-photo.jpg";
+
+
+document.body.appendChild(
+a
+);
+
+a.click();
+
+a.remove();
+
+
+setTimeout(
+function(){
+
+URL.revokeObjectURL(
+url
+);
+
+},
+1000
+);
+
+}
+);
+
+
+/* =========================================
+   RESET ADJUSTMENTS
+========================================= */
+
+function resetAdjustments(){
+
+zoom.value =
+100;
+
+posX.value =
+0;
+
+posY.value =
+0;
+
+rotation.value =
+0;
+
+backgroundColor =
+"#ffffff";
+
+
+document
+.querySelectorAll(".bg-btn")
+.forEach(
+function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+}
+);
+
+
+document
+.querySelector(
+'.bg-btn[data-color="#ffffff"]'
+)
+.classList.add(
+"active"
+);
+
+
+updateValues();
+
+}
+
+
+/* =========================================
+   RESET EVERYTHING
+========================================= */
+
+resetBtn.addEventListener(
+"click",
+function(){
+
+image =
+null;
+
+finalBlob =
+null;
+
+photoInput.value =
+"";
+
+canvas.style.display =
+"none";
+
+emptyPreview.style.display =
+"block";
+
+generateBtn.disabled =
+true;
+
+downloadBtn.disabled =
+true;
+
+statusBox.style.display =
+"none";
+
+printSheet.checked =
+false;
+
+sizeSelect.value =
+"35x45";
+
+customPanel.style.display =
+"none";
+
+resetAdjustments();
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+}
+);
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+function showStatus(message){
+
+statusBox.style.display =
+"block";
+
+statusText.textContent =
+message;
+
+}
+
+
+/* =========================================
+   INITIAL
+========================================= */
+
+updateValues();
+
 </script>
 
+
+<!-- =========================================
+STRUCTURED DATA
+========================================= -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Passport Photo Maker",
+"url":"https://adiyogitools.in/passport-photo-maker.html",
+"applicationCategory":"PhotographyApplication",
+"operatingSystem":"Any",
+"description":"Free browser-based passport photo maker with standard photo sizes, crop, zoom and rotation controls.",
+"offers":{
+"@type":"Offer",
+"price":"0",
+"priceCurrency":"INR"
+}
+}
+
+</script>
+
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"Can I create a 35 × 45 mm passport photo?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Select the 3.5 × 4.5 cm option to create a 35 × 45 mm photo."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I create a 2 × 2 inch photo?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Select the 2 × 2 inch option."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I change the photo background?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. You can select from the available background colors before generating the photo."
+}
+},
+
+{
+"@type":"Question",
+"name":"Is the passport photo maker free?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. The tool is designed to create passport-size photos directly in your browser for free."
+}
+}
+
+]
+}
+
+</script>
+
+
 </body>
+
 </html>
