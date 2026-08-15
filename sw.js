@@ -1,4 +1,4 @@
-const CACHE_NAME = "adiyogitools-v3";
+const CACHE_NAME = "adiyogitools-v4";
 
 const urlsToCache = [
     "/",
@@ -18,6 +18,7 @@ self.addEventListener("install", event => {
 
 });
 
+
 self.addEventListener("activate", event => {
 
     event.waitUntil(
@@ -32,7 +33,11 @@ self.addEventListener("activate", event => {
 
             );
 
-        }).then(() => self.clients.claim())
+        }).then(() => {
+
+            return self.clients.claim();
+
+        })
 
     );
 
@@ -45,16 +50,32 @@ self.addEventListener("fetch", event => {
         return;
     }
 
+    const url = new URL(event.request.url);
+
+    // Google Analytics / Google Tag Manager ko Service Worker se bypass karo
+    if (
+        url.hostname.includes("google-analytics.com") ||
+        url.hostname.includes("googletagmanager.com") ||
+        url.hostname.includes("analytics.google.com")
+    ) {
+        return;
+    }
+
     event.respondWith(
 
         fetch(event.request)
             .then(response => {
 
-                const copy = response.clone();
+                // Sirf successful responses cache karo
+                if (response && response.status === 200) {
 
-                caches.open(CACHE_NAME).then(cache => {
-                    cache.put(event.request, copy);
-                });
+                    const copy = response.clone();
+
+                    caches.open(CACHE_NAME).then(cache => {
+                        cache.put(event.request, copy);
+                    });
+
+                }
 
                 return response;
 
