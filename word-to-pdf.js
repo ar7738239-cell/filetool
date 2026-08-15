@@ -20,40 +20,129 @@ wordInput.addEventListener("change", function () {
 
     if (!file) {
 
-        fileName.textContent =
-            "No file selected";
+        fileName.textContent = "No file selected";
 
         return;
     }
 
 
-    if (
-        !file.name
-            .toLowerCase()
-            .endsWith(".docx")
-    ) {
+    if (!file.name.toLowerCase().endsWith(".docx")) {
 
-        alert(
-            "Please select a DOCX Word file."
-        );
+        alert("Please select a DOCX Word file.");
 
         this.value = "";
 
-        fileName.textContent =
-            "No file selected";
+        fileName.textContent = "No file selected";
 
         return;
     }
 
 
-    fileName.textContent =
-        "📄 " + file.name;
+    fileName.textContent = "📄 " + file.name;
 
 });
 
 
 /* =========================
-   CONVERT
+   WAIT FOR IMAGES
+========================= */
+
+function waitForImages(container) {
+
+    const images = container.querySelectorAll("img");
+
+    if (!images.length) {
+        return Promise.resolve();
+    }
+
+    return Promise.all(
+
+        Array.from(images).map(function (img) {
+
+            if (img.complete) {
+                return Promise.resolve();
+            }
+
+            return new Promise(function (resolve) {
+
+                img.onload = resolve;
+                img.onerror = resolve;
+
+            });
+
+        })
+
+    );
+
+}
+
+
+/* =========================
+   GET WORD PAGES
+========================= */
+
+function getWordPages() {
+
+    /*
+     * docx-preview normally creates:
+     *
+     * .docx-wrapper
+     *      ├── section.docx
+     *      ├── section.docx
+     *      └── section.docx
+     *
+     * Each section is one Word page.
+     */
+
+    let pages =
+        preview.querySelectorAll(
+            ".docx-wrapper > .docx"
+        );
+
+
+    /*
+     * Fallback
+     */
+
+    if (!pages.length) {
+
+        pages =
+            preview.querySelectorAll(
+                ".docx-wrapper .docx"
+            );
+
+    }
+
+
+    /*
+     * Another fallback
+     */
+
+    if (!pages.length) {
+
+        const wrapper =
+            preview.querySelector(
+                ".docx-wrapper"
+            );
+
+        if (wrapper) {
+
+            return [wrapper];
+
+        }
+
+        return [preview];
+
+    }
+
+
+    return Array.from(pages);
+
+}
+
+
+/* =========================
+   CONVERT DOCX → PDF
 ========================= */
 
 convertBtn.addEventListener(
@@ -78,14 +167,11 @@ convertBtn.addEventListener(
 
             convertBtn.disabled = true;
 
-            loading.style.display =
-                "block";
+            loading.style.display = "block";
 
-            success.style.display =
-                "none";
+            success.style.display = "none";
 
-            downloadBtn.style.display =
-                "none";
+            downloadBtn.style.display = "none";
 
 
             loading.textContent =
@@ -93,17 +179,16 @@ convertBtn.addEventListener(
 
 
             /*
-             Clear previous rendering
-            */
+             * Clear previous document
+             */
 
             preview.innerHTML = "";
 
-            preview.style.display =
-                "block";
+            preview.style.display = "block";
 
 
             /* =========================
-               DOCX → HTML
+               RENDER DOCX
             ========================= */
 
             await docx.renderAsync(
@@ -144,129 +229,78 @@ convertBtn.addEventListener(
 
 
             loading.textContent =
-                "⏳ Loading images and document content...";
-
-
-            /* =========================
-               WAIT FOR IMAGES
-            ========================= */
-
-            const images =
-                preview.querySelectorAll(
-                    "img"
-                );
-
-
-            await Promise.all(
-
-                Array.from(images).map(
-                    function (img) {
-
-                        if (img.complete) {
-
-                            return Promise.resolve();
-
-                        }
-
-
-                        return new Promise(
-                            function (resolve) {
-
-                                img.onload =
-                                    resolve;
-
-                                img.onerror =
-                                    resolve;
-
-                            }
-                        );
-
-                    }
-                )
-
-            );
+                "⏳ Loading images and document pages...";
 
 
             /*
-             Small delay for rendering
-            */
+             * Wait for photos/logos/images
+             */
 
-            await new Promise(
-                function (resolve) {
-
-                    setTimeout(
-                        resolve,
-                        700
-                    );
-
-                }
-            );
-
-
-            loading.textContent =
-                "⏳ Creating PDF...";
-
-
-            /* =========================
-               GET DOCUMENT PAGES
-            ========================= */
-
-            let pages =
-                preview.querySelectorAll(
-                    ".docx"
-                );
+            await waitForImages(preview);
 
 
             /*
-             Fallback if renderer
-             returns only wrapper.
-            */
+             * Give browser time to finish layout
+             */
+
+            await new Promise(function (resolve) {
+
+                setTimeout(resolve, 800);
+
+            });
+
+
+            /* =========================
+               GET INDIVIDUAL PAGES
+            ========================= */
+
+            const pages =
+                getWordPages();
+
 
             if (!pages.length) {
 
-                pages = [preview];
+                throw new Error(
+                    "No Word pages were detected."
+                );
 
             }
 
 
+            loading.textContent =
+                "⏳ Creating PDF pages...";
+
+
             /* =========================
-               CREATE PDF
+               CREATE A4 PDF
             ========================= */
 
             const pdf =
                 new jspdf.jsPDF({
 
-                    orientation:
-                        "portrait",
+                    orientation: "portrait",
 
-                    unit:
-                        "mm",
+                    unit: "mm",
 
-                    format:
-                        "a4",
+                    format: "a4",
 
-                    compress:
-                        true
+                    compress: true
 
                 });
 
 
-            const pageWidth =
-                pdf.internal.pageSize
-                    .getWidth();
+            const pdfWidth =
+                pdf.internal.pageSize.getWidth();
+
+            const pdfHeight =
+                pdf.internal.pageSize.getHeight();
 
 
-            const pageHeight =
-                pdf.internal.pageSize
-                    .getHeight();
-
-
-            let addedPage =
-                false;
+            let pdfPageAdded = false;
 
 
             /* =========================
-               RENDER EACH PAGE
+               EACH WORD PAGE
             ========================= */
 
             for (
@@ -280,22 +314,35 @@ convertBtn.addEventListener(
 
 
                 /*
-                 Skip empty pages
-                */
+                 * Skip genuinely empty pages
+                 */
 
-                if (
-                    !page.innerText.trim() &&
-                    !page.querySelector("img")
-                ) {
+                const hasText =
+                    page.innerText &&
+                    page.innerText.trim().length > 0;
+
+                const hasImages =
+                    page.querySelector("img") !== null;
+
+
+                if (!hasText && !hasImages) {
 
                     continue;
 
                 }
 
 
+                loading.textContent =
+                    "⏳ Converting page " +
+                    (i + 1) +
+                    " of " +
+                    pages.length +
+                    "...";
+
+
                 /*
-                 Make page renderable
-                */
+                 * Save original styles
+                 */
 
                 const oldPosition =
                     page.style.position;
@@ -306,6 +353,13 @@ convertBtn.addEventListener(
                 const oldDisplay =
                     page.style.display;
 
+                const oldWidth =
+                    page.style.width;
+
+
+                /*
+                 * Make page render normally
+                 */
 
                 page.style.position =
                     "relative";
@@ -316,6 +370,13 @@ convertBtn.addEventListener(
                 page.style.display =
                     "block";
 
+                page.style.width =
+                    "auto";
+
+
+                /*
+                 * Render THIS Word page only
+                 */
 
                 const canvas =
                     await html2canvas(
@@ -336,7 +397,11 @@ convertBtn.addEventListener(
                             logging: false,
 
                             imageTimeout:
-                                20000
+                                30000,
+
+                            scrollX: 0,
+
+                            scrollY: 0
 
                         }
 
@@ -344,8 +409,8 @@ convertBtn.addEventListener(
 
 
                 /*
-                 Restore original styles
-                */
+                 * Restore styles
+                 */
 
                 page.style.position =
                     oldPosition;
@@ -355,6 +420,9 @@ convertBtn.addEventListener(
 
                 page.style.display =
                     oldDisplay;
+
+                page.style.width =
+                    oldWidth;
 
 
                 if (
@@ -368,48 +436,79 @@ convertBtn.addEventListener(
                 }
 
 
+                /*
+                 * Convert canvas to image
+                 */
+
                 const imageData =
                     canvas.toDataURL(
                         "image/jpeg",
-                        0.95
+                        0.96
                     );
 
 
                 /*
-                 Keep original aspect ratio
-                */
+                 * IMPORTANT:
+                 *
+                 * Keep the Word page's
+                 * original aspect ratio.
+                 *
+                 * Don't force the whole
+                 * document into one page.
+                 */
 
-                const ratio =
-                    Math.min(
-
-                        pageWidth /
-                            canvas.width,
-
-                        pageHeight /
-                            canvas.height
-
-                    );
-
-
-                const imageWidth =
-                    canvas.width * ratio;
+                const aspectRatio =
+                    canvas.height /
+                    canvas.width;
 
 
-                const imageHeight =
-                    canvas.height * ratio;
+                let imageWidth =
+                    pdfWidth;
 
+                let imageHeight =
+                    imageWidth *
+                    aspectRatio;
+
+
+                /*
+                 * If page is taller than A4,
+                 * scale it down only enough
+                 * to fit A4.
+                 */
+
+                if (
+                    imageHeight >
+                    pdfHeight
+                ) {
+
+                    imageHeight =
+                        pdfHeight;
+
+                    imageWidth =
+                        imageHeight /
+                        aspectRatio;
+
+                }
+
+
+                /*
+                 * Center page
+                 */
 
                 const x =
-                    (pageWidth -
+                    (pdfWidth -
                         imageWidth) / 2;
 
-
                 const y =
-                    (pageHeight -
+                    (pdfHeight -
                         imageHeight) / 2;
 
 
-                if (addedPage) {
+                /*
+                 * Add new PDF page
+                 */
+
+                if (pdfPageAdded) {
 
                     pdf.addPage();
 
@@ -437,7 +536,7 @@ convertBtn.addEventListener(
                 );
 
 
-                addedPage = true;
+                pdfPageAdded = true;
 
             }
 
@@ -446,23 +545,21 @@ convertBtn.addEventListener(
                CHECK RESULT
             ========================= */
 
-            if (!addedPage) {
+            if (!pdfPageAdded) {
 
                 throw new Error(
-                    "The document could not be rendered."
+                    "No content could be converted."
                 );
 
             }
 
 
             /* =========================
-               PDF DOWNLOAD
+               CREATE DOWNLOAD
             ========================= */
 
             const pdfBlob =
-                pdf.output(
-                    "blob"
-                );
+                pdf.output("blob");
 
 
             const pdfURL =
