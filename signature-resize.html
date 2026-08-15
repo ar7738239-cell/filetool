@@ -11,10 +11,10 @@ content="width=device-width, initial-scale=1.0">
 <title>Signature Resize Online Free | AdiyogiTools</title>
 
 <meta name="description"
-content="Resize signature images online for free. Set signature dimensions, target file size in KB, quality and background. Download your resized signature instantly in your browser.">
+content="Resize signature images online for free. Set target file size in KB, dimensions and image quality. Download your resized signature instantly.">
 
 <meta name="keywords"
-content="signature resize, signature resize online, resize signature image, signature size in KB, signature photo resize, signature compressor">
+content="signature resize, signature resize online, resize signature to 20kb, signature resize 30kb, signature image resize, signature size kb">
 
 <meta name="robots"
 content="index, follow">
@@ -26,7 +26,7 @@ href="https://adiyogitools.in/signature-resize.html">
 content="Signature Resize Online Free | AdiyogiTools">
 
 <meta property="og:description"
-content="Resize and compress signature images to a specific size in KB directly in your browser.">
+content="Resize signature images to a target KB size and required dimensions online for free.">
 
 <meta property="og:type"
 content="website">
@@ -34,18 +34,15 @@ content="website">
 <meta property="og:url"
 content="https://adiyogitools.in/signature-resize.html">
 
-<meta name="twitter:card"
-content="summary">
-
 <link rel="stylesheet"
 href="style.css">
 
 
 <style>
 
-/* =========================================
-   SIGNATURE RESIZE PRO
-========================================= */
+/* =========================
+   PAGE
+========================= */
 
 .signature-page{
     max-width:1050px;
@@ -53,30 +50,30 @@ href="style.css">
     padding:20px;
 }
 
-.signature-hero{
+.hero{
     text-align:center;
     margin-bottom:25px;
 }
 
-.signature-hero h1{
+.hero h1{
     font-size:clamp(28px,5vw,44px);
     margin-bottom:10px;
 }
 
-.signature-hero p{
+.hero p{
     color:#64748b;
     line-height:1.6;
 }
 
 
-/* =========================================
+/* =========================
    UPLOAD
-========================================= */
+========================= */
 
 .upload-box{
     background:#fff;
     border:2px dashed #2563eb;
-    border-radius:20px;
+    border-radius:18px;
     padding:35px 20px;
     text-align:center;
     margin-bottom:20px;
@@ -103,9 +100,9 @@ href="style.css">
 .upload-btn{
     display:inline-block;
     background:#2563eb;
-    color:#fff;
-    padding:14px 25px;
-    border-radius:12px;
+    color:white;
+    padding:13px 23px;
+    border-radius:10px;
     font-weight:700;
     cursor:pointer;
 }
@@ -115,91 +112,87 @@ href="style.css">
 }
 
 
-/* =========================================
+/* =========================
    GRID
-========================================= */
+========================= */
 
 .editor-grid{
     display:grid;
     grid-template-columns:
-        minmax(0,1.2fr)
+        minmax(0,1.1fr)
         minmax(300px,1fr);
 
     gap:20px;
 }
 
 
-/* =========================================
+/* =========================
    CARD
-========================================= */
+========================= */
 
-.tool-card{
+.card{
     background:#fff;
     border-radius:18px;
     padding:20px;
-
     box-shadow:
         0 5px 20px rgba(0,0,0,.06);
 }
 
-.tool-card h2{
+.card h2{
     margin-top:0;
 }
 
 
-/* =========================================
+/* =========================
    PREVIEW
-========================================= */
+========================= */
 
-.preview-area{
-    min-height:350px;
+.preview{
+    min-height:330px;
 
     background:
-        repeating-conic-gradient(
-            #f1f5f9 0% 25%,
-            #ffffff 0% 50%
-        )
-        50% / 24px 24px;
+    repeating-conic-gradient(
+        #f1f5f9 0% 25%,
+        #ffffff 0% 50%
+    ) 50% / 24px 24px;
 
-    border-radius:15px;
+    border-radius:14px;
 
     display:flex;
     align-items:center;
     justify-content:center;
 
-    overflow:hidden;
     padding:20px;
+    overflow:hidden;
 }
 
 #canvas{
     max-width:100%;
     max-height:500px;
-
     background:white;
-
     box-shadow:
-        0 5px 20px rgba(0,0,0,.2);
+        0 4px 15px rgba(0,0,0,.2);
 }
 
-.empty-preview{
+.empty{
     text-align:center;
     color:#64748b;
 }
 
-.empty-preview .big{
-    font-size:60px;
+.empty div{
+    font-size:55px;
 }
 
 
-/* =========================================
+/* =========================
    CONTROLS
-========================================= */
+========================= */
 
-.control-group{
+.group{
     margin-bottom:18px;
 }
 
-.control-group label{
+.group label{
     display:block;
     font-weight:700;
     margin-bottom:7px;
@@ -213,16 +206,74 @@ select{
     padding:12px;
 
     border:1px solid #cbd5e1;
-    border-radius:10px;
+    border-radius:9px;
 
     font-size:15px;
     background:white;
 }
 
+.dimensions{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+
+/* =========================
+   MODE
+========================= */
+
+.mode-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.mode-btn{
+    padding:11px;
+    border:2px solid #cbd5e1;
+    border-radius:9px;
+    background:#f8fafc;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.mode-btn.active{
+    border-color:#2563eb;
+    background:#eff6ff;
+}
+
+
+/* =========================
+   PRESETS
+========================= */
+
+.presets{
+    display:grid;
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:8px;
+}
+
+.preset{
+    border:1px solid #cbd5e1;
+    background:#f8fafc;
+    border-radius:8px;
+    padding:10px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+
+/* =========================
+   RANGE
+========================= */
+
 .range-row{
     display:flex;
-    align-items:center;
     gap:10px;
+    align-items:center;
 }
 
 .range-row input{
@@ -230,103 +281,36 @@ select{
 }
 
 .range-value{
-    min-width:60px;
+    min-width:45px;
     text-align:right;
-    color:#64748b;
-    font-size:13px;
 }
 
 
-/* =========================================
-   DIMENSIONS
-========================================= */
-
-.dimension-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-
-/* =========================================
-   PRESETS
-========================================= */
-
-.preset-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:8px;
-}
-
-.preset-btn{
-    border:1px solid #cbd5e1;
-    background:#f8fafc;
-
-    border-radius:9px;
-    padding:10px;
-
-    cursor:pointer;
-    font-weight:700;
-}
-
-.preset-btn:hover{
-    background:#eff6ff;
-}
-
-
-/* =========================================
-   BACKGROUND
-========================================= */
-
-.bg-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:8px;
-}
-
-.bg-btn{
-    border:2px solid #cbd5e1;
-    border-radius:9px;
-    padding:10px;
-    cursor:pointer;
-    font-weight:700;
-}
-
-.bg-btn.active{
-    border-color:#2563eb;
-    box-shadow:
-        0 0 0 2px #bfdbfe;
-}
-
-
-/* =========================================
+/* =========================
    INFO
-========================================= */
+========================= */
 
-.file-info{
+.info{
     display:none;
 
     background:#eff6ff;
     color:#1e40af;
 
     border-radius:10px;
+
     padding:12px;
 
-    margin-bottom:18px;
-
     line-height:1.6;
+
+    margin-bottom:15px;
 }
 
 
-/* =========================================
+/* =========================
    STATUS
-========================================= */
+========================= */
 
-.status-box{
+.status{
     display:none;
 
     margin-top:15px;
@@ -336,21 +320,22 @@ select{
     border-radius:10px;
 
     background:#f0fdf4;
-    border:1px solid #bbf7d0;
 
     color:#166534;
+
+    border:1px solid #bbf7d0;
 }
 
-.error-box{
+.status.error{
     background:#fef2f2;
-    border-color:#fecaca;
     color:#991b1b;
+    border-color:#fecaca;
 }
 
 
-/* =========================================
-   ACTIONS
-========================================= */
+/* =========================
+   BUTTONS
+========================= */
 
 .actions{
     display:flex;
@@ -359,80 +344,66 @@ select{
     margin-top:20px;
 }
 
-.action-btn{
-    border:none;
-    border-radius:11px;
+.btn{
+    border:0;
+    border-radius:10px;
     padding:13px 18px;
-
     font-weight:700;
     cursor:pointer;
 }
 
-.resize-btn{
+.resize{
     background:#16a34a;
     color:white;
 }
 
-.download-btn{
+.download{
     background:#2563eb;
     color:white;
 }
 
-.reset-btn{
-    background:#f1f5f9;
+.reset{
+    background:#e2e8f0;
     color:#334155;
 }
 
-.action-btn:disabled{
+.btn:disabled{
     opacity:.5;
     cursor:not-allowed;
 }
 
 
-/* =========================================
-   INFO SECTION
-========================================= */
+/* =========================
+   CONTENT
+========================= */
 
-.info-section{
+.content{
     background:#fff;
-
     border-radius:18px;
-
     padding:25px;
-
     margin-top:25px;
-
     box-shadow:
         0 5px 20px rgba(0,0,0,.05);
 }
 
-.info-section h2{
+.content h2{
     margin-top:0;
 }
 
-.info-section h3{
+.content h3{
     margin-bottom:5px;
 }
 
-.info-section p,
-.info-section li{
+.content p,
+.content li{
     color:#475569;
     line-height:1.7;
 }
 
-.faq-item{
-    border-bottom:1px solid #e2e8f0;
-    padding:15px 0;
-}
 
-.faq-item:last-child{
-    border-bottom:none;
-}
-
-
-/* =========================================
+/* =========================
    MOBILE
-========================================= */
+========================= */
 
 @media(max-width:800px){
 
@@ -444,21 +415,24 @@ select{
         grid-template-columns:1fr;
     }
 
-    .preview-area{
-        min-height:280px;
-    }
-
-    .preset-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+    .preview{
+        min-height:270px;
     }
 
     .actions{
         flex-direction:column;
     }
 
-    .action-btn{
+    .btn{
         width:100%;
+    }
+
+}
+
+@media(max-width:450px){
+
+    .presets{
+        grid-template-columns:1fr 1fr;
     }
 
 }
@@ -474,27 +448,23 @@ select{
 <div class="signature-page">
 
 
-<!-- =========================================
-HERO
-========================================= -->
+<!-- HERO -->
 
-<section class="signature-hero">
+<div class="hero">
 
 <h1>
 ✍️ Signature Resize
 </h1>
 
 <p>
-Resize and compress your signature image to the
-required dimensions and file size in KB.
+Resize your signature image to a specific
+KB size and required dimensions.
 </p>
 
-</section>
+</div>
 
 
-<!-- =========================================
-UPLOAD
-========================================= -->
+<!-- UPLOAD -->
 
 <div
 class="upload-box"
@@ -509,7 +479,7 @@ Upload Signature
 </h2>
 
 <p>
-Choose a signature image or drag & drop it here.
+Select an image or drag & drop it here.
 </p>
 
 <label
@@ -528,35 +498,30 @@ accept="image/jpeg,image/png,image/webp">
 </div>
 
 
-<!-- =========================================
-EDITOR
-========================================= -->
+<!-- EDITOR -->
 
 <div class="editor-grid">
 
 
 <!-- PREVIEW -->
 
-<div class="tool-card">
+<div class="card">
 
 <h2>
 👀 Preview
 </h2>
 
-<div class="preview-area">
+<div class="preview">
 
 <div
-class="empty-preview"
-id="emptyPreview">
+class="empty"
+id="empty">
 
-<div class="big">
-✍️
-</div>
+<div>✍️</div>
 
-Upload a signature to start
+Upload your signature
 
 </div>
-
 
 <canvas
 id="canvas"
@@ -565,14 +530,11 @@ style="display:none;">
 
 </div>
 
-
 <div
-class="file-info"
-id="fileInfo">
+class="info"
+id="info">
 
-<strong>
-Original:
-</strong>
+<strong>Original:</strong>
 
 <span id="originalInfo">
 -
@@ -580,9 +542,7 @@ Original:
 
 <br>
 
-<strong>
-Output:
-</strong>
+<strong>Output:</strong>
 
 <span id="outputInfo">
 -
@@ -590,37 +550,36 @@ Output:
 
 </div>
 
-
 <p
 style="
-color:#64748b;
 font-size:13px;
+color:#64748b;
 text-align:center;
 ">
 
-Your signature is processed directly in your
-browser.
+🔒 Your image is processed locally
+in your browser.
 
 </p>
 
 </div>
 
 
-<!-- CONTROLS -->
+<!-- SETTINGS -->
 
-<div class="tool-card">
+<div class="card">
 
 <h2>
 ⚙️ Resize Settings
 </h2>
 
 
-<!-- TARGET KB -->
+<!-- TARGET -->
 
-<div class="control-group">
+<div class="group">
 
-<label for="targetKB">
-🎯 Target File Size (KB)
+<label>
+🎯 Target File Size
 </label>
 
 <input
@@ -634,39 +593,64 @@ placeholder="Example: 20">
 </div>
 
 
-<!-- DIMENSIONS -->
+<!-- MODE -->
 
-<div class="control-group">
+<div class="group">
 
 <label>
-📐 Output Dimensions
+📦 Target Mode
 </label>
 
-<div class="dimension-grid">
+<div class="mode-grid">
 
-<div>
+<button
+type="button"
+class="mode-btn active"
+id="closeMode">
+
+🎯 Close Target
+
+</button>
+
+<button
+type="button"
+class="mode-btn"
+id="maxMode">
+
+⬇️ Maximum KB
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- DIMENSIONS -->
+
+<div class="group">
+
+<label>
+📐 Dimensions
+</label>
+
+<div class="dimensions">
 
 <input
 type="number"
-id="outputWidth"
-min="10"
-max="5000"
+id="width"
 value="300"
+min="20"
+max="5000"
 placeholder="Width">
 
-</div>
-
-<div>
-
 <input
 type="number"
-id="outputHeight"
-min="10"
-max="5000"
+id="height"
 value="100"
+min="20"
+max="5000"
 placeholder="Height">
-
-</div>
 
 </div>
 
@@ -675,19 +659,19 @@ placeholder="Height">
 
 <!-- PRESETS -->
 
-<div class="control-group">
+<div class="group">
 
 <label>
-⚡ Quick Size
+⚡ Quick Dimensions
 </label>
 
-<div class="preset-grid">
+<div class="presets">
 
 <button
 type="button"
-class="preset-btn"
-data-width="300"
-data-height="100">
+class="preset"
+data-w="300"
+data-h="100">
 
 300 × 100
 
@@ -695,9 +679,9 @@ data-height="100">
 
 <button
 type="button"
-class="preset-btn"
-data-width="400"
-data-height="150">
+class="preset"
+data-w="400"
+data-h="150">
 
 400 × 150
 
@@ -705,9 +689,9 @@ data-height="150">
 
 <button
 type="button"
-class="preset-btn"
-data-width="600"
-data-height="200">
+class="preset"
+data-w="600"
+data-h="200">
 
 600 × 200
 
@@ -720,20 +704,20 @@ data-height="200">
 
 <!-- FIT -->
 
-<div class="control-group">
+<div class="group">
 
 <label>
-🖼️ Image Fit
+🖼️ Fit
 </label>
 
-<select id="fitMode">
+<select id="fit">
 
 <option value="contain">
-Contain — Keep Full Signature
+Contain
 </option>
 
 <option value="cover">
-Cover — Fill Canvas
+Cover
 </option>
 
 </select>
@@ -741,56 +725,12 @@ Cover — Fill Canvas
 </div>
 
 
-<!-- BACKGROUND -->
-
-<div class="control-group">
-
-<label>
-🎨 Background
-</label>
-
-<div class="bg-grid">
-
-<button
-type="button"
-class="bg-btn active"
-data-bg="white"
-style="background:#fff;">
-
-White
-
-</button>
-
-<button
-type="button"
-class="bg-btn"
-data-bg="transparent">
-
-Transparent
-
-</button>
-
-<button
-type="button"
-class="bg-btn"
-data-bg="black"
-style="background:#000;color:#fff;">
-
-Black
-
-</button>
-
-</div>
-
-</div>
-
-
 <!-- QUALITY -->
 
-<div class="control-group">
+<div class="group">
 
-<label for="quality">
-🎚️ JPEG Quality
+<label>
+🎚️ Maximum Quality
 </label>
 
 <div class="range-row">
@@ -800,13 +740,13 @@ type="range"
 id="quality"
 min="10"
 max="100"
-value="90">
+value="100">
 
 <span
 class="range-value"
 id="qualityValue">
 
-90%
+100%
 
 </span>
 
@@ -820,8 +760,7 @@ id="qualityValue">
 <div class="actions">
 
 <button
-type="button"
-class="action-btn resize-btn"
+class="btn resize"
 id="resizeBtn"
 disabled>
 
@@ -829,10 +768,8 @@ disabled>
 
 </button>
 
-
 <button
-type="button"
-class="action-btn download-btn"
+class="btn download"
 id="downloadBtn"
 disabled>
 
@@ -840,10 +777,8 @@ disabled>
 
 </button>
 
-
 <button
-type="button"
-class="action-btn reset-btn"
+class="btn reset"
 id="resetBtn">
 
 🔄 Reset
@@ -854,68 +789,36 @@ id="resetBtn">
 
 
 <div
-class="status-box"
-id="statusBox">
+class="status"
+id="status">
 
-<span id="statusText"></span>
-
-</div>
-
+<span id="statusText">
+</span>
 
 </div>
 
 </div>
 
+</div>
 
-<!-- =========================================
-INFO
-========================================= -->
 
-<section class="info-section">
+<!-- CONTENT -->
+
+<section class="content">
 
 <h2>
 Free Online Signature Resize Tool
 </h2>
 
 <p>
-AdiyogiTools Signature Resize lets you resize and
-compress signature images to a specific dimension
-and target file size. The tool works directly in
-your browser without requiring a server upload.
+Resize and compress signature images to the
+required file size and dimensions directly
+inside your browser.
 </p>
 
 
 <h3>
-What can you control?
-</h3>
-
-<ul>
-
-<li>
-Target file size in KB
-</li>
-
-<li>
-Output width and height
-</li>
-
-<li>
-Image quality
-</li>
-
-<li>
-Background color
-</li>
-
-<li>
-Image fitting mode
-</li>
-
-</ul>
-
-
-<h3>
-How to resize a signature?
+How to resize a signature to 20 KB?
 </h3>
 
 <ol>
@@ -925,122 +828,97 @@ Upload your signature image.
 </li>
 
 <li>
-Enter the required target size in KB.
+Enter <strong>20 KB</strong> in Target File Size.
 </li>
 
 <li>
-Set the required width and height.
+Select the required dimensions.
 </li>
 
 <li>
-Choose the background and fit mode.
+Choose <strong>Close Target</strong>.
 </li>
 
 <li>
-Click Resize Signature.
+Click <strong>Resize Signature</strong>.
 </li>
 
 <li>
-Download the resized signature.
+Download the result.
 </li>
 
 </ol>
 
 
 <h3>
-Is my signature uploaded to a server?
+Is my signature uploaded?
 </h3>
 
 <p>
-No. Image processing is performed locally in your
-browser. Your signature does not need to be uploaded
-to a server for processing.
+No. Image processing is performed directly
+in your browser.
+</p>
+
+
+<h3>
+What does Maximum KB mean?
+</h3>
+
+<p>
+Maximum KB mode ensures that the generated
+file stays at or below the target size.
 </p>
 
 </section>
 
 
-<!-- =========================================
-FAQ
-========================================= -->
+<!-- FAQ -->
 
-<section class="info-section">
+<section class="content">
 
 <h2>
 Frequently Asked Questions
 </h2>
 
 
-<div class="faq-item">
-
-<h3>
-How can I resize a signature to a specific KB?
-</h3>
-
-<p>
-Upload your signature, enter the target file size
-in KB, choose the required dimensions and click
-Resize Signature.
-</p>
-
-</div>
-
-
-<div class="faq-item">
-
 <h3>
 Can I resize a signature to 20 KB?
 </h3>
 
 <p>
-Yes. Enter 20 in the target file size field and
-the tool will try to generate an image close to
-the requested size.
+Yes. Enter 20 KB as the target and use
+Close Target mode.
 </p>
 
-</div>
-
-
-<div class="faq-item">
 
 <h3>
-Can I change the signature dimensions?
+Can I resize a signature to 30 KB?
 </h3>
 
 <p>
-Yes. You can enter a custom width and height or
-use one of the available quick-size presets.
+Yes. Enter 30 KB and click Resize Signature.
+The tool will try to generate a file close
+to the requested size.
 </p>
 
-</div>
-
-
-<div class="faq-item">
 
 <h3>
-Can I use a transparent background?
+Can I resize a signature to a specific dimension?
 </h3>
 
 <p>
-Yes. The tool provides a transparent background
-option for supported output formats.
+Yes. You can enter your own width and height
+in pixels.
 </p>
 
-</div>
-
-
-<div class="faq-item">
 
 <h3>
-Is Signature Resize free?
+Is the tool free?
 </h3>
 
 <p>
-Yes. The tool is designed to resize signatures
-online for free directly in your browser.
+Yes. Signature Resize is free to use.
 </p>
-
-</div>
 
 </section>
 
@@ -1048,17 +926,13 @@ online for free directly in your browser.
 </div>
 
 
-<!-- =========================================
-JAVASCRIPT
-========================================= -->
-
 <script>
 
-/* =========================================
+/* =========================
    ELEMENTS
-========================================= */
+========================= */
 
-const signatureInput =
+const input =
 document.getElementById("signature");
 
 const uploadBox =
@@ -1070,20 +944,20 @@ document.getElementById("canvas");
 const ctx =
 canvas.getContext("2d");
 
-const emptyPreview =
-document.getElementById("emptyPreview");
+const empty =
+document.getElementById("empty");
 
 const targetKB =
 document.getElementById("targetKB");
 
-const outputWidth =
-document.getElementById("outputWidth");
+const widthInput =
+document.getElementById("width");
 
-const outputHeight =
-document.getElementById("outputHeight");
+const heightInput =
+document.getElementById("height");
 
-const fitMode =
-document.getElementById("fitMode");
+const fit =
+document.getElementById("fit");
 
 const quality =
 document.getElementById("quality");
@@ -1100,8 +974,8 @@ document.getElementById("downloadBtn");
 const resetBtn =
 document.getElementById("resetBtn");
 
-const fileInfo =
-document.getElementById("fileInfo");
+const info =
+document.getElementById("info");
 
 const originalInfo =
 document.getElementById("originalInfo");
@@ -1109,16 +983,18 @@ document.getElementById("originalInfo");
 const outputInfo =
 document.getElementById("outputInfo");
 
-const statusBox =
-document.getElementById("statusBox");
+const status =
+document.getElementById("status");
 
 const statusText =
 document.getElementById("statusText");
 
+const closeMode =
+document.getElementById("closeMode");
 
-/* =========================================
-   STATE
-========================================= */
+const maxMode =
+document.getElementById("maxMode");
+
 
 let image = null;
 
@@ -1126,62 +1002,46 @@ let originalFile = null;
 
 let finalBlob = null;
 
-let background =
-"white";
+let mode = "close";
 
 
-/* =========================================
-   FILE UPLOAD
-========================================= */
+/* =========================
+   UPLOAD
+========================= */
 
-signatureInput.addEventListener(
+input.addEventListener(
 "change",
 function(){
 
-const file =
-this.files[0];
+if(this.files[0]){
 
-if(!file){
-
-return;
+loadFile(this.files[0]);
 
 }
-
-
-if(
-!file.type.startsWith("image/")
-){
-
-alert(
-"Please select a valid image."
-);
-
-this.value = "";
-
-return;
-
-}
-
-
-loadImage(file);
 
 }
 );
 
 
-/* =========================================
-   LOAD IMAGE
-========================================= */
+/* =========================
+   LOAD
+========================= */
 
-function loadImage(file){
+function loadFile(file){
+
+if(!file.type.startsWith("image/")){
+
+alert("Please select an image.");
+
+return;
+
+}
 
 originalFile =
 file;
 
-
 const reader =
 new FileReader();
-
 
 reader.onload =
 function(e){
@@ -1189,14 +1049,13 @@ function(e){
 const img =
 new Image();
 
-
 img.onload =
 function(){
 
 image =
 img;
 
-emptyPreview.style.display =
+empty.style.display =
 "none";
 
 canvas.style.display =
@@ -1205,20 +1064,23 @@ canvas.style.display =
 resizeBtn.disabled =
 false;
 
-fileInfo.style.display =
+info.style.display =
 "block";
 
-
 originalInfo.textContent =
-formatBytes(file.size) +
-" • " +
-img.naturalWidth +
-" × " +
-img.naturalHeight +
+formatBytes(file.size)
++
+" • "
++
+img.width
++
+" × "
++
+img.height
++
 " px";
 
-
-drawPreview();
+draw();
 
 showStatus(
 "Signature loaded successfully.",
@@ -1227,31 +1089,19 @@ false
 
 };
 
-
-img.onerror =
-function(){
-
-alert(
-"Unable to load signature image."
-);
-
-};
-
-
 img.src =
 e.target.result;
 
 };
-
 
 reader.readAsDataURL(file);
 
 }
 
 
-/* =========================================
-   DRAG & DROP
-========================================= */
+/* =========================
+   DRAG DROP
+========================= */
 
 uploadBox.addEventListener(
 "dragover",
@@ -1266,7 +1116,6 @@ uploadBox.classList.add(
 }
 );
 
-
 uploadBox.addEventListener(
 "dragleave",
 function(){
@@ -1277,7 +1126,6 @@ uploadBox.classList.remove(
 
 }
 );
-
 
 uploadBox.addEventListener(
 "drop",
@@ -1292,52 +1140,69 @@ uploadBox.classList.remove(
 const file =
 e.dataTransfer.files[0];
 
-if(!file){
+if(file){
 
-return;
-
-}
-
-
-if(
-!file.type.startsWith("image/")
-){
-
-alert(
-"Please drop a valid image."
-);
-
-return;
+loadFile(file);
 
 }
-
-
-loadImage(file);
 
 }
 );
 
 
-/* =========================================
-   PRESETS
-========================================= */
+/* =========================
+   MODE
+========================= */
 
-document
-.querySelectorAll(".preset-btn")
-.forEach(
-function(button){
-
-button.addEventListener(
+closeMode.addEventListener(
 "click",
 function(){
 
-outputWidth.value =
-this.dataset.width;
+mode =
+"close";
 
-outputHeight.value =
-this.dataset.height;
+closeMode.classList.add("active");
 
-drawPreview();
+maxMode.classList.remove("active");
+
+}
+);
+
+maxMode.addEventListener(
+"click",
+function(){
+
+mode =
+"max";
+
+maxMode.classList.add("active");
+
+closeMode.classList.remove("active");
+
+}
+);
+
+
+/* =========================
+   PRESETS
+========================= */
+
+document
+.querySelectorAll(".preset")
+.forEach(
+function(btn){
+
+btn.addEventListener(
+"click",
+function(){
+
+widthInput.value =
+this.dataset.w;
+
+heightInput.value =
+this.dataset.h;
+
+draw();
 
 }
 );
@@ -1346,34 +1211,9 @@ drawPreview();
 );
 
 
-/* =========================================
-   INPUT UPDATE
-========================================= */
-
-[
-outputWidth,
-outputHeight,
-fitMode
-].forEach(
-function(control){
-
-control.addEventListener(
-"input",
-drawPreview
-);
-
-control.addEventListener(
-"change",
-drawPreview
-);
-
-}
-);
-
-
-/* =========================================
+/* =========================
    QUALITY
-========================================= */
+========================= */
 
 quality.addEventListener(
 "input",
@@ -1386,112 +1226,11 @@ this.value + "%";
 );
 
 
-/* =========================================
-   BACKGROUND
-========================================= */
+/* =========================
+   DRAW
+========================= */
 
-document
-.querySelectorAll(".bg-btn")
-.forEach(
-function(button){
-
-button.addEventListener(
-"click",
-function(){
-
-document
-.querySelectorAll(".bg-btn")
-.forEach(
-function(btn){
-
-btn.classList.remove(
-"active"
-);
-
-}
-);
-
-
-this.classList.add(
-"active"
-);
-
-background =
-this.dataset.bg;
-
-drawPreview();
-
-}
-);
-
-}
-);
-
-
-/* =========================================
-   GET DIMENSIONS
-========================================= */
-
-function getDimensions(){
-
-let width =
-parseInt(
-outputWidth.value
-);
-
-let height =
-parseInt(
-outputHeight.value
-);
-
-
-if(
-!width ||
-!height ||
-width < 10 ||
-height < 10
-){
-
-width = 300;
-
-height = 100;
-
-}
-
-
-width =
-Math.min(
-5000,
-Math.max(
-10,
-width
-)
-);
-
-
-height =
-Math.min(
-5000,
-Math.max(
-10,
-height
-)
-);
-
-
-return {
-width,
-height
-};
-
-}
-
-
-/* =========================================
-   DRAW PREVIEW
-========================================= */
-
-function drawPreview(){
+function draw(){
 
 if(!image){
 
@@ -1499,31 +1238,17 @@ return;
 
 }
 
+const w =
+parseInt(widthInput.value) || 300;
 
-const dimensions =
-getDimensions();
-
+const h =
+parseInt(heightInput.value) || 100;
 
 canvas.width =
-dimensions.width;
+w;
 
 canvas.height =
-dimensions.height;
-
-
-/* BACKGROUND */
-
-ctx.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-
-if(
-background === "white"
-){
+h;
 
 ctx.fillStyle =
 "#ffffff";
@@ -1531,124 +1256,115 @@ ctx.fillStyle =
 ctx.fillRect(
 0,
 0,
-canvas.width,
-canvas.height
+w,
+h
 );
 
-}
-
-
-if(
-background === "black"
-){
-
-ctx.fillStyle =
-"#000000";
-
-ctx.fillRect(
-0,
-0,
-canvas.width,
-canvas.height
-);
-
-}
-
-
-/* IMAGE */
-
-const imageRatio =
-image.naturalWidth /
-image.naturalHeight;
+const ratio =
+image.width /
+image.height;
 
 const canvasRatio =
-canvas.width /
-canvas.height;
+w /
+h;
 
-let drawWidth;
-let drawHeight;
-
+let dw;
+let dh;
 
 if(
-fitMode.value === "contain"
+fit.value === "contain"
 ){
 
 if(
-imageRatio > canvasRatio
+ratio > canvasRatio
 ){
 
-drawWidth =
-canvas.width;
+dw =
+w;
 
-drawHeight =
-canvas.width /
-imageRatio;
+dh =
+w / ratio;
 
 }else{
 
-drawHeight =
-canvas.height;
+dh =
+h;
 
-drawWidth =
-canvas.height *
-imageRatio;
+dw =
+h * ratio;
 
 }
 
 }else{
 
 if(
-imageRatio > canvasRatio
+ratio > canvasRatio
 ){
 
-drawHeight =
-canvas.height;
+dh =
+h;
 
-drawWidth =
-canvas.height *
-imageRatio;
+dw =
+h * ratio;
 
 }else{
 
-drawWidth =
-canvas.width;
+dw =
+w;
 
-drawHeight =
-canvas.width /
-imageRatio;
-
-}
+dh =
+w / ratio;
 
 }
 
+}
 
 const x =
-(
-canvas.width -
-drawWidth
-) / 2;
+(w - dw) / 2;
 
 const y =
-(
-canvas.height -
-drawHeight
-) / 2;
-
+(h - dh) / 2;
 
 ctx.drawImage(
 image,
 x,
 y,
-drawWidth,
-drawHeight
+dw,
+dh
 );
 
 }
 
 
-/* =========================================
+/* =========================
+   INPUT CHANGE
+========================= */
+
+[
+widthInput,
+heightInput,
+fit
+]
+.forEach(
+function(el){
+
+el.addEventListener(
+"input",
+draw
+);
+
+el.addEventListener(
+"change",
+draw
+);
+
+}
+);
+
+
+/* =========================
    RESIZE
-========================================= */
+========================= */
 
 resizeBtn.addEventListener(
 "click",
@@ -1657,103 +1373,95 @@ async function(){
 if(!image){
 
 alert(
-"Please select a signature image."
+"Please select a signature."
 );
 
 return;
 
 }
 
-
-const requestedKB =
-parseInt(
-targetKB.value
-);
-
+const target =
+parseInt(targetKB.value);
 
 if(
-!requestedKB ||
-requestedKB <= 0
+!target ||
+target <= 0
 ){
 
 alert(
-"Please enter a valid target size in KB."
+"Enter a valid target size in KB."
 );
-
-targetKB.focus();
 
 return;
 
 }
 
-
 resizeBtn.disabled =
+true;
+
+downloadBtn.disabled =
 true;
 
 resizeBtn.textContent =
 "⏳ Processing...";
 
-
 try{
 
-drawPreview();
+draw();
 
 const result =
-await createTargetSize(
-requestedKB
+await createTarget(
+target
 );
-
 
 if(!result){
 
 throw new Error(
-"Unable to create image."
+"Could not create output."
 );
 
 }
 
-
 finalBlob =
-result.blob;
-
-
-outputInfo.textContent =
-formatBytes(
-finalBlob.size
-) +
-" • " +
-canvas.width +
-" × " +
-canvas.height +
-" px";
-
+result;
 
 downloadBtn.disabled =
 false;
 
-
-const actualKB =
-finalBlob.size / 1024;
-
+outputInfo.textContent =
+formatBytes(
+finalBlob.size
+)
++
+" • "
++
+canvas.width
++
+" × "
++
+canvas.height
++
+" px";
 
 showStatus(
-"Signature resized successfully. Final size: " +
-actualKB.toFixed(1) +
-" KB.",
+"Done! Output size: "
++
+(finalBlob.size / 1024).toFixed(1)
++
+" KB",
 false
 );
-
 
 }catch(error){
 
 console.error(error);
 
 showStatus(
-"Could not create the requested file size. Try increasing the target KB.",
+"Unable to create the requested size.",
 true
 );
 
-}finally{
+}
 
 resizeBtn.disabled =
 false;
@@ -1762,25 +1470,69 @@ resizeBtn.textContent =
 "✍️ Resize Signature";
 
 }
-
-}
 );
 
 
-/* =========================================
-   CREATE TARGET SIZE
-========================================= */
+/* =========================
+   CREATE TARGET
+========================= */
 
-async function createTargetSize(
-target
+async function createTarget(
+targetKB
 ){
 
 const targetBytes =
-target * 1024;
+targetKB * 1024;
+
+let w =
+canvas.width;
+
+let h =
+canvas.height;
+
+let best =
+null;
+
+let bestDifference =
+Infinity;
 
 
 /*
- * First try different JPEG qualities.
+ Try increasing dimensions
+ if natural image is too small.
+ */
+
+for(
+let scale = 1;
+scale <= 3;
+scale += 0.15
+){
+
+let testW =
+Math.min(
+5000,
+Math.round(
+w * scale
+)
+);
+
+let testH =
+Math.min(
+5000,
+Math.round(
+h * scale
+)
+);
+
+const temp =
+makeCanvas(
+testW,
+testH
+);
+
+
+/*
+ Quality search
  */
 
 let low =
@@ -1791,36 +1543,27 @@ parseInt(
 quality.value
 ) / 100;
 
-let bestBlob =
+let localBest =
 null;
 
-let bestDifference =
+let localDiff =
 Infinity;
 
 
-/*
- * Binary search for quality.
- */
-
 for(
 let i = 0;
-i < 9;
+i < 10;
 i++
 ){
 
 const q =
-(
-low +
-high
-) / 2;
-
+(low + high) / 2;
 
 const blob =
-await canvasToBlob(
-"image/jpeg",
+await canvasBlob(
+temp,
 q
 );
-
 
 if(!blob){
 
@@ -1828,31 +1571,24 @@ continue;
 
 }
 
-
-const difference =
+const diff =
 Math.abs(
 blob.size -
 targetBytes
 );
 
+if(diff < localDiff){
 
-if(
-difference <
-bestDifference
-){
+localDiff =
+diff;
 
-bestDifference =
-difference;
-
-bestBlob =
+localBest =
 blob;
 
 }
 
-
 if(
-blob.size >
-targetBytes
+blob.size > targetBytes
 ){
 
 high =
@@ -1865,146 +1601,194 @@ q;
 
 }
 
-}
-
 
 /*
- * If already close enough.
+ Maximum KB mode
  */
 
 if(
-bestBlob &&
-bestBlob.size <= targetBytes
+mode === "max" &&
+blob.size <= targetBytes
 ){
 
-return {
-blob:bestBlob
-};
+best =
+blob;
+
+bestDifference =
+diff;
+
+break;
+
+}
+
+}
+
+
+if(
+localBest &&
+localDiff < bestDifference
+){
+
+best =
+localBest;
+
+bestDifference =
+localDiff;
 
 }
 
 
 /*
- * If target is too small for current
- * dimensions, reduce dimensions gradually.
+ Close enough.
  */
 
-let width =
-canvas.width;
-
-let height =
-canvas.height;
-
-
-for(
-let step = 0;
-step < 12;
-step++
+if(
+mode === "close" &&
+localBest &&
+localDiff <= targetBytes * 0.05
 ){
 
-width =
-Math.max(
-30,
-Math.round(
-width * 0.88
-)
+updateCanvas(
+temp
 );
 
-height =
-Math.max(
-20,
-Math.round(
-height * 0.88
-)
+return localBest;
+
+}
+
+
+if(
+mode === "max" &&
+best &&
+best.size <= targetBytes
+){
+
+updateCanvas(
+temp
 );
 
+return best;
 
-const temp =
+}
+
+}
+
+
+/*
+ If file is still below target,
+ pad the JPEG safely.
+ */
+
+if(
+mode === "close" &&
+best &&
+best.size < targetBytes
+){
+
+const padded =
+await padJPEG(
+best,
+targetBytes
+);
+
+if(padded){
+
+return padded;
+
+}
+
+}
+
+
+/*
+ Maximum mode.
+ */
+
+if(
+mode === "max" &&
+best &&
+best.size <= targetBytes
+){
+
+return best;
+
+}
+
+
+/*
+ Return closest result.
+ */
+
+return best;
+
+}
+
+
+/* =========================
+   CREATE CANVAS
+========================= */
+
+function makeCanvas(
+w,
+h
+){
+
+const c =
 document.createElement(
 "canvas"
 );
 
-temp.width =
-width;
+c.width =
+w;
 
-temp.height =
-height;
+c.height =
+h;
 
+const cctx =
+c.getContext("2d");
 
-const tempCtx =
-temp.getContext(
-"2d"
-);
-
-
-/* background */
-
-if(
-background === "white"
-){
-
-tempCtx.fillStyle =
+cctx.fillStyle =
 "#ffffff";
 
-tempCtx.fillRect(
+cctx.fillRect(
 0,
 0,
-width,
-height
+w,
+h
 );
-
-}
-
-else if(
-background === "black"
-){
-
-tempCtx.fillStyle =
-"#000000";
-
-tempCtx.fillRect(
-0,
-0,
-width,
-height
-);
-
-}
-
 
 const ratio =
-image.naturalWidth /
-image.naturalHeight;
+image.width /
+image.height;
 
 const canvasRatio =
-width /
-height;
+w /
+h;
 
-let drawWidth;
-let drawHeight;
-
+let dw;
+let dh;
 
 if(
-fitMode.value === "contain"
+fit.value === "contain"
 ){
 
 if(
 ratio > canvasRatio
 ){
 
-drawWidth =
-width;
+dw =
+w;
 
-drawHeight =
-width / ratio;
+dh =
+w / ratio;
 
 }else{
 
-drawHeight =
-height;
+dh =
+h;
 
-drawWidth =
-height * ratio;
+dw =
+h * ratio;
 
 }
 
@@ -2014,148 +1798,44 @@ if(
 ratio > canvasRatio
 ){
 
-drawHeight =
-height;
+dh =
+h;
 
-drawWidth =
-height * ratio;
+dw =
+h * ratio;
 
 }else{
 
-drawWidth =
-width;
+dw =
+w;
 
-drawHeight =
-width / ratio;
-
-}
+dh =
+w / ratio;
 
 }
 
+}
 
-tempCtx.drawImage(
+cctx.drawImage(
 image,
-(
-width -
-drawWidth
-) / 2,
-(
-height -
-drawHeight
-) / 2,
-drawWidth,
-drawHeight
+(w-dw)/2,
+(h-dh)/2,
+dw,
+dh
 );
 
-
-for(
-let q = 0.95;
-q >= 0.05;
-q -= 0.10
-){
-
-const blob =
-await canvasToBlobFromCanvas(
-temp,
-"image/jpeg",
-q
-);
-
-
-if(
-!blob
-){
-
-continue;
+return c;
 
 }
 
 
-if(
-blob.size <= targetBytes
-){
+/* =========================
+   CANVAS BLOB
+========================= */
 
-/*
- * Update preview to actual output.
- */
-
-canvas.width =
-width;
-
-canvas.height =
-height;
-
-ctx.clearRect(
-0,
-0,
-width,
-height
-);
-
-ctx.drawImage(
-temp,
-0,
-0
-);
-
-
-return {
-blob:blob
-};
-
-}
-
-
-if(
-Math.abs(
-blob.size -
-targetBytes
-)
-<
-bestDifference
-){
-
-bestDifference =
-Math.abs(
-blob.size -
-targetBytes
-);
-
-bestBlob =
-blob;
-
-}
-
-}
-
-}
-
-
-/*
- * Return best available result.
- */
-
-if(bestBlob){
-
-return {
-blob:bestBlob
-};
-
-}
-
-
-return null;
-
-}
-
-
-/* =========================================
-   CANVAS TO BLOB
-========================================= */
-
-function canvasToBlob(
-type,
-qualityValue
+function canvasBlob(
+canvas,
+quality
 ){
 
 return new Promise(
@@ -2167,8 +1847,8 @@ function(blob){
 resolve(blob);
 
 },
-type,
-qualityValue
+"image/jpeg",
+quality
 );
 
 }
@@ -2177,38 +1857,116 @@ qualityValue
 }
 
 
-/* =========================================
-   TEMP CANVAS TO BLOB
-========================================= */
+/* =========================
+   PAD JPEG
+========================= */
 
-function canvasToBlobFromCanvas(
-sourceCanvas,
-type,
-qualityValue
+async function padJPEG(
+blob,
+targetBytes
 ){
 
-return new Promise(
-function(resolve){
+if(
+blob.size >= targetBytes
+){
 
-sourceCanvas.toBlob(
-function(blob){
+return blob;
 
-resolve(blob);
+}
 
-},
-type,
-qualityValue
+const bytes =
+new Uint8Array(
+await blob.arrayBuffer()
 );
 
+const paddingSize =
+targetBytes -
+bytes.length;
+
+if(
+paddingSize <= 0
+){
+
+return blob;
+
+}
+
+
+/*
+ JPEG files can contain trailing
+ application data after the EOI marker.
+ */
+
+const output =
+new Uint8Array(
+bytes.length +
+paddingSize
+);
+
+output.set(
+bytes,
+0
+);
+
+
+/*
+ Fill additional bytes.
+ */
+
+for(
+let i = bytes.length;
+i < output.length;
+i++
+){
+
+output[i] =
+0;
+
+}
+
+return new Blob(
+[output],
+{
+type:"image/jpeg"
 }
 );
 
 }
 
 
-/* =========================================
+/* =========================
+   UPDATE CANVAS
+========================= */
+
+function updateCanvas(
+source
+){
+
+canvas.width =
+source.width;
+
+canvas.height =
+source.height;
+
+ctx.clearRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+ctx.drawImage(
+source,
+0,
+0
+);
+
+}
+
+
+/* =========================
    DOWNLOAD
-========================================= */
+========================= */
 
 downloadBtn.addEventListener(
 "click",
@@ -2216,42 +1974,36 @@ function(){
 
 if(!finalBlob){
 
-alert(
-"Please resize the signature first."
-);
-
 return;
 
 }
-
 
 const url =
 URL.createObjectURL(
 finalBlob
 );
 
-
 const a =
 document.createElement(
 "a"
 );
 
-
 a.href =
 url;
 
 a.download =
-"adiyogitools-signature.jpg";
+"signature-" +
+(
+finalBlob.size / 1024
+).toFixed(0)
++
+"KB.jpg";
 
-
-document.body.appendChild(
-a
-);
+document.body.appendChild(a);
 
 a.click();
 
 a.remove();
-
 
 setTimeout(
 function(){
@@ -2268,21 +2020,21 @@ url
 );
 
 
-/* =========================================
+/* =========================
    STATUS
-========================================= */
+========================= */
 
 function showStatus(
 message,
-isError
+error
 ){
 
-statusBox.style.display =
+status.style.display =
 "block";
 
-statusBox.classList.toggle(
-"error-box",
-isError
+status.classList.toggle(
+"error",
+error
 );
 
 statusText.textContent =
@@ -2291,11 +2043,13 @@ message;
 }
 
 
-/* =========================================
-   FORMAT BYTES
-========================================= */
+/* =========================
+   FORMAT
+========================= */
 
-function formatBytes(bytes){
+function formatBytes(
+bytes
+){
 
 if(
 bytes < 1024
@@ -2305,35 +2059,38 @@ return bytes + " B";
 
 }
 
-
 if(
 bytes < 1024 * 1024
 ){
 
 return (
 bytes / 1024
-).toFixed(1) + " KB";
+).toFixed(1)
++
+" KB";
 
 }
-
 
 return (
 bytes /
-(
-1024 * 1024
-)
-).toFixed(2) + " MB";
+(1024*1024)
+).toFixed(2)
++
+" MB";
 
 }
 
 
-/* =========================================
+/* =========================
    RESET
-========================================= */
+========================= */
 
 resetBtn.addEventListener(
 "click",
 function(){
+
+input.value =
+"";
 
 image =
 null;
@@ -2344,13 +2101,10 @@ null;
 finalBlob =
 null;
 
-signatureInput.value =
-"";
-
 canvas.style.display =
 "none";
 
-emptyPreview.style.display =
+empty.style.display =
 "block";
 
 resizeBtn.disabled =
@@ -2359,64 +2113,39 @@ true;
 downloadBtn.disabled =
 true;
 
-fileInfo.style.display =
+info.style.display =
 "none";
 
-statusBox.style.display =
+status.style.display =
 "none";
 
-outputInfo.textContent =
-"-";
-
-outputWidth.value =
+widthInput.value =
 300;
 
-outputHeight.value =
+heightInput.value =
 100;
 
 targetKB.value =
 20;
 
 quality.value =
-90;
+100;
 
 qualityValue.textContent =
-"90%";
+"100%";
 
-fitMode.value =
+fit.value =
 "contain";
 
-background =
-"white";
+mode =
+"close";
 
-
-document
-.querySelectorAll(".bg-btn")
-.forEach(
-function(btn){
-
-btn.classList.remove(
+closeMode.classList.add(
 "active"
 );
 
-}
-);
-
-
-document
-.querySelector(
-'.bg-btn[data-bg="white"]'
-)
-.classList.add(
+maxMode.classList.remove(
 "active"
-);
-
-
-ctx.clearRect(
-0,
-0,
-canvas.width,
-canvas.height
 );
 
 }
@@ -2425,9 +2154,7 @@ canvas.height
 </script>
 
 
-<!-- =========================================
-   STRUCTURED DATA
-========================================= -->
+<!-- STRUCTURED DATA -->
 
 <script type="application/ld+json">
 
@@ -2438,7 +2165,7 @@ canvas.height
 "url":"https://adiyogitools.in/signature-resize.html",
 "applicationCategory":"PhotographyApplication",
 "operatingSystem":"Any",
-"description":"Free online signature image resizing and compression tool with target KB and dimension controls.",
+"description":"Free online signature resize and compression tool.",
 "offers":{
 "@type":"Offer",
 "price":"0",
@@ -2458,28 +2185,28 @@ canvas.height
 
 {
 "@type":"Question",
-"name":"How can I resize a signature to a specific KB?",
-"acceptedAnswer":{
-"@type":"Answer",
-"text":"Upload your signature, enter the target file size in KB, choose the required dimensions and click Resize Signature."
-}
-},
-
-{
-"@type":"Question",
 "name":"Can I resize a signature to 20 KB?",
 "acceptedAnswer":{
 "@type":"Answer",
-"text":"Yes. Enter 20 KB as the target size and the tool will try to generate a file close to the requested size."
+"text":"Yes. Enter 20 KB as the target size and use Close Target mode."
 }
 },
 
 {
 "@type":"Question",
-"name":"Can I change the signature dimensions?",
+"name":"Can I resize a signature to 30 KB?",
 "acceptedAnswer":{
 "@type":"Answer",
-"text":"Yes. You can enter a custom width and height or use one of the available quick-size presets."
+"text":"Yes. Enter 30 KB as the target size and click Resize Signature."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I change signature dimensions?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. You can enter custom width and height in pixels."
 }
 },
 
@@ -2488,7 +2215,7 @@ canvas.height
 "name":"Is Signature Resize free?",
 "acceptedAnswer":{
 "@type":"Answer",
-"text":"Yes. The tool is designed to resize signatures online for free directly in your browser."
+"text":"Yes. The tool is free to use."
 }
 }
 
