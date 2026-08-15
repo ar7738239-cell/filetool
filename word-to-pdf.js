@@ -20,19 +20,68 @@ const preview =
     document.getElementById("preview");
 
 
+/* ==================================================
+   CHECK REQUIRED LIBRARIES
+================================================== */
 
-/* =========================
-   FILE SELECT
-========================= */
+function checkLibraries() {
+
+    if (typeof JSZip === "undefined") {
+
+        throw new Error(
+            "JSZip library failed to load."
+        );
+
+    }
+
+    if (
+        typeof docx === "undefined" ||
+        typeof docx.renderAsync !== "function"
+    ) {
+
+        throw new Error(
+            "DOCX Preview library failed to load."
+        );
+
+    }
+
+    if (typeof html2canvas === "undefined") {
+
+        throw new Error(
+            "html2canvas library failed to load."
+        );
+
+    }
+
+    if (
+        typeof jspdf === "undefined" ||
+        typeof jspdf.jsPDF !== "function"
+    ) {
+
+        throw new Error(
+            "jsPDF library failed to load."
+        );
+
+    }
+
+}
+
+
+/* ==================================================
+   FILE SELECTION
+================================================== */
 
 wordInput.addEventListener(
     "change",
     function () {
 
-        const file = this.files[0];
+        const file =
+            this.files[0];
+
 
         downloadBtn.style.display =
             "none";
+
 
         success.style.display =
             "none";
@@ -48,11 +97,11 @@ wordInput.addEventListener(
         }
 
 
-        if (
-            !file.name
-                .toLowerCase()
-                .endsWith(".docx")
-        ) {
+        const name =
+            file.name.toLowerCase();
+
+
+        if (!name.endsWith(".docx")) {
 
             alert(
                 "Please select a DOCX Word file."
@@ -75,10 +124,9 @@ wordInput.addEventListener(
 );
 
 
-
-/* =========================
-   WAIT FOR IMAGES
-========================= */
+/* ==================================================
+   WAIT FOR ALL IMAGES
+================================================== */
 
 function waitForImages(container) {
 
@@ -92,22 +140,29 @@ function waitForImages(container) {
 
             function (img) {
 
-                if (img.complete) {
-
-                    return Promise.resolve();
-
-                }
-
-
                 return new Promise(
 
                     function (resolve) {
 
+                        if (img.complete) {
+
+                            resolve();
+
+                            return;
+
+                        }
+
+
                         img.onload =
-                            resolve;
+                            function () {
+                                resolve();
+                            };
+
 
                         img.onerror =
-                            resolve;
+                            function () {
+                                resolve();
+                            };
 
                     }
 
@@ -122,13 +177,36 @@ function waitForImages(container) {
 }
 
 
+/* ==================================================
+   SMALL WAIT
+================================================== */
 
-/* =========================
-   CONVERT
-========================= */
+function wait(ms) {
+
+    return new Promise(
+
+        function (resolve) {
+
+            setTimeout(
+                resolve,
+                ms
+            );
+
+        }
+
+    );
+
+}
+
+
+/* ==================================================
+   CONVERT BUTTON
+================================================== */
 
 convertBtn.addEventListener(
+
     "click",
+
     async function () {
 
         const file =
@@ -148,6 +226,14 @@ convertBtn.addEventListener(
 
         try {
 
+
+            /* ==========================================
+               CHECK LIBRARIES FIRST
+            ========================================== */
+
+            checkLibraries();
+
+
             convertBtn.disabled =
                 true;
 
@@ -164,6 +250,14 @@ convertBtn.addEventListener(
                 "none";
 
 
+            loading.textContent =
+                "⏳ Reading Word document...";
+
+
+            /* ==========================================
+               CLEAR OLD DOCUMENT
+            ========================================== */
+
             preview.innerHTML =
                 "";
 
@@ -172,13 +266,13 @@ convertBtn.addEventListener(
                 "block";
 
 
-            loading.textContent =
-                "⏳ Reading Word document...";
+            preview.style.visibility =
+                "visible";
 
 
-            /* =========================
+            /* ==========================================
                RENDER DOCX
-            ========================= */
+            ========================================== */
 
             await docx.renderAsync(
 
@@ -190,38 +284,53 @@ convertBtn.addEventListener(
 
                 {
 
-                    className: "docx",
+                    className:
+                        "docx",
 
-                    inWrapper: true,
+                    inWrapper:
+                        true,
 
-                    breakPages: true,
+                    breakPages:
+                        true,
 
-                    ignoreWidth: false,
+                    ignoreWidth:
+                        false,
 
-                    ignoreHeight: false,
+                    ignoreHeight:
+                        false,
 
-                    ignoreFonts: false,
+                    ignoreFonts:
+                        false,
 
                     ignoreLastRenderedPageBreak:
                         false,
 
-                    renderHeaders: true,
+                    renderHeaders:
+                        true,
 
-                    renderFooters: true,
+                    renderFooters:
+                        true,
 
-                    renderFootnotes: true,
+                    renderFootnotes:
+                        true,
 
-                    renderEndnotes: true,
+                    renderEndnotes:
+                        true,
 
-                    useBase64URL: true
+                    useBase64URL:
+                        true
 
                 }
 
             );
 
 
+            /* ==========================================
+               WAIT FOR IMAGES
+            ========================================== */
+
             loading.textContent =
-                "⏳ Loading document images...";
+                "⏳ Loading images and document layout...";
 
 
             await waitForImages(
@@ -229,21 +338,12 @@ convertBtn.addEventListener(
             );
 
 
-            await new Promise(
-                function (resolve) {
-
-                    setTimeout(
-                        resolve,
-                        1000
-                    );
-
-                }
-            );
+            await wait(1000);
 
 
-            /* =========================
-               FIND DOCUMENT
-            ========================= */
+            /* ==========================================
+               FIND DOCX WRAPPER
+            ========================================== */
 
             const wrapper =
                 preview.querySelector(
@@ -254,11 +354,15 @@ convertBtn.addEventListener(
             if (!wrapper) {
 
                 throw new Error(
-                    "Word document rendering failed."
+                    "DOCX document could not be rendered."
                 );
 
             }
 
+
+            /* ==========================================
+               FIX DOCUMENT WIDTH
+            ========================================== */
 
             wrapper.style.width =
                 "794px";
@@ -272,10 +376,13 @@ convertBtn.addEventListener(
             wrapper.style.padding =
                 "0";
 
-
             wrapper.style.background =
                 "#ffffff";
 
+
+            /* ==========================================
+               FIND DOCUMENT SECTIONS
+            ========================================== */
 
             const sections =
                 wrapper.querySelectorAll(
@@ -295,21 +402,49 @@ convertBtn.addEventListener(
             }
 
 
+            captureElement.style.display =
+                "block";
+
             captureElement.style.visibility =
                 "visible";
 
 
-            captureElement.style.display =
-                "block";
+            /* ==========================================
+               DOCUMENT HEIGHT
+            ========================================== */
 
+            const documentHeight =
+                Math.max(
+
+                    captureElement.scrollHeight,
+
+                    captureElement.offsetHeight,
+
+                    captureElement.getBoundingClientRect()
+                        .height
+
+                );
+
+
+            if (
+                !documentHeight ||
+                documentHeight < 20
+            ) {
+
+                throw new Error(
+                    "Word document appears to be empty."
+                );
+
+            }
+
+
+            /* ==========================================
+               CAPTURE DOCUMENT
+            ========================================== */
 
             loading.textContent =
-                "⏳ Preparing PDF...";
+                "⏳ Preparing document pages...";
 
-
-            /* =========================
-               CAPTURE DOCUMENT
-            ========================= */
 
             const canvas =
                 await html2canvas(
@@ -318,34 +453,40 @@ convertBtn.addEventListener(
 
                     {
 
-                        scale: 2,
+                        scale:
+                            2,
 
-                        useCORS: true,
+                        useCORS:
+                            true,
 
-                        allowTaint: true,
+                        allowTaint:
+                            false,
 
                         backgroundColor:
                             "#ffffff",
 
-                        logging: false,
+                        logging:
+                            false,
 
                         imageTimeout:
                             30000,
 
-                        scrollX: 0,
+                        removeContainer:
+                            true,
 
-                        scrollY: 0,
+                        scrollX:
+                            0,
 
-                        windowWidth: 794,
+                        scrollY:
+                            0,
+
+                        windowWidth:
+                            794,
 
                         windowHeight:
                             Math.max(
-
-                                window.innerHeight,
-
-                                captureElement
-                                    .scrollHeight
-
+                                1123,
+                                documentHeight
                             )
 
                     }
@@ -360,15 +501,15 @@ convertBtn.addEventListener(
             ) {
 
                 throw new Error(
-                    "Document capture failed."
+                    "Document could not be captured."
                 );
 
             }
 
 
-            /* =========================
-               CREATE PDF
-            ========================= */
+            /* ==========================================
+               CREATE A4 PDF
+            ========================================== */
 
             const pdf =
                 new jspdf.jsPDF({
@@ -389,19 +530,16 @@ convertBtn.addEventListener(
 
 
             const pdfWidth =
-                pdf.internal.pageSize
-                    .getWidth();
+                pdf.internal.pageSize.getWidth();
 
 
             const pdfHeight =
-                pdf.internal.pageSize
-                    .getHeight();
+                pdf.internal.pageSize.getHeight();
 
 
-            /*
-             A4 ratio:
-             297 / 210
-            */
+            /* ==========================================
+               A4 PIXEL RATIO
+            ========================================== */
 
             const a4Ratio =
                 297 / 210;
@@ -425,13 +563,22 @@ convertBtn.addEventListener(
                 );
 
 
+            if (totalPages < 1) {
+
+                throw new Error(
+                    "No PDF pages were generated."
+                );
+
+            }
+
+
             let firstPage =
                 true;
 
 
-            /* =========================
-               CREATE EACH PAGE
-            ========================= */
+            /* ==========================================
+               CREATE EACH PDF PAGE
+            ========================================== */
 
             for (
 
@@ -472,6 +619,17 @@ convertBtn.addEventListener(
                     );
 
 
+                if (cropHeight <= 0) {
+
+                    continue;
+
+                }
+
+
+                /* ======================================
+                   CREATE PAGE CANVAS
+                ====================================== */
+
                 const pageCanvas =
                     document.createElement(
                         "canvas"
@@ -492,6 +650,8 @@ convertBtn.addEventListener(
                     );
 
 
+                /* White background */
+
                 pageContext.fillStyle =
                     "#ffffff";
 
@@ -506,6 +666,10 @@ convertBtn.addEventListener(
 
                 );
 
+
+                /* ======================================
+                   COPY DOCUMENT CONTENT
+                ====================================== */
 
                 pageContext.drawImage(
 
@@ -526,6 +690,10 @@ convertBtn.addEventListener(
                 );
 
 
+                /* ======================================
+                   CONVERT PAGE TO IMAGE
+                ====================================== */
+
                 const imageData =
                     pageCanvas.toDataURL(
 
@@ -535,6 +703,10 @@ convertBtn.addEventListener(
 
                     );
 
+
+                /* ======================================
+                   ADD NEW PDF PAGE
+                ====================================== */
 
                 if (!firstPage) {
 
@@ -586,13 +758,33 @@ convertBtn.addEventListener(
             }
 
 
-            /* =========================
-               DOWNLOAD
-            ========================= */
+            /* ==========================================
+               GENERATE PDF BLOB
+            ========================================== */
+
+            loading.textContent =
+                "⏳ Finalizing PDF...";
+
 
             const pdfBlob =
                 pdf.output("blob");
 
+
+            if (
+                !pdfBlob ||
+                pdfBlob.size < 100
+            ) {
+
+                throw new Error(
+                    "Generated PDF is empty."
+                );
+
+            }
+
+
+            /* ==========================================
+               CREATE DOWNLOAD LINK
+            ========================================== */
 
             const pdfURL =
                 URL.createObjectURL(
@@ -630,10 +822,19 @@ convertBtn.addEventListener(
                 "none";
 
 
+            /* ==========================================
+               CLEAN PREVIEW
+            ========================================== */
+
+            preview.innerHTML =
+                "";
+
+
         }
 
 
         catch (error) {
+
 
             console.error(
                 "Word to PDF Error:",
@@ -649,12 +850,27 @@ convertBtn.addEventListener(
                 "none";
 
 
-            alert(
+            downloadBtn.style.display =
+                "none";
 
-                "PDF conversion failed.\n\n" +
-                "Please try another DOCX file."
 
-            );
+            let message =
+                "PDF conversion failed.";
+
+
+            if (
+                error &&
+                error.message
+            ) {
+
+                message +=
+                    "\n\n" +
+                    error.message;
+
+            }
+
+
+            alert(message);
 
         }
 
@@ -667,4 +883,5 @@ convertBtn.addEventListener(
         }
 
     }
+
 );
