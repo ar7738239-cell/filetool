@@ -1,4 +1,4 @@
-const CACHE_NAME = "adiyogitools-v1";
+const CACHE_NAME = "adiyogitools-v2";
 
 const urlsToCache = [
   "/",
