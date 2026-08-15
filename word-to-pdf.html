@@ -1,94 +1,419 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>Word to PDF Converter Online Free | AdiyogiTools</title>
 
-<meta name="description" content="Convert DOCX Word documents to PDF online for free. Preserve text, images, logos, tables and document formatting with AdiyogiTools.">
-<meta name="keywords" content="Word to PDF, DOCX to PDF, DOCX converter, Word document to PDF, free Word PDF converter, online Word to PDF">
+<meta
+name="description"
+content="Convert DOCX Word files to PDF online for free. Convert text, images, logos and document pages directly in your browser with AdiyogiTools.">
 
-<meta name="robots" content="index, follow">
+<meta
+name="keywords"
+content="Word to PDF, DOCX to PDF, Word converter, DOCX converter, free Word to PDF, online Word to PDF, AdiyogiTools">
 
-<link rel="canonical" href="https://adiyogitools.in/word-to-pdf.html">
+<meta
+name="robots"
+content="index, follow">
 
-<link rel="stylesheet" href="style.css">
+<link
+rel="canonical"
+href="https://adiyogitools.in/word-to-pdf.html">
+
+<meta
+property="og:title"
+content="Word to PDF Converter Online Free | AdiyogiTools">
+
+<meta
+property="og:description"
+content="Convert DOCX Word documents to PDF online for free while keeping text, images and logos.">
+
+<meta
+property="og:type"
+content="website">
+
+<meta
+property="og:url"
+content="https://adiyogitools.in/word-to-pdf.html">
+
+<link
+rel="stylesheet"
+href="style.css">
+
+
+<!-- DOCX RENDERER -->
+
+<script
+src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js">
+</script>
+
+<script
+src="https://unpkg.com/docx-preview@0.4.0/dist/docx-preview.min.js">
+</script>
+
+
+<!-- HTML TO CANVAS -->
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+</script>
+
+
+<!-- jsPDF -->
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
+</script>
+
 
 <style>
 
-.tool-box {
-    text-align: center;
+/* =========================
+   WORD TO PDF
+========================= */
+
+.word-tool{
+
+max-width:900px;
+margin:auto;
+
 }
 
-.file-name {
-    margin: 15px 0;
-    font-weight: bold;
+
+/* =========================
+   UPLOAD BOX
+========================= */
+
+.upload-box{
+
+background:#f8fafc;
+
+border:2px dashed #cbd5e1;
+
+border-radius:14px;
+
+padding:25px;
+
+text-align:center;
+
+margin-top:20px;
+
 }
 
-#preview {
-    position: absolute;
-    left: -100000px;
-    top: 0;
-    width: 794px;
-    background: white;
+.upload-box input{
+
+width:100%;
+
+max-width:500px;
+
+padding:12px;
+
+border:1px solid #cbd5e1;
+
+border-radius:8px;
+
+background:white;
+
+box-sizing:border-box;
+
 }
 
-#preview .docx-wrapper {
-    background: white !important;
+.file-name{
+
+margin-top:12px;
+
+font-size:14px;
+
+color:#64748b;
+
+word-break:break-word;
+
 }
 
-#preview .docx {
-    margin: 0 auto !important;
+
+/* =========================
+   BUTTON
+========================= */
+
+#convertBtn{
+
+width:100%;
+
+max-width:500px;
+
+margin-top:20px;
+
+padding:14px 20px;
+
+border:none;
+
+border-radius:10px;
+
+background:#2563eb;
+
+color:white;
+
+font-size:16px;
+
+font-weight:700;
+
+cursor:pointer;
+
 }
 
-.loading {
-    display: none;
-    margin-top: 15px;
-    font-weight: bold;
+#convertBtn:disabled{
+
+opacity:.6;
+
+cursor:not-allowed;
+
 }
 
-.success {
-    display: none;
-    margin-top: 15px;
-    font-weight: bold;
+
+/* =========================
+   STATUS
+========================= */
+
+#loading{
+
+display:none;
+
+margin-top:15px;
+
+padding:12px;
+
+border-radius:10px;
+
+background:#eff6ff;
+
+color:#1d4ed8;
+
+font-weight:600;
+
+}
+
+#success{
+
+display:none;
+
+margin-top:15px;
+
+padding:12px;
+
+border-radius:10px;
+
+background:#f0fdf4;
+
+color:#15803d;
+
+font-weight:600;
+
+}
+
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+#downloadBtn{
+
+display:none;
+
+margin:15px auto 0;
+
+max-width:500px;
+
+padding:14px;
+
+border-radius:10px;
+
+background:#16a34a;
+
+color:white;
+
+text-decoration:none;
+
+font-weight:700;
+
+text-align:center;
+
+}
+
+
+/* =========================
+   HIDDEN DOCX PREVIEW
+========================= */
+
+#preview{
+
+position:absolute;
+
+left:-100000px;
+
+top:0;
+
+width:794px;
+
+background:white;
+
+}
+
+
+/*
+DOCX Preview styles
+*/
+
+#preview .docx-wrapper{
+
+background:white !important;
+
+padding:0 !important;
+
+}
+
+#preview .docx{
+
+background:white !important;
+
+margin:0 auto !important;
+
+box-shadow:none !important;
+
+}
+
+
+/* Images */
+
+#preview img{
+
+max-width:100%;
+
+}
+
+
+/* Tables */
+
+#preview table{
+
+max-width:100%;
+
+}
+
+
+/* =========================
+   SEO CONTENT
+========================= */
+
+.seo-content{
+
+max-width:900px;
+
+margin:35px auto;
+
+line-height:1.7;
+
+}
+
+.seo-content h2{
+
+margin-top:30px;
+
+}
+
+.seo-content h3{
+
+margin-top:20px;
+
+}
+
+.seo-content li{
+
+margin-bottom:7px;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+.word-tool{
+
+padding:0 5px;
+
+}
+
+.upload-box{
+
+padding:18px;
+
+}
+
+#convertBtn{
+
+max-width:none;
+
+}
+
 }
 
 </style>
 
-<!-- DOCX renderer -->
-<script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
-
-<script src="https://unpkg.com/docx-preview@0.4.0/dist/docx-preview.min.js"></script>
-
-<!-- HTML to PDF -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-
 </head>
+
 
 <body>
 
-<div class="container">
 
-<h1>📄 Word to PDF</h1>
+<div class="container word-tool">
+
+
+<h1>
+📄 Word to PDF Converter
+</h1>
+
 
 <p>
-Convert DOCX Word documents to PDF while preserving text, images, logos and formatting.
+Convert your DOCX Word document to PDF while keeping
+text, images, logos and document pages.
 </p>
 
-<div class="tool-box">
+
+<!-- UPLOAD -->
+
+<div class="upload-box">
+
+<h2>
+📄 Select Word Document
+</h2>
+
+<p>
+Select a DOCX file to convert it into PDF.
+</p>
+
 
 <input
 type="file"
 id="wordInput"
 accept=".docx">
 
+
 <div
 class="file-name"
 id="fileName">
+
 No file selected
+
 </div>
+
 
 <button
 id="convertBtn"
@@ -98,25 +423,25 @@ type="button">
 
 </button>
 
+
 <div
-class="loading"
 id="loading">
 
-⏳ Converting Word document... Please wait.
+⏳ Preparing your Word document...
 
 </div>
 
+
 <div
-class="success"
 id="success">
 
 ✅ PDF created successfully!
 
 </div>
 
+
 <a
 id="downloadBtn"
-style="display:none;"
 download="converted.pdf">
 
 📥 Download PDF
@@ -125,64 +450,286 @@ download="converted.pdf">
 
 </div>
 
+
 </div>
 
-<!-- Hidden DOCX rendering area -->
+
+<!--
+Hidden rendering area.
+DOCX content including images/logos
+will be rendered here before PDF creation.
+-->
 
 <div id="preview"></div>
 
+
+<!-- SEO CONTENT -->
+
 <section class="seo-content">
 
-<h2>Free Word to PDF Converter</h2>
+
+<h2>
+Free Word to PDF Converter Online
+</h2>
 
 <p>
-AdiyogiTools Word to PDF Converter lets you convert DOCX Word documents into PDF directly in your browser. Text, images, logos, tables and document formatting are rendered from the Word document before creating the PDF.
+
+AdiyogiTools Word to PDF Converter allows you to convert
+DOCX Word documents into PDF directly in your browser.
+The converter is designed to include text, images, logos
+and other supported document content.
+
 </p>
 
-<h2>How to Convert Word to PDF?</h2>
+
+<h2>
+How to Convert Word to PDF?
+</h2>
 
 <ol>
-<li>Select your DOCX Word document.</li>
-<li>Click Convert to PDF.</li>
-<li>Wait for the document to be processed.</li>
-<li>Download your PDF.</li>
+
+<li>
+Select your DOCX Word document.
+</li>
+
+<li>
+Click the Convert to PDF button.
+</li>
+
+<li>
+Wait while the document is processed.
+</li>
+
+<li>
+Download your generated PDF.
+</li>
+
 </ol>
 
-<h2>Features</h2>
+
+<h2>
+Features
+</h2>
 
 <ul>
-<li>Free Word to PDF conversion</li>
-<li>DOCX support</li>
-<li>Images and logos preserved</li>
-<li>Tables supported</li>
-<li>Multi-page documents supported</li>
-<li>Works on mobile and desktop</li>
-<li>No registration required</li>
+
+<li>
+Free DOCX to PDF conversion
+</li>
+
+<li>
+Images inside Word documents
+</li>
+
+<li>
+Logos inside Word documents
+</li>
+
+<li>
+Multi-page documents
+</li>
+
+<li>
+Basic document formatting
+</li>
+
+<li>
+Browser-based processing
+</li>
+
+<li>
+No registration required
+</li>
+
+<li>
+Works on mobile and desktop
+</li>
+
 </ul>
 
-<h2>Frequently Asked Questions</h2>
 
-<h3>Are images inside Word preserved?</h3>
-
-<p>
-Yes. Images and logos contained inside a supported DOCX document are rendered along with the document.
-</p>
-
-<h3>Are my files uploaded?</h3>
+<h2>
+Is my Word file uploaded?
+</h2>
 
 <p>
-The conversion is performed in your browser. The selected document is not intentionally uploaded to an AdiyogiTools server.
+
+The document is processed directly in your browser.
+AdiyogiTools does not intentionally store your selected
+Word document on its server.
+
 </p>
 
-<h3>Does it support DOCX?</h3>
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+
+<h3>
+Can I convert a DOCX file containing images?
+</h3>
 
 <p>
-Yes. DOCX is the recommended format for this browser-based converter.
+
+Yes. Images and logos contained inside a supported DOCX
+document are rendered along with the document.
+
 </p>
+
+
+<h3>
+Can I convert a Word document with multiple pages?
+</h3>
+
+<p>
+
+Yes. The converter supports multi-page DOCX documents.
+
+</p>
+
+
+<h3>
+Is the Word to PDF converter free?
+</h3>
+
+<p>
+
+Yes. AdiyogiTools provides this converter free of charge.
+
+</p>
+
+
+<h3>
+Does it work on mobile phones?
+</h3>
+
+<p>
+
+Yes. The tool is designed to work on both mobile and
+desktop browsers.
+
+</p>
+
+
+<h2>
+Other Useful Tools
+</h2>
+
+<ul>
+
+<li>
+<a href="image-to-pdf.html">
+Image to PDF
+</a>
+</li>
+
+<li>
+<a href="pdf-compress.html">
+PDF Compressor
+</a>
+</li>
+
+<li>
+<a href="pdf-merge.html">
+PDF Merge
+</a>
+</li>
+
+<li>
+<a href="pdf-split.html">
+PDF Split
+</a>
+</li>
+
+</ul>
+
 
 </section>
 
+
+<!-- =========================
+     FAQ SCHEMA
+========================= -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"Can I convert a DOCX file containing images?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Images and logos contained inside a supported DOCX document are rendered along with the document."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I convert a Word document with multiple pages?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. The converter supports multi-page DOCX documents."
+}
+},
+
+{
+"@type":"Question",
+"name":"Is the Word to PDF converter free?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. AdiyogiTools provides this converter free of charge."
+}
+},
+
+{
+"@type":"Question",
+"name":"Does the Word to PDF converter work on mobile phones?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. The tool is designed to work on both mobile and desktop browsers."
+}
+}
+
+]
+}
+
+</script>
+
+
+<!-- =========================
+     WEB APP SCHEMA
+========================= -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"Word to PDF Converter",
+"url":"https://adiyogitools.in/word-to-pdf.html",
+"applicationCategory":"UtilitiesApplication",
+"operatingSystem":"Any",
+"description":"Free online DOCX to PDF converter that processes Word documents in the browser.",
+"offers":{
+"@type":"Offer",
+"price":"0",
+"priceCurrency":"INR"
+}
+}
+
+</script>
+
+
+<!-- MAIN JAVASCRIPT -->
+
 <script src="word-to-pdf.js"></script>
 
+
 </body>
+
 </html>
