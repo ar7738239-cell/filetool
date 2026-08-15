@@ -4,89 +4,2112 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PDF Merge</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<title>PDF Merge Online Free | Combine PDF Files | AdiyogiTools</title>
 
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<meta name="description"
+      content="Merge multiple PDF files online for free. Combine, reorder and download PDF documents directly in your browser. No registration required.">
+
+<meta name="keywords"
+      content="PDF merge, merge PDF, combine PDF, join PDF, PDF merger, merge PDF online free, combine PDF files">
+
+<meta name="robots"
+      content="index, follow">
+
+<link rel="canonical"
+      href="https://adiyogitools.in/pdf-merge.html">
+
+<meta property="og:title"
+      content="PDF Merge Online Free | AdiyogiTools">
+
+<meta property="og:description"
+      content="Combine multiple PDF files into one PDF directly in your browser.">
+
+<meta property="og:type"
+      content="website">
+
+<meta property="og:url"
+      content="https://adiyogitools.in/pdf-merge.html">
+
+<meta name="twitter:card"
+      content="summary">
+
+<link rel="stylesheet"
+      href="style.css">
+
+
+<style>
+
+/* =========================================
+   PDF MERGE PRO
+========================================= */
+
+.merge-page{
+    max-width:1050px;
+    margin:auto;
+    padding:20px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.merge-hero{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.merge-hero h1{
+    font-size:clamp(28px,5vw,44px);
+    margin-bottom:10px;
+}
+
+.merge-hero p{
+    color:#64748b;
+    line-height:1.6;
+}
+
+
+/* =========================================
+   UPLOAD BOX
+========================================= */
+
+.upload-box{
+    background:#fff;
+    border:2px dashed #2563eb;
+    border-radius:20px;
+    padding:35px 20px;
+    text-align:center;
+    transition:.2s;
+    margin-bottom:20px;
+}
+
+.upload-box.dragover{
+    background:#eff6ff;
+    transform:scale(1.01);
+}
+
+.upload-icon{
+    font-size:55px;
+}
+
+.upload-box h2{
+    margin:8px 0;
+}
+
+.upload-box p{
+    color:#64748b;
+}
+
+.upload-btn{
+    display:inline-block;
+    background:#2563eb;
+    color:#fff;
+    padding:14px 25px;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.upload-btn:hover{
+    opacity:.9;
+}
+
+#pdfFiles{
+    display:none;
+}
+
+
+/* =========================================
+   TOOL CARD
+========================================= */
+
+.tool-card{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.tool-card h2{
+    margin-top:0;
+}
+
+
+/* =========================================
+   TOP ACTIONS
+========================================= */
+
+.top-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.action-btn{
+    border:none;
+    border-radius:11px;
+    padding:12px 17px;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.add-btn{
+    background:#2563eb;
+    color:#fff;
+}
+
+.clear-btn{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.merge-btn{
+    background:#16a34a;
+    color:#fff;
+}
+
+.download-btn{
+    background:#2563eb;
+    color:#fff;
+}
+
+.action-btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+
+/* =========================================
+   FILE SUMMARY
+========================================= */
+
+.file-summary{
+    background:#f8fafc;
+    border-radius:12px;
+    padding:13px;
+    margin-bottom:18px;
+    color:#475569;
+    line-height:1.6;
+}
+
+.file-summary b{
+    color:#0f172a;
+}
+
+
+/* =========================================
+   PDF LIST
+========================================= */
+
+.pdf-list{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+
+/* =========================================
+   PDF ITEM
+========================================= */
+
+.pdf-item{
+    background:#fff;
+    border:1px solid #e2e8f0;
+    border-radius:15px;
+    padding:14px;
+    display:flex;
+    align-items:center;
+    gap:13px;
+    cursor:grab;
+    transition:.2s;
+}
+
+.pdf-item:active{
+    cursor:grabbing;
+}
+
+.pdf-item.dragging{
+    opacity:.5;
+    transform:scale(.99);
+}
+
+.pdf-item.drag-over{
+    border-color:#2563eb;
+    background:#eff6ff;
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+.pdf-number{
+    width:38px;
+    height:38px;
+    min-width:38px;
+    border-radius:50%;
+    background:#2563eb;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+}
+
+
+/* =========================================
+   PDF ICON
+========================================= */
+
+.pdf-icon{
+    font-size:34px;
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.pdf-info{
+    flex:1;
+    min-width:0;
+}
+
+.pdf-name{
+    font-weight:800;
+    word-break:break-word;
+    color:#0f172a;
+}
+
+.pdf-meta{
+    color:#64748b;
+    font-size:13px;
+    margin-top:5px;
+    line-height:1.5;
+}
+
+
+/* =========================================
+   ITEM ACTIONS
+========================================= */
+
+.pdf-actions{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.small-btn{
+    border:none;
+    width:36px;
+    height:36px;
+    border-radius:9px;
+    background:#f1f5f9;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.small-btn:hover{
+    background:#e2e8f0;
+}
+
+.remove-btn{
+    color:#dc2626;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.empty-state{
+    text-align:center;
+    padding:35px 15px;
+    color:#64748b;
+}
+
+.empty-state .big{
+    font-size:55px;
+    margin-bottom:8px;
+}
+
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress-wrap{
+    display:none;
+    margin-top:20px;
+}
+
+.progress-bar{
+    width:100%;
+    height:10px;
+    background:#e2e8f0;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:#2563eb;
+    transition:.2s;
+}
+
+.progress-text{
+    text-align:center;
+    color:#64748b;
+    font-size:13px;
+    margin-top:7px;
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result-box{
+    display:none;
+    background:#f0fdf4;
+    border:1px solid #bbf7d0;
+    color:#166534;
+    border-radius:15px;
+    padding:17px;
+    margin-top:20px;
+    line-height:1.6;
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.info-section{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    margin-top:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.info-section h2{
+    margin-top:0;
+}
+
+.info-section h3{
+    margin-bottom:5px;
+}
+
+.info-section p,
+.info-section li{
+    color:#475569;
+    line-height:1.7;
+}
+
+.faq-item{
+    border-bottom:1px solid #e2e8f0;
+    padding:15px 0;
+}
+
+.faq-item:last-child{
+    border-bottom:none;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:650px){
+
+    .merge-page{
+        padding:12px;
+    }
+
+    .upload-box{
+        padding:25px 15px;
+    }
+
+    .top-actions{
+        flex-direction:column;
+    }
+
+    .action-btn{
+        width:100%;
+    }
+
+    .pdf-item{
+        align-items:flex-start;
+    }
+
+    .pdf-actions{
+        flex-wrap:wrap;
+    }
+
+    .pdf-number{
+        margin-top:2px;
+    }
+
+    .pdf-icon{
+        display:none;
+    }
+
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-<div class="container">
 
-<h1>📑 PDF Merge</h1>
+<div class="merge-page">
 
-<p>Select two or more PDF files</p>
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="merge-hero">
+
+<h1>
+📑 PDF Merge
+</h1>
+
+<p>
+Combine multiple PDF files into one document,
+reorder them and download the merged PDF instantly.
+</p>
+
+</section>
+
+
+<!-- =========================================
+     UPLOAD
+========================================= -->
+
+<div
+    class="upload-box"
+    id="uploadBox">
+
+<div class="upload-icon">
+📄
+</div>
+
+<h2>
+Add PDF Files
+</h2>
+
+<p>
+Select multiple PDFs or drag & drop them here.
+</p>
+
+<label
+    class="upload-btn"
+    for="pdfFiles">
+
+📁 Choose PDF Files
+
+</label>
 
 <input
-type="file"
-id="pdfFiles"
-accept=".pdf"
-multiple>
+    type="file"
+    id="pdfFiles"
+    accept="application/pdf,.pdf"
+    multiple>
 
-<br><br>
-
-<button onclick="mergePDFs()">
-
-📄 Merge PDF
-
-</button>
-
-<br><br>
-
-<a
-id="download"
-style="display:none;"
-download="merged.pdf">
-
-📥 Download PDF
-
-</a>
+<p>
+You can select multiple PDF files at once.
+</p>
 
 </div>
 
+
+<!-- =========================================
+     MAIN TOOL
+========================================= -->
+
+<div class="tool-card">
+
+<h2>
+📚 Your PDF Files
+</h2>
+
+
+<div class="top-actions">
+
+<button
+    class="action-btn add-btn"
+    id="addMoreBtn">
+
+➕ Add More PDFs
+
+</button>
+
+
+<button
+    class="action-btn clear-btn"
+    id="clearBtn"
+    disabled>
+
+🗑️ Clear All
+
+</button>
+
+
+<button
+    class="action-btn merge-btn"
+    id="mergeBtn"
+    disabled>
+
+📑 Merge PDFs
+
+</button>
+
+
+<button
+    class="action-btn download-btn"
+    id="downloadBtn"
+    disabled>
+
+📥 Download Merged PDF
+
+</button>
+
+</div>
+
+
+<!-- SUMMARY -->
+
+<div
+    class="file-summary"
+    id="fileSummary">
+
+<b>0</b> PDF files selected
+
+</div>
+
+
+<!-- LIST -->
+
+<div
+    class="pdf-list"
+    id="pdfList">
+
+<div class="empty-state">
+
+<div class="big">
+📄
+</div>
+
+<b>
+No PDF files selected
+</b>
+
+<p>
+Add two or more PDF files to merge them.
+</p>
+
+</div>
+
+</div>
+
+
+<!-- PROGRESS -->
+
+<div
+    class="progress-wrap"
+    id="progressWrap">
+
+<div class="progress-bar">
+
+<div
+    class="progress-fill"
+    id="progressFill">
+</div>
+
+</div>
+
+<div
+    class="progress-text"
+    id="progressText">
+
+Preparing...
+
+</div>
+
+</div>
+
+
+<!-- RESULT -->
+
+<div
+    class="result-box"
+    id="resultBox">
+
+✅ <b>PDFs merged successfully!</b>
+
+<br>
+
+<span id="resultText">
+Your merged PDF is ready to download.
+</span>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     INFO
+========================================= -->
+
+<section class="info-section">
+
+<h2>
+Free Online PDF Merger
+</h2>
+
+<p>
+AdiyogiTools PDF Merge lets you combine multiple PDF
+documents into a single PDF file directly in your browser.
+You can change the order of the files before merging.
+</p>
+
+
+<h3>
+How to merge PDF files?
+</h3>
+
+<ol>
+
+<li>
+Click <b>Choose PDF Files</b> and select two or more PDFs.
+</li>
+
+<li>
+Check the order of your PDF files.
+</li>
+
+<li>
+Drag a PDF up or down to change its position.
+</li>
+
+<li>
+You can also use the arrow buttons to reorder files.
+</li>
+
+<li>
+Click <b>Merge PDFs</b>.
+</li>
+
+<li>
+Download your combined PDF.
+</li>
+
+</ol>
+
+
+<h3>
+Is PDF merging done online?
+</h3>
+
+<p>
+The PDF merging process is performed directly in your
+browser. Your selected PDF files do not need to be uploaded
+to an AdiyogiTools processing server.
+</p>
+
+
+<h3>
+Can I merge more than two PDFs?
+</h3>
+
+<p>
+Yes. You can select and combine multiple PDF files in
+one operation, subject to your device's available memory.
+</p>
+
+
+<h3>
+Can I change the PDF order?
+</h3>
+
+<p>
+Yes. Drag and drop the PDF items to change their order,
+or use the up and down controls beside each file.
+</p>
+
+</section>
+
+
+<!-- =========================================
+     FAQ
+========================================= -->
+
+<section class="info-section">
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+
+<div class="faq-item">
+
+<h3>
+Can I merge PDF files for free?
+</h3>
+
+<p>
+Yes. AdiyogiTools PDF Merge is designed as a free
+browser-based PDF merging tool.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+How many PDF files can I merge?
+</h3>
+
+<p>
+You can add multiple PDF files. The practical limit
+depends on your device's available browser memory.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Can I reorder PDFs before merging?
+</h3>
+
+<p>
+Yes. Drag the PDF files into your preferred order or
+use the arrow controls.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Are my PDF files uploaded to a server?
+</h3>
+
+<p>
+The merging process is performed locally in your browser,
+so the PDFs do not need to be uploaded to an AdiyogiTools
+processing server.
+</p>
+
+</div>
+
+
+</section>
+
+
+</div>
+
+
+<!-- =========================================
+     PDF-LIB
+========================================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+
 <script>
-  async function mergePDFs() {
 
-const files = document.getElementById("pdfFiles").files;
+/* =========================================
+   PDF MERGE PRO
+========================================= */
 
-if (files.length < 2) {
-    alert("Please select at least 2 PDF files.");
-    return;
+
+const pdfInput =
+document.getElementById("pdfFiles");
+
+const uploadBox =
+document.getElementById("uploadBox");
+
+const addMoreBtn =
+document.getElementById("addMoreBtn");
+
+const clearBtn =
+document.getElementById("clearBtn");
+
+const mergeBtn =
+document.getElementById("mergeBtn");
+
+const downloadBtn =
+document.getElementById("downloadBtn");
+
+const pdfList =
+document.getElementById("pdfList");
+
+const fileSummary =
+document.getElementById("fileSummary");
+
+const progressWrap =
+document.getElementById("progressWrap");
+
+const progressFill =
+document.getElementById("progressFill");
+
+const progressText =
+document.getElementById("progressText");
+
+const resultBox =
+document.getElementById("resultBox");
+
+const resultText =
+document.getElementById("resultText");
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let pdfItems = [];
+
+let mergedBlob = null;
+
+let mergedUrl = null;
+
+let draggedIndex = null;
+
+
+/* =========================================
+   ADD MORE
+========================================= */
+
+addMoreBtn.addEventListener(
+"click",
+function(){
+
+pdfInput.click();
+
+}
+);
+
+
+/* =========================================
+   FILE INPUT
+========================================= */
+
+pdfInput.addEventListener(
+"change",
+function(){
+
+const files =
+Array.from(this.files);
+
+addFiles(files);
+
+this.value = "";
+
+}
+);
+
+
+/* =========================================
+   DRAG & DROP UPLOAD
+========================================= */
+
+[
+"dragenter",
+"dragover"
+].forEach(
+function(eventName){
+
+uploadBox.addEventListener(
+eventName,
+function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+uploadBox.classList.add(
+"dragover"
+);
+
+}
+);
+
+}
+);
+
+
+[
+"dragleave",
+"drop"
+].forEach(
+function(eventName){
+
+uploadBox.addEventListener(
+eventName,
+function(e){
+
+e.preventDefault();
+
+e.stopPropagation();
+
+uploadBox.classList.remove(
+"dragover"
+);
+
+}
+);
+
+}
+);
+
+
+uploadBox.addEventListener(
+"drop",
+function(e){
+
+const files =
+Array.from(
+e.dataTransfer.files
+);
+
+addFiles(files);
+
+}
+);
+
+
+/* =========================================
+   ADD FILES
+========================================= */
+
+async function addFiles(files){
+
+const pdfFiles =
+files.filter(
+function(file){
+
+return (
+file.type ===
+"application/pdf"
+||
+/\.pdf$/i.test(
+file.name
+)
+);
+
+}
+);
+
+
+if(pdfFiles.length === 0){
+
+alert(
+"Please select valid PDF files."
+);
+
+return;
+
 }
 
-const mergedPdf = await PDFLib.PDFDocument.create();
 
-for (const file of files) {
+for(
+const file of pdfFiles
+){
 
-    const bytes = await file.arrayBuffer();
+try{
 
-    const pdf = await PDFLib.PDFDocument.load(bytes);
+const bytes =
+await file.arrayBuffer();
 
-    const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
 
-    copiedPages.forEach(page => mergedPdf.addPage(page));
+const pdf =
+await PDFLib.PDFDocument.load(
+bytes,
+{
+    ignoreEncryption:false
+}
+);
+
+
+pdfItems.push({
+
+id:
+Date.now() +
+Math.random(),
+
+file:file,
+
+pages:
+pdf.getPageCount(),
+
+size:
+file.size
+
+});
+
+
+}catch(error){
+
+console.error(error);
+
+alert(
+"Could not read: " +
+file.name
+);
 
 }
 
-const mergedBytes = await mergedPdf.save();
+}
 
-const blob = new Blob([mergedBytes], { type: "application/pdf" });
 
-const url = URL.createObjectURL(blob);
+renderList();
 
-const download = document.getElementById("download");
+}
 
-download.href = url;
-download.style.display = "inline-block";
 
+/* =========================================
+   RENDER LIST
+========================================= */
+
+function renderList(){
+
+pdfList.innerHTML = "";
+
+
+if(pdfItems.length === 0){
+
+pdfList.innerHTML = `
+
+<div class="empty-state">
+
+<div class="big">
+📄
+</div>
+
+<b>
+No PDF files selected
+</b>
+
+<p>
+Add two or more PDF files to merge them.
+</p>
+
+</div>
+
+`;
+
+}else{
+
+pdfItems.forEach(
+function(item,index){
+
+const element =
+createPdfElement(
+item,
+index
+);
+
+pdfList.appendChild(
+element
+);
+
+}
+);
+
+}
+
+
+updateControls();
+
+}
+
+
+/* =========================================
+   CREATE PDF ELEMENT
+========================================= */
+
+function createPdfElement(
+item,
+index
+){
+
+const element =
+document.createElement(
+"div"
+);
+
+element.className =
+"pdf-item";
+
+element.draggable =
+true;
+
+element.dataset.index =
+index;
+
+
+/* NUMBER */
+
+const number =
+document.createElement(
+"div"
+);
+
+number.className =
+"pdf-number";
+
+number.textContent =
+index + 1;
+
+
+/* ICON */
+
+const icon =
+document.createElement(
+"div"
+);
+
+icon.className =
+"pdf-icon";
+
+icon.textContent =
+"📄";
+
+
+/* INFO */
+
+const info =
+document.createElement(
+"div"
+);
+
+info.className =
+"pdf-info";
+
+
+const name =
+document.createElement(
+"div"
+);
+
+name.className =
+"pdf-name";
+
+name.textContent =
+item.file.name;
+
+
+const meta =
+document.createElement(
+"div"
+);
+
+meta.className =
+"pdf-meta";
+
+meta.textContent =
+formatBytes(item.size) +
+" • " +
+item.pages +
+(
+item.pages === 1
+? " page"
+: " pages"
+);
+
+
+info.appendChild(name);
+
+info.appendChild(meta);
+
+
+/* ACTIONS */
+
+const actions =
+document.createElement(
+"div"
+);
+
+actions.className =
+"pdf-actions";
+
+
+/* UP */
+
+const upBtn =
+document.createElement(
+"button"
+);
+
+upBtn.className =
+"small-btn";
+
+upBtn.type =
+"button";
+
+upBtn.title =
+"Move up";
+
+upBtn.textContent =
+"⬆️";
+
+upBtn.disabled =
+index === 0;
+
+upBtn.addEventListener(
+"click",
+function(e){
+
+e.stopPropagation();
+
+moveItem(
+index,
+index - 1
+);
+
+}
+);
+
+
+/* DOWN */
+
+const downBtn =
+document.createElement(
+"button"
+);
+
+downBtn.className =
+"small-btn";
+
+downBtn.type =
+"button";
+
+downBtn.title =
+"Move down";
+
+downBtn.textContent =
+"⬇️";
+
+downBtn.disabled =
+index ===
+pdfItems.length - 1;
+
+downBtn.addEventListener(
+"click",
+function(e){
+
+e.stopPropagation();
+
+moveItem(
+index,
+index + 1
+);
+
+}
+);
+
+
+/* REMOVE */
+
+const removeBtn =
+document.createElement(
+"button"
+);
+
+removeBtn.className =
+"small-btn remove-btn";
+
+removeBtn.type =
+"button";
+
+removeBtn.title =
+"Remove PDF";
+
+removeBtn.textContent =
+"✕";
+
+removeBtn.addEventListener(
+"click",
+function(e){
+
+e.stopPropagation();
+
+removeItem(index);
+
+}
+);
+
+
+actions.appendChild(upBtn);
+
+actions.appendChild(downBtn);
+
+actions.appendChild(removeBtn);
+
+
+/* APPEND */
+
+element.appendChild(number);
+
+element.appendChild(icon);
+
+element.appendChild(info);
+
+element.appendChild(actions);
+
+
+/* =========================================
+   SORTABLE DRAG
+========================================= */
+
+element.addEventListener(
+"dragstart",
+function(e){
+
+draggedIndex =
+index;
+
+element.classList.add(
+"dragging"
+);
+
+e.dataTransfer.effectAllowed =
+"move";
+
+}
+);
+
+
+element.addEventListener(
+"dragend",
+function(){
+
+element.classList.remove(
+"dragging"
+);
+
+draggedIndex =
+null;
+
+document
+.querySelectorAll(".pdf-item")
+.forEach(
+function(item){
+
+item.classList.remove(
+"drag-over"
+);
+
+}
+);
+
+}
+);
+
+
+element.addEventListener(
+"dragover",
+function(e){
+
+e.preventDefault();
+
+e.dataTransfer.dropEffect =
+"move";
+
+element.classList.add(
+"drag-over"
+);
+
+}
+);
+
+
+element.addEventListener(
+"dragleave",
+function(){
+
+element.classList.remove(
+"drag-over"
+);
+
+}
+);
+
+
+element.addEventListener(
+"drop",
+function(e){
+
+e.preventDefault();
+
+element.classList.remove(
+"drag-over"
+);
+
+
+const targetIndex =
+parseInt(
+element.dataset.index
+);
+
+
+if(
+draggedIndex === null
+||
+draggedIndex ===
+targetIndex
+){
+
+return;
+
+}
+
+
+const moved =
+pdfItems.splice(
+draggedIndex,
+1
+)[0];
+
+
+pdfItems.splice(
+targetIndex,
+0,
+moved
+);
+
+
+renderList();
+
+}
+);
+
+
+return element;
+
+}
+
+
+/* =========================================
+   MOVE ITEM
+========================================= */
+
+function moveItem(
+from,
+to
+){
+
+if(
+to < 0 ||
+to >= pdfItems.length
+){
+
+return;
+
+}
+
+
+const item =
+pdfItems.splice(
+from,
+1
+)[0];
+
+
+pdfItems.splice(
+to,
+0,
+item
+);
+
+
+renderList();
+
+}
+
+
+/* =========================================
+   REMOVE
+========================================= */
+
+function removeItem(index){
+
+pdfItems.splice(
+index,
+1
+);
+
+mergedBlob =
+null;
+
+revokeMergedUrl();
+
+resultBox.style.display =
+"none";
+
+downloadBtn.disabled =
+true;
+
+renderList();
+
+}
+
+
+/* =========================================
+   CLEAR ALL
+========================================= */
+
+clearBtn.addEventListener(
+"click",
+function(){
+
+if(pdfItems.length === 0){
+
+return;
+
+}
+
+
+pdfItems = [];
+
+mergedBlob =
+null;
+
+revokeMergedUrl();
+
+resultBox.style.display =
+"none";
+
+progressWrap.style.display =
+"none";
+
+downloadBtn.disabled =
+true;
+
+renderList();
+
+}
+);
+
+
+/* =========================================
+   UPDATE CONTROLS
+========================================= */
+
+function updateControls(){
+
+const count =
+pdfItems.length;
+
+
+let totalSize =
+0;
+
+let totalPages =
+0;
+
+
+pdfItems.forEach(
+function(item){
+
+totalSize +=
+item.size;
+
+totalPages +=
+item.pages;
+
+}
+);
+
+
+if(count === 0){
+
+fileSummary.innerHTML =
+"<b>0</b> PDF files selected";
+
+}else{
+
+fileSummary.innerHTML =
+
+"<b>" +
+count +
+"</b> PDF " +
+(
+count === 1
+? "file"
+: "files"
+) +
+
+" • <b>" +
+totalPages +
+"</b> total " +
+(
+totalPages === 1
+? "page"
+: "pages"
+) +
+
+" • <b>" +
+formatBytes(totalSize) +
+"</b> total size";
+
+}
+
+
+clearBtn.disabled =
+count === 0;
+
+mergeBtn.disabled =
+count < 2;
+
+}
+
+
+/* =========================================
+   MERGE
+========================================= */
+
+mergeBtn.addEventListener(
+"click",
+async function(){
+
+if(
+pdfItems.length < 2
+){
+
+alert(
+"Please add at least 2 PDF files."
+);
+
+return;
+
+}
+
+
+mergeBtn.disabled =
+true;
+
+clearBtn.disabled =
+true;
+
+downloadBtn.disabled =
+true;
+
+resultBox.style.display =
+"none";
+
+progressWrap.style.display =
+"block";
+
+progressFill.style.width =
+"0%";
+
+progressText.textContent =
+"Preparing PDFs...";
+
+
+try{
+
+const mergedPdf =
+await PDFLib.PDFDocument.create();
+
+
+for(
+let i = 0;
+i < pdfItems.length;
+i++
+){
+
+const item =
+pdfItems[i];
+
+
+progressText.textContent =
+"Processing PDF " +
+(i + 1) +
+" of " +
+pdfItems.length;
+
+
+const bytes =
+await item.file.arrayBuffer();
+
+
+const sourcePdf =
+await PDFLib.PDFDocument.load(
+bytes
+);
+
+
+const pages =
+await mergedPdf.copyPages(
+sourcePdf,
+sourcePdf.getPageIndices()
+);
+
+
+pages.forEach(
+function(page){
+
+mergedPdf.addPage(
+page
+);
+
+}
+);
+
+
+const progress =
+(
+(i + 1) /
+pdfItems.length
+) * 90;
+
+
+progressFill.style.width =
+progress + "%";
+
+
+/*
+ * Give the browser a chance
+ * to update the UI on mobile.
+ */
+
+await new Promise(
+function(resolve){
+
+setTimeout(
+resolve,
+20
+);
+
+}
+);
+
+}
+
+
+progressText.textContent =
+"Creating final PDF...";
+
+
+const mergedBytes =
+await mergedPdf.save({
+    useObjectStreams:true,
+    addDefaultPage:false
+});
+
+
+mergedBlob =
+new Blob(
+[mergedBytes],
+{
+    type:"application/pdf"
+}
+);
+
+
+revokeMergedUrl();
+
+
+mergedUrl =
+URL.createObjectURL(
+mergedBlob
+);
+
+
+progressFill.style.width =
+"100%";
+
+progressText.textContent =
+"Merge complete";
+
+
+downloadBtn.disabled =
+false;
+
+resultBox.style.display =
+"block";
+
+
+const totalPages =
+pdfItems.reduce(
+function(total,item){
+
+return total +
+item.pages;
+
+},
+0
+);
+
+
+resultText.textContent =
+totalPages +
+(
+totalPages === 1
+? " page has"
+: " pages have"
+) +
+" been combined into one PDF.";
+
+
+}catch(error){
+
+console.error(
+error
+);
+
+alert(
+"Unable to merge these PDFs. One of the files may be encrypted, damaged or unsupported."
+);
+
+progressText.textContent =
+"Merge failed";
+
+}finally{
+
+mergeBtn.disabled =
+pdfItems.length < 2;
+
+clearBtn.disabled =
+pdfItems.length === 0;
+
+}
+
+}
+);
+
+
+/* =========================================
+   DOWNLOAD
+========================================= */
+
+downloadBtn.addEventListener(
+"click",
+function(){
+
+if(!mergedBlob){
+
+alert(
+"Please merge the PDFs first."
+);
+
+return;
+
+}
+
+
+if(!mergedUrl){
+
+mergedUrl =
+URL.createObjectURL(
+mergedBlob
+);
+
+}
+
+
+const link =
+document.createElement(
+"a"
+);
+
+
+link.href =
+mergedUrl;
+
+link.download =
+"adiyogitools-merged.pdf";
+
+
+document.body.appendChild(
+link
+);
+
+link.click();
+
+link.remove();
+
+}
+);
+
+
+/* =========================================
+   REVOKE URL
+========================================= */
+
+function revokeMergedUrl(){
+
+if(mergedUrl){
+
+URL.revokeObjectURL(
+mergedUrl
+);
+
+mergedUrl =
+null;
+
+}
+
+}
+
+
+/* =========================================
+   FORMAT BYTES
+========================================= */
+
+function formatBytes(
+bytes
+){
+
+if(
+bytes === 0
+){
+
+return "0 Bytes";
+
+}
+
+
+const units =
+[
+"Bytes",
+"KB",
+"MB",
+"GB"
+];
+
+
+const i =
+Math.floor(
+Math.log(bytes) /
+Math.log(1024)
+);
+
+
+return (
+parseFloat(
+(
+bytes /
+Math.pow(
+1024,
+i
+)
+).toFixed(2)
+)
++
+" " +
+units[i]
+);
+
+}
+
+
+/* =========================================
+   INITIAL
+========================================= */
+
+renderList();
+
+
+</script>
+
+
+<!-- =========================================
+     STRUCTURED DATA
+========================================= -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"PDF Merge",
+"url":"https://adiyogitools.in/pdf-merge.html",
+"applicationCategory":"UtilitiesApplication",
+"operatingSystem":"Any",
+"description":"Free browser-based PDF merger for combining multiple PDF files.",
+"offers":{
+"@type":"Offer",
+"price":"0",
+"priceCurrency":"INR"
+}
 }
 
 </script>
 
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"Can I merge PDF files for free?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. AdiyogiTools PDF Merge is designed as a free browser-based PDF merging tool."
+}
+},
+
+{
+"@type":"Question",
+"name":"How many PDF files can I merge?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"You can add multiple PDF files. The practical limit depends on your device's available browser memory."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I reorder PDFs before merging?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. You can drag PDF files into your preferred order or use the up and down controls."
+}
+},
+
+{
+"@type":"Question",
+"name":"Are my PDF files uploaded to a server?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"The merging process is performed locally in the browser, so the PDFs do not need to be uploaded to an AdiyogiTools processing server."
+}
+}
+
+]
+}
+
+</script>
+
+
 </body>
+
 </html>
