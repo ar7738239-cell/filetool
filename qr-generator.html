@@ -1,89 +1,1121 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>QR Code Generator | AdiyogiTools</title>
 
-<link rel="stylesheet" href="style.css">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<title>QR Code Generator Online Free | AdiyogiTools</title>
+
+<meta name="description"
+content="Generate QR codes online for free from text, URLs, links and other information. Download high-quality QR codes instantly with AdiyogiTools.">
+
+<meta name="keywords"
+content="QR code generator, QR code generator online, free QR code generator, create QR code, URL QR code, text QR code">
+
+<meta name="robots"
+content="index, follow">
+
+<link rel="canonical"
+href="https://adiyogitools.in/qr-generator.html">
+
+<meta property="og:title"
+content="QR Code Generator Online Free | AdiyogiTools">
+
+<meta property="og:description"
+content="Create and download QR codes from text or URLs for free.">
+
+<meta property="og:type"
+content="website">
+
+<meta property="og:url"
+content="https://adiyogitools.in/qr-generator.html">
+
+<link rel="stylesheet"
+href="style.css">
+
+<script
+src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+</script>
+
+
+<style>
+
+/* =========================
+   QR PAGE
+========================= */
+
+.qr-page{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+}
+
+.hero{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:clamp(28px,5vw,42px);
+    margin-bottom:10px;
+}
+
+.hero p{
+    color:#64748b;
+    line-height:1.6;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.qr-card{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+#qrText{
+    width:100%;
+    box-sizing:border-box;
+    min-height:110px;
+    padding:14px;
+
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+
+    font-size:16px;
+    resize:vertical;
+    outline:none;
+}
+
+#qrText:focus{
+    border-color:#2563eb;
+    box-shadow:0 0 0 3px rgba(37,99,235,.12);
+}
+
+
+/* =========================
+   SETTINGS
+========================= */
+
+.settings{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.setting label{
+    display:block;
+    font-weight:700;
+    margin-bottom:7px;
+}
+
+.setting select{
+    width:100%;
+    padding:12px;
+
+    border:1px solid #cbd5e1;
+    border-radius:9px;
+
+    background:white;
+    font-size:15px;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.btn{
+    border:0;
+    border-radius:10px;
+    padding:13px 20px;
+    font-size:15px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.generate{
+    background:#2563eb;
+    color:white;
+}
+
+.download{
+    background:#16a34a;
+    color:white;
+}
+
+.clear{
+    background:#e2e8f0;
+    color:#334155;
+}
+
+.btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+
+/* =========================
+   QR PREVIEW
+========================= */
+
+.preview-title{
+    text-align:center;
+    margin-top:30px;
+    margin-bottom:12px;
+}
+
+.qr-preview{
+    min-height:320px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:
+    repeating-conic-gradient(
+        #f1f5f9 0% 25%,
+        #ffffff 0% 50%
+    ) 50% / 24px 24px;
+
+    border-radius:15px;
+
+    padding:20px;
+
+    overflow:auto;
+}
+
+#qrcode{
+    background:white;
+    padding:12px;
+    border-radius:8px;
+
+    display:none;
+}
+
+#qrcode canvas,
+#qrcode img{
+    display:block;
+}
+
+.qr-placeholder{
+    text-align:center;
+    color:#64748b;
+}
+
+.qr-placeholder-icon{
+    font-size:55px;
+    margin-bottom:8px;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status{
+    display:none;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:#eff6ff;
+    color:#1e40af;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   CONTENT
+========================= */
+
+.content{
+    background:#fff;
+
+    margin-top:25px;
+    padding:25px;
+
+    border-radius:18px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.content h2{
+    margin-top:0;
+}
+
+.content h3{
+    margin-bottom:5px;
+}
+
+.content p,
+.content li{
+    color:#475569;
+    line-height:1.7;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .qr-page{
+        padding:12px;
+    }
+
+    .qr-card,
+    .content{
+        padding:18px;
+    }
+
+    .settings{
+        grid-template-columns:1fr;
+    }
+
+    .actions{
+        flex-direction:column;
+    }
+
+    .btn{
+        width:100%;
+    }
+
+    .qr-preview{
+        min-height:280px;
+    }
+
+}
+
+</style>
 
 </head>
+
+
 <body>
 
-<div class="container">
 
-<h1>📱 QR Code Generator</h1>
+<div class="qr-page">
 
-<p>Enter any text or website link.</p>
 
-<input
-type="text"
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>
+📱 QR Code Generator
+</h1>
+
+<p>
+Create a QR code from any text, website URL
+or information and download it instantly.
+</p>
+
+</div>
+
+
+<!-- MAIN CARD -->
+
+<div class="qr-card">
+
+
+<!-- INPUT -->
+
+<div class="input-group">
+
+<label for="qrText">
+📝 Enter Text or URL
+</label>
+
+<textarea
 id="qrText"
-placeholder="Enter text or URL">
+placeholder="Example: https://adiyogitools.in/">
+</textarea>
 
-<br><br>
+</div>
 
-<button onclick="generateQR()">
+
+<!-- SETTINGS -->
+
+<div class="settings">
+
+
+<div class="setting">
+
+<label for="qrSize">
+📐 QR Size
+</label>
+
+<select id="qrSize">
+
+<option value="200">
+200 × 200
+</option>
+
+<option value="250" selected>
+250 × 250
+</option>
+
+<option value="300">
+300 × 300
+</option>
+
+<option value="400">
+400 × 400
+</option>
+
+<option value="500">
+500 × 500
+</option>
+
+</select>
+
+</div>
+
+
+<div class="setting">
+
+<label for="qrLevel">
+🛡️ Error Correction
+</label>
+
+<select id="qrLevel">
+
+<option value="L">
+Low
+</option>
+
+<option value="M" selected>
+Medium
+</option>
+
+<option value="Q">
+High
+</option>
+
+<option value="H">
+Highest
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<!-- BUTTONS -->
+
+<div class="actions">
+
+<button
+class="btn generate"
+id="generateBtn">
+
 ⚡ Generate QR Code
+
 </button>
 
-<br><br>
+<button
+class="btn download"
+id="downloadBtn"
+disabled>
+
+📥 Download PNG
+
+</button>
+
+<button
+class="btn clear"
+id="clearBtn">
+
+🔄 Clear
+
+</button>
+
+</div>
+
+
+<!-- STATUS -->
+
+<div
+class="status"
+id="status">
+
+<span id="statusText"></span>
+
+</div>
+
+
+<!-- PREVIEW -->
+
+<h2 class="preview-title">
+👀 QR Code Preview
+</h2>
+
+<div class="qr-preview">
+
+
+<div
+class="qr-placeholder"
+id="placeholder">
+
+<div class="qr-placeholder-icon">
+📱
+</div>
+
+Enter text or URL and generate your QR code.
+
+</div>
+
 
 <div id="qrcode"></div>
 
-<br>
 
-<a
-id="downloadQR"
-style="display:none;"
-download="AdiyogiTools-QR.png">
-📥 Download QR Code
-</a>
-  
 </div>
+
+
+</div>
+
+
+<!-- SEO CONTENT -->
+
+<section class="content">
+
+<h2>
+Free Online QR Code Generator
+</h2>
+
+<p>
+Create QR codes online for free using
+AdiyogiTools. Enter a website URL, text,
+link or other information and generate a
+downloadable QR code instantly.
+</p>
+
+
+<h3>
+How to create a QR code?
+</h3>
+
+<ol>
+
+<li>
+Enter your text or website URL.
+</li>
+
+<li>
+Select the QR code size.
+</li>
+
+<li>
+Choose the error correction level.
+</li>
+
+<li>
+Click <strong>Generate QR Code</strong>.
+</li>
+
+<li>
+Click <strong>Download PNG</strong>.
+</li>
+
+</ol>
+
+
+<h3>
+What can I put in a QR code?
+</h3>
+
+<p>
+You can use website URLs, text, links,
+contact information and other supported
+text-based information.
+</p>
+
+
+<h3>
+Is this QR Code Generator free?
+</h3>
+
+<p>
+Yes. You can generate and download QR
+codes for free.
+</p>
+
+</section>
+
+
+<!-- FAQ -->
+
+<section class="content">
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+
+<h3>
+Can I create a QR code for a website URL?
+</h3>
+
+<p>
+Yes. Enter the complete website URL and
+generate the QR code.
+</p>
+
+
+<h3>
+Can I download the QR code?
+</h3>
+
+<p>
+Yes. After generating the QR code, use
+the Download PNG button.
+</p>
+
+
+<h3>
+Can I change the QR code size?
+</h3>
+
+<p>
+Yes. You can select different QR code
+sizes before generating it.
+</p>
+
+
+<h3>
+Is my information uploaded to a server?
+</h3>
+
+<p>
+The QR code is generated directly in your
+browser. No account is required.
+</p>
+
+</section>
+
+
+</div>
+
 
 <script>
 
-function generateQR(){
+/* =========================
+   ELEMENTS
+========================= */
 
-const text=document.getElementById("qrText").value;
+const qrText =
+document.getElementById("qrText");
 
-if(text===""){
-alert("Please enter text.");
+const qrSize =
+document.getElementById("qrSize");
+
+const qrLevel =
+document.getElementById("qrLevel");
+
+const qrcode =
+document.getElementById("qrcode");
+
+const placeholder =
+document.getElementById("placeholder");
+
+const generateBtn =
+document.getElementById("generateBtn");
+
+const downloadBtn =
+document.getElementById("downloadBtn");
+
+const clearBtn =
+document.getElementById("clearBtn");
+
+const status =
+document.getElementById("status");
+
+const statusText =
+document.getElementById("statusText");
+
+
+let generatedCanvas = null;
+
+
+/* =========================
+   GENERATE
+========================= */
+
+generateBtn.addEventListener(
+"click",
+function(){
+
+const text =
+qrText.value.trim();
+
+if(text === ""){
+
+showStatus(
+"Please enter text or a website URL.",
+true
+);
+
+qrText.focus();
+
 return;
+
 }
 
-document.getElementById("qrcode").innerHTML="";
 
-new QRCode(document.getElementById("qrcode"),{
+/*
+ Clear previous QR
+ */
+
+qrcode.innerHTML = "";
+
+generatedCanvas = null;
+
+downloadBtn.disabled = true;
+
+
+/*
+ Get size
+ */
+
+const size =
+parseInt(qrSize.value);
+
+
+/*
+ Error correction
+ */
+
+const level =
+getErrorCorrection(
+qrLevel.value
+);
+
+
+/*
+ Generate QR
+ */
+
+try{
+
+new QRCode(
+qrcode,
+{
 text:text,
-width:250,
-height:250
-});
+width:size,
+height:size,
 
-setTimeout(() => {
+colorDark:"#000000",
+colorLight:"#ffffff",
 
-const img = document.querySelector("#qrcode img");
-const canvas = document.querySelector("#qrcode canvas");
-const download = document.getElementById("downloadQR");
-
-if(img){
-download.href = img.src;
-download.style.display = "inline-block";
+correctLevel:level
 }
+);
+
+
+/*
+ Show QR
+ */
+
+placeholder.style.display =
+"none";
+
+qrcode.style.display =
+"inline-block";
+
+
+/*
+ Wait for QRCode.js
+ */
+
+setTimeout(
+function(){
+
+const canvas =
+qrcode.querySelector(
+"canvas"
+);
+
+const img =
+qrcode.querySelector(
+"img"
+);
 
 if(canvas){
-download.href = canvas.toDataURL("image/png");
-download.style.display = "inline-block";
+
+generatedCanvas =
+canvas;
+
+downloadBtn.disabled =
+false;
+
+showStatus(
+"QR code generated successfully.",
+false
+);
+
+return;
+
 }
 
-},1000);
-  
+
+/*
+ Some browsers/library versions
+ create an image instead.
+ */
+
+if(img){
+
+const tempCanvas =
+document.createElement(
+"canvas"
+);
+
+tempCanvas.width =
+size;
+
+tempCanvas.height =
+size;
+
+const ctx =
+tempCanvas.getContext("2d");
+
+const image =
+new Image();
+
+image.onload =
+function(){
+
+ctx.drawImage(
+image,
+0,
+0,
+size,
+size
+);
+
+generatedCanvas =
+tempCanvas;
+
+downloadBtn.disabled =
+false;
+
+showStatus(
+"QR code generated successfully.",
+false
+);
+
+};
+
+image.src =
+img.src;
+
+return;
+
+}
+
+
+showStatus(
+"QR code could not be generated. Please try again.",
+true
+);
+
+},
+300
+);
+
+}catch(error){
+
+console.error(error);
+
+showStatus(
+"Something went wrong while generating the QR code.",
+true
+);
+
+}
+
+}
+);
+
+
+/* =========================
+   ERROR CORRECTION
+========================= */
+
+function getErrorCorrection(
+level
+){
+
+if(level === "L"){
+return QRCode.CorrectLevel.L;
+}
+
+if(level === "Q"){
+return QRCode.CorrectLevel.Q;
+}
+
+if(level === "H"){
+return QRCode.CorrectLevel.H;
+}
+
+return QRCode.CorrectLevel.M;
+
+}
+
+
+/* =========================
+   DOWNLOAD
+========================= */
+
+downloadBtn.addEventListener(
+"click",
+function(){
+
+if(!generatedCanvas){
+
+showStatus(
+"Please generate a QR code first.",
+true
+);
+
+return;
+
+}
+
+
+generatedCanvas.toBlob(
+function(blob){
+
+if(!blob){
+
+showStatus(
+"Unable to create the PNG file.",
+true
+);
+
+return;
+
+}
+
+
+const url =
+URL.createObjectURL(blob);
+
+const a =
+document.createElement("a");
+
+a.href =
+url;
+
+a.download =
+"AdiyogiTools-QR.png";
+
+document.body.appendChild(a);
+
+a.click();
+
+a.remove();
+
+
+setTimeout(
+function(){
+
+URL.revokeObjectURL(url);
+
+},
+1000
+);
+
+
+showStatus(
+"QR code downloaded successfully.",
+false
+);
+
+},
+"image/png"
+);
+
+}
+);
+
+
+/* =========================
+   CLEAR
+========================= */
+
+clearBtn.addEventListener(
+"click",
+function(){
+
+qrText.value = "";
+
+qrcode.innerHTML = "";
+
+qrcode.style.display =
+"none";
+
+placeholder.style.display =
+"block";
+
+downloadBtn.disabled =
+true;
+
+generatedCanvas =
+null;
+
+status.style.display =
+"none";
+
+}
+);
+
+
+/* =========================
+   STATUS
+========================= */
+
+function showStatus(
+message,
+error
+){
+
+status.style.display =
+"block";
+
+status.style.background =
+error
+?
+"#fef2f2"
+:
+"#eff6ff";
+
+status.style.color =
+error
+?
+"#991b1b"
+:
+"#1e40af";
+
+statusText.textContent =
+message;
+
 }
 
 </script>
 
+
+<!-- WEB APPLICATION SCHEMA -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"QR Code Generator",
+"url":"https://adiyogitools.in/qr-generator.html",
+"applicationCategory":"UtilitiesApplication",
+"operatingSystem":"Any",
+"description":"Free online QR code generator for text and website URLs.",
+"offers":{
+"@type":"Offer",
+"price":"0",
+"priceCurrency":"INR"
+}
+}
+
+</script>
+
+
+<!-- FAQ SCHEMA -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"Can I create a QR code for a website URL?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Enter the complete website URL and generate the QR code."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I download the QR code?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. After generating the QR code, you can download it as a PNG image."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I change the QR code size?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. You can select different QR code sizes before generating the QR code."
+}
+},
+
+{
+"@type":"Question",
+"name":"Is the QR Code Generator free?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. The QR Code Generator is free to use."
+}
+}
+
+]
+}
+
+</script>
+
+
 </body>
+
 </html>
