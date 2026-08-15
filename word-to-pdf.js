@@ -7,6 +7,10 @@ const success = document.getElementById("success");
 const preview = document.getElementById("preview");
 
 
+/* =========================
+   FILE SELECT
+========================= */
+
 wordInput.addEventListener("change", function () {
 
     const file = this.files[0];
@@ -15,228 +19,516 @@ wordInput.addEventListener("change", function () {
     success.style.display = "none";
 
     if (!file) {
-        fileName.textContent = "No file selected";
+
+        fileName.textContent =
+            "No file selected";
+
         return;
     }
 
-    if (!file.name.toLowerCase().endsWith(".docx")) {
 
-        alert("Please select a DOCX Word file.");
+    if (
+        !file.name
+            .toLowerCase()
+            .endsWith(".docx")
+    ) {
+
+        alert(
+            "Please select a DOCX Word file."
+        );
 
         this.value = "";
-        fileName.textContent = "No file selected";
+
+        fileName.textContent =
+            "No file selected";
 
         return;
     }
 
-    fileName.textContent = "📄 " + file.name;
+
+    fileName.textContent =
+        "📄 " + file.name;
 
 });
 
 
-convertBtn.addEventListener("click", async function () {
+/* =========================
+   CONVERT
+========================= */
 
-    const file = wordInput.files[0];
+convertBtn.addEventListener(
+    "click",
+    async function () {
 
-    if (!file) {
-
-        alert("Please select a DOCX Word file first.");
-
-        return;
-    }
-
-    try {
-
-        convertBtn.disabled = true;
-
-        loading.style.display = "block";
-        success.style.display = "none";
-        downloadBtn.style.display = "none";
-
-        preview.innerHTML = "";
-
-        /*
-         * Render DOCX
-         */
-
-        await docx.renderAsync(
-            file,
-            preview,
-            null,
-            {
-
-                className: "docx",
-
-                inWrapper: true,
-
-                breakPages: true,
-
-                ignoreWidth: false,
-
-                ignoreHeight: false,
-
-                ignoreFonts: false,
-
-                renderHeaders: true,
-
-                renderFooters: true,
-
-                renderFootnotes: true,
-
-                renderEndnotes: true,
-
-                useBase64URL: true
-
-            }
-        );
+        const file =
+            wordInput.files[0];
 
 
-        /*
-         * Give images/fonts time to finish loading
-         */
+        if (!file) {
 
-        const images = preview.querySelectorAll("img");
+            alert(
+                "Please select a DOCX file first."
+            );
 
-        await Promise.all(
+            return;
+        }
 
-            Array.from(images).map(img => {
 
-                if (img.complete) {
-                    return Promise.resolve();
+        try {
+
+            convertBtn.disabled = true;
+
+            loading.style.display =
+                "block";
+
+            success.style.display =
+                "none";
+
+            downloadBtn.style.display =
+                "none";
+
+
+            loading.textContent =
+                "⏳ Reading Word document...";
+
+
+            /*
+             Clear previous rendering
+            */
+
+            preview.innerHTML = "";
+
+            preview.style.display =
+                "block";
+
+
+            /* =========================
+               DOCX → HTML
+            ========================= */
+
+            await docx.renderAsync(
+
+                file,
+
+                preview,
+
+                null,
+
+                {
+
+                    className: "docx",
+
+                    inWrapper: true,
+
+                    breakPages: true,
+
+                    ignoreWidth: false,
+
+                    ignoreHeight: false,
+
+                    ignoreFonts: false,
+
+                    renderHeaders: true,
+
+                    renderFooters: true,
+
+                    renderFootnotes: true,
+
+                    renderEndnotes: true,
+
+                    useBase64URL: true
+
                 }
 
-                return new Promise(resolve => {
+            );
 
-                    img.onload = resolve;
-                    img.onerror = resolve;
+
+            loading.textContent =
+                "⏳ Loading images and document content...";
+
+
+            /* =========================
+               WAIT FOR IMAGES
+            ========================= */
+
+            const images =
+                preview.querySelectorAll(
+                    "img"
+                );
+
+
+            await Promise.all(
+
+                Array.from(images).map(
+                    function (img) {
+
+                        if (img.complete) {
+
+                            return Promise.resolve();
+
+                        }
+
+
+                        return new Promise(
+                            function (resolve) {
+
+                                img.onload =
+                                    resolve;
+
+                                img.onerror =
+                                    resolve;
+
+                            }
+                        );
+
+                    }
+                )
+
+            );
+
+
+            /*
+             Small delay for rendering
+            */
+
+            await new Promise(
+                function (resolve) {
+
+                    setTimeout(
+                        resolve,
+                        700
+                    );
+
+                }
+            );
+
+
+            loading.textContent =
+                "⏳ Creating PDF...";
+
+
+            /* =========================
+               GET DOCUMENT PAGES
+            ========================= */
+
+            let pages =
+                preview.querySelectorAll(
+                    ".docx"
+                );
+
+
+            /*
+             Fallback if renderer
+             returns only wrapper.
+            */
+
+            if (!pages.length) {
+
+                pages = [preview];
+
+            }
+
+
+            /* =========================
+               CREATE PDF
+            ========================= */
+
+            const pdf =
+                new jspdf.jsPDF({
+
+                    orientation:
+                        "portrait",
+
+                    unit:
+                        "mm",
+
+                    format:
+                        "a4",
+
+                    compress:
+                        true
 
                 });
 
-            })
 
-        );
-
-
-        await new Promise(resolve => setTimeout(resolve, 500));
+            const pageWidth =
+                pdf.internal.pageSize
+                    .getWidth();
 
 
-        /*
-         * PDF settings
-         */
+            const pageHeight =
+                pdf.internal.pageSize
+                    .getHeight();
 
-        const options = {
 
-            margin: 0,
+            let addedPage =
+                false;
 
-            filename: file.name.replace(
-                /\.docx$/i,
-                ""
-            ) + ".pdf",
 
-            image: {
+            /* =========================
+               RENDER EACH PAGE
+            ========================= */
 
-                type: "jpeg",
+            for (
+                let i = 0;
+                i < pages.length;
+                i++
+            ) {
 
-                quality: 0.98
+                const page =
+                    pages[i];
 
-            },
 
-            html2canvas: {
+                /*
+                 Skip empty pages
+                */
 
-                scale: 2,
+                if (
+                    !page.innerText.trim() &&
+                    !page.querySelector("img")
+                ) {
 
-                useCORS: true,
+                    continue;
 
-                backgroundColor: "#ffffff",
+                }
 
-                logging: false
 
-            },
+                /*
+                 Make page renderable
+                */
 
-            jsPDF: {
+                const oldPosition =
+                    page.style.position;
 
-                unit: "mm",
+                const oldVisibility =
+                    page.style.visibility;
 
-                format: "a4",
+                const oldDisplay =
+                    page.style.display;
 
-                orientation: "portrait",
 
-                compress: true
+                page.style.position =
+                    "relative";
 
-            },
+                page.style.visibility =
+                    "visible";
 
-            pagebreak: {
+                page.style.display =
+                    "block";
 
-                mode: [
-                    "css",
-                    "legacy"
-                ],
 
-                avoid: [
-                    "img",
-                    "table",
-                    "tr"
-                ]
+                const canvas =
+                    await html2canvas(
+
+                        page,
+
+                        {
+
+                            scale: 2,
+
+                            useCORS: true,
+
+                            allowTaint: true,
+
+                            backgroundColor:
+                                "#ffffff",
+
+                            logging: false,
+
+                            imageTimeout:
+                                20000
+
+                        }
+
+                    );
+
+
+                /*
+                 Restore original styles
+                */
+
+                page.style.position =
+                    oldPosition;
+
+                page.style.visibility =
+                    oldVisibility;
+
+                page.style.display =
+                    oldDisplay;
+
+
+                if (
+                    !canvas ||
+                    canvas.width <= 0 ||
+                    canvas.height <= 0
+                ) {
+
+                    continue;
+
+                }
+
+
+                const imageData =
+                    canvas.toDataURL(
+                        "image/jpeg",
+                        0.95
+                    );
+
+
+                /*
+                 Keep original aspect ratio
+                */
+
+                const ratio =
+                    Math.min(
+
+                        pageWidth /
+                            canvas.width,
+
+                        pageHeight /
+                            canvas.height
+
+                    );
+
+
+                const imageWidth =
+                    canvas.width * ratio;
+
+
+                const imageHeight =
+                    canvas.height * ratio;
+
+
+                const x =
+                    (pageWidth -
+                        imageWidth) / 2;
+
+
+                const y =
+                    (pageHeight -
+                        imageHeight) / 2;
+
+
+                if (addedPage) {
+
+                    pdf.addPage();
+
+                }
+
+
+                pdf.addImage(
+
+                    imageData,
+
+                    "JPEG",
+
+                    x,
+
+                    y,
+
+                    imageWidth,
+
+                    imageHeight,
+
+                    undefined,
+
+                    "FAST"
+
+                );
+
+
+                addedPage = true;
 
             }
 
-        };
+
+            /* =========================
+               CHECK RESULT
+            ========================= */
+
+            if (!addedPage) {
+
+                throw new Error(
+                    "The document could not be rendered."
+                );
+
+            }
 
 
-        /*
-         * Convert rendered document to PDF
-         */
+            /* =========================
+               PDF DOWNLOAD
+            ========================= */
 
-        const pdfBlob =
-            await html2pdf()
-                .set(options)
-                .from(preview)
-                .outputPdf("blob");
-
-
-        /*
-         * Create download link
-         */
-
-        const url =
-            URL.createObjectURL(pdfBlob);
+            const pdfBlob =
+                pdf.output(
+                    "blob"
+                );
 
 
-        downloadBtn.href = url;
-
-        downloadBtn.download =
-            file.name.replace(
-                /\.docx$/i,
-                ""
-            ) + ".pdf";
+            const pdfURL =
+                URL.createObjectURL(
+                    pdfBlob
+                );
 
 
-        downloadBtn.style.display =
-            "inline-block";
+            downloadBtn.href =
+                pdfURL;
 
 
-        success.style.display =
-            "block";
+            downloadBtn.download =
+                file.name.replace(
+                    /\.docx$/i,
+                    ""
+                ) + ".pdf";
 
+
+            downloadBtn.style.display =
+                "block";
+
+
+            success.textContent =
+                "✅ PDF created successfully!";
+
+
+            success.style.display =
+                "block";
+
+
+            loading.style.display =
+                "none";
+
+
+        }
+
+        catch (error) {
+
+            console.error(
+                "Word to PDF Error:",
+                error
+            );
+
+
+            loading.style.display =
+                "none";
+
+
+            success.style.display =
+                "none";
+
+
+            alert(
+                "PDF conversion failed.\n\n" +
+                "Please try another DOCX file."
+            );
+
+        }
+
+        finally {
+
+            convertBtn.disabled =
+                false;
+
+        }
 
     }
-
-    catch (error) {
-
-        console.error(error);
-
-        alert(
-            "PDF conversion failed. Please try another DOCX file."
-        );
-
-    }
-
-    finally {
-
-        loading.style.display = "none";
-
-        convertBtn.disabled = false;
-
-    }
-
-});
+);
