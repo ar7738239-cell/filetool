@@ -1,100 +1,2207 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PDF Compress</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<title>PDF Compressor - Compress PDF Online Free | AdiyogiTools</title>
 
-<script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+<meta name="description"
+      content="Compress PDF files online for free. Reduce PDF file size directly in your browser with balanced, strong and maximum compression options. No registration required.">
+
+<meta name="keywords"
+      content="PDF compressor, compress PDF, reduce PDF size, PDF size reducer, compress PDF online, free PDF compressor">
+
+<meta name="robots"
+      content="index, follow">
+
+<link rel="canonical"
+      href="https://adiyogitools.in/pdf-compress.html">
+
+<meta property="og:title"
+      content="PDF Compressor | AdiyogiTools">
+
+<meta property="og:description"
+      content="Compress PDF files online for free with fast browser-based PDF compression.">
+
+<meta property="og:type"
+      content="website">
+
+<meta property="og:url"
+      content="https://adiyogitools.in/pdf-compress.html">
+
+<meta name="twitter:card"
+      content="summary">
+
+<link rel="stylesheet"
+      href="style.css">
+
+
+<style>
+
+/* =========================================
+   PDF COMPRESSOR PRO
+========================================= */
+
+.pdf-page{
+    max-width:1100px;
+    margin:auto;
+    padding:20px;
+}
+
+
+/* =========================================
+   HERO
+========================================= */
+
+.pdf-hero{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.pdf-hero h1{
+    font-size:clamp(28px,5vw,44px);
+    margin-bottom:10px;
+}
+
+.pdf-hero p{
+    color:#64748b;
+    line-height:1.6;
+}
+
+
+/* =========================================
+   UPLOAD
+========================================= */
+
+.upload-box{
+    background:#fff;
+    border:2px dashed #2563eb;
+    border-radius:20px;
+    padding:35px 20px;
+    text-align:center;
+    transition:.2s;
+    margin-bottom:20px;
+}
+
+.upload-box.dragover{
+    background:#eff6ff;
+    transform:scale(1.01);
+}
+
+.upload-icon{
+    font-size:52px;
+}
+
+.upload-box h2{
+    margin:8px 0;
+}
+
+.upload-box p{
+    color:#64748b;
+}
+
+.upload-btn{
+    display:inline-block;
+    background:#2563eb;
+    color:#fff;
+    padding:14px 25px;
+    border-radius:12px;
+    font-weight:700;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+.upload-btn:hover{
+    opacity:.9;
+}
+
+#pdfInput{
+    display:none;
+}
+
+
+/* =========================================
+   SETTINGS
+========================================= */
+
+.settings-card{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,.06);
+}
+
+.settings-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.setting label{
+    display:block;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+.setting select{
+    width:100%;
+    padding:12px;
+    border:1px solid #cbd5e1;
+    border-radius:10px;
+    font-size:15px;
+    box-sizing:border-box;
+}
+
+.setting-help{
+    font-size:12px;
+    color:#64748b;
+    margin-top:6px;
+}
+
+
+/* =========================================
+   COMPRESSION LEVELS
+========================================= */
+
+.level-description{
+    background:#f8fafc;
+    border-radius:12px;
+    padding:12px;
+    margin-top:15px;
+    color:#475569;
+    line-height:1.5;
+}
+
+
+/* =========================================
+   ACTIONS
+========================================= */
+
+.action-bar{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:20px;
+}
+
+.action-btn{
+    border:none;
+    border-radius:11px;
+    padding:13px 18px;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+}
+
+.compress-btn{
+    background:#16a34a;
+    color:#fff;
+}
+
+.download-btn{
+    background:#2563eb;
+    color:#fff;
+}
+
+.clear-btn{
+    background:#fee2e2;
+    color:#991b1b;
+}
+
+.action-btn:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+
+/* =========================================
+   FILE CARD
+========================================= */
+
+.file-list{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(300px,1fr));
+    gap:18px;
+}
+
+.file-card{
+    background:#fff;
+    border-radius:18px;
+    padding:16px;
+    box-shadow:0 5px 20px rgba(0,0,0,.07);
+}
+
+.file-icon{
+    height:150px;
+    border-radius:12px;
+    background:#f1f5f9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:70px;
+    margin-bottom:12px;
+}
+
+.file-name{
+    font-weight:700;
+    word-break:break-word;
+    margin-bottom:8px;
+}
+
+.file-info{
+    color:#64748b;
+    font-size:14px;
+    line-height:1.7;
+}
+
+.status{
+    margin-top:12px;
+    padding:10px;
+    border-radius:10px;
+    background:#f8fafc;
+    color:#475569;
+    font-size:14px;
+    display:none;
+}
+
+.status.success{
+    background:#f0fdf4;
+    color:#166534;
+}
+
+.status.error{
+    background:#fef2f2;
+    color:#991b1b;
+}
+
+.progress-wrap{
+    margin-top:12px;
+    display:none;
+}
+
+.progress-bar{
+    width:100%;
+    height:9px;
+    background:#e2e8f0;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:#2563eb;
+    transition:.2s;
+}
+
+.progress-text{
+    font-size:12px;
+    color:#64748b;
+    margin-top:5px;
+}
+
+
+/* =========================================
+   RESULT SUMMARY
+========================================= */
+
+.result-summary{
+    background:#eff6ff;
+    border-radius:16px;
+    padding:18px;
+    margin:20px 0;
+    display:none;
+}
+
+.result-summary h2{
+    margin-top:0;
+}
+
+.summary-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(150px,1fr));
+    gap:12px;
+}
+
+.summary-item{
+    background:#fff;
+    padding:13px;
+    border-radius:12px;
+}
+
+.summary-label{
+    display:block;
+    color:#64748b;
+    font-size:12px;
+}
+
+.summary-value{
+    display:block;
+    font-size:20px;
+    font-weight:800;
+    margin-top:4px;
+}
+
+
+/* =========================================
+   WARNING
+========================================= */
+
+.warning-box{
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    color:#9a3412;
+    border-radius:14px;
+    padding:14px;
+    margin-top:18px;
+    line-height:1.6;
+}
+
+
+/* =========================================
+   SEO CONTENT
+========================================= */
+
+.info-section{
+    background:#fff;
+    border-radius:18px;
+    padding:25px;
+    margin-top:25px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.info-section h2{
+    margin-top:0;
+}
+
+.info-section h3{
+    margin-bottom:5px;
+}
+
+.info-section p,
+.info-section li{
+    color:#475569;
+    line-height:1.7;
+}
+
+.faq-item{
+    border-bottom:1px solid #e2e8f0;
+    padding:15px 0;
+}
+
+.faq-item:last-child{
+    border-bottom:none;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px){
+
+    .pdf-page{
+        padding:12px;
+    }
+
+    .upload-box{
+        padding:25px 15px;
+    }
+
+    .action-bar{
+        flex-direction:column;
+    }
+
+    .action-btn{
+        width:100%;
+    }
+
+    .file-list{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-<div class="container">
+<div class="pdf-page">
 
-<h1>📄 PDF Compress</h1>
 
-<p>Select a PDF file</p>
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="pdf-hero">
+
+<h1>📄 PDF Compressor</h1>
+
+<p>
+Reduce PDF file size online for free.
+Compress your PDF directly in your browser.
+No registration required.
+</p>
+
+</section>
+
+
+<!-- =========================================
+     UPLOAD
+========================================= -->
+
+<div class="upload-box"
+     id="uploadBox">
+
+<div class="upload-icon">
+📄
+</div>
+
+<h2>
+Upload PDF
+</h2>
+
+<p>
+Select a PDF file or drag & drop it here
+</p>
+
+<label
+    class="upload-btn"
+    for="pdfInput">
+
+📁 Choose PDF
+
+</label>
 
 <input
-type="file"
-id="pdfFile"
-accept=".pdf">
+    type="file"
+    id="pdfInput"
+    accept="application/pdf">
 
-<br><br>
-
-<label>Compression Level</label>
-
-<br><br>
-
-<select id="quality">
-
-<option value="low">Low</option>
-
-<option value="medium" selected>Medium</option>
-
-<option value="high">High</option>
-
-</select>
-
-<br><br>
-
-<button onclick="compressPDF()">
-
-📦 Compress PDF
-
-</button>
-
-<br><br>
-
-<a
-id="download"
-style="display:none;"
-download="compressed.pdf">
-
-📥 Download PDF
-
-</a>
+<p>
+Maximum recommended file size: 50 MB
+</p>
 
 </div>
 
-<script>
-  async function compressPDF() {
 
-const file = document.getElementById("pdfFile").files[0];
+<!-- =========================================
+     SETTINGS
+========================================= -->
 
-if (!file) {
-    alert("Please select a PDF.");
-    return;
+<div class="settings-card">
+
+<h2>⚙️ Compression Settings</h2>
+
+<div class="settings-grid">
+
+
+<div class="setting">
+
+<label for="compressionLevel">
+Compression Level
+</label>
+
+<select id="compressionLevel">
+
+<option value="balanced">
+⚖️ Balanced
+</option>
+
+<option value="strong">
+🚀 Strong
+</option>
+
+<option value="maximum">
+🔥 Maximum
+</option>
+
+</select>
+
+<div
+    class="setting-help"
+    id="levelHelp">
+
+Good balance between file size and quality.
+</div>
+
+</div>
+
+
+<div class="setting">
+
+<label for="pageQuality">
+Image Quality
+</label>
+
+<select id="pageQuality">
+
+<option value="high">
+High
+</option>
+
+<option value="medium"
+        selected>
+Medium
+</option>
+
+<option value="low">
+Low
+</option>
+
+</select>
+
+<div class="setting-help">
+Higher quality gives clearer pages but larger files.
+</div>
+
+</div>
+
+
+<div class="setting">
+
+<label for="resolution">
+Output Resolution
+</label>
+
+<select id="resolution">
+
+<option value="1">
+100% - Original
+</option>
+
+<option value="0.85"
+        selected>
+85% - Recommended
+</option>
+
+<option value="0.7">
+70% - Smaller
+</option>
+
+<option value="0.55">
+55% - Maximum Reduction
+</option>
+
+</select>
+
+<div class="setting-help">
+Lower resolution can significantly reduce file size.
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="level-description"
+     id="levelDescription">
+
+<b>Balanced:</b>
+Recommended for normal documents and scanned PDFs.
+</div>
+
+
+<div class="action-bar">
+
+<button
+    class="action-btn compress-btn"
+    id="compressBtn"
+    disabled>
+
+🗜️ Compress PDF
+
+</button>
+
+<button
+    class="action-btn download-btn"
+    id="downloadBtn"
+    disabled>
+
+📥 Download Compressed PDF
+
+</button>
+
+<button
+    class="action-btn clear-btn"
+    id="clearBtn"
+    disabled>
+
+🗑️ Clear
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     RESULT SUMMARY
+========================================= -->
+
+<div
+    class="result-summary"
+    id="resultSummary">
+
+<h2>
+📊 Compression Result
+</h2>
+
+<div class="summary-grid">
+
+<div class="summary-item">
+
+<span class="summary-label">
+Original Size
+</span>
+
+<span
+    class="summary-value"
+    id="originalSize">
+
+-
+
+</span>
+
+</div>
+
+
+<div class="summary-item">
+
+<span class="summary-label">
+Compressed Size
+</span>
+
+<span
+    class="summary-value"
+    id="compressedSize">
+
+-
+
+</span>
+
+</div>
+
+
+<div class="summary-item">
+
+<span class="summary-label">
+Space Saved
+</span>
+
+<span
+    class="summary-value"
+    id="savedPercent">
+
+-
+
+</span>
+
+</div>
+
+
+<div class="summary-item">
+
+<span class="summary-label">
+Pages
+</span>
+
+<span
+    class="summary-value"
+    id="pageCount">
+
+-
+
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     FILE CARD
+========================================= -->
+
+<div
+    class="file-list"
+    id="fileList">
+
+<div
+    class="file-card"
+    id="emptyCard">
+
+<div class="file-icon">
+📄
+</div>
+
+<div class="file-name">
+No PDF selected
+</div>
+
+<div class="file-info">
+Upload a PDF to start compression.
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     WARNING
+========================================= -->
+
+<div class="warning-box">
+
+⚠️ <b>Important:</b>
+This browser-based compression rebuilds PDF pages
+as optimized images. The resulting PDF may not retain
+the original text selection/search functionality.
+For normal scanned documents and image-heavy PDFs,
+this can provide significant size reduction.
+
+</div>
+
+
+<!-- =========================================
+     SEO CONTENT
+========================================= -->
+
+<section class="info-section">
+
+<h2>
+Free Online PDF Compressor
+</h2>
+
+<p>
+AdiyogiTools PDF Compressor lets you reduce the size
+of PDF documents directly in your browser. Choose a
+compression level and download the optimized PDF
+without installing software.
+</p>
+
+
+<h3>
+How to compress a PDF?
+</h3>
+
+<ol>
+
+<li>
+Upload your PDF file.
+</li>
+
+<li>
+Choose Balanced, Strong or Maximum compression.
+</li>
+
+<li>
+Select the desired image quality and resolution.
+</li>
+
+<li>
+Click <b>Compress PDF</b>.
+</li>
+
+<li>
+Check the original and compressed file sizes.
+</li>
+
+<li>
+Download the compressed PDF.
+</li>
+
+</ol>
+
+
+<h3>
+Which compression level should I use?
+</h3>
+
+<ul>
+
+<li>
+<b>Balanced:</b>
+Best for everyday documents.
+</li>
+
+<li>
+<b>Strong:</b>
+Useful when you need a smaller file.
+</li>
+
+<li>
+<b>Maximum:</b>
+Best when the smallest possible file is the priority.
+</li>
+
+</ul>
+
+
+<h3>
+Is the PDF uploaded to a server?
+</h3>
+
+<p>
+The compression process is performed in your browser.
+Your PDF does not need to be uploaded to an AdiyogiTools
+server for processing.
+</p>
+
+
+<h3>
+Can I compress scanned PDFs?
+</h3>
+
+<p>
+Yes. Scanned and image-heavy PDFs are particularly
+suitable for this type of image-based compression.
+</p>
+
+</section>
+
+
+<!-- =========================================
+     FAQ
+========================================= -->
+
+<section class="info-section">
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+
+<div class="faq-item">
+
+<h3>
+Can I compress a PDF for free?
+</h3>
+
+<p>
+Yes. AdiyogiTools PDF Compressor is designed for free
+browser-based PDF compression.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Does PDF compression reduce quality?
+</h3>
+
+<p>
+Compression can reduce image quality depending on the
+selected settings. Balanced compression is recommended
+when you want a good balance between size and clarity.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Can I compress scanned PDFs?
+</h3>
+
+<p>
+Yes. Image-heavy and scanned PDFs can benefit
+significantly from image-based compression.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Is my PDF uploaded to a server?
+</h3>
+
+<p>
+The compression process is performed locally in the
+browser in this tool, so the PDF does not need to be
+sent to an AdiyogiTools processing server.
+</p>
+
+</div>
+
+
+<div class="faq-item">
+
+<h3>
+Will the compressed PDF remain searchable?
+</h3>
+
+<p>
+This version rebuilds pages as images, so text search
+and text selection may not remain available in the
+compressed output.
+</p>
+
+</div>
+
+
+</section>
+
+
+</div>
+
+
+<!-- =========================================
+     PDF.JS
+========================================= -->
+
+<script type="module">
+
+import * as pdfjsLib
+from "https://cdn.jsdelivr.net/npm/pdfjs-dist@6.2.108/build/pdf.min.mjs";
+
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdn.jsdelivr.net/npm/pdfjs-dist@6.2.108/build/pdf.worker.min.mjs";
+
+
+/* =========================================
+   PDF-LIB
+========================================= */
+
+const pdfLibScript =
+document.createElement("script");
+
+pdfLibScript.src =
+"https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js";
+
+pdfLibScript.onload =
+function(){
+
+    window.pdfLibReady = true;
+
+    initializeCompressor();
+
+};
+
+pdfLibScript.onerror =
+function(){
+
+    alert(
+        "PDF compression library could not be loaded. Please check your internet connection and refresh the page."
+    );
+
+};
+
+document.head.appendChild(
+    pdfLibScript
+);
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+function initializeCompressor(){
+
+const pdfInput =
+document.getElementById("pdfInput");
+
+const uploadBox =
+document.getElementById("uploadBox");
+
+const compressionLevel =
+document.getElementById("compressionLevel");
+
+const pageQuality =
+document.getElementById("pageQuality");
+
+const resolution =
+document.getElementById("resolution");
+
+const levelHelp =
+document.getElementById("levelHelp");
+
+const levelDescription =
+document.getElementById("levelDescription");
+
+const compressBtn =
+document.getElementById("compressBtn");
+
+const downloadBtn =
+document.getElementById("downloadBtn");
+
+const clearBtn =
+document.getElementById("clearBtn");
+
+const fileList =
+document.getElementById("fileList");
+
+const resultSummary =
+document.getElementById("resultSummary");
+
+const originalSize =
+document.getElementById("originalSize");
+
+const compressedSize =
+document.getElementById("compressedSize");
+
+const savedPercent =
+document.getElementById("savedPercent");
+
+const pageCount =
+document.getElementById("pageCount");
+
+
+let selectedFile =
+null;
+
+let compressedBlob =
+null;
+
+let pdfPages =
+0;
+
+
+/* =========================================
+   COMPRESSION LEVEL INFO
+========================================= */
+
+compressionLevel.addEventListener(
+"change",
+updateLevelInfo
+);
+
+function updateLevelInfo(){
+
+const level =
+compressionLevel.value;
+
+
+if(level === "balanced"){
+
+levelHelp.textContent =
+"Good balance between file size and quality.";
+
+levelDescription.innerHTML =
+"<b>Balanced:</b> Recommended for normal documents and scanned PDFs.";
+
 }
 
-const bytes = await file.arrayBuffer();
 
-const pdfDoc = await PDFLib.PDFDocument.load(bytes);
+if(level === "strong"){
 
-// Browser-based basic optimization
-const pdfBytes = await pdfDoc.save({
-    useObjectStreams: true,
-    addDefaultPage: false
+levelHelp.textContent =
+"Smaller output with noticeable image optimization.";
+
+levelDescription.innerHTML =
+"<b>Strong:</b> Better size reduction while keeping reasonable page clarity.";
+
+}
+
+
+if(level === "maximum"){
+
+levelHelp.textContent =
+"Maximum reduction. Image quality may be noticeably lower.";
+
+levelDescription.innerHTML =
+"<b>Maximum:</b> Use when the smallest possible file size is more important than visual quality.";
+
+}
+
+}
+
+
+/* =========================================
+   UPLOAD
+========================================= */
+
+pdfInput.addEventListener(
+"change",
+function(){
+
+if(this.files[0]){
+
+handleFile(
+this.files[0]
+);
+
+}
+
+}
+);
+
+
+/* =========================================
+   DRAG DROP
+========================================= */
+
+[
+"dragenter",
+"dragover"
+].forEach(
+function(eventName){
+
+uploadBox.addEventListener(
+eventName,
+function(e){
+
+e.preventDefault();
+
+uploadBox.classList.add(
+"dragover"
+);
+
+}
+);
+
+}
+);
+
+
+[
+"dragleave",
+"drop"
+].forEach(
+function(eventName){
+
+uploadBox.addEventListener(
+eventName,
+function(e){
+
+e.preventDefault();
+
+uploadBox.classList.remove(
+"dragover"
+);
+
+}
+);
+
+}
+);
+
+
+uploadBox.addEventListener(
+"drop",
+function(e){
+
+const file =
+e.dataTransfer.files[0];
+
+if(file){
+
+handleFile(file);
+
+}
+
+}
+);
+
+
+/* =========================================
+   HANDLE FILE
+========================================= */
+
+async function handleFile(file){
+
+if(
+file.type !==
+"application/pdf"
+){
+
+alert(
+"Please select a valid PDF file."
+);
+
+return;
+
+}
+
+
+if(
+file.size >
+50 * 1024 * 1024
+){
+
+alert(
+"Please select a PDF smaller than 50 MB for browser-based processing."
+);
+
+return;
+
+}
+
+
+selectedFile =
+file;
+
+compressedBlob =
+null;
+
+downloadBtn.disabled =
+true;
+
+resultSummary.style.display =
+"none";
+
+compressBtn.disabled =
+true;
+
+fileList.innerHTML = "";
+
+
+const card =
+createFileCard(file);
+
+fileList.appendChild(card);
+
+
+try{
+
+const arrayBuffer =
+await file.arrayBuffer();
+
+const loadingTask =
+pdfjsLib.getDocument({
+    data:arrayBuffer
 });
 
-const blob = new Blob([pdfBytes], {
-    type: "application/pdf"
+const pdf =
+await loadingTask.promise;
+
+pdfPages =
+pdf.numPages;
+
+card.querySelector(
+".file-pages"
+).textContent =
+"Pages: " +
+pdfPages;
+
+compressBtn.disabled =
+false;
+
+
+}catch(error){
+
+console.error(error);
+
+showCardStatus(
+card,
+"Unable to read this PDF.",
+"error"
+);
+
+}
+
+}
+
+
+/* =========================================
+   CREATE FILE CARD
+========================================= */
+
+function createFileCard(file){
+
+const card =
+document.createElement("div");
+
+card.className =
+"file-card";
+
+
+card.innerHTML = `
+
+<div class="file-icon">
+📄
+</div>
+
+<div class="file-name">
+${escapeHtml(file.name)}
+</div>
+
+<div class="file-info">
+
+Original size:
+<b>${formatBytes(file.size)}</b>
+
+<br>
+
+<span class="file-pages">
+Pages: Detecting...
+</span>
+
+</div>
+
+<div class="progress-wrap">
+
+<div class="progress-bar">
+
+<div class="progress-fill">
+</div>
+
+</div>
+
+<div class="progress-text">
+Preparing...
+</div>
+
+</div>
+
+<div class="status">
+</div>
+
+`;
+
+
+return card;
+
+}
+
+
+/* =========================================
+   COMPRESS
+========================================= */
+
+compressBtn.addEventListener(
+"click",
+async function(){
+
+if(!selectedFile){
+
+return;
+
+}
+
+
+compressBtn.disabled =
+true;
+
+downloadBtn.disabled =
+true;
+
+clearBtn.disabled =
+true;
+
+compressBtn.textContent =
+"⏳ Compressing...";
+
+
+const card =
+fileList.querySelector(
+".file-card"
+);
+
+
+const progressWrap =
+card.querySelector(
+".progress-wrap"
+);
+
+const progressFill =
+card.querySelector(
+".progress-fill"
+);
+
+const progressText =
+card.querySelector(
+".progress-text"
+);
+
+progressWrap.style.display =
+"block";
+
+
+try{
+
+const inputBuffer =
+await selectedFile.arrayBuffer();
+
+
+progressFill.style.width =
+"5%";
+
+progressText.textContent =
+"Loading PDF...";
+
+
+const pdf =
+await pdfjsLib.getDocument({
+    data:inputBuffer
+}).promise;
+
+
+const {
+    PDFDocument
+} =
+window.PDFLib;
+
+
+const outputPdf =
+await PDFDocument.create();
+
+
+const scale =
+getCompressionScale();
+
+
+const jpegQuality =
+getJPEGQuality();
+
+
+for(
+let pageNumber = 1;
+pageNumber <= pdf.numPages;
+pageNumber++
+){
+
+progressText.textContent =
+"Processing page " +
+pageNumber +
+" of " +
+pdf.numPages;
+
+
+const page =
+await pdf.getPage(
+pageNumber
+);
+
+
+const viewport =
+page.getViewport({
+    scale:scale
 });
 
-const url = URL.createObjectURL(blob);
 
-const download = document.getElementById("download");
+const canvas =
+document.createElement(
+"canvas"
+);
 
-download.href = url;
-download.style.display = "inline-block";
+const context =
+canvas.getContext(
+"2d",
+{
+    alpha:false
+}
+);
 
+
+canvas.width =
+Math.ceil(
+viewport.width
+);
+
+canvas.height =
+Math.ceil(
+viewport.height
+);
+
+
+context.fillStyle =
+"#ffffff";
+
+context.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+
+await page.render({
+
+canvasContext:
+context,
+
+viewport:
+viewport,
+
+background:
+"white"
+
+}).promise;
+
+
+const jpegBlob =
+await canvasToBlob(
+canvas,
+"image/jpeg",
+jpegQuality
+);
+
+
+const jpegBytes =
+new Uint8Array(
+await jpegBlob.arrayBuffer()
+);
+
+
+const image =
+await outputPdf.embedJpg(
+jpegBytes
+);
+
+
+const originalViewport =
+page.getViewport({
+    scale:1
+});
+
+
+const outputPage =
+outputPdf.addPage([
+    originalViewport.width,
+    originalViewport.height
+]);
+
+
+outputPage.drawImage(
+image,
+{
+    x:0,
+    y:0,
+    width:originalViewport.width,
+    height:originalViewport.height
+}
+);
+
+
+const progress =
+10 +
+(
+    pageNumber /
+    pdf.numPages
+) * 85;
+
+
+progressFill.style.width =
+progress + "%";
+
+
+}
+
+
+progressText.textContent =
+"Finalizing PDF...";
+
+
+const outputBytes =
+await outputPdf.save({
+    useObjectStreams:true,
+    addDefaultPage:false
+});
+
+
+compressedBlob =
+new Blob(
+    [outputBytes],
+    {
+        type:"application/pdf"
+    }
+);
+
+
+const oldSize =
+selectedFile.size;
+
+const newSize =
+compressedBlob.size;
+
+
+const saved =
+oldSize > 0
+?
+(
+    (oldSize - newSize) /
+    oldSize
+) * 100
+:
+0;
+
+
+originalSize.textContent =
+formatBytes(oldSize);
+
+
+compressedSize.textContent =
+formatBytes(newSize);
+
+
+savedPercent.textContent =
+Math.max(
+0,
+saved
+).toFixed(1) +
+"%";
+
+
+pageCount.textContent =
+pdf.numPages;
+
+
+resultSummary.style.display =
+"block";
+
+
+progressFill.style.width =
+"100%";
+
+progressText.textContent =
+"Compression complete";
+
+
+if(newSize >= oldSize){
+
+showCardStatus(
+card,
+"Compression complete, but this PDF was already highly optimized. The new file may be similar or larger.",
+"success"
+);
+
+}else{
+
+showCardStatus(
+card,
+"✅ PDF compressed successfully. Saved " +
+Math.max(0,saved).toFixed(1) +
+"% of the original size.",
+"success"
+);
+
+}
+
+
+downloadBtn.disabled =
+false;
+
+
+}catch(error){
+
+console.error(
+"PDF compression error:",
+error
+);
+
+
+showCardStatus(
+card,
+"Compression failed. This PDF may contain unsupported or complex content.",
+"error"
+);
+
+}finally{
+
+compressBtn.disabled =
+false;
+
+clearBtn.disabled =
+false;
+
+compressBtn.textContent =
+"🗜️ Compress PDF";
+
+}
+
+}
+);
+
+
+/* =========================================
+   COMPRESSION SCALE
+========================================= */
+
+function getCompressionScale(){
+
+const selected =
+parseFloat(
+resolution.value
+);
+
+
+let base =
+1;
+
+
+if(
+compressionLevel.value ===
+"balanced"
+){
+
+base = 1.25;
+
+}
+
+
+if(
+compressionLevel.value ===
+"strong"
+){
+
+base = 1.0;
+
+}
+
+
+if(
+compressionLevel.value ===
+"maximum"
+){
+
+base = 0.72;
+
+}
+
+
+return base * selected;
+
+}
+
+
+/* =========================================
+   JPEG QUALITY
+========================================= */
+
+function getJPEGQuality(){
+
+let qualityValue =
+0.78;
+
+
+if(
+pageQuality.value ===
+"high"
+){
+
+qualityValue =
+0.90;
+
+}
+
+
+if(
+pageQuality.value ===
+"medium"
+){
+
+qualityValue =
+0.76;
+
+}
+
+
+if(
+pageQuality.value ===
+"low"
+){
+
+qualityValue =
+0.58;
+
+}
+
+
+if(
+compressionLevel.value ===
+"strong"
+){
+
+qualityValue -= 0.05;
+
+}
+
+
+if(
+compressionLevel.value ===
+"maximum"
+){
+
+qualityValue -= 0.12;
+
+}
+
+
+return Math.max(
+0.35,
+Math.min(
+0.95,
+qualityValue
+)
+);
+
+}
+
+
+/* =========================================
+   CANVAS TO BLOB
+========================================= */
+
+function canvasToBlob(
+canvas,
+type,
+quality
+){
+
+return new Promise(
+function(resolve,reject){
+
+canvas.toBlob(
+function(blob){
+
+if(blob){
+
+resolve(blob);
+
+}else{
+
+reject(
+new Error(
+"Canvas conversion failed."
+)
+);
+
+}
+
+},
+type,
+quality
+);
+
+}
+);
+
+}
+
+
+/* =========================================
+   DOWNLOAD
+========================================= */
+
+downloadBtn.addEventListener(
+"click",
+function(){
+
+if(!compressedBlob){
+
+return;
+
+}
+
+
+const url =
+URL.createObjectURL(
+compressedBlob
+);
+
+
+const link =
+document.createElement("a");
+
+
+link.href =
+url;
+
+
+const baseName =
+selectedFile.name
+.replace(
+/\.pdf$/i,
+""
+);
+
+
+link.download =
+baseName +
+"-compressed.pdf";
+
+
+document.body.appendChild(
+link
+);
+
+link.click();
+
+link.remove();
+
+
+setTimeout(
+function(){
+
+URL.revokeObjectURL(
+url
+);
+
+},
+1000
+);
+
+}
+);
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+clearBtn.addEventListener(
+"click",
+function(){
+
+selectedFile =
+null;
+
+compressedBlob =
+null;
+
+pdfPages =
+0;
+
+pdfInput.value =
+"";
+
+compressBtn.disabled =
+true;
+
+downloadBtn.disabled =
+true;
+
+clearBtn.disabled =
+true;
+
+resultSummary.style.display =
+"none";
+
+fileList.innerHTML = "";
+
+const empty =
+document.createElement(
+"div"
+);
+
+empty.className =
+"file-card";
+
+empty.innerHTML = `
+
+<div class="file-icon">
+📄
+</div>
+
+<div class="file-name">
+No PDF selected
+</div>
+
+<div class="file-info">
+Upload a PDF to start compression.
+</div>
+
+`;
+
+fileList.appendChild(
+empty
+);
+
+}
+);
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+function showCardStatus(
+card,
+message,
+type
+){
+
+const status =
+card.querySelector(
+".status"
+);
+
+status.style.display =
+"block";
+
+status.className =
+"status " +
+type;
+
+status.textContent =
+message;
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(
+text
+){
+
+const div =
+document.createElement(
+"div"
+);
+
+div.textContent =
+text;
+
+return div.innerHTML;
+
+}
+
+
+/* =========================================
+   FORMAT BYTES
+========================================= */
+
+function formatBytes(
+bytes
+){
+
+if(
+bytes === 0
+){
+
+return "0 Bytes";
+
+}
+
+
+const units =
+[
+    "Bytes",
+    "KB",
+    "MB",
+    "GB"
+];
+
+
+const i =
+Math.floor(
+Math.log(bytes) /
+Math.log(1024)
+);
+
+
+return (
+parseFloat(
+(
+bytes /
+Math.pow(
+1024,
+i
+)
+).toFixed(2)
+)
++
+" " +
+units[i]
+);
+
+}
+
+
+/* =========================================
+   INITIAL
+========================================= */
+
+updateLevelInfo();
+
+}
+
+</script>
+
+
+<!-- =========================================
+     STRUCTURED DATA
+========================================= -->
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"WebApplication",
+"name":"PDF Compressor",
+"url":"https://adiyogitools.in/pdf-compress.html",
+"applicationCategory":"UtilitiesApplication",
+"operatingSystem":"Any",
+"description":"Free browser-based PDF compressor for reducing PDF file size.",
+"offers":{
+"@type":"Offer",
+"price":"0",
+"priceCurrency":"INR"
+}
+}
+
+</script>
+
+
+<script type="application/ld+json">
+
+{
+"@context":"https://schema.org",
+"@type":"FAQPage",
+"mainEntity":[
+
+{
+"@type":"Question",
+"name":"Can I compress a PDF for free?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. AdiyogiTools PDF Compressor is designed for free browser-based PDF compression."
+}
+},
+
+{
+"@type":"Question",
+"name":"Can I compress scanned PDFs?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"Yes. Scanned and image-heavy PDFs can benefit from image-based compression."
+}
+},
+
+{
+"@type":"Question",
+"name":"Is my PDF uploaded to a server?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"The compression process is performed locally in the browser in this tool."
+}
+},
+
+{
+"@type":"Question",
+"name":"Will the compressed PDF remain searchable?",
+"acceptedAnswer":{
+"@type":"Answer",
+"text":"This version rebuilds PDF pages as images, so original text search and selection may not remain available."
+}
+}
+
+]
 }
 
 </script>
