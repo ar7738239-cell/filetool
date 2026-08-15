@@ -1,447 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
+<title>Word to PDF Converter Online Free | AdiyogiTools</title>
 
-<title>Word to PDF Converter Online Free | DOCX to PDF | AdiyogiTools</title>
+<meta name="description" content="Convert DOCX Word documents to PDF online for free. Preserve text, images, logos, tables and document formatting with AdiyogiTools.">
+<meta name="keywords" content="Word to PDF, DOCX to PDF, DOCX converter, Word document to PDF, free Word PDF converter, online Word to PDF">
 
-<meta name="description"
-content="Convert Word DOCX files and images to PDF online for free. Preserve text and photos from your Word document and create high-quality PDF files directly in your browser with AdiyogiTools.">
+<meta name="robots" content="index, follow">
 
-<meta name="keywords"
-content="Word to PDF, DOCX to PDF, DOC to PDF, Word document to PDF, image to PDF, photo to PDF, free PDF converter, online Word converter, AdiyogiTools">
+<link rel="canonical" href="https://adiyogitools.in/word-to-pdf.html">
 
-<meta name="robots"
-content="index, follow">
-
-<link rel="canonical"
-href="https://adiyogitools.in/word-to-pdf.html">
-
-<meta property="og:title"
-content="Word to PDF Converter Online Free | AdiyogiTools">
-
-<meta property="og:description"
-content="Convert Word DOCX documents and images into PDF directly in your browser. Free, fast and privacy-friendly.">
-
-<meta property="og:type"
-content="website">
-
-<meta property="og:url"
-content="https://adiyogitools.in/word-to-pdf.html">
-
-<link rel="stylesheet"
-href="style.css">
-
-<!-- PDF Libraries -->
-<script src="https://unpkg.com/mammoth/mammoth.browser.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link rel="stylesheet" href="style.css">
 
 <style>
 
-.word-tool {
-
-max-width: 900px;
-margin: auto;
-
-}
-
-.upload-card {
-
-background: #f7f7f7;
-border-radius: 14px;
-padding: 20px;
-margin: 20px 0;
-
-border: 1px solid #ddd;
-
-}
-
-.upload-card h2 {
-
-font-size: 20px;
-margin-bottom: 8px;
-
-}
-
-.upload-card p {
-
-font-size: 14px;
-color: #555;
-
-}
-
-.file-input {
-
-width: 100%;
-padding: 14px;
-
-border: 2px dashed #2196f3;
-border-radius: 10px;
-
-background: white;
-
-box-sizing: border-box;
-
+.tool-box {
+    text-align: center;
 }
 
 .file-name {
-
-margin-top: 12px;
-
-font-size: 14px;
-
-color: #555;
-
-word-break: break-word;
-
+    margin: 15px 0;
+    font-weight: bold;
 }
 
-.convert-button {
-
-width: 100%;
-
-padding: 15px 20px;
-
-border: none;
-
-border-radius: 10px;
-
-background: #2196f3;
-
-color: white;
-
-font-size: 17px;
-
-font-weight: bold;
-
-cursor: pointer;
-
+#preview {
+    position: absolute;
+    left: -100000px;
+    top: 0;
+    width: 794px;
+    background: white;
 }
 
-.convert-button:hover {
-
-opacity: 0.9;
-
+#preview .docx-wrapper {
+    background: white !important;
 }
 
-.convert-button:disabled {
-
-opacity: 0.6;
-
-cursor: not-allowed;
-
+#preview .docx {
+    margin: 0 auto !important;
 }
 
-.download-button {
-
-display: block;
-
-text-align: center;
-
-margin-top: 15px;
-
-padding: 14px;
-
-border-radius: 10px;
-
-background: #28a745;
-
-color: white;
-
-text-decoration: none;
-
-font-weight: bold;
-
+.loading {
+    display: none;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
-.status-box {
-
-display: none;
-
-margin-top: 15px;
-
-padding: 12px;
-
-border-radius: 8px;
-
-background: #eef7ff;
-
-color: #145a8d;
-
-font-size: 14px;
-
-}
-
-.preview-area {
-
-display: none;
-
-margin-top: 25px;
-
-}
-
-.preview-title {
-
-font-size: 20px;
-
-font-weight: bold;
-
-margin-bottom: 10px;
-
-}
-
-.document-preview {
-
-background: white;
-
-padding: 25px;
-
-border: 1px solid #ddd;
-
-border-radius: 10px;
-
-overflow: hidden;
-
-}
-
-/*
-Important:
-Images inside DOCX are preserved.
-*/
-
-.document-preview img {
-
-max-width: 100%;
-
-height: auto;
-
-display: block;
-
-margin: 12px auto;
-
-}
-
-.document-preview p {
-
-line-height: 1.6;
-
-}
-
-.document-preview table {
-
-width: 100%;
-
-border-collapse: collapse;
-
-margin: 15px 0;
-
-}
-
-.document-preview td,
-.document-preview th {
-
-border: 1px solid #ccc;
-
-padding: 6px;
-
-}
-
-.info-box {
-
-background: #f5f5f5;
-
-padding: 15px;
-
-border-radius: 10px;
-
-margin-top: 20px;
-
-font-size: 14px;
-
-line-height: 1.6;
-
-}
-
-.warning-box {
-
-background: #fff3cd;
-
-border: 1px solid #ffe69c;
-
-padding: 14px;
-
-border-radius: 10px;
-
-margin-top: 15px;
-
-font-size: 14px;
-
-}
-
-.seo-content {
-
-max-width: 900px;
-
-margin: 30px auto;
-
-padding: 0 10px;
-
-line-height: 1.7;
-
-}
-
-.seo-content h2 {
-
-margin-top: 30px;
-
+.success {
+    display: none;
+    margin-top: 15px;
+    font-weight: bold;
 }
 
 </style>
+
+<!-- DOCX renderer -->
+<script src="https://unpkg.com/jszip@3.10.1/dist/jszip.min.js"></script>
+
+<script src="https://unpkg.com/docx-preview@0.4.0/dist/docx-preview.min.js"></script>
+
+<!-- HTML to PDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
 </head>
 
 <body>
 
-<div class="container word-tool">
+<div class="container">
 
-<h1>📄 Word to PDF Converter</h1>
-
-<p>
-Convert Word documents and images to PDF online for free.
-</p>
-
-
-<!-- WORD FILE -->
-
-<div class="upload-card">
-
-<h2>📄 Select Word Document</h2>
+<h1>📄 Word to PDF</h1>
 
 <p>
-Upload a DOCX file. Text, formatting and images inside the document will be converted.
+Convert DOCX Word documents to PDF while preserving text, images, logos and formatting.
 </p>
+
+<div class="tool-box">
 
 <input
-class="file-input"
 type="file"
 id="wordInput"
-accept=".docx,.doc">
+accept=".docx">
 
 <div
-id="wordFileName"
-class="file-name">
-
-No Word file selected
-
+class="file-name"
+id="fileName">
+No file selected
 </div>
-
-</div>
-
-
-<!-- IMAGE FILE -->
-
-<div class="upload-card">
-
-<h2>🖼️ Add Images / Photos</h2>
-
-<p>
-You can also select JPG, JPEG or PNG images. Images will be added to the PDF.
-</p>
-
-<input
-class="file-input"
-type="file"
-id="imageInput"
-accept="image/jpeg,image/png,image/webp"
-multiple>
-
-<div
-id="imageFileName"
-class="file-name">
-
-No images selected
-
-</div>
-
-</div>
-
-
-<!-- WARNING -->
-
-<div class="warning-box">
-
-<strong>⚠️ Important:</strong>
-
-This browser-based converter works best with
-<strong>DOCX</strong> files.
-
-Old binary <strong>DOC</strong> files may not convert correctly.
-For best results, save your Word document as
-<strong>.DOCX</strong> first.
-
-</div>
-
-
-<!-- BUTTON -->
-
-<br>
 
 <button
 id="convertBtn"
-class="convert-button">
+type="button">
 
 📄 Convert to PDF
 
 </button>
 
-
-<!-- STATUS -->
-
 <div
-id="statusBox"
-class="status-box">
+class="loading"
+id="loading">
 
-Processing your document...
-
-</div>
-
-
-<!-- PREVIEW -->
-
-<div
-id="previewArea"
-class="preview-area">
-
-<div class="preview-title">
-
-👀 Document Preview
+⏳ Converting Word document... Please wait.
 
 </div>
 
 <div
-id="documentPreview"
-class="document-preview">
+class="success"
+id="success">
+
+✅ PDF created successfully!
 
 </div>
-
-</div>
-
-
-<!-- DOWNLOAD -->
 
 <a
 id="downloadBtn"
-class="download-button"
 style="display:none;"
-download="AdiyogiTools-Word-to-PDF.pdf">
+download="converted.pdf">
 
 📥 Download PDF
 
@@ -449,599 +125,64 @@ download="AdiyogiTools-Word-to-PDF.pdf">
 
 </div>
 
+</div>
 
-<!-- SEO CONTENT -->
+<!-- Hidden DOCX rendering area -->
+
+<div id="preview"></div>
 
 <section class="seo-content">
 
-<h2>Free Word to PDF Converter Online</h2>
+<h2>Free Word to PDF Converter</h2>
 
 <p>
-
-AdiyogiTools Word to PDF Converter lets you convert
-DOCX Word documents into PDF format directly in your
-browser. Text, paragraphs, tables and images contained
-inside supported Word documents can be included in the
-generated PDF.
-
+AdiyogiTools Word to PDF Converter lets you convert DOCX Word documents into PDF directly in your browser. Text, images, logos, tables and document formatting are rendered from the Word document before creating the PDF.
 </p>
-
-
-<h2>Word Documents with Photos</h2>
-
-<p>
-
-Have a Word document containing both text and photos?
-No problem. The converter extracts the document content
-and preserves supported images while creating the PDF.
-
-You can also add JPG, JPEG and PNG images separately.
-
-</p>
-
 
 <h2>How to Convert Word to PDF?</h2>
 
 <ol>
-
 <li>Select your DOCX Word document.</li>
-
-<li>Optionally select JPG, JPEG or PNG images.</li>
-
-<li>Click <strong>Convert to PDF</strong>.</li>
-
-<li>Wait for the conversion to finish.</li>
-
-<li>Preview the converted document.</li>
-
-<li>Click <strong>Download PDF</strong>.</li>
-
+<li>Click Convert to PDF.</li>
+<li>Wait for the document to be processed.</li>
+<li>Download your PDF.</li>
 </ol>
-
 
 <h2>Features</h2>
 
 <ul>
-
-<li>✅ Free Word to PDF conversion</li>
-
-<li>✅ DOCX support</li>
-
-<li>✅ Text conversion</li>
-
-<li>✅ Images/photos inside Word documents</li>
-
-<li>✅ JPG, JPEG and PNG to PDF</li>
-
-<li>✅ Multiple image support</li>
-
-<li>✅ Browser-based processing</li>
-
-<li>✅ No registration required</li>
-
-<li>✅ Mobile and desktop friendly</li>
-
-<li>✅ Fast conversion</li>
-
+<li>Free Word to PDF conversion</li>
+<li>DOCX support</li>
+<li>Images and logos preserved</li>
+<li>Tables supported</li>
+<li>Multi-page documents supported</li>
+<li>Works on mobile and desktop</li>
+<li>No registration required</li>
 </ul>
-
-
-<h2>Are My Files Uploaded?</h2>
-
-<p>
-
-No permanent server upload is required for the conversion.
-The processing is performed inside your browser using
-client-side JavaScript libraries. Your files are not
-intentionally stored by AdiyogiTools.
-
-</p>
-
 
 <h2>Frequently Asked Questions</h2>
 
-
-<h3>Can I convert Word files containing images?</h3>
-
-<p>
-
-Yes. Supported DOCX documents can contain both text and
-images. The images are extracted and included in the PDF.
-
-</p>
-
-
-<h3>Can I convert JPG or PNG images to PDF?</h3>
+<h3>Are images inside Word preserved?</h3>
 
 <p>
-
-Yes. You can select one or multiple JPG, JPEG or PNG images
-and add them to the generated PDF.
-
+Yes. Images and logos contained inside a supported DOCX document are rendered along with the document.
 </p>
 
-
-<h3>Does it support DOC files?</h3>
+<h3>Are my files uploaded?</h3>
 
 <p>
-
-The tool is designed primarily for DOCX. Old binary DOC
-files are not reliably processed by the browser-based
-Mammoth converter. Converting the document to DOCX first
-is recommended.
-
+The conversion is performed in your browser. The selected document is not intentionally uploaded to an AdiyogiTools server.
 </p>
 
-
-<h3>Is this Word to PDF converter free?</h3>
+<h3>Does it support DOCX?</h3>
 
 <p>
-
-Yes. AdiyogiTools provides this tool free of charge with
-no registration required.
-
+Yes. DOCX is the recommended format for this browser-based converter.
 </p>
-
-
-<h3>Can I use this tool on mobile?</h3>
-
-<p>
-
-Yes. The tool is designed to work on smartphones,
-tablets and desktop browsers.
-
-</p>
-
-
-<h2>Other Useful AdiyogiTools</h2>
-
-<ul>
-
-<li>
-<a href="image-to-pdf.html">
-Image to PDF
-</a>
-</li>
-
-<li>
-<a href="pdf-compress.html">
-PDF Compressor
-</a>
-</li>
-
-<li>
-<a href="pdf-merge.html">
-PDF Merge
-</a>
-</li>
-
-<li>
-<a href="pdf-split.html">
-PDF Split
-</a>
-</li>
-
-<li>
-<a href="image-compressor.html">
-Image Compressor
-</a>
-</li>
-
-</ul>
 
 </section>
 
-
-<script>
-
-const { jsPDF } = window.jspdf;
-
-const wordInput =
-document.getElementById("wordInput");
-
-const imageInput =
-document.getElementById("imageInput");
-
-const wordFileName =
-document.getElementById("wordFileName");
-
-const imageFileName =
-document.getElementById("imageFileName");
-
-const convertBtn =
-document.getElementById("convertBtn");
-
-const downloadBtn =
-document.getElementById("downloadBtn");
-
-const statusBox =
-document.getElementById("statusBox");
-
-const previewArea =
-document.getElementById("previewArea");
-
-const documentPreview =
-document.getElementById("documentPreview");
-
-
-/* WORD FILE NAME */
-
-wordInput.addEventListener("change", function() {
-
-if (this.files.length > 0) {
-
-wordFileName.textContent =
-"Selected: " + this.files[0].name;
-
-} else {
-
-wordFileName.textContent =
-"No Word file selected";
-
-}
-
-});
-
-
-/* IMAGE FILE NAME */
-
-imageInput.addEventListener("change", function() {
-
-if (this.files.length > 0) {
-
-imageFileName.textContent =
-this.files.length +
-" image(s) selected";
-
-} else {
-
-imageFileName.textContent =
-"No images selected";
-
-}
-
-});
-
-
-/* READ IMAGE */
-
-function readImage(file) {
-
-return new Promise((resolve, reject) => {
-
-const reader = new FileReader();
-
-reader.onload = function(e) {
-
-resolve(e.target.result);
-
-};
-
-reader.onerror = reject;
-
-reader.readAsDataURL(file);
-
-});
-
-}
-
-
-/* CREATE PDF */
-
-async function createPDF() {
-
-const wordFile =
-wordInput.files[0];
-
-const imageFiles =
-Array.from(imageInput.files);
-
-
-if (!wordFile && imageFiles.length === 0) {
-
-alert(
-"Please select a DOCX file or at least one image."
-);
-
-return;
-
-}
-
-
-convertBtn.disabled = true;
-
-downloadBtn.style.display = "none";
-
-previewArea.style.display = "none";
-
-statusBox.style.display = "block";
-
-statusBox.textContent =
-"⏳ Preparing your PDF...";
-
-
-try {
-
-let htmlContent = "";
-
-
-/* WORD → HTML */
-
-if (wordFile) {
-
-if (
-wordFile.name.toLowerCase().endsWith(".doc")
-) {
-
-throw new Error(
-"Old .DOC files are not reliably supported. Please save the document as .DOCX and try again."
-);
-
-}
-
-
-const arrayBuffer =
-await wordFile.arrayBuffer();
-
-
-statusBox.textContent =
-"⏳ Reading Word document...";
-
-
-const result =
-await mammoth.convertToHtml(
-{
-arrayBuffer: arrayBuffer
-},
-{
-convertImage:
-mammoth.images.imgElement(
-function(image) {
-
-return image.read(
-"base64"
-).then(function(imageBuffer) {
-
-return {
-
-src:
-"data:" +
-image.contentType +
-";base64," +
-imageBuffer
-
-};
-
-});
-
-}
-)
-}
-);
-
-
-htmlContent = result.value;
-
-
-/* SHOW WARNINGS */
-
-if (
-result.messages &&
-result.messages.length > 0
-) {
-
-console.log(
-"Word conversion messages:",
-result.messages
-);
-
-}
-
-}
-
-
-/* DIRECT IMAGES */
-
-if (imageFiles.length > 0) {
-
-statusBox.textContent =
-"⏳ Adding images...";
-
-
-for (
-const file of imageFiles
-) {
-
-const imageData =
-await readImage(file);
-
-htmlContent +=
-`
-<div
-style="
-page-break-before: always;
-text-align:center;
-margin:20px 0;
-">
-
-<img
-src="${imageData}"
-style="
-max-width:100%;
-height:auto;
-">
-
-</div>
-`;
-
-}
-
-}
-
-
-/* PREVIEW */
-
-documentPreview.innerHTML =
-htmlContent;
-
-previewArea.style.display =
-"block";
-
-
-statusBox.textContent =
-"⏳ Creating PDF...";
-
-
-/*
-Wait for all images to load
-before generating PDF.
-*/
-
-const images =
-documentPreview.querySelectorAll("img");
-
-await Promise.all(
-
-Array.from(images).map(
-
-img => {
-
-if (img.complete) {
-
-return Promise.resolve();
-
-}
-
-return new Promise(
-resolve => {
-
-img.onload = resolve;
-
-img.onerror = resolve;
-
-});
-
-}
-
-)
-
-);
-
-
-/* PDF */
-
-const pdf =
-new jsPDF({
-
-orientation: "portrait",
-
-unit: "mm",
-
-format: "a4",
-
-compress: true
-
-});
-
-
-const pdfWidth =
-pdf.internal.pageSize.getWidth();
-
-const pdfHeight =
-pdf.internal.pageSize.getHeight();
-
-
-await pdf.html(
-documentPreview,
-{
-
-x: 10,
-
-y: 10,
-
-width: pdfWidth - 20,
-
-windowWidth: 900,
-
-autoPaging: "text",
-
-margin: [10, 10, 10, 10],
-
-html2canvas: {
-
-scale: 1.5,
-
-useCORS: true,
-
-allowTaint: false
-
-},
-
-callback: function(pdf) {
-
-pdf.save(
-"AdiyogiTools-Word-to-PDF.pdf"
-);
-
-}
-
-}
-);
-
-
-/* CREATE DOWNLOAD BLOB */
-
-const pdfBlob =
-pdf.output("blob");
-
-const pdfURL =
-URL.createObjectURL(pdfBlob);
-
-downloadBtn.href =
-pdfURL;
-
-downloadBtn.style.display =
-"block";
-
-
-statusBox.textContent =
-"✅ PDF created successfully!";
-
-
-}
-
-catch(error) {
-
-console.error(error);
-
-alert(
-"Conversion failed:\n\n" +
-error.message
-);
-
-statusBox.textContent =
-"❌ Conversion failed.";
-
-}
-
-finally {
-
-convertBtn.disabled =
-false;
-
-}
-
-}
-
-
-convertBtn.addEventListener(
-"click",
-createPDF
-);
-
-</script>
-
+<script src="word-to-pdf.js"></script>
 
 </body>
-
 </html>
