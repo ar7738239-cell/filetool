@@ -19,79 +19,59 @@ gtag('config', 'G-6HZ155HD35');
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<title>Image to PDF Converter Online Free | JPG & PNG to PDF | AdiyogiTools</title>
+<title>Image to PDF Converter Online – Free JPG & PNG to PDF | AdiyogiTools</title>
 
 <meta name="description"
-      content="Convert JPG, PNG and multiple images to PDF online for free. Combine hundreds of images into one PDF, compress images automatically and download a smaller PDF with AdiyogiTools.">
+content="Convert JPG, PNG and photos to PDF online for free. Combine 500+ images into one compressed PDF with AdiyogiTools. No registration or software installation required.">
 
 <meta name="keywords"
-      content="image to pdf, image to pdf converter, jpg to pdf, png to pdf, jpg to pdf converter, convert image to pdf, convert jpg to pdf, convert png to pdf, multiple images to pdf, photos to pdf, images to pdf online, free image to pdf, image pdf maker">
+content="image to pdf, jpg to pdf, png to pdf, photo to pdf, convert image to pdf, image to pdf converter, jpg to pdf converter, png to pdf converter, images to pdf, multiple images to pdf, bulk image to pdf, free image to pdf">
 
-<meta name="author"
-      content="AdiyogiTools">
-
-<meta name="robots"
-      content="index, follow">
+<meta name="author" content="AdiyogiTools">
 
 <link rel="canonical"
-      href="https://adiyogitools.in/image-to-pdf.html">
+href="https://adiyogitools.in/image-to-pdf.html">
 
+<meta name="robots"
+content="index, follow">
 
 <!-- Open Graph -->
 
 <meta property="og:title"
-      content="Image to PDF Converter Online Free | AdiyogiTools">
+content="Free Image to PDF Converter Online | AdiyogiTools">
 
 <meta property="og:description"
-      content="Convert JPG, PNG and multiple images into one PDF online for free.">
+content="Convert JPG, PNG and photos to PDF online for free. Combine multiple images into one compressed PDF.">
 
 <meta property="og:url"
-      content="https://adiyogitools.in/image-to-pdf.html">
+content="https://adiyogitools.in/image-to-pdf.html">
 
 <meta property="og:type"
-      content="website">
+content="website">
 
 <meta property="og:site_name"
-      content="AdiyogiTools">
+content="AdiyogiTools">
 
 <meta property="og:image"
-      content="https://adiyogitools.in/icons/icon-512.png">
-
-<meta property="og:image:alt"
-      content="AdiyogiTools Image to PDF Converter">
+content="https://adiyogitools.in/icons/icon-512.png">
 
 
 <!-- Twitter -->
 
 <meta name="twitter:card"
-      content="summary_large_image">
+content="summary_large_image">
 
 <meta name="twitter:title"
-      content="Image to PDF Converter Online Free">
+content="Free Image to PDF Converter Online | AdiyogiTools">
 
 <meta name="twitter:description"
-      content="Convert JPG, PNG and multiple images to PDF online for free.">
+content="Convert multiple JPG and PNG images to one compressed PDF for free.">
 
 <meta name="twitter:image"
-      content="https://adiyogitools.in/icons/icon-512.png">
+content="https://adiyogitools.in/icons/icon-512.png">
 
 
-<!-- Theme -->
-
-<meta name="theme-color"
-      content="#0f172a">
-
-<meta name="application-name"
-      content="AdiyogiTools">
-
-<meta name="apple-mobile-web-app-title"
-      content="AdiyogiTools">
-
-<meta name="format-detection"
-      content="telephone=no">
-
-
-<!-- WebApplication Schema -->
+<!-- Web Application Schema -->
 
 <script type="application/ld+json">
 {
@@ -99,10 +79,9 @@ gtag('config', 'G-6HZ155HD35');
   "@type": "WebApplication",
   "name": "Image to PDF Converter",
   "url": "https://adiyogitools.in/image-to-pdf.html",
-  "description": "Free online tool to convert JPG, PNG and multiple images into a PDF document.",
+  "description": "Free online tool to convert JPG, PNG and photos into a compressed PDF document.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
-  "browserRequirements": "Requires JavaScript",
   "isAccessibleForFree": true,
   "offers": {
     "@type": "Offer",
@@ -137,8 +116,7 @@ gtag('config', 'G-6HZ155HD35');
 </script>
 
 
-<link rel="stylesheet"
-      href="style.css">
+<link rel="stylesheet" href="style.css">
 
 
 <!-- jsPDF -->
@@ -150,28 +128,28 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 
 <style>
 
-/* =========================
+/* ==============================
    IMAGE TO PDF PAGE
-========================= */
+============================== */
 
 .image-pdf-page {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
 }
 
 
-/* Tool */
+/* TOOL BOX */
 
 .pdf-tool {
     width: 100%;
-    max-width: 720px;
-    background: white;
+    max-width: 700px;
+    margin: 20px auto;
     padding: 25px;
+    background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 5px 25px rgba(0,0,0,.12);
+    box-shadow: 0 5px 25px rgba(0,0,0,0.12);
     text-align: center;
 }
 
@@ -181,87 +159,79 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 }
 
 
-.pdf-tool > p {
-    color: #555;
-    margin-bottom: 20px;
+.pdf-tool p {
+    line-height: 1.6;
 }
 
 
-/* File input */
+/* FILE INPUT */
 
-#image {
+.file-input {
     width: 100%;
-    max-width: 500px;
-    padding: 12px;
-    border: 2px dashed #bbb;
+    padding: 14px;
+    margin: 15px 0;
+    border: 2px dashed #2196F3;
     border-radius: 10px;
-    background: #fafafa;
+    background: #f8fbff;
 }
 
 
-/* Controls */
+/* BUTTONS */
 
-.pdf-options {
-    margin-top: 18px;
+.pdf-buttons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 
-.pdf-options label {
-    font-size: 14px;
-    font-weight: 600;
-}
-
-
-.pdf-options select {
-    padding: 10px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-
-/* Main button */
-
-#createPdfBtn {
-    margin-top: 20px;
-    padding: 13px 25px;
+.pdf-buttons button {
     border: none;
+    padding: 13px 20px;
     border-radius: 9px;
-    background: #2196F3;
-    color: white;
+    cursor: pointer;
     font-size: 16px;
     font-weight: 600;
-    cursor: pointer;
 }
 
 
-#createPdfBtn:hover {
-    background: #1565C0;
+#addBtn {
+    background: #2196F3;
+    color: white;
 }
 
 
-#createPdfBtn:disabled {
-    opacity: .6;
+#createBtn {
+    background: #16a34a;
+    color: white;
+}
+
+
+#clearBtn {
+    background: #dc2626;
+    color: white;
+}
+
+
+.pdf-buttons button:disabled {
+    opacity: 0.5;
     cursor: not-allowed;
 }
 
 
-/* File information */
+/* COUNTER */
 
-.file-info {
-    margin-top: 15px;
+.file-counter {
+    margin: 15px 0;
     padding: 12px;
+    border-radius: 10px;
     background: #f1f5f9;
-    border-radius: 9px;
-    font-size: 14px;
-    color: #334155;
+    font-weight: 600;
 }
 
 
-/* Progress */
+/* PROGRESS */
 
 .progress-container {
     display: none;
@@ -269,56 +239,33 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 }
 
 
-.progress-bar-bg {
+.progress-bar {
     width: 100%;
-    height: 12px;
+    height: 18px;
     background: #e5e7eb;
     border-radius: 20px;
     overflow: hidden;
 }
 
 
-#progressBar {
+.progress-fill {
     width: 0%;
     height: 100%;
-    background: #2196F3;
-    transition: width .2s ease;
+    background: #16a34a;
+    transition: width 0.2s;
 }
 
 
-#progressText {
+.progress-text {
     margin-top: 8px;
     font-size: 14px;
-    font-weight: 600;
 }
 
 
-/* Cancel */
+/* RELATED TOOLS */
 
-#cancelBtn {
-    display: none;
-    margin-top: 12px;
-    padding: 9px 18px;
-    border: none;
-    border-radius: 8px;
-    background: #ef4444;
-    color: white;
-    cursor: pointer;
-}
-
-
-/* Status */
-
-#status {
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-
-/* SEO content */
-
-.seo-content,
-.related-tools {
+.related-tools,
+.seo-content {
     width: 100%;
     max-width: 900px;
     margin: 20px auto;
@@ -326,31 +273,39 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
     background: white;
     border-radius: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,.10);
+    text-align: left;
+}
+
+
+.related-tools a {
+    display: block;
+    margin: 8px 0;
+    padding: 10px 14px;
+    background: #2196F3;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
 }
 
 
 .seo-content h2,
 .related-tools h2 {
-    margin-top: 20px;
-    margin-bottom: 10px;
-}
-
-
-.seo-content h2:first-child {
-    margin-top: 0;
+    color: #333;
+    margin-top: 15px;
 }
 
 
 .seo-content h3 {
-    margin-top: 18px;
+    margin-top: 20px;
 }
 
 
 .seo-content p,
 .seo-content li,
+.related-tools p,
 .related-tools li {
     font-size: 16px;
-    line-height: 1.65;
+    line-height: 1.7;
 }
 
 
@@ -361,60 +316,28 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 }
 
 
-/* Related tools */
+/* MOBILE */
 
-.related-tools a {
-    display: inline-block;
-    margin: 6px 4px;
-    padding: 9px 13px;
-    background: #2196F3;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-}
+@media(max-width:600px) {
 
-
-.related-tools a:hover {
-    background: #1565C0;
-}
-
-
-/* Mobile */
-
-@media (max-width: 600px) {
-
-    .image-pdf-page {
-        padding: 5px;
+    .pdf-tool {
+        width: 96%;
+        padding: 18px;
     }
 
-    .pdf-tool,
-    .seo-content,
-    .related-tools {
+    .related-tools,
+    .seo-content {
+        width: 96%;
         padding: 16px;
     }
 
-    .pdf-tool h1 {
-        font-size: 25px;
-    }
-
-    .seo-content h2,
-    .related-tools h2 {
-        font-size: 21px;
+    .pdf-buttons button {
+        width: 100%;
     }
 
     .seo-content p,
-    .seo-content li,
-    .related-tools li {
+    .seo-content li {
         font-size: 15px;
-    }
-
-    .pdf-options {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .pdf-options select {
-        width: 100%;
     }
 }
 
@@ -429,149 +352,83 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 <div class="image-pdf-page">
 
 
-<!-- =========================
-     TOOL
-========================= -->
+<!-- ==============================
+     MAIN TOOL
+============================== -->
 
 <section class="pdf-tool">
 
 <h1>🖼️ Image to PDF Converter</h1>
 
 <p>
-Convert JPG, PNG and multiple images into one PDF online for free.
+Convert JPG, PNG and photos to PDF online for free.
+You can add more images in batches and create one compressed PDF.
 </p>
 
 
 <input
 type="file"
-id="image"
+id="imageInput"
+class="file-input"
 accept="image/*"
 multiple
 >
 
 
-<div class="file-info"
-     id="fileInfo">
-No images selected.
-</div>
+<div class="pdf-buttons">
 
+<button id="addBtn">
+➕ Add Images
+</button>
 
-<div class="pdf-options">
-
-<div>
-
-<label for="quality">
-PDF Quality
-</label>
-
-<br>
-
-<select id="quality">
-
-<option value="0.45">
-Small PDF
-</option>
-
-<option value="0.60"
-        selected>
-Balanced
-</option>
-
-<option value="0.75">
-High Quality
-</option>
-
-<option value="0.90">
-Maximum Quality
-</option>
-
-</select>
-
-</div>
-
-
-<div>
-
-<label for="maxSize">
-Image Resolution
-</label>
-
-<br>
-
-<select id="maxSize">
-
-<option value="1200">
-1200 px
-</option>
-
-<option value="1600"
-        selected>
-1600 px
-</option>
-
-<option value="2000">
-2000 px
-</option>
-
-<option value="2500">
-2500 px
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<button id="createPdfBtn"
-        onclick="convertPDF()">
-
+<button id="createBtn" disabled>
 📄 Create PDF
-
 </button>
 
-
-<button id="cancelBtn"
-        onclick="cancelConversion()">
-
-Cancel
-
+<button id="clearBtn" disabled>
+🗑️ Clear
 </button>
+
+</div>
+
+
+<div class="file-counter" id="fileCounter">
+0 images selected
+</div>
 
 
 <div class="progress-container"
      id="progressContainer">
 
-<div class="progress-bar-bg">
+<div class="progress-bar">
 
-<div id="progressBar"></div>
+<div class="progress-fill"
+     id="progressFill">
+</div>
 
 </div>
 
-<div id="progressText">
+<div class="progress-text"
+     id="progressText">
 Preparing...
 </div>
 
 </div>
 
-
-<div id="status"></div>
-
 </section>
 
 
 
-<!-- =========================
+<!-- ==============================
      RELATED TOOLS
-========================= -->
+============================== -->
 
 <section class="related-tools">
 
-<h2>Related Free Tools</h2>
+<h2>Related Image & PDF Tools</h2>
 
 <p>
-More useful image and PDF tools from AdiyogiTools:
+Try other free tools from AdiyogiTools:
 </p>
 
 <ul>
@@ -624,249 +481,143 @@ JPG to PNG Converter
 
 
 
-<!-- =========================
+<!-- ==============================
      SEO CONTENT
-========================= -->
+============================== -->
 
 <section class="seo-content">
 
-<h2>
-Free Image to PDF Converter Online
-</h2>
+<h2>Free Image to PDF Converter Online</h2>
 
 <p>
-Convert images to PDF online with the free AdiyogiTools Image to PDF Converter. You can select one image or hundreds of images and combine them into a single PDF document directly in your browser.
+AdiyogiTools Image to PDF Converter is a free online tool that lets you convert JPG, PNG and other supported image files into PDF documents directly in your browser.
 </p>
 
 <p>
-The tool supports common image formats such as JPG and PNG. Images are processed locally in your browser, so you do not need to upload your photos to a server or create an account.
+You can select images in multiple batches and combine them into a single PDF. This is useful when you have a large number of photos, scanned documents, certificates, forms or other images that need to be converted into PDF format.
 </p>
 
 
-<h2>
-JPG to PDF Converter
-</h2>
+<h2>Convert Multiple Images to One PDF</h2>
 
 <p>
-Need to convert JPG images into a PDF? Select your JPG photos, choose your preferred PDF quality and click Create PDF. Multiple JPG images can be combined into one PDF document.
+If your phone allows only a limited number of images to be selected at one time, use the
+<strong>Add Images</strong>
+button again to add another batch. The selected batches are combined automatically when you create the PDF.
 </p>
 
 
-<h2>
-PNG to PDF Converter
-</h2>
-
-<p>
-You can also convert PNG images to PDF. The converter processes the selected images and places each image on its own PDF page while maintaining its aspect ratio.
-</p>
-
-
-<h2>
-Convert Multiple Images to One PDF
-</h2>
-
-<p>
-AdiyogiTools can combine multiple images into a single PDF file. This is useful when you have scanned documents, photographs, receipts, notes or other images that you want to keep together in one document.
-</p>
-
-
-<h2>
-How to Convert Images to PDF?</h2>
+<h2>How to Convert Images to PDF?</h2>
 
 <ol>
 
-<li>
-Select one or more JPG, PNG or other supported image files.
-</li>
+<li>Select your first batch of images.</li>
 
-<li>
-Choose the PDF quality.
-</li>
+<li>Click <strong>Add Images</strong> again if you want to add more images.</li>
 
-<li>
-Choose the maximum image resolution.
-</li>
+<li>Continue adding batches until all required images are selected.</li>
 
-<li>
-Click <strong>Create PDF</strong>.
-</li>
+<li>Check the total image count.</li>
 
-<li>
-Wait while the images are processed.
-</li>
+<li>Click <strong>Create PDF</strong>.</li>
 
-<li>
-The PDF will download automatically.
-</li>
+<li>Wait while the images are processed.</li>
+
+<li>Your PDF will be downloaded automatically.</li>
 
 </ol>
 
 
-<h2>
-How to Make a Smaller Image PDF?</h2>
-
-<p>
-Large photographs can create very large PDF files. To reduce the PDF size, select <strong>Small PDF</strong> or <strong>Balanced</strong> quality and use a lower image resolution such as 1200 or 1600 pixels.
-</p>
-
-<p>
-The converter automatically resizes large images before adding them to the PDF. This can significantly reduce the amount of unnecessary image data while keeping the document suitable for normal viewing and sharing.
-</p>
-
-
-<h2>
-Features of the Image to PDF Converter
-</h2>
+<h2>Features of This Image to PDF Converter</h2>
 
 <ul>
 
-<li>
-Convert JPG images to PDF.
-</li>
+<li>Convert multiple images into one PDF.</li>
 
-<li>
-Convert PNG images to PDF.
-</li>
+<li>Add images in multiple batches.</li>
 
-<li>
-Combine multiple images into one PDF.
-</li>
+<li>Suitable for hundreds of images.</li>
 
-<li>
-Process hundreds of images in one conversion.
-</li>
+<li>Compressed JPEG processing for smaller PDF files.</li>
 
-<li>
-Automatically reduce oversized image resolution.
-</li>
+<li>Works directly inside your browser.</li>
 
-<li>
-Choose between smaller and higher-quality PDFs.
-</li>
+<li>No registration required.</li>
 
-<li>
-Maintain image aspect ratio.
-</li>
+<li>No software installation required.</li>
 
-<li>
-Works directly in your browser.
-</li>
+<li>Works on mobile phones, tablets and computers.</li>
 
-<li>
-No registration required.
-</li>
+<li>Shows PDF conversion progress.</li>
 
-<li>
-Works on mobile phones, tablets and computers.
-</li>
+<li>Images are processed locally in your browser.</li>
 
 </ul>
 
 
-<h2>
-Is the Image to PDF Converter Secure?
-</h2>
+<h2>Why Use an Image to PDF Converter?</h2>
 
 <p>
-The conversion is performed directly in your web browser. Your selected images are not intentionally uploaded to an AdiyogiTools server for conversion. This makes the tool useful for documents and photos that you prefer to process locally.
+Converting images to PDF is useful for scanned documents, forms, certificates, ID documents, assignments, notes, receipts and collections of photographs. Combining multiple images into one PDF also makes the files easier to share and upload.
 </p>
+
+
+<h2>Is This Image to PDF Converter Free?</h2>
+
+<p>
+Yes. AdiyogiTools provides this image to PDF converter free of charge. No account or registration is required.
+</p>
+
+
+<h2>Frequently Asked Questions</h2>
+
+
+<h3>Can I convert 100 images to PDF?</h3>
+
+<p>
+Yes. You can select a batch of images and create a PDF containing the selected images.
+</p>
+
+
+<h3>Can I convert more than 100 images?</h3>
+
+<p>
+Yes. If your device limits the number of files that can be selected at once, use the
+<strong>Add Images</strong>
+button multiple times. The batches will be combined into one PDF.
+</p>
+
+
+<h3>Can I convert 500 images to one PDF?</h3>
+
+<p>
+The tool is designed to process large batches of images. However, the practical limit depends on your device's available RAM, browser and the size and resolution of the images. Very large images may require more memory.
+</p>
+
+
+<h3>Will the PDF file be compressed?</h3>
+
+<p>
+Yes. Images are resized when necessary and encoded as JPEG with controlled quality to reduce the final PDF size.
+</p>
+
+
+<h3>Are my images uploaded to a server?</h3>
+
+<p>
+The conversion is performed in your browser. The selected image files are processed locally by the webpage.
+</p>
+
+
+<h3>Can I use this tool on Android?</h3>
+
+<p>
+Yes. The tool works in modern mobile browsers that support JavaScript and the required browser APIs.
+</p>
+
 
 </section>
 
-
-
-<!-- =========================
-     FAQ
-========================= -->
-
-<section class="seo-content">
-
-<h2>
-Frequently Asked Questions
-</h2>
-
-
-<h3>
-How many images can I convert to PDF?
-</h3>
-
-<p>
-You can select hundreds of images in one conversion. The practical limit depends on your browser, device memory, image resolution and the final PDF size.
-</p>
-
-
-<h3>
-Can I convert 500 images to one PDF?
-</h3>
-
-<p>
-Yes, the tool is designed to process 500 or more images sequentially. Very large image collections may require more processing time and memory, especially on mobile devices.
-</p>
-
-
-<h3>
-Can I convert JPG to PDF?
-</h3>
-
-<p>
-Yes. Select your JPG images and click Create PDF to combine them into a PDF document.
-</p>
-
-
-<h3>
-Can I convert PNG to PDF?
-</h3>
-
-<p>
-Yes. PNG images supported by your browser can be converted into PDF pages.
-</p>
-
-
-<h3>
-Can I convert multiple photos into one PDF?
-</h3>
-
-<p>
-Yes. Select multiple photos at once and the converter will place the images into a single PDF document.
-</p>
-
-
-<h3>
-How can I reduce the PDF file size?
-</h3>
-
-<p>
-Choose Small PDF or Balanced quality and use a lower maximum image resolution. Large original photographs are automatically resized before being added to the PDF.
-</p>
-
-
-<h3>
-Does the converter upload my images?
-</h3>
-
-<p>
-The conversion takes place locally in your browser. Your selected images do not need to be uploaded to a conversion server.
-</p>
-
-
-<h3>
-Is this Image to PDF converter free?
-</h3>
-
-<p>
-Yes. The AdiyogiTools Image to PDF Converter is free to use.
-</p>
-
-
-<h3>
-Can I use this tool on Android or iPhone?
-</h3>
-
-<p>
-Yes. The converter works in modern mobile browsers that support JavaScript and file selection.
-</p>
-
-</section>
 
 
 </div>
@@ -875,223 +626,257 @@ Yes. The converter works in modern mobile browsers that support JavaScript and f
 
 <script>
 
-/* ==========================================
-   IMAGE TO PDF CONVERTER
-========================================== */
+/* =====================================
+   IMAGE TO PDF - BATCH SYSTEM
+===================================== */
 
-const fileInput =
-    document.getElementById("image");
+const imageInput =
+    document.getElementById("imageInput");
 
-const fileInfo =
-    document.getElementById("fileInfo");
+const addBtn =
+    document.getElementById("addBtn");
 
-const createPdfBtn =
-    document.getElementById("createPdfBtn");
+const createBtn =
+    document.getElementById("createBtn");
 
-const cancelBtn =
-    document.getElementById("cancelBtn");
+const clearBtn =
+    document.getElementById("clearBtn");
+
+const fileCounter =
+    document.getElementById("fileCounter");
 
 const progressContainer =
     document.getElementById("progressContainer");
 
-const progressBar =
-    document.getElementById("progressBar");
+const progressFill =
+    document.getElementById("progressFill");
 
 const progressText =
     document.getElementById("progressText");
 
-const statusBox =
-    document.getElementById("status");
+
+/* Store selected images */
+
+let selectedFiles = [];
 
 
-let cancelRequested = false;
+/* =====================================
+   OPEN FILE PICKER
+===================================== */
+
+addBtn.addEventListener("click", function(){
+
+    imageInput.click();
+
+});
 
 
-/* ==========================================
-   FILE SIZE FORMAT
-========================================== */
+/* =====================================
+   ADD NEW BATCH
+===================================== */
 
-function formatBytes(bytes) {
+imageInput.addEventListener("change", function(){
 
-    if (bytes === 0) {
-        return "0 Bytes";
+    const newFiles =
+        Array.from(imageInput.files);
+
+
+    if(newFiles.length === 0){
+        return;
     }
 
-    const units = [
-        "Bytes",
-        "KB",
-        "MB",
-        "GB"
-    ];
 
-    const i =
-        Math.floor(
-            Math.log(bytes) /
-            Math.log(1024)
-        );
+    /* Add files */
 
-    return (
-        parseFloat(
-            (bytes /
-            Math.pow(1024, i))
-            .toFixed(2)
-        )
-        + " "
-        + units[i]
-    );
+    selectedFiles =
+        selectedFiles.concat(newFiles);
+
+
+    updateCounter();
+
+
+    /* Reset input so same files
+       can be selected again if needed */
+
+    imageInput.value = "";
+
+});
+
+
+/* =====================================
+   UPDATE COUNTER
+===================================== */
+
+function updateCounter(){
+
+    const count =
+        selectedFiles.length;
+
+
+    fileCounter.textContent =
+        count + (count === 1 ? " image selected" : " images selected");
+
+
+    createBtn.disabled =
+        count === 0;
+
+
+    clearBtn.disabled =
+        count === 0;
+
 }
 
 
-/* ==========================================
-   FILE SELECTION
-========================================== */
+/* =====================================
+   CLEAR ALL
+===================================== */
 
-fileInput.addEventListener(
-    "change",
-    function() {
+clearBtn.addEventListener("click", function(){
 
-        const files =
-            Array.from(fileInput.files);
+    selectedFiles = [];
 
-        if (files.length === 0) {
+    updateCounter();
 
-            fileInfo.textContent =
-                "No images selected.";
+    progressContainer.style.display =
+        "none";
 
-            return;
-        }
+    progressFill.style.width =
+        "0%";
 
-
-        const totalBytes =
-            files.reduce(
-                (sum, file) =>
-                    sum + file.size,
-                0
-            );
+});
 
 
-        fileInfo.textContent =
-            files.length
-            + " image"
-            + (files.length > 1 ? "s" : "")
-            + " selected • "
-            + formatBytes(totalBytes);
+/* =====================================
+   CREATE PDF
+===================================== */
+
+createBtn.addEventListener("click", async function(){
+
+    if(selectedFiles.length === 0){
+
+        alert("Please select at least one image.");
+
+        return;
 
     }
-);
 
 
-/* ==========================================
-   CANCEL
-========================================== */
-
-function cancelConversion() {
-
-    cancelRequested = true;
-
-    statusBox.textContent =
-        "Cancelling...";
-
-}
+    createBtn.disabled = true;
+    addBtn.disabled = true;
+    clearBtn.disabled = true;
 
 
-/* ==========================================
-   LOAD IMAGE
-========================================== */
-
-function loadImage(file) {
-
-    return new Promise(
-        (resolve, reject) => {
-
-            const reader =
-                new FileReader();
+    progressContainer.style.display =
+        "block";
 
 
-            reader.onload =
-                function(event) {
-
-                    const img =
-                        new Image();
+    progressText.textContent =
+        "Preparing PDF...";
 
 
-                    img.onload =
-                        function() {
+    try {
 
-                            resolve(img);
-
-                        };
+        const { jsPDF } =
+            window.jspdf;
 
 
-                    img.onerror =
-                        function() {
+        /*
+         * A4 PDF
+         *
+         * JPEG compression is used
+         * to reduce final file size.
+         */
 
-                            reject(
-                                new Error(
-                                    "Unable to read image."
-                                )
-                            );
-
-                        };
-
-
-                    img.src =
-                        event.target.result;
-
-                };
+        const pdf =
+            new jsPDF({
+                orientation: "p",
+                unit: "mm",
+                format: "a4",
+                compress: true
+            });
 
 
-            reader.onerror =
-                function() {
-
-                    reject(
-                        new Error(
-                            "Unable to read file."
-                        )
-                    );
-
-                };
+        const total =
+            selectedFiles.length;
 
 
-            reader.readAsDataURL(file);
+        for(let i = 0; i < total; i++){
 
-        }
-    );
-
-}
+            const file =
+                selectedFiles[i];
 
 
-/* ==========================================
-   CREATE COMPRESSED JPEG
-========================================== */
-
-function prepareImage(
-    img,
-    maxDimension,
-    quality
-) {
-
-    return new Promise(
-        (resolve) => {
-
-            let width =
-                img.naturalWidth;
-
-            let height =
-                img.naturalHeight;
+            progressText.textContent =
+                "Processing " +
+                (i + 1) +
+                " / " +
+                total;
 
 
             /*
-             Keep aspect ratio.
-             Large images are reduced
-             before entering the PDF.
-            */
+             * Read image
+             */
+
+            const dataUrl =
+                await readFile(file);
+
+
+            /*
+             * Load image
+             */
+
+            const img =
+                await loadImage(dataUrl);
+
+
+            /*
+             * Add page
+             */
+
+            if(i > 0){
+                pdf.addPage();
+            }
+
+
+            /*
+             * A4 dimensions
+             */
+
+            const pageWidth =
+                pdf.internal.pageSize.getWidth();
+
+            const pageHeight =
+                pdf.internal.pageSize.getHeight();
+
+
+            /*
+             * Maximum image dimensions.
+             *
+             * We intentionally limit
+             * resolution to reduce
+             * PDF file size and memory use.
+             */
+
+            const MAX_WIDTH = 1600;
+            const MAX_HEIGHT = 1600;
+
+
+            let width =
+                img.width;
+
+            let height =
+                img.height;
+
+
+            /*
+             * Resize large images
+             */
 
             const scale =
                 Math.min(
                     1,
-                    maxDimension /
-                    Math.max(width, height)
+                    MAX_WIDTH / width,
+                    MAX_HEIGHT / height
                 );
 
 
@@ -1109,10 +894,12 @@ function prepareImage(
                 );
 
 
+            /*
+             * Create temporary canvas
+             */
+
             const canvas =
-                document.createElement(
-                    "canvas"
-                );
+                document.createElement("canvas");
 
 
             canvas.width =
@@ -1123,19 +910,15 @@ function prepareImage(
 
 
             const ctx =
-                canvas.getContext(
-                    "2d",
-                    {
-                        alpha: false
-                    }
-                );
+                canvas.getContext("2d");
 
 
             /*
-             White background.
-             Useful when PNG transparency
-             is converted to JPEG.
-            */
+             * White background
+             * prevents transparent PNG
+             * problems when converting
+             * to JPEG.
+             */
 
             ctx.fillStyle =
                 "#ffffff";
@@ -1148,13 +931,6 @@ function prepareImage(
             );
 
 
-            ctx.imageSmoothingEnabled =
-                true;
-
-            ctx.imageSmoothingQuality =
-                "high";
-
-
             ctx.drawImage(
                 img,
                 0,
@@ -1165,490 +941,241 @@ function prepareImage(
 
 
             /*
-             Convert to compressed JPEG.
-            */
+             * JPEG compression
+             *
+             * 0.65 = good balance
+             * between quality and size.
+             */
 
-            const jpegData =
+            const compressedImage =
                 canvas.toDataURL(
                     "image/jpeg",
-                    quality
+                    0.65
                 );
 
 
-            resolve({
-                data: jpegData,
-                width: width,
-                height: height
-            });
-
-        }
-    );
-
-}
-
-
-/* ==========================================
-   ALLOW BROWSER TO BREATHE
-========================================== */
-
-function nextFrame() {
-
-    return new Promise(
-        resolve =>
-            requestAnimationFrame(
-                () => resolve()
-            )
-    );
-
-}
-
-
-/* ==========================================
-   MAIN CONVERTER
-========================================== */
-
-async function convertPDF() {
-
-    const files =
-        Array.from(
-            fileInput.files
-        );
-
-
-    if (files.length === 0) {
-
-        alert(
-            "Please select at least one image."
-        );
-
-        return;
-    }
-
-
-    if (files.length > 2000) {
-
-        alert(
-            "Please select 2000 images or fewer at one time."
-        );
-
-        return;
-    }
-
-
-    /*
-     Reset state.
-    */
-
-    cancelRequested = false;
-
-
-    createPdfBtn.disabled =
-        true;
-
-    cancelBtn.style.display =
-        "inline-block";
-
-    progressContainer.style.display =
-        "block";
-
-    progressBar.style.width =
-        "0%";
-
-    progressText.textContent =
-        "Starting...";
-
-    statusBox.textContent =
-        "";
-
-
-    /*
-     Settings.
-    */
-
-    const quality =
-        parseFloat(
-            document.getElementById(
-                "quality"
-            ).value
-        );
-
-
-    const maxDimension =
-        parseInt(
-            document.getElementById(
-                "maxSize"
-            ).value
-        );
-
-
-    /*
-     jsPDF.
-     compress:true reduces
-     generated PDF stream data.
-    */
-
-    const {
-        jsPDF
-    } =
-        window.jspdf;
-
-
-    const pdf =
-        new jsPDF({
-            orientation: "p",
-            unit: "mm",
-            format: "a4",
-            compress: true,
-            putOnlyUsedFonts: true,
-            precision: 10
-        });
-
-
-    const pageWidth =
-        pdf.internal.pageSize.getWidth();
-
-    const pageHeight =
-        pdf.internal.pageSize.getHeight();
-
-
-    /*
-     Small margin.
-    */
-
-    const margin =
-        5;
-
-    const usableWidth =
-        pageWidth -
-        margin * 2;
-
-    const usableHeight =
-        pageHeight -
-        margin * 2;
-
-
-    let successful =
-        0;
-
-    let failed =
-        0;
-
-
-    try {
-
-        for (
-            let i = 0;
-            i < files.length;
-            i++
-        ) {
-
-
             /*
-             Allow cancellation.
-            */
-
-            if (cancelRequested) {
-
-                throw new Error(
-                    "CANCELLED"
-                );
-
-            }
-
-
-            const file =
-                files[i];
-
-
-            progressText.textContent =
-                "Processing image "
-                + (i + 1)
-                + " of "
-                + files.length
-                + "...";
-
-
-            /*
-             Load image.
-            */
-
-            let img;
-
-            try {
-
-                img =
-                    await loadImage(
-                        file
-                    );
-
-            } catch (error) {
-
-                failed++;
-
-                continue;
-
-            }
-
-
-            /*
-             Convert and compress.
-            */
-
-            let prepared;
-
-            try {
-
-                prepared =
-                    await prepareImage(
-                        img,
-                        maxDimension,
-                        quality
-                    );
-
-            } catch (error) {
-
-                failed++;
-
-                continue;
-
-            }
-
-
-            /*
-             Release image reference.
-            */
-
-            img.src = "";
-
-
-            /*
-             Add page after first image.
-            */
-
-            if (successful > 0) {
-
-                pdf.addPage();
-
-            }
-
-
-            /*
-             Calculate PDF dimensions
-             while preserving aspect ratio.
-            */
+             * Calculate A4 fit
+             */
 
             let pdfWidth =
-                usableWidth;
+                pageWidth;
 
             let pdfHeight =
-                (
-                    prepared.height *
-                    pdfWidth
-                ) /
-                prepared.width;
+                (height * pdfWidth) /
+                width;
 
 
-            if (
-                pdfHeight >
-                usableHeight
-            ) {
+            if(pdfHeight > pageHeight){
 
                 pdfHeight =
-                    usableHeight;
+                    pageHeight;
 
                 pdfWidth =
-                    (
-                        prepared.width *
-                        pdfHeight
-                    ) /
-                    prepared.height;
+                    (width * pdfHeight) /
+                    height;
 
             }
 
 
             const x =
-                (
-                    pageWidth -
-                    pdfWidth
-                ) / 2;
+                (pageWidth - pdfWidth) / 2;
 
 
             const y =
-                (
-                    pageHeight -
-                    pdfHeight
-                ) / 2;
+                (pageHeight - pdfHeight) / 2;
 
 
             /*
-             Add compressed JPEG.
-             SLOW = better JPEG compression
-             inside jsPDF.
-            */
+             * Add compressed image
+             */
 
             pdf.addImage(
-                prepared.data,
+                compressedImage,
                 "JPEG",
                 x,
                 y,
                 pdfWidth,
                 pdfHeight,
                 undefined,
-                "SLOW"
+                "FAST"
             );
 
 
-            successful++;
+            /*
+             * Release canvas memory
+             */
+
+            canvas.width = 1;
+            canvas.height = 1;
 
 
             /*
-             Update progress.
-            */
+             * Update progress
+             */
 
-            const percent =
+            const percentage =
                 Math.round(
-                    (
-                        (i + 1) /
-                        files.length
-                    ) * 100
+                    ((i + 1) / total) * 100
                 );
 
 
-            progressBar.style.width =
-                percent + "%";
+            progressFill.style.width =
+                percentage + "%";
 
 
             /*
-             Remove temporary JPEG
-             reference as soon as possible.
-            */
+             * Allow browser UI
+             * to breathe between
+             * large batches.
+             */
 
-            prepared.data =
-                null;
+            if(i % 5 === 0){
 
-
-            /*
-             Give browser time
-             to perform garbage collection.
-            */
-
-            if (
-                i % 5 === 0
-            ) {
-
-                await nextFrame();
+                await new Promise(
+                    resolve =>
+                    setTimeout(resolve, 0)
+                );
 
             }
 
         }
 
 
-        if (cancelRequested) {
-
-            throw new Error(
-                "CANCELLED"
-            );
-
-        }
-
-
-        if (successful === 0) {
-
-            throw new Error(
-                "No valid images could be processed."
-            );
-
-        }
-
-
-        progressBar.style.width =
-            "100%";
-
-
         progressText.textContent =
-            "Creating PDF file...";
+            "Creating PDF...";
 
 
         /*
-         Download PDF.
-        */
+         * Download
+         */
 
         pdf.save(
             "images-to-pdf.pdf"
         );
 
 
-        statusBox.innerHTML =
-            "✅ PDF created successfully: "
-            + successful
-            + " image"
-            + (
-                successful !== 1
-                    ? "s"
-                    : ""
-            )
-            + ".";
+        progressFill.style.width =
+            "100%";
 
 
-        if (failed > 0) {
-
-            statusBox.innerHTML +=
-                "<br>⚠️ "
-                + failed
-                + " image"
-                + (
-                    failed !== 1
-                        ? "s"
-                        : ""
-                )
-                + " could not be processed.";
-
-        }
+        progressText.textContent =
+            "✅ PDF created successfully! " +
+            total +
+            " images converted.";
 
 
-    } catch (error) {
+    } catch(error){
+
+        console.error(error);
+
+        alert(
+            "Unable to create the PDF. " +
+            "Your device may not have enough memory for this many or very large images. " +
+            "Try smaller batches."
+        );
 
 
-        if (
-            error.message ===
-            "CANCELLED"
-        ) {
-
-            statusBox.textContent =
-                "❌ Conversion cancelled.";
-
-        } else {
-
-            console.error(error);
-
-            statusBox.textContent =
-                "❌ PDF creation failed. "
-                + "Try fewer images or a lower resolution.";
-
-        }
+        progressText.textContent =
+            "❌ PDF creation failed.";
 
     }
 
 
-    /*
-     Reset buttons.
-    */
+    createBtn.disabled = false;
+    addBtn.disabled = false;
+    clearBtn.disabled = false;
 
-    createPdfBtn.disabled =
-        false;
+});
 
-    cancelBtn.style.display =
-        "none";
+
+/* =====================================
+   READ FILE
+===================================== */
+
+function readFile(file){
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const reader =
+                new FileReader();
+
+
+            reader.onload =
+                function(event){
+
+                    resolve(
+                        event.target.result
+                    );
+
+                };
+
+
+            reader.onerror =
+                function(){
+
+                    reject(
+                        new Error(
+                            "Unable to read image."
+                        )
+                    );
+
+                };
+
+
+            reader.readAsDataURL(file);
+
+        }
+    );
 
 }
 
 
-/* ==========================================
-   INITIAL MESSAGE
-========================================== */
+/* =====================================
+   LOAD IMAGE
+===================================== */
 
-statusBox.textContent =
-    "Images are processed locally in your browser.";
+function loadImage(src){
+
+    return new Promise(
+        (resolve, reject) => {
+
+            const img =
+                new Image();
+
+
+            img.onload =
+                function(){
+
+                    resolve(img);
+
+                };
+
+
+            img.onerror =
+                function(){
+
+                    reject(
+                        new Error(
+                            "Unable to load image."
+                        )
+                    );
+
+                };
+
+
+            img.src = src;
+
+        }
+    );
+
+}
+
+
+/* Initial state */
+
+updateCounter();
 
 </script>
 
