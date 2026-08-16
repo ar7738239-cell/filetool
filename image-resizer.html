@@ -3,7 +3,7 @@
 
 <head>
 
-  <!-- Google Analytics 4 -->
+<!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HZ155HD35"></script>
 <script>
 window.dataLayer = window.dataLayer || [];
@@ -16,11 +16,9 @@ gtag('config', 'G-6HZ155HD35');
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Free Image Resizer Online | Resize Images Easily | AdiyogiTools</title>
+<title>Image Resizer Online – Resize Images for Free | AdiyogiTools</title>
 
-<meta name="description" content="Resize JPG, PNG and other images online for free with AdiyogiTools. Set custom image width and height, resize images quickly and download them easily.">
-
-<meta name="keywords" content="Image Resizer, Resize Image Online, Free Image Resizer, JPG Resizer, PNG Resizer, Resize JPG, Resize PNG, Online Image Resizer, AdiyogiTools">
+<meta name="description" content="Resize images online for free with AdiyogiTools. Resize JPG, PNG and other images by custom width and height in pixels. Fast, simple and works directly in your browser.">
 
 <meta name="author" content="AdiyogiTools">
 
@@ -31,9 +29,9 @@ gtag('config', 'G-6HZ155HD35');
 
 <!-- Open Graph -->
 
-<meta property="og:title" content="Free Image Resizer Online | AdiyogiTools">
+<meta property="og:title" content="Image Resizer Online – Resize Images for Free | AdiyogiTools">
 
-<meta property="og:description" content="Resize JPG, PNG and other images online for free. Set custom width and height and download your resized image easily.">
+<meta property="og:description" content="Free online image resizer for JPG, PNG and other images. Enter custom width and height in pixels and download your resized image.">
 
 <meta property="og:url" content="https://adiyogitools.in/image-resizer.html">
 
@@ -43,20 +41,18 @@ gtag('config', 'G-6HZ155HD35');
 
 <meta property="og:image" content="https://adiyogitools.in/icons/icon-512.png">
 
-<meta property="og:image:alt" content="AdiyogiTools Free Image Resizer">
+<meta property="og:image:alt" content="AdiyogiTools Image Resizer">
 
 
 <!-- Twitter -->
 
 <meta name="twitter:card" content="summary_large_image">
 
-<meta name="twitter:title" content="Free Image Resizer Online | AdiyogiTools">
+<meta name="twitter:title" content="Image Resizer Online – Resize Images for Free">
 
-<meta name="twitter:description" content="Resize JPG, PNG and other images online for free with AdiyogiTools.">
+<meta name="twitter:description" content="Resize JPG, PNG and other images online for free with custom width and height.">
 
 <meta name="twitter:image" content="https://adiyogitools.in/icons/icon-512.png">
-
-<meta name="twitter:image:alt" content="AdiyogiTools Free Image Resizer">
 
 
 <!-- Application -->
@@ -73,15 +69,15 @@ gtag('config', 'G-6HZ155HD35');
 <!-- Structured Data -->
 
 <script type="application/ld+json">
-
 {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": "Free Image Resizer",
+  "name": "AdiyogiTools Image Resizer",
   "url": "https://adiyogitools.in/image-resizer.html",
-  "description": "Free online image resizer for changing the width and height of JPG, PNG and other image files.",
+  "description": "Free online image resizer for changing image width and height in pixels.",
   "applicationCategory": "UtilitiesApplication",
   "operatingSystem": "Any",
+  "browserRequirements": "Requires a modern web browser with JavaScript enabled",
   "isAccessibleForFree": true,
   "offers": {
     "@type": "Offer",
@@ -89,7 +85,6 @@ gtag('config', 'G-6HZ155HD35');
     "priceCurrency": "USD"
   }
 }
-
 </script>
 
 
@@ -98,7 +93,9 @@ gtag('config', 'G-6HZ155HD35');
 
 <style>
 
-/* Image Resizer Page */
+/* =========================
+   IMAGE RESIZER PAGE
+========================= */
 
 .image-resizer-page {
     width: 100%;
@@ -110,8 +107,10 @@ gtag('config', 'G-6HZ155HD35');
 .image-resizer-page .container {
     width: 100%;
     max-width: 420px;
+    text-align: center;
 }
 
+.resizer-intro,
 .resizer-content,
 .related-tools {
     width: 100%;
@@ -124,24 +123,27 @@ gtag('config', 'G-6HZ155HD35');
     text-align: left;
 }
 
+.resizer-intro h2,
 .resizer-content h2,
 .related-tools h2 {
+    margin-top: 0;
     margin-bottom: 12px;
     color: #333;
 }
 
 .resizer-content h3 {
-    margin-top: 20px;
+    margin-top: 22px;
     margin-bottom: 8px;
     color: #333;
 }
 
+.resizer-intro p,
 .resizer-content p,
 .resizer-content li,
 .related-tools p,
 .related-tools li {
     font-size: 16px;
-    line-height: 1.6;
+    line-height: 1.65;
 }
 
 .resizer-content ul,
@@ -164,6 +166,23 @@ gtag('config', 'G-6HZ155HD35');
     background: #1565C0;
 }
 
+.privacy-note {
+    margin-top: 15px;
+    padding: 12px 14px;
+    background: #f1f5f9;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.tool-highlight {
+    margin: 15px 0;
+    padding: 14px;
+    border-left: 4px solid #2196F3;
+    background: #f8fafc;
+    line-height: 1.6;
+}
+
 #canvas {
     max-width: 100%;
     height: auto;
@@ -177,23 +196,27 @@ gtag('config', 'G-6HZ155HD35');
     }
 
     .image-resizer-page .container,
+    .resizer-intro,
     .resizer-content,
     .related-tools {
         width: 100%;
         max-width: 100%;
     }
 
+    .resizer-intro,
     .resizer-content,
     .related-tools {
         padding: 16px;
         margin: 12px 0;
     }
 
+    .resizer-intro h2,
     .resizer-content h2,
     .related-tools h2 {
         font-size: 22px;
     }
 
+    .resizer-intro p,
     .resizer-content p,
     .resizer-content li,
     .related-tools p,
@@ -212,13 +235,43 @@ gtag('config', 'G-6HZ155HD35');
 <div class="image-resizer-page">
 
 
-<!-- Image Resizer Tool -->
+<!-- =========================
+     INTRO
+========================= -->
+
+<section class="resizer-intro">
+
+<h2>Free Image Resizer Online</h2>
+
+<p>
+Need to resize a photo or image quickly? Use the AdiyogiTools
+<strong>Image Resizer Online</strong> to change the width and height
+of an image in pixels without installing software.
+</p>
+
+<p>
+Upload your JPG, PNG or another browser-supported image, enter the
+required dimensions, and download the resized image in seconds.
+</p>
+
+<div class="privacy-note">
+<strong>🔒 Browser-based processing:</strong>
+Your selected image is processed directly in your browser by this tool.
+The page does not send the selected image to a server for resizing.
+</div>
+
+</section>
+
+
+<!-- =========================
+     IMAGE RESIZER TOOL
+========================= -->
 
 <div class="container">
 
-<h1>🖼️ Image Resizer</h1>
+<h1>🖼️ Image Resizer Online</h1>
 
-<p>Select an image and enter the desired dimensions.</p>
+<p>Resize your image by entering the desired width and height in pixels.</p>
 
 <input
 type="file"
@@ -228,7 +281,7 @@ accept="image/*"
 
 <br><br>
 
-<label for="width">Width</label>
+<label for="width"><strong>Width (px)</strong></label>
 
 <input
 type="number"
@@ -237,7 +290,7 @@ placeholder="800"
 min="1"
 >
 
-<label for="height">Height</label>
+<label for="height"><strong>Height (px)</strong></label>
 
 <input
 type="number"
@@ -263,43 +316,42 @@ id="download"
 style="display:none;"
 download="resized-image.png"
 >
-Download Image
+Download Resized Image
 </a>
 
 </div>
 
 
-<!-- Related Tools -->
+<!-- =========================
+     RELATED IMAGE TOOLS
+========================= -->
 
 <section class="related-tools">
 
-<h2>Related Tools</h2>
+<h2>More Free Image Tools</h2>
 
-<p>Explore more free tools from AdiyogiTools:</p>
+<p>
+After resizing your image, you can use these related AdiyogiTools
+to prepare your image for websites, forms, documents and other uses.
+</p>
 
 <ul>
 
 <li>
-<a href="image-to-pdf.html">
-Image to PDF
+<a href="image-resize-kb.html">
+Resize Image by KB
 </a>
 </li>
 
 <li>
-<a href="pdf-compress.html">
-PDF Compressor
+<a href="image-compressor.html">
+Compress Image Online
 </a>
 </li>
 
 <li>
-<a href="pdf-merge.html">
-PDF Merge
-</a>
-</li>
-
-<li>
-<a href="pdf-split.html">
-PDF Split
+<a href="image-crop.html">
+Crop Image Online
 </a>
 </li>
 
@@ -309,114 +361,223 @@ JPG to PNG Converter
 </a>
 </li>
 
+<li>
+<a href="image-to-pdf.html">
+Image to PDF Converter
+</a>
+</li>
+
 </ul>
 
 </section>
 
 
-<!-- SEO Content -->
+<!-- =========================
+     MAIN SEO / HELPFUL CONTENT
+========================= -->
 
 <section class="resizer-content">
 
-<h2>Free Image Resizer Online</h2>
+<h2>Image Resizer Online for JPG and PNG</h2>
 
 <p>
-Resize images online quickly and easily with the free Image Resizer from AdiyogiTools. Upload an image, enter your preferred width and height, and create a resized image directly in your browser.
+AdiyogiTools provides a simple <strong>image resizer online</strong>
+for changing the dimensions of photos and images. You can enter a
+custom width and height in pixels and create a resized version of
+your image directly in your web browser.
 </p>
 
 <p>
-This image resizing tool is useful when you need to reduce or change the dimensions of JPG, PNG and other common image files. You can use it on mobile phones, tablets and computers without installing additional software.
+The tool is useful when you need to <strong>resize an image online</strong>
+for a website, online form, document, presentation, social media post
+or any other situation where specific image dimensions are required.
 </p>
 
+<div class="tool-highlight">
+<strong>What makes this tool useful?</strong><br>
+You can choose the exact width and height instead of relying on a
+fixed preset size. This gives you control over the final image
+dimensions.
+</div>
 
-<h2>How to Resize an Image?</h2>
+
+<h2>How to Resize an Image Online</h2>
 
 <ol>
 
-<li>Select an image from your device.</li>
+<li>Select the image you want to resize.</li>
 
-<li>Enter the desired width in pixels.</li>
+<li>Enter the required width in pixels.</li>
 
-<li>Enter the desired height in pixels.</li>
+<li>Enter the required height in pixels.</li>
 
-<li>Click the <strong>Resize Image</strong> button.</li>
+<li>Click <strong>Resize Image</strong>.</li>
 
-<li>Preview the resized image on the page.</li>
+<li>Preview the resized image.</li>
 
-<li>Click <strong>Download Image</strong> to save the resized image.</li>
+<li>Click <strong>Download Resized Image</strong> to save it.</li>
 
 </ol>
 
 
-<h2>Features of Our Image Resizer</h2>
+<h2>Resize Images by Width and Height</h2>
+
+<p>
+This image resizer lets you specify both dimensions manually.
+For example, you can resize an image to 800 × 600 pixels,
+1200 × 800 pixels, or another custom width and height supported
+by the browser.
+</p>
+
+<p>
+Changing the dimensions of an image is different from simply
+compressing its file size. If you need to reduce the file size
+to a specific KB value, use our
+<a href="image-resize-kb.html">Image Resize by KB</a> tool.
+</p>
+
+
+<h2>When Should You Resize an Image?</h2>
 
 <ul>
 
-<li>Resize images by entering custom width and height.</li>
+<li>When a website requires specific image dimensions.</li>
 
-<li>Works with common image formats supported by your browser.</li>
+<li>When an online form asks for a particular image size.</li>
 
-<li>Simple and easy-to-use interface.</li>
+<li>When you need a smaller image dimension for sharing.</li>
 
-<li>Works directly in your web browser.</li>
+<li>When preparing photos for documents or presentations.</li>
 
-<li>No registration is required.</li>
+<li>When an image is too large for a particular design or layout.</li>
 
-<li>Works on mobile phones, tablets and computers.</li>
-
-<li>Download the resized image after processing.</li>
+<li>When you need a custom width and height in pixels.</li>
 
 </ul>
 
 
-<h2>Why Resize an Image?</h2>
+<h2>JPG and PNG Image Resizing</h2>
 
 <p>
-Changing image dimensions can be useful when a website, application, form or social media platform requires a specific image size. Resizing an image can also make it easier to upload, share or use in digital documents.
+You can select JPG, PNG and other image formats that are supported
+by your web browser. The resized result is generated using the
+browser's canvas functionality.
+</p>
+
+
+<h2>Image Resizer on Mobile</h2>
+
+<p>
+You can use this online image resizer on a modern smartphone,
+tablet or computer. No separate image editing application is
+required for basic resizing.
+</p>
+
+
+<h2>Image Resizer vs Image Compressor</h2>
+
+<p>
+An <strong>image resizer</strong> changes the dimensions of an image,
+such as its width and height. An <strong>image compressor</strong>
+primarily focuses on reducing the file size.
+</p>
+
+<p>
+If your requirement is to make an image smaller in terms of
+file size, you can use the
+<a href="image-compressor.html">Image Compressor</a>.
+If you need a specific file size such as 50KB or 100KB, use
+the <a href="image-resize-kb.html">Image Resize by KB</a> tool.
+</p>
+
+
+<h2>Free Online Image Resizer</h2>
+
+<p>
+AdiyogiTools Image Resizer is available free to use for basic
+image resizing. The tool is designed to keep the process simple:
+select an image, enter its dimensions, resize it and download
+the result.
 </p>
 
 </section>
 
 
-<!-- FAQ -->
+<!-- =========================
+     FAQ
+========================= -->
 
 <section class="resizer-content">
 
-<h2>Frequently Asked Questions</h2>
+<h2>Image Resizer FAQs</h2>
 
 
 <h3>What is an image resizer?</h3>
 
 <p>
-An image resizer is a tool that changes the width and height of an image while creating a new version of the image with the selected dimensions.
+An image resizer is an online or software-based tool that changes
+the width and height of an image. It can create a new version of
+the image with custom dimensions.
+</p>
+
+
+<h3>Can I resize an image online for free?</h3>
+
+<p>
+Yes. AdiyogiTools provides a free online image resizer that lets
+you enter custom width and height values and download the resized
+image.
 </p>
 
 
 <h3>Can I resize JPG and PNG images?</h3>
 
 <p>
-Yes. You can select JPG, PNG and other image formats supported by your web browser.
+Yes. You can select JPG, PNG and other image formats supported by
+your browser.
 </p>
 
 
-<h3>Is this image resizer free?</h3>
+<h3>Can I resize an image by pixels?</h3>
 
 <p>
-Yes. The AdiyogiTools Image Resizer is available free of charge.
+Yes. Enter the required width and height in pixels before clicking
+the Resize Image button.
 </p>
 
 
-<h3>Can I use the image resizer on my phone?</h3>
+<h3>Can I use this image resizer on my phone?</h3>
 
 <p>
-Yes. The tool is designed to work in modern web browsers on mobile phones, tablets and computers.
+Yes. The tool works in modern mobile browsers as well as on
+tablets and desktop computers.
 </p>
 
 
-<h3>Do I need to install software?</h3>
+<h3>Is the image uploaded to a server?</h3>
 
 <p>
-No. You can resize images directly through your web browser without installing additional software.
+The resizing operation in this page is performed in your browser
+using JavaScript and the HTML canvas. The current tool does not
+send the selected image to a server for resizing.
+</p>
+
+
+<h3>Can I resize an image to a specific KB size?</h3>
+
+<p>
+For a specific file-size target such as 20KB, 50KB, 100KB or
+200KB, use the dedicated
+<a href="image-resize-kb.html">Image Resize by KB</a> tool.
+</p>
+
+
+<h3>Can I compress an image instead of resizing it?</h3>
+
+<p>
+Yes. If your main goal is to reduce the file size rather than
+change the dimensions, use the
+<a href="image-compressor.html">Image Compressor</a>.
 </p>
 
 </section>
@@ -425,20 +586,19 @@ No. You can resize images directly through your web browser without installing a
 </div>
 
 
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
 <script>
 
 function resizeImage() {
 
     const fileInput = document.getElementById("image");
-
     const widthInput = document.getElementById("width");
-
     const heightInput = document.getElementById("height");
-
     const canvas = document.getElementById("canvas");
-
     const download = document.getElementById("download");
-
 
     if (fileInput.files.length === 0) {
 
@@ -448,11 +608,8 @@ function resizeImage() {
 
     }
 
-
     const width = parseInt(widthInput.value);
-
     const height = parseInt(heightInput.value);
-
 
     if (!width || !height || width <= 0 || height <= 0) {
 
@@ -462,23 +619,17 @@ function resizeImage() {
 
     }
 
-
     const file = fileInput.files[0];
-
     const reader = new FileReader();
-
 
     reader.onload = function(event) {
 
         const img = new Image();
 
-
         img.onload = function() {
 
             canvas.width = width;
-
             canvas.height = height;
-
 
             const ctx = canvas.getContext("2d");
 
@@ -486,18 +637,15 @@ function resizeImage() {
 
             ctx.drawImage(img, 0, 0, width, height);
 
-
             download.href = canvas.toDataURL("image/png");
 
             download.style.display = "inline-block";
 
         };
 
-
         img.src = event.target.result;
 
     };
-
 
     reader.readAsDataURL(file);
 
