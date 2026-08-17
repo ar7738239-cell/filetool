@@ -1,0 +1,1906 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Basic Calculator Online Free | AdiyogiTools</title>
+
+<meta name="description"
+content="Free professional online basic calculator for addition, subtraction, multiplication, division, percentages, brackets and more. Fast, accurate and mobile friendly.">
+
+<meta name="keywords"
+content="basic calculator, online calculator, free calculator, simple calculator, math calculator, percentage calculator">
+
+<meta name="robots"
+content="index, follow">
+
+<link rel="canonical"
+href="https://adiyogitools.in/basic-calculator.html">
+
+<meta property="og:title"
+content="Basic Calculator Online Free | AdiyogiTools">
+
+<meta property="og:description"
+content="Use AdiyogiTools free basic calculator for fast and accurate everyday calculations.">
+
+<meta property="og:type"
+content="website">
+
+<meta property="og:url"
+content="https://adiyogitools.in/basic-calculator.html">
+
+<style>
+
+/* =====================================================
+   GLOBAL
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:#f1f5f9;
+    color:#0f172a;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.calculator-page{
+    width:100%;
+    max-width:850px;
+    margin:auto;
+    padding:18px 14px 40px;
+}
+
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.calculator-header{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.calculator-header h1{
+    margin:5px 0 8px;
+    font-size:clamp(28px,6vw,42px);
+}
+
+.calculator-header p{
+    margin:0;
+    color:#64748b;
+    line-height:1.6;
+}
+
+
+/* =====================================================
+   CALCULATOR CARD
+===================================================== */
+
+.calculator-box{
+    background:#ffffff;
+    border-radius:24px;
+    padding:18px;
+    box-shadow:
+        0 12px 35px rgba(15,23,42,.10);
+}
+
+
+/* =====================================================
+   MEMORY BAR
+===================================================== */
+
+.memory-bar{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:7px;
+    margin-bottom:12px;
+}
+
+.memory-btn{
+    border:1px solid #cbd5e1;
+    background:#f8fafc;
+    color:#334155;
+    border-radius:10px;
+    padding:9px 4px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.memory-btn:active{
+    transform:scale(.96);
+}
+
+
+/* =====================================================
+   DISPLAY
+===================================================== */
+
+.display-box{
+    background:#0f172a;
+    border-radius:18px;
+    padding:14px;
+    margin-bottom:14px;
+    color:white;
+}
+
+.expression{
+    width:100%;
+    min-height:25px;
+    text-align:right;
+    color:#94a3b8;
+    font-size:15px;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+.result{
+    width:100%;
+    min-height:55px;
+    text-align:right;
+    font-size:clamp(30px,8vw,48px);
+    font-weight:700;
+    overflow-x:auto;
+    white-space:nowrap;
+    line-height:1.2;
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:8px;
+    margin-bottom:12px;
+}
+
+.tool-btn{
+    border:1px solid #cbd5e1;
+    background:#f8fafc;
+    color:#334155;
+    border-radius:11px;
+    padding:11px 5px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.tool-btn:hover{
+    background:#e2e8f0;
+}
+
+
+/* =====================================================
+   MAIN KEYPAD
+===================================================== */
+
+.keypad{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:9px;
+}
+
+.key{
+    min-height:64px;
+    border:0;
+    border-radius:15px;
+    background:#e2e8f0;
+    color:#0f172a;
+    font-size:22px;
+    font-weight:700;
+    cursor:pointer;
+    transition:
+        transform .08s,
+        filter .15s;
+    user-select:none;
+}
+
+.key:hover{
+    filter:brightness(.97);
+}
+
+.key:active{
+    transform:scale(.95);
+}
+
+.key.operator{
+    background:#dbeafe;
+    color:#1d4ed8;
+}
+
+.key.function{
+    background:#f1f5f9;
+    color:#334155;
+}
+
+.key.clear{
+    background:#fee2e2;
+    color:#dc2626;
+}
+
+.key.equal{
+    background:#2563eb;
+    color:white;
+}
+
+.key.zero{
+    grid-column:span 2;
+}
+
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+.history-section{
+    margin-top:18px;
+    border-top:1px solid #e2e8f0;
+    padding-top:18px;
+}
+
+.history-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.history-header h2{
+    margin:0;
+    font-size:20px;
+}
+
+.clear-history{
+    border:0;
+    background:#fee2e2;
+    color:#dc2626;
+    border-radius:9px;
+    padding:8px 12px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.history-list{
+    margin-top:12px;
+}
+
+.history-empty{
+    text-align:center;
+    color:#94a3b8;
+    padding:18px;
+}
+
+.history-item{
+    padding:12px;
+    margin-bottom:8px;
+    border-radius:11px;
+    background:#f8fafc;
+    cursor:pointer;
+}
+
+.history-item:hover{
+    background:#eff6ff;
+}
+
+.history-expression{
+    color:#64748b;
+    font-size:13px;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.history-result{
+    margin-top:4px;
+    font-weight:700;
+}
+
+
+/* =====================================================
+   INFO
+===================================================== */
+
+.info-section{
+    background:#ffffff;
+    margin-top:20px;
+    border-radius:20px;
+    padding:22px;
+    box-shadow:
+        0 7px 25px rgba(15,23,42,.06);
+}
+
+.info-section h2{
+    margin-top:0;
+}
+
+.info-section h3{
+    margin-bottom:5px;
+}
+
+.info-section p,
+.info-section li{
+    color:#475569;
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+body.dark{
+    background:#0f172a;
+    color:#f8fafc;
+}
+
+body.dark .calculator-box,
+body.dark .info-section{
+    background:#1e293b;
+}
+
+body.dark .calculator-header p,
+body.dark .info-section p,
+body.dark .info-section li{
+    color:#cbd5e1;
+}
+
+body.dark .memory-btn,
+body.dark .tool-btn{
+    background:#334155;
+    color:#f8fafc;
+    border-color:#475569;
+}
+
+body.dark .key{
+    background:#334155;
+    color:#f8fafc;
+}
+
+body.dark .key.operator{
+    background:#1e3a8a;
+    color:#bfdbfe;
+}
+
+body.dark .key.function{
+    background:#475569;
+    color:#f8fafc;
+}
+
+body.dark .history-section{
+    border-color:#475569;
+}
+
+body.dark .history-item{
+    background:#334155;
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    .calculator-page{
+        padding:10px 9px 30px;
+    }
+
+    .calculator-box{
+        padding:12px;
+        border-radius:20px;
+    }
+
+    .keypad{
+        gap:7px;
+    }
+
+    .key{
+        min-height:60px;
+        font-size:20px;
+        border-radius:13px;
+    }
+
+    .memory-bar{
+        gap:5px;
+    }
+
+    .memory-btn{
+        font-size:13px;
+        padding:8px 2px;
+    }
+
+}
+
+@media(max-width:380px){
+
+    .key{
+        min-height:55px;
+        font-size:18px;
+    }
+
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    text-align:center;
+    margin-top:25px;
+    color:#64748b;
+    font-size:14px;
+}
+
+.footer a{
+    color:#2563eb;
+    text-decoration:none;
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="calculator-page">
+
+
+<!-- =================================================
+     HEADER
+================================================= -->
+
+<header class="calculator-header">
+
+<h1>🧮 Basic Calculator</h1>
+
+<p>
+Free online calculator for everyday mathematical
+calculations with percentage, brackets, memory and history.
+</p>
+
+</header>
+
+
+<!-- =================================================
+     CALCULATOR
+================================================= -->
+
+<div class="calculator-box">
+
+
+<!-- MEMORY -->
+
+<div class="memory-bar">
+
+<button class="memory-btn" onclick="memoryClear()">
+MC
+</button>
+
+<button class="memory-btn" onclick="memoryRecall()">
+MR
+</button>
+
+<button class="memory-btn" onclick="memoryAdd()">
+M+
+</button>
+
+<button class="memory-btn" onclick="memorySubtract()">
+M−
+</button>
+
+<button class="memory-btn" onclick="memoryStore()">
+MS
+</button>
+
+</div>
+
+
+<!-- DISPLAY -->
+
+<div class="display-box">
+
+<div
+id="expression"
+class="expression">
+</div>
+
+<div
+id="result"
+class="result">
+0
+</div>
+
+</div>
+
+
+<!-- TOOLBAR -->
+
+<div class="toolbar">
+
+<button
+class="tool-btn"
+onclick="toggleSign()">
+±
+</button>
+
+<button
+class="tool-btn"
+onclick="backspace()">
+⌫
+</button>
+
+<button
+class="tool-btn"
+onclick="copyResult()">
+📋 Copy
+</button>
+
+<button
+class="tool-btn"
+onclick="toggleDarkMode()">
+🌙 Theme
+</button>
+
+</div>
+
+
+<!-- =================================================
+     KEYPAD
+================================================= -->
+
+<div class="keypad">
+
+
+<button
+class="key clear"
+onclick="clearCalculator()">
+AC
+</button>
+
+
+<button
+class="key function"
+onclick="deleteLast()">
+DEL
+</button>
+
+
+<button
+class="key function"
+onclick="appendValue('(')">
+(
+</button>
+
+
+<button
+class="key function"
+onclick="appendValue(')')">
+)
+</button>
+
+
+<button
+class="key"
+onclick="appendValue('7')">
+7
+</button>
+
+<button
+class="key"
+onclick="appendValue('8')">
+8
+</button>
+
+<button
+class="key"
+onclick="appendValue('9')">
+9
+</button>
+
+<button
+class="key operator"
+onclick="appendOperator('÷')">
+÷
+</button>
+
+
+<button
+class="key"
+onclick="appendValue('4')">
+4
+</button>
+
+<button
+class="key"
+onclick="appendValue('5')">
+5
+</button>
+
+<button
+class="key"
+onclick="appendValue('6')">
+6
+</button>
+
+<button
+class="key operator"
+onclick="appendOperator('×')">
+×
+</button>
+
+
+<button
+class="key"
+onclick="appendValue('1')">
+1
+</button>
+
+<button
+class="key"
+onclick="appendValue('2')">
+2
+</button>
+
+<button
+class="key"
+onclick="appendValue('3')">
+3
+</button>
+
+<button
+class="key operator"
+onclick="appendOperator('−')">
+−
+</button>
+
+
+<button
+class="key zero"
+onclick="appendValue('0')">
+0
+</button>
+
+<button
+class="key"
+onclick="appendValue('.')">
+.
+</button>
+
+<button
+class="key operator"
+onclick="appendOperator('+')">
++
+</button>
+
+
+<button
+class="key function"
+onclick="calculatePercentage()">
+%
+</button>
+
+<button
+class="key function"
+onclick="appendValue('00')">
+00
+</button>
+
+<button
+class="key function"
+onclick="appendValue('000')">
+000
+</button>
+
+<button
+class="key equal"
+onclick="calculate()">
+=
+</button>
+
+</div>
+
+
+<!-- =================================================
+     HISTORY
+================================================= -->
+
+<section class="history-section">
+
+<div class="history-header">
+
+<h2>🕘 Calculation History</h2>
+
+<button
+class="clear-history"
+onclick="clearHistory()">
+Clear
+</button>
+
+</div>
+
+<div
+id="historyList"
+class="history-list">
+
+<div class="history-empty">
+No calculations yet.
+</div>
+
+</div>
+
+</section>
+
+
+</div>
+
+
+<!-- =================================================
+     INFORMATION
+================================================= -->
+
+<section class="info-section">
+
+<h2>
+Free Online Basic Calculator
+</h2>
+
+<p>
+AdiyogiTools Basic Calculator is designed for fast
+everyday calculations. It supports arithmetic operations,
+percentages, brackets, decimal numbers, memory functions
+and calculation history.
+</p>
+
+
+<h3>
+Features
+</h3>
+
+<ul>
+
+<li>Addition, subtraction, multiplication and division.</li>
+
+<li>Percentage calculations.</li>
+
+<li>Parentheses for grouped calculations.</li>
+
+<li>Decimal calculations.</li>
+
+<li>Memory functions: MC, MR, M+, M− and MS.</li>
+
+<li>Calculation history.</li>
+
+<li>Keyboard support.</li>
+
+<li>Copy result to clipboard.</li>
+
+<li>Mobile and desktop friendly interface.</li>
+
+</ul>
+
+
+<h3>
+How to use
+</h3>
+
+<ol>
+
+<li>Enter numbers using the calculator keypad.</li>
+
+<li>Select the mathematical operation.</li>
+
+<li>Use brackets when required.</li>
+
+<li>Press <b>=</b> to calculate.</li>
+
+<li>Use Copy to copy the result.</li>
+
+</ol>
+
+</section>
+
+
+<footer class="footer">
+
+<p>
+🕉️ <b>AdiyogiTools</b> — Free Online Tools
+</p>
+
+<p>
+<a href="calculator.html">
+← All Calculators
+</a>
+</p>
+
+</footer>
+
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let expression = "";
+
+let memory = 0;
+
+let lastAnswer = 0;
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const expressionDisplay =
+document.getElementById("expression");
+
+const resultDisplay =
+document.getElementById("result");
+
+const historyList =
+document.getElementById("historyList");
+
+
+/* =====================================================
+   DISPLAY
+===================================================== */
+
+function updateDisplay(){
+
+    expressionDisplay.textContent =
+        expression;
+
+}
+
+
+/* =====================================================
+   APPEND NUMBER
+===================================================== */
+
+function appendValue(value){
+
+    if(value === "00" || value === "000"){
+
+        if(expression === ""){
+            expression = "0";
+        }
+
+    }
+
+    expression += value;
+
+    updateDisplay();
+
+}
+
+
+/* =====================================================
+   OPERATORS
+===================================================== */
+
+function appendOperator(operator){
+
+    if(expression === ""){
+
+        if(operator === "−"){
+            expression = "−";
+            updateDisplay();
+        }
+
+        return;
+
+    }
+
+
+    const last =
+        expression.slice(-1);
+
+
+    const operators =
+        ["+","−","×","÷"];
+
+
+    if(operators.includes(last)){
+
+        expression =
+            expression.slice(0,-1)
+            + operator;
+
+    }else{
+
+        expression += operator;
+
+    }
+
+
+    updateDisplay();
+
+}
+
+
+/* =====================================================
+   DELETE LAST
+===================================================== */
+
+function deleteLast(){
+
+    expression =
+        expression.slice(0,-1);
+
+    updateDisplay();
+
+}
+
+
+/* =====================================================
+   BACKSPACE
+===================================================== */
+
+function backspace(){
+
+    deleteLast();
+
+}
+
+
+/* =====================================================
+   CLEAR
+===================================================== */
+
+function clearCalculator(){
+
+    expression = "";
+
+    resultDisplay.textContent =
+        "0";
+
+    expressionDisplay.textContent =
+        "";
+
+}
+
+
+/* =====================================================
+   SAFE EXPRESSION
+===================================================== */
+
+function prepareExpression(exp){
+
+    let value =
+        exp
+        .replace(/×/g,"*")
+        .replace(/÷/g,"/")
+        .replace(/−/g,"-");
+
+
+    /*
+     * Allow only calculator characters.
+     */
+
+    if(!/^[0-9+\-*/().\s]+$/.test(value)){
+
+        throw new Error("Invalid expression");
+
+    }
+
+
+    return value;
+
+}
+
+
+/* =====================================================
+   CALCULATE
+===================================================== */
+
+function calculate(){
+
+    if(!expression){
+
+        return;
+
+    }
+
+
+    try{
+
+        let prepared =
+            prepareExpression(expression);
+
+
+        /*
+         * Prevent obvious invalid expressions.
+         */
+
+        if(
+            /[+\-*/.]$/.test(prepared)
+        ){
+
+            throw new Error("Incomplete expression");
+
+        }
+
+
+        /*
+         * Evaluate arithmetic expression.
+         */
+
+        const value =
+            Function(
+                '"use strict"; return (' +
+                prepared +
+                ')'
+            )();
+
+
+        if(
+            typeof value !== "number"
+            ||
+            !Number.isFinite(value)
+        ){
+
+            throw new Error("Invalid result");
+
+        }
+
+
+        const formatted =
+            formatNumber(value);
+
+
+        resultDisplay.textContent =
+            formatted;
+
+
+        lastAnswer =
+            value;
+
+
+        addHistory(
+            expression,
+            formatted
+        );
+
+
+        expression =
+            formatted;
+
+    }
+
+    catch(error){
+
+        resultDisplay.textContent =
+            "Error";
+
+    }
+
+}
+
+
+/* =====================================================
+   FORMAT NUMBER
+===================================================== */
+
+function formatNumber(number){
+
+    if(
+        Math.abs(number) < 1e-12
+    ){
+
+        number = 0;
+
+    }
+
+
+    if(
+        Number.isInteger(number)
+    ){
+
+        return number.toString();
+
+    }
+
+
+    return Number(
+        number.toPrecision(12)
+    ).toString();
+
+}
+
+
+/* =====================================================
+   PERCENTAGE
+===================================================== */
+
+function calculatePercentage(){
+
+    if(!expression){
+
+        return;
+
+    }
+
+
+    try{
+
+        /*
+         * Basic calculator percentage:
+         *
+         * 200 + 10% → 220
+         * 200 × 10% → 20
+         *
+         * For a simple number:
+         * 10% → 0.1
+         */
+
+        const match =
+            expression.match(
+                /^(.+)([+\-×÷])([0-9.]+)$/
+            );
+
+
+        if(match){
+
+            const base =
+                evaluateSimple(match[1]);
+
+            const operator =
+                match[2];
+
+            const percent =
+                parseFloat(match[3]) / 100;
+
+
+            let value;
+
+
+            if(
+                operator === "+"
+            ){
+
+                value =
+                    base +
+                    base * percent;
+
+            }
+            else if(
+                operator === "−"
+            ){
+
+                value =
+                    base -
+                    base * percent;
+
+            }
+            else if(
+                operator === "×"
+            ){
+
+                value =
+                    base * percent;
+
+            }
+            else if(
+                operator === "÷"
+            ){
+
+                value =
+                    base / percent;
+
+            }
+
+
+            expression =
+                formatNumber(value);
+
+            resultDisplay.textContent =
+                expression;
+
+            lastAnswer =
+                value;
+
+            return;
+
+        }
+
+
+        const value =
+            evaluateSimple(expression) / 100;
+
+
+        expression =
+            formatNumber(value);
+
+        resultDisplay.textContent =
+            expression;
+
+        lastAnswer =
+            value;
+
+    }
+
+    catch{
+
+        resultDisplay.textContent =
+            "Error";
+
+    }
+
+}
+
+
+/* =====================================================
+   SIMPLE EVALUATION
+===================================================== */
+
+function evaluateSimple(exp){
+
+    const prepared =
+        prepareExpression(exp);
+
+
+    const value =
+        Function(
+            '"use strict"; return (' +
+            prepared +
+            ')'
+        )();
+
+
+    if(
+        typeof value !== "number"
+        ||
+        !Number.isFinite(value)
+    ){
+
+        throw new Error();
+
+    }
+
+
+    return value;
+
+}
+
+
+/* =====================================================
+   SIGN
+===================================================== */
+
+function toggleSign(){
+
+    if(!expression){
+
+        return;
+
+    }
+
+
+    try{
+
+        const value =
+            evaluateSimple(expression);
+
+
+        expression =
+            formatNumber(-value);
+
+        resultDisplay.textContent =
+            expression;
+
+        updateDisplay();
+
+    }
+
+    catch{
+
+        /*
+         * If expression is incomplete,
+         * add/remove negative sign.
+         */
+
+        if(
+            expression.startsWith("−")
+        ){
+
+            expression =
+                expression.substring(1);
+
+        }
+        else{
+
+            expression =
+                "−" + expression;
+
+        }
+
+        updateDisplay();
+
+    }
+
+}
+
+
+/* =====================================================
+   MEMORY CLEAR
+===================================================== */
+
+function memoryClear(){
+
+    memory = 0;
+
+}
+
+
+/* =====================================================
+   MEMORY RECALL
+===================================================== */
+
+function memoryRecall(){
+
+    expression +=
+        formatNumber(memory);
+
+    updateDisplay();
+
+}
+
+
+/* =====================================================
+   MEMORY ADD
+===================================================== */
+
+function memoryAdd(){
+
+    try{
+
+        memory +=
+            evaluateSimple(
+                expression || "0"
+            );
+
+    }
+
+    catch{
+
+        memory +=
+            lastAnswer;
+
+    }
+
+}
+
+
+/* =====================================================
+   MEMORY SUBTRACT
+===================================================== */
+
+function memorySubtract(){
+
+    try{
+
+        memory -=
+            evaluateSimple(
+                expression || "0"
+            );
+
+    }
+
+    catch{
+
+        memory -=
+            lastAnswer;
+
+    }
+
+}
+
+
+/* =====================================================
+   MEMORY STORE
+===================================================== */
+
+function memoryStore(){
+
+    try{
+
+        memory =
+            evaluateSimple(
+                expression || "0"
+            );
+
+    }
+
+    catch{
+
+        memory =
+            lastAnswer;
+
+    }
+
+}
+
+
+/* =====================================================
+   COPY
+===================================================== */
+
+async function copyResult(){
+
+    const value =
+        resultDisplay.textContent;
+
+
+    if(
+        value === "Error"
+        ||
+        value === "0"
+    ){
+
+        return;
+
+    }
+
+
+    try{
+
+        await navigator.clipboard.writeText(
+            value
+        );
+
+
+        const old =
+            resultDisplay.textContent;
+
+
+        resultDisplay.textContent =
+            "Copied ✓";
+
+
+        setTimeout(
+            function(){
+
+                resultDisplay.textContent =
+                    old;
+
+            },
+            900
+        );
+
+    }
+
+    catch{
+
+        alert(
+            "Unable to copy result."
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   HISTORY STORAGE
+===================================================== */
+
+let history =
+    JSON.parse(
+        localStorage.getItem(
+            "adiyogiBasicCalculatorHistory"
+        ) || "[]"
+    );
+
+
+/* =====================================================
+   ADD HISTORY
+===================================================== */
+
+function addHistory(exp,result){
+
+    history.unshift({
+
+        expression:exp,
+
+        result:result,
+
+        time:Date.now()
+
+    });
+
+
+    /*
+     * Keep latest 30 calculations.
+     */
+
+    history =
+        history.slice(0,30);
+
+
+    localStorage.setItem(
+        "adiyogiBasicCalculatorHistory",
+        JSON.stringify(history)
+    );
+
+
+    renderHistory();
+
+}
+
+
+/* =====================================================
+   RENDER HISTORY
+===================================================== */
+
+function renderHistory(){
+
+    if(history.length === 0){
+
+        historyList.innerHTML =
+            `
+            <div class="history-empty">
+                No calculations yet.
+            </div>
+            `;
+
+        return;
+
+    }
+
+
+    historyList.innerHTML =
+        history.map(
+            function(item,index){
+
+                return `
+                <div
+                    class="history-item"
+                    onclick="useHistory(${index})">
+
+                    <div class="history-expression">
+                        ${escapeHTML(
+                            item.expression
+                        )}
+                    </div>
+
+                    <div class="history-result">
+                        = ${escapeHTML(
+                            item.result
+                        )}
+                    </div>
+
+                </div>
+                `;
+
+            }
+        ).join("");
+
+}
+
+
+/* =====================================================
+   USE HISTORY
+===================================================== */
+
+function useHistory(index){
+
+    const item =
+        history[index];
+
+
+    if(!item){
+
+        return;
+
+    }
+
+
+    expression =
+        item.result;
+
+    resultDisplay.textContent =
+        item.result;
+
+    updateDisplay();
+
+}
+
+
+/* =====================================================
+   CLEAR HISTORY
+===================================================== */
+
+function clearHistory(){
+
+    if(history.length === 0){
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
+            "Clear all calculation history?"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    history = [];
+
+
+    localStorage.removeItem(
+        "adiyogiBasicCalculatorHistory"
+    );
+
+
+    renderHistory();
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   KEYBOARD SUPPORT
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        const key =
+            event.key;
+
+
+        if(
+            /^[0-9.]$/.test(key)
+        ){
+
+            appendValue(key);
+
+            return;
+
+        }
+
+
+        if(key === "+"){
+
+            appendOperator("+");
+
+            return;
+
+        }
+
+
+        if(key === "-"){
+
+            appendOperator("−");
+
+            return;
+
+        }
+
+
+        if(key === "*"){
+
+            appendOperator("×");
+
+            return;
+
+        }
+
+
+        if(key === "/"){
+
+            event.preventDefault();
+
+            appendOperator("÷");
+
+            return;
+
+        }
+
+
+        if(key === "("){
+
+            appendValue("(");
+
+            return;
+
+        }
+
+
+        if(key === ")"){
+
+            appendValue(")");
+
+            return;
+
+        }
+
+
+        if(key === "%"){
+
+            calculatePercentage();
+
+            return;
+
+        }
+
+
+        if(
+            key === "Enter"
+            ||
+            key === "="
+        ){
+
+            event.preventDefault();
+
+            calculate();
+
+            return;
+
+        }
+
+
+        if(
+            key === "Backspace"
+        ){
+
+            backspace();
+
+            return;
+
+        }
+
+
+        if(
+            key === "Escape"
+        ){
+
+            clearCalculator();
+
+            return;
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   DARK MODE
+===================================================== */
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle(
+        "dark"
+    );
+
+
+    const mode =
+        document.body.classList.contains(
+            "dark"
+        )
+        ? "dark"
+        : "light";
+
+
+    localStorage.setItem(
+        "adiyogi-calculator-theme",
+        mode
+    );
+
+}
+
+
+/* =====================================================
+   LOAD THEME
+===================================================== */
+
+if(
+    localStorage.getItem(
+        "adiyogi-calculator-theme"
+    ) === "dark"
+){
+
+    document.body.classList.add(
+        "dark"
+    );
+
+}
+
+
+/* =====================================================
+   INITIAL
+===================================================== */
+
+renderHistory();
+
+</script>
+
+
+<!-- =================================================
+     STRUCTURED DATA
+================================================= -->
+
+<script type="application/ld+json">
+
+{
+    "@context":"https://schema.org",
+    "@type":"WebApplication",
+    "name":"Basic Calculator",
+    "url":"https://adiyogitools.in/basic-calculator.html",
+    "applicationCategory":"CalculatorApplication",
+    "operatingSystem":"Any",
+    "description":"Free online basic calculator for arithmetic calculations, percentages, brackets and memory functions.",
+    "offers":{
+        "@type":"Offer",
+        "price":"0",
+        "priceCurrency":"INR"
+    }
+}
+
+</script>
+
+
+</body>
+</html>
