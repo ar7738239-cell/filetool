@@ -14,7 +14,6 @@ function gtag(){
 }
 
 gtag('js', new Date());
-
 gtag('config', 'G-6HZ155HD35');
 </script>
 
@@ -84,8 +83,6 @@ content="Compress and resize JPG, PNG and WebP images to a target KB size online
 <meta name="twitter:image"
 content="https://adiyogitools.in/icons/icon-512.png">
 
-
-<!-- Application -->
 
 <meta name="application-name"
 content="AdiyogiTools">
@@ -186,7 +183,7 @@ href="style.css">
 
     padding: 26px;
 
-    background: white;
+    background: #ffffff;
 
     border-radius: 18px;
 
@@ -204,6 +201,8 @@ href="style.css">
 
     font-size: 32px;
 
+    color: #1e293b;
+
 }
 
 
@@ -212,6 +211,8 @@ href="style.css">
     line-height: 1.6;
 
     margin-bottom: 22px;
+
+    color: #475569;
 
 }
 
@@ -226,12 +227,13 @@ href="style.css">
 
     padding: 14px;
 
-    border:
-    2px dashed #2196F3;
+    border: 2px dashed #2196F3;
 
     border-radius: 10px;
 
     background: #f8fbff;
+
+    box-sizing: border-box;
 
 }
 
@@ -255,7 +257,9 @@ href="style.css">
 
     font-weight: 700;
 
-    margin-bottom: 8px;
+    margin-bottom: 9px;
+
+    color: #1e293b;
 
 }
 
@@ -274,12 +278,13 @@ href="style.css">
 
     padding: 12px;
 
-    border:
-    1px solid #cbd5e1;
+    border: 1px solid #cbd5e1;
 
     border-radius: 8px;
 
-    background: white;
+    background: #ffffff;
+
+    color: #1e293b;
 
     font-size: 16px;
 
@@ -287,7 +292,7 @@ href="style.css">
 
 
 /* =========================================
-   TARGET BUTTONS
+   TARGET SIZE BUTTONS
 ========================================= */
 
 .target-grid {
@@ -297,36 +302,82 @@ href="style.css">
     grid-template-columns:
     repeat(3, 1fr);
 
-    gap: 8px;
+    gap: 10px;
 
 }
 
+
+/*
+ IMPORTANT:
+ !important is used because
+ style.css may contain global
+ button color/background rules.
+*/
 
 .target-btn {
 
-    padding: 11px;
+    width: 100% !important;
 
-    border:
-    1px solid #cbd5e1;
+    min-height: 46px;
 
-    border-radius: 8px;
+    padding: 11px 8px !important;
 
-    background: #f8fafc;
+    border: 1px solid #cbd5e1 !important;
+
+    border-radius: 9px !important;
+
+    background: #f1f5f9 !important;
+
+    color: #1e293b !important;
+
+    font-size: 15px !important;
+
+    font-weight: 700 !important;
 
     cursor: pointer;
 
-    font-weight: 600;
+    opacity: 1 !important;
+
+    text-shadow: none !important;
+
+    box-shadow: none !important;
+
+    transition:
+    background .2s,
+    color .2s,
+    border-color .2s,
+    transform .1s;
 
 }
 
 
+.target-btn:hover {
+
+    background: #dbeafe !important;
+
+    color: #1e40af !important;
+
+    border-color: #2196F3 !important;
+
+}
+
+
+.target-btn:active {
+
+    transform: scale(.98);
+
+}
+
+
+/* SELECTED BUTTON */
+
 .target-btn.active {
 
-    background: #2196F3;
+    background: #2196F3 !important;
 
-    color: white;
+    color: #ffffff !important;
 
-    border-color: #2196F3;
+    border-color: #1976D2 !important;
 
 }
 
@@ -344,8 +395,24 @@ href="style.css">
 }
 
 
+.custom-kb input {
+
+    padding: 12px;
+
+    border:
+    1px solid #cbd5e1;
+
+    border-radius: 8px;
+
+    color: #1e293b;
+
+    background: #ffffff;
+
+}
+
+
 /* =========================================
-   RESIZE MODE
+   INFO BOX
 ========================================= */
 
 .info-box {
@@ -356,7 +423,9 @@ href="style.css">
 
     border-radius: 8px;
 
-    background: #f1f8ff;
+    background: #eff6ff;
+
+    color: #334155;
 
     font-size: 14px;
 
@@ -366,24 +435,44 @@ href="style.css">
 
 
 /* =========================================
-   BUTTON
+   MAIN BUTTON
 ========================================= */
 
 #compressBtn {
 
     width: 100%;
 
-    padding: 14px;
+    padding: 14px !important;
 
-    border: none;
+    border: none !important;
 
-    border-radius: 9px;
+    border-radius: 9px !important;
 
-    font-size: 17px;
+    background: #2196F3 !important;
 
-    font-weight: 700;
+    color: #ffffff !important;
+
+    font-size: 17px !important;
+
+    font-weight: 700 !important;
 
     cursor: pointer;
+
+}
+
+
+#compressBtn:hover {
+
+    background: #1976D2 !important;
+
+}
+
+
+#compressBtn:disabled {
+
+    opacity: .65;
+
+    cursor: wait;
 
 }
 
@@ -399,6 +488,8 @@ href="style.css">
     font-weight: 600;
 
     line-height: 1.5;
+
+    color: #334155;
 
 }
 
@@ -453,13 +544,13 @@ href="style.css">
 
     margin-top: 18px;
 
-    padding: 13px;
+    padding: 13px !important;
 
     border-radius: 8px;
 
-    background: #16a34a;
+    background: #16a34a !important;
 
-    color: white;
+    color: #ffffff !important;
 
     text-decoration: none;
 
@@ -471,7 +562,7 @@ href="style.css">
 
 
 /* =========================================
-   SEO
+   SEO CONTENT
 ========================================= */
 
 .seo-content,
@@ -485,7 +576,7 @@ href="style.css">
 
     padding: 24px;
 
-    background: white;
+    background: #ffffff;
 
     border-radius: 16px;
 
@@ -494,13 +585,15 @@ href="style.css">
 
     text-align: left;
 
+    box-sizing: border-box;
+
 }
 
 
 .seo-content h2,
 .related-tools h2 {
 
-    color: #333;
+    color: #1e293b;
 
     margin-bottom: 12px;
 
@@ -511,6 +604,8 @@ href="style.css">
 
     margin-top: 22px;
 
+    color: #334155;
+
 }
 
 
@@ -520,6 +615,8 @@ href="style.css">
 .related-tools li {
 
     line-height: 1.7;
+
+    color: #334155;
 
 }
 
@@ -533,6 +630,8 @@ href="style.css">
 }
 
 
+/* Related tool links */
+
 .related-tools a {
 
     display: block;
@@ -541,9 +640,9 @@ href="style.css">
 
     padding: 11px 14px;
 
-    background: #2196F3;
+    background: #2196F3 !important;
 
-    color: white;
+    color: #ffffff !important;
 
     border-radius: 8px;
 
@@ -559,6 +658,8 @@ href="style.css">
 @media(max-width:600px) {
 
     .kb-tool {
+
+        width: 94%;
 
         padding: 18px;
 
@@ -577,6 +678,17 @@ href="style.css">
         grid-template-columns:
         repeat(2, 1fr);
 
+        gap: 9px;
+
+    }
+
+
+    .target-btn {
+
+        min-height: 44px;
+
+        font-size: 14px !important;
+
     }
 
 
@@ -591,6 +703,8 @@ href="style.css">
 
     .seo-content,
     .related-tools {
+
+        width: 94%;
 
         padding: 17px;
 
@@ -736,7 +850,6 @@ placeholder="Example: 125"
 
 
 </div>
-
 
 </div>
 
@@ -884,7 +997,6 @@ download="image-resized-by-kb.jpg">
 
 <section class="related-tools">
 
-
 <h2>
 Related Image & PDF Tools
 </h2>
@@ -897,13 +1009,11 @@ Explore other free tools from AdiyogiTools.
 
 <ul>
 
-
 <li>
 <a href="image-compressor.html">
 Image Compressor
 </a>
 </li>
-
 
 <li>
 <a href="image-resizer.html">
@@ -911,13 +1021,11 @@ Image Resizer
 </a>
 </li>
 
-
 <li>
 <a href="image-to-pdf.html">
 Image to PDF Converter
 </a>
 </li>
-
 
 <li>
 <a href="image-crop.html">
@@ -925,13 +1033,11 @@ Image Cropper
 </a>
 </li>
 
-
 <li>
 <a href="jpg-to-png.html">
 JPG to PNG Converter
 </a>
 </li>
-
 
 <li>
 <a href="passport-photo.html">
@@ -939,9 +1045,7 @@ Passport Photo Maker
 </a>
 </li>
 
-
 </ul>
-
 
 </section>
 
@@ -970,10 +1074,9 @@ download the smaller image directly in your browser.
 
 <p>
 
-This tool is especially useful when an online form,
-exam application, government application, website or
-document upload requires an image below a particular
-file-size limit.
+This tool is useful when an online form, exam application,
+government application, website or document upload requires
+an image below a particular file-size limit.
 
 </p>
 
@@ -982,14 +1085,9 @@ file-size limit.
 Compress Image to 20KB
 </h2>
 
-
 <p>
-
 Choose the <strong>20 KB</strong> option when you need
-a very small image file. The tool automatically adjusts
-image quality and, when necessary, image dimensions to
-help reach the target.
-
+a very small image file.
 </p>
 
 
@@ -997,13 +1095,9 @@ help reach the target.
 Compress Image to 50KB
 </h2>
 
-
 <p>
-
-The <strong>50 KB</strong> option can be useful for
-online forms and applications that require a small
-profile photo, document image or other upload.
-
+Choose <strong>50 KB</strong> when an online form or
+application requires a smaller image file.
 </p>
 
 
@@ -1011,27 +1105,18 @@ profile photo, document image or other upload.
 Resize Image to 100KB
 </h2>
 
-
 <p>
-
 Select <strong>100 KB</strong> when a website or form
-requires an image around 100 KB. The compressor searches
-for a suitable combination of image quality and dimensions.
-
+requires an image around 100 KB.
 </p>
 
 
 <h2>
-Resize Image to 150KB
-</h2>
-
+Resize Image to 150KB</h2>
 
 <p>
-
-Choose <strong>150 KB</strong> when you need a smaller
-image while retaining more visual detail than very small
-targets such as 20 KB or 50 KB.
-
+Choose <strong>150 KB</strong> when you want a balance
+between image quality and file size.
 </p>
 
 
@@ -1039,13 +1124,9 @@ targets such as 20 KB or 50 KB.
 Compress Image to 200KB
 </h2>
 
-
 <p>
-
-The <strong>200 KB</strong> option provides a useful
-balance between file size and image quality for many
-online uploads.
-
+Select <strong>200 KB</strong> to reduce image size
+while retaining more visual quality.
 </p>
 
 
@@ -1053,13 +1134,9 @@ online uploads.
 Compress Image to 300KB
 </h2>
 
-
 <p>
-
-Use the <strong>300 KB</strong> target when you need to
-reduce a large image but want to retain more quality than
-a very small file-size target.
-
+Use the <strong>300 KB</strong> target when you need
+to reduce a large image without making it extremely small.
 </p>
 
 
@@ -1067,14 +1144,9 @@ a very small file-size target.
 Resize Image to 500KB
 </h2>
 
-
 <p>
-
 Choose <strong>500 KB</strong> when a website or
-application has a larger image-size limit and you want
-to reduce the original file without making it unnecessarily
-large.
-
+application allows a larger image file.
 </p>
 
 
@@ -1090,7 +1162,7 @@ Select a JPG, PNG or WebP image.
 </li>
 
 <li>
-Choose the required target size in KB.
+Choose the required target size.
 </li>
 
 <li>
@@ -1123,11 +1195,9 @@ How Does Image Resize by KB Work?
 
 <p>
 
-The tool first tries to reduce JPEG compression quality.
+The tool first adjusts image compression quality.
 If the requested file size still cannot be reached,
-the image dimensions can also be reduced. This helps
-create a smaller file while keeping the result visually
-useful.
+the image dimensions can also be reduced.
 
 </p>
 
@@ -1139,10 +1209,10 @@ Why Resize an Image to a Specific KB Size?
 
 <p>
 
-Many online forms and applications have maximum file-size
-requirements. A photo or scanned document may need to be
-reduced before it can be uploaded. Resizing an image by KB
-can also reduce storage usage and make uploads faster.
+Many online forms and applications have maximum
+file-size requirements. Reducing an image to a
+specific KB size can make it easier to upload and
+can reduce storage usage.
 
 </p>
 
@@ -1155,7 +1225,7 @@ Features of Image Resize by KB
 <ul>
 
 <li>
-Target image sizes from 20 KB to 500 KB.
+Target sizes from 20 KB to 500 KB.
 </li>
 
 <li>
@@ -1191,7 +1261,7 @@ No registration required.
 </li>
 
 <li>
-Processing happens directly in the browser.
+Image processing happens directly in the browser.
 </li>
 
 </ul>
@@ -1206,13 +1276,8 @@ Frequently Asked Questions
 Can I resize an image to 20KB?
 </h3>
 
-
 <p>
-
-Yes. Select 20 KB as the target. The tool will try
-to reduce the image toward that size using compression
-and, when enabled, dimension reduction.
-
+Yes. Select 20 KB and click Resize & Compress Image.
 </p>
 
 
@@ -1220,12 +1285,8 @@ and, when enabled, dimension reduction.
 Can I compress an image to 50KB?
 </h3>
 
-
 <p>
-
-Yes. Select the 50 KB option and click Resize &
-Compress Image.
-
+Yes. Select 50 KB as the target size.
 </p>
 
 
@@ -1233,12 +1294,8 @@ Compress Image.
 Can I resize an image to 100KB?
 </h3>
 
-
 <p>
-
-Yes. Select 100 KB as the target size. The tool
-automatically searches for a suitable compression level.
-
+Yes. Select 100 KB and process the image.
 </p>
 
 
@@ -1246,13 +1303,8 @@ automatically searches for a suitable compression level.
 Can I resize an image to 200KB?
 </h3>
 
-
 <p>
-
-Yes. Select 200 KB and process the image. The final
-size may vary slightly depending on the image content
-and browser encoding.
-
+Yes. Select 200 KB as the target size.
 </p>
 
 
@@ -1260,12 +1312,8 @@ and browser encoding.
 Can I use a custom KB size?
 </h3>
 
-
 <p>
-
-Yes. Select Custom and enter your required target
-size in KB.
-
+Yes. Select Custom and enter your required target size.
 </p>
 
 
@@ -1273,13 +1321,9 @@ size in KB.
 Which image formats are supported?
 </h3>
 
-
 <p>
-
-The tool accepts common JPG, PNG and WebP image files.
-The downloadable compressed result is generated as
-a JPEG image.
-
+The tool accepts common JPG, PNG and WebP images.
+The compressed result is generated as a JPEG image.
 </p>
 
 
@@ -1287,14 +1331,10 @@ a JPEG image.
 Will the final image always be exactly the target KB?
 </h3>
 
-
 <p>
-
 Not necessarily. Image encoding depends on the image
-content and browser. The tool searches for a result
-close to the requested target, but an exact byte size
-cannot always be guaranteed.
-
+content and browser. The tool tries to produce a result
+close to the requested target.
 </p>
 
 
@@ -1302,11 +1342,8 @@ cannot always be guaranteed.
 Is Image Resize by KB free?
 </h3>
 
-
 <p>
-
 Yes. AdiyogiTools provides this tool free of charge.
-
 </p>
 
 
@@ -1314,12 +1351,9 @@ Yes. AdiyogiTools provides this tool free of charge.
 Can I use it on my phone?
 </h3>
 
-
 <p>
-
-Yes. It works in modern web browsers on Android,
-iPhone, tablets and computers.
-
+Yes. It works in modern web browsers on mobile phones,
+tablets and computers.
 </p>
 
 
@@ -1332,157 +1366,127 @@ iPhone, tablets and computers.
 <script>
 
 /* =========================================
-   VARIABLES
-========================================= */
-
-let selectedTarget =
-100;
-
-
-/* =========================================
    TARGET BUTTONS
 ========================================= */
 
+let selectedTarget = 100;
+
+
 const targetButtons =
-document.querySelectorAll(
-".target-btn"
-);
+document.querySelectorAll(".target-btn");
 
 
 const customBox =
-document.getElementById(
-"customKBBox"
-);
+document.getElementById("customKBBox");
 
 
-targetButtons.forEach(
-function(button){
+targetButtons.forEach(function(button){
 
-button.addEventListener(
-"click",
-function(){
+    button.addEventListener("click", function(){
 
-targetButtons.forEach(
-function(btn){
+        targetButtons.forEach(function(btn){
 
-btn.classList.remove(
-"active"
-);
+            btn.classList.remove("active");
 
-});
+        });
 
 
-this.classList.add(
-"active"
-);
+        this.classList.add("active");
 
 
-const value =
-this.dataset.kb;
+        const value =
+        this.dataset.kb;
 
 
-if(value === "custom"){
+        if(value === "custom"){
 
-customBox.style.display =
-"block";
+            customBox.style.display = "block";
 
-selectedTarget =
-0;
+            selectedTarget = 0;
 
-}else{
+        }else{
 
-customBox.style.display =
-"none";
+            customBox.style.display = "none";
 
-selectedTarget =
-Number(value);
+            selectedTarget = Number(value);
 
-}
+        }
 
-});
+    });
 
 });
 
 
 /* =========================================
-   FILE READER
+   READ FILE
 ========================================= */
 
 function readFile(file){
 
-return new Promise(
-function(resolve,reject){
+    return new Promise(function(resolve,reject){
 
-const reader =
-new FileReader();
-
-
-reader.onload =
-function(event){
-
-resolve(
-event.target.result
-);
-
-};
+        const reader =
+        new FileReader();
 
 
-reader.onerror =
-function(){
+        reader.onload =
+        function(event){
 
-reject(
-new Error(
-"Unable to read image."
-)
-);
+            resolve(event.target.result);
 
-};
+        };
 
 
-reader.readAsDataURL(file);
+        reader.onerror =
+        function(){
 
-});
+            reject(
+                new Error("Unable to read image.")
+            );
+
+        };
+
+
+        reader.readAsDataURL(file);
+
+    });
 
 }
 
 
 /* =========================================
-   IMAGE LOADER
+   LOAD IMAGE
 ========================================= */
 
 function loadImage(src){
 
-return new Promise(
-function(resolve,reject){
+    return new Promise(function(resolve,reject){
 
-const img =
-new Image();
-
-
-img.onload =
-function(){
-
-resolve(img);
-
-};
+        const img =
+        new Image();
 
 
-img.onerror =
-function(){
+        img.onload =
+        function(){
 
-reject(
-new Error(
-"Unable to load image."
-)
-);
+            resolve(img);
 
-};
+        };
 
 
-img.src =
-src;
+        img.onerror =
+        function(){
 
-});
+            reject(
+                new Error("Unable to load image.")
+            );
+
+        };
+
+
+        img.src = src;
+
+    });
 
 }
 
@@ -1491,153 +1495,117 @@ src;
    DATA URL SIZE
 ========================================= */
 
-function getDataURLSizeKB(
-dataURL
-){
+function getDataURLSizeKB(dataURL){
 
-const base64 =
-dataURL.split(",")[1];
+    const base64 =
+    dataURL.split(",")[1];
 
 
-const padding =
-(
-base64.match(/=*$/) || [""]
-)[0].length;
+    const padding =
+    (
+        base64.match(/=*$/) || [""]
+    )[0].length;
 
 
-const bytes =
-Math.max(
-0,
-Math.floor(
-(base64.length * 3 / 4)
-- padding
-)
-);
+    const bytes =
+    Math.max(
+        0,
+        Math.floor(
+            (base64.length * 3 / 4) - padding
+        )
+    );
 
 
-return bytes / 1024;
+    return bytes / 1024;
 
 }
 
 
 /* =========================================
-   CANVAS OUTPUT
+   CREATE JPEG
 ========================================= */
 
-function canvasJPEG(
-canvas,
-quality
+function createCompressedImage(
+    img,
+    width,
+    height,
+    quality
 ){
 
-return canvas.toDataURL(
-"image/jpeg",
-quality
-);
+    const canvas =
+    document.createElement("canvas");
+
+
+    canvas.width = width;
+
+    canvas.height = height;
+
+
+    const ctx =
+    canvas.getContext("2d");
+
+
+    /*
+      White background for PNG
+      transparency.
+    */
+
+    ctx.fillStyle = "#ffffff";
+
+    ctx.fillRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    ctx.drawImage(
+        img,
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    const output =
+    canvas.toDataURL(
+        "image/jpeg",
+        quality
+    );
+
+
+    canvas.width = 1;
+
+    canvas.height = 1;
+
+
+    return output;
 
 }
 
 
 /* =========================================
-   GET TARGET
+   TARGET
 ========================================= */
 
 function getTargetKB(){
 
-if(
-selectedTarget > 0
-){
+    if(selectedTarget > 0){
 
-return selectedTarget;
+        return selectedTarget;
 
-}
+    }
 
 
-const custom =
-Number(
-document.getElementById(
-"customKB"
-).value
-);
+    const custom =
+    Number(
+        document.getElementById("customKB").value
+    );
 
 
-return custom;
-
-}
-
-
-/* =========================================
-   COMPRESS AT DIMENSION
-========================================= */
-
-function createCompressedImage(
-img,
-width,
-height,
-quality
-){
-
-const canvas =
-document.createElement(
-"canvas"
-);
-
-
-canvas.width =
-width;
-
-canvas.height =
-height;
-
-
-const ctx =
-canvas.getContext(
-"2d"
-);
-
-
-/*
- White background ensures
- transparent PNGs have a valid
- JPEG background.
-*/
-
-ctx.fillStyle =
-"#ffffff";
-
-
-ctx.fillRect(
-0,
-0,
-width,
-height
-);
-
-
-ctx.drawImage(
-img,
-0,
-0,
-width,
-height
-);
-
-
-const output =
-canvasJPEG(
-canvas,
-quality
-);
-
-
-/*
- Release canvas memory.
-*/
-
-canvas.width = 1;
-canvas.height = 1;
-
-
-return output;
+    return custom;
 
 }
 
@@ -1647,539 +1615,436 @@ return output;
 ========================================= */
 
 async function findBestOutput(
-img,
-targetKB,
-maxDimension
+    img,
+    targetKB,
+    maxDimension
 ){
 
-let width =
-img.naturalWidth;
+    let width =
+    img.naturalWidth;
 
 
-let height =
-img.naturalHeight;
+    let height =
+    img.naturalHeight;
 
 
-/*
- Apply maximum dimension.
-*/
+    if(
+        maxDimension > 0 &&
+        (
+            width > maxDimension ||
+            height > maxDimension
+        )
+    ){
 
-if(
-maxDimension > 0 &&
-(
-width > maxDimension ||
-height > maxDimension
-)
-){
+        const scale =
+        Math.min(
+            maxDimension / width,
+            maxDimension / height
+        );
 
-const scale =
-Math.min(
-maxDimension / width,
-maxDimension / height
-);
 
+        width =
+        Math.max(
+            1,
+            Math.round(width * scale)
+        );
 
-width =
-Math.max(
-1,
-Math.round(
-width * scale
-)
-);
 
+        height =
+        Math.max(
+            1,
+            Math.round(height * scale)
+        );
 
-height =
-Math.max(
-1,
-Math.round(
-height * scale
-)
-);
+    }
 
-}
 
+    let bestOutput = null;
 
-/*
- We first search quality.
-*/
+    let bestSize = Infinity;
 
-let bestOutput = null;
+    let bestDifference = Infinity;
 
-let bestSize = Infinity;
 
-let bestDifference = Infinity;
+    let low = 0.05;
 
+    let high = 0.95;
 
-/*
- Quality binary search.
-*/
 
-let low =
-0.05;
+    for(let i = 0; i < 11; i++){
 
-let high =
-0.95;
+        const quality =
+        (low + high) / 2;
 
 
-for(
-let i = 0;
-i < 11;
-i++
-){
+        const output =
+        createCompressedImage(
+            img,
+            width,
+            height,
+            quality
+        );
 
-const quality =
-(low + high) / 2;
 
+        const size =
+        getDataURLSizeKB(output);
 
-const output =
-createCompressedImage(
-img,
-width,
-height,
-quality
-);
 
+        const difference =
+        Math.abs(
+            size - targetKB
+        );
 
-const size =
-getDataURLSizeKB(
-output
-);
 
+        if(
+            difference < bestDifference
+        ){
 
-const difference =
-Math.abs(
-size - targetKB
-);
+            bestOutput = output;
 
+            bestSize = size;
 
-if(
-difference <
-bestDifference
-){
+            bestDifference = difference;
 
-bestOutput =
-output;
+        }
 
-bestSize =
-size;
 
-bestDifference =
-difference;
+        if(size > targetKB){
 
-}
+            high = quality;
 
+        }else{
 
-/*
- If file is too large,
-reduce quality.
-*/
+            low = quality;
 
-if(
-size > targetKB
-){
+        }
 
-high =
-quality;
 
-}else{
+        if(i % 3 === 0){
 
-low =
-quality;
+            await new Promise(function(resolve){
 
-}
+                setTimeout(resolve,0);
 
+            });
 
-/*
- Give browser a moment.
-*/
+        }
 
-if(
-i % 3 === 0
-){
+    }
 
-await new Promise(
-function(resolve){
 
-setTimeout(
-resolve,
-0
-);
+    /*
+      If quality alone cannot reach
+      the target, reduce dimensions.
+    */
 
-});
+    if(bestSize > targetKB){
 
-}
+        let currentWidth = width;
 
-}
+        let currentHeight = height;
 
 
-/*
- If even low quality is too
- large, reduce dimensions.
-*/
+        for(let step = 0; step < 6; step++){
 
-if(
-bestSize > targetKB
-){
+            currentWidth =
+            Math.max(
+                320,
+                Math.round(
+                    currentWidth * 0.80
+                )
+            );
 
-let currentWidth =
-width;
 
-let currentHeight =
-height;
+            currentHeight =
+            Math.max(
+                320,
+                Math.round(
+                    currentHeight * 0.80
+                )
+            );
 
 
-for(
-let step = 0;
-step < 6;
-step++
-){
+            const output =
+            createCompressedImage(
+                img,
+                currentWidth,
+                currentHeight,
+                0.55
+            );
 
-currentWidth =
-Math.max(
-320,
-Math.round(
-currentWidth * 0.80
-)
-);
 
+            const size =
+            getDataURLSizeKB(output);
 
-currentHeight =
-Math.max(
-320,
-Math.round(
-currentHeight * 0.80
-)
-);
 
+            const difference =
+            Math.abs(
+                size - targetKB
+            );
 
-const output =
-createCompressedImage(
-img,
-currentWidth,
-currentHeight,
-0.55
-);
 
+            if(
+                difference < bestDifference
+            ){
 
-const size =
-getDataURLSizeKB(
-output
-);
+                bestOutput = output;
 
+                bestSize = size;
 
-const difference =
-Math.abs(
-size - targetKB
-);
+                bestDifference = difference;
 
+            }
 
-if(
-difference <
-bestDifference
-){
 
-bestOutput =
-output;
+            if(size <= targetKB){
 
-bestSize =
-size;
+                break;
 
-bestDifference =
-difference;
+            }
 
-}
 
+            await new Promise(function(resolve){
 
-if(
-size <= targetKB
-){
+                setTimeout(resolve,0);
 
-break;
+            });
 
-}
+        }
 
+    }
 
-await new Promise(
-function(resolve){
 
-setTimeout(
-resolve,
-0
-);
+    return {
 
-});
+        output: bestOutput,
 
-}
+        size: bestSize
 
-}
-
-
-return {
-
-output:
-bestOutput,
-
-size:
-bestSize
-
-};
+    };
 
 }
 
 
 /* =========================================
-   MAIN FUNCTION
+   MAIN COMPRESS FUNCTION
 ========================================= */
 
 async function compressImage(){
 
-const file =
-document
-.getElementById(
-"image"
-)
-.files[0];
+    const file =
+    document
+    .getElementById("image")
+    .files[0];
 
 
-if(!file){
+    if(!file){
 
-alert(
-"Please select an image first."
-);
+        alert(
+            "Please select an image first."
+        );
 
-return;
+        return;
 
-}
+    }
 
 
-const targetKB =
-getTargetKB();
+    const targetKB =
+    getTargetKB();
 
 
-if(
-!targetKB ||
-targetKB <= 0
-){
+    if(
+        !targetKB ||
+        targetKB <= 0
+    ){
 
-alert(
-"Please enter a valid target size in KB."
-);
+        alert(
+            "Please enter a valid target size in KB."
+        );
 
-return;
+        return;
 
-}
+    }
 
 
-const maxDimension =
-Number(
-document
-.getElementById(
-"maxDimension"
-)
-.value
-);
+    const maxDimension =
+    Number(
+        document
+        .getElementById("maxDimension")
+        .value
+    );
 
 
-const button =
-document.getElementById(
-"compressBtn"
-);
+    const button =
+    document.getElementById("compressBtn");
 
 
-const status =
-document.getElementById(
-"status"
-);
+    const status =
+    document.getElementById("status");
 
 
-button.disabled =
-true;
+    button.disabled = true;
 
+    button.innerText =
+    "⏳ Processing...";
 
-button.innerText =
-"⏳ Processing...";
 
+    status.innerText =
+    "Loading image...";
 
-status.innerText =
-"Loading image...";
 
+    try{
 
-try{
+        const originalKB =
+        file.size / 1024;
 
 
-const originalKB =
-file.size / 1024;
+        const dataURL =
+        await readFile(file);
 
 
-const dataURL =
-await readFile(file);
+        status.innerText =
+        "Preparing compression...";
 
 
-status.innerText =
-"Preparing compression...";
+        const img =
+        await loadImage(dataURL);
 
 
-const img =
-await loadImage(dataURL);
+        status.innerText =
+        "Searching for the best file size...";
 
 
-status.innerText =
-"Searching for the best size...";
+        const result =
+        await findBestOutput(
+            img,
+            targetKB,
+            maxDimension
+        );
 
 
-const result =
-await findBestOutput(
-img,
-targetKB,
-maxDimension
-);
+        const output =
+        result.output;
 
 
-const output =
-result.output;
+        const finalKB =
+        result.size;
 
 
-const finalKB =
-result.size;
+        const saved =
+        Math.max(
+            0,
+            (
+                (originalKB - finalKB)
+                /
+                originalKB
+            ) * 100
+        );
 
 
-const saved =
-Math.max(
-0,
-(
-(originalKB - finalKB)
-/
-originalKB
-) * 100
-);
+        document
+        .getElementById("originalSize")
+        .innerText =
+        originalKB.toFixed(2)
+        + " KB";
 
 
-document
-.getElementById(
-"originalSize"
-)
-.innerText =
-originalKB.toFixed(2)
-+
-" KB";
+        document
+        .getElementById("finalSize")
+        .innerText =
+        finalKB.toFixed(2)
+        + " KB";
 
 
-document
-.getElementById(
-"finalSize"
-)
-.innerText =
-finalKB.toFixed(2)
-+
-" KB";
+        document
+        .getElementById("savedPercent")
+        .innerText =
+        saved.toFixed(1)
+        + "%";
 
 
-document
-.getElementById(
-"savedPercent"
-)
-.innerText =
-saved.toFixed(1)
-+
-"%";
+        document
+        .getElementById("targetResult")
+        .innerText =
+        targetKB.toFixed(0)
+        + " KB";
 
 
-document
-.getElementById(
-"targetResult"
-)
-.innerText =
-targetKB.toFixed(0)
-+
-" KB";
+        const download =
+        document.getElementById("download");
 
 
-const download =
-document.getElementById(
-"download"
-);
+        download.href =
+        output;
 
 
-download.href =
-output;
+        download.style.display =
+        "block";
 
 
-download.style.display =
-"block";
+        download.innerText =
+        "📥 Download Image (" +
+        finalKB.toFixed(2) +
+        " KB)";
 
 
-download.innerText =
-"📥 Download Image (" +
-finalKB.toFixed(2) +
-" KB)";
+        document
+        .getElementById("results")
+        .style.display =
+        "block";
 
 
-document
-.getElementById(
-"results"
-)
-.style.display =
-"block";
+        const difference =
+        finalKB - targetKB;
 
 
-/*
- Inform user if target could not
- be reached closely.
-*/
+        if(
+            difference > targetKB * 0.10
+        ){
 
-const difference =
-finalKB - targetKB;
+            status.innerText =
+            "⚠️ Target size could not be reached closely. Try a smaller image dimension.";
 
+        }else{
 
-if(
-difference > targetKB * 0.10
-){
+            status.innerText =
+            "✅ Image compressed successfully.";
 
-status.innerText =
-"⚠️ The image could not be reduced close enough to the target with the selected resolution. Try a smaller resolution.";
+        }
 
-}else{
 
-status.innerText =
-"✅ Image compressed successfully.";
+        document
+        .getElementById("results")
+        .scrollIntoView({
 
-}
+            behavior: "smooth",
 
+            block: "center"
 
-document
-.getElementById(
-"results"
-)
-.scrollIntoView({
-behavior:
-"smooth",
-block:
-"center"
-});
+        });
 
 
-}catch(error){
+    }catch(error){
 
-console.error(error);
+        console.error(error);
 
 
-status.innerText =
-"❌ Compression failed.";
+        status.innerText =
+        "❌ Compression failed.";
 
 
-alert(
-"Unable to process this image. Try a smaller image or lower target size."
-);
+        alert(
+            "Unable to process this image. Try a smaller image or lower target size."
+        );
 
-}finally{
+    }finally{
 
-button.disabled =
-false;
+        button.disabled = false;
 
-button.innerText =
-"📦 Resize & Compress Image";
+        button.innerText =
+        "📦 Resize & Compress Image";
 
-}
+    }
 
 }
 
@@ -2189,4 +2054,3 @@ button.innerText =
 </body>
 
 </html>
-
