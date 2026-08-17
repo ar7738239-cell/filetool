@@ -1452,41 +1452,19 @@ Calculate
 
 <script>
 
-
 /* =====================================================
-   CALCULATOR STATE
+   STATE
 ===================================================== */
 
 let tokens = [];
-
 let cursor = 0;
 
 let answer = 0;
-
 let angleMode = "DEG";
-
 let memory = 0;
-
 let second = false;
 
-
-/*
-   This is the important part.
-
-   Fraction is stored as:
-
-   {
-       type:"frac",
-       num:"",
-       den:""
-   }
-
-   It is rendered directly inside the
-   calculator display.
-*/
-
 let activeFraction = null;
-
 let fractionPart = "num";
 
 const history = [];
@@ -1496,37 +1474,21 @@ const history = [];
    ELEMENTS
 ===================================================== */
 
-const $ =
-    id =>
-    document.getElementById(id);
+const $ = id => document.getElementById(id);
 
-const expressionDisplay =
-    $("expression");
+const expressionDisplay = $("expression");
+const answerDisplay = $("answer");
+const angleBadge = $("angleBadge");
 
-const answerDisplay =
-    $("answer");
-
-const angleBadge =
-    $("angleBadge");
-
-const modal =
-    $("modal");
-
-const modalTitle =
-    $("modalTitle");
-
-const modalContent =
-    $("modalContent");
-
-const modalResult =
-    $("modalResult");
-
-const modalCalculate =
-    $("modalCalculate");
+const modal = $("modal");
+const modalTitle = $("modalTitle");
+const modalContent = $("modalContent");
+const modalResult = $("modalResult");
+const modalCalculate = $("modalCalculate");
 
 
 /* =====================================================
-   FORMAT
+   FORMAT NUMBER
 ===================================================== */
 
 function formatNumber(n){
@@ -1537,8 +1499,8 @@ function formatNumber(n){
     if(!Number.isFinite(n))
         return "Math Error";
 
-    if(Math.abs(n)<1e-14)
-        n=0;
+    if(Math.abs(n) < 1e-14)
+        n = 0;
 
     return Number(
         n.toPrecision(12)
@@ -1547,133 +1509,97 @@ function formatNumber(n){
 
 
 /* =====================================================
-   ESCAPE HTML
+   HTML ESCAPE
 ===================================================== */
 
 function escapeHtml(s){
 
     return String(s)
-
         .replace(/&/g,"&amp;")
-
         .replace(/</g,"&lt;")
-
         .replace(/>/g,"&gt;")
-
         .replace(/"/g,"&quot;");
 }
 
 
 /* =====================================================
-   RENDER MAIN DISPLAY
+   RENDER DISPLAY
 ===================================================== */
 
 function render(){
 
-    let html="";
+    let html = "";
 
+    tokens.forEach((t,i)=>{
 
-    tokens.forEach(
-        (t,i)=>{
+        if(t.type === "text"){
 
-            /*
-               NORMAL TEXT
-            */
-
-            if(t.type==="text"){
-
-                html+=
-                    '<span class="expr-text">'+
-                    escapeHtml(t.value)+
-                    '</span>';
-
-            }
-
-
-            /*
-               INLINE FRACTION
-            */
-
-            else{
-
-                const active =
-                    activeFraction===t
-                    ? " active"
-                    : "";
-
-                html+=
-
-                    '<span class="inline-frac'+
-                    active+
-                    '">' +
-
-                    '<span class="frac-num">' +
-
-                    (
-                        t.num
-                        ?
-                        escapeHtml(t.num)
-                        :
-                        '<span class="frac-placeholder">?</span>'
-                    ) +
-
-                    '</span>' +
-
-                    '<span class="frac-line"></span>' +
-
-                    '<span class="frac-den">' +
-
-                    (
-                        t.den
-                        ?
-                        escapeHtml(t.den)
-                        :
-                        '<span class="frac-placeholder">?</span>'
-                    ) +
-
-                    '</span>' +
-
-                    '</span>';
-            }
-
-
-            /*
-               Cursor
-            */
-
-            if(
-                i===cursor-1 &&
-                !activeFraction
-            ){
-
-                html+=
-                    '<span class="expr-cursor"></span>';
-            }
+            html +=
+                '<span class="expr-text">' +
+                escapeHtml(t.value) +
+                '</span>';
 
         }
-    );
+        else if(t.type === "frac"){
+
+            const active =
+                activeFraction === t
+                ? " active"
+                : "";
+
+            html +=
+                '<span class="inline-frac' +
+                active +
+                '">' +
+
+                '<span class="frac-num">' +
+                (
+                    t.num
+                    ? escapeHtml(t.num)
+                    : '<span class="frac-placeholder">?</span>'
+                ) +
+                '</span>' +
+
+                '<span class="frac-line"></span>' +
+
+                '<span class="frac-den">' +
+                (
+                    t.den
+                    ? escapeHtml(t.den)
+                    : '<span class="frac-placeholder">?</span>'
+                ) +
+                '</span>' +
+
+                '</span>';
+        }
+
+        if(
+            i === cursor - 1 &&
+            !activeFraction
+        ){
+
+            html +=
+                '<span class="expr-cursor"></span>';
+        }
+
+    });
 
 
     if(
-        cursor===tokens.length &&
+        cursor === tokens.length &&
         !activeFraction
     ){
 
-        html+=
+        html +=
             '<span class="expr-cursor"></span>';
     }
 
 
-    expressionDisplay.innerHTML =
-        html;
+    expressionDisplay.innerHTML = html;
 
     answerDisplay.textContent =
         formatNumber(answer);
 
-
-    /*
-       Keep active fraction visible
-    */
 
     if(activeFraction){
 
@@ -1688,9 +1614,9 @@ function render(){
                 block:"nearest",
                 inline:"nearest"
             });
+
         }
     }
-
 }
 
 
@@ -1700,34 +1626,32 @@ function render(){
 
 function setAngle(mode){
 
-    angleMode=mode;
+    angleMode = mode;
 
-    angleBadge.textContent=mode;
+    angleBadge.textContent = mode;
 
     document
         .querySelectorAll(
             '[data-action="angle"]'
         )
-        .forEach(
-            b=>{
+        .forEach(btn=>{
 
-                b.classList.toggle(
-                    "active",
-                    b.dataset.value===mode
-                );
+            btn.classList.toggle(
+                "active",
+                btn.dataset.value === mode
+            );
 
-            }
-        );
+        });
 }
 
 
 function toRad(x){
 
-    if(angleMode==="DEG")
-        return x*Math.PI/180;
+    if(angleMode === "DEG")
+        return x * Math.PI / 180;
 
-    if(angleMode==="GRAD")
-        return x*Math.PI/200;
+    if(angleMode === "GRAD")
+        return x * Math.PI / 200;
 
     return x;
 }
@@ -1735,39 +1659,39 @@ function toRad(x){
 
 function fromRad(x){
 
-    if(angleMode==="DEG")
-        return x*180/Math.PI;
+    if(angleMode === "DEG")
+        return x * 180 / Math.PI;
 
-    if(angleMode==="GRAD")
-        return x*200/Math.PI;
+    if(angleMode === "GRAD")
+        return x * 200 / Math.PI;
 
     return x;
 }
 
 
 /* =====================================================
-   NORMAL INSERT
+   INSERT
 ===================================================== */
 
 function insert(value){
 
     /*
-       If fraction is active,
-       typing goes directly into
-       numerator/denominator.
+       Fraction active:
+       input goes directly into
+       numerator or denominator.
     */
 
     if(activeFraction){
 
-        if(fractionPart==="num"){
+        if(fractionPart === "num"){
 
-            activeFraction.num +=
-                value;
+            activeFraction.num += value;
 
-        }else{
+        }
+        else{
 
-            activeFraction.den +=
-                value;
+            activeFraction.den += value;
+
         }
 
         render();
@@ -1777,7 +1701,7 @@ function insert(value){
 
 
     /*
-       Normal expression
+       Normal calculator input
     */
 
     tokens.splice(
@@ -1796,7 +1720,7 @@ function insert(value){
 
 
 /* =====================================================
-   INSERT FRACTION
+   FRACTION
 ===================================================== */
 
 function insertFraction(){
@@ -1804,18 +1728,11 @@ function insertFraction(){
     const fraction = {
 
         type:"frac",
-
         num:"",
-
         den:""
 
     };
 
-
-    /*
-       Insert fraction exactly
-       at current cursor position.
-    */
 
     tokens.splice(
         cursor,
@@ -1826,17 +1743,9 @@ function insertFraction(){
 
     cursor++;
 
+    activeFraction = fraction;
 
-    /*
-       Start in numerator.
-    */
-
-    activeFraction =
-        fraction;
-
-    fractionPart =
-        "num";
-
+    fractionPart = "num";
 
     render();
 }
@@ -1848,9 +1757,9 @@ function insertFraction(){
 
 function exitFraction(){
 
-    activeFraction=null;
+    activeFraction = null;
 
-    fractionPart="num";
+    fractionPart = "num";
 
     render();
 }
@@ -1869,24 +1778,24 @@ function backspace(){
     if(activeFraction){
 
         let text =
-            fractionPart==="num"
-            ?
-            activeFraction.num
-            :
-            activeFraction.den;
+            fractionPart === "num"
+            ? activeFraction.num
+            : activeFraction.den;
 
 
-        if(text.length){
+        if(text.length > 0){
 
-            if(fractionPart==="num"){
+            if(fractionPart === "num"){
 
                 activeFraction.num =
                     text.slice(0,-1);
 
-            }else{
+            }
+            else{
 
                 activeFraction.den =
                     text.slice(0,-1);
+
             }
 
             render();
@@ -1897,14 +1806,12 @@ function backspace(){
 
         /*
            Empty denominator:
-           go back to numerator.
+           return to numerator
         */
 
-        if(
-            fractionPart==="den"
-        ){
+        if(fractionPart === "den"){
 
-            fractionPart="num";
+            fractionPart = "num";
 
             render();
 
@@ -1914,25 +1821,25 @@ function backspace(){
 
         /*
            Empty numerator:
-           delete complete fraction.
+           remove fraction
         */
 
         const index =
-            tokens.indexOf(
-                activeFraction
-            );
+            tokens.indexOf(activeFraction);
 
-        if(index>=0){
+
+        if(index >= 0){
 
             tokens.splice(
                 index,
                 1
             );
 
-            cursor=index;
+            cursor = index;
         }
 
-        activeFraction=null;
+
+        activeFraction = null;
 
         render();
 
@@ -1941,32 +1848,31 @@ function backspace(){
 
 
     /*
-       Normal expression
+       Normal text
     */
 
-    if(cursor<=0)
+    if(cursor <= 0)
         return;
 
 
     const t =
-        tokens[cursor-1];
+        tokens[cursor - 1];
 
 
     if(
-        t.type==="text" &&
-        t.value.length>1
+        t &&
+        t.type === "text" &&
+        t.value.length > 1
     ){
 
         t.value =
-            t.value.slice(
-                0,
-                -1
-            );
+            t.value.slice(0,-1);
 
-    }else{
+    }
+    else{
 
         tokens.splice(
-            cursor-1,
+            cursor - 1,
             1
         );
 
@@ -1979,16 +1885,18 @@ function backspace(){
 
 
 /* =====================================================
-   LEFT
+   CURSOR LEFT
 ===================================================== */
 
 function moveLeft(){
 
     if(activeFraction){
 
-        exitFraction();
+        activeFraction = null;
 
-        if(cursor>0)
+        fractionPart = "num";
+
+        if(cursor > 0)
             cursor--;
 
         render();
@@ -1997,7 +1905,7 @@ function moveLeft(){
     }
 
 
-    if(cursor>0)
+    if(cursor > 0)
         cursor--;
 
     render();
@@ -2005,17 +1913,10 @@ function moveLeft(){
 
 
 /* =====================================================
-   RIGHT
+   CURSOR RIGHT
 ===================================================== */
 
 function moveRight(){
-
-    /*
-       Right arrow exits fraction.
-
-       This is how user finishes
-       numerator/denominator editing.
-    */
 
     if(activeFraction){
 
@@ -2025,7 +1926,7 @@ function moveRight(){
     }
 
 
-    if(cursor<tokens.length)
+    if(cursor < tokens.length)
         cursor++;
 
     render();
@@ -2033,14 +1934,14 @@ function moveRight(){
 
 
 /* =====================================================
-   UP
+   CURSOR UP
 ===================================================== */
 
 function moveUp(){
 
     if(activeFraction){
 
-        fractionPart="num";
+        fractionPart = "num";
 
         render();
 
@@ -2049,15 +1950,15 @@ function moveUp(){
 
 
     if(
-        cursor>0 &&
-        tokens[cursor-1] &&
-        tokens[cursor-1].type==="frac"
+        cursor > 0 &&
+        tokens[cursor - 1] &&
+        tokens[cursor - 1].type === "frac"
     ){
 
         activeFraction =
-            tokens[cursor-1];
+            tokens[cursor - 1];
 
-        fractionPart="num";
+        fractionPart = "num";
 
         render();
     }
@@ -2065,14 +1966,14 @@ function moveUp(){
 
 
 /* =====================================================
-   DOWN
+   CURSOR DOWN
 ===================================================== */
 
 function moveDown(){
 
     if(activeFraction){
 
-        fractionPart="den";
+        fractionPart = "den";
 
         render();
 
@@ -2081,15 +1982,15 @@ function moveDown(){
 
 
     if(
-        cursor>0 &&
-        tokens[cursor-1] &&
-        tokens[cursor-1].type==="frac"
+        cursor > 0 &&
+        tokens[cursor - 1] &&
+        tokens[cursor - 1].type === "frac"
     ){
 
         activeFraction =
-            tokens[cursor-1];
+            tokens[cursor - 1];
 
-        fractionPart="den";
+        fractionPart = "den";
 
         render();
     }
@@ -2102,42 +2003,49 @@ function moveDown(){
 
 function clearAll(){
 
-    tokens=[];
+    tokens = [];
 
-    cursor=0;
+    cursor = 0;
 
-    answer=0;
+    answer = 0;
 
-    activeFraction=null;
+    activeFraction = null;
 
-    fractionPart="num";
+    fractionPart = "num";
 
     render();
 }
 
 
 /* =====================================================
-   CONVERT TOKENS TO MATH
+   TOKEN → MATH
 ===================================================== */
 
 function tokenToString(t){
 
-    if(t.type==="text")
+    if(t.type === "text")
         return t.value;
 
 
-    /*
-       Fraction becomes normal
-       mathematical division for calculation.
-    */
+    if(t.type === "frac"){
 
-    return (
-        "("+
-        t.num+
-        "/" +
-        t.den+
-        ")"
-    );
+        const numerator =
+            t.num || "0";
+
+        const denominator =
+            t.den || "1";
+
+        return (
+            "(" +
+            numerator +
+            "/" +
+            denominator +
+            ")"
+        );
+    }
+
+
+    return "";
 }
 
 
@@ -2156,26 +2064,26 @@ function expressionString(){
 function factorial(n){
 
     if(
-        n<0 ||
+        n < 0 ||
         !Number.isInteger(n) ||
-        n>170
+        n > 170
     ){
 
-        throw Error(
+        throw new Error(
             "Invalid factorial"
         );
     }
 
 
-    let r=1;
+    let r = 1;
 
     for(
-        let i=2;
-        i<=n;
+        let i = 2;
+        i <= n;
         i++
     ){
 
-        r*=i;
+        r *= i;
     }
 
     return r;
@@ -2188,21 +2096,22 @@ function factorial(n){
 
 function gcd(a,b){
 
-    a=Math.abs(
+    a = Math.abs(
         Math.trunc(a)
     );
 
-    b=Math.abs(
+    b = Math.abs(
         Math.trunc(b)
     );
 
 
     while(b){
 
-        [a,b]=[
-            b,
-            a%b
-        ];
+        const temp = a % b;
+
+        a = b;
+
+        b = temp;
     }
 
 
@@ -2216,16 +2125,12 @@ function gcd(a,b){
 
 function lcm(a,b){
 
-    if(
-        a===0 ||
-        b===0
-    )
+    if(a === 0 || b === 0)
         return 0;
 
-
     return Math.abs(
-        a*b
-    )/gcd(a,b);
+        a * b
+    ) / gcd(a,b);
 }
 
 
@@ -2237,9 +2142,8 @@ function evalBasic(s){
 
     return Function(
         "answer",
-
-        '"use strict";return ('+
-        s+
+        '"use strict"; return (' +
+        s +
         ')'
     )(answer);
 }
@@ -2251,33 +2155,40 @@ function evalBasic(s){
 
 function evaluate(expr){
 
-    let x=expr;
+    let x = expr;
 
 
-    x=x
+    x = x
         .replaceAll("×","*")
         .replaceAll("÷","/")
         .replaceAll("−","-")
         .replaceAll("π","Math.PI");
 
 
-    x=x.replace(
+    x = x.replace(
         /\bAns\b/g,
         "answer"
     );
 
 
-    x=x.replace(
+    /*
+       IMPORTANT:
+       e is handled only when it is
+       a standalone constant.
+    */
+
+    x = x.replace(
         /\be\b/g,
         "Math.E"
     );
 
 
     /*
-       Functions
+       Scientific functions
     */
 
-    x=x
+    x = x
+
         .replace(/sin\(/g,"SIN(")
         .replace(/cos\(/g,"COS(")
         .replace(/tan\(/g,"TAN(")
@@ -2308,9 +2219,6 @@ function evaluate(expr){
 
         .replace(/fact\(/g,"FACT(")
 
-        .replace(/npr\(/g,"NPR(")
-        .replace(/ncr\(/g,"NCR(")
-
         .replace(/gcd\(/g,"GCD(")
         .replace(/lcm\(/g,"LCM(")
 
@@ -2328,7 +2236,7 @@ function evaluate(expr){
        Power
     */
 
-    x=x.replace(
+    x = x.replace(
         /\^/g,
         "**"
     );
@@ -2338,45 +2246,57 @@ function evaluate(expr){
        Trigonometry
     */
 
-    x=x.replace(
+    x = x.replace(
         /SIN\(([^()]*)\)/g,
+        (_,v)=>{
 
-        (_,v)=>
-            "Math.sin("+
-            toRad(
-                Number(
-                    evalBasic(v)
-                )
-            )+
-            ")"
+            return (
+                "Math.sin(" +
+                toRad(
+                    Number(
+                        evalBasic(v)
+                    )
+                ) +
+                ")"
+            );
+
+        }
     );
 
 
-    x=x.replace(
+    x = x.replace(
         /COS\(([^()]*)\)/g,
+        (_,v)=>{
 
-        (_,v)=>
-            "Math.cos("+
-            toRad(
-                Number(
-                    evalBasic(v)
-                )
-            )+
-            ")"
+            return (
+                "Math.cos(" +
+                toRad(
+                    Number(
+                        evalBasic(v)
+                    )
+                ) +
+                ")"
+            );
+
+        }
     );
 
 
-    x=x.replace(
+    x = x.replace(
         /TAN\(([^()]*)\)/g,
+        (_,v)=>{
 
-        (_,v)=>
-            "Math.tan("+
-            toRad(
-                Number(
-                    evalBasic(v)
-                )
-            )+
-            ")"
+            return (
+                "Math.tan(" +
+                toRad(
+                    Number(
+                        evalBasic(v)
+                    )
+                ) +
+                ")"
+            );
+
+        }
     );
 
 
@@ -2384,11 +2304,11 @@ function evaluate(expr){
        Inverse trig
     */
 
-    x=x.replace(
+    x = x.replace(
         /ASIN\(([^()]*)\)/g,
+        (_,v)=>{
 
-        (_,v)=>
-            String(
+            return String(
                 fromRad(
                     Math.asin(
                         Number(
@@ -2396,15 +2316,17 @@ function evaluate(expr){
                         )
                     )
                 )
-            )
+            );
+
+        }
     );
 
 
-    x=x.replace(
+    x = x.replace(
         /ACOS\(([^()]*)\)/g,
+        (_,v)=>{
 
-        (_,v)=>
-            String(
+            return String(
                 fromRad(
                     Math.acos(
                         Number(
@@ -2412,15 +2334,17 @@ function evaluate(expr){
                         )
                     )
                 )
-            )
+            );
+
+        }
     );
 
 
-    x=x.replace(
+    x = x.replace(
         /ATAN\(([^()]*)\)/g,
+        (_,v)=>{
 
-        (_,v)=>
-            String(
+            return String(
                 fromRad(
                     Math.atan(
                         Number(
@@ -2428,7 +2352,9 @@ function evaluate(expr){
                         )
                     )
                 )
-            )
+            );
+
+        }
     );
 
 
@@ -2436,17 +2362,19 @@ function evaluate(expr){
        Factorial
     */
 
-    x=x.replace(
+    x = x.replace(
         /FACT\(([^()]*)\)/g,
+        (_,v)=>{
 
-        (_,v)=>
-            String(
+            return String(
                 factorial(
                     Number(
                         evalBasic(v)
                     )
                 )
-            )
+            );
+
+        }
     );
 
 
@@ -2454,80 +2382,18 @@ function evaluate(expr){
        Inverse
     */
 
-    x=x.replace(
+    x = x.replace(
         /INV\(([^()]*)\)/g,
+        (_,v)=>{
 
-        (_,v)=>
-            String(
-                1/
+            return String(
+                1 /
                 Number(
                     evalBasic(v)
                 )
-            )
-    );
+            );
 
-
-    /*
-       nPr
-    */
-
-    x=x.replace(
-        /NPR\(([^,()]+),([^()]+)\)/g,
-
-        (_,a,b)=>
-            String(
-                factorial(
-                    Number(
-                        evalBasic(a)
-                    )
-                )
-                /
-                factorial(
-                    Number(
-                        evalBasic(a)
-                    )
-                    -
-                    Number(
-                        evalBasic(b)
-                    )
-                )
-            )
-    );
-
-
-    /*
-       nCr
-    */
-
-    x=x.replace(
-        /NCR\(([^,()]+),([^()]+)\)/g,
-
-        (_,a,b)=>
-            String(
-                factorial(
-                    Number(
-                        evalBasic(a)
-                    )
-                )
-                /
-                (
-                    factorial(
-                        Number(
-                            evalBasic(b)
-                        )
-                    )
-                    *
-                    factorial(
-                        Number(
-                            evalBasic(a)
-                        )
-                        -
-                        Number(
-                            evalBasic(b)
-                        )
-                    )
-                )
-            )
+        }
     );
 
 
@@ -2535,11 +2401,11 @@ function evaluate(expr){
        GCD
     */
 
-    x=x.replace(
+    x = x.replace(
         /GCD\(([^,()]+),([^()]+)\)/g,
+        (_,a,b)=>{
 
-        (_,a,b)=>
-            String(
+            return String(
                 gcd(
                     Number(
                         evalBasic(a)
@@ -2548,7 +2414,9 @@ function evaluate(expr){
                         evalBasic(b)
                     )
                 )
-            )
+            );
+
+        }
     );
 
 
@@ -2556,11 +2424,11 @@ function evaluate(expr){
        LCM
     */
 
-    x=x.replace(
+    x = x.replace(
         /LCM\(([^,()]+),([^()]+)\)/g,
+        (_,a,b)=>{
 
-        (_,a,b)=>
-            String(
+            return String(
                 lcm(
                     Number(
                         evalBasic(a)
@@ -2569,7 +2437,9 @@ function evaluate(expr){
                         evalBasic(b)
                     )
                 )
-            )
+            );
+
+        }
     );
 
 
@@ -2577,11 +2447,11 @@ function evaluate(expr){
        MOD
     */
 
-    x=x.replace(
+    x = x.replace(
         /MOD\(([^,()]+),([^()]+)\)/g,
+        (_,a,b)=>{
 
-        (_,a,b)=>
-            String(
+            return String(
                 Number(
                     evalBasic(a)
                 )
@@ -2589,7 +2459,9 @@ function evaluate(expr){
                 Number(
                     evalBasic(b)
                 )
-            )
+            );
+
+        }
     );
 
 
@@ -2597,11 +2469,12 @@ function evaluate(expr){
        LOG BASE
     */
 
-    x=x.replace(
+    x = x.replace(
         /LOGB\(([^,()]+),([^()]+)\)/g,
+        (_,a,b)=>{
 
-        (_,a,b)=>
-            String(
+            return String(
+
                 Math.log(
                     Number(
                         evalBasic(a)
@@ -2613,51 +2486,57 @@ function evaluate(expr){
                         evalBasic(b)
                     )
                 )
-            )
+
+            );
+
+        }
     );
 
 
     /*
-       Security
+       FIXED SECURITY CHECK
+
+       This was the ERROR in your
+       previous code.
     */
 
+    const dangerousChars =
+        /[;{}\[\]'"`<>]/;
+
+    const dangerousWords =
+        /\b(window|document|alert|function|constructor|prototype)\b/i;
+
+
     if(
-        /[;{}\[\]'"`<>]|
-        window|
-        document|
-        alert|
-        function|
-        constructor|
-        prototype/i
-        .test(x)
+        dangerousChars.test(x) ||
+        dangerousWords.test(x)
     ){
 
-        throw Error(
+        throw new Error(
             "Invalid expression"
         );
     }
 
 
     /*
-       Final calculation
+       FINAL CALCULATION
     */
 
     const result =
         Function(
             "answer",
-
-            '"use strict";return ('+
-            x+
+            '"use strict"; return (' +
+            x +
             ')'
         )(answer);
 
 
     if(
-        typeof result!=="number" ||
+        typeof result !== "number" ||
         !Number.isFinite(result)
     ){
 
-        throw Error(
+        throw new Error(
             "Math Error"
         );
     }
@@ -2687,40 +2566,33 @@ function calculate(){
             evaluate(expr);
 
 
-        answer=result;
+        answer = result;
 
 
         history.unshift({
 
             expression:expr,
-
             answer:result
 
         });
 
 
-        if(history.length>50)
+        if(history.length > 50)
             history.pop();
 
 
-        /*
-           IMPORTANT:
-
-           We do NOT hide the expression.
-
-           Therefore pressing =
-           will never make the upper
-           display disappear.
-        */
-
         render();
 
-    }catch(error){
+    }
+    catch(error){
+
+        console.error(
+            "Calculation error:",
+            error
+        );
 
         answerDisplay.textContent =
             "Error";
-
-        console.error(error);
     }
 }
 
@@ -2731,7 +2603,7 @@ function calculate(){
 
 function memoryClear(){
 
-    memory=0;
+    memory = 0;
 }
 
 
@@ -2747,12 +2619,13 @@ function memoryStore(){
 
     try{
 
-        memory=
+        memory =
             evaluate(
                 expressionString()
             );
 
-    }catch{}
+    }
+    catch{}
 }
 
 
@@ -2760,12 +2633,13 @@ function memoryAdd(){
 
     try{
 
-        memory+=
+        memory +=
             evaluate(
                 expressionString()
             );
 
-    }catch{}
+    }
+    catch{}
 }
 
 
@@ -2773,12 +2647,13 @@ function memorySub(){
 
     try{
 
-        memory-=
+        memory -=
             evaluate(
                 expressionString()
             );
 
-    }catch{}
+    }
+    catch{}
 }
 
 
@@ -2801,7 +2676,7 @@ function openModal(
     modalResult.style.display =
         "none";
 
-    modalResult.textContent="";
+    modalResult.textContent = "";
 
     modal.classList.add(
         "show"
@@ -2843,26 +2718,27 @@ function showResult(text){
 
 function showHistory(){
 
-    let text="";
+    let text = "";
 
 
     if(!history.length){
 
-        text=
+        text =
             "No calculation history.";
 
-    }else{
+    }
+    else{
 
         text =
             history
             .map(
-                (x,i)=>
-                    (i+1)+
-                    ". "+
-                    x.expression+
-                    " = "+
+                (item,index)=>
+                    (index + 1) +
+                    ". " +
+                    item.expression +
+                    " = " +
                     formatNumber(
-                        x.answer
+                        item.answer
                     )
             )
             .join("\n\n");
@@ -2884,6 +2760,7 @@ function showHistory(){
         `,
 
         function(){}
+
     );
 
 
@@ -2893,7 +2770,7 @@ function showHistory(){
 
 
 /* =====================================================
-   DERIVATIVE
+   ENGINEERING TOOLS
 ===================================================== */
 
 function openDerivative(){
@@ -2925,32 +2802,32 @@ function openDerivative(){
                         $("dxValue").value
                     );
 
-                const h=1e-5;
+                const h = 0.00001;
 
                 const fn =
                     Function(
                         "x",
-                        "return ("+
-                        f+
+                        "return (" +
+                        f +
                         ")"
                     );
 
+
                 const result =
                     (
-                        fn(x+h)-
+                        fn(x+h) -
                         fn(x-h)
-                    )/
+                    ) /
                     (2*h);
 
 
                 showResult(
-                    "d/dx = "+
-                    formatNumber(
-                        result
-                    )
+                    "d/dx = " +
+                    formatNumber(result)
                 );
 
-            }catch{
+            }
+            catch{
 
                 showResult(
                     "Derivative Error"
@@ -2960,10 +2837,6 @@ function openDerivative(){
     );
 }
 
-
-/* =====================================================
-   INTEGRAL
-===================================================== */
 
 function openIntegral(){
 
@@ -3004,7 +2877,7 @@ function openIntegral(){
                         $("intB").value
                     );
 
-                const n=1000;
+                const n = 1000;
 
                 const h =
                     (b-a)/n;
@@ -3012,12 +2885,13 @@ function openIntegral(){
                 const fn =
                     Function(
                         "x",
-                        "return ("+
-                        f+
+                        "return (" +
+                        f +
                         ")"
                     );
 
-                let sum=0;
+
+                let sum = 0;
 
 
                 for(
@@ -3027,9 +2901,7 @@ function openIntegral(){
                 ){
 
                     const y =
-                        fn(
-                            a+i*h
-                        );
+                        fn(a + i*h);
 
 
                     if(
@@ -3037,29 +2909,32 @@ function openIntegral(){
                         i===n
                     ){
 
-                        sum+=y;
+                        sum += y;
 
-                    }else if(
+                    }
+                    else if(
                         i%2===0
                     ){
 
-                        sum+=2*y;
+                        sum += 2*y;
 
-                    }else{
+                    }
+                    else{
 
-                        sum+=4*y;
+                        sum += 4*y;
                     }
                 }
 
 
                 showResult(
-                    "∫ = "+
+                    "∫ = " +
                     formatNumber(
                         sum*h/3
                     )
                 );
 
-            }catch{
+            }
+            catch{
 
                 showResult(
                     "Integration Error"
@@ -3069,10 +2944,6 @@ function openIntegral(){
     );
 }
 
-
-/* =====================================================
-   LIMIT
-===================================================== */
 
 function openLimit(){
 
@@ -3103,15 +2974,16 @@ function openLimit(){
                         $("limitX").value
                     );
 
-                const h=1e-7;
+                const h = 0.0000001;
 
                 const fn =
                     Function(
                         "x",
-                        "return ("+
-                        f+
+                        "return (" +
+                        f +
                         ")"
                     );
+
 
                 const left =
                     fn(x-h);
@@ -3122,19 +2994,20 @@ function openLimit(){
 
                 showResult(
 
-                    "Left = "+
-                    formatNumber(left)+
+                    "Left = " +
+                    formatNumber(left) +
 
-                    "\nRight = "+
-                    formatNumber(right)+
+                    "\nRight = " +
+                    formatNumber(right) +
 
-                    "\nLimit ≈ "+
+                    "\nLimit ≈ " +
                     formatNumber(
                         (left+right)/2
                     )
                 );
 
-            }catch{
+            }
+            catch{
 
                 showResult(
                     "Limit Error"
@@ -3144,10 +3017,6 @@ function openLimit(){
     );
 }
 
-
-/* =====================================================
-   EQUATION
-===================================================== */
 
 function openEquation(){
 
@@ -3179,11 +3048,12 @@ function openEquation(){
                         $("guess").value
                     );
 
+
                 const fn =
                     Function(
                         "x",
-                        "return ("+
-                        f+
+                        "return (" +
+                        f +
                         ")"
                     );
 
@@ -3194,54 +3064,52 @@ function openEquation(){
                     i++
                 ){
 
-                    const h=1e-6;
+                    const h = 0.000001;
 
                     const fx =
                         fn(x);
 
                     const d =
                         (
-                            fn(x+h)-
+                            fn(x+h) -
                             fn(x-h)
-                        )/
+                        ) /
                         (2*h);
 
 
                     if(
-                        Math.abs(d)
-                        <1e-14
+                        Math.abs(d) < 1e-14
                     )
                         break;
 
 
                     const next =
-                        x-
-                        fx/d;
+                        x - fx/d;
 
 
                     if(
                         Math.abs(
                             next-x
-                        )
-                        <1e-12
+                        ) < 1e-12
                     ){
 
-                        x=next;
+                        x = next;
 
                         break;
                     }
 
 
-                    x=next;
+                    x = next;
                 }
 
 
                 showResult(
-                    "x = "+
+                    "x = " +
                     formatNumber(x)
                 );
 
-            }catch{
+            }
+            catch{
 
                 showResult(
                     "Could not solve equation."
@@ -3253,7 +3121,7 @@ function openEquation(){
 
 
 /* =====================================================
-   MATRIX
+   SIMPLE MATRIX
 ===================================================== */
 
 function parseMatrix(text){
@@ -3263,7 +3131,7 @@ function parseMatrix(text){
         .trim()
         .split(/\n+/)
         .map(
-            row=>
+            row =>
                 row
                 .trim()
                 .split(/[\s,]+/)
@@ -3274,16 +3142,19 @@ function parseMatrix(text){
     if(
         !a.length ||
         a.some(
-            row=>
+            row =>
                 !row.length ||
                 row.some(
-                    v=>!Number.isFinite(v)
+                    v =>
+                        !Number.isFinite(v)
                 ) ||
-                row.length!==a[0].length
+                row.length !== a[0].length
         )
     ){
 
-        throw Error();
+        throw new Error(
+            "Invalid matrix"
+        );
     }
 
 
@@ -3294,25 +3165,26 @@ function parseMatrix(text){
 function determinant(a){
 
     if(
-        a.length===2 &&
-        a[0].length===2
+        a.length === 2 &&
+        a[0].length === 2
     ){
 
-        return
-            a[0][0]*a[1][1]
+        return (
+            a[0][0] * a[1][1]
             -
-            a[0][1]*a[1][0];
+            a[0][1] * a[1][0]
+        );
     }
 
 
     if(
-        a.length===3 &&
-        a[0].length===3
+        a.length === 3 &&
+        a[0].length === 3
     ){
 
-        return
+        return (
 
-            a[0][0]*
+            a[0][0] *
             (
                 a[1][1]*a[2][2]
                 -
@@ -3321,7 +3193,7 @@ function determinant(a){
 
             -
 
-            a[0][1]*
+            a[0][1] *
             (
                 a[1][0]*a[2][2]
                 -
@@ -3330,29 +3202,20 @@ function determinant(a){
 
             +
 
-            a[0][2]*
+            a[0][2] *
             (
                 a[1][0]*a[2][1]
                 -
                 a[1][1]*a[2][0]
-            );
+            )
+
+        );
     }
 
 
-    throw Error();
-}
-
-
-function matrixText(a){
-
-    return a
-        .map(
-            r=>
-                r
-                .map(formatNumber)
-                .join("\t")
-        )
-        .join("\n");
+    throw new Error(
+        "Only 2x2 and 3x3 matrices supported"
+    );
 }
 
 
@@ -3370,49 +3233,34 @@ function openMatrix(){
             </option>
 
             <option value="inverse">
-                Inverse
-            </option>
-
-            <option value="add">
-                A + B
-            </option>
-
-            <option value="mul">
-                A × B
+                2×2 Inverse
             </option>
 
         </select>
 
         <textarea
         id="matrixA"
-        placeholder="A
-1 2
+        placeholder="1 2
 3 4"></textarea>
-
-        <textarea
-        id="matrixB"
-        placeholder="B
-5 6
-7 8"></textarea>
         `,
 
         function(){
 
             try{
 
-                const op =
-                    $("matrixOp").value;
-
                 const A =
                     parseMatrix(
                         $("matrixA").value
                     );
 
+                const op =
+                    $("matrixOp").value;
 
-                if(op==="det"){
+
+                if(op === "det"){
 
                     showResult(
-                        "det(A) = "+
+                        "det(A) = " +
                         formatNumber(
                             determinant(A)
                         )
@@ -3422,103 +3270,44 @@ function openMatrix(){
                 }
 
 
-                if(op==="inverse"){
-
-                    if(
-                        A.length!==2 ||
-                        A[0].length!==2
-                    )
-                        throw Error();
-
-
-                    const d =
-                        determinant(A);
-
-
-                    if(!d)
-                        throw Error();
-
-
-                    showResult(
-
-                        matrixText([
-
-                            [
-                                A[1][1]/d,
-                                -A[0][1]/d
-                            ],
-
-                            [
-                                -A[1][0]/d,
-                                A[0][0]/d
-                            ]
-
-                        ])
-                    );
-
-                    return;
-                }
-
-
-                const B =
-                    parseMatrix(
-                        $("matrixB").value
-                    );
-
-
-                if(op==="add"){
-
-                    if(
-                        A.length!==B.length ||
-                        A[0].length!==B[0].length
-                    )
-                        throw Error();
-
-
-                    showResult(
-
-                        matrixText(
-                            A.map(
-                                (r,i)=>
-                                    r.map(
-                                        (v,j)=>
-                                            v+B[i][j]
-                                    )
-                            )
-                        )
-                    );
-
-                    return;
-                }
-
-
                 if(
-                    A[0].length!==B.length
+                    A.length !== 2 ||
+                    A[0].length !== 2
                 )
-                    throw Error();
+                    throw new Error();
+
+
+                const d =
+                    determinant(A);
+
+
+                if(d === 0)
+                    throw new Error();
 
 
                 showResult(
 
-                    matrixText(
+                    formatNumber(
+                        A[1][1]/d
+                    ) +
+                    "   " +
+                    formatNumber(
+                        -A[0][1]/d
+                    ) +
 
-                        A.map(
-                            r=>
-                                B[0].map(
-                                    (_,j)=>
-                                        r.reduce(
-                                            (s,v,k)=>
-                                                s+
-                                                v*
-                                                B[k][j],
-                                            0
-                                        )
-                                )
-                        )
+                    "\n" +
+
+                    formatNumber(
+                        -A[1][0]/d
+                    ) +
+                    "   " +
+                    formatNumber(
+                        A[0][0]/d
                     )
                 );
 
-            }catch{
+            }
+            catch{
 
                 showResult(
                     "Matrix Error"
@@ -3578,29 +3367,32 @@ function openVector(){
 
 
                 const A =
-                    $("vecA").value
+                    $("vecA")
+                    .value
                     .split(/[\s,]+/)
                     .map(Number);
 
 
                 const B =
-                    $("vecB").value
+                    $("vecB")
+                    .value
                     .split(/[\s,]+/)
                     .map(Number);
 
 
                 if(
                     A.some(
-                        v=>!Number.isFinite(v)
+                        v =>
+                            !Number.isFinite(v)
                     )
                 )
-                    throw Error();
+                    throw new Error();
 
 
-                if(op==="mag"){
+                if(op === "mag"){
 
                     showResult(
-                        "|A| = "+
+                        "|A| = " +
                         formatNumber(
                             Math.hypot(...A)
                         )
@@ -3611,64 +3403,58 @@ function openVector(){
 
 
                 if(
-                    A.length!==B.length ||
+                    A.length !== B.length ||
                     B.some(
-                        v=>!Number.isFinite(v)
+                        v =>
+                            !Number.isFinite(v)
                     )
                 )
-                    throw Error();
+                    throw new Error();
 
 
-                if(op==="dot"){
+                if(op === "dot"){
+
+                    const result =
+                        A.reduce(
+                            (sum,v,i)=>
+                                sum + v*B[i],
+                            0
+                        );
+
 
                     showResult(
-
-                        "A · B = "+
-                        formatNumber(
-
-                            A.reduce(
-                                (s,v,i)=>
-                                    s+
-                                    v*B[i],
-                                0
-                            )
-                        )
+                        "A · B = " +
+                        formatNumber(result)
                     );
 
                     return;
                 }
 
 
-                if(op==="cross"){
+                if(op === "cross"){
 
-                    if(
-                        A.length!==3
-                    )
-                        throw Error();
+                    if(A.length !== 3)
+                        throw new Error();
 
 
-                    const C=[
+                    const C = [
 
-                        A[1]*B[2]
-                        -
+                        A[1]*B[2] -
                         A[2]*B[1],
 
-                        A[2]*B[0]
-                        -
+                        A[2]*B[0] -
                         A[0]*B[2],
 
-                        A[0]*B[1]
-                        -
+                        A[0]*B[1] -
                         A[1]*B[0]
 
                     ];
 
 
                     showResult(
-                        "["+
-                        C
-                        .map(formatNumber)
-                        .join(", ")+
+                        "[" +
+                        C.map(formatNumber)
+                        .join(", ") +
                         "]"
                     );
 
@@ -3678,9 +3464,8 @@ function openVector(){
 
                 const dot =
                     A.reduce(
-                        (s,v,i)=>
-                            s+
-                            v*B[i],
+                        (sum,v,i)=>
+                            sum + v*B[i],
                         0
                     );
 
@@ -3703,75 +3488,23 @@ function openVector(){
 
 
                 showResult(
-
-                    "Angle = "+
+                    "Angle = " +
                     formatNumber(
                         fromRad(
-                            Math.acos(
-                                ratio
-                            )
+                            Math.acos(ratio)
                         )
-                    )+
-                    " "+
+                    ) +
+                    " " +
                     angleMode
                 );
 
-            }catch{
+            }
+            catch{
 
                 showResult(
                     "Vector Error"
                 );
             }
-        }
-    );
-}
-
-
-/* =====================================================
-   COMPLEX
-===================================================== */
-
-function openComplex(){
-
-    openModal(
-
-        "Complex Numbers",
-
-        `
-        <input
-        id="ca"
-        placeholder="A = 3+4i">
-
-        <input
-        id="cb"
-        placeholder="B = 2+1i">
-
-        <select id="cop">
-
-            <option value="add">
-                A + B
-            </option>
-
-            <option value="sub">
-                A − B
-            </option>
-
-            <option value="mul">
-                A × B
-            </option>
-
-            <option value="div">
-                A ÷ B
-            </option>
-
-        </select>
-        `,
-
-        function(){
-
-            showResult(
-                "Complex calculator ready."
-            );
         }
     );
 }
@@ -3795,8 +3528,9 @@ function openStats(){
 
         function(){
 
-            const d =
-                $("stats").value
+            const data =
+                $("stats")
+                .value
                 .split(/[\s,]+/)
                 .map(Number)
                 .filter(
@@ -3804,7 +3538,7 @@ function openStats(){
                 );
 
 
-            if(!d.length){
+            if(!data.length){
 
                 showResult(
                     "No data."
@@ -3815,68 +3549,74 @@ function openStats(){
 
 
             const sum =
-                d.reduce(
+                data.reduce(
                     (a,b)=>a+b,
                     0
                 );
 
 
             const mean =
-                sum/d.length;
+                sum/data.length;
 
 
             const variance =
-                d.reduce(
+                data.reduce(
                     (s,x)=>
-                        s+
-                        (x-mean)**2,
+                        s + (x-mean)**2,
                     0
                 )
                 /
-                d.length;
+                data.length;
 
 
-            d.sort(
-                (a,b)=>a-b
-            );
+            const sorted =
+                [...data].sort(
+                    (a,b)=>a-b
+                );
 
 
             const median =
-                d.length%2
+                sorted.length % 2
+
                 ?
-                d[
-                    (d.length-1)/2
+
+                sorted[
+                    (sorted.length-1)/2
                 ]
+
                 :
+
                 (
-                    d[d.length/2-1]
+                    sorted[
+                        sorted.length/2-1
+                    ]
                     +
-                    d[d.length/2]
+                    sorted[
+                        sorted.length/2
+                    ]
                 )/2;
 
 
             showResult(
 
-                "n = "+
-                d.length+
+                "n = " +
+                data.length +
 
-                "\nSum = "+
-                formatNumber(sum)+
+                "\nSum = " +
+                formatNumber(sum) +
 
-                "\nMean = "+
-                formatNumber(mean)+
+                "\nMean = " +
+                formatNumber(mean) +
 
-                "\nMedian = "+
-                formatNumber(median)+
+                "\nMedian = " +
+                formatNumber(median) +
 
-                "\nVariance = "+
-                formatNumber(variance)+
+                "\nVariance = " +
+                formatNumber(variance) +
 
-                "\nStandard Deviation = "+
+                "\nStandard Deviation = " +
                 formatNumber(
-                    Math.sqrt(
-                        variance
-                    )
+                    Math.sqrt(variance)
                 )
             );
         }
@@ -3933,19 +3673,17 @@ function openConverter(){
                 $("ct").value;
 
 
-            const k={
+            const k = {
 
                 m:1,
                 km:1000,
-                cm:.01,
-                mm:.001
+                cm:0.01,
+                mm:0.001
 
             };
 
 
-            if(
-                !Number.isFinite(v)
-            ){
+            if(!Number.isFinite(v)){
 
                 showResult(
                     "Enter a valid value."
@@ -3957,14 +3695,14 @@ function openConverter(){
 
             showResult(
 
-                formatNumber(v)+
-                " "+
-                f+
-                " = "+
+                formatNumber(v) +
+                " " +
+                f +
+                " = " +
                 formatNumber(
                     v*k[f]/k[t]
-                )+
-                " "+
+                ) +
+                " " +
                 t
             );
         }
@@ -4010,7 +3748,7 @@ function openConstants(){
 
         function(){
 
-            const values={
+            const values = {
 
                 g:9.80665,
 
@@ -4030,8 +3768,8 @@ function openConstants(){
 
 
             showResult(
-                key+
-                " = "+
+                key +
+                " = " +
                 values[key]
             );
         }
@@ -4040,12 +3778,61 @@ function openConstants(){
 
 
 /* =====================================================
-   BUTTON EVENT SYSTEM
+   COMPLEX
+===================================================== */
+
+function openComplex(){
+
+    openModal(
+
+        "Complex Numbers",
+
+        `
+        <input
+        id="ca"
+        placeholder="A = 3+4i">
+
+        <input
+        id="cb"
+        placeholder="B = 2+1i">
+
+        <select id="cop">
+
+            <option value="add">
+                A + B
+            </option>
+
+            <option value="sub">
+                A − B
+            </option>
+
+            <option value="mul">
+                A × B
+            </option>
+
+            <option value="div">
+                A ÷ B
+            </option>
+
+        </select>
+        `,
+
+        function(){
+
+            showResult(
+                "Complex calculator ready."
+            );
+        }
+    );
+}
+
+
+/* =====================================================
+   BUTTON HANDLER
 ===================================================== */
 
 document.addEventListener(
     "click",
-
     function(event){
 
         const button =
@@ -4059,12 +3846,12 @@ document.addEventListener(
 
 
         /*
-           Normal insert
+           INSERT BUTTON
         */
 
         if(
-            button.dataset.insert
-            !==undefined
+            button.dataset.insert !==
+            undefined
         ){
 
             insert(
@@ -4080,12 +3867,10 @@ document.addEventListener(
 
 
         /*
-           Angle
+           ANGLE
         */
 
-        if(
-            action==="angle"
-        ){
+        if(action === "angle"){
 
             setAngle(
                 button.dataset.value
@@ -4096,10 +3881,10 @@ document.addEventListener(
 
 
         /*
-           Cursor
+           CURSOR
         */
 
-        if(action==="left"){
+        if(action === "left"){
 
             moveLeft();
 
@@ -4107,7 +3892,7 @@ document.addEventListener(
         }
 
 
-        if(action==="right"){
+        if(action === "right"){
 
             moveRight();
 
@@ -4115,7 +3900,7 @@ document.addEventListener(
         }
 
 
-        if(action==="up"){
+        if(action === "up"){
 
             moveUp();
 
@@ -4123,7 +3908,7 @@ document.addEventListener(
         }
 
 
-        if(action==="down"){
+        if(action === "down"){
 
             moveDown();
 
@@ -4135,9 +3920,9 @@ document.addEventListener(
            2nd
         */
 
-        if(action==="second"){
+        if(action === "second"){
 
-            second=!second;
+            second = !second;
 
             button.classList.toggle(
                 "active",
@@ -4149,10 +3934,10 @@ document.addEventListener(
 
 
         /*
-           Clear
+           CLEAR
         */
 
-        if(action==="clear"){
+        if(action === "clear"){
 
             clearAll();
 
@@ -4161,10 +3946,10 @@ document.addEventListener(
 
 
         /*
-           Backspace
+           BACKSPACE
         */
 
-        if(action==="backspace"){
+        if(action === "backspace"){
 
             backspace();
 
@@ -4173,10 +3958,10 @@ document.addEventListener(
 
 
         /*
-           Equals
+           CALCULATE
         */
 
-        if(action==="calculate"){
+        if(action === "calculate"){
 
             calculate();
 
@@ -4185,10 +3970,10 @@ document.addEventListener(
 
 
         /*
-           Fraction
+           FRACTION
         */
 
-        if(action==="fraction"){
+        if(action === "fraction"){
 
             insertFraction();
 
@@ -4197,10 +3982,10 @@ document.addEventListener(
 
 
         /*
-           History
+           HISTORY
         */
 
-        if(action==="history"){
+        if(action === "history"){
 
             showHistory();
 
@@ -4209,38 +3994,42 @@ document.addEventListener(
 
 
         /*
-           Memory
+           MEMORY
         */
 
-        if(action==="mc"){
+        if(action === "mc"){
 
             memoryClear();
 
             return;
         }
 
-        if(action==="mr"){
+
+        if(action === "mr"){
 
             memoryRecall();
 
             return;
         }
 
-        if(action==="mplus"){
+
+        if(action === "mplus"){
 
             memoryAdd();
 
             return;
         }
 
-        if(action==="mminus"){
+
+        if(action === "mminus"){
 
             memorySub();
 
             return;
         }
 
-        if(action==="ms"){
+
+        if(action === "ms"){
 
             memoryStore();
 
@@ -4249,41 +4038,41 @@ document.addEventListener(
 
 
         /*
-           Engineering tools
+           ENGINEERING TOOLS
         */
 
         const tool =
             button.dataset.tool;
 
 
-        if(tool==="derivative")
+        if(tool === "derivative")
             openDerivative();
 
-        else if(tool==="integral")
+        else if(tool === "integral")
             openIntegral();
 
-        else if(tool==="limit")
+        else if(tool === "limit")
             openLimit();
 
-        else if(tool==="equation")
+        else if(tool === "equation")
             openEquation();
 
-        else if(tool==="matrix")
+        else if(tool === "matrix")
             openMatrix();
 
-        else if(tool==="vector")
+        else if(tool === "vector")
             openVector();
 
-        else if(tool==="complex")
+        else if(tool === "complex")
             openComplex();
 
-        else if(tool==="stats")
+        else if(tool === "stats")
             openStats();
 
-        else if(tool==="converter")
+        else if(tool === "converter")
             openConverter();
 
-        else if(tool==="constants")
+        else if(tool === "constants")
             openConstants();
 
     }
@@ -4291,30 +4080,29 @@ document.addEventListener(
 
 
 /* =====================================================
-   KEYBOARD
+   KEYBOARD SUPPORT
 ===================================================== */
 
 document.addEventListener(
     "keydown",
-
     function(e){
 
+        const tag =
+            e.target.tagName;
+
+
         if(
-            [
-                "INPUT",
-                "TEXTAREA",
-                "SELECT"
-            ].includes(
-                e.target.tagName
-            )
+            tag === "INPUT" ||
+            tag === "TEXTAREA" ||
+            tag === "SELECT"
         )
             return;
 
 
         if(
             (
-                e.key>="0" &&
-                e.key<="9"
+                e.key >= "0" &&
+                e.key <= "9"
             )
             ||
             [
@@ -4339,7 +4127,7 @@ document.addEventListener(
         }
 
 
-        if(e.key==="Enter"){
+        if(e.key === "Enter"){
 
             calculate();
 
@@ -4349,9 +4137,7 @@ document.addEventListener(
         }
 
 
-        if(
-            e.key==="Backspace"
-        ){
+        if(e.key === "Backspace"){
 
             backspace();
 
@@ -4361,9 +4147,7 @@ document.addEventListener(
         }
 
 
-        if(
-            e.key==="ArrowLeft"
-        ){
+        if(e.key === "ArrowLeft"){
 
             moveLeft();
 
@@ -4373,9 +4157,7 @@ document.addEventListener(
         }
 
 
-        if(
-            e.key==="ArrowRight"
-        ){
+        if(e.key === "ArrowRight"){
 
             moveRight();
 
@@ -4385,9 +4167,7 @@ document.addEventListener(
         }
 
 
-        if(
-            e.key==="ArrowUp"
-        ){
+        if(e.key === "ArrowUp"){
 
             moveUp();
 
@@ -4397,9 +4177,7 @@ document.addEventListener(
         }
 
 
-        if(
-            e.key==="ArrowDown"
-        ){
+        if(e.key === "ArrowDown"){
 
             moveDown();
 
@@ -4409,9 +4187,7 @@ document.addEventListener(
         }
 
 
-        if(
-            e.key==="Escape"
-        ){
+        if(e.key === "Escape"){
 
             clearAll();
 
@@ -4423,12 +4199,19 @@ document.addEventListener(
 
 
 /* =====================================================
-   INITIAL
+   INITIALIZE
 ===================================================== */
+
+setAngle("DEG");
 
 render();
 
 </script>
+
+
+      
+
+      
 
 </body>
 
