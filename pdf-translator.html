@@ -3,31 +3,57 @@
 
 <head>
 
+<!-- =====================================================
+     GOOGLE ANALYTICS
+===================================================== -->
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6HZ155HD35"></script>
 
 <script>
 window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
+
+function gtag(){
+    dataLayer.push(arguments);
+}
+
 gtag('js', new Date());
 gtag('config', 'G-6HZ155HD35');
 </script>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>PDF Translator Online - Translate PDF to Hindi & Indian Languages | AdiyogiTools</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+
+<!-- =====================================================
+     SEO
+===================================================== -->
+
+<title>
+PDF Translator Online - Translate PDF to Hindi & Indian Languages | AdiyogiTools
+</title>
 
 <meta name="description"
-content="Translate PDF text and image text into Hindi and Indian languages online. Process every PDF page, preserve page order and download a translated PDF with AdiyogiTools.">
+content="Translate English PDF text and images with text into Hindi and other Indian languages online. Process every PDF page and download a translated PDF with the same page order.">
 
 <meta name="keywords"
-content="PDF Translator, PDF Translator Online, Translate PDF to Hindi, English PDF to Hindi, PDF to Hindi, English to Hindi PDF, Translate PDF Online, PDF Language Translator, Translate PDF to Bengali, Translate PDF to Tamil, Translate PDF to Telugu, Translate PDF to Marathi, Translate PDF to Gujarati, Translate PDF to Kannada, Translate PDF to Malayalam, Translate PDF to Punjabi">
+content="PDF Translator, PDF Translator Online, Translate PDF to Hindi, English PDF to Hindi, PDF to Hindi, English to Hindi PDF, Translate PDF Online, Translate Image to Hindi, PDF Language Translator, Translate PDF to Bengali, Translate PDF to Tamil, Translate PDF to Telugu, Translate PDF to Marathi, Translate PDF to Gujarati, Translate PDF to Kannada, Translate PDF to Malayalam, Translate PDF to Punjabi">
 
-<meta name="author" content="AdiyogiTools">
-<meta name="robots" content="index, follow">
+<meta name="author"
+content="AdiyogiTools">
+
+<meta name="robots"
+content="index, follow">
 
 <link rel="canonical"
 href="https://adiyogitools.in/pdf-translator.html">
+
+
+<!-- =====================================================
+     OPEN GRAPH
+===================================================== -->
 
 <meta property="og:title"
 content="PDF Translator Online - Translate PDF to Hindi & Indian Languages">
@@ -38,32 +64,49 @@ content="Translate PDF text into Hindi and other Indian languages online with Ad
 <meta property="og:url"
 content="https://adiyogitools.in/pdf-translator.html">
 
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="AdiyogiTools">
+<meta property="og:type"
+content="website">
+
+<meta property="og:site_name"
+content="AdiyogiTools">
 
 <meta property="og:image"
 content="https://adiyogitools.in/icons/icon-512.png">
 
-<meta name="twitter:card" content="summary_large_image">
+
+<!-- =====================================================
+     TWITTER
+===================================================== -->
+
+<meta name="twitter:card"
+content="summary_large_image">
 
 <meta name="twitter:title"
 content="PDF Translator Online - Translate PDF to Hindi">
 
 <meta name="twitter:description"
-content="Translate PDF text into Hindi and other Indian languages online.">
+content="Translate English PDF text into Hindi and other Indian languages online.">
 
 <meta name="twitter:image"
 content="https://adiyogitools.in/icons/icon-512.png">
 
-<meta name="theme-color" content="#0f172a">
+
+<meta name="theme-color"
+content="#0f172a">
+
+
+<!-- =====================================================
+     SOFTWARE SCHEMA
+===================================================== -->
 
 <script type="application/ld+json">
+
 {
   "@context":"https://schema.org",
   "@type":"SoftwareApplication",
   "name":"PDF Translator",
   "url":"https://adiyogitools.in/pdf-translator.html",
-  "description":"Free online PDF translator for translating PDF text into Hindi and Indian languages.",
+  "description":"Free online PDF translator for translating PDF and image text into Hindi and Indian languages.",
   "applicationCategory":"UtilitiesApplication",
   "operatingSystem":"Any",
   "isAccessibleForFree":true,
@@ -73,28 +116,79 @@ content="https://adiyogitools.in/icons/icon-512.png">
     "priceCurrency":"USD"
   }
 }
+
 </script>
 
-<link rel="stylesheet" href="style.css">
 
-<!-- PDF.JS -->
+<!-- =====================================================
+     BREADCRUMB
+===================================================== -->
+
+<script type="application/ld+json">
+
+{
+ "@context":"https://schema.org",
+ "@type":"BreadcrumbList",
+ "itemListElement":[
+   {
+     "@type":"ListItem",
+     "position":1,
+     "name":"AdiyogiTools",
+     "item":"https://adiyogitools.in/"
+   },
+   {
+     "@type":"ListItem",
+     "position":2,
+     "name":"PDF Translator",
+     "item":"https://adiyogitools.in/pdf-translator.html"
+   }
+ ]
+}
+
+</script>
+
+
+<!-- =====================================================
+     CSS
+===================================================== -->
+
+<link rel="stylesheet"
+href="style.css">
+
+
+<!-- =====================================================
+     PDF.JS
+===================================================== -->
+
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs"
 type="module">
 </script>
 
-<!-- Tesseract OCR -->
+
+<!-- =====================================================
+     TESSERACT OCR
+===================================================== -->
+
 <script
 src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js">
 </script>
 
-<!-- jsPDF -->
+
+<!-- =====================================================
+     JSPDF
+===================================================== -->
+
 <script
 src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 </script>
 
 
 <style>
+
+/* =====================================================
+   MAIN
+===================================================== */
 
 .translator-page{
     width:100%;
@@ -104,8 +198,8 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 }
 
 .translator-tool,
-.seo-content,
-.related-tools{
+.related-tools,
+.seo-content{
     width:96%;
     max-width:900px;
     margin:20px auto;
@@ -115,15 +209,20 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
     box-shadow:0 5px 25px rgba(0,0,0,.12);
 }
 
+
+/* =====================================================
+   TOOL
+===================================================== */
+
 .translator-tool{
-    padding:25px;
+    padding:26px;
     text-align:center;
 }
 
 .translator-tool h1{
-    margin:0 0 10px;
     color:#1e293b;
     font-size:31px;
+    margin-bottom:10px;
 }
 
 .intro{
@@ -131,9 +230,14 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
     line-height:1.7;
 }
 
+
+/* =====================================================
+   FILE
+===================================================== */
+
 .file-box{
     margin-top:22px;
-    padding:20px;
+    padding:22px;
     border:2px dashed #2196F3;
     border-radius:12px;
     background:#f8fbff;
@@ -143,6 +247,11 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
     width:100%;
     box-sizing:border-box;
 }
+
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
 
 .control{
     margin-top:20px;
@@ -166,6 +275,11 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
     font-size:16px;
 }
 
+
+/* =====================================================
+   BUTTON
+===================================================== */
+
 #translateBtn{
     width:100%;
     margin-top:24px;
@@ -180,9 +294,14 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 }
 
 #translateBtn:disabled{
-    opacity:.65;
+    opacity:.6;
     cursor:wait;
 }
+
+
+/* =====================================================
+   PROGRESS
+===================================================== */
 
 .progress-box{
     display:none;
@@ -204,16 +323,26 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
     transition:width .2s;
 }
 
+
+/* =====================================================
+   STATUS
+===================================================== */
+
 #status{
-    margin-top:15px;
+    margin-top:16px;
     color:#334155;
     font-weight:600;
     line-height:1.6;
 }
 
+
+/* =====================================================
+   RESULT
+===================================================== */
+
 .result-box{
     display:none;
-    margin-top:22px;
+    margin-top:24px;
     padding:20px;
     background:#f8fafc;
     border-radius:12px;
@@ -232,14 +361,19 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
     font-weight:700;
 }
 
-.seo-content,
-.related-tools{
+
+/* =====================================================
+   RELATED / SEO
+===================================================== */
+
+.related-tools,
+.seo-content{
     padding:24px;
     text-align:left;
 }
 
-.seo-content h2,
-.related-tools h2{
+.related-tools h2,
+.seo-content h2{
     color:#1e293b;
 }
 
@@ -272,11 +406,16 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
     text-decoration:none;
 }
 
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
 @media(max-width:600px){
 
     .translator-tool,
-    .seo-content,
-    .related-tools{
+    .related-tools,
+    .seo-content{
         width:94%;
     }
 
@@ -288,10 +427,11 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
         font-size:27px;
     }
 
-    .seo-content,
-    .related-tools{
+    .related-tools,
+    .seo-content{
         padding:17px;
     }
+
 }
 
 </style>
@@ -301,25 +441,36 @@ src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js">
 
 <body>
 
+
 <div class="translator-page">
 
 
+<!-- =====================================================
+     TOOL
+===================================================== -->
+
 <section class="translator-tool">
+
 
 <h1>
 🌐 PDF & Image Translator
 </h1>
 
+
 <p class="intro">
-Translate PDF text or image text into Hindi and other
-Indian languages while keeping the page order.
+Translate English PDF text or text from an image into
+Hindi and other Indian languages.
 </p>
 
 
 <div class="file-box">
 
 <label for="file">
-<strong>📄 Select PDF or Image</strong>
+
+<strong>
+📄 Select PDF or Image
+</strong>
+
 </label>
 
 <br><br>
@@ -330,11 +481,15 @@ id="file"
 accept=".pdf,image/jpeg,image/png,image/webp">
 
 <p>
-PDF, JPG, PNG and WebP supported
+Supported: PDF, JPG, PNG and WebP
 </p>
 
 </div>
 
+
+<!-- =====================================================
+     LANGUAGE
+===================================================== -->
 
 <div class="control">
 
@@ -344,17 +499,49 @@ PDF, JPG, PNG and WebP supported
 
 <select id="language">
 
-<option value="hi">🇮🇳 Hindi</option>
-<option value="bn">🇮🇳 Bengali</option>
-<option value="ta">🇮🇳 Tamil</option>
-<option value="te">🇮🇳 Telugu</option>
-<option value="mr">🇮🇳 Marathi</option>
-<option value="gu">🇮🇳 Gujarati</option>
-<option value="kn">🇮🇳 Kannada</option>
-<option value="ml">🇮🇳 Malayalam</option>
-<option value="pa">🇮🇳 Punjabi</option>
-<option value="or">🇮🇳 Odia</option>
-<option value="as">🇮🇳 Assamese</option>
+<option value="hi">
+🇮🇳 Hindi
+</option>
+
+<option value="bn">
+🇮🇳 Bengali
+</option>
+
+<option value="ta">
+🇮🇳 Tamil
+</option>
+
+<option value="te">
+🇮🇳 Telugu
+</option>
+
+<option value="mr">
+🇮🇳 Marathi
+</option>
+
+<option value="gu">
+🇮🇳 Gujarati
+</option>
+
+<option value="kn">
+🇮🇳 Kannada
+</option>
+
+<option value="ml">
+🇮🇳 Malayalam
+</option>
+
+<option value="pa">
+🇮🇳 Punjabi
+</option>
+
+<option value="or">
+🇮🇳 Odia
+</option>
+
+<option value="as">
+🇮🇳 Assamese
+</option>
 
 </select>
 
@@ -362,11 +549,19 @@ PDF, JPG, PNG and WebP supported
 
 
 <button id="translateBtn">
+
 🌐 Translate Document
+
 </button>
 
 
-<div class="progress-box" id="progressBox">
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<div
+class="progress-box"
+id="progressBox">
 
 <div class="progress-bar">
 
@@ -383,9 +578,17 @@ id="progressFill">
 <p id="status"></p>
 
 
-<div class="result-box" id="resultBox">
+<!-- =====================================================
+     RESULT
+===================================================== -->
 
-<h3>✅ Translation Complete</h3>
+<div
+class="result-box"
+id="resultBox">
+
+<h3>
+✅ Translation Complete
+</h3>
 
 <p id="resultInfo"></p>
 
@@ -400,13 +603,20 @@ download="translated-document.pdf">
 
 </div>
 
+
 </section>
 
 
 
+<!-- =====================================================
+     RELATED
+===================================================== -->
+
 <section class="related-tools">
 
-<h2>Related PDF & Image Tools</h2>
+<h2>
+Related PDF & Image Tools
+</h2>
 
 <p>
 Explore more free tools from AdiyogiTools:
@@ -456,139 +666,174 @@ Image Resize by KB
 
 
 
+<!-- =====================================================
+     SEO
+===================================================== -->
+
 <section class="seo-content">
 
-<h2>PDF Translator Online</h2>
+<h2>
+PDF Translator Online
+</h2>
 
 <p>
-Translate PDF documents into Hindi and other Indian
-languages with AdiyogiTools. The tool processes PDF
-pages individually and creates a translated PDF with
-the same page order.
+AdiyogiTools PDF Translator converts readable English
+text from PDF documents into Hindi and other Indian
+languages. Each PDF page is processed separately so the
+original page order is maintained.
 </p>
 
 
-<h2>Translate PDF to Hindi</h2>
+<h2>
+Translate PDF to Hindi
+</h2>
 
 <p>
-Upload an English PDF, select Hindi and translate the
-document into Hindi.
+Upload an English PDF, choose Hindi and create a Hindi
+translated PDF.
 </p>
 
 
-<h2>Translate PDF to Indian Languages</h2>
+<h2>
+Translate PDF to Indian Languages
+</h2>
 
 <p>
-Supported languages include Hindi, Bengali, Tamil,
-Telugu, Marathi, Gujarati, Kannada, Malayalam, Punjabi,
-Odia and Assamese.
+The translator supports Hindi, Bengali, Tamil, Telugu,
+Marathi, Gujarati, Kannada, Malayalam, Punjabi, Odia
+and Assamese.
 </p>
 
 
-<h2>PDF Page-by-Page Translation</h2>
+<h2>
+Page-by-Page PDF Translation
+</h2>
 
 <p>
-Every PDF page is processed separately. A 12-page PDF
-produces a 12-page translated PDF when processing
-completes successfully.
+A 12-page input PDF produces 12 output pages. Each page
+is processed separately and the page sequence remains
+unchanged.
 </p>
 
 
-<h2>Images Inside PDF</h2>
+<h2>
+Images Inside PDF Are Ignored
+</h2>
 
 <p>
-Images and photographs inside a normal text PDF are not
-copied into the translated PDF. The tool focuses on
-document text.
+Images and photographs inside a PDF are not copied into
+the translated document. The tool focuses on detecting
+and translating document text.
 </p>
 
 
-<h2>Garbled PDF Font Protection</h2>
+<h2>
+OCR for Broken PDF Fonts
+</h2>
 
 <p>
-Some PDFs use special embedded fonts that can cause
-normal PDF text extraction to produce symbols instead
-of readable English. This version detects suspicious
-extracted text and uses OCR as a fallback for that page.
+Some PDFs contain custom font encoding that can cause
+normal PDF extraction to show characters such as
+symbols instead of readable words. When this happens,
+the page is rendered and OCR is used to recover the
+visible English text.
 </p>
 
 
-<h2>How to Translate a PDF</h2>
+<h2>
+How to Translate a PDF</h2>
 
 <ol>
 
-<li>Select the PDF.</li>
+<li>
+Select your PDF or image.
+</li>
 
-<li>Select the target language.</li>
+<li>
+Choose the target Indian language.
+</li>
 
-<li>Press Translate Document.</li>
+<li>
+Click Translate Document.
+</li>
 
-<li>Wait for page processing.</li>
+<li>
+The tool processes each page.
+</li>
 
-<li>Download the translated PDF.</li>
+<li>
+Download the translated PDF.
+</li>
 
 </ol>
 
 
-<h2>Frequently Asked Questions</h2>
+<h2>
+Frequently Asked Questions
+</h2>
 
 
-<h3>Will all pages be translated?</h3>
+<h3>
+Will a 12-page PDF remain 12 pages?
+</h3>
 
 <p>
-Yes. Each PDF page is processed independently and kept
-in the original page order.
+Yes. The output PDF creates one page for every input PDF
+page.
 </p>
 
 
-<h3>Will a 12-page PDF remain 12 pages?</h3>
+<h3>
+What happens when PDF text is garbled?
+</h3>
 
 <p>
-Yes. The output is generated with one output page for
-each input page.
+The garbled extracted text is discarded for that page
+and OCR is used instead.
 </p>
 
 
-<h3>Why does some PDF text appear as symbols?</h3>
+<h3>
+Will images inside the PDF be translated?
+</h3>
 
 <p>
-Some PDFs contain unusual font encoding. The translator
-detects this type of text and attempts OCR fallback.
+No. Images inside a PDF are ignored. The translator
+focuses on text.
 </p>
 
 
-<h3>Will images inside the PDF be copied?</h3>
+<h3>
+Can I translate an image?
+</h3>
 
 <p>
-No. The translated PDF is created as a text-focused
-document and does not copy the original PDF images.
+Yes. JPG, PNG and WebP images can be processed using
+English OCR.
 </p>
 
 
-<h3>Can I translate an image?</h3>
+<h3>
+Can I translate English PDF to Hindi?
+</h3>
 
 <p>
-Yes. JPG, PNG and WebP images can be read using OCR
-before translation.
+Yes. Select Hindi from the language menu.
 </p>
 
 
-<h3>Can I translate English PDF to Hindi?</h3>
+<h3>
+Is the PDF Translator free?
+</h3>
 
 <p>
-Yes. Select Hindi as the target language.
-</p>
-
-
-<h3>Is the tool free?</h3>
-
-<p>
-The tool interface is free. Translation uses external
-online translation services, so service availability
-and limits may apply.
+The browser-based tool interface is free. Translation
+uses an online translation service, so availability and
+service limits may apply.
 </p>
 
 </section>
+
 
 </div>
 
@@ -603,6 +848,7 @@ and limits may apply.
 import * as pdfjsLib
 from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.min.mjs";
 
+
 pdfjsLib.GlobalWorkerOptions.workerSrc =
 "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.10.38/pdf.worker.min.mjs";
 
@@ -614,13 +860,13 @@ pdfjsLib.GlobalWorkerOptions.workerSrc =
 const fileInput =
 document.getElementById("file");
 
-const language =
+const languageSelect =
 document.getElementById("language");
 
-const button =
+const translateBtn =
 document.getElementById("translateBtn");
 
-const status =
+const statusBox =
 document.getElementById("status");
 
 const progressBox =
@@ -640,16 +886,26 @@ document.getElementById("downloadBtn");
 
 
 /* =====================================================
-   LIMITS
+   SETTINGS
 ===================================================== */
 
-const HARD_LIMIT = 60000;
+const OCR_SCALE = 1.35;
 
-const TRANSLATE_TIMEOUT = 9000;
+const MAX_TRANSLATION_CHARS = 500;
 
-const OCR_SCALE = 1.5;
+const REQUEST_TIMEOUT = 8000;
 
-let startTime = 0;
+
+/* =====================================================
+   STATUS
+===================================================== */
+
+function status(text){
+
+    statusBox.textContent =
+    text;
+
+}
 
 
 /* =====================================================
@@ -658,7 +914,8 @@ let startTime = 0;
 
 function progress(value){
 
-    progressBox.style.display = "block";
+    progressBox.style.display =
+    "block";
 
     progressFill.style.width =
     Math.max(
@@ -673,43 +930,11 @@ function progress(value){
 
 
 /* =====================================================
-   STATUS
+   FETCH WITH TIMEOUT
 ===================================================== */
 
-function setStatus(text){
-
-    status.textContent = text;
-
-}
-
-
-/* =====================================================
-   TIME LIMIT
-===================================================== */
-
-function checkTime(){
-
-    if(
-        Date.now() - startTime >
-        HARD_LIMIT
-    ){
-
-        throw new Error(
-            "Processing exceeded 60 seconds. Please use a smaller PDF."
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   FETCH TIMEOUT
-===================================================== */
-
-async function request(
-    url,
-    timeout = TRANSLATE_TIMEOUT
+async function fetchWithTimeout(
+    url
 ){
 
     const controller =
@@ -717,22 +942,23 @@ async function request(
 
     const timer =
     setTimeout(
-        () => controller.abort(),
-        timeout
+        function(){
+
+            controller.abort();
+
+        },
+        REQUEST_TIMEOUT
     );
 
     try{
 
-        const response =
-        await fetch(
+        return await fetch(
             url,
             {
                 signal:
                 controller.signal
             }
         );
-
-        return response;
 
     }finally{
 
@@ -744,32 +970,40 @@ async function request(
 
 
 /* =====================================================
-   READ FILE
+   FILE BUFFER
 ===================================================== */
 
-function readBuffer(file){
+function readFile(file){
 
     return new Promise(
-        (resolve,reject)=>{
+        function(resolve,reject){
 
             const reader =
             new FileReader();
 
             reader.onload =
-            e =>
-            resolve(
-                e.target.result
-            );
+            function(e){
+
+                resolve(
+                    e.target.result
+                );
+
+            };
 
             reader.onerror =
-            () =>
-            reject(
-                new Error(
-                    "Could not read the file."
-                )
-            );
+            function(){
 
-            reader.readAsArrayBuffer(file);
+                reject(
+                    new Error(
+                        "Unable to read file."
+                    )
+                );
+
+            };
+
+            reader.readAsArrayBuffer(
+                file
+            );
 
         }
     );
@@ -778,10 +1012,10 @@ function readBuffer(file){
 
 
 /* =====================================================
-   CHECK GARBLED TEXT
+   DETECT BROKEN TEXT
 ===================================================== */
 
-function isGarbled(text){
+function brokenText(text){
 
     if(!text){
 
@@ -795,58 +1029,66 @@ function isGarbled(text){
         ""
     );
 
-    if(clean.length < 10){
-
-        return true;
-
-    }
-
-    /*
-     Common garbage characters seen
-     in incorrectly decoded PDF fonts.
-    */
-
-    const bad =
-    (
-        clean.match(
-            /[�¤§¶×÷>@#$%{}[\]\\|~^`]/g
-        ) || []
-    ).length;
-
-    const letters =
-    (
-        clean.match(
-            /[A-Za-zÀ-ÿ]/g
-        ) || []
-    ).length;
-
-    /*
-     If symbols dominate the text,
-     extraction is considered broken.
-    */
-
     if(
-        bad > 8 &&
-        bad > letters * 0.18
+        clean.length < 8
     ){
 
         return true;
 
     }
 
+
     /*
-     A very low alphabet ratio can also
-     indicate broken encoding.
+     Common characters produced
+     by broken PDF font mapping.
+    */
+
+    const garbage =
+    (
+        clean.match(
+            /[>$@%#§¤�{}[\]\\|~^`]/g
+        ) || []
+    ).length;
+
+
+    const alphabet =
+    (
+        clean.match(
+            /[A-Za-z]/g
+        ) || []
+    ).length;
+
+
+    /*
+     Strong garbage signal.
+    */
+
+    if(
+        garbage >= 5 &&
+        garbage >
+        alphabet * 0.12
+    ){
+
+        return true;
+
+    }
+
+
+    /*
+     If text contains almost no
+     English letters.
     */
 
     if(
         clean.length > 30 &&
-        letters / clean.length < 0.35
+        alphabet /
+        clean.length < 0.28
     ){
 
         return true;
 
     }
+
 
     return false;
 
@@ -854,35 +1096,70 @@ function isGarbled(text){
 
 
 /* =====================================================
-   GROUP PDF TEXT INTO LINES
+   EXTRACT TEXT ITEMS
 ===================================================== */
 
-function makeLines(items){
+function makeLines(
+    items
+){
 
-    if(!items.length){
+    const lines = [];
 
-        return [];
-
-    }
 
     const sorted =
-    [...items].sort(
-        (a,b)=>{
+    items
+    .filter(
+        item =>
+        item.str &&
+        item.str.trim()
+    )
+    .map(
+        item => {
+
+            const t =
+            item.transform;
+
+            return {
+
+                text:
+                item.str.trim(),
+
+                x:
+                t[4],
+
+                y:
+                t[5],
+
+                size:
+                Math.max(
+                    7,
+                    Math.abs(
+                        t[3]
+                    )
+                )
+
+            };
+
+        }
+    )
+    .sort(
+        function(a,b){
 
             if(
-                Math.abs(a.y-b.y) < 5
+                Math.abs(
+                    a.y-b.y
+                ) < 5
             ){
 
                 return a.x-b.x;
 
             }
 
-            return a.y-b.y;
+            return b.y-a.y;
 
         }
     );
 
-    const lines = [];
 
     for(
         const item of sorted
@@ -892,6 +1169,7 @@ function makeLines(items){
         lines[
             lines.length-1
         ];
+
 
         if(
             !line ||
@@ -904,25 +1182,37 @@ function makeLines(items){
 
                 y:item.y,
 
+                x:item.x,
+
+                size:item.size,
+
                 items:[]
 
             };
 
-            lines.push(line);
+            lines.push(
+                line
+            );
 
         }
 
-        line.items.push(item);
+
+        line.items.push(
+            item
+        );
 
     }
 
-    return lines.map(
-        line => {
+
+    return lines
+    .map(
+        function(line){
 
             line.items.sort(
                 (a,b)=>
                 a.x-b.x
             );
+
 
             return {
 
@@ -939,26 +1229,19 @@ function makeLines(items){
                 .trim(),
 
                 x:
-                Math.min(
-                    ...line.items.map(
-                        x=>x.x
-                    )
-                ),
+                line.items[0].x,
 
                 y:
                 line.y,
 
-                fontSize:
-                Math.max(
-                    ...line.items.map(
-                        x=>x.fontSize
-                    )
-                )
+                size:
+                line.size
 
             };
 
         }
-    ).filter(
+    )
+    .filter(
         x=>x.text
     );
 
@@ -966,10 +1249,10 @@ function makeLines(items){
 
 
 /* =====================================================
-   NORMAL PDF TEXT EXTRACTION
+   EXTRACT PDF
 ===================================================== */
 
-async function extractPDF(
+async function inspectPDF(
     buffer
 ){
 
@@ -978,93 +1261,61 @@ async function extractPDF(
         data:buffer
     }).promise;
 
+
     const pages = [];
 
+
     for(
-        let number=1;
-        number<=pdf.numPages;
-        number++
+        let n=1;
+        n<=pdf.numPages;
+        n++
     ){
 
-        checkTime();
-
-        setStatus(
-            "Reading page " +
-            number +
+        status(
+            "Checking PDF page " +
+            n +
             " of " +
-            pdf.numPages
+            pdf.numPages +
+            "..."
         );
+
 
         progress(
-            number /
-            pdf.numPages *
-            15
+            (n /
+            pdf.numPages) *
+            10
         );
+
 
         const page =
         await pdf.getPage(
-            number
+            n
         );
+
 
         const viewport =
         page.getViewport({
             scale:1
         });
 
+
         const content =
         await page.getTextContent({
-            normalizeWhitespace:true,
-            disableCombineTextItems:false
+            normalizeWhitespace:true
         });
 
-        const items =
+
+        const text =
         content.items
-        .filter(
-            item =>
-            item.str &&
-            item.str.trim()
-        )
         .map(
-            item => {
-
-                const tx =
-                item.transform;
-
-                return {
-
-                    text:
-                    item.str.trim(),
-
-                    x:
-                    tx[4],
-
-                    y:
-                    viewport.height-
-                    tx[5],
-
-                    fontSize:
-                    Math.max(
-                        7,
-                        Math.abs(
-                            tx[3]
-                        )
-                    )
-
-                };
-
-            }
-        );
-
-        const allText =
-        items
-        .map(
-            x=>x.text
+            x=>x.str || ""
         )
         .join(" ");
 
+
         pages.push({
 
-            number,
+            number:n,
 
             width:
             viewport.width,
@@ -1072,30 +1323,34 @@ async function extractPDF(
             height:
             viewport.height,
 
-            items,
-
             lines:
-            makeLines(items),
+            makeLines(
+                content.items
+            ),
 
-            needsOCR:
-            isGarbled(
-                allText
+            broken:
+            brokenText(
+                text
             )
 
         });
 
     }
 
+
     return {
+
         pdf,
+
         pages
+
     };
 
 }
 
 
 /* =====================================================
-   RENDER PAGE FOR OCR
+   RENDER PDF PAGE
 ===================================================== */
 
 async function renderPage(
@@ -1107,20 +1362,24 @@ async function renderPage(
         scale:OCR_SCALE
     });
 
+
     const canvas =
     document.createElement(
         "canvas"
     );
+
 
     canvas.width =
     Math.ceil(
         viewport.width
     );
 
+
     canvas.height =
     Math.ceil(
         viewport.height
     );
+
 
     const ctx =
     canvas.getContext(
@@ -1130,14 +1389,38 @@ async function renderPage(
         }
     );
 
+
+    /*
+     White background is important
+     for OCR.
+    */
+
+    ctx.fillStyle =
+    "#ffffff";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
     await page.render({
+
         canvasContext:ctx,
+
         viewport:viewport
+
     }).promise;
 
+
     return {
+
         canvas,
+
         viewport
+
     };
 
 }
@@ -1148,80 +1431,37 @@ async function renderPage(
 ===================================================== */
 
 async function OCRPage(
-    pdfPage
+    page
 ){
-
-    if(
-        typeof Tesseract ===
-        "undefined"
-    ){
-
-        throw new Error(
-            "OCR library failed to load."
-        );
-
-    }
 
     const rendered =
     await renderPage(
-        pdfPage
+        page
     );
 
-    /*
-     psm 6 works well for normal
-     document pages.
-    */
 
     const worker =
     await Tesseract.createWorker(
         "eng",
-        1,
-        {
-
-            logger:
-            message => {
-
-                if(
-                    message.status ===
-                    "recognizing text"
-                ){
-
-                    const p =
-                    message.progress || 0;
-
-                    progress(
-                        15 +
-                        p * 15
-                    );
-
-                }
-
-            }
-
-        }
+        1
     );
+
 
     try{
 
         const result =
         await worker.recognize(
-            rendered.canvas,
-            {},
-            {
-                blocks:true
-            }
+            rendered.canvas
         );
+
 
         const words =
         result.data.words ||
         [];
 
-        /*
-         Convert OCR words into lines
-         while keeping approximate position.
-        */
 
-        const lineMap = [];
+        const groups = [];
+
 
         for(
             const word of words
@@ -1236,109 +1476,122 @@ async function OCRPage(
 
             }
 
-            const box =
+
+            const b =
             word.bbox;
 
-            const y =
-            box.y0 /
-            OCR_SCALE;
 
             const x =
-            box.x0 /
+            b.x0 /
             OCR_SCALE;
 
-            let line =
-            lineMap.find(
-                item =>
-                Math.abs(
-                    item.y-y
-                ) < 12
+
+            const y =
+            b.y0 /
+            OCR_SCALE;
+
+
+            const size =
+            Math.max(
+                8,
+                (
+                    b.y1-b.y0
+                ) /
+                OCR_SCALE
             );
+
+
+            let line =
+            groups.find(
+                function(g){
+
+                    return Math.abs(
+                        g.y-y
+                    ) < 11;
+
+                }
+            );
+
 
             if(!line){
 
                 line = {
 
-                    y,
+                    y:y,
 
                     words:[]
 
                 };
 
-                lineMap.push(
+                groups.push(
                     line
                 );
 
             }
+
 
             line.words.push({
 
                 text:
                 word.text.trim(),
 
-                x,
+                x:x,
 
-                y,
-
-                fontSize:
-                Math.max(
-                    8,
-                    (
-                        box.y1-
-                        box.y0
-                    ) /
-                    OCR_SCALE
-                )
+                size:size
 
             });
 
         }
 
-        lineMap.sort(
+
+        groups.sort(
             (a,b)=>
             a.y-b.y
         );
 
-        const lines =
-        lineMap.map(
-            line => {
 
-                line.words.sort(
+        return groups
+        .map(
+            function(group){
+
+                group.words.sort(
                     (a,b)=>
                     a.x-b.x
                 );
 
+
                 return {
 
                     text:
-                    line.words
+                    group.words
                     .map(
-                        w=>w.text
+                        x=>x.text
                     )
                     .join(" ")
                     .trim(),
 
                     x:
-                    line.words[0].x,
+                    group.words[0].x,
 
                     y:
-                    line.y,
+                    group.y,
 
-                    fontSize:
+                    size:
                     Math.max(
-                        ...line.words.map(
-                            w=>w.fontSize
+                        ...group.words
+                        .map(
+                            x=>x.size
                         )
                     )
 
                 };
 
             }
-        ).filter(
+        )
+        .filter(
             x=>x.text
         );
 
-        return lines;
 
     }finally{
 
@@ -1350,19 +1603,33 @@ async function OCRPage(
 
 
 /* =====================================================
-   TEXT CHUNKS
+   SPLIT LONG TEXT
 ===================================================== */
 
-function chunks(text){
+function splitLong(
+    text
+){
 
-    const max = 550;
+    if(
+        text.length <=
+        MAX_TRANSLATION_CHARS
+    ){
+
+        return [
+            text
+        ];
+
+    }
+
 
     const words =
     text.split(/\s+/);
 
+
     const result = [];
 
     let current = "";
+
 
     for(
         const word of words
@@ -1372,7 +1639,7 @@ function chunks(text){
             current.length +
             word.length +
             1 >
-            max
+            MAX_TRANSLATION_CHARS
         ){
 
             if(current){
@@ -1400,6 +1667,7 @@ function chunks(text){
 
     }
 
+
     if(current){
 
         result.push(
@@ -1408,25 +1676,20 @@ function chunks(text){
 
     }
 
+
     return result;
 
 }
 
 
 /* =====================================================
-   FAST TRANSLATION
+   GOOGLE TRANSLATION
 ===================================================== */
 
-async function translateText(
+async function googleTranslate(
     text,
     target
 ){
-
-    if(!text.trim()){
-
-        return "";
-
-    }
 
     const url =
     "https://translate.googleapis.com/translate_a/single"
@@ -1447,32 +1710,41 @@ async function translateText(
         text
     );
 
+
     const response =
-    await request(
+    await fetchWithTimeout(
         url
     );
 
-    if(!response.ok){
+
+    if(
+        !response.ok
+    ){
 
         throw new Error(
-            "Translation service unavailable."
+            "Google translation unavailable."
         );
 
     }
+
 
     const data =
     await response.json();
 
+
     if(
         !data ||
-        !Array.isArray(data[0])
+        !Array.isArray(
+            data[0]
+        )
     ){
 
         throw new Error(
-            "Translation service returned invalid data."
+            "Invalid translation response."
         );
 
     }
+
 
     return data[0]
     .map(
@@ -1484,7 +1756,113 @@ async function translateText(
 
 
 /* =====================================================
-   TRANSLATE LINES IN PARALLEL
+   TRANSLATE LINE
+===================================================== */
+
+async function translateLine(
+    line,
+    target
+){
+
+    const parts =
+    splitLong(
+        line.text
+    );
+
+
+    const translated = [];
+
+
+    for(
+        const part of parts
+    ){
+
+        try{
+
+            translated.push(
+                await googleTranslate(
+                    part,
+                    target
+                )
+            );
+
+        }catch(error){
+
+            /*
+             Fallback translation service.
+            */
+
+            const fallback =
+            "https://api.mymemory.translated.net/get"
+            +
+            "?q=" +
+            encodeURIComponent(
+                part
+            )
+            +
+            "&langpair=en%7C" +
+            encodeURIComponent(
+                target
+            );
+
+
+            const response =
+            await fetchWithTimeout(
+                fallback
+            );
+
+
+            if(
+                !response.ok
+            ){
+
+                throw new Error(
+                    "Translation service unavailable."
+                );
+
+            }
+
+
+            const data =
+            await response.json();
+
+
+            if(
+                !data.responseData ||
+                !data.responseData.translatedText
+            ){
+
+                throw new Error(
+                    "Translation failed."
+                );
+
+            }
+
+
+            translated.push(
+                data.responseData
+                .translatedText
+            );
+
+        }
+
+    }
+
+
+    return {
+
+        ...line,
+
+        translated:
+        translated.join(" ")
+
+    };
+
+}
+
+
+/* =====================================================
+   TRANSLATE LINES
 ===================================================== */
 
 async function translateLines(
@@ -1492,20 +1870,17 @@ async function translateLines(
     target
 ){
 
-    if(!lines.length){
+    const result = [];
 
-        return [];
-
-    }
 
     /*
-     Keep requests reasonably small.
-     Lines are translated in parallel.
+     Small batches prevent the browser
+     from making hundreds of requests
+     at exactly the same moment.
     */
 
-    const batches = [];
+    const batchSize = 6;
 
-    const batchSize = 8;
 
     for(
         let i=0;
@@ -1513,265 +1888,274 @@ async function translateLines(
         i+=batchSize
     ){
 
-        batches.push(
-            lines.slice(
-                i,
-                i+batchSize
-            )
+        const batch =
+        lines.slice(
+            i,
+            i+batchSize
         );
 
-    }
 
-    const output = [];
-
-    for(
-        const batch of batches
-    ){
-
-        checkTime();
-
-        const results =
+        const translated =
         await Promise.all(
             batch.map(
-                async line => {
-
-                    const pieces =
-                    chunks(
-                        line.text
-                    );
-
-                    const translated =
-                    await Promise.all(
-                        pieces.map(
-                            piece =>
-                            translateText(
-                                piece,
-                                target
-                            )
-                        )
-                    );
-
-                    return {
-
-                        ...line,
-
-                        translated:
-                        translated.join(
-                            " "
-                        )
-
-                    };
-
-                }
+                line =>
+                translateLine(
+                    line,
+                    target
+                )
             )
         );
 
-        output.push(
-            ...results
+
+        result.push(
+            ...translated
         );
 
+
         progress(
-            30 +
+            20 +
             (
-                output.length /
+                result.length /
                 lines.length
             ) * 55
         );
 
-        setStatus(
-            "Translating text " +
-            output.length +
+
+        status(
+            "Translating " +
+            result.length +
             " of " +
             lines.length +
-            "..."
+            " text lines..."
         );
 
     }
 
-    return output;
+
+    return result;
 
 }
 
 
 /* =====================================================
-   CREATE PDF
+   DRAW TRANSLATED PAGE
 ===================================================== */
 
-function createOutputPDF(
-    jsPDF,
-    pages,
-    pageCount
+async function createTranslatedPageCanvas(
+    page,
+    lines
 ){
 
-    const pdf =
-    new jsPDF(
-        "p",
-        "pt",
-        "a4"
+    /*
+     Render a clean white page.
+    We DO NOT copy the original PDF image.
+    */
+
+    const scale = 1.5;
+
+
+    const canvas =
+    document.createElement(
+        "canvas"
     );
 
+
+    canvas.width =
+    Math.ceil(
+        page.width * scale
+    );
+
+
+    canvas.height =
+    Math.ceil(
+        page.height * scale
+    );
+
+
+    const ctx =
+    canvas.getContext(
+        "2d"
+    );
+
+
+    ctx.fillStyle =
+    "#ffffff";
+
+    ctx.fillRect(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+    );
+
+
+    ctx.fillStyle =
+    "#111111";
+
+
+    /*
+     Browser canvas supports Unicode
+     fonts much better than default
+     jsPDF fonts.
+    */
+
+    ctx.textBaseline =
+    "top";
+
+
     for(
-        let index=0;
-        index<pageCount;
-        index++
+        const line of lines
     ){
 
-        if(index>0){
-
-            pdf.addPage();
-
-        }
-
-        const page =
-        pages[index];
-
-        const outWidth =
-        pdf.internal.pageSize
-        .getWidth();
-
-        const outHeight =
-        pdf.internal.pageSize
-        .getHeight();
-
-        /*
-         White page.
-        */
-
-        pdf.setFillColor(
-            255,
-            255,
-            255
-        );
-
-        pdf.rect(
-            0,
-            0,
-            outWidth,
-            outHeight,
-            "F"
-        );
-
-        if(!page){
+        if(
+            !line.translated
+        ){
 
             continue;
 
         }
 
-        const scaleX =
-        outWidth /
-        page.width;
 
-        const scaleY =
-        outHeight /
-        page.height;
+        const fontSize =
+        Math.max(
+            10,
+            Math.min(
+                30,
+                line.size * scale
+            )
+        );
+
+
+        /*
+         Try several Unicode-capable
+         browser fonts.
+        */
+
+        ctx.font =
+        fontSize +
+        "px Arial, Noto Sans, sans-serif";
+
+
+        const x =
+        Math.max(
+            5,
+            line.x * scale
+        );
+
+
+        const y =
+        Math.max(
+            5,
+            (
+                page.height -
+                line.y
+            ) * scale
+        );
+
+
+        /*
+         Text wrapping.
+        */
+
+        const maxWidth =
+        canvas.width -
+        x -
+        20;
+
+
+        const words =
+        line.translated
+        .split(/\s+/);
+
+
+        let current = "";
+
+        let yy = y;
+
 
         for(
-            const line
-            of page.translatedLines
+            const word of words
         ){
 
+            const test =
+            current
+            ? current +
+              " " +
+              word
+            : word;
+
+
+            const width =
+            ctx.measureText(
+                test
+            ).width;
+
+
             if(
-                !line.translated
+                width >
+                maxWidth &&
+                current
             ){
 
-                continue;
+                ctx.fillText(
+                    current,
+                    x,
+                    yy
+                );
+
+
+                yy +=
+                fontSize *
+                1.25;
+
+
+                current =
+                word;
+
+            }else{
+
+                current =
+                test;
 
             }
 
-            let size =
-            line.fontSize *
-            Math.min(
-                scaleX,
-                scaleY
-            );
+        }
 
-            size =
-            Math.max(
-                7,
-                Math.min(
-                    18,
-                    size
-                )
-            );
 
-            pdf.setFont(
-                "helvetica",
-                "normal"
-            );
+        if(current){
 
-            pdf.setFontSize(
-                size
-            );
-
-            pdf.setTextColor(
-                20,
-                20,
-                20
-            );
-
-            const x =
-            Math.max(
-                5,
-                line.x *
-                scaleX
-            );
-
-            const y =
-            Math.max(
-                size,
-                line.y *
-                scaleY
-            );
-
-            const maxWidth =
-            Math.max(
-                50,
-                outWidth -
-                x -
-                15
-            );
-
-            /*
-             Hindi and Indian scripts may not
-             be supported by default jsPDF
-             Helvetica font. We therefore use
-             browser canvas as image only for
-             translated text when needed.
-             This function handles Latin fallback.
-            */
-
-            const wrapped =
-            pdf.splitTextToSize(
-                line.translated,
-                maxWidth
-            );
-
-            pdf.text(
-                wrapped,
+            ctx.fillText(
+                current,
                 x,
-                y
+                yy
             );
 
         }
 
     }
 
-    return pdf.output(
-        "blob"
-    );
+
+    return canvas;
 
 }
 
 
 /* =====================================================
-   CREATE IMAGE TRANSLATION PDF
+   IMAGE TRANSLATOR
 ===================================================== */
 
-async function imageToPDF(
+async function translateImage(
     file,
-    target,
-    jsPDF
+    target
 ){
+
+    status(
+        "Reading image text..."
+    );
+
+
+    progress(10);
+
 
     const worker =
     await Tesseract.createWorker(
@@ -1779,7 +2163,6 @@ async function imageToPDF(
         1
     );
 
-    let text = "";
 
     try{
 
@@ -1788,9 +2171,121 @@ async function imageToPDF(
             file
         );
 
-        text =
+
+        const text =
         result.data.text
         .trim();
+
+
+        if(!text){
+
+            throw new Error(
+                "No readable English text found."
+            );
+
+        }
+
+
+        const parts =
+        splitLong(
+            text
+        );
+
+
+        const translated =
+        [];
+
+
+        for(
+            const part of parts
+        ){
+
+            translated.push(
+                await translateLine(
+                    {
+                        text:part,
+                        x:30,
+                        y:30,
+                        size:16
+                    },
+                    target
+                )
+            );
+
+        }
+
+
+        const jsPDF =
+        window.jspdf.jsPDF;
+
+
+        const pdf =
+        new jsPDF(
+            "p",
+            "mm",
+            "a4"
+        );
+
+
+        let y=20;
+
+
+        pdf.setFontSize(
+            12
+        );
+
+
+        for(
+            const line
+            of translated
+        ){
+
+            const lines =
+            pdf.splitTextToSize(
+                line.translated,
+                180
+            );
+
+
+            for(
+                const l
+                of lines
+            ){
+
+                if(
+                    y>280
+                ){
+
+                    pdf.addPage();
+
+                    y=20;
+
+                }
+
+
+                /*
+                 This is only a fallback for
+                 image-only input.
+                */
+
+                pdf.text(
+                    l,
+                    15,
+                    y
+                );
+
+
+                y+=7;
+
+            }
+
+        }
+
+
+        return pdf.output(
+            "blob"
+        );
+
 
     }finally{
 
@@ -1798,81 +2293,279 @@ async function imageToPDF(
 
     }
 
-    if(!text){
+}
+
+
+/* =====================================================
+   MAIN PDF TRANSLATOR
+===================================================== */
+
+async function translatePDF(
+    file,
+    target
+){
+
+    status(
+        "Opening PDF..."
+    );
+
+
+    progress(3);
+
+
+    const buffer =
+    await readFile(
+        file
+    );
+
+
+    const inspected =
+    await inspectPDF(
+        buffer
+    );
+
+
+    const pdf =
+    inspected.pdf;
+
+
+    const pages =
+    inspected.pages;
+
+
+    if(
+        pages.length === 0
+    ){
 
         throw new Error(
-            "No readable text found in image."
+            "No pages found in PDF."
         );
 
     }
 
-    const parts =
-    chunks(text);
 
-    const translated =
-    await Promise.all(
-        parts.map(
-            part =>
-            translateText(
-                part,
-                target
-            )
-        )
+    const outputCanvases =
+    [];
+
+
+    /*
+     IMPORTANT:
+     Every page is processed.
+    */
+
+    for(
+        let i=0;
+        i<pages.length;
+        i++
+    ){
+
+        const info =
+        pages[i];
+
+
+        status(
+            "Processing page " +
+            (i+1) +
+            " of " +
+            pages.length +
+            "..."
+        );
+
+
+        let lines =
+        info.lines;
+
+
+        /*
+         =================================================
+         CRITICAL FIX
+         =================================================
+
+         If PDF.js gives garbage text,
+         DO NOT TRANSLATE IT.
+
+         Render page -> OCR -> use OCR text.
+        */
+
+        if(
+            info.broken
+        ){
+
+            status(
+                "Broken PDF font detected on page " +
+                (i+1) +
+                ". Using OCR..."
+            );
+
+
+            const pdfPage =
+            await pdf.getPage(
+                info.number
+            );
+
+
+            lines =
+            await OCRPage(
+                pdfPage
+            );
+
+        }
+
+
+        /*
+         If still no text, keep blank page.
+         */
+
+        if(
+            !lines ||
+            lines.length === 0
+        ){
+
+            outputCanvases.push({
+
+                width:
+                info.width,
+
+                height:
+                info.height,
+
+                lines:[]
+
+            });
+
+
+            continue;
+
+        }
+
+
+        /*
+         Translate only actual text.
+        */
+
+        const translatedLines =
+        await translateLines(
+            lines,
+            target
+        );
+
+
+        outputCanvases.push({
+
+            width:
+            info.width,
+
+            height:
+            info.height,
+
+            lines:
+            translatedLines
+
+        });
+
+
+        progress(
+            20 +
+            (
+                (i+1) /
+                pages.length
+            ) * 70
+        );
+
+    }
+
+
+    /*
+     =================================================
+     CREATE FINAL PDF
+     =================================================
+    */
+
+    status(
+        "Building translated PDF..."
     );
 
-    const finalText =
-    translated.join(" ");
 
-    const pdf =
+    progress(92);
+
+
+    const jsPDF =
+    window.jspdf.jsPDF;
+
+
+    const finalPDF =
     new jsPDF(
         "p",
         "pt",
         "a4"
     );
 
-    const width =
-    pdf.internal.pageSize
+
+    const outputWidth =
+    finalPDF.internal.pageSize
     .getWidth();
 
-    const height =
-    pdf.internal.pageSize
+
+    const outputHeight =
+    finalPDF.internal.pageSize
     .getHeight();
 
-    pdf.setFontSize(13);
 
-    const lines =
-    pdf.splitTextToSize(
-        finalText,
-        width-60
-    );
-
-    let y=45;
+    /*
+     Every input page becomes exactly
+     one output PDF page.
+    */
 
     for(
-        const line of lines
+        let i=0;
+        i<outputCanvases.length;
+        i++
     ){
 
-        if(
-            y>height-40
-        ){
+        if(i>0){
 
-            pdf.addPage();
-
-            y=45;
+            finalPDF.addPage();
 
         }
 
-        pdf.text(
-            line,
-            30,
-            y
+
+        const page =
+        outputCanvases[i];
+
+
+        const canvas =
+        await createTranslatedPageCanvas(
+            page,
+            page.lines
         );
 
-        y+=19;
+
+        const image =
+        canvas.toDataURL(
+            "image/jpeg",
+            0.88
+        );
+
+
+        /*
+         Keep exact A4 output page.
+        */
+
+        finalPDF.addImage(
+            image,
+            "JPEG",
+            0,
+            0,
+            outputWidth,
+            outputHeight,
+            undefined,
+            "FAST"
+        );
 
     }
 
-    return pdf.output(
+
+    return finalPDF.output(
         "blob"
     );
 
@@ -1880,15 +2573,16 @@ async function imageToPDF(
 
 
 /* =====================================================
-   MAIN
+   BUTTON
 ===================================================== */
 
-button.addEventListener(
+translateBtn.addEventListener(
     "click",
     async function(){
 
         const file =
         fileInput.files[0];
+
 
         if(!file){
 
@@ -1900,235 +2594,129 @@ button.addEventListener(
 
         }
 
-        startTime =
-        Date.now();
 
-        button.disabled =
+        const target =
+        languageSelect.value;
+
+
+        translateBtn.disabled =
         true;
+
 
         resultBox.style.display =
         "none";
 
+
+        progressBox.style.display =
+        "block";
+
+
+        progress(1);
+
+
         try{
-
-            const target =
-            language.value;
-
-            /*
-             Load jsPDF.
-            */
-
-            const jsPDF =
-            window.jspdf.jsPDF;
 
             let blob;
 
+
             /*
-             ========================================
-             IMAGE
-             ========================================
+             PDF
             */
 
             if(
-                !file.type.includes(
-                    "pdf"
-                )
+                file.type ===
+                "application/pdf"
             ){
 
-                setStatus(
-                    "Reading image text..."
-                );
-
-                progress(5);
-
                 blob =
-                await imageToPDF(
+                await translatePDF(
                     file,
-                    target,
-                    jsPDF
+                    target
                 );
+
+
+                resultInfo.textContent =
+                "✅ Every PDF page was processed. The translated PDF keeps the same page count and page order.";
 
             }
 
+
             /*
-             ========================================
-             PDF
-             ========================================
+             IMAGE
             */
 
             else{
 
-                setStatus(
-                    "Opening PDF..."
-                );
-
-                progress(3);
-
-                const buffer =
-                await readBuffer(
-                    file
-                );
-
-                const extracted =
-                await extractPDF(
-                    buffer
-                );
-
-                const pdf =
-                extracted.pdf;
-
-                const pages =
-                extracted.pages;
-
-                const outputPages =
-                [];
-
-                /*
-                 Process EVERY page.
-                */
-
-                for(
-                    let i=0;
-                    i<pages.length;
-                    i++
-                ){
-
-                    checkTime();
-
-                    const info =
-                    pages[i];
-
-                    setStatus(
-                        "Processing page " +
-                        (i+1) +
-                        " of " +
-                        pages.length
-                    );
-
-                    /*
-                     If font encoding is broken,
-                     use OCR fallback.
-                    */
-
-                    if(
-                        info.needsOCR
-                    ){
-
-                        setStatus(
-                            "Fixing text encoding on page " +
-                            (i+1) +
-                            "..."
-                        );
-
-                        const realPage =
-                        await pdf.getPage(
-                            info.number
-                        );
-
-                        info.lines =
-                        await OCRPage(
-                            realPage
-                        );
-
-                    }
-
-                    /*
-                     Translate this page's lines.
-                    */
-
-                    info.translatedLines =
-                    await translateLines(
-                        info.lines,
-                        target
-                    );
-
-                    outputPages.push(
-                        info
-                    );
-
-                    progress(
-                        20 +
-                        (
-                            (i+1) /
-                            pages.length
-                        ) * 65
-                    );
-
-                }
-
-                setStatus(
-                    "Creating " +
-                    pages.length +
-                    "-page translated PDF..."
-                );
-
-                progress(90);
-
                 blob =
-                createOutputPDF(
-                    jsPDF,
-                    outputPages,
-                    pages.length
+                await translateImage(
+                    file,
+                    target
                 );
+
+
+                resultInfo.textContent =
+                "✅ Image text was translated and a new PDF was created.";
 
             }
 
-            checkTime();
 
             const url =
             URL.createObjectURL(
                 blob
             );
 
+
             downloadBtn.href =
             url;
+
 
             downloadBtn.download =
             "translated-document.pdf";
 
-            resultInfo.textContent =
-            file.type.includes("pdf")
-            ?
-            "Done. Every PDF page has been processed and kept in the same page order."
-            :
-            "Done. The detected image text has been translated.";
 
             resultBox.style.display =
             "block";
 
+
             progress(100);
 
-            setStatus(
+
+            status(
                 "✅ Translation complete."
             );
+
 
             resultBox.scrollIntoView({
                 behavior:"smooth",
                 block:"center"
             });
 
+
         }catch(error){
 
-            console.error(error);
+            console.error(
+                error
+            );
 
-            progress(0);
 
-            setStatus(
+            status(
                 "❌ " +
                 (
                     error.message ||
-                    "Something went wrong."
+                    "Translation failed."
                 )
             );
+
 
             alert(
                 error.message ||
                 "Translation failed."
             );
 
+
         }finally{
 
-            button.disabled =
+            translateBtn.disabled =
             false;
 
         }
@@ -2139,4 +2727,5 @@ button.addEventListener(
 </script>
 
 </body>
+
 </html>
