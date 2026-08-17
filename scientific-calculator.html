@@ -2023,8 +2023,9 @@ function clearAll(){
 
 function tokenToString(t){
 
-    if(t.type === "text")
+    if(t.type === "text"){
         return t.value;
+    }
 
 
     if(t.type === "frac"){
@@ -2035,12 +2036,28 @@ function tokenToString(t){
         const denominator =
             t.den || "1";
 
+        /*
+           IMPORTANT:
+           Numerator aur denominator
+           dono ko separately bracket karna hai.
+
+           Example:
+
+           3+4
+           ───
+            9
+
+           internally:
+
+           ((3+4)/(9))
+        */
+
         return (
-            "(" +
+            "((" +
             numerator +
-            "/" +
+            ")/(" +
             denominator +
-            ")"
+            "))"
         );
     }
 
