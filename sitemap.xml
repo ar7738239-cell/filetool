@@ -1,80 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-<url>
-<loc>https://adiyogitools.in/</loc>
-<priority>1.0</priority>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/about.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/about.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/contact.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/contact.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/privacy.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/privacy.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/terms.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/terms.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/image-resizer.html</loc>
-</url>
 
-<url>
-<loc>https://adiyogitools.in/image-to-pdf.html</loc>
-</url>
+    <!-- IMAGE TOOLS -->
 
-<url>
-<loc>https://adiyogitools.in/image-resize-kb.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/image-resizer.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/image-crop.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/image-to-pdf.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/image-compressor.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/image-resize-kb.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/jpg-to-png.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/image-crop.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/watermark-maker.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/image-compressor.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/pdf-compress.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/jpg-to-png.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/pdf-merge.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/watermark-maker.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/pdf-split.html</loc>
-</url>
 
-<loc>https://adiyogitools.in/passport-photo.html</loc>
+    <!-- PDF TOOLS -->
 
-  
-<url>
-<loc>https://adiyogitools.in/signature-resize.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/word-to-pdf.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/qr-generator.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/pdf-compress.html</loc>
+    </url>
 
-<url>
-<loc>https://adiyogitools.in/word-to-pdf.html</loc>
-</url>
+    <url>
+        <loc>https://adiyogitools.in/pdf-merge.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/pdf-split.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/pdf-translator.html</loc>
+    </url>
+
+
+    <!-- FORM TOOLS -->
+
+    <url>
+        <loc>https://adiyogitools.in/passport-photo.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/signature-resize.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/qr-generator.html</loc>
+    </url>
 
 </urlset>
