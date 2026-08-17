@@ -1,5 +1,4 @@
 User-agent: *
-
 Allow: /
 
-Sitemap: https://ar7738239-cell.github.io/filetool/sitemap.xml
+Sitemap: https://adiyogitools.in/sitemap.xml
