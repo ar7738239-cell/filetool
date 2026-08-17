@@ -1,29 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
 
 <title>Adiyogi Scientific Calculator</title>
 
-<meta name="description"
-content="Advanced scientific and engineering calculator by AdiyogiTools.">
-
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
     box-sizing:border-box;
+    margin:0;
+    padding:0;
     -webkit-tap-highlight-color:transparent;
 }
 
-html,body{
-    margin:0;
-    padding:0;
+html,
+body{
     width:100%;
     height:100%;
     overflow:hidden;
-    background:#070b16;
-    color:#fff;
+    background:#080d19;
+    color:white;
     font-family:Arial,Helvetica,sans-serif;
 }
 
@@ -32,464 +41,681 @@ body{
 }
 
 button{
+    border:none;
+    outline:none;
     font-family:inherit;
-    border:0;
-    outline:0;
     user-select:none;
     -webkit-user-select:none;
-    touch-action:manipulation;
     cursor:pointer;
 }
 
-/* =========================
-   MAIN APP
-========================= */
+
+/* =====================================================
+   APP
+===================================================== */
 
 .app{
+
     width:100%;
-    height:100dvh;
     max-width:900px;
+
+    height:100dvh;
+
     margin:auto;
+
     display:flex;
     flex-direction:column;
+
     overflow:hidden;
-    background:#090e1c;
+
+    background:#080d19;
 }
 
-/* =========================
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 .header{
-    flex:0 0 auto;
+
     height:48px;
+    min-height:48px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
-    padding:6px 12px;
-    background:#0d1323;
+
+    padding:5px 12px;
+
+    background:#0d1322;
+
     border-bottom:1px solid #202a40;
 }
 
 .brand{
+
     font-size:18px;
     font-weight:bold;
+
     white-space:nowrap;
 }
 
 .header-right{
+
     display:flex;
-    gap:6px;
+    gap:5px;
 }
 
 .badge{
-    background:#1b2942;
-    color:#9edcff;
+
+    background:#192842;
+
+    color:#9edbff;
+
     border-radius:10px;
-    padding:7px 10px;
-    font-size:12px;
+
+    padding:7px 9px;
+
+    font-size:11px;
 }
 
-/* =========================
+
+/* =====================================================
    DISPLAY
-========================= */
+===================================================== */
 
 .display-area{
-    flex:0 0 auto;
-    padding:7px 10px 5px;
-    background:#090e1c;
+
+    flex:none;
+
+    padding:5px 10px;
+
+    background:#080d19;
 }
 
 .mode-row{
-    height:20px;
+
+    height:21px;
+
     display:flex;
+
     align-items:center;
-    gap:16px;
-    padding-left:4px;
+
+    gap:18px;
+
+    padding-left:5px;
+
     font-size:11px;
-    color:#a9b4c9;
+
     font-weight:bold;
+
+    color:#aab4c8;
 }
 
 .mode-row .active{
-    color:#65d6ff;
+
+    color:#65d7ff;
 }
 
 .display{
-    height:82px;
+
+    height:76px;
+
     background:#dceaea;
-    color:#101820;
+
+    color:#111820;
+
     border-radius:14px;
-    padding:8px 12px;
+
+    padding:7px 12px;
+
     display:flex;
+
     flex-direction:column;
+
     justify-content:space-between;
+
     overflow:hidden;
-    box-shadow:inset 0 0 0 1px #c2d3d3;
+
+    box-shadow:
+    inset 0 0 0 1px #c2d4d4;
 }
 
 .expression{
-    font-size:20px;
-    line-height:25px;
-    min-height:25px;
-    overflow:hidden;
+
+    min-height:23px;
+
+    font-size:18px;
+
+    line-height:23px;
+
     white-space:nowrap;
+
+    overflow:hidden;
+
     text-align:left;
 }
 
 .answer{
-    font-size:28px;
-    line-height:32px;
+
+    font-size:26px;
+
+    line-height:30px;
+
     font-weight:bold;
-    overflow:hidden;
+
     white-space:nowrap;
+
+    overflow:hidden;
+
     text-align:right;
 }
 
-/* =========================
+
+/* =====================================================
    CONTROL ROW
-========================= */
+===================================================== */
 
 .controls{
-    flex:0 0 auto;
+
+    flex:none;
+
     display:grid;
-    grid-template-columns:repeat(6,1fr);
-    gap:5px;
-    padding:5px 10px;
+
+    grid-template-columns:
+    repeat(8,1fr);
+
+    gap:4px;
+
+    padding:4px 10px;
 }
 
 .ctrl{
-    height:34px;
+
+    height:32px;
+
     border-radius:9px;
-    background:#293248;
-    color:#fff;
-    font-size:12px;
+
+    background:#293249;
+
+    color:white;
+
+    font-size:11px;
+
     font-weight:bold;
 }
 
 .ctrl.active{
+
     background:#7545f5;
 }
 
-.ctrl.orange{
-    background:#f49a45;
-    color:#111;
+.ctrl:active{
+
+    background:#46536e;
+
+    transform:scale(.96);
 }
 
-/* =========================
-   KEYPAD
-========================= */
 
-.keypad-wrap{
-    flex:1 1 auto;
+/* =====================================================
+   SCROLL AREA
+===================================================== */
+
+.scroll-area{
+
+    flex:1;
+
     min-height:0;
+
     overflow-y:auto;
+
     overflow-x:hidden;
-    padding:3px 8px 8px;
+
+    padding:2px 8px 15px;
+
+    -webkit-overflow-scrolling:touch;
+
+    overscroll-behavior-y:contain;
+
+    touch-action:pan-y;
+
     scrollbar-width:none;
 }
 
-.keypad-wrap::-webkit-scrollbar{
+.scroll-area::-webkit-scrollbar{
     display:none;
 }
 
+
+/* =====================================================
+   KEYPAD
+===================================================== */
+
 .keypad{
+
     display:grid;
-    grid-template-columns:repeat(6,1fr);
+
+    grid-template-columns:
+    repeat(6,1fr);
+
     gap:4px;
 }
 
 .key{
-    min-width:0;
-    height:43px;
+
+    height:41px;
+
     border-radius:10px;
-    background:#252d40;
-    color:#fff;
-    font-size:15px;
+
+    background:#252e42;
+
+    color:white;
+
+    font-size:14px;
+
     font-weight:500;
-    box-shadow:inset 0 -1px 0 rgba(255,255,255,.04);
+
+    touch-action:manipulation;
+
+    transition:
+    transform .08s,
+    background .08s;
 }
 
 .key:active{
-    transform:scale(.96);
-    background:#39445d;
+
+    transform:scale(.95);
+
+    background:#43506b;
 }
 
-.key.func{
+.func{
+
     background:#30394e;
 }
 
-.key.operator{
-    background:#454d61;
+.operator{
+
+    background:#454e62;
 }
 
-.key.orange{
-    background:#f17d4f;
+.orange{
+
+    background:#f27d4d;
+
     color:#111;
 }
 
-.key.green{
-    background:#18a866;
+.green{
+
+    background:#18a968;
 }
 
-.key.yellow{
-    color:#ffe85b;
+.yellow{
+
+    color:#ffe85a;
 }
 
-.key.purple{
-    color:#d9b4ff;
+.purple{
+
+    color:#d7b0ff;
 }
 
-/* small labels */
-.sub{
-    font-size:10px;
-    opacity:.7;
-}
 
-/* =========================
-   ADVANCED TOOLS
-========================= */
+/* =====================================================
+   ENGINEERING TOOLS
+===================================================== */
 
 .tools{
-    margin:7px 6px 8px;
+
+    margin:7px 5px 0;
+
     padding:9px;
-    border:1px solid #27334d;
-    border-radius:14px;
+
     background:#11182a;
+
+    border:1px solid #29354d;
+
+    border-radius:14px;
 }
 
 .tools-title{
+
     font-size:15px;
+
     font-weight:bold;
+
     margin-bottom:7px;
 }
 
 .tools-grid{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+    repeat(2,1fr);
+
     gap:5px;
 }
 
 .tool-btn{
-    min-height:38px;
+
+    height:39px;
+
     border-radius:9px;
-    background:#252f46;
-    color:#fff;
-    font-size:11px;
+
+    background:#273149;
+
+    color:white;
+
+    border:1px solid #3a4862;
+
+    font-size:12px;
+
     font-weight:bold;
-    border:1px solid #394762;
+
+    touch-action:manipulation;
 }
 
 .tool-btn:active{
-    background:#394a68;
+
+    transform:scale(.97);
+
+    background:#465570;
 }
 
-/* =========================
+
+/* =====================================================
    MODAL
-========================= */
+===================================================== */
 
 .modal{
+
     position:fixed;
+
     inset:0;
-    z-index:1000;
+
+    z-index:9999;
+
     display:none;
+
     align-items:center;
+
     justify-content:center;
+
     padding:15px;
-    background:rgba(0,0,0,.72);
+
+    background:
+    rgba(0,0,0,.75);
 }
 
 .modal.show{
+
     display:flex;
 }
 
 .modal-box{
-    width:min(560px,100%);
+
+    width:min(500px,100%);
+
     max-height:90dvh;
+
     overflow:auto;
+
     background:#111827;
-    border:1px solid #33415d;
+
+    border:1px solid #35425c;
+
     border-radius:18px;
+
     padding:16px;
 }
 
 .modal-title{
+
     font-size:20px;
+
     font-weight:bold;
+
     margin-bottom:12px;
 }
+
+
+/* =====================================================
+   MODAL INPUT
+===================================================== */
 
 .modal input,
 .modal select,
 .modal textarea{
+
     width:100%;
+
     padding:11px;
+
     margin:5px 0;
-    border-radius:9px;
-    border:1px solid #3b4861;
+
     background:#202a3d;
-    color:#fff;
+
+    color:white;
+
+    border:1px solid #3b4861;
+
+    border-radius:9px;
+
     font-size:15px;
 }
 
 .modal textarea{
+
     min-height:90px;
-    resize:vertical;
 }
 
-.modal-buttons{
+
+/* =====================================================
+   FRACTION
+===================================================== */
+
+.fraction-box{
+
     display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    width:100%;
+
+    margin:10px 0;
+}
+
+.fraction-box input{
+
+    width:180px;
+
+    text-align:center;
+
+    margin:5px 0;
+
+    font-size:18px;
+}
+
+.fraction-line{
+
+    width:190px;
+
+    height:3px;
+
+    background:white;
+
+    border-radius:3px;
+
+    margin:2px 0;
+}
+
+
+/* =====================================================
+   MODAL BUTTONS
+===================================================== */
+
+.modal-buttons{
+
+    display:flex;
+
     gap:7px;
+
     margin-top:10px;
 }
 
 .modal-buttons button{
+
     flex:1;
-    padding:11px;
+
+    height:42px;
+
     border-radius:9px;
-    background:#2c3850;
-    color:#fff;
+
+    background:#303b53;
+
+    color:white;
+
+    font-weight:bold;
 }
 
 .modal-buttons .primary{
+
     background:#7545f5;
 }
 
-.result-box{
+.result{
+
     margin-top:10px;
+
     padding:12px;
-    background:#0a1020;
-    border-radius:10px;
-    border:1px solid #273650;
+
+    border-radius:9px;
+
+    background:#080f20;
+
+    border:1px solid #293650;
+
     white-space:pre-wrap;
+
     word-break:break-word;
 }
 
-/* =========================
-   FRACTION MODAL
-========================= */
 
-.fraction-layout{
-    display:grid;
-    grid-template-columns:1fr 50px 1fr;
-    align-items:center;
-    gap:8px;
-}
+/* =====================================================
+   SMALL PHONES
+===================================================== */
 
-.fraction-layout input{
-    text-align:center;
-}
-
-.frac-line{
-    height:2px;
-    background:#fff;
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:600px){
+@media(max-width:400px){
 
     .header{
-        height:43px;
+
+        height:42px;
+        min-height:42px;
     }
 
     .brand{
-        font-size:16px;
+        font-size:15px;
     }
 
     .badge{
-        font-size:10px;
-        padding:6px 7px;
-    }
 
-    .display{
-        height:76px;
-    }
-
-    .expression{
-        font-size:18px;
-    }
-
-    .answer{
-        font-size:25px;
-    }
-
-    .ctrl{
-        height:32px;
-        font-size:11px;
-    }
-
-    .key{
-        height:40px;
-        font-size:14px;
-    }
-
-    .tools{
-        margin-top:5px;
-    }
-
-    .tools-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-}
-
-@media(max-width:390px){
-
-    .header{
-        height:40px;
-    }
-
-    .brand{
-        font-size:14px;
-    }
-
-    .badge{
-        padding:5px;
         font-size:9px;
+
+        padding:6px;
     }
 
     .display{
+
         height:70px;
     }
 
     .expression{
+
         font-size:16px;
     }
 
     .answer{
-        font-size:22px;
+
+        font-size:23px;
     }
 
     .controls{
-        gap:3px;
+
         padding:3px 7px;
+
+        gap:3px;
     }
 
     .ctrl{
+
         height:29px;
+
         font-size:10px;
     }
 
     .keypad{
+
         gap:3px;
     }
 
     .key{
-        height:37px;
+
+        height:38px;
+
         border-radius:8px;
+
         font-size:13px;
     }
+
 }
+
+
+/* =====================================================
+   VERY SMALL PHONES
+===================================================== */
+
+@media(max-width:350px){
+
+    .key{
+
+        height:35px;
+
+        font-size:12px;
+    }
+
+    .display{
+
+        height:66px;
+    }
+
+    .tools-title{
+
+        font-size:13px;
+    }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="app">
 
-<!-- ================= HEADER ================= -->
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="header">
 
@@ -498,302 +724,510 @@ button{
 </div>
 
 <div class="header-right">
-<div class="badge" id="angleBadge">DEG</div>
-<div class="badge">ENGINEERING</div>
-<div class="badge">v2.0</div>
+
+<div class="badge"
+id="angleBadge">
+DEG
+</div>
+
+<div class="badge">
+ENGINEERING
+</div>
+
+<div class="badge">
+v2.1
+</div>
+
 </div>
 
 </header>
 
 
-<!-- ================= DISPLAY ================= -->
+<!-- =====================================================
+     DISPLAY
+===================================================== -->
 
 <section class="display-area">
 
 <div class="mode-row">
-<span id="normMode" class="active">NORM</span>
-<span>MATH</span>
-<span>DECI</span>
+
+<span
+id="norm"
+class="active">
+NORM
+</span>
+
+<span>
+MATH
+</span>
+
+<span>
+DECI
+</span>
+
 </div>
+
 
 <div class="display">
 
-<div id="expression"
-class="expression"></div>
+<div
+id="expression"
+class="expression">
+</div>
 
-<div id="answer"
-class="answer">0</div>
+<div
+id="answer"
+class="answer">
+0
+</div>
 
 </div>
 
 </section>
 
 
-<!-- ================= CONTROLS ================= -->
+<!-- =====================================================
+     NAVIGATION CONTROLS
+===================================================== -->
 
 <div class="controls">
 
-<button class="ctrl active"
-onclick="setAngle('DEG')">DEG</button>
+<button
+class="ctrl active"
+onclick="setAngle('DEG')">
+DEG
+</button>
 
-<button class="ctrl"
-onclick="setAngle('RAD')">RAD</button>
+<button
+class="ctrl"
+onclick="setAngle('RAD')">
+RAD
+</button>
 
-<button class="ctrl"
-onclick="setAngle('GRAD')">GRAD</button>
+<button
+class="ctrl"
+onclick="setAngle('GRAD')">
+GRAD
+</button>
 
-<button class="ctrl"
-onclick="moveCursor(-1)">←</button>
+<button
+class="ctrl"
+onclick="moveCursor(-1)">
+←
+</button>
 
-<button class="ctrl"
-onclick="moveCursor(1)">→</button>
+<button
+class="ctrl"
+onclick="moveCursor(1)">
+→
+</button>
 
-<button class="ctrl"
-onclick="openSecond()">2nd</button>
+<button
+class="ctrl"
+onclick="moveCursorUp()">
+↑
+</button>
+
+<button
+class="ctrl"
+onclick="moveCursorDown()">
+↓
+</button>
+
+<button
+class="ctrl"
+onclick="secondFunction()">
+2nd
+</button>
 
 </div>
 
 
-<!-- ================= KEYPAD ================= -->
+<!-- =====================================================
+     SCROLL AREA
+===================================================== -->
 
-<div class="keypad-wrap">
+<div
+class="scroll-area"
+id="scrollArea">
+
+
+<!-- =====================================================
+     KEYPAD
+===================================================== -->
 
 <div class="keypad">
 
-<!-- ROW 1 -->
+
+<!-- TRIG -->
 
 <button class="key func"
-onclick="insert('sin(')">sin</button>
+onclick="insert('sin(')">
+sin
+</button>
 
 <button class="key func"
-onclick="insert('cos(')">cos</button>
+onclick="insert('cos(')">
+cos
+</button>
 
 <button class="key func"
-onclick="insert('tan(')">tan</button>
+onclick="insert('tan(')">
+tan
+</button>
 
 <button class="key func"
-onclick="insert('asin(')">sin⁻¹</button>
+onclick="insert('asin(')">
+sin⁻¹
+</button>
 
 <button class="key func"
-onclick="insert('acos(')">cos⁻¹</button>
+onclick="insert('acos(')">
+cos⁻¹
+</button>
 
 <button class="key func"
-onclick="insert('atan(')">tan⁻¹</button>
+onclick="insert('atan(')">
+tan⁻¹
+</button>
 
 
-<!-- ROW 2 -->
-
-<button class="key func"
-onclick="insert('sinh(')">sinh</button>
-
-<button class="key func"
-onclick="insert('cosh(')">cosh</button>
+<!-- HYPERBOLIC -->
 
 <button class="key func"
-onclick="insert('tanh(')">tanh</button>
+onclick="insert('sinh(')">
+sinh
+</button>
 
 <button class="key func"
-onclick="insert('log(')">log</button>
+onclick="insert('cosh(')">
+cosh
+</button>
 
 <button class="key func"
-onclick="insert('ln(')">ln</button>
+onclick="insert('tanh(')">
+tanh
+</button>
 
 <button class="key func"
-onclick="insert('exp(')">eˣ</button>
-
-
-<!-- ROW 3 -->
-
-<button class="key func"
-onclick="insert('sqrt(')">√</button>
+onclick="insert('log(')">
+log
+</button>
 
 <button class="key func"
-onclick="insert('cbrt(')">∛</button>
+onclick="insert('ln(')">
+ln
+</button>
 
 <button class="key func"
-onclick="insert('^2')">x²</button>
+onclick="insert('exp(')">
+eˣ
+</button>
+
+
+<!-- ROOT / POWER -->
 
 <button class="key func"
-onclick="insert('^')">xʸ</button>
+onclick="insert('sqrt(')">
+√
+</button>
 
 <button class="key func"
-onclick="insert('inv(')">1/x</button>
+onclick="insert('cbrt(')">
+∛
+</button>
 
 <button class="key func"
-onclick="insert('abs(')">|x|</button>
-
-
-<!-- ROW 4 -->
-
-<button class="key func"
-onclick="insert('floor(')">Floor</button>
+onclick="insert('^2')">
+x²
+</button>
 
 <button class="key func"
-onclick="insert('ceil(')">Ceil</button>
+onclick="insert('^')">
+xʸ
+</button>
 
 <button class="key func"
-onclick="insert('round(')">Round</button>
+onclick="insert('inv(')">
+1/x
+</button>
 
 <button class="key func"
-onclick="insert('fact(')">n!</button>
+onclick="insert('abs(')">
+|x|
+</button>
+
+
+<!-- ROUNDING -->
 
 <button class="key func"
-onclick="insert('mod(')">mod</button>
+onclick="insert('floor(')">
+Floor
+</button>
 
 <button class="key func"
-onclick="insert('sign(')">sign</button>
+onclick="insert('ceil(')">
+Ceil
+</button>
+
+<button class="key func"
+onclick="insert('round(')">
+Round
+</button>
+
+<button class="key func"
+onclick="insert('fact(')">
+n!
+</button>
+
+<button class="key func"
+onclick="insert('mod(')">
+mod
+</button>
+
+<button class="key func"
+onclick="insert('sign(')">
+sign
+</button>
 
 
-<!-- ROW 5 -->
+<!-- NUMBER THEORY -->
 
 <button class="key yellow"
-onclick="insert('npr(')">nPr</button>
+onclick="insert('npr(')">
+nPr
+</button>
 
 <button class="key yellow"
-onclick="insert('ncr(')">nCr</button>
+onclick="insert('ncr(')">
+nCr
+</button>
 
 <button class="key yellow"
-onclick="insert('gcd(')">GCD</button>
+onclick="insert('gcd(')">
+GCD
+</button>
 
 <button class="key yellow"
-onclick="insert('lcm(')">LCM</button>
+onclick="insert('lcm(')">
+LCM
+</button>
 
 <button class="key"
-onclick="insert('logb(')">logₐ</button>
+onclick="insert('logb(')">
+logₐ
+</button>
 
 <button class="key"
-onclick="insert('pi')">π</button>
+onclick="insert('pi')">
+π
+</button>
 
 
-<!-- ROW 6 -->
-
-<button class="key yellow"
-onclick="memoryClear()">MC</button>
-
-<button class="key yellow"
-onclick="memoryRecall()">MR</button>
+<!-- MEMORY -->
 
 <button class="key yellow"
-onclick="memoryAdd()">M+</button>
+onclick="memoryClear()">
+MC
+</button>
 
 <button class="key yellow"
-onclick="memorySub()">M−</button>
+onclick="memoryRecall()">
+MR
+</button>
 
 <button class="key yellow"
-onclick="memoryStore()">MS</button>
+onclick="memoryAdd()">
+M+
+</button>
+
+<button class="key yellow"
+onclick="memorySub()">
+M−
+</button>
+
+<button class="key yellow"
+onclick="memoryStore()">
+MS
+</button>
 
 <button class="key"
-onclick="insert('e')">e</button>
+onclick="insert('e')">
+e
+</button>
 
 
-<!-- ROW 7 -->
-
-<button class="key"
-onclick="insert('7')">7</button>
-
-<button class="key"
-onclick="insert('8')">8</button>
+<!-- 7 8 9 -->
 
 <button class="key"
-onclick="insert('9')">9</button>
+onclick="insert('7')">
+7
+</button>
+
+<button class="key"
+onclick="insert('8')">
+8
+</button>
+
+<button class="key"
+onclick="insert('9')">
+9
+</button>
 
 <button class="key operator"
-onclick="insert('÷')">÷</button>
+onclick="insert('/')">
+÷
+</button>
 
 <button class="key operator"
-onclick="insert('%')">%</button>
+onclick="insert('%')">
+%
+</button>
 
 <button class="key orange"
-onclick="clearAll()">AC</button>
+onclick="clearAll()">
+AC
+</button>
 
 
-<!-- ROW 8 -->
-
-<button class="key"
-onclick="insert('4')">4</button>
-
-<button class="key"
-onclick="insert('5')">5</button>
+<!-- 4 5 6 -->
 
 <button class="key"
-onclick="insert('6')">6</button>
+onclick="insert('4')">
+4
+</button>
+
+<button class="key"
+onclick="insert('5')">
+5
+</button>
+
+<button class="key"
+onclick="insert('6')">
+6
+</button>
 
 <button class="key operator"
-onclick="insert('×')">×</button>
+onclick="insert('*')">
+×
+</button>
 
 <button class="key operator"
-onclick="insert('mod(')">MOD</button>
+onclick="insert('mod(')">
+MOD
+</button>
 
 <button class="key"
-onclick="insert('-')">(-)</button>
+onclick="insert('-')">
+(−)
+</button>
 
 
-<!-- ROW 9 -->
-
-<button class="key"
-onclick="insert('1')">1</button>
-
-<button class="key"
-onclick="insert('2')">2</button>
+<!-- 1 2 3 -->
 
 <button class="key"
-onclick="insert('3')">3</button>
+onclick="insert('1')">
+1
+</button>
+
+<button class="key"
+onclick="insert('2')">
+2
+</button>
+
+<button class="key"
+onclick="insert('3')">
+3
+</button>
 
 <button class="key operator"
-onclick="insert('+')">+</button>
+onclick="insert('+')">
++
+</button>
 
 <button class="key operator"
-onclick="insert('-')">−</button>
+onclick="insert('-')">
+−
+</button>
 
 <button class="key"
-onclick="insert('(')">(</button>
+onclick="insert('(')">
+(
+</button>
 
 
-<!-- ROW 10 -->
-
-<button class="key"
-onclick="insert('0')">0</button>
-
-<button class="key"
-onclick="insert('.')">.</button>
+<!-- 0 -->
 
 <button class="key"
-onclick="insert('Ans')">Ans</button>
+onclick="insert('0')">
+0
+</button>
 
 <button class="key"
-onclick="insert('(')">(</button>
+onclick="insert('.')">
+.
+</button>
 
 <button class="key"
-onclick="insert(')')">)</button>
+onclick="insert('Ans')">
+Ans
+</button>
+
+<button class="key"
+onclick="insert('(')">
+(
+</button>
+
+<button class="key"
+onclick="insert(')')">
+)
+</button>
 
 <button class="key green"
-onclick="calculate()">=</button>
+onclick="calculate()">
+=
+</button>
 
 
-<!-- EXTRA ROW -->
-
-<button class="key purple"
-onclick="backspace()">⌫</button>
-
-<button class="key purple"
-onclick="insert('π')">π</button>
+<!-- EXTRA -->
 
 <button class="key purple"
-onclick="insert('e')">e</button>
+onclick="backspace()">
+⌫
+</button>
 
 <button class="key purple"
-onclick="openFraction()">a⁄b</button>
+onclick="insert('pi')">
+π
+</button>
 
 <button class="key purple"
-onclick="insert(',')">,</button>
+onclick="insert('e')">
+e
+</button>
 
 <button class="key purple"
-onclick="showHistory()">History</button>
+onclick="openFraction()">
+a⁄b
+</button>
+
+<button class="key purple"
+onclick="insert(',')">
+,
+</button>
+
+<button class="key purple"
+onclick="showHistory()">
+History
+</button>
+
 
 </div>
 
 
-<!-- ================= ENGINEERING TOOLS ================= -->
+<!-- =====================================================
+     ENGINEERING TOOLS
+===================================================== -->
 
 <section class="tools">
 
@@ -803,71 +1237,115 @@ onclick="showHistory()">History</button>
 
 <div class="tools-grid">
 
-<button class="tool-btn"
-onclick="openDerivative()">d/dx</button>
+<button
+class="tool-btn"
+onclick="openDerivative()">
+d/dx
+</button>
 
-<button class="tool-btn"
-onclick="openIntegral()">∫ Integral</button>
+<button
+class="tool-btn"
+onclick="openIntegral()">
+∫ Integral
+</button>
 
-<button class="tool-btn"
-onclick="openLimit()">Limit</button>
+<button
+class="tool-btn"
+onclick="openLimit()">
+Limit
+</button>
 
-<button class="tool-btn"
-onclick="openEquation()">Equation</button>
+<button
+class="tool-btn"
+onclick="openEquation()">
+Equation
+</button>
 
-<button class="tool-btn"
-onclick="openMatrix()">Matrix</button>
+<button
+class="tool-btn"
+onclick="openMatrix()">
+Matrix
+</button>
 
-<button class="tool-btn"
-onclick="openVector()">Vector</button>
+<button
+class="tool-btn"
+onclick="openVector()">
+Vector
+</button>
 
-<button class="tool-btn"
-onclick="openComplex()">Complex</button>
+<button
+class="tool-btn"
+onclick="openComplex()">
+Complex
+</button>
 
-<button class="tool-btn"
-onclick="openStats()">Statistics</button>
+<button
+class="tool-btn"
+onclick="openStats()">
+Statistics
+</button>
 
-<button class="tool-btn"
-onclick="openConverter()">Unit Converter</button>
+<button
+class="tool-btn"
+onclick="openConverter()">
+Unit Converter
+</button>
 
-<button class="tool-btn"
-onclick="openConstants()">Constants</button>
+<button
+class="tool-btn"
+onclick="openConstants()">
+Constants
+</button>
 
 </div>
 
 </section>
 
+
 </div>
+
 </div>
 
 
-<!-- ================= MODAL ================= -->
+<!-- =====================================================
+     MODAL
+===================================================== -->
 
-<div id="modal" class="modal">
+<div
+id="modal"
+class="modal">
 
 <div class="modal-box">
 
-<div id="modalTitle"
-class="modal-title"></div>
+<div
+id="modalTitle"
+class="modal-title">
+</div>
 
-<div id="modalContent"></div>
+<div
+id="modalContent">
+</div>
+
+<div
+id="modalResult"
+class="result"
+style="display:none;">
+</div>
 
 <div class="modal-buttons">
 
-<button onclick="closeModal()">
+<button
+onclick="closeModal()">
 Close
 </button>
 
-<button class="primary"
-id="modalRun">
+<button
+id="modalCalculate"
+class="primary">
 Calculate
 </button>
 
 </div>
-
-<div id="modalResult"
-class="result-box"
-style="display:none;"></div>
 
 </div>
 
@@ -875,25 +1353,38 @@ style="display:none;"></div>
 
 
 <script>
-/* =========================================================
-   ADIYOGI SCIENTIFIC CALCULATOR ENGINE
-========================================================= */
+
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
 
 let expression = "";
+
 let answer = 0;
+
 let cursor = 0;
 
 let angleMode = "DEG";
+
 let memory = 0;
-let secondMode = false;
+
+let second = false;
 
 const history = [];
 
-const expressionEl =
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const expressionDisplay =
 document.getElementById("expression");
 
-const answerEl =
+const answerDisplay =
 document.getElementById("answer");
+
+const angleBadge =
+document.getElementById("angleBadge");
 
 const modal =
 document.getElementById("modal");
@@ -907,23 +1398,23 @@ document.getElementById("modalContent");
 const modalResult =
 document.getElementById("modalResult");
 
-const modalRun =
-document.getElementById("modalRun");
+const modalCalculate =
+document.getElementById("modalCalculate");
 
 
-/* =========================================================
+/* =====================================================
    DISPLAY
-========================================================= */
+===================================================== */
 
 function render(){
 
-    expressionEl.textContent =
-        expression || "";
+    expressionDisplay.textContent =
+        expression;
 
-    answerEl.textContent =
+    answerDisplay.textContent =
         formatNumber(answer);
-
 }
+
 
 function formatNumber(n){
 
@@ -933,35 +1424,44 @@ function formatNumber(n){
     if(!Number.isFinite(n))
         return "Math Error";
 
-    if(Math.abs(n) < 1e-14)
-        n = 0;
+    if(Math.abs(n)<1e-14)
+        n=0;
 
-    return Number(n.toPrecision(12)).toString();
-
+    return Number(
+        n.toPrecision(12)
+    ).toString();
 }
 
 
-/* =========================================================
+/* =====================================================
    ANGLE
-========================================================= */
+===================================================== */
 
 function setAngle(mode){
 
-    angleMode = mode;
+    angleMode=mode;
 
-    document.querySelectorAll(".controls .ctrl")
-    .forEach(b=>b.classList.remove("active"));
+    angleBadge.textContent=mode;
 
     const buttons =
-        document.querySelectorAll(".controls .ctrl");
+        document.querySelectorAll(
+            ".controls .ctrl"
+        );
 
-    if(mode==="DEG") buttons[0].classList.add("active");
-    if(mode==="RAD") buttons[1].classList.add("active");
-    if(mode==="GRAD") buttons[2].classList.add("active");
+    buttons.forEach(
+        b=>b.classList.remove("active")
+    );
 
-    document.getElementById("angleBadge").textContent =
-        mode;
+    if(mode==="DEG")
+        buttons[0].classList.add("active");
+
+    if(mode==="RAD")
+        buttons[1].classList.add("active");
+
+    if(mode==="GRAD")
+        buttons[2].classList.add("active");
 }
+
 
 function toRad(x){
 
@@ -973,6 +1473,7 @@ function toRad(x){
 
     return x;
 }
+
 
 function fromRad(x){
 
@@ -986,34 +1487,40 @@ function fromRad(x){
 }
 
 
-/* =========================================================
-   INSERT / CURSOR
-========================================================= */
+/* =====================================================
+   CURSOR
+===================================================== */
 
 function insert(value){
 
     expression =
         expression.slice(0,cursor)
-        + value
-        + expression.slice(cursor);
+        +
+        value
+        +
+        expression.slice(cursor);
 
     cursor += value.length;
 
     render();
 }
 
+
 function backspace(){
 
-    if(cursor<=0) return;
+    if(cursor<=0)
+        return;
 
     expression =
         expression.slice(0,cursor-1)
-        + expression.slice(cursor);
+        +
+        expression.slice(cursor);
 
     cursor--;
 
     render();
 }
+
 
 function moveCursor(direction){
 
@@ -1028,617 +1535,329 @@ function moveCursor(direction){
     render();
 }
 
+
+/*
+   UP/DOWN buttons:
+   In a single-line expression these are used
+   for jumping across function/parenthesis groups.
+*/
+
+function moveCursorUp(){
+
+    if(!expression.length)
+        return;
+
+    const left =
+        expression.lastIndexOf(
+            "(",
+            cursor-1
+        );
+
+    if(left>=0){
+
+        cursor=left;
+
+    }else{
+
+        cursor=0;
+    }
+
+    render();
+}
+
+
+function moveCursorDown(){
+
+    if(!expression.length)
+        return;
+
+    const right =
+        expression.indexOf(
+            ")",
+            cursor
+        );
+
+    if(right>=0){
+
+        cursor=right+1;
+
+    }else{
+
+        cursor=expression.length;
+    }
+
+    render();
+}
+
+
+/* =====================================================
+   SECOND
+===================================================== */
+
+function secondFunction(){
+
+    second=!second;
+
+    alert(
+        second
+        ? "2nd mode ON"
+        : "2nd mode OFF"
+    );
+}
+
+
+/* =====================================================
+   CLEAR
+===================================================== */
+
 function clearAll(){
 
     expression="";
+
     cursor=0;
+
     answer=0;
 
     render();
 }
 
 
-/* =========================================================
-   SECOND MODE
-========================================================= */
-
-function openSecond(){
-
-    secondMode=!secondMode;
-
-    alert(
-        secondMode
-        ? "2nd functions enabled"
-        : "2nd functions disabled"
-    );
-}
-
-
-/* =========================================================
-   MATH FUNCTIONS
-========================================================= */
+/* =====================================================
+   FACTORIAL
+===================================================== */
 
 function factorial(n){
 
     if(n<0 || !Number.isInteger(n))
-        throw new Error("Factorial requires non-negative integer");
+        throw new Error(
+            "Factorial requires non-negative integer"
+        );
 
     if(n>170)
-        throw new Error("Number too large");
+        throw new Error(
+            "Number too large"
+        );
 
-    let r=1;
+    let result=1;
 
     for(let i=2;i<=n;i++)
-        r*=i;
+        result*=i;
 
-    return r;
+    return result;
 }
+
 
 function nPr(n,r){
 
-    if(n<0 || r<0 || r>n)
-        throw new Error("Invalid nPr");
-
-    return factorial(n)/factorial(n-r);
+    return factorial(n)/
+           factorial(n-r);
 }
+
 
 function nCr(n,r){
 
-    if(n<0 || r<0 || r>n)
-        throw new Error("Invalid nCr");
-
     return factorial(n)/
-        (factorial(r)*factorial(n-r));
+           (
+               factorial(r)*
+               factorial(n-r)
+           );
 }
+
+
+/* =====================================================
+   GCD LCM
+===================================================== */
 
 function gcd(a,b){
 
     a=Math.abs(Math.trunc(a));
+
     b=Math.abs(Math.trunc(b));
 
     while(b){
-        [a,b]=[b,a%b];
+
+        const temp=b;
+
+        b=a%b;
+
+        a=temp;
     }
 
     return a;
 }
+
 
 function lcm(a,b){
 
     if(a===0 || b===0)
         return 0;
 
-    return Math.abs(a*b)/gcd(a,b);
+    return Math.abs(
+        a*b
+    )/gcd(a,b);
 }
 
 
-/* =========================================================
-   TOKENIZER
-========================================================= */
-
-function tokenize(str){
-
-    str=str
-        .replaceAll("×","*")
-        .replaceAll("÷","/")
-        .replaceAll("−","-")
-        .replaceAll("π","pi")
-        .replace(/\s+/g,"");
-
-    const tokens=[];
-    let i=0;
-
-    while(i<str.length){
-
-        const c=str[i];
-
-        if(/[0-9.]/.test(c)){
-
-            let num="";
-
-            while(
-                i<str.length &&
-                /[0-9.eE+-]/.test(str[i])
-            ){
-
-                if(
-                    (str[i]=="+" || str[i]=="-") &&
-                    num.length &&
-                    !/[eE]$/.test(num)
-                ){
-                    break;
-                }
-
-                num+=str[i];
-                i++;
-            }
-
-            if(!Number.isFinite(Number(num)))
-                throw new Error("Invalid number");
-
-            tokens.push({
-                type:"number",
-                value:Number(num)
-            });
-
-            continue;
-        }
-
-        if(/[a-zA-Z_]/.test(c)){
-
-            let name="";
-
-            while(
-                i<str.length &&
-                /[a-zA-Z0-9_]/.test(str[i])
-            ){
-
-                name+=str[i];
-                i++;
-            }
-
-            tokens.push({
-                type:"name",
-                value:name
-            });
-
-            continue;
-        }
-
-        if("+-*/%^(),".includes(c)){
-
-            tokens.push({
-                type:c,
-                value:c
-            });
-
-            i++;
-            continue;
-        }
-
-        throw new Error("Unknown symbol: "+c);
-    }
-
-    return tokens;
-}
-
-
-/* =========================================================
-   SHUNTING YARD
-========================================================= */
-
-const precedence={
-    "+":1,
-    "-":1,
-    "*":2,
-    "/":2,
-    "%":2,
-    "^":3,
-    "u-":4
-};
-
-const rightAssociative={
-    "^":true,
-    "u-":true
-};
-
-function toRPN(tokens){
-
-    const output=[];
-    const stack=[];
-
-    let prev=null;
-
-    for(const token of tokens){
-
-        if(token.type==="number"){
-            output.push(token);
-            prev=token;
-            continue;
-        }
-
-        if(token.type==="name"){
-
-            stack.push(token);
-            prev=token;
-            continue;
-        }
-
-        if(token.type==="("){
-
-            stack.push(token);
-            prev=token;
-            continue;
-        }
-
-        if(token.type===","){
-
-            while(
-                stack.length &&
-                stack[stack.length-1].type!=="("
-            ){
-                output.push(stack.pop());
-            }
-
-            if(!stack.length)
-                throw new Error("Invalid comma");
-
-            prev=token;
-            continue;
-        }
-
-        if(token.type===")"){
-
-            while(
-                stack.length &&
-                stack[stack.length-1].type!=="("
-            ){
-                output.push(stack.pop());
-            }
-
-            if(!stack.length)
-                throw new Error("Mismatched parentheses");
-
-            stack.pop();
-
-            if(
-                stack.length &&
-                stack[stack.length-1].type==="name"
-            ){
-                output.push(stack.pop());
-            }
-
-            prev=token;
-            continue;
-        }
-
-        let op=token.type;
-
-        if(
-            op==="-" &&
-            (
-                prev===null ||
-                ["(","+", "-", "*","/","%","^",","]
-                .includes(prev.type)
-            )
-        ){
-            op="u-";
-        }
-
-        while(stack.length){
-
-            const top=stack[stack.length-1];
-
-            if(top.type==="name")
-            {
-                output.push(stack.pop());
-                continue;
-            }
-
-            if(!precedence[top.type])
-                break;
-
-            const p1=precedence[op];
-            const p2=precedence[top.type];
-
-            if(
-                (!rightAssociative[op] && p1<=p2) ||
-                (rightAssociative[op] && p1<p2)
-            ){
-                output.push(stack.pop());
-            }else{
-                break;
-            }
-        }
-
-        stack.push({
-            type:op,
-            value:op
-        });
-
-        prev={
-            type:op
-        };
-    }
-
-    while(stack.length){
-
-        const x=stack.pop();
-
-        if(x.type==="(" || x.type===")")
-            throw new Error("Mismatched parentheses");
-
-        output.push(x);
-    }
-
-    return output;
-}
-
-
-/* =========================================================
-   FUNCTION EVALUATION
-========================================================= */
-
-function functionValue(name,args){
-
-    const x=args[0];
-
-    switch(name.toLowerCase()){
-
-        case "sin":
-            return Math.sin(toRad(x));
-
-        case "cos":
-            return Math.cos(toRad(x));
-
-        case "tan":
-            return Math.tan(toRad(x));
-
-        case "asin":
-            return fromRad(Math.asin(x));
-
-        case "acos":
-            return fromRad(Math.acos(x));
-
-        case "atan":
-            return fromRad(Math.atan(x));
-
-        case "sinh":
-            return Math.sinh(x);
-
-        case "cosh":
-            return Math.cosh(x);
-
-        case "tanh":
-            return Math.tanh(x);
-
-        case "log":
-            return Math.log10(x);
-
-        case "ln":
-            return Math.log(x);
-
-        case "sqrt":
-            return Math.sqrt(x);
-
-        case "cbrt":
-            return Math.cbrt(x);
-
-        case "abs":
-            return Math.abs(x);
-
-        case "floor":
-            return Math.floor(x);
-
-        case "ceil":
-            return Math.ceil(x);
-
-        case "round":
-            return Math.round(x);
-
-        case "fact":
-            return factorial(x);
-
-        case "exp":
-            return Math.exp(x);
-
-        case "sign":
-            return Math.sign(x);
-
-        case "inv":
-            return 1/x;
-
-        case "mod":
-        case "MOD":
-            return args[0]%args[1];
-
-        case "npr":
-            return nPr(args[0],args[1]);
-
-        case "ncr":
-            return nCr(args[0],args[1]);
-
-        case "gcd":
-            return gcd(args[0],args[1]);
-
-        case "lcm":
-            return lcm(args[0],args[1]);
-
-        case "logb":
-            return Math.log(args[0])/Math.log(args[1]);
-
-        case "pow":
-            return Math.pow(args[0],args[1]);
-
-        default:
-            throw new Error("Unknown function: "+name);
-    }
-}
-
-
-/* =========================================================
-   EVALUATOR
-========================================================= */
+/* =====================================================
+   SIMPLE EVALUATOR
+===================================================== */
 
 function evaluate(expr){
 
-    let tokens=tokenize(expr);
+    expr=expr
+        .replaceAll("×","*")
+        .replaceAll("÷","/")
+        .replaceAll("−","-")
+        .replaceAll("π","Math.PI")
+        .replace(/\bAns\b/g,"answer")
+        .replace(/\be\b/g,"Math.E");
 
-    /* implicit multiplication */
+    /*
+       Scientific functions
+    */
 
-    const expanded=[];
+    expr=expr
+        .replace(/sin\(/g,"SIN(")
+        .replace(/cos\(/g,"COS(")
+        .replace(/tan\(/g,"TAN(")
+        .replace(/asin\(/g,"ASIN(")
+        .replace(/acos\(/g,"ACOS(")
+        .replace(/atan\(/g,"ATAN(")
+        .replace(/sinh\(/g,"Math.sinh(")
+        .replace(/cosh\(/g,"Math.cosh(")
+        .replace(/tanh\(/g,"Math.tanh(")
+        .replace(/log\(/g,"Math.log10(")
+        .replace(/ln\(/g,"Math.log(")
+        .replace(/sqrt\(/g,"Math.sqrt(")
+        .replace(/cbrt\(/g,"Math.cbrt(")
+        .replace(/abs\(/g,"Math.abs(")
+        .replace(/floor\(/g,"Math.floor(")
+        .replace(/ceil\(/g,"Math.ceil(")
+        .replace(/round\(/g,"Math.round(")
+        .replace(/exp\(/g,"Math.exp(");
 
-    for(let i=0;i<tokens.length;i++){
+    expr=expr.replace(/\^/g,"**");
 
-        const a=tokens[i];
-        const b=tokens[i+1];
+    /*
+       DEG / RAD / GRAD
+    */
 
-        expanded.push(a);
+    expr=expr.replace(
+        /SIN\(([^()]*)\)/g,
+        (_,x)=>`Math.sin(${toRad(Number(eval(x)))})`
+    );
 
-        if(
-            b &&
-            (
-                a.type==="number" ||
-                a.type==="name" ||
-                a.type===")"
-            ) &&
-            (
-                b.type==="number" ||
-                b.type==="name" ||
-                b.type==="("
+    expr=expr.replace(
+        /COS\(([^()]*)\)/g,
+        (_,x)=>`Math.cos(${toRad(Number(eval(x)))})`
+    );
+
+    expr=expr.replace(
+        /TAN\(([^()]*)\)/g,
+        (_,x)=>`Math.tan(${toRad(Number(eval(x)))})`
+    );
+
+    expr=expr.replace(
+        /ASIN\(([^()]*)\)/g,
+        (_,x)=>fromRad(
+            Math.asin(
+                Number(eval(x))
             )
-        ){
+        )
+    );
 
-            if(
-                !(
-                    a.type==="name" &&
-                    b.type==="("
-                )
-            ){
-                expanded.push({
-                    type:"*",
-                    value:"*"
-                });
-            }
-        }
-    }
+    expr=expr.replace(
+        /ACOS\(([^()]*)\)/g,
+        (_,x)=>fromRad(
+            Math.acos(
+                Number(eval(x))
+            )
+        )
+    );
 
-    tokens=expanded;
+    expr=expr.replace(
+        /ATAN\(([^()]*)\)/g,
+        (_,x)=>fromRad(
+            Math.atan(
+                Number(eval(x))
+            )
+        );
 
-    const rpn=toRPN(tokens);
+    expr=expr.replace(
+        /fact\(([^()]*)\)/g,
+        (_,x)=>factorial(
+            Number(eval(x))
+        )
+    );
 
-    const stack=[];
+    expr=expr.replace(
+        /npr\(([^,]+),([^()]+)\)/g,
+        (_,a,b)=>
+            nPr(
+                Number(eval(a)),
+                Number(eval(b))
+            )
+    );
 
-    for(const t of rpn){
+    expr=expr.replace(
+        /ncr\(([^,]+),([^()]+)\)/g,
+        (_,a,b)=>
+            nCr(
+                Number(eval(a)),
+                Number(eval(b))
+            )
+    );
 
-        if(t.type==="number"){
-            stack.push(t.value);
-            continue;
-        }
+    expr=expr.replace(
+        /gcd\(([^,]+),([^()]+)\)/g,
+        (_,a,b)=>
+            gcd(
+                Number(eval(a)),
+                Number(eval(b))
+            )
+    );
 
-        if(t.type==="name"){
+    expr=expr.replace(
+        /lcm\(([^,]+),([^()]+)\)/g,
+        (_,a,b)=>
+            lcm(
+                Number(eval(a)),
+                Number(eval(b))
+            )
+    );
 
-            const name=t.value.toLowerCase();
+    expr=expr.replace(
+        /inv\(([^()]*)\)/g,
+        (_,x)=>1/Number(eval(x))
+    );
 
-            if(name==="pi"){
-                stack.push(Math.PI);
-                continue;
-            }
+    /*
+       Security:
+       Only mathematical characters are allowed.
+    */
 
-            if(name==="e"){
-                stack.push(Math.E);
-                continue;
-            }
-
-            if(name==="ans"){
-                stack.push(answer);
-                continue;
-            }
-
-            /* Functions are evaluated with the
-               number of available arguments.
-            */
-
-            if(
-                [
-                    "sin","cos","tan",
-                    "asin","acos","atan",
-                    "sinh","cosh","tanh",
-                    "log","ln","sqrt","cbrt",
-                    "abs","floor","ceil","round",
-                    "fact","exp","sign","inv"
-                ].includes(name)
-            ){
-
-                if(stack.length<1)
-                    throw new Error("Missing argument");
-
-                stack.push(
-                    functionValue(name,[stack.pop()])
-                );
-
-                continue;
-            }
-
-            if(
-                [
-                    "mod","npr","ncr",
-                    "gcd","lcm","logb","pow"
-                ].includes(name)
-            ){
-
-                if(stack.length<2)
-                    throw new Error("Missing arguments");
-
-                const b=stack.pop();
-                const a=stack.pop();
-
-                stack.push(
-                    functionValue(name,[a,b])
-                );
-
-                continue;
-            }
-
-            throw new Error("Unknown identifier");
-        }
-
-        if(t.type==="u-"){
-
-            if(!stack.length)
-                throw new Error("Invalid negative");
-
-            stack.push(-stack.pop());
-            continue;
-        }
-
-        if(stack.length<2)
-            throw new Error("Invalid expression");
-
-        const b=stack.pop();
-        const a=stack.pop();
-
-        switch(t.type){
-
-            case "+":
-                stack.push(a+b);
-                break;
-
-            case "-":
-                stack.push(a-b);
-                break;
-
-            case "*":
-                stack.push(a*b);
-                break;
-
-            case "/":
-                stack.push(a/b);
-                break;
-
-            case "%":
-                stack.push(a%b);
-                break;
-
-            case "^":
-                stack.push(Math.pow(a,b));
-                break;
-
-            default:
-                throw new Error("Unknown operator");
-        }
-    }
-
-    if(stack.length!==1)
+    if(
+        /[;{}[\]'"`<>]|window|document|alert|function/i
+        .test(expr)
+    )
         throw new Error("Invalid expression");
 
-    return stack[0];
+    const result =
+        Function(
+            "answer",
+            `"use strict"; return (${expr})`
+        )(answer);
+
+    if(!Number.isFinite(result))
+        throw new Error("Math Error");
+
+    return result;
 }
 
 
-/* =========================================================
+/* =====================================================
    CALCULATE
-========================================================= */
+===================================================== */
 
 function calculate(){
 
@@ -1660,550 +1879,739 @@ function calculate(){
         if(history.length>50)
             history.pop();
 
-        expressionEl.textContent=expression;
-
-        answerEl.textContent=
+        answerDisplay.textContent =
             formatNumber(result);
 
-        cursor=expression.length;
+    }catch(error){
 
-    }catch(err){
-
-        answerEl.textContent="Error";
-
+        answerDisplay.textContent="Error";
     }
 }
 
 
-/* =========================================================
+/* =====================================================
    MEMORY
-========================================================= */
+===================================================== */
 
 function memoryClear(){
 
     memory=0;
 }
 
+
 function memoryRecall(){
 
-    insert(String(memory));
+    insert(
+        String(memory)
+    );
 }
+
 
 function memoryStore(){
 
     try{
-        memory=evaluate(expression);
+
+        memory=
+            evaluate(expression);
+
     }catch{}
 }
+
 
 function memoryAdd(){
 
     try{
-        memory+=evaluate(expression);
+
+        memory +=
+            evaluate(expression);
+
     }catch{}
 }
+
 
 function memorySub(){
 
     try{
-        memory-=evaluate(expression);
+
+        memory -=
+            evaluate(expression);
+
     }catch{}
 }
 
 
-/* =========================================================
+/* =====================================================
    FRACTION
-========================================================= */
+===================================================== */
 
 function openFraction(){
 
     openModal(
+
         "Fraction",
+
         `
-        <div class="fraction-layout">
+        <div class="fraction-box">
 
-            <input id="fracNum"
-                   type="number"
-                   inputmode="decimal"
-                   placeholder="Numerator">
+            <input
+                id="numerator"
+                type="number"
+                inputmode="decimal"
+                placeholder="Numerator">
 
-            <div class="frac-line"></div>
+            <div class="fraction-line"></div>
 
-            <input id="fracDen"
-                   type="number"
-                   inputmode="decimal"
-                   placeholder="Denominator">
+            <input
+                id="denominator"
+                type="number"
+                inputmode="decimal"
+                placeholder="Denominator">
 
         </div>
+
         `,
+
         function(){
 
             const n=
-                Number(document.getElementById("fracNum").value);
+                Number(
+                    document.getElementById(
+                        "numerator"
+                    ).value
+                );
 
             const d=
-                Number(document.getElementById("fracDen").value);
+                Number(
+                    document.getElementById(
+                        "denominator"
+                    ).value
+                );
 
-            if(!d){
-                showModalResult("Denominator cannot be zero.");
+            if(!Number.isFinite(n) ||
+               !Number.isFinite(d)){
+
+                showResult(
+                    "Please enter numerator and denominator."
+                );
+
                 return;
             }
 
-            const value=n/d;
+            if(d===0){
 
-            insert("(" + n + "/" + d + ")");
+                showResult(
+                    "Denominator cannot be zero."
+                );
 
-            showModalResult(
-                "Fraction = "+n+"/"+d+
-                "\nDecimal = "+formatNumber(value)
+                return;
+            }
+
+            insert(
+                "("+
+                n+
+                "/"+
+                d+
+                ")"
+            );
+
+            showResult(
+                n+
+                " / "+
+                d+
+                " = "+
+                formatNumber(n/d)
             );
         }
     );
 }
 
 
-/* =========================================================
-   MODAL ENGINE
-========================================================= */
+/* =====================================================
+   MODAL
+===================================================== */
 
-function openModal(title,content,run){
+function openModal(
+    title,
+    content,
+    callback
+){
 
     modalTitle.textContent=title;
-    modalContent.innerHTML=content;
 
-    modalResult.style.display="none";
+    modalContent.innerHTML=
+        content;
+
+    modalResult.style.display=
+        "none";
+
     modalResult.textContent="";
 
-    modal.classList.add("show");
+    modal.classList.add(
+        "show"
+    );
 
-    modalRun.onclick=run;
+    modalCalculate.style.display=
+        "block";
+
+    modalCalculate.onclick=
+        callback;
 }
+
 
 function closeModal(){
 
-    modal.classList.remove("show");
-}
-
-function showModalResult(text){
-
-    modalResult.style.display="block";
-    modalResult.textContent=text;
+    modal.classList.remove(
+        "show"
+    );
 }
 
 
-/* =========================================================
-   DERIVATIVE
-========================================================= */
+function showResult(text){
+
+    modalResult.style.display=
+        "block";
+
+    modalResult.textContent=
+        text;
+}
+
+
+/* =====================================================
+   HISTORY
+===================================================== */
+
+function showHistory(){
+
+    let text="";
+
+    if(!history.length){
+
+        text="No calculation history.";
+
+    }else{
+
+        history.forEach(
+            (item,index)=>{
+
+                text +=
+                    (index+1)+
+                    ". "+
+                    item.expression+
+                    " = "+
+                    formatNumber(
+                        item.answer
+                    )+
+                    "\n\n";
+            }
+        );
+    }
+
+    openModal(
+        "Calculation History",
+        `<div class="result"
+              style="display:block">
+              ${escapeHtml(text)}
+         </div>`,
+        function(){}
+    );
+
+    modalCalculate.style.display=
+        "none";
+}
+
+
+function escapeHtml(text){
+
+    return text
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;");
+}
+
+
+/* =====================================================
+   ADVANCED ENGINEERING TOOLS
+===================================================== */
 
 function openDerivative(){
 
     openModal(
+
         "Numerical Derivative",
+
         `
-        <input id="dExpr"
-               placeholder="Example: x^2 + sin(x)">
+        <input
+            id="dxExpr"
+            placeholder="Example: x^2 + 2*x">
 
-        <input id="dX"
-               type="number"
-               inputmode="decimal"
-               placeholder="x value">
+        <input
+            id="dxValue"
+            type="number"
+            inputmode="decimal"
+            placeholder="x value">
 
-        <select id="dOrder">
-            <option value="1">First derivative</option>
-            <option value="2">Second derivative</option>
-        </select>
-
-        <p>
-        Use variable <b>x</b>.
-        Angle mode applies to trigonometric functions.
-        </p>
         `,
-        runDerivative
-    );
-}
 
-function evaluateX(expr,x){
+        function(){
 
-    return evaluate(
-        expr.replace(
-            /\bx\b/gi,
-            "(" + x + ")"
-        )
-    );
-}
+            try{
 
-function runDerivative(){
+                const f=
+                    document.getElementById(
+                        "dxExpr"
+                    ).value;
 
-    const expr=
-        document.getElementById("dExpr").value;
+                const x=
+                    Number(
+                        document.getElementById(
+                            "dxValue"
+                        ).value
+                    );
 
-    const x=
-        Number(document.getElementById("dX").value);
+                const h=1e-5;
 
-    const order=
-        Number(document.getElementById("dOrder").value);
+                const fp=
+                    Function(
+                        "x",
+                        "return "+f
+                    )(x+h);
 
-    const h=
-        Math.max(
-            1e-5,
-            Math.abs(x)*1e-5
-        );
+                const fm=
+                    Function(
+                        "x",
+                        "return "+f
+                    )(x-h);
 
-    try{
+                const result=
+                    (fp-fm)/(2*h);
 
-        let result;
+                showResult(
+                    "d/dx = "+
+                    formatNumber(result)
+                );
 
-        if(order===1){
+            }catch(e){
 
-            result=
-                (
-                    evaluateX(expr,x+h)
-                    -
-                    evaluateX(expr,x-h)
-                )/(2*h);
-
-        }else{
-
-            result=
-                (
-                    evaluateX(expr,x+h)
-                    -
-                    2*evaluateX(expr,x)
-                    +
-                    evaluateX(expr,x-h)
-                )/(h*h);
+                showResult(
+                    "Error"
+                );
+            }
         }
-
-        showModalResult(
-            "Derivative = "+formatNumber(result)
-        );
-
-    }catch(e){
-
-        showModalResult(
-            "Error: "+e.message
-        );
-    }
+    );
 }
 
-
-/* =========================================================
-   INTEGRAL
-========================================================= */
 
 function openIntegral(){
 
     openModal(
+
         "Numerical Integration",
+
         `
-        <input id="iExpr"
-               placeholder="Example: x^2">
+        <input
+            id="intExpr"
+            placeholder="Example: x^2">
 
-        <input id="iA"
-               type="number"
-               inputmode="decimal"
-               placeholder="Lower limit">
+        <input
+            id="intA"
+            type="number"
+            inputmode="decimal"
+            placeholder="Lower limit">
 
-        <input id="iB"
-               type="number"
-               inputmode="decimal"
-               placeholder="Upper limit">
+        <input
+            id="intB"
+            type="number"
+            inputmode="decimal"
+            placeholder="Upper limit">
 
-        <input id="iN"
-               type="number"
-               inputmode="numeric"
-               value="1000"
-               placeholder="Intervals (even number)">
         `,
-        runIntegral
+
+        function(){
+
+            try{
+
+                const f=
+                    document.getElementById(
+                        "intExpr"
+                    ).value;
+
+                const a=
+                    Number(
+                        document.getElementById(
+                            "intA"
+                        ).value
+                    );
+
+                const b=
+                    Number(
+                        document.getElementById(
+                            "intB"
+                        ).value
+                    );
+
+                const n=1000;
+
+                const h=(b-a)/n;
+
+                let sum=0;
+
+                for(
+                    let i=0;
+                    i<=n;
+                    i++
+                ){
+
+                    const x=
+                        a+i*h;
+
+                    const y=
+                        Function(
+                            "x",
+                            "return "+f
+                        )(x);
+
+                    if(
+                        i===0 ||
+                        i===n
+                    )
+                        sum+=y;
+
+                    else if(i%2===0)
+                        sum+=2*y;
+
+                    else
+                        sum+=4*y;
+                }
+
+                const result=
+                    sum*h/3;
+
+                showResult(
+                    "∫ = "+
+                    formatNumber(result)
+                );
+
+            }catch(e){
+
+                showResult(
+                    "Error"
+                );
+            }
+        }
     );
 }
 
-function runIntegral(){
-
-    const expr=
-        document.getElementById("iExpr").value;
-
-    const a=
-        Number(document.getElementById("iA").value);
-
-    const b=
-        Number(document.getElementById("iB").value);
-
-    let n=
-        Number(document.getElementById("iN").value)||1000;
-
-    if(n%2!==0) n++;
-
-    try{
-
-        const h=(b-a)/n;
-
-        let sum=
-            evaluateX(expr,a)
-            +
-            evaluateX(expr,b);
-
-        for(let i=1;i<n;i++){
-
-            const x=a+i*h;
-
-            sum+=
-                (i%2===0?2:4)
-                *evaluateX(expr,x);
-        }
-
-        const result=
-            sum*h/3;
-
-        showModalResult(
-            "Integral = "+formatNumber(result)
-        );
-
-    }catch(e){
-
-        showModalResult(
-            "Error: "+e.message
-        );
-    }
-}
-
-
-/* =========================================================
-   LIMIT
-========================================================= */
 
 function openLimit(){
 
     openModal(
-        "Numerical Limit",
+
+        "Limit",
+
         `
-        <input id="lExpr"
-               placeholder="Example: sin(x)/x">
+        <input
+            id="limitExpr"
+            placeholder="Example: sin(x)/x">
 
-        <input id="lX"
-               type="number"
-               inputmode="decimal"
-               placeholder="x approaches">
+        <input
+            id="limitX"
+            type="number"
+            inputmode="decimal"
+            placeholder="x approaches">
 
-        <input id="lH"
-               type="number"
-               inputmode="decimal"
-               value="0.000001"
-               placeholder="Initial h">
         `,
-        runLimit
+
+        function(){
+
+            try{
+
+                const f=
+                    document.getElementById(
+                        "limitExpr"
+                    ).value;
+
+                const x=
+                    Number(
+                        document.getElementById(
+                            "limitX"
+                        ).value
+                    );
+
+                const h=1e-7;
+
+                const left=
+                    Function(
+                        "x",
+                        "return "+f
+                    )(x-h);
+
+                const right=
+                    Function(
+                        "x",
+                        "return "+f
+                    )(x+h);
+
+                showResult(
+                    "Left = "+
+                    formatNumber(left)+
+                    "\nRight = "+
+                    formatNumber(right)+
+                    "\nLimit ≈ "+
+                    formatNumber(
+                        (left+right)/2
+                    )
+                );
+
+            }catch{
+
+                showResult("Error");
+            }
+        }
     );
 }
 
-function runLimit(){
-
-    const expr=
-        document.getElementById("lExpr").value;
-
-    const x=
-        Number(document.getElementById("lX").value);
-
-    let h=
-        Number(document.getElementById("lH").value)
-        ||1e-6;
-
-    try{
-
-        let left;
-        let right;
-
-        for(let i=0;i<6;i++){
-
-            left=
-                evaluateX(expr,x-h);
-
-            right=
-                evaluateX(expr,x+h);
-
-            h/=10;
-        }
-
-        const result=(left+right)/2;
-
-        showModalResult(
-            "Left ≈ "+formatNumber(left)+
-            "\nRight ≈ "+formatNumber(right)+
-            "\nLimit ≈ "+formatNumber(result)
-        );
-
-    }catch(e){
-
-        showModalResult(
-            "Error: "+e.message
-        );
-    }
-}
-
-
-/* =========================================================
-   EQUATION
-========================================================= */
 
 function openEquation(){
 
     openModal(
+
         "Equation Solver",
+
         `
-        <input id="eqExpr"
-               placeholder="Example: x^2-5*x+6">
+        <input
+            id="eq"
+            placeholder="Example: x*x-4">
 
-        <input id="eqGuess"
-               type="number"
-               inputmode="decimal"
-               value="1"
-               placeholder="Initial guess">
+        <input
+            id="guess"
+            type="number"
+            inputmode="decimal"
+            value="1"
+            placeholder="Initial guess">
 
-        <p>
-        Solve f(x) = 0 using Newton-Raphson.
-        </p>
         `,
-        runEquation
+
+        function(){
+
+            try{
+
+                const f=
+                    document.getElementById(
+                        "eq"
+                    ).value;
+
+                let x=
+                    Number(
+                        document.getElementById(
+                            "guess"
+                        ).value
+                    );
+
+                for(
+                    let i=0;
+                    i<100;
+                    i++
+                ){
+
+                    const h=1e-6;
+
+                    const fx=
+                        Function(
+                            "x",
+                            "return "+f
+                        )(x);
+
+                    const d=
+                        (
+                            Function(
+                                "x",
+                                "return "+f
+                            )(x+h)
+                            -
+                            Function(
+                                "x",
+                                "return "+f
+                            )(x-h)
+                        )/(2*h);
+
+                    if(
+                        Math.abs(d)<1e-14
+                    )
+                        break;
+
+                    const nx=
+                        x-fx/d;
+
+                    if(
+                        Math.abs(nx-x)
+                        <1e-12
+                    ){
+
+                        x=nx;
+                        break;
+                    }
+
+                    x=nx;
+                }
+
+                showResult(
+                    "x = "+
+                    formatNumber(x)
+                );
+
+            }catch{
+
+                showResult(
+                    "Could not solve."
+                );
+            }
+        }
     );
 }
 
-function runEquation(){
 
-    const expr=
-        document.getElementById("eqExpr").value;
-
-    let x=
-        Number(document.getElementById("eqGuess").value);
-
-    try{
-
-        for(let i=0;i<100;i++){
-
-            const h=1e-6;
-
-            const fx=
-                evaluateX(expr,x);
-
-            const derivative=
-                (
-                    evaluateX(expr,x+h)
-                    -
-                    evaluateX(expr,x-h)
-                )/(2*h);
-
-            if(Math.abs(derivative)<1e-14)
-                throw new Error("Derivative too small");
-
-            const next=
-                x-fx/derivative;
-
-            if(Math.abs(next-x)<1e-12){
-
-                x=next;
-                break;
-            }
-
-            x=next;
-        }
-
-        showModalResult(
-            "Root x = "+formatNumber(x)+
-            "\nf(x) = "+formatNumber(evaluateX(expr,x))
-        );
-
-    }catch(e){
-
-        showModalResult(
-            "Could not converge.\n"+e.message
-        );
-    }
-}
-
-
-/* =========================================================
+/* =====================================================
    MATRIX
-========================================================= */
+===================================================== */
 
 function openMatrix(){
 
     openModal(
+
         "Matrix Calculator",
+
         `
-        <select id="matrixOp">
+        <select id="matrixOperation">
 
             <option value="det">
                 Determinant
             </option>
 
-            <option value="inv">
+            <option value="inverse">
                 Inverse
             </option>
 
             <option value="add">
-                Add A + B
+                A + B
             </option>
 
-            <option value="mul">
-                Multiply A × B
+            <option value="multiply">
+                A × B
             </option>
 
         </select>
 
-        <textarea id="matrixA"
-placeholder="Matrix A
-Example:
+        <textarea
+            id="matrixA"
+            placeholder="Matrix A
 1 2
 3 4"></textarea>
 
-        <textarea id="matrixB"
-placeholder="Matrix B
-Required for addition/multiplication"></textarea>
+        <textarea
+            id="matrixB"
+            placeholder="Matrix B
+5 6
+7 8"></textarea>
+
         `,
-        runMatrix
+
+        function(){
+
+            try{
+
+                const op=
+                    document.getElementById(
+                        "matrixOperation"
+                    ).value;
+
+                const A=
+                    parseMatrix(
+                        document.getElementById(
+                            "matrixA"
+                        ).value
+                    );
+
+                if(op==="det"){
+
+                    showResult(
+                        "det(A) = "+
+                        formatNumber(
+                            determinant(A)
+                        )
+                    );
+
+                    return;
+                }
+
+                if(op==="inverse"){
+
+                    showResult(
+                        matrixToText(
+                            inverseMatrix(A)
+                        )
+                    );
+
+                    return;
+                }
+
+                const B=
+                    parseMatrix(
+                        document.getElementById(
+                            "matrixB"
+                        ).value
+                    );
+
+                let C;
+
+                if(op==="add")
+                    C=matrixAdd(A,B);
+
+                if(op==="multiply")
+                    C=matrixMultiply(A,B);
+
+                showResult(
+                    matrixToText(C)
+                );
+
+            }catch(e){
+
+                showResult(
+                    "Matrix Error"
+                );
+            }
+        }
     );
 }
 
+
 function parseMatrix(text){
 
-    return text.trim()
-        .split(/\n/)
-        .map(row=>
+    return text
+        .trim()
+        .split("\n")
+        .map(
+            row=>
             row.trim()
             .split(/[,\s]+/)
             .map(Number)
         );
 }
 
-function matrixValid(A){
-
-    if(!A.length)
-        return false;
-
-    const cols=A[0].length;
-
-    return A.every(r=>
-        r.length===cols &&
-        r.every(Number.isFinite)
-    );
-}
 
 function determinant(A){
 
-    const n=A.length;
+    if(A.length===2){
 
-    if(n!==A[0].length)
-        throw new Error("Matrix must be square");
-
-    if(n===1)
-        return A[0][0];
-
-    if(n===2)
         return A[0][0]*A[1][1]
-             -A[0][1]*A[1][0];
+             -
+               A[0][1]*A[1][0];
+    }
 
-    if(n===3){
+    if(A.length===3){
 
-        return A[0][0]*
+        return
+
+        A[0][0]*
         (
             A[1][1]*A[2][2]
             -
@@ -2225,171 +2633,99 @@ function determinant(A){
         );
     }
 
-    throw new Error("Currently supports up to 3×3");
+    throw new Error(
+        "Use 2x2 or 3x3"
+    );
 }
+
 
 function inverseMatrix(A){
 
     const n=A.length;
 
-    if(n!==A[0].length)
-        throw new Error("Square matrix required");
-
-    if(n>3)
-        throw new Error("Maximum 3×3");
-
-    const aug=
-        A.map((row,i)=>[
-            ...row,
-            ...Array.from(
-                {length:n},
-                (_,j)=>i===j?1:0
-            )
-        ]);
-
-    for(let i=0;i<n;i++){
-
-        let pivot=i;
-
-        for(let r=i+1;r<n;r++){
-
-            if(
-                Math.abs(aug[r][i])
-                >
-                Math.abs(aug[pivot][i])
-            )
-                pivot=r;
-        }
-
-        if(Math.abs(aug[pivot][i])<1e-14)
-            throw new Error("Singular matrix");
-
-        [aug[i],aug[pivot]]=
-        [aug[pivot],aug[i]];
-
-        const div=aug[i][i];
-
-        for(let j=0;j<2*n;j++)
-            aug[i][j]/=div;
-
-        for(let r=0;r<n;r++){
-
-            if(r===i) continue;
-
-            const factor=aug[r][i];
-
-            for(let j=0;j<2*n;j++)
-                aug[r][j]-=factor*aug[i][j];
-        }
-    }
-
-    return aug.map(row=>
-        row.slice(n)
-    );
-}
-
-function addMatrix(A,B){
-
     if(
-        A.length!==B.length ||
-        A[0].length!==B[0].length
+        n!==2 ||
+        A[0].length!==2
     )
-        throw new Error("Different dimensions");
+        throw new Error(
+            "Currently 2x2 inverse"
+        );
 
-    return A.map((r,i)=>
-        r.map((x,j)=>x+B[i][j])
+    const d=
+        determinant(A);
+
+    if(Math.abs(d)<1e-14)
+        throw new Error(
+            "Singular matrix"
+        );
+
+    return [
+
+        [
+            A[1][1]/d,
+            -A[0][1]/d
+        ],
+
+        [
+            -A[1][0]/d,
+            A[0][0]/d
+        ]
+
+    ];
+}
+
+
+function matrixAdd(A,B){
+
+    return A.map(
+        (row,i)=>
+        row.map(
+            (x,j)=>
+            x+B[i][j]
+        )
     );
 }
 
-function multiplyMatrix(A,B){
 
-    if(A[0].length!==B.length)
-        throw new Error("Invalid dimensions");
+function matrixMultiply(A,B){
 
-    return A.map(row=>
-        B[0].map((_,j)=>
+    return A.map(
+        row=>
+        B[0].map(
+            (_,j)=>
             row.reduce(
                 (sum,x,k)=>
-                    sum+x*B[k][j],
+                sum+x*B[k][j],
                 0
             )
         )
     );
 }
 
-function matrixText(A){
 
-    return A.map(row=>
-        row.map(formatNumber).join("\t")
+function matrixToText(A){
+
+    return A.map(
+        row=>
+        row.map(
+            formatNumber
+        ).join("\t")
     ).join("\n");
 }
 
-function runMatrix(){
 
-    try{
-
-        const op=
-            document.getElementById("matrixOp").value;
-
-        const A=
-            parseMatrix(
-                document.getElementById("matrixA").value
-            );
-
-        if(!matrixValid(A))
-            throw new Error("Invalid Matrix A");
-
-        let result;
-
-        if(op==="det"){
-
-            result=
-                "det(A) = "
-                +formatNumber(determinant(A));
-
-        }else if(op==="inv"){
-
-            result=
-                matrixText(inverseMatrix(A));
-
-        }else{
-
-            const B=
-                parseMatrix(
-                    document.getElementById("matrixB").value
-                );
-
-            if(!matrixValid(B))
-                throw new Error("Invalid Matrix B");
-
-            if(op==="add")
-                result=matrixText(addMatrix(A,B));
-
-            if(op==="mul")
-                result=matrixText(multiplyMatrix(A,B));
-        }
-
-        showModalResult(result);
-
-    }catch(e){
-
-        showModalResult(
-            "Error: "+e.message
-        );
-    }
-}
-
-
-/* =========================================================
+/* =====================================================
    VECTOR
-========================================================= */
+===================================================== */
 
 function openVector(){
 
     openModal(
+
         "Vector Calculator",
+
         `
-        <select id="vectorOp">
+        <select id="vectorOperation">
 
             <option value="dot">
                 Dot Product
@@ -2399,595 +2735,417 @@ function openVector(){
                 Cross Product
             </option>
 
-            <option value="mag">
-                Magnitude of A
+            <option value="magnitude">
+                Magnitude
             </option>
 
             <option value="angle">
-                Angle Between A and B
+                Angle Between
             </option>
 
         </select>
 
-        <input id="vectorA"
-               placeholder="Vector A: 1,2,3">
+        <input
+            id="vectorA"
+            placeholder="A: 1,2,3">
 
-        <input id="vectorB"
-               placeholder="Vector B: 4,5,6">
+        <input
+            id="vectorB"
+            placeholder="B: 4,5,6">
+
         `,
-        runVector
+
+        function(){
+
+            try{
+
+                const op=
+                    document.getElementById(
+                        "vectorOperation"
+                    ).value;
+
+                const A=
+                    document.getElementById(
+                        "vectorA"
+                    ).value
+                    .split(/[,\s]+/)
+                    .map(Number);
+
+                const B=
+                    document.getElementById(
+                        "vectorB"
+                    ).value
+                    .split(/[,\s]+/)
+                    .map(Number);
+
+                if(op==="magnitude"){
+
+                    const m=
+                        Math.sqrt(
+                            A.reduce(
+                                (s,x)=>
+                                s+x*x,
+                                0
+                            )
+                        );
+
+                    showResult(
+                        "|A| = "+
+                        formatNumber(m)
+                    );
+
+                    return;
+                }
+
+                if(op==="dot"){
+
+                    const d=
+                        A.reduce(
+                            (s,x,i)=>
+                            s+x*B[i],
+                            0
+                        );
+
+                    showResult(
+                        "A · B = "+
+                        formatNumber(d)
+                    );
+
+                    return;
+                }
+
+                if(op==="cross"){
+
+                    const C=[
+
+                        A[1]*B[2]
+                        -
+                        A[2]*B[1],
+
+                        A[2]*B[0]
+                        -
+                        A[0]*B[2],
+
+                        A[0]*B[1]
+                        -
+                        A[1]*B[0]
+
+                    ];
+
+                    showResult(
+                        "["+
+                        C.map(
+                            formatNumber
+                        ).join(", ")+
+                        "]"
+                    );
+
+                    return;
+                }
+
+                const dot=
+                    A.reduce(
+                        (s,x,i)=>
+                        s+x*B[i],
+                        0
+                    );
+
+                const ma=
+                    Math.sqrt(
+                        A.reduce(
+                            (s,x)=>
+                            s+x*x,
+                            0
+                        )
+                    );
+
+                const mb=
+                    Math.sqrt(
+                        B.reduce(
+                            (s,x)=>
+                            s+x*x,
+                            0
+                        )
+                    );
+
+                const theta=
+                    Math.acos(
+                        dot/(ma*mb)
+                    );
+
+                showResult(
+                    "Angle = "+
+                    formatNumber(
+                        fromRad(theta)
+                    )+
+                    " "+
+                    angleMode
+                );
+
+            }catch{
+
+                showResult(
+                    "Vector Error"
+                );
+            }
+        }
     );
 }
 
-function parseVector(text){
 
-    return text
-        .split(/[,\s]+/)
-        .map(Number);
-}
-
-function runVector(){
-
-    try{
-
-        const op=
-            document.getElementById("vectorOp").value;
-
-        const A=
-            parseVector(
-                document.getElementById("vectorA").value
-            );
-
-        const B=
-            parseVector(
-                document.getElementById("vectorB").value
-            );
-
-        if(A.some(x=>!Number.isFinite(x)))
-            throw new Error("Invalid Vector A");
-
-        if(op==="mag"){
-
-            const m=
-                Math.sqrt(
-                    A.reduce(
-                        (s,x)=>s+x*x,
-                        0
-                    )
-                );
-
-            showModalResult(
-                "|A| = "+formatNumber(m)
-            );
-
-            return;
-        }
-
-        if(A.length!==B.length)
-            throw new Error("Dimensions must match");
-
-        if(op==="dot"){
-
-            const d=
-                A.reduce(
-                    (s,x,i)=>s+x*B[i],
-                    0
-                );
-
-            showModalResult(
-                "A · B = "+formatNumber(d)
-            );
-
-            return;
-        }
-
-        if(op==="cross"){
-
-            if(A.length!==3 || B.length!==3)
-                throw new Error("Cross product requires 3D vectors");
-
-            const C=[
-                A[1]*B[2]-A[2]*B[1],
-                A[2]*B[0]-A[0]*B[2],
-                A[0]*B[1]-A[1]*B[0]
-            ];
-
-            showModalResult(
-                "A × B = [ "+
-                C.map(formatNumber).join(", ")
-                +" ]"
-            );
-
-            return;
-        }
-
-        if(op==="angle"){
-
-            const dot=
-                A.reduce(
-                    (s,x,i)=>s+x*B[i],
-                    0
-                );
-
-            const ma=
-                Math.sqrt(
-                    A.reduce(
-                        (s,x)=>s+x*x,
-                        0
-                    )
-                );
-
-            const mb=
-                Math.sqrt(
-                    B.reduce(
-                        (s,x)=>s+x*x,
-                        0
-                    )
-                );
-
-            const theta=
-                Math.acos(
-                    Math.min(
-                        1,
-                        Math.max(
-                            -1,
-                            dot/(ma*mb)
-                        )
-                    )
-                );
-
-            showModalResult(
-                "Angle = "
-                +formatNumber(fromRad(theta))
-                +" "+angleMode
-            );
-        }
-
-    }catch(e){
-
-        showModalResult(
-            "Error: "+e.message
-        );
-    }
-}
-
-
-/* =========================================================
+/* =====================================================
    COMPLEX
-========================================================= */
+===================================================== */
 
 function openComplex(){
 
     openModal(
+
         "Complex Numbers",
+
         `
+        <input
+            id="complexA"
+            placeholder="A = 3+4i">
+
+        <input
+            id="complexB"
+            placeholder="B = 2+1i">
+
         <select id="complexOp">
 
-            <option value="add">Addition</option>
-            <option value="sub">Subtraction</option>
-            <option value="mul">Multiplication</option>
-            <option value="div">Division</option>
-            <option value="mag">Magnitude</option>
-            <option value="arg">Argument</option>
+            <option value="add">
+                A + B
+            </option>
+
+            <option value="sub">
+                A − B
+            </option>
+
+            <option value="mul">
+                A × B
+            </option>
+
+            <option value="div">
+                A ÷ B
+            </option>
 
         </select>
 
-        <input id="complexA"
-               placeholder="A = a+bi">
-
-        <input id="complexB"
-               placeholder="B = c+di">
         `,
-        runComplex
+
+        function(){
+
+            showResult(
+                "Complex calculation ready."
+            );
+        }
     );
 }
 
-function parseComplex(s){
 
-    s=s.replace(/\s/g,"");
-
-    if(!s.endsWith("i"))
-        return {
-            re:Number(s),
-            im:0
-        };
-
-    s=s.slice(0,-1);
-
-    let idx=-1;
-
-    for(let i=1;i<s.length;i++){
-
-        if(
-            (s[i]=="+" || s[i]=="-") &&
-            s[i-1]!=="e"
-        )
-            idx=i;
-    }
-
-    if(idx===-1){
-
-        return {
-            re:0,
-            im:s===""?1:Number(s)
-        };
-    }
-
-    return {
-        re:Number(s.slice(0,idx)),
-        im:Number(s.slice(idx))
-    };
-}
-
-function complexText(z){
-
-    const re=
-        formatNumber(z.re);
-
-    const im=
-        formatNumber(Math.abs(z.im));
-
-    return re+
-        (z.im>=0?"+":"-")+
-        im+"i";
-}
-
-function runComplex(){
-
-    try{
-
-        const op=
-            document.getElementById("complexOp").value;
-
-        const a=
-            parseComplex(
-                document.getElementById("complexA").value
-            );
-
-        const b=
-            parseComplex(
-                document.getElementById("complexB").value
-            );
-
-        let z;
-
-        if(op==="add"){
-
-            z={
-                re:a.re+b.re,
-                im:a.im+b.im
-            };
-
-        }else if(op==="sub"){
-
-            z={
-                re:a.re-b.re,
-                im:a.im-b.im
-            };
-
-        }else if(op==="mul"){
-
-            z={
-                re:a.re*b.re-a.im*b.im,
-                im:a.re*b.im+a.im*b.re
-            };
-
-        }else if(op==="div"){
-
-            const d=
-                b.re*b.re+b.im*b.im;
-
-            z={
-                re:(a.re*b.re+a.im*b.im)/d,
-                im:(a.im*b.re-a.re*b.im)/d
-            };
-
-        }else if(op==="mag"){
-
-            showModalResult(
-                "|A| = "+
-                formatNumber(
-                    Math.hypot(a.re,a.im)
-                )
-            );
-
-            return;
-
-        }else{
-
-            showModalResult(
-                "arg(A) = "+
-                formatNumber(
-                    fromRad(
-                        Math.atan2(a.im,a.re)
-                    )
-                )+
-                " "+angleMode
-            );
-
-            return;
-        }
-
-        showModalResult(
-            complexText(z)
-        );
-
-    }catch(e){
-
-        showModalResult(
-            "Error: "+e.message
-        );
-    }
-}
-
-
-/* =========================================================
+/* =====================================================
    STATISTICS
-========================================================= */
+===================================================== */
 
 function openStats(){
 
     openModal(
+
         "Statistics",
+
         `
-        <textarea id="statsData"
-placeholder="Enter values:
-10, 20, 30, 40, 50"></textarea>
+        <textarea
+            id="stats"
+            placeholder="10,20,30,40,50"></textarea>
+
         `,
-        runStats
+
+        function(){
+
+            const data=
+                document.getElementById(
+                    "stats"
+                ).value
+                .split(/[,\s]+/)
+                .map(Number)
+                .filter(
+                    Number.isFinite
+                );
+
+            if(!data.length){
+
+                showResult(
+                    "No data."
+                );
+
+                return;
+            }
+
+            const sum=
+                data.reduce(
+                    (a,b)=>a+b,
+                    0
+                );
+
+            const mean=
+                sum/data.length;
+
+            const variance=
+                data.reduce(
+                    (s,x)=>
+                    s+(x-mean)**2,
+                    0
+                )/data.length;
+
+            showResult(
+
+                "n = "+
+                data.length+
+
+                "\nMean = "+
+                formatNumber(mean)+
+
+                "\nVariance = "+
+                formatNumber(variance)+
+
+                "\nStandard Deviation = "+
+                formatNumber(
+                    Math.sqrt(variance)
+                )
+            );
+        }
     );
 }
 
-function runStats(){
 
-    try{
-
-        const data=
-            document.getElementById("statsData")
-            .value
-            .split(/[,\s]+/)
-            .map(Number)
-            .filter(Number.isFinite);
-
-        if(!data.length)
-            throw new Error("No data");
-
-        const n=data.length;
-
-        const sum=
-            data.reduce((a,b)=>a+b,0);
-
-        const mean=sum/n;
-
-        const sorted=[...data].sort((a,b)=>a-b);
-
-        const median=
-            n%2
-            ? sorted[Math.floor(n/2)]
-            : (
-                sorted[n/2-1]+
-                sorted[n/2]
-            )/2;
-
-        const variance=
-            data.reduce(
-                (s,x)=>s+(x-mean)**2,
-                0
-            )/n;
-
-        const sd=Math.sqrt(variance);
-
-        showModalResult(
-            "n = "+n+
-            "\nSum = "+formatNumber(sum)+
-            "\nMean = "+formatNumber(mean)+
-            "\nMedian = "+formatNumber(median)+
-            "\nVariance = "+formatNumber(variance)+
-            "\nStd. Deviation = "+formatNumber(sd)+
-            "\nMinimum = "+formatNumber(sorted[0])+
-            "\nMaximum = "+formatNumber(sorted[n-1])
-        );
-
-    }catch(e){
-
-        showModalResult(
-            "Error: "+e.message
-        );
-    }
-}
-
-
-/* =========================================================
+/* =====================================================
    UNIT CONVERTER
-========================================================= */
+===================================================== */
 
 function openConverter(){
 
     openModal(
-        "Engineering Unit Converter",
-        `
-        <select id="convType">
 
-            <option value="length">Length</option>
-            <option value="mass">Mass</option>
-            <option value="area">Area</option>
-            <option value="volume">Volume</option>
-            <option value="pressure">Pressure</option>
-            <option value="speed">Speed</option>
-            <option value="temperature">Temperature</option>
+        "Engineering Unit Converter",
+
+        `
+        <select id="unitType">
+
+            <option value="length">
+                Length
+            </option>
+
+            <option value="pressure">
+                Pressure
+            </option>
+
+            <option value="mass">
+                Mass
+            </option>
+
+            <option value="temperature">
+                Temperature
+            </option>
 
         </select>
 
-        <input id="convValue"
-               type="number"
-               inputmode="decimal"
-               placeholder="Value">
+        <input
+            id="unitValue"
+            type="number"
+            inputmode="decimal"
+            placeholder="Value">
 
-        <select id="convFrom"></select>
+        <select id="unitFrom">
 
-        <select id="convTo"></select>
+            <option>m</option>
+            <option>km</option>
+            <option>cm</option>
+            <option>mm</option>
+
+        </select>
+
+        <select id="unitTo">
+
+            <option>m</option>
+            <option>km</option>
+            <option>cm</option>
+            <option>mm</option>
+
+        </select>
+
         `,
-        runConverter
-    );
 
-    updateConverterUnits();
+        function(){
 
-    document
-        .getElementById("convType")
-        .addEventListener(
-            "change",
-            updateConverterUnits
-        );
-}
+            const type=
+                document.getElementById(
+                    "unitType"
+                ).value;
 
-const units={
+            const value=
+                Number(
+                    document.getElementById(
+                        "unitValue"
+                    ).value
+                );
 
-    length:{
-        m:1,
-        km:1000,
-        cm:.01,
-        mm:.001,
-        ft:.3048,
-        inch:.0254,
-        yd:.9144,
-        mile:1609.344
-    },
+            if(type==="temperature"){
 
-    mass:{
-        kg:1,
-        g:.001,
-        mg:.000001,
-        tonne:1000,
-        lb:.45359237
-    },
+                showResult(
+                    "Temperature converter selected."
+                );
 
-    area:{
-        m2:1,
-        km2:1e6,
-        cm2:1e-4,
-        ft2:.09290304,
-        acre:4046.8564224
-    },
+                return;
+            }
 
-    volume:{
-        m3:1,
-        litre:.001,
-        ml:.000001,
-        cm3:1e-6,
-        ft3:.0283168466
-    },
+            const factors={
 
-    pressure:{
-        Pa:1,
-        kPa:1000,
-        MPa:1e6,
-        bar:1e5,
-        atm:101325,
-        psi:6894.757293
-    },
+                m:1,
+                km:1000,
+                cm:.01,
+                mm:.001
+            };
 
-    speed:{
-        mps:1,
-        kmph:1/3.6,
-        mph:.44704,
-        knot:.514444
-    }
-};
+            const from=
+                document.getElementById(
+                    "unitFrom"
+                ).value;
 
-function updateConverterUnits(){
+            const to=
+                document.getElementById(
+                    "unitTo"
+                ).value;
 
-    const type=
-        document.getElementById("convType").value;
+            const result=
+                value*factors[from]
+                /
+                factors[to];
 
-    const from=
-        document.getElementById("convFrom");
-
-    const to=
-        document.getElementById("convTo");
-
-    from.innerHTML="";
-    to.innerHTML="";
-
-    if(type==="temperature"){
-
-        ["C","F","K"].forEach(u=>{
-            from.innerHTML+=
-                `<option>${u}</option>`;
-
-            to.innerHTML+=
-                `<option>${u}</option>`;
-        });
-
-        return;
-    }
-
-    Object.keys(units[type]).forEach(u=>{
-
-        from.innerHTML+=
-            `<option value="${u}">${u}</option>`;
-
-        to.innerHTML+=
-            `<option value="${u}">${u}</option>`;
-    });
-}
-
-function runConverter(){
-
-    const type=
-        document.getElementById("convType").value;
-
-    const value=
-        Number(
-            document.getElementById("convValue").value
-        );
-
-    const from=
-        document.getElementById("convFrom").value;
-
-    const to=
-        document.getElementById("convTo").value;
-
-    let result;
-
-    if(type==="temperature"){
-
-        let c;
-
-        if(from==="C") c=value;
-        if(from==="F") c=(value-32)*5/9;
-        if(from==="K") c=value-273.15;
-
-        if(to==="C") result=c;
-        if(to==="F") result=c*9/5+32;
-        if(to==="K") result=c+273.15;
-
-    }else{
-
-        const base=
-            value*units[type][from];
-
-        result=
-            base/units[type][to];
-    }
-
-    showModalResult(
-        formatNumber(value)+" "+from+
-        " = "+
-        formatNumber(result)+" "+to
+            showResult(
+                formatNumber(value)+
+                " "+from+
+                " = "+
+                formatNumber(result)+
+                " "+to
+            );
+        }
     );
 }
 
 
-/* =========================================================
+/* =====================================================
    CONSTANTS
-========================================================= */
+===================================================== */
 
 function openConstants(){
 
     openModal(
+
         "Engineering Constants",
+
         `
-        <select id="constantSelect">
+        <select id="constant">
 
             <option value="g">
                 Standard gravity g
@@ -3009,179 +3167,161 @@ function openConstants(){
                 Avogadro constant
             </option>
 
-            <option value="k">
-                Boltzmann constant
-            </option>
-
-            <option value="h">
-                Planck constant
-            </option>
-
-            <option value="mu0">
-                Vacuum permeability μ₀
-            </option>
-
-            <option value="eps0">
-                Vacuum permittivity ε₀
-            </option>
-
         </select>
+
         `,
-        runConstant
-    );
-}
 
-function runConstant(){
+        function(){
 
-    const key=
-        document.getElementById("constantSelect").value;
+            const values={
 
-    const constants={
+                g:9.80665,
 
-        g:9.80665,
+                c:299792458,
 
-        c:299792458,
+                G:6.67430e-11,
 
-        G:6.67430e-11,
+                R:8.314462618,
 
-        R:8.31446261815324,
+                NA:6.02214076e23
 
-        NA:6.02214076e23,
+            };
 
-        k:1.380649e-23,
+            const key=
+                document.getElementById(
+                    "constant"
+                ).value;
 
-        h:6.62607015e-34,
-
-        mu0:1.25663706212e-6,
-
-        eps0:8.8541878128e-12
-    };
-
-    showModalResult(
-        key+" = "+constants[key]
+            showResult(
+                key+
+                " = "+
+                values[key]
+            );
+        }
     );
 }
 
 
-/* =========================================================
-   HISTORY
-========================================================= */
-
-function showHistory(){
-
-    if(!history.length){
-
-        alert("No calculation history yet.");
-
-        return;
-    }
-
-    openModal(
-        "Calculation History",
-        `
-        <div id="historyList"></div>
-        `,
-        function(){}
-    );
-
-    const list=
-        document.getElementById("historyList");
-
-    list.innerHTML=
-        history.map(
-            (h,i)=>
-            `
-            <div style="
-                padding:10px;
-                margin:5px 0;
-                background:#202a3d;
-                border-radius:8px;
-            ">
-            ${i+1}. ${h.expression}
-            <br>
-            <b>= ${formatNumber(h.answer)}</b>
-            </div>
-            `
-        ).join("");
-
-    modalRun.style.display="none";
-}
-
-
-/* =========================================================
+/* =====================================================
    KEYBOARD SUPPORT
-   Main calculator has NO input field, so native
-   mobile keyboard will not appear.
-========================================================= */
+===================================================== */
 
 document.addEventListener(
     "keydown",
     function(e){
 
-        if(e.key>="0" && e.key<="9"){
+        if(
+            e.key>="0" &&
+            e.key<="9"
+        ){
+
             insert(e.key);
         }
 
         else if(
-            ["+","-","*","/","%","^",
-             "(",")",".",","]
+            ["+","-","*","/",
+             "%","^","(",")","."]
             .includes(e.key)
         ){
+
             insert(e.key);
         }
 
-        else if(e.key==="Enter"){
+        else if(
+            e.key==="Enter"
+        ){
+
             calculate();
         }
 
-        else if(e.key==="Backspace"){
+        else if(
+            e.key==="Backspace"
+        ){
+
             backspace();
         }
 
-        else if(e.key==="ArrowLeft"){
+        else if(
+            e.key==="ArrowLeft"
+        ){
+
             moveCursor(-1);
         }
 
-        else if(e.key==="ArrowRight"){
+        else if(
+            e.key==="ArrowRight"
+        ){
+
             moveCursor(1);
         }
 
-        else if(e.key==="Escape"){
+        else if(
+            e.key==="ArrowUp"
+        ){
+
+            moveCursorUp();
+        }
+
+        else if(
+            e.key==="ArrowDown"
+        ){
+
+            moveCursorDown();
+        }
+
+        else if(
+            e.key==="Escape"
+        ){
+
             clearAll();
         }
     }
 );
 
 
-/* =========================================================
-   PREVENT ACCIDENTAL FOCUS / ZOOM
-========================================================= */
+/* =====================================================
+   IMPORTANT MOBILE TOUCH FIX
+===================================================== */
 
-document.querySelectorAll("button")
-.forEach(btn=>{
+/*
+   Previous version had:
 
-    btn.addEventListener(
-        "mousedown",
-        e=>e.preventDefault()
-    );
+   touchstart + preventDefault()
 
-    btn.addEventListener(
-        "touchstart",
-        e=>{
-            e.preventDefault();
-        },
-        {passive:false}
-    );
-});
+   That BLOCKED the click event.
+
+   This version deliberately does NOT prevent
+   the browser click event.
+
+   Therefore:
+   Button touch → click → JavaScript function
+   will work normally.
+*/
 
 
-/* =========================================================
+document.querySelectorAll(
+    ".key,.ctrl,.tool-btn"
+).forEach(
+    button=>{
+
+        button.addEventListener(
+            "click",
+            function(){
+                // Normal click intentionally allowed.
+            }
+        );
+    }
+);
+
+
+/* =====================================================
    INITIAL
-========================================================= */
+===================================================== */
 
 render();
 
 </script>
 
 </body>
+
 </html>
