@@ -2,47 +2,19 @@
 <html lang="en">
 
 <head>
-     
-<!-- =====================================================
-     GOOGLE ANALYTICS 4
-===================================================== -->
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6HZ155HD35"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-
-function gtag(){
-    dataLayer.push(arguments);
-}
-
-gtag('js', new Date());
-gtag('config', 'G-6HZ155HD35');
-</script>
-
 
 <meta charset="UTF-8">
 
 <meta name="viewport"
 content="width=device-width, initial-scale=1.0">
 
-
-<!-- =====================================================
-     SEO
-===================================================== -->
-
-<title>
-Free Online Calculator - Basic & Scientific Calculator | AdiyogiTools
-</title>
+<title>Online Calculators | AdiyogiTools</title>
 
 <meta name="description"
-content="Use AdiyogiTools free online calculator for basic and scientific calculations. Calculate percentages, powers, roots, trigonometry and more on mobile or desktop.">
+content="Use free online calculators including basic, scientific, percentage, GST, EMI, loan, age, BMI, interest and other useful calculators.">
 
 <meta name="keywords"
-content="online calculator, free calculator, basic calculator, scientific calculator, math calculator, percentage calculator, online math calculator">
-
-<meta name="author"
-content="AdiyogiTools">
+content="online calculator, basic calculator, scientific calculator, percentage calculator, GST calculator, EMI calculator, loan calculator, age calculator">
 
 <meta name="robots"
 content="index, follow">
@@ -50,489 +22,217 @@ content="index, follow">
 <link rel="canonical"
 href="https://adiyogitools.in/calculator.html">
 
-
-<!-- =====================================================
-     OPEN GRAPH
-===================================================== -->
-
-<meta property="og:title"
-content="Free Online Calculator - Basic & Scientific Calculator | AdiyogiTools">
-
-<meta property="og:description"
-content="Free online basic and scientific calculator for everyday mathematics, percentages, powers, roots and trigonometry.">
-
-<meta property="og:url"
-content="https://adiyogitools.in/calculator.html">
-
-<meta property="og:type"
-content="website">
-
-<meta property="og:site_name"
-content="AdiyogiTools">
-
-<meta property="og:image"
-content="https://adiyogitools.in/icons/icon-512.png">
-
-<meta property="og:image:alt"
-content="AdiyogiTools Online Calculator">
-
-
-<!-- =====================================================
-     TWITTER
-===================================================== -->
-
-<meta name="twitter:card"
-content="summary_large_image">
-
-<meta name="twitter:title"
-content="Free Online Calculator | AdiyogiTools">
-
-<meta name="twitter:description"
-content="Calculate mathematics problems with the free online basic and scientific calculator from AdiyogiTools.">
-
-<meta name="twitter:image"
-content="https://adiyogitools.in/icons/icon-512.png">
-
-
-<!-- =====================================================
-     APP
-===================================================== -->
-
-<meta name="application-name"
-content="AdiyogiTools">
-
-<meta name="apple-mobile-web-app-title"
-content="AdiyogiTools">
-
-<meta name="theme-color"
-content="#0f172a">
-
-<meta name="format-detection"
-content="telephone=no">
-
-
-<!-- CSS -->
-
 <link rel="stylesheet"
 href="style.css">
 
 
-<!-- FAVICON -->
-
-<link rel="icon"
-type="image/png"
-href="icons/icon-192.png">
-
-
-<!-- =====================================================
-     SOFTWARE APPLICATION SCHEMA
-===================================================== -->
-
-<script type="application/ld+json">
-
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "AdiyogiTools Online Calculator",
-  "url": "https://adiyogitools.in/calculator.html",
-  "description": "Free online basic and scientific calculator for mathematical calculations.",
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Any",
-  "isAccessibleForFree": true,
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  }
-}
-
-</script>
-
-
-<!-- =====================================================
-     BREADCRUMB SCHEMA
-===================================================== -->
-
-<script type="application/ld+json">
-
-{
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "AdiyogiTools",
-      "item": "https://adiyogitools.in/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Online Calculator",
-      "item": "https://adiyogitools.in/calculator.html"
-    }
-  ]
-}
-
-</script>
-
-
 <style>
 
-/* =====================================================
-   CALCULATOR PAGE
-===================================================== */
+/* =========================================
+   CALCULATOR HUB
+========================================= */
 
 .calculator-page{
-    width:100%;
-    max-width:1200px;
+
+    max-width:1100px;
+
     margin:auto;
-    padding:20px;
-    box-sizing:border-box;
-}
 
-
-/* =====================================================
-   HERO
-===================================================== */
-
-.calculator-hero{
-    text-align:center;
-    margin-bottom:25px;
-}
-
-.calculator-hero h1{
-    font-size:clamp(28px,5vw,44px);
-    margin-bottom:10px;
-}
-
-.calculator-hero p{
-    color:#64748b;
-    line-height:1.7;
-}
-
-
-/* =====================================================
-   MAIN LAYOUT
-===================================================== */
-
-.calculator-layout{
-    display:grid;
-    grid-template-columns:
-        minmax(0,1.5fr)
-        minmax(280px,0.8fr);
-
-    gap:20px;
-}
-
-
-/* =====================================================
-   CARD
-===================================================== */
-
-.calculator-card,
-.history-card,
-.info-card{
-    background:#ffffff;
-    border-radius:18px;
     padding:20px;
 
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.08);
-
-    box-sizing:border-box;
 }
 
 
-/* =====================================================
-   DISPLAY
-===================================================== */
+/* HEADER */
 
-.display-box{
-    background:#0f172a;
-    border-radius:15px;
-    padding:18px;
-    margin-bottom:15px;
+.calculator-header{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
 }
 
-.expression{
-    min-height:25px;
-    color:#94a3b8;
-    text-align:right;
-    font-size:14px;
-    word-break:break-all;
-}
+.calculator-header h1{
 
-.result{
-    min-height:55px;
-    color:#ffffff;
-    text-align:right;
-    font-size:38px;
-    font-weight:700;
-    word-break:break-all;
-}
-
-
-/* =====================================================
-   MODE
-===================================================== */
-
-.mode-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-    margin-bottom:15px;
-}
-
-.mode-buttons{
-    display:flex;
-    gap:8px;
-}
-
-.mode-btn{
-    border:1px solid #cbd5e1;
-    background:#f8fafc;
-    padding:8px 13px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:700;
-}
-
-.mode-btn.active{
-    background:#2563eb;
-    color:#ffffff;
-    border-color:#2563eb;
-}
-
-
-/* =====================================================
-   BUTTON GRID
-===================================================== */
-
-.basic-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:9px;
-}
-
-.scientific-grid{
-    display:none;
-
-    grid-template-columns:
-        repeat(5,1fr);
-
-    gap:8px;
+    font-size:clamp(30px,6vw,46px);
 
     margin-bottom:10px;
+
 }
 
-.scientific-grid.active{
-    display:grid;
-}
+.calculator-header p{
 
-
-.calc-btn{
-    min-height:58px;
-
-    border:1px solid #cbd5e1;
-
-    background:#f8fafc;
-
-    border-radius:11px;
-
-    font-size:18px;
-
-    font-weight:700;
-
-    cursor:pointer;
-
-    transition:.15s;
-}
-
-.calc-btn:hover{
-    background:#e2e8f0;
-    transform:translateY(-1px);
-}
-
-.calc-btn:active{
-    transform:scale(.97);
-}
-
-
-/* SPECIAL BUTTONS */
-
-.calc-btn.operator{
-    background:#dbeafe;
-    color:#1d4ed8;
-}
-
-.calc-btn.equal{
-    background:#16a34a;
-    color:#ffffff;
-}
-
-.calc-btn.danger{
-    background:#fee2e2;
-    color:#b91c1c;
-}
-
-.calc-btn.scientific{
-    background:#ede9fe;
-    color:#6d28d9;
-}
-
-
-/* =====================================================
-   HISTORY
-===================================================== */
-
-.history-card h2{
-    margin-top:0;
-}
-
-.history-list{
-    max-height:480px;
-    overflow-y:auto;
-}
-
-.history-empty{
     color:#64748b;
-    text-align:center;
-    padding:30px 10px;
+
+    line-height:1.6;
+
 }
 
-.history-item{
-    border-bottom:1px solid #e2e8f0;
-    padding:12px 0;
-}
 
-.history-expression{
-    color:#64748b;
-    font-size:13px;
-    word-break:break-all;
-}
+/* SEARCH */
 
-.history-result{
-    font-weight:700;
-    margin-top:4px;
-    word-break:break-all;
-}
+.calculator-search{
 
-.history-actions{
-    margin-top:12px;
-}
-
-.clear-history{
     width:100%;
-    padding:10px;
-    border:none;
-    border-radius:9px;
-    background:#f1f5f9;
-    cursor:pointer;
-    font-weight:700;
+
+    box-sizing:border-box;
+
+    padding:15px 18px;
+
+    border:1px solid #cbd5e1;
+
+    border-radius:14px;
+
+    font-size:16px;
+
+    margin-bottom:30px;
+
 }
 
 
-/* =====================================================
-   INFO / SEO
-===================================================== */
+/* CATEGORY */
 
-.info-card{
-    margin-top:20px;
-}
+.category-title{
 
-.info-card h2{
-    color:#1e293b;
-    margin-top:0;
-}
+    margin-top:35px;
 
-.info-card h3{
-    color:#334155;
-    margin-top:22px;
-}
+    margin-bottom:15px;
 
-.info-card p,
-.info-card li{
-    color:#475569;
-    line-height:1.75;
-}
+    font-size:25px;
 
-.info-card ul,
-.info-card ol{
-    padding-left:22px;
 }
 
 
-/* =====================================================
-   RELATED TOOLS
-===================================================== */
+/* GRID */
 
-.related-tools{
-    margin-top:20px;
+.calculator-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:15px;
+
 }
 
-.related-tools a{
+
+/* CARD */
+
+.calculator-card{
+
     display:block;
-    margin:8px 0;
-    padding:11px 14px;
-
-    background:#2196F3;
-    color:#ffffff;
 
     text-decoration:none;
 
-    border-radius:9px;
-}
+    color:inherit;
 
-.related-tools a:hover{
-    background:#1565C0;
-}
+    background:#ffffff;
 
+    border-radius:18px;
 
-/* =====================================================
-   MOBILE
-===================================================== */
+    padding:20px;
 
-@media(max-width:850px){
+    text-align:center;
 
-    .calculator-layout{
-        grid-template-columns:1fr;
-    }
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.07);
 
-    .history-card{
-        order:2;
-    }
+    border:1px solid #e2e8f0;
+
+    transition:
+        transform .2s,
+        box-shadow .2s;
 
 }
 
-@media(max-width:600px){
+
+.calculator-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 10px 25px rgba(0,0,0,.12);
+
+}
+
+
+/* ICON */
+
+.calculator-icon{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+
+}
+
+
+.calculator-card h3{
+
+    margin:5px 0;
+
+    font-size:18px;
+
+}
+
+
+.calculator-card p{
+
+    margin:5px 0 0;
+
+    color:#64748b;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+}
+
+
+/* MOBILE */
+
+@media(max-width:800px){
 
     .calculator-page{
-        padding:10px;
+
+        padding:14px;
+
     }
 
-    .calculator-card,
-    .history-card,
-    .info-card{
-        padding:15px;
-        border-radius:14px;
-    }
+    .calculator-grid{
 
-    .result{
-        font-size:30px;
-    }
-
-    .calc-btn{
-        min-height:52px;
-        font-size:16px;
-    }
-
-    .scientific-grid{
         grid-template-columns:
-            repeat(4,1fr);
+            repeat(2,1fr);
+
+        gap:12px;
+
+    }
+
+    .calculator-card{
+
+        padding:16px 10px;
+
+    }
+
+    .calculator-icon{
+
+        font-size:35px;
+
+    }
+
+}
+
+
+/* SMALL MOBILE */
+
+@media(max-width:450px){
+
+    .calculator-grid{
+
+        grid-template-columns:1fr;
+
     }
 
 }
@@ -548,656 +248,465 @@ href="icons/icon-192.png">
 <div class="calculator-page">
 
 
-<!-- =====================================================
-     HERO
-===================================================== -->
+<!-- HEADER -->
 
-<section class="calculator-hero">
+<header class="calculator-header">
 
 <h1>
-🧮 Free Online Calculator
+🧮 Online Calculators
 </h1>
 
 <p>
-Use the free basic and scientific calculator from
-AdiyogiTools for everyday mathematics, percentages,
-powers, roots and trigonometric calculations.
+Free online calculators for everyday,
+financial, mathematical and educational needs.
 </p>
 
-</section>
+</header>
 
 
-<!-- =====================================================
-     CALCULATOR + HISTORY
-===================================================== -->
+<!-- SEARCH -->
 
-<div class="calculator-layout">
+<input
+type="search"
+id="calculatorSearch"
+class="calculator-search"
+placeholder="🔍 Search calculator...">
 
 
-<!-- CALCULATOR -->
+<!-- =========================================
+     BASIC & MATH
+========================================= -->
 
-<section class="calculator-card"
-aria-label="Online calculator">
-
-
-<div class="display-box">
-
-<div
-class="expression"
-id="expression">
-</div>
-
-<div
-class="result"
-id="result"
-aria-live="polite">
-0
-</div>
-
-</div>
-
-
-<!-- MODE -->
-
-<div class="mode-row">
-
-<strong>
-Calculator Mode
-</strong>
-
-<div class="mode-buttons">
-
-<button
-class="mode-btn active"
-id="basicMode"
-type="button">
-
-Basic
-
-</button>
-
-<button
-class="mode-btn"
-id="scientificMode"
-type="button">
-
-Scientific
-
-</button>
-
-</div>
-
-</div>
-
-
-<!-- SCIENTIFIC -->
-
-<div
-class="scientific-grid"
-id="scientificGrid">
-
-<button class="calc-btn scientific"
-data-action="sin">
-
-sin
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="cos">
-
-cos
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="tan">
-
-tan
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="log">
-
-log
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="ln">
-
-ln
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="sqrt">
-
-√
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="square">
-
-x²
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="power">
-
-xʸ
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="factorial">
-
-x!
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="inverse">
-
-1/x
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="pi">
-
-π
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="e">
-
-e
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="open">
-
-(
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="close">
-
-)
-
-</button>
-
-<button class="calc-btn scientific"
-data-action="percent">
-
-%
-
-</button>
-
-</div>
-
-
-<!-- BASIC -->
-
-<div class="basic-grid">
-
-<button
-class="calc-btn danger"
-data-action="clear">
-
-AC
-
-</button>
-
-<button
-class="calc-btn danger"
-data-action="delete">
-
-DEL
-
-</button>
-
-<button
-class="calc-btn operator"
-data-action="percent">
-
-%
-
-</button>
-
-<button
-class="calc-btn operator"
-data-action="operator"
-data-value="/">
-
-÷
-
-</button>
-
-
-<button
-class="calc-btn"
-data-value="7">
-
-7
-
-</button>
-
-<button
-class="calc-btn"
-data-value="8">
-
-8
-
-</button>
-
-<button
-class="calc-btn"
-data-value="9">
-
-9
-
-</button>
-
-<button
-class="calc-btn operator"
-data-action="operator"
-data-value="*">
-
-×
-
-</button>
-
-
-<button
-class="calc-btn"
-data-value="4">
-
-4
-
-</button>
-
-<button
-class="calc-btn"
-data-value="5">
-
-5
-
-</button>
-
-<button
-class="calc-btn"
-data-value="6">
-
-6
-
-</button>
-
-<button
-class="calc-btn operator"
-data-action="operator"
-data-value="-">
-
-−
-
-</button>
-
-
-<button
-class="calc-btn"
-data-value="1">
-
-1
-
-</button>
-
-<button
-class="calc-btn"
-data-value="2">
-
-2
-
-</button>
-
-<button
-class="calc-btn"
-data-value="3">
-
-3
-
-</button>
-
-<button
-class="calc-btn operator"
-data-action="operator"
-data-value="+">
-
-+
-
-</button>
-
-
-<button
-class="calc-btn"
-data-action="sign">
-
-+/−
-
-</button>
-
-<button
-class="calc-btn"
-data-value="0">
-
-0
-
-</button>
-
-<button
-class="calc-btn"
-data-value=".">
-
-.
-
-</button>
-
-<button
-class="calc-btn equal"
-data-action="equals">
-
-=
-
-</button>
-
-</div>
-
-
-</section>
-
-
-<!-- HISTORY -->
-
-<aside class="history-card">
-
-<h2>
-📜 History
+<h2 class="category-title">
+🔢 Basic & Math Calculators
 </h2>
 
-<div
-class="history-list"
-id="historyList">
 
-<div class="history-empty">
-No calculations yet.
+<div class="calculator-grid">
+
+
+<a
+href="basic-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+🧮
 </div>
 
-</div>
-
-<div class="history-actions">
-
-<button
-class="clear-history"
-id="clearHistory"
-type="button">
-
-🗑️ Clear History
-
-</button>
-
-</div>
-
-</aside>
-
-
-</div>
-
-
-<!-- =====================================================
-     SEO CONTENT
-===================================================== -->
-
-<section class="info-card">
-
-<h2>
-Online Calculator
-</h2>
+<h3>
+Basic Calculator
+</h3>
 
 <p>
-AdiyogiTools provides a free online calculator for
-basic and scientific mathematical calculations.
-You can use it on a mobile phone, tablet or computer
-without installing additional software.
+Addition, subtraction, multiplication and division.
 </p>
 
-
-<h2>
-Basic Calculator</h2>
-
-<p>
-The basic calculator supports addition, subtraction,
-multiplication, division, percentages and decimal
-calculations. It also includes clear, delete and
-positive or negative number controls.
-</p>
+</a>
 
 
-<h2>
+<a
+href="scientific-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+🔬
+</div>
+
+<h3>
 Scientific Calculator
-</h2>
-
-<p>
-The scientific calculator provides additional
-mathematical operations including sine, cosine, tangent,
-logarithms, natural logarithms, square roots, powers,
-factorials, reciprocal calculations, pi and Euler's
-number.
-</p>
-
-
-<h2>
-How to Use the Online Calculator
-</h2>
-
-<ol>
-
-<li>
-Open the calculator and enter a number.
-</li>
-
-<li>
-Select the mathematical operation you need.
-</li>
-
-<li>
-Enter the next number.
-</li>
-
-<li>
-Press the equals button to calculate the result.
-</li>
-
-<li>
-Use Scientific mode when advanced mathematical
-functions are required.
-</li>
-
-</ol>
-
-
-<h2>
-Calculator Features
-</h2>
-
-<ul>
-
-<li>
-Free online basic calculator.
-</li>
-
-<li>
-Scientific calculator mode.
-</li>
-
-<li>
-Percentage calculations.
-</li>
-
-<li>
-Square root and square calculations.
-</li>
-
-<li>
-Powers and factorials.
-</li>
-
-<li>
-Trigonometric functions.
-</li>
-
-<li>
-Logarithm and natural logarithm.
-</li>
-
-<li>
-Calculation history.
-</li>
-
-<li>
-Keyboard support.
-</li>
-
-<li>
-Mobile-friendly interface.
-</li>
-
-<li>
-No registration required.
-</li>
-
-<li>
-Calculations are performed in your browser.
-</li>
-
-</ul>
-
-
-<h2>
-Is the Online Calculator Free?
-</h2>
-
-<p>
-Yes. The AdiyogiTools online calculator is free to use.
-There is no registration requirement for performing
-calculations.
-</p>
-
-
-<h2>
-Frequently Asked Questions
-</h2>
-
-
-<h3>
-What is an online calculator?
 </h3>
 
 <p>
-An online calculator is a browser-based tool that
-performs mathematical calculations without requiring
-a separate calculator application.
+Advanced mathematical and scientific calculations.
 </p>
 
+</a>
+
+
+<a
+href="percentage-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+📊
+</div>
 
 <h3>
-Can I use this calculator on my phone?
+Percentage Calculator
 </h3>
 
 <p>
-Yes. The calculator is responsive and designed for
-modern mobile, tablet and desktop browsers.
+Calculate percentages quickly and easily.
 </p>
 
+</a>
+
+
+<a
+href="fraction-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+🔢
+</div>
 
 <h3>
-Does the calculator support scientific calculations?
+Fraction Calculator
 </h3>
 
 <p>
-Yes. Switch to Scientific mode to access trigonometric
-functions, logarithms, powers, roots, factorials and
-other scientific operations.
+Add, subtract, multiply and divide fractions.
 </p>
 
+</a>
+
+
+<a
+href="ratio-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+⚖️
+</div>
 
 <h3>
-Does it save my calculations?
+Ratio Calculator
 </h3>
 
 <p>
-The calculation history is stored locally in your
-browser. It is not sent to a calculator server.
+Calculate and simplify ratios.
 </p>
 
+</a>
+
+
+<a
+href="average-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+📈
+</div>
 
 <h3>
-Do I need to install an app?
+Average Calculator
 </h3>
 
 <p>
-No. The calculator works directly in a modern web
-browser.
+Calculate mean and average values.
 </p>
 
-</section>
+</a>
 
 
-<!-- =====================================================
-     RELATED TOOLS
-===================================================== -->
+</div>
 
-<section class="info-card related-tools">
 
-<h2>
-Related Tools
+<!-- =========================================
+     FINANCE
+========================================= -->
+
+<h2 class="category-title">
+💰 Financial Calculators
 </h2>
 
+
+<div class="calculator-grid">
+
+
+<a
+href="gst-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+🧾
+</div>
+
+<h3>
+GST Calculator
+</h3>
+
 <p>
-Explore other free tools from AdiyogiTools:
+Calculate GST amount and total price.
 </p>
 
-
-<a href="image-resizer.html">
-🖼️ Image Resizer
 </a>
 
-<a href="image-compressor.html">
-🗜️ Image Compressor
+
+<a
+href="emi-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+💳
+</div>
+
+<h3>
+EMI Calculator
+</h3>
+
+<p>
+Calculate monthly loan EMI.
+</p>
+
 </a>
 
-<a href="image-resize-kb.html">
-📏 Image Resize by KB
+
+<a
+href="loan-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+🏦
+</div>
+
+<h3>
+Loan Calculator
+</h3>
+
+<p>
+Estimate loan payments and interest.
+</p>
+
 </a>
 
-<a href="image-to-pdf.html">
-📄 Image to PDF
+
+<a
+href="simple-interest.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+💵
+</div>
+
+<h3>
+Simple Interest
+</h3>
+
+<p>
+Calculate simple interest and total amount.
+</p>
+
 </a>
 
-<a href="pdf-compress.html">
-📦 PDF Compressor
+
+<a
+href="compound-interest.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+📈
+</div>
+
+<h3>
+Compound Interest
+</h3>
+
+<p>
+Calculate compound interest and growth.
+</p>
+
 </a>
 
-<a href="qr-generator.html">
-📱 QR Code Generator
+
+<a
+href="discount-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+🏷️
+</div>
+
+<h3>
+Discount Calculator
+</h3>
+
+<p>
+Calculate discount amount and final price.
+</p>
+
 </a>
 
-</section>
+
+</div>
+
+
+<!-- =========================================
+     DATE & TIME
+========================================= -->
+
+<h2 class="category-title">
+📅 Date & Time Calculators
+</h2>
+
+
+<div class="calculator-grid">
+
+
+<a
+href="age-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+🎂
+</div>
+
+<h3>
+Age Calculator
+</h3>
+
+<p>
+Calculate exact age in years, months and days.
+</p>
+
+</a>
+
+
+<a
+href="date-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+📅
+</div>
+
+<h3>
+Date Calculator
+</h3>
+
+<p>
+Add or subtract days from a date.
+</p>
+
+</a>
+
+
+<a
+href="time-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+⏱️
+</div>
+
+<h3>
+Time Calculator
+</h3>
+
+<p>
+Calculate time differences and durations.
+</p>
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     HEALTH
+========================================= -->
+
+<h2 class="category-title">
+❤️ Health & Fitness
+</h2>
+
+
+<div class="calculator-grid">
+
+
+<a
+href="bmi-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+⚖️
+</div>
+
+<h3>
+BMI Calculator
+</h3>
+
+<p>
+Calculate Body Mass Index.
+</p>
+
+</a>
+
+
+<a
+href="calorie-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+🔥
+</div>
+
+<h3>
+Calorie Calculator
+</h3>
+
+<p>
+Estimate daily calorie requirements.
+</p>
+
+</a>
+
+
+</div>
+
+
+<!-- =========================================
+     CONVERTERS
+========================================= -->
+
+<h2 class="category-title">
+🔄 Converters
+</h2>
+
+
+<div class="calculator-grid">
+
+
+<a
+href="unit-converter.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+📐
+</div>
+
+<h3>
+Unit Converter
+</h3>
+
+<p>
+Convert length, weight, area, volume and more.
+</p>
+
+</a>
+
+
+<a
+href="currency-calculator.html"
+class="calculator-card">
+
+<div class="calculator-icon">
+💱
+</div>
+
+<h3>
+Currency Converter
+</h3>
+
+<p>
+Convert between different currencies.
+</p>
+
+</a>
+
+
+</div>
 
 
 </div>
@@ -1205,1151 +714,56 @@ Explore other free tools from AdiyogiTools:
 
 <script>
 
-/* =====================================================
-   CALCULATOR ENGINE
-===================================================== */
+/* =========================================
+   CALCULATOR SEARCH
+========================================= */
 
-const expressionEl =
-document.getElementById("expression");
+const search =
+document.getElementById(
+"calculatorSearch"
+);
 
-const resultEl =
-document.getElementById("result");
 
-const scientificGrid =
-document.getElementById("scientificGrid");
+search.addEventListener(
+"input",
+function(){
 
-const basicMode =
-document.getElementById("basicMode");
+const value =
+this.value.toLowerCase().trim();
 
-const scientificMode =
-document.getElementById("scientificMode");
 
-const historyList =
-document.getElementById("historyList");
+const cards =
+document.querySelectorAll(
+".calculator-card"
+);
 
-const clearHistoryBtn =
-document.getElementById("clearHistory");
 
+cards.forEach(
+function(card){
 
-let expression = "";
+const text =
+card.innerText.toLowerCase();
 
-let lastResult = 0;
 
-let justCalculated = false;
-
-let angleMode = "DEG";
-
-
-/* =====================================================
-   SAFE MATH FUNCTIONS
-===================================================== */
-
-function factorial(n){
-
-    n = Number(n);
-
-    if(!Number.isFinite(n)){
-        throw new Error("Invalid number");
-    }
-
-    if(n < 0 || !Number.isInteger(n)){
-        throw new Error("Factorial requires a non-negative integer");
-    }
-
-    if(n > 170){
-        throw new Error("Number too large");
-    }
-
-    let result = 1;
-
-    for(let i = 2; i <= n; i++){
-        result *= i;
-    }
-
-    return result;
-}
-
-
-/* =====================================================
-   DISPLAY
-===================================================== */
-
-function updateDisplay(){
-
-    expressionEl.textContent =
-        expression || "";
-
-    resultEl.textContent =
-        expression
-        ? formatNumberPreview(expression)
-        : "0";
-}
-
-
-function formatNumberPreview(value){
-
-    if(value.length > 24){
-        return value.slice(-24);
-    }
-
-    return value;
-}
-
-
-/* =====================================================
-   ADD VALUE
-===================================================== */
-
-function addValue(value){
-
-    if(justCalculated){
-
-        expression = "";
-
-        justCalculated = false;
-
-    }
-
-    expression += value;
-
-    updateDisplay();
-
-}
-
-
-/* =====================================================
-   OPERATOR
-===================================================== */
-
-function addOperator(operator){
-
-    if(!expression){
-
-        if(operator === "-"){
-
-            expression = "-";
-
-            updateDisplay();
-
-        }
-
-        return;
-
-    }
-
-
-    if(/[+\-*/.]$/.test(expression)){
-
-        expression =
-            expression.slice(0,-1) +
-            operator;
-
-    }else{
-
-        expression += operator;
-
-    }
-
-
-    justCalculated = false;
-
-    updateDisplay();
-
-}
-
-
-/* =====================================================
-   CLEAR
-===================================================== */
-
-function clearCalculator(){
-
-    expression = "";
-
-    lastResult = 0;
-
-    justCalculated = false;
-
-    expressionEl.textContent = "";
-
-    resultEl.textContent = "0";
-
-}
-
-
-/* =====================================================
-   DELETE
-===================================================== */
-
-function deleteLast(){
-
-    if(justCalculated){
-
-        clearCalculator();
-
-        return;
-
-    }
-
-    expression =
-        expression.slice(0,-1);
-
-    updateDisplay();
-
-}
-
-
-/* =====================================================
-   FORMAT RESULT
-===================================================== */
-
-function formatResult(value){
-
-    if(!Number.isFinite(value)){
-
-        return "Error";
-
-    }
-
-    if(Math.abs(value) < 1e-12){
-
-        value = 0;
-
-    }
-
-    return Number(
-        value.toPrecision(12)
-    ).toString();
-
-}
-
-
-/* =====================================================
-   DEG / RAD
-===================================================== */
-
-function toRadians(value){
-
-    return angleMode === "DEG"
-        ? value * Math.PI / 180
-        : value;
-
-}
-
-
-/* =====================================================
-   SAFE EXPRESSION EVALUATION
-===================================================== */
-
-function evaluateExpression(input){
-
-    let exp =
-        input
-        .replace(/π/g,"Math.PI")
-        .replace(/\be\b/g,"Math.E")
-        .replace(/×/g,"*")
-        .replace(/÷/g,"/")
-        .replace(/\^/g,"**");
-
-
-    /*
-     * Only mathematical characters
-     */
-
-    if(!/^[0-9+\-*/%().\sA-Za-z_*]*$/.test(exp)){
-
-        throw new Error("Invalid expression");
-
-    }
-
-
-    /*
-     * Allow only Math functions
-     */
-
-    exp =
-        exp.replace(
-            /\bsin\(/g,
-            "SIN("
-        );
-
-    exp =
-        exp.replace(
-            /\bcos\(/g,
-            "COS("
-        );
-
-    exp =
-        exp.replace(
-            /\btan\(/g,
-            "TAN("
-        );
-
-    exp =
-        exp.replace(
-            /\blog\(/g,
-            "LOG("
-        );
-
-    exp =
-        exp.replace(
-            /\bln\(/g,
-            "LN("
-        );
-
-    exp =
-        exp.replace(
-            /\bsqrt\(/g,
-            "SQRT("
-        );
-
-
-    /*
-     * Replace custom functions
-     */
-
-    exp =
-        exp.replace(
-            /SIN\(/g,
-            "Math.sin("
-        );
-
-    exp =
-        exp.replace(
-            /COS\(/g,
-            "Math.cos("
-        );
-
-    exp =
-        exp.replace(
-            /TAN\(/g,
-            "Math.tan("
-        );
-
-    exp =
-        exp.replace(
-            /LOG\(/g,
-            "Math.log10("
-        );
-
-    exp =
-        exp.replace(
-            /LN\(/g,
-            "Math.log("
-        );
-
-    exp =
-        exp.replace(
-            /SQRT\(/g,
-            "Math.sqrt("
-        );
-
-
-    /*
-     * Degree mode adjustment
-     */
-
-    if(angleMode === "DEG"){
-
-        exp =
-            exp.replace(
-                /Math\.sin\(([^()]*)\)/g,
-                "Math.sin(($1)*Math.PI/180)"
-            );
-
-        exp =
-            exp.replace(
-                /Math\.cos\(([^()]*)\)/g,
-                "Math.cos(($1)*Math.PI/180)"
-            );
-
-        exp =
-            exp.replace(
-                /Math\.tan\(([^()]*)\)/g,
-                "Math.tan(($1)*Math.PI/180)"
-            );
-
-    }
-
-
-    /*
-     * Basic validation before Function
-     */
-
-    if(
-        !/^[0-9+\-*/%().\sA-Za-z_*]*$/.test(exp)
-    ){
-
-        throw new Error(
-            "Invalid expression"
-        );
-
-    }
-
-
-    /*
-     * Calculate
-     */
-
-    const result =
-        Function(
-            '"use strict"; return (' +
-            exp +
-            ')'
-        )();
-
-
-    if(
-        typeof result !== "number" ||
-        !Number.isFinite(result)
-    ){
-
-        throw new Error(
-            "Invalid calculation"
-        );
-
-    }
-
-
-    return result;
-
-}
-
-
-/* =====================================================
-   EQUALS
-===================================================== */
-
-function calculate(){
-
-    if(!expression){
-
-        return;
-
-    }
-
-
-    try{
-
-        const original =
-            expression;
-
-        const value =
-            evaluateExpression(
-                expression
-            );
-
-        const formatted =
-            formatResult(value);
-
-
-        expressionEl.textContent =
-            original + " =";
-
-        resultEl.textContent =
-            formatted;
-
-
-        addHistory(
-            original,
-            formatted
-        );
-
-
-        expression =
-            formatted;
-
-        lastResult =
-            value;
-
-        justCalculated =
-            true;
-
-
-    }catch(error){
-
-        expressionEl.textContent =
-            expression;
-
-        resultEl.textContent =
-            "Error";
-
-    }
-
-}
-
-
-/* =====================================================
-   HISTORY
-===================================================== */
-
-function addHistory(
-    calculation,
-    result
+if(
+text.includes(value)
 ){
 
-    const item =
-        document.createElement("div");
+card.style.display =
+"block";
 
-    item.className =
-        "history-item";
+}else{
 
-
-    item.innerHTML =
-        `
-        <div class="history-expression">
-            ${escapeHTML(calculation)}
-        </div>
-
-        <div class="history-result">
-            = ${escapeHTML(result)}
-        </div>
-        `;
-
-
-    historyList
-        .querySelector(".history-empty")
-        ?.remove();
-
-
-    historyList
-        .prepend(item);
-
-
-    saveHistory();
+card.style.display =
+"none";
 
 }
 
-
-function escapeHTML(text){
-
-    return String(text)
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
 }
 
-
-/* =====================================================
-   LOCAL STORAGE HISTORY
-===================================================== */
-
-function saveHistory(){
-
-    localStorage.setItem(
-        "adiyogiCalculatorHistory",
-        historyList.innerHTML
-    );
-
-}
-
-
-function loadHistory(){
-
-    const saved =
-        localStorage.getItem(
-            "adiyogiCalculatorHistory"
-        );
-
-
-    if(saved){
-
-        historyList.innerHTML =
-            saved;
-
-    }
-
-}
-
-
-clearHistoryBtn.addEventListener(
-    "click",
-    function(){
-
-        historyList.innerHTML =
-            `
-            <div class="history-empty">
-                No calculations yet.
-            </div>
-            `;
-
-
-        localStorage.removeItem(
-            "adiyogiCalculatorHistory"
-        );
-
-    }
 );
 
-
-/* =====================================================
-   BUTTON EVENTS
-===================================================== */
-
-document
-.querySelectorAll(".calc-btn")
-.forEach(
-    function(button){
-
-        button.addEventListener(
-            "click",
-            function(){
-
-                const value =
-                    this.dataset.value;
-
-                const action =
-                    this.dataset.action;
-
-
-                if(value !== undefined){
-
-                    addValue(value);
-
-                    return;
-
-                }
-
-
-                if(action === "clear"){
-
-                    clearCalculator();
-
-                    return;
-
-                }
-
-
-                if(action === "delete"){
-
-                    deleteLast();
-
-                    return;
-
-                }
-
-
-                if(action === "operator"){
-
-                    addOperator(
-                        this.dataset.value
-                    );
-
-                    return;
-
-                }
-
-
-                if(action === "equals"){
-
-                    calculate();
-
-                    return;
-
-                }
-
-
-                if(action === "sign"){
-
-                    toggleSign();
-
-                    return;
-
-                }
-
-
-                if(action === "percent"){
-
-                    percentage();
-
-                    return;
-
-                }
-
-
-                scientificAction(
-                    action
-                );
-
-            }
-        );
-
-    }
-);
-
-
-/* =====================================================
-   SIGN
-===================================================== */
-
-function toggleSign(){
-
-    if(!expression){
-
-        expression = "-";
-
-        updateDisplay();
-
-        return;
-
-    }
-
-
-    try{
-
-        const value =
-            evaluateExpression(
-                expression
-            );
-
-
-        expression =
-            formatResult(-value);
-
-
-        updateDisplay();
-
-    }catch{
-
-        expression =
-            "-(" +
-            expression +
-            ")";
-
-        updateDisplay();
-
-    }
-
-}
-
-
-/* =====================================================
-   PERCENTAGE
-===================================================== */
-
-function percentage(){
-
-    if(!expression){
-
-        return;
-
-    }
-
-
-    try{
-
-        const value =
-            evaluateExpression(
-                expression
-            );
-
-
-        expression =
-            formatResult(
-                value / 100
-            );
-
-
-        updateDisplay();
-
-    }catch{
-
-        resultEl.textContent =
-            "Error";
-
-    }
-
-}
-
-
-/* =====================================================
-   SCIENTIFIC ACTIONS
-===================================================== */
-
-function scientificAction(action){
-
-    if(action === "pi"){
-
-        addValue("π");
-
-        return;
-
-    }
-
-
-    if(action === "e"){
-
-        addValue("e");
-
-        return;
-
-    }
-
-
-    if(action === "open"){
-
-        addValue("(");
-
-        return;
-
-    }
-
-
-    if(action === "close"){
-
-        addValue(")");
-
-        return;
-
-    }
-
-
-    if(action === "power"){
-
-        addOperator("^");
-
-        return;
-
-    }
-
-
-    if(action === "sqrt"){
-
-        wrapCurrent("sqrt");
-
-        return;
-
-    }
-
-
-    if(action === "square"){
-
-        wrapCurrent("square");
-
-        return;
-
-    }
-
-
-    if(action === "factorial"){
-
-        applyUnary(
-            function(value){
-                return factorial(value);
-            }
-        );
-
-        return;
-
-    }
-
-
-    if(action === "inverse"){
-
-        applyUnary(
-            function(value){
-                if(value === 0){
-                    throw new Error();
-                }
-
-                return 1 / value;
-            }
-        );
-
-        return;
-
-    }
-
-
-    if(action === "sin"){
-
-        applyUnary(
-            function(value){
-                return Math.sin(
-                    toRadians(value)
-                );
-            }
-        );
-
-        return;
-
-    }
-
-
-    if(action === "cos"){
-
-        applyUnary(
-            function(value){
-                return Math.cos(
-                    toRadians(value)
-                );
-            }
-        );
-
-        return;
-
-    }
-
-
-    if(action === "tan"){
-
-        applyUnary(
-            function(value){
-                return Math.tan(
-                    toRadians(value)
-                );
-            }
-        );
-
-        return;
-
-    }
-
-
-    if(action === "log"){
-
-        applyUnary(
-            function(value){
-
-                if(value <= 0){
-                    throw new Error();
-                }
-
-                return Math.log10(value);
-
-            }
-        );
-
-        return;
-
-    }
-
-
-    if(action === "ln"){
-
-        applyUnary(
-            function(value){
-
-                if(value <= 0){
-                    throw new Error();
-                }
-
-                return Math.log(value);
-
-            }
-        );
-
-    }
-
-}
-
-
-/* =====================================================
-   WRAP CURRENT
-===================================================== */
-
-function wrapCurrent(functionName){
-
-    if(!expression){
-
-        return;
-
-    }
-
-
-    try{
-
-        const value =
-            evaluateExpression(
-                expression
-            );
-
-
-        let result;
-
-
-        if(functionName === "sqrt"){
-
-            result =
-                Math.sqrt(value);
-
-        }else{
-
-            result =
-                value * value;
-
-        }
-
-
-        expression =
-            formatResult(result);
-
-        updateDisplay();
-
-    }catch{
-
-        resultEl.textContent =
-            "Error";
-
-    }
-
-}
-
-
-/* =====================================================
-   UNARY
-===================================================== */
-
-function applyUnary(fn){
-
-    if(!expression){
-
-        return;
-
-    }
-
-
-    try{
-
-        const value =
-            evaluateExpression(
-                expression
-            );
-
-
-        const result =
-            fn(value);
-
-
-        expression =
-            formatResult(result);
-
-
-        updateDisplay();
-
-    }catch{
-
-        resultEl.textContent =
-            "Error";
-
-    }
-
-}
-
-
-/* =====================================================
-   MODE
-===================================================== */
-
-basicMode.addEventListener(
-    "click",
-    function(){
-
-        basicMode.classList.add("active");
-
-        scientificMode.classList.remove("active");
-
-        scientificGrid.classList.remove("active");
-
-    }
-);
-
-
-scientificMode.addEventListener(
-    "click",
-    function(){
-
-        scientificMode.classList.remove("active");
-
-        scientificMode.classList.add("active");
-
-        scientificGrid.classList.add("active");
-
-    }
-);
-
-
-/* =====================================================
-   KEYBOARD
-===================================================== */
-
-document.addEventListener(
-    "keydown",
-    function(event){
-
-        const key =
-            event.key;
-
-
-        if(
-            /^[0-9.]$/.test(key)
-        ){
-
-            addValue(key);
-
-            return;
-
-        }
-
-
-        if(
-            ["+","-","*","/","^"].includes(key)
-        ){
-
-            addOperator(key);
-
-            return;
-
-        }
-
-
-        if(key === "Enter" || key === "="){
-
-            event.preventDefault();
-
-            calculate();
-
-            return;
-
-        }
-
-
-        if(key === "Backspace"){
-
-            deleteLast();
-
-            return;
-
-        }
-
-
-        if(key === "Escape"){
-
-            clearCalculator();
-
-            return;
-
-        }
-
-
-        if(key === "(" || key === ")"){
-
-            addValue(key);
-
-        }
-
-    }
-);
-
-
-/* =====================================================
-   INITIALIZE
-===================================================== */
-
-loadHistory();
+});
 
 </script>
 
