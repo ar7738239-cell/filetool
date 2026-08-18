@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Age Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free Age Calculator to calculate exact age in years, months, days, weeks, total days, next birthday and age difference.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,input{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+
+    padding:10px 16px;
+
+    background:#0d1322;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+
+    border-radius:12px;
+
+    background:#192842;
+
+    color:#9edbff;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+
+    max-width:720px;
+
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+
+    font-size:15px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   INPUT GROUP
+========================= */
+
+.input-group{
+    margin-bottom:16px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.date-input{
+    width:100%;
+
+    height:52px;
+
+    border:2px solid #d8deea;
+
+    border-radius:11px;
+
+    background:white;
+
+    color:#111827;
+
+    padding:0 13px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.date-input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   TODAY BUTTON
+========================= */
+
+.today-btn{
+    width:100%;
+
+    height:43px;
+
+    margin-top:7px;
+
+    border:1px solid #d8deea;
+
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    color:#5d32d4;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.today-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+.calculate{
+    width:100%;
+
+    height:54px;
+
+    margin-top:2px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:13px;
+}
+
+
+/* =========================
+   MAIN AGE
+========================= */
+
+.age-main{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:7px;
+
+    margin-bottom:12px;
+}
+
+.age-box{
+    background:white;
+
+    padding:14px 5px;
+
+    border-radius:13px;
+
+    text-align:center;
+}
+
+.age-number{
+    color:#5d32d4;
+
+    font-size:29px;
+
+    font-weight:800;
+}
+
+.age-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-top:3px;
+}
+
+
+/* =========================
+   SUMMARY GRID
+========================= */
+
+.summary-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+}
+
+.summary-box{
+    background:white;
+
+    padding:12px;
+
+    border-radius:11px;
+
+    text-align:center;
+}
+
+.summary-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.summary-value{
+    color:#111827;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    word-break:break-word;
+}
+
+
+/* =========================
+   BIRTHDAY
+========================= */
+
+.birthday{
+    margin-top:12px;
+
+    padding:14px;
+
+    background:white;
+
+    border-radius:13px;
+}
+
+.birthday-title{
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.birthday-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #eef0f4;
+
+    color:#6b7280;
+
+    font-size:13px;
+}
+
+.birthday-row:last-child{
+    border-bottom:0;
+}
+
+.birthday-row strong{
+    color:#111827;
+
+    text-align:right;
+}
+
+
+/* =========================
+   DIFFERENCE
+========================= */
+
+.difference-section{
+    margin-top:20px;
+
+    padding-top:18px;
+
+    border-top:1px solid #e5e7eb;
+}
+
+.section-title{
+    font-size:15px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+}
+
+.diff-result{
+    display:none;
+
+    margin-top:12px;
+
+    padding:14px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:12px;
+
+    text-align:center;
+}
+
+.diff-result.show{
+    display:block;
+}
+
+.diff-main{
+    color:#5d32d4;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    margin-bottom:6px;
+}
+
+.diff-sub{
+    color:#6b7280;
+
+    font-size:13px;
+}
+
+
+/* =========================
+   COPY / CLEAR
+========================= */
+
+.copy-btn,
+.clear{
+    width:100%;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:11px;
+
+    font-weight:700;
+}
+
+.copy-btn{
+    border:1px solid #d8deea;
+
+    background:white;
+
+    color:#374151;
+}
+
+.clear{
+    border:1px solid #d8deea;
+
+    background:#f3f4f6;
+
+    color:#374151;
+}
+
+.copy-btn:active,
+.clear:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .brand{
+        font-size:17px;
+    }
+
+    .container{
+        padding:18px 11px 35px;
+    }
+
+    .title-icon{
+        font-size:42px;
+    }
+
+    .title h1{
+        font-size:25px;
+    }
+
+    .card{
+        padding:14px;
+    }
+
+    .age-number{
+        font-size:26px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:360px){
+
+    .badge{
+        display:none;
+    }
+
+    .title h1{
+        font-size:23px;
+    }
+
+    .age-main{
+        gap:5px;
+    }
+
+    .age-box{
+        padding:12px 3px;
+    }
+
+    .age-number{
+        font-size:23px;
+    }
+
+    .age-label{
+        font-size:10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+AGE CALCULATOR
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+<div class="title-icon">
+🎂
+</div>
+
+<h1>
+Age Calculator
+</h1>
+
+<p>
+Calculate your exact age in years, months, days and more.
+</p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =========================
+     DOB
+========================= -->
+
+<div class="input-group">
+
+<label class="label">
+Date of Birth
+</label>
+
+<input
+id="birthDate"
+class="date-input"
+type="date">
+
+</div>
+
+
+<!-- =========================
+     AGE AS OF
+========================= -->
+
+<div class="input-group">
+
+<label class="label">
+Calculate Age As Of
+</label>
+
+<input
+id="asOfDate"
+class="date-input"
+type="date">
+
+
+<button
+type="button"
+class="today-btn"
+onclick="setToday()">
+
+📅 Use Today's Date
+
+</button>
+
+</div>
+
+
+<!-- =========================
+     CALCULATE
+========================= -->
+
+<button
+type="button"
+class="calculate"
+onclick="calculateAge()">
+
+🎂 Calculate Exact Age
+
+</button>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+id="result"
+class="result">
+
+
+<div class="result-title">
+Your Exact Age
+</div>
+
+
+<!-- MAIN AGE -->
+
+<div class="age-main">
+
+
+<div class="age-box">
+
+<div
+id="ageYears"
+class="age-number">
+0
+</div>
+
+<div class="age-label">
+Years
+</div>
+
+</div>
+
+
+<div class="age-box">
+
+<div
+id="ageMonths"
+class="age-number">
+0
+</div>
+
+<div class="age-label">
+Months
+</div>
+
+</div>
+
+
+<div class="age-box">
+
+<div
+id="ageDays"
+class="age-number">
+0
+</div>
+
+<div class="age-label">
+Days
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     TOTALS
+========================= -->
+
+<div class="summary-grid">
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Months
+</div>
+
+<div
+id="totalMonths"
+class="summary-value">
+0
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Weeks
+</div>
+
+<div
+id="totalWeeks"
+class="summary-value">
+0
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Days
+</div>
+
+<div
+id="totalDays"
+class="summary-value">
+0
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Hours
+</div>
+
+<div
+id="totalHours"
+class="summary-value">
+0
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Minutes
+</div>
+
+<div
+id="totalMinutes"
+class="summary-value">
+0
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Seconds
+</div>
+
+<div
+id="totalSeconds"
+class="summary-value">
+0
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     BIRTHDAY INFO
+========================= -->
+
+<div class="birthday">
+
+<div class="birthday-title">
+🎉 Birthday Information
+</div>
+
+
+<div class="birthday-row">
+
+<span>
+Day of Birth
+</span>
+
+<strong
+id="birthDayName">
+—
+</strong>
+
+</div>
+
+
+<div class="birthday-row">
+
+<span>
+Next Birthday
+</span>
+
+<strong
+id="nextBirthday">
+—
+</strong>
+
+</div>
+
+
+<div class="birthday-row">
+
+<span>
+Birthday Countdown
+</span>
+
+<strong
+id="birthdayCountdown">
+—
+</strong>
+
+</div>
+
+
+<div class="birthday-row">
+
+<span>
+Age at Next Birthday
+</span>
+
+<strong
+id="nextAge">
+—
+</strong>
+
+</div>
+
+
+<div class="birthday-row">
+
+<span>
+Leap Year Birth
+</span>
+
+<strong
+id="leapBirth">
+—
+</strong>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     AGE DIFFERENCE
+========================= -->
+
+<div class="difference-section">
+
+<div class="section-title">
+↔️ Age Difference
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Second Date of Birth
+</label>
+
+<input
+id="secondBirthDate"
+class="date-input"
+type="date">
+
+</div>
+
+
+<button
+type="button"
+class="today-btn"
+onclick="calculateDifference()">
+
+Calculate Age Difference
+
+</button>
+
+
+<div
+id="diffResult"
+class="diff-result">
+
+<div
+id="diffMain"
+class="diff-main">
+—
+</div>
+
+<div
+id="diffSub"
+class="diff-sub">
+—
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     COPY
+========================= -->
+
+<button
+type="button"
+class="copy-btn"
+onclick="copyResult()">
+
+📋 Copy Result
+
+</button>
+
+
+<!-- =========================
+     CLEAR
+========================= -->
+
+<button
+type="button"
+class="clear"
+onclick="clearAll()">
+
+Clear All
+
+</button>
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<div class="info">
+
+<strong>
+How Age Is Calculated
+</strong>
+
+<br><br>
+
+Age is calculated using the difference between your Date of Birth and the selected reference date.
+
+<br><br>
+
+The calculator first calculates completed years, then remaining months and days. It also accounts for different month lengths and leap years. 1
+
+<br><br>
+
+<strong>
+Example:
+</strong>
+
+<br>
+
+DOB: 15 January 2000
+
+<br>
+
+As of: 15 January 2026
+
+<br>
+
+Age = <strong>26 years, 0 months, 0 days</strong>
+
+<br><br>
+
+You can also choose a future or past reference date to calculate age on a specific date.
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let lastResult = null;
+
+
+/* =========================================
+   ELEMENT
+========================================= */
+
+function get(id){
+
+return document.getElementById(id);
+
+}
+
+
+/* =========================================
+   DATE HELPERS
+========================================= */
+
+function parseDate(value){
+
+if(!value)
+return null;
+
+const parts =
+value.split("-");
+
+if(parts.length !== 3)
+return null;
+
+return new Date(
+Number(parts[0]),
+Number(parts[1])-1,
+Number(parts[2])
+);
+
+}
+
+
+function dateValue(date){
+
+return new Date(
+date.getFullYear(),
+date.getMonth(),
+date.getDate()
+);
+
+}
+
+
+/* =========================================
+   TODAY
+========================================= */
+
+function todayDate(){
+
+const d =
+new Date();
+
+return new Date(
+d.getFullYear(),
+d.getMonth(),
+d.getDate()
+);
+
+}
+
+
+function dateInputValue(date){
+
+const y =
+date.getFullYear();
+
+const m =
+String(
+date.getMonth()+1
+).padStart(2,"0");
+
+const d =
+String(
+date.getDate()
+).padStart(2,"0");
+
+return y+"-"+m+"-"+d;
+
+}
+
+
+function setToday(){
+
+get("asOfDate")
+.value =
+dateInputValue(
+todayDate()
+);
+
+}
+
+
+/* =========================================
+   DAYS IN MONTH
+========================================= */
+
+function daysInMonth(
+year,
+month
+){
+
+return new Date(
+year,
+month+1,
+0
+).getDate();
+
+}
+
+
+/* =========================================
+   EXACT AGE
+========================================= */
+
+function calculateCalendarAge(
+birth,
+asOf
+){
+
+let years =
+asOf.getFullYear()
+-
+birth.getFullYear();
+
+
+let months =
+asOf.getMonth()
+-
+birth.getMonth();
+
+
+let days =
+asOf.getDate()
+-
+birth.getDate();
+
+
+/*
+   Borrow days from previous month
+*/
+
+if(days < 0){
+
+months--;
+
+const previousMonth =
+new Date(
+asOf.getFullYear(),
+asOf.getMonth(),
+0
+);
+
+days +=
+previousMonth.getDate();
+
+}
+
+
+/*
+   Borrow months
+*/
+
+if(months < 0){
+
+years--;
+
+months += 12;
+
+}
+
+
+return {
+
+years:years,
+
+months:months,
+
+days:days
+
+};
+
+}
+
+
+/* =========================================
+   TOTAL DAYS
+========================================= */
+
+function totalDaysBetween(
+start,
+end
+){
+
+const ms =
+end.getTime()
+-
+start.getTime();
+
+return Math.floor(
+ms /
+86400000
+);
+
+}
+
+
+/* =========================================
+   NEXT BIRTHDAY
+========================================= */
+
+function getNextBirthday(
+birth,
+reference
+){
+
+let year =
+reference.getFullYear();
+
+
+let month =
+birth.getMonth();
+
+let day =
+birth.getDate();
+
+
+/*
+   Handle Feb 29 birthdays
+   in non-leap years.
+
+   We use Feb 28 when Feb 29
+   does not exist.
+*/
+
+if(
+month === 1 &&
+day === 29 &&
+!isLeapYear(year)
+){
+
+day = 28;
+
+}
+
+
+let next =
+new Date(
+year,
+month,
+day
+);
+
+
+/*
+   If birthday already passed,
+   use next year.
+*/
+
+if(next < reference){
+
+year++;
+
+day =
+birth.getDate();
+
+if(
+month === 1 &&
+day === 29 &&
+!isLeapYear(year)
+){
+
+day = 28;
+
+}
+
+next =
+new Date(
+year,
+month,
+day
+);
+
+}
+
+
+return next;
+
+}
+
+
+/* =========================================
+   LEAP YEAR
+========================================= */
+
+function isLeapYear(year){
+
+return (
+year % 4 === 0 &&
+(
+year % 100 !== 0 ||
+year % 400 === 0
+)
+);
+
+}
+
+
+/* =========================================
+   DAY NAME
+========================================= */
+
+function dayName(date){
+
+return date.toLocaleDateString(
+"en-IN",
+{
+weekday:"long"
+}
+);
+
+}
+
+
+/* =========================================
+   MONTH NAME
+========================================= */
+
+function monthName(date){
+
+return date.toLocaleDateString(
+"en-IN",
+{
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+);
+
+}
+
+
+/* =========================================
+   FORMAT LARGE NUMBER
+========================================= */
+
+function formatLarge(value){
+
+return Number(
+value
+).toLocaleString(
+"en-IN"
+);
+
+}
+
+
+/* =========================================
+   CALCULATE AGE
+========================================= */
+
+function calculateAge(){
+
+const birth =
+parseDate(
+get("birthDate").value
+);
+
+const asOf =
+parseDate(
+get("asOfDate").value
+);
+
+
+if(!birth){
+
+alert(
+"Please enter your Date of Birth."
+);
+
+return;
+
+}
+
+
+if(!asOf){
+
+alert(
+"Please select the reference date."
+);
+
+return;
+
+}
+
+
+if(
+birth > asOf
+){
+
+alert(
+"Date of Birth cannot be after the reference date."
+);
+
+return;
+
+}
+
+
+const age =
+calculateCalendarAge(
+birth,
+asOf
+);
+
+
+const totalDays =
+totalDaysBetween(
+birth,
+asOf
+);
+
+
+const totalMonths =
+age.years * 12 +
+age.months;
+
+
+const totalWeeks =
+Math.floor(
+totalDays / 7
+);
+
+
+const totalHours =
+totalDays * 24;
+
+
+const totalMinutes =
+totalHours * 60;
+
+
+const totalSeconds =
+totalMinutes * 60;
+
+
+/* =========================
+   MAIN AGE
+========================= */
+
+get("ageYears")
+.textContent =
+formatLarge(
+age.years
+);
+
+get("ageMonths")
+.textContent =
+formatLarge(
+age.months
+);
+
+get("ageDays")
+.textContent =
+formatLarge(
+age.days
+);
+
+
+/* =========================
+   TOTALS
+========================= */
+
+get("totalMonths")
+.textContent =
+formatLarge(
+totalMonths
+);
+
+get("totalWeeks")
+.textContent =
+formatLarge(
+totalWeeks
+);
+
+get("totalDays")
+.textContent =
+formatLarge(
+totalDays
+);
+
+get("totalHours")
+.textContent =
+formatLarge(
+totalHours
+);
+
+get("totalMinutes")
+.textContent =
+formatLarge(
+totalMinutes
+);
+
+get("totalSeconds")
+.textContent =
+formatLarge(
+totalSeconds
+);
+
+
+/* =========================
+   BIRTHDAY
+========================= */
+
+get("birthDayName")
+.textContent =
+dayName(birth);
+
+
+const nextBirthday =
+getNextBirthday(
+birth,
+asOf
+);
+
+
+get("nextBirthday")
+.textContent =
+monthName(
+nextBirthday
+);
+
+
+const daysToBirthday =
+totalDaysBetween(
+asOf,
+nextBirthday
+);
+
+
+get("birthdayCountdown")
+.textContent =
+formatLarge(
+daysToBirthday
+)
++
+(
+daysToBirthday === 1
+?
+" Day"
+:
+" Days"
+);
+
+
+/*
+   Age at next birthday
+*/
+
+const nextAge =
+calculateCalendarAge(
+birth,
+nextBirthday
+);
+
+
+get("nextAge")
+.textContent =
+formatLarge(
+nextAge.years
+)
++
+" Years";
+
+
+get("leapBirth")
+.textContent =
+(
+birth.getMonth() === 1 &&
+birth.getDate() === 29
+)
+?
+"Yes — 29 February"
+:
+"No";
+
+
+/* =========================
+   SAVE RESULT
+========================= */
+
+lastResult = {
+
+birth:birth,
+
+asOf:asOf,
+
+age:age,
+
+totalDays:totalDays,
+
+totalMonths:totalMonths,
+
+totalWeeks:totalWeeks,
+
+totalHours:totalHours,
+
+totalMinutes:totalMinutes,
+
+totalSeconds:totalSeconds,
+
+nextBirthday:nextBirthday,
+
+daysToBirthday:daysToBirthday
+
+};
+
+
+/* =========================
+   SHOW
+========================= */
+
+get("result")
+.classList.add(
+"show"
+);
+
+
+get("result")
+.scrollIntoView({
+
+behavior:"smooth",
+
+block:"nearest"
+
+});
+
+}
+
+
+/* =========================================
+   AGE DIFFERENCE
+========================================= */
+
+function calculateDifference(){
+
+const birth1 =
+parseDate(
+get("birthDate").value
+);
+
+const birth2 =
+parseDate(
+get("secondBirthDate").value
+);
+
+
+if(!birth1){
+
+alert(
+"Please enter the first Date of Birth."
+);
+
+return;
+
+}
+
+
+if(!birth2){
+
+alert(
+"Please enter the second Date of Birth."
+);
+
+return;
+
+}
+
+
+/*
+   Work with older and younger
+   birth dates.
+*/
+
+let older;
+let younger;
+
+
+if(birth1 <= birth2){
+
+older = birth1;
+younger = birth2;
+
+}
+else{
+
+older = birth2;
+younger = birth1;
+
+}
+
+
+const diff =
+calculateCalendarAge(
+older,
+younger
+);
+
+
+const totalDays =
+totalDaysBetween(
+older,
+younger
+);
+
+
+get("diffMain")
+.textContent =
+
+diff.years +
+" Years, " +
+
+diff.months +
+" Months, " +
+
+diff.days +
+" Days";
+
+
+get("diffSub")
+.textContent =
+
+"Total difference: " +
+
+formatLarge(
+totalDays
+) +
+
+" days";
+
+
+get("diffResult")
+.classList.add(
+"show"
+);
+
+}
+
+
+/* =========================================
+   COPY RESULT
+========================================= */
+
+function copyResult(){
+
+if(!lastResult){
+
+alert(
+"Calculate your age first."
+);
+
+return;
+
+}
+
+
+const r =
+lastResult;
+
+
+const text =
+
+"AdiyogiTools Age Calculator\n\n" +
+
+"Date of Birth: " +
+monthName(r.birth) +
+
+"\nAge As Of: " +
+monthName(r.asOf) +
+
+"\n\nExact Age: " +
+
+r.age.years +
+" Years, " +
+
+r.age.months +
+" Months, " +
+
+r.age.days +
+" Days" +
+
+"\n\nTotal Months: " +
+formatLarge(r.totalMonths) +
+
+"\nTotal Weeks: " +
+formatLarge(r.totalWeeks) +
+
+"\nTotal Days: " +
+formatLarge(r.totalDays) +
+
+"\nTotal Hours: " +
+formatLarge(r.totalHours) +
+
+"\nTotal Minutes: " +
+formatLarge(r.totalMinutes) +
+
+"\nTotal Seconds: " +
+formatLarge(r.totalSeconds) +
+
+"\n\nNext Birthday: " +
+monthName(r.nextBirthday) +
+
+"\nBirthday Countdown: " +
+formatLarge(r.daysToBirthday) +
+" Days";
+
+
+if(
+navigator.clipboard
+){
+
+navigator.clipboard
+.writeText(text)
+.then(function(){
+
+alert(
+"Result copied!"
+);
+
+})
+.catch(function(){
+
+alert(text);
+
+});
+
+}
+else{
+
+alert(text);
+
+}
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+get("birthDate")
+.value = "";
+
+get("asOfDate")
+.value =
+dateInputValue(
+todayDate()
+);
+
+get("secondBirthDate")
+.value = "";
+
+
+get("result")
+.classList.remove(
+"show"
+);
+
+get("diffResult")
+.classList.remove(
+"show"
+);
+
+
+lastResult = null;
+
+}
+
+
+/* =========================================
+   INITIAL DATE
+========================================= */
+
+setToday();
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter"
+){
+
+calculateAge();
+
+}
+
+});
+
+</script>
+
+
+</body>
+
+</html>
