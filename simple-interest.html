@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Simple Interest Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free Simple Interest Calculator to calculate interest and total amount quickly and accurately.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+    padding:10px 16px;
+
+    background:#0d1322;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+    border-radius:12px;
+
+    background:#192842;
+    color:#9edbff;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:720px;
+
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   INPUT GRID
+========================= */
+
+.input-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:14px;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.prefix,
+.suffix{
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#6b7280;
+
+    font-weight:700;
+}
+
+.prefix{
+    left:13px;
+}
+
+.suffix{
+    right:13px;
+}
+
+.input{
+    width:100%;
+    height:50px;
+
+    border:2px solid #d8deea;
+    border-radius:11px;
+
+    background:white;
+    color:#111827;
+
+    padding:0 38px 0 35px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.input.no-prefix{
+    padding-left:14px;
+}
+
+.input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   TIME UNIT
+========================= */
+
+.time-title{
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:7px;
+}
+
+.time-buttons{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:7px;
+
+    margin-bottom:18px;
+}
+
+.time-btn{
+    height:43px;
+
+    border:1px solid #d8deea;
+
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    color:#374151;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.time-btn.active{
+    background:#7545f5;
+    border-color:#7545f5;
+
+    color:white;
+}
+
+.time-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+.calculate{
+    width:100%;
+    height:54px;
+
+    margin-top:3px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:13px;
+}
+
+
+/* =========================
+   MAIN INTEREST
+========================= */
+
+.main-result{
+    background:white;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    margin-bottom:12px;
+}
+
+.main-label{
+    color:#6b7280;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.main-value{
+    color:#5d32d4;
+
+    font-size:30px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+}
+
+.summary-box{
+    background:white;
+
+    padding:12px;
+
+    border-radius:11px;
+
+    text-align:center;
+}
+
+.summary-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.summary-value{
+    color:#111827;
+
+    font-size:15px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   BREAKDOWN
+========================= */
+
+.breakdown{
+    margin-top:12px;
+
+    padding:14px;
+
+    background:white;
+
+    border-radius:13px;
+}
+
+.breakdown-title{
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.breakdown-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #eef0f4;
+
+    color:#6b7280;
+
+    font-size:13px;
+}
+
+.breakdown-row:last-child{
+    border-bottom:0;
+}
+
+.breakdown-row strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FORMULA
+========================= */
+
+.formula{
+    margin-top:12px;
+
+    padding:14px;
+
+    background:#111827;
+
+    color:white;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:15px;
+
+    line-height:1.7;
+}
+
+.formula strong{
+    color:#c4b5fd;
+}
+
+
+/* =========================
+   COPY / CLEAR
+========================= */
+
+.copy-btn,
+.clear{
+    width:100%;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:11px;
+
+    font-weight:700;
+}
+
+.copy-btn{
+    border:1px solid #d8deea;
+
+    background:white;
+
+    color:#374151;
+}
+
+.clear{
+    border:1px solid #d8deea;
+
+    background:#f3f4f6;
+
+    color:#374151;
+}
+
+.copy-btn:active,
+.clear:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .input-grid{
+        grid-template-columns:1fr;
+
+        gap:0;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:380px){
+
+    .badge{
+        display:none;
+    }
+
+    .container{
+        padding:18px 10px 35px;
+    }
+
+    .card{
+        padding:13px;
+    }
+
+    .title h1{
+        font-size:24px;
+    }
+
+    .main-value{
+        font-size:27px;
+    }
+
+    .time-buttons{
+        gap:5px;
+    }
+
+    .time-btn{
+        font-size:11px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+SIMPLE INTEREST
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+<div class="title-icon">
+💵
+</div>
+
+<h1>
+Simple Interest Calculator
+</h1>
+
+<p>
+Calculate simple interest, total amount and interest breakdown.
+</p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =========================
+     PRINCIPAL + RATE
+========================= -->
+
+<div class="input-grid">
+
+
+<div class="input-group">
+
+<label class="label">
+Principal Amount
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="principal"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 100000">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Annual Interest Rate
+</label>
+
+<div class="input-wrap">
+
+<input
+id="rate"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 8">
+
+<span class="suffix">%</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     TIME
+========================= -->
+
+<div class="input-group">
+
+<label class="label">
+Time Period
+</label>
+
+<input
+id="time"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 3">
+
+
+<div class="time-title">
+Time Unit
+</div>
+
+
+<div class="time-buttons">
+
+<button
+class="time-btn active"
+data-unit="years">
+Years
+</button>
+
+<button
+class="time-btn"
+data-unit="months">
+Months
+</button>
+
+<button
+class="time-btn"
+data-unit="days">
+Days
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     CALCULATE
+========================= -->
+
+<button
+class="calculate"
+onclick="calculateInterest()">
+
+Calculate Interest
+
+</button>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+id="result"
+class="result">
+
+
+<div class="result-title">
+Simple Interest Calculation
+</div>
+
+
+<div class="main-result">
+
+<div class="main-label">
+Simple Interest
+</div>
+
+<div
+id="interestResult"
+class="main-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Principal
+</div>
+
+<div
+id="principalResult"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Amount
+</div>
+
+<div
+id="amountResult"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Interest Rate
+</div>
+
+<div
+id="rateResult"
+class="summary-value">
+0%
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Time
+</div>
+
+<div
+id="timeResult"
+class="summary-value">
+0 Years
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     BREAKDOWN
+========================= -->
+
+<div class="breakdown">
+
+<div class="breakdown-title">
+Interest Breakdown
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Interest per Year
+</span>
+
+<strong
+id="yearInterest">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Interest per Month
+</span>
+
+<strong
+id="monthInterest">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Interest per Day
+</span>
+
+<strong
+id="dayInterest">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Interest as % of Principal
+</span>
+
+<strong
+id="interestPercent">
+0%
+</strong>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     FORMULA
+========================= -->
+
+<div class="formula">
+
+<strong>
+SI = (P × R × T) / 100
+</strong>
+
+<br>
+
+A = P + SI
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     COPY
+========================= -->
+
+<button
+class="copy-btn"
+onclick="copySummary()">
+
+📋 Copy Result
+
+</button>
+
+
+<!-- =========================
+     CLEAR
+========================= -->
+
+<button
+class="clear"
+onclick="clearAll()">
+
+Clear All
+
+</button>
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<div class="info">
+
+<strong>Simple Interest Formula</strong>
+
+<br><br>
+
+SI = (P × R × T) / 100
+
+<br><br>
+
+<strong>P</strong> = Principal amount
+
+<br>
+
+<strong>R</strong> = Annual interest rate
+
+<br>
+
+<strong>T</strong> = Time in years
+
+<br><br>
+
+<strong>Total Amount</strong> = Principal + Simple Interest
+
+<br><br>
+
+Example:
+
+₹10,000 at 8% per year for 3 years:
+
+<br>
+
+SI = ₹2,400
+
+<br>
+
+Total Amount = ₹12,400
+
+<br><br>
+
+This calculator converts months and days into
+years automatically.
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let timeUnit = "years";
+
+let lastResult = null;
+
+
+/* =========================================
+   MONEY FORMAT
+========================================= */
+
+function money(value){
+
+if(!Number.isFinite(value))
+return "₹0.00";
+
+return "₹" +
+value.toLocaleString(
+"en-IN",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+/* =========================================
+   TIME BUTTONS
+========================================= */
+
+document
+.querySelectorAll(".time-btn")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+document
+.querySelectorAll(".time-btn")
+.forEach(function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+});
+
+
+button.classList.add(
+"active"
+);
+
+
+timeUnit =
+button.dataset.unit;
+
+});
+
+});
+
+
+/* =========================================
+   CALCULATE
+========================================= */
+
+function calculateInterest(){
+
+const principal =
+Number(
+document
+.getElementById(
+"principal"
+).value
+);
+
+
+const rate =
+Number(
+document
+.getElementById(
+"rate"
+).value
+);
+
+
+const time =
+Number(
+document
+.getElementById(
+"time"
+).value
+);
+
+
+if(
+!Number.isFinite(principal) ||
+principal <= 0
+){
+
+alert(
+"Please enter a valid principal amount."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(rate) ||
+rate < 0
+){
+
+alert(
+"Please enter a valid interest rate."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(time) ||
+time <= 0
+){
+
+alert(
+"Please enter a valid time period."
+);
+
+return;
+
+}
+
+
+/* =========================
+   CONVERT TO YEARS
+========================= */
+
+let years;
+
+
+if(timeUnit === "years"){
+
+years = time;
+
+}
+else if(timeUnit === "months"){
+
+years = time / 12;
+
+}
+else{
+
+/*
+   365 days = 1 year
+*/
+
+years = time / 365;
+
+}
+
+
+/* =========================
+   SIMPLE INTEREST
+========================= */
+
+const interest =
+(
+principal *
+rate *
+years
+) / 100;
+
+
+const totalAmount =
+principal +
+interest;
+
+
+/* =========================
+   BREAKDOWN
+========================= */
+
+const yearInterest =
+(
+principal *
+rate
+) / 100;
+
+
+const monthInterest =
+yearInterest / 12;
+
+
+const dayInterest =
+yearInterest / 365;
+
+
+const interestPercent =
+principal > 0
+?
+(
+interest /
+principal
+) * 100
+:
+0;
+
+
+/* =========================
+   DISPLAY
+========================= */
+
+document
+.getElementById(
+"interestResult"
+)
+.textContent =
+money(interest);
+
+
+document
+.getElementById(
+"principalResult"
+)
+.textContent =
+money(principal);
+
+
+document
+.getElementById(
+"amountResult"
+)
+.textContent =
+money(totalAmount);
+
+
+document
+.getElementById(
+"rateResult"
+)
+.textContent =
+rate + "%";
+
+
+document
+.getElementById(
+"timeResult"
+)
+.textContent =
+formatTime(
+time,
+timeUnit
+);
+
+
+document
+.getElementById(
+"yearInterest"
+)
+.textContent =
+money(yearInterest);
+
+
+document
+.getElementById(
+"monthInterest"
+)
+.textContent =
+money(monthInterest);
+
+
+document
+.getElementById(
+"dayInterest"
+)
+.textContent =
+money(dayInterest);
+
+
+document
+.getElementById(
+"interestPercent"
+)
+.textContent =
+formatNumber(
+interestPercent
+) + "%";
+
+
+/* =========================
+   SAVE
+========================= */
+
+lastResult = {
+
+principal:principal,
+
+rate:rate,
+
+time:time,
+
+unit:timeUnit,
+
+years:years,
+
+interest:interest,
+
+amount:totalAmount
+
+};
+
+
+/* =========================
+   SHOW
+========================= */
+
+document
+.getElementById(
+"result"
+)
+.classList.add(
+"show"
+);
+
+document
+.getElementById(
+"result"
+)
+.scrollIntoView({
+
+behavior:"smooth",
+
+block:"nearest"
+
+});
+
+}
+
+
+/* =========================================
+   TIME FORMAT
+========================================= */
+
+function formatTime(
+value,
+unit
+){
+
+if(unit === "years"){
+
+return value +
+(
+value === 1
+?
+" Year"
+:
+" Years"
+);
+
+}
+
+
+if(unit === "months"){
+
+return value +
+(
+value === 1
+?
+" Month"
+:
+" Months"
+);
+
+}
+
+
+return value +
+(
+value === 1
+?
+" Day"
+:
+" Days"
+);
+
+}
+
+
+/* =========================================
+   NUMBER FORMAT
+========================================= */
+
+function formatNumber(value){
+
+if(
+Math.abs(value) < 1e-12
+)
+value=0;
+
+return Number(
+value.toFixed(10)
+).toString();
+
+}
+
+
+/* =========================================
+   COPY SUMMARY
+========================================= */
+
+function copySummary(){
+
+if(!lastResult){
+
+alert(
+"Calculate the interest first."
+);
+
+return;
+
+}
+
+
+const r =
+lastResult;
+
+
+const text =
+
+"AdiyogiTools Simple Interest Result\n\n" +
+
+"Principal: " +
+money(r.principal) +
+
+"\nInterest Rate: " +
+r.rate +
+"%" +
+
+"\nTime: " +
+formatTime(
+r.time,
+r.unit
+) +
+
+"\nTime in Years: " +
+formatNumber(r.years) +
+
+"\nSimple Interest: " +
+money(r.interest) +
+
+"\nTotal Amount: " +
+money(r.amount);
+
+
+if(
+navigator.clipboard
+){
+
+navigator.clipboard
+.writeText(text)
+.then(function(){
+
+alert(
+"Result copied!"
+);
+
+})
+.catch(function(){
+
+alert(text);
+
+});
+
+}else{
+
+alert(text);
+
+}
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+document
+.getElementById(
+"principal"
+)
+.value="";
+
+
+document
+.getElementById(
+"rate"
+)
+.value="";
+
+
+document
+.getElementById(
+"time"
+)
+.value="";
+
+
+document
+.getElementById(
+"result"
+)
+.classList.remove(
+"show"
+);
+
+
+lastResult=null;
+
+
+timeUnit="years";
+
+
+document
+.querySelectorAll(
+".time-btn"
+)
+.forEach(function(button){
+
+button.classList.toggle(
+"active",
+button.dataset.unit ===
+"years"
+);
+
+});
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter"
+){
+
+calculateInterest();
+
+}
+
+});
+
+</script>
+
+
+</body>
+
+</html>
