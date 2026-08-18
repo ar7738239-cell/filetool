@@ -1,488 +1,2389 @@
 <!DOCTYPE html>
 <html lang="en">
-
-    
 <head>
-
-<!-- ================================================= -->
-<!-- GOOGLE ANALYTICS 4 - MUST BE IMMEDIATELY AFTER <head> -->
-<!-- Measurement ID: G-6HZ155HD35 -->
-<!-- ================================================= -->
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6HZ155HD35"></script>
-
-<script>
-window.dataLayer = window.dataLayer || [];
-
-function gtag() {
-    dataLayer.push(arguments);
-}
-
-gtag('js', new Date());
-
-gtag('config', 'G-6HZ155HD35');
-</script>
-
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Adiyogi Tools - Free Online Tools</title>
 
 <meta name="description"
-content="Use AdiyogiTools to resize images, compress PDFs, merge PDF files, split PDFs, create passport photos, generate QR codes and more. Free, fast and secure online tools.">
+content="Adiyogi Tools provides free online calculators, image tools, PDF tools, converters and useful everyday utilities.">
 
 <meta name="keywords"
-content="Image to PDF, PDF Merge, PDF Split, PDF Compress, Image Resizer, Image Compressor, Passport Photo Maker, QR Code Generator, Free PDF Tools, Free Image Tools, AdiyogiTools">
-
-<meta name="author" content="Abhay Raj">
-
-<link rel="canonical" href="https://adiyogitools.in/">
+content="free online tools, calculator, image tools, PDF tools, Adiyogi Tools">
 
 <meta name="robots" content="index, follow">
 
+<link rel="canonical"
+href="https://adiyogitools.in/">
 
-<!-- Open Graph -->
+<style>
 
-<meta property="og:title"
-content="Free Image & PDF Tools Online | AdiyogiTools">
+/* =====================================================
+   RESET
+===================================================== */
 
-<meta property="og:description"
-content="Free online Image, PDF and Document Tools. Resize images, compress PDFs, merge PDFs, split PDFs, generate QR codes and much more with AdiyogiTools.">
-
-<meta property="og:url"
-content="https://adiyogitools.in/">
-
-<meta property="og:type"
-content="website">
-
-<meta property="og:site_name"
-content="AdiyogiTools">
-
-<meta property="og:image"
-content="https://adiyogitools.in/icons/icon-512.png">
-
-<meta property="og:image:type"
-content="image/png">
-
-<meta property="og:image:alt"
-content="AdiyogiTools - Free Image and PDF Tools">
-
-<meta property="og:locale"
-content="en_US">
-
-
-<!-- Twitter -->
-
-<meta name="twitter:card"
-content="summary_large_image">
-
-<meta name="twitter:title"
-content="Free Image & PDF Tools Online | AdiyogiTools">
-
-<meta name="twitter:description"
-content="Use AdiyogiTools to resize images, compress PDFs, merge PDF files, split PDFs, create passport photos, generate QR codes and more. Free, fast and secure online tools.">
-
-<meta name="twitter:image"
-content="https://adiyogitools.in/icons/icon-512.png">
-
-<meta name="twitter:image:alt"
-content="AdiyogiTools - Free Image and PDF Tools">
-
-
-<!-- App -->
-
-<meta name="application-name"
-content="AdiyogiTools">
-
-<meta name="apple-mobile-web-app-title"
-content="AdiyogiTools">
-
-<meta name="theme-color"
-content="#0f172a">
-
-<meta name="format-detection"
-content="telephone=no">
-
-
-<title>Free Image & PDF Tools Online | AdiyogiTools</title>
-
-
-<!-- CSS -->
-
-<link rel="stylesheet"
-href="style.css">
-
-
-<!-- PWA -->
-
-<link rel="manifest"
-href="manifest.json">
-
-
-<!-- Favicon -->
-
-<link rel="icon"
-type="image/png"
-href="icons/icon-192.png">
-
-
-<!-- Structured Data -->
-
-<script type="application/ld+json">
-
-{
-  "@context": "https://schema.org",
-
-  "@type": "WebSite",
-
-  "name": "AdiyogiTools",
-
-  "url": "https://adiyogitools.in/",
-
-  "description": "Free online Image, PDF and Document Tools for everyone.",
-
-  "sameAs": [
-    "https://github.com/ar7738239-cell"
-  ]
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-</script>
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:
+    Inter,
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#f7f7fb;
+    color:#111827;
+
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+button,
+input{
+    font:inherit;
+}
+
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
+:root{
+
+    --purple:#7c3aed;
+    --purple-dark:#5b21b6;
+    --purple-light:#a78bfa;
+
+    --navy:#080b20;
+    --navy2:#111333;
+
+    --text:#111827;
+    --muted:#64748b;
+
+    --white:#ffffff;
+
+    --border:#e5e7eb;
+
+    --shadow:
+    0 10px 35px rgba(15,23,42,.08);
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar{
+
+    height:72px;
+
+    background:
+    rgba(7,10,29,.96);
+
+    color:white;
+
+    display:flex;
+    align-items:center;
+
+    padding:0 5%;
+
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+
+    border-bottom:
+    1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(15px);
+}
+
+
+.logo{
+
+    display:flex;
+    align-items:center;
+
+    gap:10px;
+
+    font-size:22px;
+    font-weight:800;
+
+    white-space:nowrap;
+}
+
+.logo-icon{
+
+    width:36px;
+    height:36px;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #8b5cf6,
+        #4c1d95
+    );
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:21px;
+
+    box-shadow:
+    0 5px 20px rgba(124,58,237,.4);
+}
+
+.logo span{
+    color:#a78bfa;
+}
+
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    margin-left:80px;
+
+    font-size:14px;
+
+    color:#d1d5db;
+}
+
+.nav-links a{
+    transition:.2s;
+}
+
+.nav-links a:hover{
+    color:white;
+}
+
+
+.nav-search{
+
+    margin-left:auto;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+}
+
+.nav-search input{
+
+    width:260px;
+
+    height:42px;
+
+    border-radius:10px;
+
+    border:
+    1px solid rgba(255,255,255,.15);
+
+    background:
+    rgba(255,255,255,.06);
+
+    color:white;
+
+    padding:0 14px;
+
+    outline:none;
+}
+
+.nav-search input::placeholder{
+    color:#9ca3af;
+}
+
+
+.theme-btn{
+
+    margin-left:15px;
+
+    width:42px;
+    height:42px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:
+    rgba(255,255,255,.08);
+
+    color:white;
+
+    cursor:pointer;
+
+    font-size:19px;
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    min-height:520px;
+
+    background:
+
+    radial-gradient(
+        circle at 80% 30%,
+        rgba(124,58,237,.35),
+        transparent 35%
+    ),
+
+    radial-gradient(
+        circle at 60% 80%,
+        rgba(76,29,149,.25),
+        transparent 35%
+    ),
+
+    linear-gradient(
+        135deg,
+        #070a1c,
+        #10143a 55%,
+        #201052
+    );
+
+    color:white;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.hero-container{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:
+    75px 35px 80px;
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    align-items:center;
+
+    gap:50px;
+}
+
+
+.hero-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:
+    9px 16px;
+
+    border-radius:30px;
+
+    background:
+    rgba(124,58,237,.22);
+
+    border:
+    1px solid rgba(167,139,250,.25);
+
+    color:#e9d5ff;
+
+    font-size:14px;
+
+    margin-bottom:25px;
+}
+
+
+.hero h1{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-size:
+    clamp(42px,5vw,68px);
+
+    line-height:1.05;
+
+    margin-bottom:22px;
+
+    letter-spacing:-1.5px;
+}
+
+.hero h1 span{
+    color:#a78bfa;
+}
+
+
+.hero-text{
+
+    color:#cbd5e1;
+
+    font-size:17px;
+
+    line-height:1.7;
+
+    max-width:620px;
+
+    margin-bottom:28px;
+}
+
+
+/* HERO FEATURES */
+
+.hero-features{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-bottom:28px;
+}
+
+.hero-feature{
+
+    padding:
+    11px 15px;
+
+    border:
+    1px solid rgba(255,255,255,.12);
+
+    border-radius:10px;
+
+    background:
+    rgba(255,255,255,.04);
+
+    color:#e5e7eb;
+
+    font-size:13px;
+}
+
+
+/* HERO SEARCH */
+
+.hero-search{
+
+    display:flex;
+
+    max-width:560px;
+
+    height:54px;
+
+    background:white;
+
+    border-radius:10px;
+
+    overflow:hidden;
+}
+
+.hero-search input{
+
+    flex:1;
+
+    border:0;
+
+    outline:0;
+
+    padding:
+    0 18px;
+
+    font-size:15px;
+
+    color:#111827;
+}
+
+.hero-search button{
+
+    width:120px;
+
+    border:0;
+
+    background:
+    linear-gradient(
+        135deg,
+        #7c3aed,
+        #6d28d9
+    );
+
+    color:white;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+
+/* =====================================================
+   HERO VISUAL
+===================================================== */
+
+.hero-visual{
+
+    min-height:360px;
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+}
+
+
+.laptop{
+
+    width:470px;
+
+    max-width:100%;
+
+    height:285px;
+
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #252936,
+        #090b12
+    );
+
+    border:
+    5px solid #374151;
+
+    box-shadow:
+    0 30px 70px rgba(0,0,0,.5);
+
+    transform:
+    perspective(1000px)
+    rotateY(-8deg)
+    rotateX(3deg);
+
+    position:relative;
+
+    z-index:2;
+}
+
+
+.laptop-screen{
+
+    position:absolute;
+
+    inset:12px;
+
+    border-radius:9px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #171a35,
+        #28205a
+    );
+
+    padding:18px;
+}
+
+
+.screen-title{
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+}
+
+
+.screen-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:8px;
+}
+
+
+.screen-box{
+
+    height:48px;
+
+    border-radius:7px;
+
+    background:
+    rgba(255,255,255,.08);
+
+    border:
+    1px solid rgba(255,255,255,.08);
+}
+
+
+.laptop-base{
+
+    position:absolute;
+
+    width:540px;
+
+    max-width:115%;
+
+    height:18px;
+
+    bottom:-22px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    background:#4b5563;
+
+    border-radius:
+    0 0 30px 30px;
+
+    box-shadow:
+    0 12px 25px rgba(0,0,0,.4);
+}
+
+
+/* FLOATING ICONS */
+
+.float-icon{
+
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    border-radius:16px;
+
+    background:white;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:34px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.3);
+
+    z-index:5;
+
+    animation:float 4s ease-in-out infinite;
+}
+
+.float-1{
+    top:20px;
+    left:25px;
+}
+
+.float-2{
+    top:80px;
+    right:10px;
+    animation-delay:1s;
+}
+
+.float-3{
+    bottom:20px;
+    left:40px;
+    animation-delay:2s;
+}
+
+.float-4{
+    bottom:45px;
+    right:45px;
+    animation-delay:3s;
+}
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main{
+
+    max-width:1250px;
+
+    margin:auto;
+
+    padding:
+    55px 30px 80px;
+}
+
+
+/* =====================================================
+   SECTION HEADER
+===================================================== */
+
+.section-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    margin-bottom:22px;
+}
+
+.section-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:23px;
+
+    font-weight:800;
+}
+
+.section-title::before{
+
+    content:"";
+
+    width:5px;
+
+    height:28px;
+
+    background:
+    linear-gradient(
+        #7c3aed,
+        #a78bfa
+    );
+
+    border-radius:5px;
+}
+
+.view-all{
+
+    color:#6d28d9;
+
+    font-size:14px;
+
+    font-weight:700;
+}
+
+
+/* =====================================================
+   CATEGORY GRID
+===================================================== */
+
+.category-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(8,1fr);
+
+    gap:14px;
+
+    margin-bottom:55px;
+}
+
+
+.category-card{
+
+    background:white;
+
+    border:
+    1px solid var(--border);
+
+    border-radius:13px;
+
+    padding:
+    22px 10px;
+
+    text-align:center;
+
+    box-shadow:
+    0 5px 18px rgba(15,23,42,.04);
+
+    transition:.25s;
+}
+
+.category-card:hover{
+
+    transform:
+    translateY(-5px);
+
+    box-shadow:
+    0 15px 30px rgba(15,23,42,.1);
+
+    border-color:#ddd6fe;
+}
+
+.category-icon{
+
+    font-size:30px;
+
+    margin-bottom:10px;
+}
+
+.category-card h3{
+
+    font-size:14px;
+
+    margin-bottom:5px;
+}
+
+.category-card p{
+
+    font-size:11px;
+
+    color:#94a3b8;
+}
+
+
+/* =====================================================
+   POPULAR CALCULATORS
+===================================================== */
+
+.tool-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:15px;
+
+    margin-bottom:55px;
+}
+
+
+.tool-card{
+
+    background:white;
+
+    border:
+    1px solid var(--border);
+
+    border-radius:13px;
+
+    padding:18px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:13px;
+
+    transition:.25s;
+
+    box-shadow:
+    0 5px 18px rgba(15,23,42,.04);
+}
+
+.tool-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 15px 30px rgba(15,23,42,.1);
+
+    border-color:#ddd6fe;
+}
+
+
+.tool-icon{
+
+    min-width:42px;
+    height:42px;
+
+    border-radius:10px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:22px;
+
+    background:#f3e8ff;
+}
+
+
+.tool-content h3{
+
+    font-size:14px;
+
+    margin-bottom:6px;
+}
+
+.tool-content p{
+
+    color:#64748b;
+
+    font-size:11px;
+
+    line-height:1.5;
+}
+
+
+/* =====================================================
+   TOOL DIRECTORY
+===================================================== */
+
+.directory{
+
+    background:
+    linear-gradient(
+        135deg,
+        #faf5ff,
+        #f5f3ff
+    );
+
+    border:
+    1px solid #e9d5ff;
+
+    border-radius:20px;
+
+    padding:30px;
+
+    margin-top:30px;
+}
+
+.directory h2{
+
+    font-size:24px;
+
+    margin-bottom:20px;
+}
+
+.directory-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:12px;
+}
+
+.directory a{
+
+    background:white;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    border:1px solid #ede9fe;
+
+    font-size:13px;
+
+    transition:.2s;
+}
+
+.directory a:hover{
+
+    color:#6d28d9;
+
+    border-color:#c4b5fd;
+}
+
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+
+    background:#080b20;
+
+    color:#94a3b8;
+
+    padding:45px 30px;
+
+    text-align:center;
+}
+
+.footer-logo{
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+}
+
+.footer-logo span{
+    color:#a78bfa;
+}
+
+.footer p{
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.footer-links{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin:20px 0;
+}
+
+.footer-links a:hover{
+    color:white;
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:1000px){
+
+    .nav-links{
+        margin-left:30px;
+        gap:16px;
+    }
+
+    .nav-search input{
+        width:170px;
+    }
+
+    .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-text{
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .hero-features{
+        justify-content:center;
+    }
+
+    .hero-search{
+        margin:auto;
+    }
+
+    .hero-visual{
+        margin-top:20px;
+    }
+
+    .category-grid{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .tool-grid{
+        grid-template-columns:
+        repeat(3,1fr);
+    }
+
+    .directory-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+    .navbar{
+
+        height:auto;
+
+        min-height:64px;
+
+        padding:
+        12px 15px;
+
+    }
+
+    .nav-links{
+        display:none;
+    }
+
+    .nav-search{
+        margin-left:auto;
+    }
+
+    .nav-search input{
+        display:none;
+    }
+
+    .theme-btn{
+        margin-left:7px;
+    }
+
+    .hero{
+
+        min-height:auto;
+    }
+
+    .hero-container{
+
+        padding:
+        55px 18px 70px;
+
+        gap:30px;
+    }
+
+    .hero h1{
+
+        font-size:
+        clamp(38px,11vw,52px);
+    }
+
+    .hero-text{
+        font-size:15px;
+    }
+
+    .hero-search{
+        width:100%;
+        height:50px;
+    }
+
+    .hero-search button{
+        width:95px;
+    }
+
+    .hero-visual{
+        min-height:280px;
+    }
+
+    .laptop{
+
+        width:340px;
+
+        height:210px;
+    }
+
+    .laptop-base{
+        width:380px;
+    }
+
+    .float-icon{
+
+        width:52px;
+        height:52px;
+
+        font-size:25px;
+    }
+
+    .float-1{
+        left:0;
+    }
+
+    .float-2{
+        right:0;
+    }
+
+    .main{
+
+        padding:
+        40px 15px 60px;
+    }
+
+    .section-title{
+        font-size:20px;
+    }
+
+    .category-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:10px;
+    }
+
+    .category-card{
+        padding:18px 8px;
+    }
+
+    .tool-grid{
+
+        grid-template-columns:
+        repeat(2,1fr);
+
+        gap:10px;
+    }
+
+    .tool-card{
+        padding:14px 10px;
+    }
+
+    .directory-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media(max-width:420px){
+
+    .logo{
+        font-size:18px;
+    }
+
+    .logo-icon{
+        width:32px;
+        height:32px;
+        font-size:18px;
+    }
+
+    .theme-btn{
+        width:36px;
+        height:36px;
+    }
+
+    .hero-container{
+        padding:
+        45px 14px 60px;
+    }
+
+    .hero h1{
+        font-size:36px;
+    }
+
+    .hero-feature{
+        font-size:11px;
+        padding:9px 10px;
+    }
+
+    .category-grid{
+        grid-template-columns:
+        repeat(2,1fr);
+    }
+
+    .tool-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-header{
+        align-items:flex-start;
+    }
+
+    .view-all{
+        font-size:12px;
+    }
+}
+
+</style>
 
 </head>
 
 
 <body>
 
-<div class="container">
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar">
+
+    <a href="index.html" class="logo">
+
+        <div class="logo-icon">
+            🕉️
+        </div>
+
+        Adiyogi <span>Tools</span>
+
+    </a>
 
 
-<!-- HEADER -->
+    <div class="nav-links">
 
-<h1>🕉️ AdiyogiTools</h1>
+        <a href="index.html">
+            Home
+        </a>
 
-<p>All-in-One Image, PDF & Form Tools</p>
+        <a href="calculator.html">
+            All Tools
+        </a>
+
+        <a href="#categories">
+            Categories
+        </a>
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+    </div>
 
 
-<!-- HERO -->
+    <div class="nav-search">
 
-<div class="hero-box">
+        <input
+        type="search"
+        id="topSearch"
+        placeholder="Search tools...">
 
-<h2>🚀 Free Image, PDF & Document Tools</h2>
+        <button
+        class="theme-btn"
+        onclick="toggleTheme()">
+            🌙
+        </button>
 
-<p>Fast • Secure • No Registration Required</p>
+    </div>
 
-<p>✅ 100% Browser Based</p>
+</nav>
 
-<p>🔒 Your files stay on your device</p>
 
-<p>⚡ Free Forever</p>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+<div class="hero-container">
+
+
+<div>
+
+    <div class="hero-badge">
+        ✨ 100% Free Online Tools
+    </div>
+
+
+    <h1>
+
+        All-in-One
+        <span>Free Tools</span>
+
+        <br>
+
+        for Everyday Needs
+
+    </h1>
+
+
+    <p class="hero-text">
+
+        From calculations to conversions,
+        image tools to PDF utilities —
+        everything you need in one place.
+        Fast, simple and free.
+
+    </p>
+
+
+    <div class="hero-features">
+
+        <div class="hero-feature">
+            ⚡ Fast & Easy
+        </div>
+
+        <div class="hero-feature">
+            🔒 Secure & Private
+        </div>
+
+        <div class="hero-feature">
+            ✓ No Registration
+        </div>
+
+        <div class="hero-feature">
+            💯 Free Forever
+        </div>
+
+    </div>
+
+
+    <div class="hero-search">
+
+        <input
+        id="heroSearch"
+        type="search"
+        placeholder="Search any tool...">
+
+        <button onclick="searchTool()">
+            🔍 Search
+        </button>
+
+    </div>
 
 </div>
 
 
-<!-- SEARCH -->
 
-<input
-type="text"
-id="searchBox"
-placeholder="🔍 Search Tools...">
+<!-- HERO VISUAL -->
 
-<br><br>
+<div class="hero-visual">
 
 
-<!-- DARK MODE -->
+    <div class="float-icon float-1">
+        🧮
+    </div>
 
-<button
-id="themeBtn"
-onclick="toggleDarkMode()">
+    <div class="float-icon float-2">
+        🖼️
+    </div>
 
-🌙 Dark Mode
+    <div class="float-icon float-3">
+        📄
+    </div>
 
-</button>
+    <div class="float-icon float-4">
+        💻
+    </div>
 
 
-<!-- IMAGE TOOLS -->
+    <div class="laptop">
 
-<h2>🖼️ Image Tools</h2>
+        <div class="laptop-screen">
+
+            <div class="screen-title">
+                Adiyogi Tools
+            </div>
+
+            <div class="screen-grid">
+
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+                <div class="screen-box"></div>
+
+            </div>
+
+        </div>
+
+        <div class="laptop-base"></div>
+
+    </div>
+
+</div>
 
 
-<div class="tool">
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main">
+
+
+<!-- =====================================================
+     CATEGORIES
+===================================================== -->
+
+<section id="categories">
+
+<div class="section-header">
+
+    <h2 class="section-title">
+        Browse by Category
+    </h2>
+
+    <a href="calculator.html"
+       class="view-all">
+        View All →
+    </a>
+
+</div>
+
+
+<div class="category-grid">
+
+
+<a href="calculator.html"
+   class="category-card">
+
+    <div class="category-icon">
+        🧮
+    </div>
+
+    <h3>
+        Calculators
+    </h3>
+
+    <p>
+        20+ Tools
+    </p>
+
+</a>
+
+
+<a href="#image-tools"
+   class="category-card">
+
+    <div class="category-icon">
+        🖼️
+    </div>
+
+    <h3>
+        Image Tools
+    </h3>
+
+    <p>
+        15+ Tools
+    </p>
+
+</a>
+
+
+<a href="#pdf-tools"
+   class="category-card">
+
+    <div class="category-icon">
+        📄
+    </div>
+
+    <h3>
+        PDF Tools
+    </h3>
+
+    <p>
+        12+ Tools
+    </p>
+
+</a>
+
+
+<a href="#text-tools"
+   class="category-card">
+
+    <div class="category-icon">
+        🔤
+    </div>
+
+    <h3>
+        Text Tools
+    </h3>
+
+    <p>
+        10+ Tools
+    </p>
+
+</a>
+
+
+<a href="#converters"
+   class="category-card">
+
+    <div class="category-icon">
+        🔄
+    </div>
+
+    <h3>
+        Converters
+    </h3>
+
+    <p>
+        18+ Tools
+    </p>
+
+</a>
+
+
+<a href="#finance"
+   class="category-card">
+
+    <div class="category-icon">
+        💰
+    </div>
+
+    <h3>
+        Finance
+    </h3>
+
+    <p>
+        12+ Tools
+    </p>
+
+</a>
+
+
+<a href="#date-time"
+   class="category-card">
+
+    <div class="category-icon">
+        📅
+    </div>
+
+    <h3>
+        Date & Time
+    </h3>
+
+    <p>
+        8+ Tools
+    </p>
+
+</a>
+
+
+<a href="#health"
+   class="category-card">
+
+    <div class="category-icon">
+        ❤️
+    </div>
+
+    <h3>
+        Health
+    </h3>
+
+    <p>
+        6+ Tools
+    </p>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     POPULAR CALCULATORS
+===================================================== -->
+
+<section>
+
+<div class="section-header">
+
+    <h2 class="section-title">
+        Popular Calculators
+    </h2>
+
+    <a href="calculator.html"
+       class="view-all">
+        View All →
+    </a>
+
+</div>
+
+
+<div class="tool-grid">
+
+
+<a href="basic-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🧮
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Basic Calculator
+        </h3>
+
+        <p>
+            Perform basic arithmetic
+            operations easily.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="scientific-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🔬
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Scientific Calculator
+        </h3>
+
+        <p>
+            Advanced scientific
+            calculations.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="percentage.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        📊
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Percentage Calculator
+        </h3>
+
+        <p>
+            Calculate percentages
+            instantly.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="emi-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        💳
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            EMI Calculator
+        </h3>
+
+        <p>
+            Calculate your loan EMI
+            instantly.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="gst-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🧾
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            GST Calculator
+        </h3>
+
+        <p>
+            Calculate GST for your
+            bill amount.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="loan-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🏦
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Loan Calculator
+        </h3>
+
+        <p>
+            Calculate loan payments
+            and interest.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="compound-interest.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        📈
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Compound Interest
+        </h3>
+
+        <p>
+            Calculate compound
+            interest easily.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="simple-interest.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        💵
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Simple Interest
+        </h3>
+
+        <p>
+            Calculate simple
+            interest instantly.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="age-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🎂
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Age Calculator
+        </h3>
+
+        <p>
+            Calculate your exact
+            age.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="bmi-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        ⚖️
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            BMI Calculator
+        </h3>
+
+        <p>
+            Check your Body Mass
+            Index.
+        </p>
+
+    </div>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINANCE
+===================================================== -->
+
+<section id="finance">
+
+<div class="section-header">
+
+    <h2 class="section-title">
+        💰 Finance Tools
+    </h2>
+
+</div>
+
+
+<div class="tool-grid">
+
+
+<a href="share-market-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        📊
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Share Market Calculator
+        </h3>
+
+        <p>
+            SIP, returns, profit,
+            charges and more.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="gst-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🧾
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            GST Calculator
+        </h3>
+
+        <p>
+            Calculate GST and
+            final amount.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="emi-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        💳
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            EMI Calculator
+        </h3>
+
+        <p>
+            Calculate monthly EMI.
+        </p>
+
+    </div>
+
+</a>
+
+
+<a href="loan-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🏦
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Loan Calculator
+        </h3>
+
+        <p>
+            Estimate loan payments.
+        </p>
+
+    </div>
+
+</a>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     IMAGE TOOLS
+===================================================== -->
+
+<section id="image-tools">
+
+<div class="section-header">
+
+    <h2 class="section-title">
+        🖼️ Image Tools
+    </h2>
+
+</div>
+
+
+<div class="directory-grid">
 
 <a href="image-resizer.html">
-🖼️ Image Resizer
+    Image Resizer
 </a>
-
-</div>
-
-
-<div class="tool">
 
 <a href="image-to-pdf.html">
-🖼️ Image to PDF
+    Image to PDF
 </a>
-
-</div>
-
-
-<div class="tool">
 
 <a href="image-resize-kb.html">
-📏 Image Resize by KB
+    Image Resize by KB
 </a>
-
-</div>
-
-
-<div class="tool">
 
 <a href="image-crop.html">
-✂️ Image Crop
+    Image Crop
 </a>
-
-</div>
-
-
-<div class="tool">
-
-<a href="image-compressor.html">
-🗜️ Image Compressor
-</a>
-
-</div>
-
-
-<div class="tool">
-
-<a href="jpg-to-png.html">
-🖼️ JPG ↔ PNG Converter
-</a>
-
-</div>
-
-
-<div class="tool">
-
-<a href="watermark-maker.html">
-💧 Watermark Maker
-</a>
-
-</div>
-
-
-<!-- PDF TOOLS -->
-
-<h2>📄 PDF Tools</h2>
-
-
-<div class="tool">
-
-<a href="word-to-pdf.html">
-📄 Word to PDF
-</a>
-
-</div>
-
-
-<div class="tool">
-
-<a href="pdf-compress.html">
-📄 PDF Compress
-</a>
-
-</div>
-
-
-<div class="tool">
-
-<a href="pdf-merge.html">
-📑 PDF Merge
-</a>
-
-</div>
-
-
-<div class="tool">
-
-<a href="pdf-split.html">
-✂️ PDF Split
-</a>
-
-</div>
-
-
-
-<div class="tool">
-
-<a href="pdf-translator.html">
-🌐 PDF Translator
-</a>
-
-</div>
-
-
-
-
-    
-
-
-<!-- FORM TOOLS -->
-
-<h2>🪪 Form Tools</h2>
-
-
-<div class="tool">
 
 <a href="passport-photo.html">
-🪪 Passport Photo Maker
+    Passport Photo Maker
 </a>
-
-</div>
-
-
-<div class="tool">
 
 <a href="signature-resize.html">
-✍️ Signature Resize
+    Signature Resize
 </a>
 
 </div>
 
+</section>
 
-<div class="tool">
 
-<a href="qr-generator.html">
-📱 QR Code Generator
+
+<!-- =====================================================
+     PDF TOOLS
+===================================================== -->
+
+<section id="pdf-tools">
+
+<div class="section-header">
+
+    <h2 class="section-title">
+        📄 PDF Tools
+    </h2>
+
+</div>
+
+
+<div class="directory-grid">
+
+<a href="pdf-compress.html">
+    PDF Compress
+</a>
+
+<a href="pdf-merge.html">
+    PDF Merge
+</a>
+
+<a href="pdf-split.html">
+    PDF Split
+</a>
+
+<a href="pdf-translator.html">
+    PDF Translator
 </a>
 
 </div>
 
+</section>
 
 
-<!-- CALCULATOR TOOLS -->
 
-<h2>🧮 Calculator Tools</h2>
+<!-- =====================================================
+     CONVERTERS
+===================================================== -->
 
-<div class="tool">
+<section id="converters">
 
-<a href="calculator.html">
-🧮 All-in-One Calculator
+<div class="section-header">
+
+    <h2 class="section-title">
+        🔄 Converters
+    </h2>
+
+</div>
+
+
+<div class="directory-grid">
+
+<a href="unit-converter.html">
+    Unit Converter
+</a>
+
+<a href="currency-calculator.html">
+    Currency Converter
 </a>
 
 </div>
 
-    
-<hr>
+</section>
 
 
-<!-- FOOTER -->
 
-<footer>
+<!-- =====================================================
+     HEALTH
+===================================================== -->
 
-<p>
-<b>🕉️ AdiyogiTools</b>
-</p>
+<section id="health">
 
-<p>
-Version 2.0
-</p>
+<div class="section-header">
 
-<hr>
+    <h2 class="section-title">
+        ❤️ Health & Fitness
+    </h2>
 
-<p>
+</div>
 
-<a href="about.html">About</a> |
 
-<a href="contact.html">Contact</a> |
+<div class="directory-grid">
 
-<a href="privacy.html">Privacy Policy</a> |
+<a href="bmi-calculator.html">
+    BMI Calculator
+</a>
 
-<a href="terms.html">Terms & Conditions</a>
+<a href="calorie-calculator.html">
+    Calorie Calculator
+</a>
 
-</p>
+<a href="age-calculator.html">
+    Age Calculator
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     DATE & TIME
+===================================================== -->
+
+<section id="date-time">
+
+<div class="section-header">
+
+    <h2 class="section-title">
+        📅 Date & Time
+    </h2>
+
+</div>
+
+
+<div class="directory-grid">
+
+<a href="age-calculator.html">
+    Age Calculator
+</a>
+
+<a href="date-calculator.html">
+    Date Calculator
+</a>
+
+<a href="time-calculator.html">
+    Time Calculator
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TEXT TOOLS
+===================================================== -->
+
+<section id="text-tools">
+
+<div class="section-header">
+
+    <h2 class="section-title">
+        🔤 Text Tools
+    </h2>
+
+</div>
+
+
+<div class="directory">
+
+    <h2>
+        More Tools Coming Soon 🚀
+    </h2>
+
+    <p style="color:#64748b;">
+        Adiyogi Tools is continuously expanding
+        with new free online utilities.
+    </p>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+    <div class="footer-logo">
+        Adiyogi <span>Tools</span>
+    </div>
+
+    <p>
+        Free online tools for everyday needs.
+        Fast, simple and easy to use.
+    </p>
+
+
+    <div class="footer-links">
+
+        <a href="about.html">
+            About
+        </a>
+
+        <a href="contact.html">
+            Contact
+        </a>
+
+        <a href="privacy.html">
+            Privacy Policy
+        </a>
+
+        <a href="terms.html">
+            Terms
+        </a>
+
+    </div>
+
+
+    <p>
+        © 2026 Adiyogi Tools. All rights reserved.
+    </p>
 
 </footer>
 
 
-<!-- SEARCH SCRIPT -->
 
 <script>
 
-const searchBox =
-document.getElementById("searchBox");
+/* =====================================================
+   SEARCH
+===================================================== */
 
-searchBox.addEventListener("keyup", function () {
+function searchTool(){
 
-const value =
-this.value.toLowerCase();
+    const value =
+    document
+    .getElementById("heroSearch")
+    .value
+    .toLowerCase()
+    .trim();
 
-const tools =
-document.querySelectorAll(".tool");
+    if(!value){
 
-tools.forEach(function(tool) {
+        window.location.href =
+        "calculator.html";
 
-const text =
-tool.innerText.toLowerCase();
+        return;
 
-if (text.includes(value)) {
+    }
 
-tool.style.display = "block";
 
-} else {
+    const links =
+    document.querySelectorAll("a");
 
-tool.style.display = "none";
+
+    for(const link of links){
+
+        const text =
+        link.innerText
+        .toLowerCase();
+
+        if(text.includes(value)){
+
+            window.location.href =
+            link.href;
+
+            return;
+
+        }
+
+    }
+
+
+    window.location.href =
+    "calculator.html";
 
 }
 
-});
 
-});
+/* =====================================================
+   ENTER SEARCH
+===================================================== */
+
+document
+.getElementById("heroSearch")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            searchTool();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   TOP SEARCH
+===================================================== */
+
+document
+.getElementById("topSearch")
+.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            const value =
+            this.value
+            .toLowerCase()
+            .trim();
+
+            if(value){
+
+                document
+                .getElementById("heroSearch")
+                .value = value;
+
+                searchTool();
+
+            }
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   THEME BUTTON
+===================================================== */
+
+function toggleTheme(){
+
+    document.body.classList.toggle(
+        "dark-page"
+    );
+
+}
 
 </script>
 
-
-<!-- DARK MODE -->
-
-<script>
-
-function toggleDarkMode() {
-
-document.body.classList.toggle("dark");
-
-const btn =
-document.getElementById("themeBtn");
-
-if (document.body.classList.contains("dark")) {
-
-btn.innerHTML = "☀️ Light Mode";
-
-localStorage.setItem("theme", "dark");
-
-} else {
-
-btn.innerHTML = "🌙 Dark Mode";
-
-localStorage.setItem("theme", "light");
-
-}
-
-}
-
-
-if (localStorage.getItem("theme") === "dark") {
-
-document.body.classList.add("dark");
-
-document.getElementById("themeBtn").innerHTML =
-"☀️ Light Mode";
-
-}
-
-</script>
-
-
-</div>
 
 </body>
-
 </html>
