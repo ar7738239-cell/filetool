@@ -1,0 +1,2375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Loan Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free loan calculator to calculate EMI, total interest, total repayment and loan amortization schedule.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+    padding:10px 16px;
+
+    background:#0d1322;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+    border-radius:12px;
+
+    background:#192842;
+    color:#9edbff;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:800px;
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   INPUT GRID
+========================= */
+
+.input-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:14px;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.prefix{
+    position:absolute;
+
+    left:13px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#6b7280;
+    font-weight:700;
+}
+
+.suffix{
+    position:absolute;
+
+    right:13px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#6b7280;
+    font-weight:700;
+}
+
+.input{
+    width:100%;
+    height:50px;
+
+    border:2px solid #d8deea;
+    border-radius:11px;
+
+    background:white;
+    color:#111827;
+
+    padding:0 38px 0 35px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.input.no-prefix{
+    padding-left:14px;
+}
+
+.input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   LOAN TYPE
+========================= */
+
+.loan-types{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:7px;
+
+    margin-bottom:18px;
+}
+
+.loan-type{
+    min-height:43px;
+
+    border:1px solid #d8deea;
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    color:#374151;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.loan-type.active{
+    background:#7545f5;
+    border-color:#7545f5;
+    color:white;
+}
+
+
+/* =========================
+   TENURE
+========================= */
+
+.tenure-buttons{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:6px;
+
+    margin-top:6px;
+}
+
+.tenure-btn{
+    height:37px;
+
+    border:1px solid #d8deea;
+    border-radius:9px;
+
+    background:#f8fafc;
+    color:#374151;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.tenure-btn.active{
+    background:#7545f5;
+    border-color:#7545f5;
+    color:white;
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+.calculate{
+    width:100%;
+    height:54px;
+
+    margin-top:4px;
+
+    border:0;
+    border-radius:13px;
+
+    background:#7545f5;
+    color:white;
+
+    font-size:16px;
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:14px;
+}
+
+
+/* =========================
+   EMI
+========================= */
+
+.main-result{
+    background:white;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    margin-bottom:12px;
+}
+
+.main-label{
+    color:#6b7280;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.main-value{
+    color:#5d32d4;
+
+    font-size:30px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+}
+
+.summary-box{
+    background:white;
+
+    padding:12px;
+
+    border-radius:11px;
+
+    text-align:center;
+}
+
+.summary-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.summary-value{
+    font-size:15px;
+
+    font-weight:800;
+
+    color:#111827;
+}
+
+
+/* =========================
+   BREAKUP
+========================= */
+
+.breakup{
+    margin-top:12px;
+
+    background:white;
+
+    padding:14px;
+
+    border-radius:13px;
+}
+
+.breakup-title{
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.bar{
+    width:100%;
+    height:14px;
+
+    display:flex;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#e5e7eb;
+}
+
+.principal-bar{
+    height:100%;
+    background:#7545f5;
+}
+
+.interest-bar{
+    height:100%;
+    background:#f97316;
+}
+
+.legend{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-top:10px;
+}
+
+.legend-item{
+    color:#6b7280;
+
+    font-size:12px;
+}
+
+.legend-item strong{
+    display:block;
+
+    color:#111827;
+
+    margin-top:3px;
+}
+
+
+/* =========================
+   SCHEDULE
+========================= */
+
+.section-title{
+    margin-top:18px;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+    font-weight:700;
+}
+
+.table-wrap{
+    overflow-x:auto;
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:11px;
+}
+
+table{
+    width:100%;
+
+    min-width:620px;
+
+    border-collapse:collapse;
+
+    font-size:12px;
+}
+
+th{
+    padding:10px 7px;
+
+    background:#111827;
+    color:white;
+
+    text-align:right;
+
+    white-space:nowrap;
+}
+
+th:first-child,
+td:first-child{
+    text-align:center;
+}
+
+td{
+    padding:9px 7px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    text-align:right;
+
+    white-space:nowrap;
+}
+
+
+/* =========================
+   EXTRA PAYMENT
+========================= */
+
+.extra-section{
+    margin-top:18px;
+
+    padding-top:16px;
+
+    border-top:1px solid #ddd6fe;
+}
+
+.extra-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:10px;
+}
+
+.extra-result{
+    display:none;
+
+    margin-top:10px;
+
+    padding:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:11px;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.extra-result.show{
+    display:block;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.copy-btn,
+.clear{
+    width:100%;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:11px;
+
+    font-weight:700;
+}
+
+.copy-btn{
+    border:1px solid #d8deea;
+
+    background:white;
+
+    color:#374151;
+}
+
+.clear{
+    border:1px solid #d8deea;
+
+    background:#f3f4f6;
+
+    color:#374151;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .input-grid{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .extra-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:380px){
+
+    .badge{
+        display:none;
+    }
+
+    .container{
+        padding:18px 10px 35px;
+    }
+
+    .card{
+        padding:13px;
+    }
+
+    .title h1{
+        font-size:24px;
+    }
+
+    .loan-types{
+        gap:5px;
+    }
+
+    .loan-type{
+        font-size:10px;
+    }
+
+    .main-value{
+        font-size:27px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+LOAN CALCULATOR
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+<div class="title-icon">
+🏦
+</div>
+
+<h1>
+Loan Calculator
+</h1>
+
+<p>
+Calculate EMI, total interest, repayment amount and loan schedule.
+</p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =========================
+     LOAN TYPE
+========================= -->
+
+<label class="label">
+Loan Type
+</label>
+
+<div class="loan-types">
+
+<button
+class="loan-type active"
+data-type="Personal Loan">
+Personal Loan
+</button>
+
+<button
+class="loan-type"
+data-type="Home Loan">
+Home Loan
+</button>
+
+<button
+class="loan-type"
+data-type="Car Loan">
+Car Loan
+</button>
+
+</div>
+
+
+<!-- =========================
+     INPUTS
+========================= -->
+
+<div class="input-grid">
+
+
+<div class="input-group">
+
+<label class="label">
+Loan Amount
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="loanAmount"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+placeholder="Example: 500000">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Annual Interest Rate
+</label>
+
+<div class="input-wrap">
+
+<input
+id="interest"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 10.5">
+
+<span class="suffix">%</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     TENURE
+========================= -->
+
+<div class="input-group">
+
+<label class="label">
+Loan Tenure
+</label>
+
+<input
+id="tenure"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="1"
+placeholder="Example: 5">
+
+
+<div class="tenure-buttons">
+
+<button
+class="tenure-btn active"
+data-mode="years">
+Years
+</button>
+
+<button
+class="tenure-btn"
+data-mode="months">
+Months
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     PROCESSING FEE
+========================= -->
+
+<div class="input-grid">
+
+
+<div class="input-group">
+
+<label class="label">
+Processing Fee
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="processingFee"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+value="0"
+placeholder="Example: 5000">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Other Charges
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="otherCharges"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+value="0"
+placeholder="Example: 2000">
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<button
+class="calculate"
+onclick="calculateLoan()">
+
+Calculate Loan
+
+</button>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+id="result"
+class="result">
+
+
+<div class="result-title">
+Loan Calculation Summary
+</div>
+
+
+<div class="main-result">
+
+<div class="main-label">
+Monthly EMI
+</div>
+
+<div
+id="emi"
+class="main-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Principal
+</div>
+
+<div
+id="principal"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Interest
+</div>
+
+<div
+id="interestTotal"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total EMI Payment
+</div>
+
+<div
+id="totalPayment"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Total Cost
+</div>
+
+<div
+id="totalCost"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     BREAKUP
+========================= -->
+
+<div class="breakup">
+
+<div class="breakup-title">
+Principal vs Interest
+</div>
+
+<div class="bar">
+
+<div
+id="principalBar"
+class="principal-bar">
+</div>
+
+<div
+id="interestBar"
+class="interest-bar">
+</div>
+
+</div>
+
+
+<div class="legend">
+
+<div class="legend-item">
+Principal
+
+<strong
+id="principalLegend">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="legend-item">
+Interest
+
+<strong
+id="interestLegend">
+₹0.00
+</strong>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     SCHEDULE
+========================= -->
+
+<div class="section-title">
+Year-wise Loan Schedule
+</div>
+
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Year</th>
+<th>Opening</th>
+<th>Principal</th>
+<th>Interest</th>
+<th>Payment</th>
+<th>Closing</th>
+
+</tr>
+
+</thead>
+
+<tbody
+id="schedule">
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- =========================
+     EXTRA PAYMENT
+========================= -->
+
+<div class="extra-section">
+
+<div class="section-title">
+Extra Payment Analysis
+</div>
+
+
+<div class="extra-grid">
+
+
+<div class="input-group">
+
+<label class="label">
+Extra Monthly Payment
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="extraMonthly"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+value="0"
+placeholder="Example: 3000">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+One-time Prepayment
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="prepayment"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+value="0"
+placeholder="Example: 50000">
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<button
+class="calculate"
+onclick="analyzeExtraPayment()">
+
+Analyze Extra Payment
+
+</button>
+
+
+<div
+id="extraResult"
+class="extra-result">
+</div>
+
+</div>
+
+
+<button
+class="copy-btn"
+onclick="copySummary()">
+
+📋 Copy Loan Summary
+
+</button>
+
+
+</div>
+
+
+<!-- =========================
+     CLEAR
+========================= -->
+
+<button
+class="clear"
+onclick="clearAll()">
+
+Clear All
+
+</button>
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<div class="info">
+
+<strong>What this calculator shows:</strong>
+
+<br><br>
+
+• Monthly EMI
+
+<br>
+
+• Total interest payable
+
+<br>
+
+• Total EMI payment
+
+<br>
+
+• Processing fee and other charges
+
+<br>
+
+• Overall loan cost
+
+<br>
+
+• Principal vs interest breakup
+
+<br>
+
+• Year-wise repayment schedule
+
+<br>
+
+• Extra monthly payment savings
+
+<br>
+
+• One-time prepayment savings
+
+<br><br>
+
+<strong>Note:</strong>
+Actual loan charges, taxes and lender-specific
+conditions may differ from the estimate shown here.
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let tenureMode = "years";
+
+let loanType = "Personal Loan";
+
+let lastLoan = null;
+
+
+/* =========================================
+   MONEY
+========================================= */
+
+function money(value){
+
+if(!Number.isFinite(value))
+return "₹0.00";
+
+return "₹" +
+value.toLocaleString(
+"en-IN",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+/* =========================================
+   LOAN TYPE
+========================================= */
+
+document
+.querySelectorAll(".loan-type")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+document
+.querySelectorAll(".loan-type")
+.forEach(function(b){
+
+b.classList.remove("active");
+
+});
+
+
+button.classList.add("active");
+
+loanType =
+button.dataset.type;
+
+});
+
+});
+
+
+/* =========================================
+   TENURE MODE
+========================================= */
+
+document
+.querySelectorAll(".tenure-btn")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+document
+.querySelectorAll(".tenure-btn")
+.forEach(function(b){
+
+b.classList.remove("active");
+
+});
+
+
+button.classList.add("active");
+
+tenureMode =
+button.dataset.mode;
+
+});
+
+});
+
+
+/* =========================================
+   EMI
+========================================= */
+
+function calculateEMI(
+principal,
+rate,
+months
+){
+
+const r =
+rate / 12 / 100;
+
+
+if(r === 0){
+
+return principal / months;
+
+}
+
+
+const power =
+Math.pow(
+1+r,
+months
+);
+
+
+return (
+principal *
+r *
+power
+) /
+(
+power-1
+);
+
+}
+
+
+/* =========================================
+   MAIN CALCULATION
+========================================= */
+
+function calculateLoan(){
+
+const principal =
+Number(
+document
+.getElementById(
+"loanAmount"
+).value
+);
+
+
+const rate =
+Number(
+document
+.getElementById(
+"interest"
+).value
+);
+
+
+const tenure =
+Number(
+document
+.getElementById(
+"tenure"
+).value
+);
+
+
+const processingFee =
+Number(
+document
+.getElementById(
+"processingFee"
+).value
+) || 0;
+
+
+const otherCharges =
+Number(
+document
+.getElementById(
+"otherCharges"
+).value
+) || 0;
+
+
+if(
+!Number.isFinite(principal) ||
+principal <= 0
+){
+
+alert(
+"Please enter a valid loan amount."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(rate) ||
+rate < 0
+){
+
+alert(
+"Please enter a valid interest rate."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(tenure) ||
+tenure <= 0
+){
+
+alert(
+"Please enter a valid loan tenure."
+);
+
+return;
+
+}
+
+
+if(
+processingFee < 0 ||
+otherCharges < 0
+){
+
+alert(
+"Charges cannot be negative."
+);
+
+return;
+
+}
+
+
+let months;
+
+
+if(
+tenureMode === "years"
+){
+
+months =
+Math.round(
+tenure * 12
+);
+
+}else{
+
+months =
+Math.round(
+tenure
+);
+
+}
+
+
+if(months < 1){
+
+alert(
+"Tenure must be at least 1 month."
+);
+
+return;
+
+}
+
+
+/* EMI */
+
+const emi =
+calculateEMI(
+principal,
+rate,
+months
+);
+
+
+const totalPayment =
+emi * months;
+
+
+const totalInterest =
+totalPayment -
+principal;
+
+
+const totalCost =
+totalPayment +
+processingFee +
+otherCharges;
+
+
+/* SAVE */
+
+lastLoan = {
+
+type:loanType,
+
+principal:principal,
+
+rate:rate,
+
+months:months,
+
+emi:emi,
+
+totalPayment:totalPayment,
+
+interest:totalInterest,
+
+processingFee:processingFee,
+
+otherCharges:otherCharges,
+
+totalCost:totalCost
+
+};
+
+
+/* RESULT */
+
+document
+.getElementById("emi")
+.textContent =
+money(emi);
+
+
+document
+.getElementById("principal")
+.textContent =
+money(principal);
+
+
+document
+.getElementById("interestTotal")
+.textContent =
+money(totalInterest);
+
+
+document
+.getElementById("totalPayment")
+.textContent =
+money(totalPayment);
+
+
+document
+.getElementById("totalCost")
+.textContent =
+money(totalCost);
+
+
+/* BREAKUP */
+
+const principalPercent =
+totalPayment > 0
+?
+principal /
+totalPayment *
+100
+:
+0;
+
+
+document
+.getElementById(
+"principalBar"
+)
+.style.width =
+principalPercent+"%";
+
+
+document
+.getElementById(
+"interestBar"
+)
+.style.width =
+(100-principalPercent)+"%";
+
+
+document
+.getElementById(
+"principalLegend"
+)
+.textContent =
+money(principal);
+
+
+document
+.getElementById(
+"interestLegend"
+)
+.textContent =
+money(totalInterest);
+
+
+/* SCHEDULE */
+
+generateSchedule(
+principal,
+rate,
+months,
+emi
+);
+
+
+/* SHOW */
+
+document
+.getElementById("result")
+.classList.add("show");
+
+
+document
+.getElementById("result")
+.scrollIntoView({
+behavior:"smooth",
+block:"nearest"
+});
+
+}
+
+
+/* =========================================
+   YEARLY SCHEDULE
+========================================= */
+
+function generateSchedule(
+principal,
+rate,
+months,
+emi
+){
+
+const tbody =
+document.getElementById(
+"schedule"
+);
+
+
+tbody.innerHTML = "";
+
+
+let balance =
+principal;
+
+
+const monthlyRate =
+rate / 12 / 100;
+
+
+let year=1;
+
+let opening =
+balance;
+
+let principalYear=0;
+
+let interestYear=0;
+
+let paymentYear=0;
+
+
+for(
+let month=1;
+month<=months;
+month++
+){
+
+let interest =
+balance *
+monthlyRate;
+
+
+if(rate === 0)
+interest=0;
+
+
+let principalPart =
+emi-interest;
+
+
+if(
+principalPart > balance
+)
+principalPart =
+balance;
+
+
+let payment =
+principalPart+
+interest;
+
+
+balance -=
+principalPart;
+
+
+if(
+Math.abs(balance)<0.01
+)
+balance=0;
+
+
+principalYear +=
+principalPart;
+
+
+interestYear +=
+interest;
+
+
+paymentYear +=
+payment;
+
+
+/* END YEAR */
+
+if(
+month % 12 === 0 ||
+month === months
+){
+
+const row =
+document.createElement("tr");
+
+
+row.innerHTML =
+
+"<td>"+
+year+
+"</td>"+
+
+"<td>"+
+money(opening)+
+"</td>"+
+
+"<td>"+
+money(principalYear)+
+"</td>"+
+
+"<td>"+
+money(interestYear)+
+"</td>"+
+
+"<td>"+
+money(paymentYear)+
+"</td>"+
+
+"<td>"+
+money(balance)+
+"</td>";
+
+
+tbody.appendChild(row);
+
+
+year++;
+
+opening =
+balance;
+
+principalYear=0;
+
+interestYear=0;
+
+paymentYear=0;
+
+}
+
+}
+
+}
+
+
+/* =========================================
+   EXTRA PAYMENT ANALYSIS
+========================================= */
+
+function analyzeExtraPayment(){
+
+if(!lastLoan){
+
+alert(
+"First calculate the loan."
+);
+
+return;
+
+}
+
+
+const extra =
+Number(
+document
+.getElementById(
+"extraMonthly"
+).value
+) || 0;
+
+
+const lump =
+Number(
+document
+.getElementById(
+"prepayment"
+).value
+) || 0;
+
+
+if(
+extra < 0 ||
+lump < 0
+){
+
+alert(
+"Extra payments cannot be negative."
+);
+
+return;
+
+}
+
+
+const principal =
+lastLoan.principal;
+
+
+const rate =
+lastLoan.rate;
+
+
+const originalInterest =
+lastLoan.interest;
+
+
+const originalMonths =
+lastLoan.months;
+
+
+const originalEMI =
+lastLoan.emi;
+
+
+const monthlyRate =
+rate/12/100;
+
+
+let balance =
+Math.max(
+0,
+principal-lump
+);
+
+
+const newPayment =
+originalEMI+
+extra;
+
+
+let months=0;
+
+let interest=0;
+
+
+if(balance === 0){
+
+months=0;
+
+}else{
+
+if(
+monthlyRate > 0 &&
+newPayment <=
+balance*monthlyRate
+){
+
+alert(
+"Extra monthly payment is too small to cover the interest."
+);
+
+return;
+
+}
+
+
+while(
+balance > 0 &&
+months < 1200
+){
+
+let monthInterest =
+balance*
+monthlyRate;
+
+
+if(rate === 0)
+monthInterest=0;
+
+
+let principalPart =
+newPayment-
+monthInterest;
+
+
+if(
+principalPart > balance
+)
+principalPart =
+balance;
+
+
+balance -=
+principalPart;
+
+
+interest +=
+monthInterest;
+
+
+months++;
+
+}
+
+}
+
+
+const savedInterest =
+Math.max(
+0,
+originalInterest-interest
+);
+
+
+const savedMonths =
+Math.max(
+0,
+originalMonths-months
+);
+
+
+const savedYears =
+Math.floor(
+savedMonths/12
+);
+
+
+const savedRemaining =
+savedMonths%12;
+
+
+let timeText="";
+
+
+if(savedYears>0)
+timeText +=
+savedYears+
+" year(s) ";
+
+
+if(savedRemaining>0)
+timeText +=
+savedRemaining+
+" month(s)";
+
+
+if(!timeText)
+timeText="0 months";
+
+
+const box =
+document.getElementById(
+"extraResult"
+);
+
+
+box.innerHTML =
+
+"<strong>Prepayment Analysis</strong>"+
+
+"<br><br>"+
+
+"Original tenure: <strong>"+
+originalMonths+
+" months</strong>"+
+
+"<br>"+
+
+"New tenure: <strong>"+
+months+
+" months</strong>"+
+
+"<br>"+
+
+"Time saved: <strong>"+
+timeText+
+"</strong>"+
+
+"<br>"+
+
+"Estimated interest saved: <strong>"+
+money(savedInterest)+
+"</strong>"+
+
+"<br>"+
+
+"Extra monthly payment: <strong>"+
+money(extra)+
+"</strong>"+
+
+"<br>"+
+
+"One-time prepayment: <strong>"+
+money(lump)+
+"</strong>";
+
+
+box.classList.add("show");
+
+}
+
+
+/* =========================================
+   COPY
+========================================= */
+
+function copySummary(){
+
+if(!lastLoan){
+
+alert(
+"Calculate the loan first."
+);
+
+return;
+
+}
+
+
+const l =
+lastLoan;
+
+
+const text =
+
+"AdiyogiTools Loan Summary\n\n"+
+
+"Loan Type: "+
+l.type+
+"\n"+
+
+"Loan Amount: "+
+money(l.principal)+
+"\n"+
+
+"Interest Rate: "+
+l.rate+
+"% p.a.\n"+
+
+"Tenure: "+
+l.months+
+" months\n"+
+
+"Monthly EMI: "+
+money(l.emi)+
+"\n"+
+
+"Total Interest: "+
+money(l.interest)+
+"\n"+
+
+"Total EMI Payment: "+
+money(l.totalPayment)+
+"\n"+
+
+"Processing Fee: "+
+money(l.processingFee)+
+"\n"+
+
+"Other Charges: "+
+money(l.otherCharges)+
+"\n"+
+
+"Total Cost: "+
+money(l.totalCost);
+
+
+if(navigator.clipboard){
+
+navigator.clipboard
+.writeText(text)
+.then(function(){
+
+alert(
+"Loan summary copied!"
+);
+
+})
+.catch(function(){
+
+alert(text);
+
+});
+
+}else{
+
+alert(text);
+
+}
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+document
+.querySelectorAll(
+"input"
+)
+.forEach(function(input){
+
+if(
+input.id ===
+"processingFee" ||
+input.id ===
+"otherCharges" ||
+input.id ===
+"extraMonthly" ||
+input.id ===
+"prepayment"
+){
+
+input.value="0";
+
+}else{
+
+input.value="";
+
+}
+
+});
+
+
+document
+.getElementById(
+"result"
+)
+.classList.remove("show");
+
+
+document
+.getElementById(
+"extraResult"
+)
+.classList.remove("show");
+
+
+document
+.getElementById(
+"schedule"
+)
+.innerHTML="";
+
+
+lastLoan=null;
+
+tenureMode="years";
+
+loanType="Personal Loan";
+
+
+document
+.querySelectorAll(
+".loan-type"
+)
+.forEach(function(button){
+
+button.classList.toggle(
+"active",
+button.dataset.type ===
+"Personal Loan"
+);
+
+});
+
+
+document
+.querySelectorAll(
+".tenure-btn"
+)
+.forEach(function(button){
+
+button.classList.toggle(
+"active",
+button.dataset.mode ===
+"years"
+);
+
+});
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter"
+){
+
+const active =
+document.activeElement;
+
+
+if(
+active &&
+(
+active.id ===
+"extraMonthly" ||
+
+active.id ===
+"prepayment"
+)
+){
+
+analyzeExtraPayment();
+
+}else{
+
+calculateLoan();
+
+}
+
+}
+
+});
+
+</script>
+
+
+</body>
+
+</html>
