@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Time Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free Time Calculator to calculate time differences, add and subtract hours, minutes and seconds.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+    padding:10px 16px;
+
+    background:#0d1322;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+    border-radius:12px;
+
+    background:#192842;
+    color:#9edbff;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:720px;
+
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding-bottom:20px;
+    margin-bottom:20px;
+
+    border-bottom:1px solid #e5e7eb;
+}
+
+.section:last-child{
+    border-bottom:0;
+    margin-bottom:0;
+    padding-bottom:0;
+}
+
+.section-title{
+    font-size:16px;
+    font-weight:800;
+
+    margin-bottom:13px;
+
+    color:#1f2937;
+}
+
+
+/* =========================
+   TIME INPUT
+========================= */
+
+.time-row{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr 1fr;
+
+    gap:8px;
+}
+
+.input-group{
+    margin-bottom:12px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.number-input,
+.select-input{
+    width:100%;
+
+    height:50px;
+
+    border:2px solid #d8deea;
+
+    border-radius:11px;
+
+    background:white;
+
+    color:#111827;
+
+    padding:0 10px;
+
+    text-align:center;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.number-input:focus,
+.select-input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   AM PM
+========================= */
+
+.ampm{
+    width:100%;
+    height:50px;
+
+    border:2px solid #d8deea;
+
+    border-radius:11px;
+
+    background:white;
+
+    color:#111827;
+
+    text-align:center;
+
+    outline:none;
+}
+
+.ampm:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   OPERATION
+========================= */
+
+.operation-buttons{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-bottom:15px;
+}
+
+.operation-btn{
+    height:45px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    font-weight:700;
+}
+
+.operation-btn.active{
+    background:#7545f5;
+    color:white;
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.primary-btn{
+    width:100%;
+    height:52px;
+
+    border:0;
+    border-radius:12px;
+
+    background:#7545f5;
+    color:white;
+
+    font-size:15px;
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.secondary-btn{
+    width:100%;
+    height:45px;
+
+    margin-top:9px;
+
+    border:1px solid #d8deea;
+    border-radius:11px;
+
+    background:#f8fafc;
+    color:#5d32d4;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.primary-btn:active,
+.secondary-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:16px;
+    padding:17px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+
+    text-align:center;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    color:#6b7280;
+
+    font-size:13px;
+
+    margin-bottom:8px;
+}
+
+.result-main{
+    color:#5d32d4;
+
+    font-size:28px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+}
+
+.result-sub{
+    color:#374151;
+
+    font-size:14px;
+
+    font-weight:600;
+}
+
+.result-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr 1fr;
+
+    gap:7px;
+
+    margin-top:14px;
+}
+
+.result-box{
+    background:white;
+
+    padding:10px 5px;
+
+    border-radius:10px;
+}
+
+.result-label{
+    color:#6b7280;
+
+    font-size:10px;
+
+    margin-bottom:4px;
+}
+
+.result-value{
+    color:#111827;
+
+    font-size:14px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   CONVERSION
+========================= */
+
+.conversion{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-top:15px;
+}
+
+.conversion-box{
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:11px;
+
+    padding:11px;
+}
+
+.conversion-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.conversion-value{
+    color:#111827;
+
+    font-size:15px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .brand{
+        font-size:17px;
+    }
+
+    .container{
+        padding:18px 11px 35px;
+    }
+
+    .title-icon{
+        font-size:42px;
+    }
+
+    .title h1{
+        font-size:25px;
+    }
+
+    .card{
+        padding:14px;
+    }
+
+    .result-main{
+        font-size:24px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:360px){
+
+    .badge{
+        display:none;
+    }
+
+    .title h1{
+        font-size:23px;
+    }
+
+    .time-row{
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+    .time-row .seconds-group{
+        grid-column:1 / -1;
+    }
+
+    .result-grid{
+        grid-template-columns:
+        1fr 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+TIME CALCULATOR
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+<div class="title-icon">
+⏱️
+</div>
+
+<h1>
+Time Calculator
+</h1>
+
+<p>
+Calculate time differences, add and subtract hours, minutes and seconds.
+</p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =====================================
+     TIME DIFFERENCE
+===================================== -->
+
+<div class="section">
+
+<div class="section-title">
+⏱️ Time Difference
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Start Time
+</label>
+
+
+<div class="time-row">
+
+<div>
+<input
+id="startHour"
+class="number-input"
+type="number"
+min="1"
+max="12"
+placeholder="Hour">
+</div>
+
+
+<div>
+<input
+id="startMinute"
+class="number-input"
+type="number"
+min="0"
+max="59"
+placeholder="Minute">
+</div>
+
+
+<div class="seconds-group">
+<input
+id="startSecond"
+class="number-input"
+type="number"
+min="0"
+max="59"
+placeholder="Second">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Start AM / PM
+</label>
+
+<select
+id="startAmPm"
+class="ampm">
+
+<option value="AM">
+AM
+</option>
+
+<option value="PM">
+PM
+</option>
+
+</select>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+End Time
+</label>
+
+
+<div class="time-row">
+
+<div>
+<input
+id="endHour"
+class="number-input"
+type="number"
+min="1"
+max="12"
+placeholder="Hour">
+</div>
+
+
+<div>
+<input
+id="endMinute"
+class="number-input"
+type="number"
+min="0"
+max="59"
+placeholder="Minute">
+</div>
+
+
+<div class="seconds-group">
+<input
+id="endSecond"
+class="number-input"
+type="number"
+min="0"
+max="59"
+placeholder="Second">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+End AM / PM
+</label>
+
+<select
+id="endAmPm"
+class="ampm">
+
+<option value="AM">
+AM
+</option>
+
+<option value="PM">
+PM
+</option>
+
+</select>
+
+</div>
+
+
+<button
+type="button"
+class="primary-btn"
+onclick="calculateDifference()">
+
+Calculate Difference
+
+</button>
+
+
+<div
+id="differenceResult"
+class="result">
+
+<div class="result-title">
+Time Difference
+</div>
+
+<div
+id="differenceMain"
+class="result-main">
+—
+</div>
+
+<div
+id="differenceSub"
+class="result-sub">
+—
+</div>
+
+
+<div class="result-grid">
+
+<div class="result-box">
+
+<div class="result-label">
+TOTAL HOURS
+</div>
+
+<div
+id="totalHours"
+class="result-value">
+0
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-label">
+TOTAL MINUTES
+</div>
+
+<div
+id="totalMinutes"
+class="result-value">
+0
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-label">
+TOTAL SECONDS
+</div>
+
+<div
+id="totalSeconds"
+class="result-value">
+0
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================
+     ADD / SUBTRACT TIME
+===================================== -->
+
+<div class="section">
+
+<div class="section-title">
+➕➖ Add / Subtract Time
+</div>
+
+
+<div class="operation-buttons">
+
+<button
+id="addBtn"
+type="button"
+class="operation-btn active"
+onclick="setOperation('add')">
+
+➕ Add
+
+</button>
+
+
+<button
+id="subtractBtn"
+type="button"
+class="operation-btn"
+onclick="setOperation('subtract')">
+
+➖ Subtract
+
+</button>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Starting Hour
+</label>
+
+<input
+id="baseHour"
+class="number-input"
+type="number"
+min="1"
+max="12"
+placeholder="Hour">
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Starting Minute
+</label>
+
+<input
+id="baseMinute"
+class="number-input"
+type="number"
+min="0"
+max="59"
+placeholder="Minute">
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Starting Second
+</label>
+
+<input
+id="baseSecond"
+class="number-input"
+type="number"
+min="0"
+max="59"
+placeholder="Second">
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+AM / PM
+</label>
+
+<select
+id="baseAmPm"
+class="ampm">
+
+<option value="AM">
+AM
+</option>
+
+<option value="PM">
+PM
+</option>
+
+</select>
+
+</div>
+
+
+<div class="section-title"
+style="margin-top:8px">
+
+Time To Add / Subtract
+
+</div>
+
+
+<div class="time-row">
+
+<div>
+
+<label class="label">
+Hours
+</label>
+
+<input
+id="changeHour"
+class="number-input"
+type="number"
+min="0"
+placeholder="0">
+
+</div>
+
+
+<div>
+
+<label class="label">
+Minutes
+</label>
+
+<input
+id="changeMinute"
+class="number-input"
+type="number"
+min="0"
+placeholder="0">
+
+</div>
+
+
+<div class="seconds-group">
+
+<label class="label">
+Seconds
+</label>
+
+<input
+id="changeSecond"
+class="number-input"
+type="number"
+min="0"
+placeholder="0">
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+class="primary-btn"
+onclick="calculateTime()">
+
+Calculate Time
+
+</button>
+
+
+<div
+id="timeResult"
+class="result">
+
+<div class="result-title">
+Result Time
+</div>
+
+<div
+id="resultTime"
+class="result-main">
+—
+</div>
+
+<div
+id="resultDayInfo"
+class="result-sub">
+—
+</div>
+
+
+<div class="conversion">
+
+<div class="conversion-box">
+
+<div class="conversion-label">
+TOTAL HOURS
+</div>
+
+<div
+id="resultTotalHours"
+class="conversion-value">
+—
+</div>
+
+</div>
+
+
+<div class="conversion-box">
+
+<div class="conversion-label">
+TOTAL MINUTES
+</div>
+
+<div
+id="resultTotalMinutes"
+class="conversion-value">
+—
+</div>
+
+</div>
+
+
+<div class="conversion-box">
+
+<div class="conversion-label">
+TOTAL SECONDS
+</div>
+
+<div
+id="resultTotalSeconds"
+class="conversion-value">
+—
+</div>
+
+</div>
+
+
+<div class="conversion-box">
+
+<div class="conversion-label">
+24-HOUR FORMAT
+</div>
+
+<div
+id="result24Hour"
+class="conversion-value">
+—
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================
+     DECIMAL TIME CONVERTER
+===================================== -->
+
+<div class="section">
+
+<div class="section-title">
+🔢 Decimal Time Converter
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Enter Hours
+</label>
+
+<input
+id="decimalHours"
+class="number-input"
+type="number"
+step="any"
+inputmode="decimal"
+placeholder="Example: 2.75">
+
+</div>
+
+
+<button
+type="button"
+class="secondary-btn"
+onclick="convertDecimalTime()">
+
+Convert Decimal Hours
+
+</button>
+
+
+<div
+id="decimalResult"
+class="result">
+
+<div class="result-title">
+Converted Time
+</div>
+
+<div
+id="decimalMain"
+class="result-main">
+—
+</div>
+
+<div
+id="decimalSub"
+class="result-sub">
+—
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================
+     COPY
+===================================== -->
+
+<button
+type="button"
+class="secondary-btn"
+onclick="copyResult()">
+
+📋 Copy Last Result
+
+</button>
+
+
+<button
+type="button"
+class="secondary-btn"
+onclick="clearAll()">
+
+🧹 Clear All
+
+</button>
+
+
+<!-- =====================================
+     INFO
+===================================== -->
+
+<div class="info">
+
+<strong>
+What can you calculate?
+</strong>
+
+<br><br>
+
+• Difference between two times
+
+<br>
+
+• Total hours, minutes and seconds
+
+<br>
+
+• Add hours, minutes and seconds
+
+<br>
+
+• Subtract hours, minutes and seconds
+
+<br>
+
+• Convert decimal hours into hours, minutes and seconds
+
+<br><br>
+
+<strong>
+Examples:
+</strong>
+
+<br>
+
+• 2:30 PM − 10:15 AM = <strong>4 hours 15 minutes</strong>
+
+<br>
+
+• 10:30 AM + 2 hours 45 minutes = <strong>1:15 PM</strong>
+
+<br>
+
+• 2.75 hours = <strong>2 hours 45 minutes</strong>
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let operation = "add";
+
+let lastResult = "";
+
+
+/* =========================================
+   GET ELEMENT
+========================================= */
+
+function get(id){
+
+return document.getElementById(id);
+
+}
+
+
+/* =========================================
+   VALIDATE TIME
+========================================= */
+
+function validateTime(hour,minute,second){
+
+if(
+!Number.isFinite(hour) ||
+!Number.isFinite(minute) ||
+!Number.isFinite(second)
+){
+
+return false;
+
+}
+
+if(
+hour < 1 ||
+hour > 12
+){
+
+return false;
+
+}
+
+if(
+minute < 0 ||
+minute > 59
+){
+
+return false;
+
+}
+
+if(
+second < 0 ||
+second > 59
+){
+
+return false;
+
+}
+
+return true;
+
+}
+
+
+/* =========================================
+   12 HOUR TO SECONDS
+========================================= */
+
+function timeToSeconds(
+hour,
+minute,
+second,
+ampm
+){
+
+let h = hour;
+
+if(ampm === "AM"){
+
+if(h === 12)
+h = 0;
+
+}else{
+
+if(h !== 12)
+h += 12;
+
+}
+
+return (
+h * 3600 +
+minute * 60 +
+second
+);
+
+}
+
+
+/* =========================================
+   FORMAT DURATION
+========================================= */
+
+function formatDuration(totalSeconds){
+
+let seconds =
+Math.abs(
+Math.round(totalSeconds)
+);
+
+const hours =
+Math.floor(
+seconds / 3600
+);
+
+seconds %= 3600;
+
+const minutes =
+Math.floor(
+seconds / 60
+);
+
+seconds %= 60;
+
+
+return (
+hours +
+" hours " +
+minutes +
+" minutes " +
+seconds +
+" seconds"
+);
+
+}
+
+
+/* =========================================
+   FORMAT CLOCK
+========================================= */
+
+function formatClock(totalSeconds){
+
+let seconds =
+((Math.round(totalSeconds)
+% 86400) + 86400)
+% 86400;
+
+
+let hour =
+Math.floor(
+seconds / 3600
+);
+
+const minute =
+Math.floor(
+(seconds % 3600) / 60
+);
+
+const second =
+seconds % 60;
+
+
+const ampm =
+hour >= 12
+?
+"PM"
+:
+"AM";
+
+
+let displayHour =
+hour % 12;
+
+if(displayHour === 0)
+displayHour = 12;
+
+
+return (
+String(displayHour)
+.padStart(2,"0")
++
+":" +
+String(minute)
+.padStart(2,"0")
++
+":" +
+String(second)
+.padStart(2,"0")
++
+" " +
+ampm
+);
+
+}
+
+
+/* =========================================
+   FORMAT 24 HOUR
+========================================= */
+
+function format24Hour(totalSeconds){
+
+let seconds =
+((Math.round(totalSeconds)
+% 86400) + 86400)
+% 86400;
+
+
+const hour =
+Math.floor(
+seconds / 3600
+);
+
+const minute =
+Math.floor(
+(seconds % 3600) / 60
+);
+
+const second =
+seconds % 60;
+
+
+return (
+String(hour)
+.padStart(2,"0")
++
+":" +
+String(minute)
+.padStart(2,"0")
++
+":" +
+String(second)
+.padStart(2,"0")
+);
+
+}
+
+
+/* =========================================
+   SET OPERATION
+========================================= */
+
+function setOperation(type){
+
+operation = type;
+
+
+get("addBtn")
+.classList.toggle(
+"active",
+type === "add"
+);
+
+
+get("subtractBtn")
+.classList.toggle(
+"active",
+type === "subtract"
+);
+
+}
+
+
+/* =========================================
+   TIME DIFFERENCE
+========================================= */
+
+function calculateDifference(){
+
+const hour1 =
+Number(
+get("startHour").value
+);
+
+const minute1 =
+Number(
+get("startMinute").value
+);
+
+const second1 =
+Number(
+get("startSecond").value || 0
+);
+
+
+const hour2 =
+Number(
+get("endHour").value
+);
+
+const minute2 =
+Number(
+get("endMinute").value
+);
+
+const second2 =
+Number(
+get("endSecond").value || 0
+);
+
+
+if(
+!validateTime(
+hour1,
+minute1,
+second1
+) ||
+!validateTime(
+hour2,
+minute2,
+second2
+)
+){
+
+alert(
+"Please enter valid start and end times."
+);
+
+return;
+
+}
+
+
+let start =
+timeToSeconds(
+hour1,
+minute1,
+second1,
+get("startAmPm").value
+);
+
+
+let end =
+timeToSeconds(
+hour2,
+minute2,
+second2,
+get("endAmPm").value
+);
+
+
+/*
+   If end is earlier than start,
+   assume the end time is next day.
+*/
+
+if(end < start){
+
+end += 86400;
+
+}
+
+
+const difference =
+end - start;
+
+
+const hours =
+Math.floor(
+difference / 3600
+);
+
+const minutes =
+Math.floor(
+(difference % 3600) / 60
+);
+
+const seconds =
+difference % 60;
+
+
+get("differenceMain")
+.textContent =
+hours +
+" h " +
+minutes +
+" m " +
+seconds +
+" s";
+
+
+get("differenceSub")
+.textContent =
+"Duration between the two times";
+
+
+get("totalHours")
+.textContent =
+(difference / 3600)
+.toFixed(4);
+
+
+get("totalMinutes")
+.textContent =
+(difference / 60)
+.toFixed(2);
+
+
+get("totalSeconds")
+.textContent =
+difference.toLocaleString(
+"en-IN"
+);
+
+
+get("differenceResult")
+.classList.add(
+"show"
+);
+
+
+lastResult =
+
+"Time Difference\n" +
+
+formatDuration(difference) +
+
+"\nTotal Hours: " +
+(difference / 3600).toFixed(4) +
+
+"\nTotal Minutes: " +
+(difference / 60).toFixed(2) +
+
+"\nTotal Seconds: " +
+difference;
+
+}
+
+
+/* =========================================
+   ADD / SUBTRACT TIME
+========================================= */
+
+function calculateTime(){
+
+const hour =
+Number(
+get("baseHour").value
+);
+
+const minute =
+Number(
+get("baseMinute").value || 0
+);
+
+const second =
+Number(
+get("baseSecond").value || 0
+);
+
+
+if(
+!validateTime(
+hour,
+minute,
+second
+)
+){
+
+alert(
+"Please enter a valid starting time."
+);
+
+return;
+
+}
+
+
+let base =
+timeToSeconds(
+hour,
+minute,
+second,
+get("baseAmPm").value
+);
+
+
+const changeHour =
+Number(
+get("changeHour").value || 0
+);
+
+const changeMinute =
+Number(
+get("changeMinute").value || 0
+);
+
+const changeSecond =
+Number(
+get("changeSecond").value || 0
+);
+
+
+if(
+!Number.isFinite(changeHour) ||
+!Number.isFinite(changeMinute) ||
+!Number.isFinite(changeSecond) ||
+changeHour < 0 ||
+changeMinute < 0 ||
+changeSecond < 0
+){
+
+alert(
+"Please enter valid positive time values."
+);
+
+return;
+
+}
+
+
+const change =
+changeHour * 3600 +
+changeMinute * 60 +
+changeSecond;
+
+
+let result;
+
+
+if(operation === "add"){
+
+result =
+base + change;
+
+}else{
+
+result =
+base - change;
+
+}
+
+
+/*
+   Keep result inside one 24-hour day.
+*/
+
+result =
+(
+result % 86400 +
+86400
+) % 86400;
+
+
+get("resultTime")
+.textContent =
+formatClock(result);
+
+
+get("resultDayInfo")
+.textContent =
+operation === "add"
+?
+"Time after addition"
+:
+"Time after subtraction";
+
+
+get("resultTotalHours")
+.textContent =
+(result / 3600)
+.toFixed(4);
+
+
+get("resultTotalMinutes")
+.textContent =
+(result / 60)
+.toFixed(2);
+
+
+get("resultTotalSeconds")
+.textContent =
+result.toLocaleString(
+"en-IN"
+);
+
+
+get("result24Hour")
+.textContent =
+format24Hour(result);
+
+
+get("timeResult")
+.classList.add(
+"show"
+);
+
+
+lastResult =
+
+(
+operation === "add"
+?
+"Time Addition"
+:
+"Time Subtraction"
+) +
+
+"\nResult: " +
+formatClock(result) +
+
+"\n24-Hour: " +
+format24Hour(result);
+
+}
+
+
+/* =========================================
+   DECIMAL HOURS
+========================================= */
+
+function convertDecimalTime(){
+
+const hours =
+Number(
+get("decimalHours").value
+);
+
+
+if(
+!Number.isFinite(hours) ||
+hours < 0
+){
+
+alert(
+"Please enter a valid decimal hour value."
+);
+
+return;
+
+}
+
+
+const totalSeconds =
+Math.round(
+hours * 3600
+);
+
+
+const h =
+Math.floor(
+totalSeconds / 3600
+);
+
+const m =
+Math.floor(
+(totalSeconds % 3600) / 60
+);
+
+const s =
+totalSeconds % 60;
+
+
+get("decimalMain")
+.textContent =
+h +
+" h " +
+m +
+" m " +
+s +
+" s";
+
+
+get("decimalSub")
+.textContent =
+hours.toFixed(4) +
+" decimal hours";
+
+
+get("decimalResult")
+.classList.add(
+"show"
+);
+
+
+lastResult =
+
+"Decimal Time Conversion\n" +
+
+hours +
+" hours = " +
+
+h +
+" hours " +
+m +
+" minutes " +
+s +
+" seconds";
+
+}
+
+
+/* =========================================
+   COPY
+========================================= */
+
+function copyResult(){
+
+if(!lastResult){
+
+alert(
+"Please calculate something first."
+);
+
+return;
+
+}
+
+
+const text =
+"AdiyogiTools Time Calculator\n\n" +
+lastResult;
+
+
+if(
+navigator.clipboard
+){
+
+navigator.clipboard
+.writeText(text)
+.then(function(){
+
+alert(
+"Result copied!"
+);
+
+})
+.catch(function(){
+
+alert(text);
+
+});
+
+}else{
+
+alert(text);
+
+}
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+document
+.querySelectorAll(
+"input"
+)
+.forEach(function(input){
+
+input.value = "";
+
+});
+
+
+get("differenceResult")
+.classList.remove(
+"show"
+);
+
+
+get("timeResult")
+.classList.remove(
+"show"
+);
+
+
+get("decimalResult")
+.classList.remove(
+"show"
+);
+
+
+setOperation("add");
+
+lastResult = "";
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key !== "Enter"
+)
+return;
+
+
+const active =
+document.activeElement;
+
+
+if(
+active &&
+(
+active.id === "startHour" ||
+active.id === "startMinute" ||
+active.id === "startSecond" ||
+active.id === "endHour" ||
+active.id === "endMinute" ||
+active.id === "endSecond"
+)
+){
+
+calculateDifference();
+
+}
+
+
+else if(
+active &&
+(
+active.id === "baseHour" ||
+active.id === "baseMinute" ||
+active.id === "baseSecond" ||
+active.id === "changeHour" ||
+active.id === "changeMinute" ||
+active.id === "changeSecond"
+)
+){
+
+calculateTime();
+
+}
+
+
+else if(
+active &&
+active.id === "decimalHours"
+){
+
+convertDecimalTime();
+
+}
+
+});
+
+</script>
+
+
+</body>
+
+</html>
