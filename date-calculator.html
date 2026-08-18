@@ -1,0 +1,2118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Date Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free Date Calculator to calculate date difference and add or subtract days, weeks, months and years.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+
+    padding:10px 16px;
+
+    background:#0d1322;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+
+    border-radius:12px;
+
+    background:#192842;
+
+    color:#9edbff;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+
+    max-width:720px;
+
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+
+    font-size:15px;
+
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    padding-bottom:20px;
+
+    margin-bottom:20px;
+
+    border-bottom:1px solid #e5e7eb;
+}
+
+.section:last-child{
+    border-bottom:0;
+
+    margin-bottom:0;
+
+    padding-bottom:0;
+}
+
+.section-title{
+    font-size:16px;
+
+    font-weight:800;
+
+    margin-bottom:13px;
+
+    color:#1f2937;
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-group{
+    margin-bottom:13px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.date-input,
+.number-input,
+.select-input{
+    width:100%;
+
+    height:50px;
+
+    border:2px solid #d8deea;
+
+    border-radius:11px;
+
+    background:white;
+
+    color:#111827;
+
+    padding:0 12px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.date-input:focus,
+.number-input:focus,
+.select-input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   TWO COLUMN
+========================= */
+
+.two-column{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:10px;
+}
+
+
+/* =========================
+   BUTTON
+========================= */
+
+.primary-btn{
+    width:100%;
+
+    height:51px;
+
+    border:0;
+
+    border-radius:12px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.secondary-btn{
+    width:100%;
+
+    height:44px;
+
+    margin-top:8px;
+
+    border:1px solid #d8deea;
+
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    color:#5d32d4;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.primary-btn:active,
+.secondary-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   OPERATION BUTTONS
+========================= */
+
+.operation-buttons{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-bottom:14px;
+}
+
+.operation-btn{
+    height:44px;
+
+    border:1px solid #d8deea;
+
+    border-radius:10px;
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    font-weight:700;
+}
+
+.operation-btn.active{
+    background:#7545f5;
+
+    color:white;
+
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:16px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+
+    text-align:center;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    color:#6b7280;
+
+    font-size:13px;
+
+    margin-bottom:8px;
+}
+
+.result-date{
+    color:#5d32d4;
+
+    font-size:25px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+}
+
+.result-day{
+    color:#374151;
+
+    font-size:14px;
+
+    font-weight:700;
+}
+
+.result-info{
+    margin-top:12px;
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:7px;
+}
+
+.result-box{
+    background:white;
+
+    border-radius:10px;
+
+    padding:10px;
+}
+
+.result-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.result-value{
+    font-size:15px;
+
+    font-weight:800;
+
+    color:#111827;
+}
+
+
+/* =========================
+   DIFFERENCE
+========================= */
+
+.diff-result{
+    display:none;
+
+    margin-top:15px;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+
+    text-align:center;
+}
+
+.diff-result.show{
+    display:block;
+}
+
+.diff-main{
+    color:#5d32d4;
+
+    font-size:23px;
+
+    font-weight:800;
+
+    margin-bottom:10px;
+}
+
+.diff-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:7px;
+}
+
+.diff-box{
+    background:white;
+
+    padding:10px;
+
+    border-radius:10px;
+}
+
+.diff-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.diff-value{
+    font-size:15px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.check-row{
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    margin:10px 0 15px;
+
+    color:#374151;
+
+    font-size:13px;
+
+    font-weight:600;
+}
+
+.check-row input{
+    width:18px;
+
+    height:18px;
+
+    accent-color:#7545f5;
+}
+
+
+/* =========================
+   COPY / CLEAR
+========================= */
+
+.copy-btn,
+.clear-btn{
+    width:100%;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:11px;
+
+    font-weight:700;
+}
+
+.copy-btn{
+    border:1px solid #d8deea;
+
+    background:white;
+
+    color:#374151;
+}
+
+.clear-btn{
+    border:1px solid #d8deea;
+
+    background:#f3f4f6;
+
+    color:#374151;
+}
+
+.copy-btn:active,
+.clear-btn:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .brand{
+        font-size:17px;
+    }
+
+    .container{
+        padding:18px 11px 35px;
+    }
+
+    .title-icon{
+        font-size:42px;
+    }
+
+    .title h1{
+        font-size:25px;
+    }
+
+    .card{
+        padding:14px;
+    }
+
+    .result-date{
+        font-size:22px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:360px){
+
+    .badge{
+        display:none;
+    }
+
+    .title h1{
+        font-size:23px;
+    }
+
+    .two-column{
+        grid-template-columns:1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+DATE CALCULATOR
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+<div class="title-icon">
+📅
+</div>
+
+<h1>
+Date Calculator
+</h1>
+
+<p>
+Calculate date differences and add or subtract time from a date.
+</p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =====================================
+     DATE DIFFERENCE
+===================================== -->
+
+<div class="section">
+
+<div class="section-title">
+📊 Date Difference
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Start Date
+</label>
+
+<input
+id="startDate"
+class="date-input"
+type="date">
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+End Date
+</label>
+
+<input
+id="endDate"
+class="date-input"
+type="date">
+
+</div>
+
+
+<label class="check-row">
+
+<input
+id="includeEnd"
+type="checkbox">
+
+Include end date in calculation
+
+</label>
+
+
+<button
+type="button"
+class="primary-btn"
+onclick="calculateDifference()">
+
+Calculate Difference
+
+</button>
+
+
+<div
+id="differenceResult"
+class="diff-result">
+
+<div
+id="differenceMain"
+class="diff-main">
+—
+</div>
+
+
+<div class="diff-grid">
+
+<div class="diff-box">
+
+<div class="diff-label">
+Total Days
+</div>
+
+<div
+id="differenceDays"
+class="diff-value">
+0
+</div>
+
+</div>
+
+
+<div class="diff-box">
+
+<div class="diff-label">
+Total Weeks
+</div>
+
+<div
+id="differenceWeeks"
+class="diff-value">
+0
+</div>
+
+</div>
+
+
+<div class="diff-box">
+
+<div class="diff-label">
+Total Hours
+</div>
+
+<div
+id="differenceHours"
+class="diff-value">
+0
+</div>
+
+</div>
+
+
+<div class="diff-box">
+
+<div class="diff-label">
+Approx. Months
+</div>
+
+<div
+id="differenceMonths"
+class="diff-value">
+0
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================
+     ADD / SUBTRACT
+===================================== -->
+
+<div class="section">
+
+<div class="section-title">
+➕➖ Add / Subtract Time
+</div>
+
+
+<div class="operation-buttons">
+
+<button
+id="addBtn"
+type="button"
+class="operation-btn active"
+onclick="setOperation('add')">
+
+➕ Add
+
+</button>
+
+
+<button
+id="subtractBtn"
+type="button"
+class="operation-btn"
+onclick="setOperation('subtract')">
+
+➖ Subtract
+
+</button>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Starting Date
+</label>
+
+<input
+id="calcDate"
+class="date-input"
+type="date">
+
+</div>
+
+
+<div class="two-column">
+
+<div class="input-group">
+
+<label class="label">
+Value
+</label>
+
+<input
+id="calcValue"
+class="number-input"
+type="number"
+inputmode="numeric"
+min="0"
+placeholder="Enter value">
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Unit
+</label>
+
+<select
+id="calcUnit"
+class="select-input">
+
+<option value="days">
+Days
+</option>
+
+<option value="weeks">
+Weeks
+</option>
+
+<option value="months">
+Months
+</option>
+
+<option value="years">
+Years
+</option>
+
+</select>
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+class="primary-btn"
+onclick="calculateDate()">
+
+Calculate Date
+
+</button>
+
+
+<div
+id="dateResult"
+class="result">
+
+<div class="result-title">
+Result Date
+</div>
+
+<div
+id="resultDate"
+class="result-date">
+—
+</div>
+
+<div
+id="resultDay"
+class="result-day">
+—
+</div>
+
+
+<div class="result-info">
+
+<div class="result-box">
+
+<div class="result-label">
+Day of Month
+</div>
+
+<div
+id="resultDayNumber"
+class="result-value">
+—
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-label">
+Month
+</div>
+
+<div
+id="resultMonth"
+class="result-value">
+—
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-label">
+Year
+</div>
+
+<div
+id="resultYear"
+class="result-value">
+—
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-label">
+Week Number
+</div>
+
+<div
+id="resultWeek"
+class="result-value">
+—
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================
+     BUSINESS DAYS
+===================================== -->
+
+<div class="section">
+
+<div class="section-title">
+💼 Business Days Calculator
+</div>
+
+
+<div class="two-column">
+
+<div class="input-group">
+
+<label class="label">
+Start Date
+</label>
+
+<input
+id="businessStart"
+class="date-input"
+type="date">
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+End Date
+</label>
+
+<input
+id="businessEnd"
+class="date-input"
+type="date">
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+class="secondary-btn"
+onclick="calculateBusinessDays()">
+
+Calculate Business Days
+
+</button>
+
+
+<div
+id="businessResult"
+class="result">
+
+<div class="result-title">
+Working Days
+</div>
+
+<div
+id="businessDays"
+class="result-date">
+0
+</div>
+
+<div
+id="businessInfo"
+class="result-day">
+—
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================
+     COPY / CLEAR
+===================================== -->
+
+<button
+type="button"
+class="copy-btn"
+onclick="copyResult()">
+
+📋 Copy Last Result
+
+</button>
+
+
+<button
+type="button"
+class="clear-btn"
+onclick="clearAll()">
+
+Clear All
+
+</button>
+
+
+<!-- =====================================
+     INFO
+===================================== -->
+
+<div class="info">
+
+<strong>
+What can you calculate?
+</strong>
+
+<br><br>
+
+• Difference between two dates
+
+<br>
+
+• Total days and weeks between dates
+
+<br>
+
+• Add days, weeks, months or years to a date
+
+<br>
+
+• Subtract days, weeks, months or years from a date
+
+<br>
+
+• Calculate working/business days
+
+<br>
+
+• Find the weekday of the resulting date
+
+<br><br>
+
+<strong>
+Example:
+</strong>
+
+<br>
+
+10 August 2026 + 30 Days = 9 September 2026
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let operation = "add";
+
+let lastResult = "";
+
+
+/* =========================================
+   ELEMENT
+========================================= */
+
+function get(id){
+
+return document.getElementById(id);
+
+}
+
+
+/* =========================================
+   DATE PARSER
+========================================= */
+
+function parseDate(value){
+
+if(!value)
+return null;
+
+const p =
+value.split("-");
+
+if(p.length !== 3)
+return null;
+
+return new Date(
+Number(p[0]),
+Number(p[1])-1,
+Number(p[2])
+);
+
+}
+
+
+/* =========================================
+   DATE INPUT VALUE
+========================================= */
+
+function dateInputValue(date){
+
+const y =
+date.getFullYear();
+
+const m =
+String(
+date.getMonth()+1
+).padStart(2,"0");
+
+const d =
+String(
+date.getDate()
+).padStart(2,"0");
+
+return y+"-"+m+"-"+d;
+
+}
+
+
+/* =========================================
+   TODAY
+========================================= */
+
+function today(){
+
+const d =
+new Date();
+
+return new Date(
+d.getFullYear(),
+d.getMonth(),
+d.getDate()
+);
+
+}
+
+
+/* =========================================
+   FORMAT DATE
+========================================= */
+
+function formatDate(date){
+
+return date.toLocaleDateString(
+"en-IN",
+{
+day:"numeric",
+month:"long",
+year:"numeric"
+}
+);
+
+}
+
+
+/* =========================================
+   DAY NAME
+========================================= */
+
+function dayName(date){
+
+return date.toLocaleDateString(
+"en-IN",
+{
+weekday:"long"
+}
+);
+
+}
+
+
+/* =========================================
+   NUMBER FORMAT
+========================================= */
+
+function numberFormat(value){
+
+return Number(value)
+.toLocaleString("en-IN");
+
+}
+
+
+/* =========================================
+   DAYS BETWEEN
+========================================= */
+
+function daysBetween(start,end){
+
+const ms =
+end.getTime()
+-
+start.getTime();
+
+return Math.round(
+ms / 86400000
+);
+
+}
+
+
+/* =========================================
+   DATE DIFFERENCE
+========================================= */
+
+function calculateDifference(){
+
+const start =
+parseDate(
+get("startDate").value
+);
+
+const end =
+parseDate(
+get("endDate").value
+);
+
+
+if(!start || !end){
+
+alert(
+"Please select both dates."
+);
+
+return;
+
+}
+
+
+if(end < start){
+
+alert(
+"End date cannot be before start date."
+);
+
+return;
+
+}
+
+
+let days =
+daysBetween(
+start,
+end
+);
+
+
+if(
+get("includeEnd").checked
+){
+
+days++;
+
+}
+
+
+const weeks =
+Math.floor(
+days / 7
+);
+
+const hours =
+days * 24;
+
+const approxMonths =
+(days / 30.4375)
+.toFixed(2);
+
+
+/*
+   Calendar-style difference
+*/
+
+let years =
+end.getFullYear()
+-
+start.getFullYear();
+
+let months =
+end.getMonth()
+-
+start.getMonth();
+
+let remainingDays =
+end.getDate()
+-
+start.getDate();
+
+
+if(remainingDays < 0){
+
+months--;
+
+const previousMonth =
+new Date(
+end.getFullYear(),
+end.getMonth(),
+0
+);
+
+remainingDays +=
+previousMonth.getDate();
+
+}
+
+
+if(months < 0){
+
+years--;
+
+months += 12;
+
+}
+
+
+get("differenceMain")
+.textContent =
+years +
+" Years, " +
+months +
+" Months, " +
+remainingDays +
+" Days";
+
+
+get("differenceDays")
+.textContent =
+numberFormat(days);
+
+get("differenceWeeks")
+.textContent =
+numberFormat(weeks);
+
+get("differenceHours")
+.textContent =
+numberFormat(hours);
+
+get("differenceMonths")
+.textContent =
+approxMonths;
+
+
+get("differenceResult")
+.classList.add(
+"show"
+);
+
+
+lastResult =
+
+"Date Difference\n" +
+
+formatDate(start) +
+" to " +
+formatDate(end) +
+
+"\n\n" +
+
+years +
+" Years, " +
+months +
+" Months, " +
+remainingDays +
+" Days" +
+
+"\nTotal Days: " +
+numberFormat(days) +
+
+"\nTotal Weeks: " +
+numberFormat(weeks);
+
+}
+
+
+/* =========================================
+   OPERATION
+========================================= */
+
+function setOperation(type){
+
+operation = type;
+
+
+get("addBtn")
+.classList.toggle(
+"active",
+type === "add"
+);
+
+
+get("subtractBtn")
+.classList.toggle(
+"active",
+type === "subtract"
+);
+
+}
+
+
+/* =========================================
+   ADD MONTHS SAFELY
+========================================= */
+
+function addMonths(date,months){
+
+const result =
+new Date(date.getTime());
+
+const originalDay =
+result.getDate();
+
+
+result.setDate(1);
+
+result.setMonth(
+result.getMonth() + months
+);
+
+
+const lastDay =
+new Date(
+result.getFullYear(),
+result.getMonth()+1,
+0
+).getDate();
+
+
+result.setDate(
+Math.min(
+originalDay,
+lastDay
+)
+);
+
+
+return result;
+
+}
+
+
+/* =========================================
+   ADD YEARS SAFELY
+========================================= */
+
+function addYears(date,years){
+
+return addMonths(
+date,
+years * 12
+);
+
+}
+
+
+/* =========================================
+   CALCULATE DATE
+========================================= */
+
+function calculateDate(){
+
+const start =
+parseDate(
+get("calcDate").value
+);
+
+const value =
+Number(
+get("calcValue").value
+);
+
+const unit =
+get("calcUnit").value;
+
+
+if(!start){
+
+alert(
+"Please select a starting date."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(value) ||
+value < 0
+){
+
+alert(
+"Please enter a valid positive value."
+);
+
+return;
+
+}
+
+
+let signedValue =
+operation === "add"
+?
+value
+:
+-value;
+
+
+let result =
+new Date(
+start.getTime()
+);
+
+
+if(unit === "days"){
+
+result.setDate(
+result.getDate() +
+signedValue
+);
+
+}
+
+
+else if(unit === "weeks"){
+
+result.setDate(
+result.getDate() +
+signedValue * 7
+);
+
+}
+
+
+else if(unit === "months"){
+
+result =
+addMonths(
+result,
+signedValue
+);
+
+}
+
+
+else if(unit === "years"){
+
+result =
+addYears(
+result,
+signedValue
+);
+
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+get("resultDate")
+.textContent =
+formatDate(result);
+
+
+get("resultDay")
+.textContent =
+dayName(result);
+
+
+get("resultDayNumber")
+.textContent =
+result.getDate();
+
+
+get("resultMonth")
+.textContent =
+result.toLocaleDateString(
+"en-IN",
+{
+month:"long"
+}
+);
+
+
+get("resultYear")
+.textContent =
+result.getFullYear();
+
+
+get("resultWeek")
+.textContent =
+getWeekNumber(result);
+
+
+get("dateResult")
+.classList.add(
+"show"
+);
+
+
+lastResult =
+
+(
+operation === "add"
+?
+"Added "
+:
+"Subtracted "
+) +
+
+value +
+" " +
+unit +
+"\n\nStarting Date: " +
+formatDate(start) +
+
+"\nResult Date: " +
+formatDate(result) +
+
+"\nDay: " +
+dayName(result);
+
+}
+
+
+/* =========================================
+   ISO WEEK NUMBER
+========================================= */
+
+function getWeekNumber(date){
+
+const d =
+new Date(
+Date.UTC(
+date.getFullYear(),
+date.getMonth(),
+date.getDate()
+)
+);
+
+
+const day =
+d.getUTCDay() || 7;
+
+
+d.setUTCDate(
+d.getUTCDate() +
+4 -
+day
+);
+
+
+const yearStart =
+new Date(
+Date.UTC(
+d.getUTCFullYear(),
+0,
+1
+)
+);
+
+
+return Math.ceil(
+(
+(
+d -
+yearStart
+) /
+86400000 +
+1
+) / 7
+);
+
+}
+
+
+/* =========================================
+   BUSINESS DAYS
+========================================= */
+
+function calculateBusinessDays(){
+
+let start =
+parseDate(
+get("businessStart").value
+);
+
+let end =
+parseDate(
+get("businessEnd").value
+);
+
+
+if(!start || !end){
+
+alert(
+"Please select both dates."
+);
+
+return;
+
+}
+
+
+if(end < start){
+
+alert(
+"End date cannot be before start date."
+);
+
+return;
+
+}
+
+
+let count = 0;
+
+let current =
+new Date(
+start.getTime()
+);
+
+
+while(
+current <= end
+){
+
+const day =
+current.getDay();
+
+
+/*
+   Sunday = 0
+   Saturday = 6
+*/
+
+if(
+day !== 0 &&
+day !== 6
+){
+
+count++;
+
+}
+
+
+current.setDate(
+current.getDate()+1
+);
+
+}
+
+
+const total =
+daysBetween(
+start,
+end
+) + 1;
+
+
+const weekends =
+total - count;
+
+
+get("businessDays")
+.textContent =
+numberFormat(count);
+
+
+get("businessInfo")
+.textContent =
+"Between " +
+formatDate(start) +
+" and " +
+formatDate(end) +
+" • Weekends excluded: " +
+numberFormat(weekends);
+
+
+get("businessResult")
+.classList.add(
+"show"
+);
+
+
+lastResult =
+
+"Business Days\n" +
+
+formatDate(start) +
+" to " +
+formatDate(end) +
+
+"\nWorking Days: " +
+numberFormat(count);
+
+}
+
+
+/* =========================================
+   COPY
+========================================= */
+
+function copyResult(){
+
+if(!lastResult){
+
+alert(
+"Please calculate something first."
+);
+
+return;
+
+}
+
+
+if(
+navigator.clipboard
+){
+
+navigator.clipboard
+.writeText(
+"AdiyogiTools Date Calculator\n\n" +
+lastResult
+)
+.then(function(){
+
+alert(
+"Result copied!"
+);
+
+})
+.catch(function(){
+
+alert(lastResult);
+
+});
+
+}
+else{
+
+alert(lastResult);
+
+}
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+const inputs =
+document.querySelectorAll(
+"input"
+);
+
+inputs.forEach(
+function(input){
+
+if(input.type === "checkbox"){
+
+input.checked = false;
+
+}
+else{
+
+input.value = "";
+
+}
+
+});
+
+
+get("differenceResult")
+.classList.remove(
+"show"
+);
+
+get("dateResult")
+.classList.remove(
+"show"
+);
+
+get("businessResult")
+.classList.remove(
+"show"
+);
+
+
+setOperation("add");
+
+lastResult = "";
+
+}
+
+
+/* =========================================
+   INITIAL DATES
+========================================= */
+
+function initialize(){
+
+const t =
+today();
+
+const tomorrow =
+new Date(
+t.getTime()
+);
+
+tomorrow.setDate(
+tomorrow.getDate()+1
+);
+
+
+get("startDate")
+.value =
+dateInputValue(t);
+
+get("endDate")
+.value =
+dateInputValue(tomorrow);
+
+get("calcDate")
+.value =
+dateInputValue(t);
+
+get("businessStart")
+.value =
+dateInputValue(t);
+
+get("businessEnd")
+.value =
+dateInputValue(tomorrow);
+
+}
+
+
+initialize();
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter"
+){
+
+const active =
+document.activeElement;
+
+
+if(
+active &&
+active.id === "calcValue"
+){
+
+calculateDate();
+
+}
+
+}
+
+});
+
+</script>
+
+
+</body>
+
+</html>
