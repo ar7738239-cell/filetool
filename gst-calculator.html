@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>GST Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free advanced GST calculator. Calculate GST, CGST, SGST, IGST, tax amount, final price and reverse GST quickly.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+    padding:10px 16px;
+
+    background:#0d1322;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+    border-radius:12px;
+
+    background:#192842;
+    color:#9edbff;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:760px;
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   MODE
+========================= */
+
+.section-title{
+    font-size:14px;
+    font-weight:700;
+    color:#374151;
+
+    margin-bottom:9px;
+}
+
+.modes{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+
+    margin-bottom:18px;
+}
+
+.mode{
+    height:47px;
+
+    border:0;
+    border-radius:11px;
+
+    background:#eef1f6;
+    color:#374151;
+
+    font-weight:700;
+}
+
+.mode.active{
+    background:#7545f5;
+    color:white;
+}
+
+.mode:active{
+    transform:scale(.97);
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-group{
+    margin-bottom:16px;
+}
+
+.input-label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+    font-size:13px;
+    font-weight:700;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.currency{
+    position:absolute;
+
+    left:13px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#6b7280;
+    font-weight:700;
+}
+
+.input{
+    width:100%;
+    height:50px;
+
+    border:2px solid #d8deea;
+    border-radius:11px;
+
+    background:white;
+    color:#111827;
+
+    padding:0 14px 0 35px;
+
+    outline:none;
+
+    font-size:18px;
+}
+
+.input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   GST RATES
+========================= */
+
+.rate-title{
+    margin-bottom:8px;
+
+    color:#374151;
+    font-size:13px;
+    font-weight:700;
+}
+
+.rates{
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:7px;
+
+    margin-bottom:10px;
+}
+
+.rate{
+    height:42px;
+
+    border:1px solid #d8deea;
+    border-radius:9px;
+
+    background:#f8fafc;
+
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.rate.active{
+    background:#7545f5;
+    border-color:#7545f5;
+    color:white;
+}
+
+.rate:active{
+    transform:scale(.96);
+}
+
+
+/* CUSTOM */
+
+.custom-rate{
+    display:none;
+
+    margin-top:8px;
+}
+
+.custom-rate.show{
+    display:block;
+}
+
+
+/* =========================
+   TAX TYPE
+========================= */
+
+.tax-type{
+    margin-top:16px;
+}
+
+.tax-options{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:7px;
+}
+
+.tax-option{
+    height:43px;
+
+    border:1px solid #d8deea;
+    border-radius:9px;
+
+    background:#f8fafc;
+
+    color:#374151;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.tax-option.active{
+    background:#111827;
+    color:white;
+    border-color:#111827;
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+.calculate{
+    width:100%;
+    height:54px;
+
+    margin-top:20px;
+
+    border:0;
+    border-radius:13px;
+
+    background:#7545f5;
+    color:white;
+
+    font-size:16px;
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:14px;
+}
+
+
+/* TOTAL */
+
+.total-box{
+    text-align:center;
+
+    background:white;
+
+    border-radius:13px;
+
+    padding:14px;
+
+    margin-bottom:12px;
+}
+
+.total-label{
+    color:#6b7280;
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.total-value{
+    color:#5d32d4;
+
+    font-size:29px;
+    font-weight:800;
+}
+
+
+/* RESULT ROWS */
+
+.result-row{
+    display:flex;
+
+    justify-content:space-between;
+    align-items:center;
+
+    padding:10px 4px;
+
+    border-bottom:1px solid #ddd6fe;
+
+    font-size:14px;
+}
+
+.result-row:last-child{
+    border-bottom:0;
+}
+
+.result-name{
+    color:#4b5563;
+}
+
+.result-value{
+    color:#111827;
+    font-weight:700;
+}
+
+
+/* CGST SGST */
+
+.split-box{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:8px;
+
+    margin-top:10px;
+}
+
+.split{
+    background:white;
+
+    border-radius:11px;
+
+    padding:11px;
+
+    text-align:center;
+}
+
+.split-title{
+    color:#6b7280;
+    font-size:11px;
+
+    margin-bottom:4px;
+}
+
+.split-value{
+    color:#111827;
+    font-size:16px;
+    font-weight:800;
+}
+
+
+/* COPY */
+
+.copy{
+    width:100%;
+
+    height:42px;
+
+    margin-top:12px;
+
+    border:1px solid #d8deea;
+
+    border-radius:10px;
+
+    background:white;
+
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.copy:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+.clear{
+    width:100%;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    font-weight:700;
+}
+
+.clear:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .brand{
+        font-size:17px;
+    }
+
+    .container{
+        padding:18px 11px 35px;
+    }
+
+    .title-icon{
+        font-size:42px;
+    }
+
+    .title h1{
+        font-size:25px;
+    }
+
+    .card{
+        padding:14px;
+        border-radius:17px;
+    }
+
+    .rates{
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .rate{
+        font-size:12px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:360px){
+
+    .badge{
+        display:none;
+    }
+
+    .title h1{
+        font-size:23px;
+    }
+
+    .rates{
+        gap:5px;
+    }
+
+    .rate{
+        height:40px;
+        font-size:11px;
+    }
+
+    .tax-options{
+        gap:5px;
+    }
+
+    .tax-option{
+        font-size:11px;
+    }
+
+    .total-value{
+        font-size:25px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+        🧮 Adiyogi Tools
+    </div>
+
+    <div class="badge">
+        GST CALCULATOR
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+    <div class="title-icon">
+        🧾
+    </div>
+
+    <h1>
+        GST Calculator
+    </h1>
+
+    <p>
+        Calculate GST, CGST, SGST, IGST and final price instantly.
+    </p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =========================
+     MODE
+========================= -->
+
+<div class="section-title">
+    Calculation Mode
+</div>
+
+
+<div class="modes">
+
+    <button
+        class="mode active"
+        data-mode="add">
+        Add GST
+    </button>
+
+    <button
+        class="mode"
+        data-mode="remove">
+        Remove GST
+    </button>
+
+</div>
+
+
+<!-- =========================
+     AMOUNT
+========================= -->
+
+<div class="input-group">
+
+    <label
+        class="input-label"
+        id="amountLabel">
+
+        Original Amount
+
+    </label>
+
+    <div class="input-wrap">
+
+        <span class="currency">₹</span>
+
+        <input
+            id="amount"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            min="0"
+            step="any"
+            placeholder="Enter amount">
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     GST RATE
+========================= -->
+
+<div class="rate-title">
+    GST Rate
+</div>
+
+
+<div class="rates">
+
+    <button class="rate" data-rate="0">
+        0%
+    </button>
+
+    <button class="rate" data-rate="0.25">
+        0.25%
+    </button>
+
+    <button class="rate" data-rate="3">
+        3%
+    </button>
+
+    <button class="rate active" data-rate="5">
+        5%
+    </button>
+
+    <button class="rate" data-rate="12">
+        12%
+    </button>
+
+    <button class="rate" data-rate="18">
+        18%
+    </button>
+
+    <button class="rate" data-rate="28">
+        28%
+    </button>
+
+    <button class="rate" data-rate="custom">
+        Custom
+    </button>
+
+</div>
+
+
+<div
+    id="customRateBox"
+    class="custom-rate">
+
+    <input
+        id="customRate"
+        class="input"
+        type="number"
+        inputmode="decimal"
+        min="0"
+        placeholder="Enter GST rate (%)">
+
+</div>
+
+
+<!-- =========================
+     TAX TYPE
+========================= -->
+
+<div class="tax-type">
+
+    <div class="section-title">
+        Tax Type
+    </div>
+
+    <div class="tax-options">
+
+        <button
+            class="tax-option active"
+            data-tax="cgst">
+            CGST + SGST
+        </button>
+
+        <button
+            class="tax-option"
+            data-tax="igst">
+            IGST
+        </button>
+
+        <button
+            class="tax-option"
+            data-tax="none">
+            GST Only
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     CALCULATE
+========================= -->
+
+<button
+    class="calculate"
+    onclick="calculateGST()">
+
+    Calculate GST
+
+</button>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+    id="result"
+    class="result">
+
+    <div class="result-title">
+        GST Calculation Result
+    </div>
+
+
+    <div class="total-box">
+
+        <div class="total-label"
+             id="totalLabel">
+
+            Total Amount
+
+        </div>
+
+        <div
+            id="totalAmount"
+            class="total-value">
+
+            ₹0.00
+
+        </div>
+
+    </div>
+
+
+    <div class="result-row">
+
+        <span class="result-name">
+            Base Amount
+        </span>
+
+        <span
+            id="baseAmount"
+            class="result-value">
+            ₹0.00
+        </span>
+
+    </div>
+
+
+    <div class="result-row">
+
+        <span class="result-name">
+            GST Rate
+        </span>
+
+        <span
+            id="gstRateResult"
+            class="result-value">
+            5%
+        </span>
+
+    </div>
+
+
+    <div class="result-row">
+
+        <span class="result-name">
+            GST Amount
+        </span>
+
+        <span
+            id="gstAmount"
+            class="result-value">
+            ₹0.00
+        </span>
+
+    </div>
+
+
+    <div
+        id="splitBox"
+        class="split-box">
+
+        <div class="split">
+
+            <div class="split-title">
+                CGST
+            </div>
+
+            <div
+                id="cgstAmount"
+                class="split-value">
+                ₹0.00
+            </div>
+
+        </div>
+
+
+        <div class="split">
+
+            <div class="split-title">
+                SGST
+            </div>
+
+            <div
+                id="sgstAmount"
+                class="split-value">
+                ₹0.00
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div
+        id="igstRow"
+        class="result-row"
+        style="display:none">
+
+        <span class="result-name">
+            IGST
+        </span>
+
+        <span
+            id="igstAmount"
+            class="result-value">
+            ₹0.00
+        </span>
+
+    </div>
+
+
+    <button
+        class="copy"
+        onclick="copyResult()">
+
+        📋 Copy Result
+
+    </button>
+
+</div>
+
+
+<!-- =========================
+     CLEAR
+========================= -->
+
+<button
+    class="clear"
+    onclick="clearAll()">
+
+    Clear All
+
+</button>
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<div class="info">
+
+    <strong>How it works:</strong>
+    <br><br>
+
+    <strong>Add GST:</strong>
+    GST is added to the entered base amount.
+    <br>
+
+    <strong>Remove GST:</strong>
+    Enter the GST-inclusive amount and the calculator
+    calculates the original base amount.
+    <br>
+
+    <strong>CGST + SGST:</strong>
+    GST is divided equally between CGST and SGST.
+    <br>
+
+    <strong>IGST:</strong>
+    The complete GST amount is calculated as IGST.
+    <br><br>
+
+    <strong>Example:</strong>
+    ₹1,000 at 18% GST =
+    ₹180 GST and ₹1,180 total.
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+    © Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+/* =========================================
+   STATE
+========================================= */
+
+let calculationMode = "add";
+
+let selectedRate = 5;
+
+let taxType = "cgst";
+
+
+/* =========================================
+   FORMAT MONEY
+========================================= */
+
+function money(value){
+
+    if(
+        !Number.isFinite(value)
+    )
+        return "₹0.00";
+
+    return "₹" +
+        value.toLocaleString(
+            "en-IN",
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+            }
+        );
+}
+
+
+/* =========================================
+   MODE BUTTONS
+========================================= */
+
+document
+.querySelectorAll(".mode")
+.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            document
+            .querySelectorAll(".mode")
+            .forEach(function(b){
+
+                b.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            button.classList.add(
+                "active"
+            );
+
+
+            calculationMode =
+                button.dataset.mode;
+
+
+            const label =
+                document.getElementById(
+                    "amountLabel"
+                );
+
+
+            if(
+                calculationMode === "add"
+            ){
+
+                label.textContent =
+                    "Original Amount";
+
+            }else{
+
+                label.textContent =
+                    "GST Inclusive Amount";
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   RATE BUTTONS
+========================================= */
+
+document
+.querySelectorAll(".rate")
+.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            document
+            .querySelectorAll(".rate")
+            .forEach(function(b){
+
+                b.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            button.classList.add(
+                "active"
+            );
+
+
+            if(
+                button.dataset.rate ===
+                "custom"
+            ){
+
+                document
+                .getElementById(
+                    "customRateBox"
+                )
+                .classList.add(
+                    "show"
+                );
+
+                document
+                .getElementById(
+                    "customRate"
+                )
+                .focus();
+
+            }else{
+
+                document
+                .getElementById(
+                    "customRateBox"
+                )
+                .classList.remove(
+                    "show"
+                );
+
+                selectedRate =
+                    Number(
+                        button.dataset.rate
+                    );
+
+            }
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   TAX TYPE
+========================================= */
+
+document
+.querySelectorAll(".tax-option")
+.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            document
+            .querySelectorAll(".tax-option")
+            .forEach(function(b){
+
+                b.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            button.classList.add(
+                "active"
+            );
+
+
+            taxType =
+                button.dataset.tax;
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   GET GST RATE
+========================================= */
+
+function getGSTRate(){
+
+    const customBox =
+        document.getElementById(
+            "customRateBox"
+        );
+
+
+    if(
+        customBox.classList.contains(
+            "show"
+        )
+    ){
+
+        const value =
+            Number(
+                document.getElementById(
+                    "customRate"
+                ).value
+            );
+
+
+        if(
+            !Number.isFinite(value) ||
+            value < 0
+        ){
+
+            throw new Error(
+                "Enter a valid GST rate."
+            );
+
+        }
+
+
+        return value;
+
+    }
+
+
+    return selectedRate;
+
+}
+
+
+/* =========================================
+   CALCULATE GST
+========================================= */
+
+function calculateGST(){
+
+    const amount =
+        Number(
+            document
+            .getElementById(
+                "amount"
+            )
+            .value
+        );
+
+
+    if(
+        !Number.isFinite(amount) ||
+        amount < 0
+    ){
+
+        alert(
+            "Please enter a valid amount."
+        );
+
+        return;
+
+    }
+
+
+    try{
+
+        const rate =
+            getGSTRate();
+
+
+        let baseAmount;
+        let gstAmount;
+        let totalAmount;
+
+
+        /* =========================
+           ADD GST
+        ========================= */
+
+        if(
+            calculationMode === "add"
+        ){
+
+            baseAmount =
+                amount;
+
+            gstAmount =
+                baseAmount *
+                rate /
+                100;
+
+            totalAmount =
+                baseAmount +
+                gstAmount;
+
+        }
+
+
+        /* =========================
+           REMOVE GST
+        ========================= */
+
+        else{
+
+            totalAmount =
+                amount;
+
+            baseAmount =
+                totalAmount /
+                (
+                    1 +
+                    rate / 100
+                );
+
+            gstAmount =
+                totalAmount -
+                baseAmount;
+
+        }
+
+
+        /* =========================
+           DISPLAY BASIC
+        ========================= */
+
+        document
+        .getElementById(
+            "baseAmount"
+        )
+        .textContent =
+            money(baseAmount);
+
+
+        document
+        .getElementById(
+            "gstRateResult"
+        )
+        .textContent =
+            rate + "%";
+
+
+        document
+        .getElementById(
+            "gstAmount"
+        )
+        .textContent =
+            money(gstAmount);
+
+
+        document
+        .getElementById(
+            "totalAmount"
+        )
+        .textContent =
+            money(totalAmount);
+
+
+        /* =========================
+           CGST / SGST
+        ========================= */
+
+        const splitBox =
+            document.getElementById(
+                "splitBox"
+            );
+
+        const igstRow =
+            document.getElementById(
+                "igstRow"
+            );
+
+
+        if(
+            taxType === "cgst"
+        ){
+
+            splitBox.style.display =
+                "grid";
+
+            igstRow.style.display =
+                "none";
+
+
+            document
+            .getElementById(
+                "cgstAmount"
+            )
+            .textContent =
+                money(
+                    gstAmount / 2
+                );
+
+
+            document
+            .getElementById(
+                "sgstAmount"
+            )
+            .textContent =
+                money(
+                    gstAmount / 2
+                );
+
+        }
+
+
+        else if(
+            taxType === "igst"
+        ){
+
+            splitBox.style.display =
+                "none";
+
+            igstRow.style.display =
+                "flex";
+
+
+            document
+            .getElementById(
+                "igstAmount"
+            )
+            .textContent =
+                money(gstAmount);
+
+        }
+
+
+        else{
+
+            splitBox.style.display =
+                "none";
+
+            igstRow.style.display =
+                "none";
+
+        }
+
+
+        /* =========================
+           SHOW RESULT
+        ========================= */
+
+        document
+        .getElementById(
+            "result"
+        )
+        .classList.add(
+            "show"
+        );
+
+
+        document
+        .getElementById(
+            "result"
+        )
+        .scrollIntoView({
+            behavior:"smooth",
+            block:"nearest"
+        });
+
+
+    }catch(error){
+
+        alert(
+            error.message
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   COPY RESULT
+========================================= */
+
+function copyResult(){
+
+    const base =
+        document
+        .getElementById(
+            "baseAmount"
+        )
+        .textContent;
+
+    const rate =
+        document
+        .getElementById(
+            "gstRateResult"
+        )
+        .textContent;
+
+    const gst =
+        document
+        .getElementById(
+            "gstAmount"
+        )
+        .textContent;
+
+    const total =
+        document
+        .getElementById(
+            "totalAmount"
+        )
+        .textContent;
+
+
+    let text =
+        "AdiyogiTools GST Calculation\n\n"+
+        "Base Amount: "+base+"\n"+
+        "GST Rate: "+rate+"\n"+
+        "GST Amount: "+gst+"\n"+
+        "Total Amount: "+total;
+
+
+    if(
+        taxType === "cgst"
+    ){
+
+        text +=
+            "\nCGST: "+
+            document
+            .getElementById(
+                "cgstAmount"
+            )
+            .textContent +
+
+            "\nSGST: "+
+            document
+            .getElementById(
+                "sgstAmount"
+            )
+            .textContent;
+
+    }
+
+
+    if(
+        taxType === "igst"
+    ){
+
+        text +=
+            "\nIGST: "+
+            document
+            .getElementById(
+                "igstAmount"
+            )
+            .textContent;
+
+    }
+
+
+    if(
+        navigator.clipboard
+    ){
+
+        navigator.clipboard
+        .writeText(text)
+        .then(function(){
+
+            alert(
+                "Result copied!"
+            );
+
+        })
+        .catch(function(){
+
+            alert(text);
+
+        });
+
+    }else{
+
+        alert(text);
+
+    }
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+    document
+    .getElementById(
+        "amount"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "customRate"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "result"
+    )
+    .classList.remove(
+        "show"
+    );
+
+
+    calculationMode =
+        "add";
+
+    selectedRate =
+        5;
+
+    taxType =
+        "cgst";
+
+
+    document
+    .querySelectorAll(".mode")
+    .forEach(function(b){
+
+        b.classList.toggle(
+            "active",
+            b.dataset.mode === "add"
+        );
+
+    });
+
+
+    document
+    .querySelectorAll(".rate")
+    .forEach(function(b){
+
+        b.classList.toggle(
+            "active",
+            b.dataset.rate === "5"
+        );
+
+    });
+
+
+    document
+    .getElementById(
+        "customRateBox"
+    )
+    .classList.remove(
+        "show"
+    );
+
+
+    document
+    .querySelectorAll(".tax-option")
+    .forEach(function(b){
+
+        b.classList.toggle(
+            "active",
+            b.dataset.tax === "cgst"
+        );
+
+    });
+
+
+    document
+    .getElementById(
+        "amountLabel"
+    )
+    .textContent =
+        "Original Amount";
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter"
+        ){
+
+            calculateGST();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
