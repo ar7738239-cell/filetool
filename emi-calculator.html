@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>EMI Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free advanced EMI calculator to calculate monthly EMI, total interest, total payment and loan repayment schedule.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+    padding:10px 16px;
+
+    background:#0d1322;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+    border-radius:12px;
+
+    background:#192842;
+    color:#9edbff;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.container{
+    width:100%;
+    max-width:800px;
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   INPUT GRID
+========================= */
+
+.input-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:14px;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.input-label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.prefix{
+    position:absolute;
+
+    left:13px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#6b7280;
+    font-weight:700;
+}
+
+.suffix{
+    position:absolute;
+
+    right:13px;
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#6b7280;
+    font-weight:700;
+}
+
+.input{
+    width:100%;
+
+    height:50px;
+
+    border:2px solid #d8deea;
+
+    border-radius:11px;
+
+    background:white;
+    color:#111827;
+
+    padding:0 40px 0 35px;
+
+    outline:none;
+
+    font-size:17px;
+}
+
+.input.no-prefix{
+    padding-left:14px;
+}
+
+.input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   TENURE
+========================= */
+
+.tenure-mode{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:6px;
+
+    margin-top:4px;
+}
+
+.tenure-btn{
+    height:38px;
+
+    border:1px solid #d8deea;
+
+    border-radius:9px;
+
+    background:#f8fafc;
+
+    color:#374151;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.tenure-btn.active{
+    background:#7545f5;
+    border-color:#7545f5;
+    color:white;
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+.calculate{
+    width:100%;
+
+    height:54px;
+
+    margin-top:5px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+}
+
+
+/* =========================
+   EMI BOX
+========================= */
+
+.emi-box{
+    background:white;
+
+    border-radius:14px;
+
+    padding:16px;
+
+    text-align:center;
+
+    margin-bottom:12px;
+}
+
+.emi-label{
+    color:#6b7280;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.emi-value{
+    color:#5d32d4;
+
+    font-size:31px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   SUMMARY GRID
+========================= */
+
+.summary-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+}
+
+.summary-box{
+    background:white;
+
+    border-radius:11px;
+
+    padding:12px;
+
+    text-align:center;
+}
+
+.summary-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.summary-value{
+    color:#111827;
+
+    font-size:15px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   BREAKUP
+========================= */
+
+.breakup{
+    margin-top:12px;
+
+    background:white;
+
+    border-radius:13px;
+
+    padding:14px;
+}
+
+.breakup-title{
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.progress{
+    width:100%;
+
+    height:13px;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    background:#e5e7eb;
+
+    display:flex;
+}
+
+.principal-bar{
+    height:100%;
+
+    background:#7545f5;
+}
+
+.interest-bar{
+    height:100%;
+
+    background:#f97316;
+}
+
+.legend{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-top:10px;
+}
+
+.legend-item{
+    font-size:12px;
+
+    color:#4b5563;
+}
+
+.legend-item strong{
+    display:block;
+
+    color:#111827;
+
+    margin-top:3px;
+}
+
+
+/* =========================
+   SCHEDULE
+========================= */
+
+.schedule-title{
+    margin-top:18px;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    font-weight:700;
+}
+
+.schedule-wrap{
+    overflow-x:auto;
+
+    border-radius:11px;
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+}
+
+.schedule{
+    width:100%;
+
+    min-width:570px;
+
+    border-collapse:collapse;
+
+    font-size:12px;
+}
+
+.schedule th{
+    background:#111827;
+
+    color:white;
+
+    padding:10px 7px;
+
+    text-align:right;
+
+    white-space:nowrap;
+}
+
+.schedule th:first-child{
+    text-align:center;
+}
+
+.schedule td{
+    padding:9px 7px;
+
+    border-bottom:1px solid #e5e7eb;
+
+    text-align:right;
+
+    white-space:nowrap;
+}
+
+.schedule td:first-child{
+    text-align:center;
+
+    font-weight:700;
+}
+
+
+/* =========================
+   PREPAYMENT
+========================= */
+
+.prepayment{
+    margin-top:18px;
+
+    padding-top:16px;
+
+    border-top:1px solid #ddd6fe;
+}
+
+.sub-title{
+    font-size:15px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.prepay-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:10px;
+}
+
+.prepay-result{
+    display:none;
+
+    margin-top:10px;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.prepay-result.show{
+    display:block;
+}
+
+
+/* =========================
+   COPY
+========================= */
+
+.copy{
+    width:100%;
+
+    height:43px;
+
+    margin-top:12px;
+
+    border:1px solid #d8deea;
+
+    border-radius:10px;
+
+    background:white;
+
+    color:#374151;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.copy:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   CLEAR
+========================= */
+
+.clear{
+    width:100%;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    font-weight:700;
+}
+
+.clear:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .input-grid{
+        grid-template-columns:1fr;
+        gap:0;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .prepay-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:380px){
+
+    .badge{
+        display:none;
+    }
+
+    .container{
+        padding:18px 10px 35px;
+    }
+
+    .card{
+        padding:13px;
+    }
+
+    .title h1{
+        font-size:24px;
+    }
+
+    .emi-value{
+        font-size:27px;
+    }
+
+    .summary-value{
+        font-size:14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+        🧮 Adiyogi Tools
+    </div>
+
+    <div class="badge">
+        EMI CALCULATOR
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+    <div class="title-icon">
+        💳
+    </div>
+
+    <h1>
+        EMI Calculator
+    </h1>
+
+    <p>
+        Calculate monthly EMI, total interest and complete loan repayment schedule.
+    </p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =========================
+     LOAN INPUTS
+========================= -->
+
+<div class="input-grid">
+
+
+<div class="input-group">
+
+    <label class="input-label">
+        Loan Amount
+    </label>
+
+    <div class="input-wrap">
+
+        <span class="prefix">₹</span>
+
+        <input
+            id="loanAmount"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            min="0"
+            step="any"
+            placeholder="Example: 500000">
+
+    </div>
+
+</div>
+
+
+<div class="input-group">
+
+    <label class="input-label">
+        Annual Interest Rate
+    </label>
+
+    <div class="input-wrap">
+
+        <input
+            id="interestRate"
+            class="input no-prefix"
+            type="number"
+            inputmode="decimal"
+            min="0"
+            step="any"
+            placeholder="Example: 8.5">
+
+        <span class="suffix">%</span>
+
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     TENURE
+========================= -->
+
+<div class="input-group">
+
+    <label class="input-label">
+        Loan Tenure
+    </label>
+
+
+    <div class="input-wrap">
+
+        <input
+            id="tenure"
+            class="input no-prefix"
+            type="number"
+            inputmode="decimal"
+            min="1"
+            step="any"
+            placeholder="Example: 20">
+
+    </div>
+
+
+    <div class="tenure-mode">
+
+        <button
+            class="tenure-btn active"
+            data-tenure="years">
+            Years
+        </button>
+
+        <button
+            class="tenure-btn"
+            data-tenure="months">
+            Months
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     CALCULATE
+========================= -->
+
+<button
+    class="calculate"
+    onclick="calculateEMI()">
+
+    Calculate EMI
+
+</button>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+    id="result"
+    class="result">
+
+
+<div class="result-title">
+    Loan Repayment Summary
+</div>
+
+
+<div class="emi-box">
+
+    <div class="emi-label">
+        Monthly EMI
+    </div>
+
+    <div
+        id="emiValue"
+        class="emi-value">
+        ₹0.00
+    </div>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="summary-box">
+
+    <div class="summary-label">
+        Loan Amount
+    </div>
+
+    <div
+        id="principalValue"
+        class="summary-value">
+        ₹0.00
+    </div>
+
+</div>
+
+
+<div class="summary-box">
+
+    <div class="summary-label">
+        Total Interest
+    </div>
+
+    <div
+        id="interestValue"
+        class="summary-value">
+        ₹0.00
+    </div>
+
+</div>
+
+
+<div class="summary-box">
+
+    <div class="summary-label">
+        Total Payment
+    </div>
+
+    <div
+        id="totalValue"
+        class="summary-value">
+        ₹0.00
+    </div>
+
+</div>
+
+
+<div class="summary-box">
+
+    <div class="summary-label">
+        Number of EMIs
+    </div>
+
+    <div
+        id="monthsValue"
+        class="summary-value">
+        0
+    </div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     BREAKUP
+========================= -->
+
+<div class="breakup">
+
+    <div class="breakup-title">
+        Principal vs Interest
+    </div>
+
+    <div class="progress">
+
+        <div
+            id="principalBar"
+            class="principal-bar">
+        </div>
+
+        <div
+            id="interestBar"
+            class="interest-bar">
+        </div>
+
+    </div>
+
+
+    <div class="legend">
+
+        <div class="legend-item">
+
+            Principal
+
+            <strong id="principalLegend">
+                ₹0.00
+            </strong>
+
+        </div>
+
+
+        <div class="legend-item">
+
+            Interest
+
+            <strong id="interestLegend">
+                ₹0.00
+            </strong>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     YEARLY SCHEDULE
+========================= -->
+
+<div class="schedule-title">
+    Year-wise Repayment Schedule
+</div>
+
+
+<div class="schedule-wrap">
+
+<table class="schedule">
+
+<thead>
+
+<tr>
+
+<th>Year</th>
+
+<th>Opening</th>
+
+<th>Principal</th>
+
+<th>Interest</th>
+
+<th>Payment</th>
+
+<th>Closing</th>
+
+</tr>
+
+</thead>
+
+<tbody id="scheduleBody">
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- =========================
+     PREPAYMENT
+========================= -->
+
+<div class="prepayment">
+
+<div class="sub-title">
+    Extra / Prepayment Analysis
+</div>
+
+
+<div class="prepay-grid">
+
+
+<div class="input-group">
+
+<label class="input-label">
+Extra Monthly Payment
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+    id="extraPayment"
+    class="input"
+    type="number"
+    inputmode="decimal"
+    min="0"
+    step="any"
+    placeholder="Example: 2000">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="input-label">
+One-time Prepayment
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+    id="lumpPayment"
+    class="input"
+    type="number"
+    inputmode="decimal"
+    min="0"
+    step="any"
+    placeholder="Example: 50000">
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<button
+    class="calculate"
+    onclick="calculatePrepayment()">
+
+    Analyze Prepayment
+
+</button>
+
+
+<div
+    id="prepayResult"
+    class="prepay-result">
+</div>
+
+</div>
+
+
+<button
+    class="copy"
+    onclick="copyResult()">
+
+    📋 Copy EMI Summary
+
+</button>
+
+
+</div>
+
+
+<!-- =========================
+     CLEAR
+========================= -->
+
+<button
+    class="clear"
+    onclick="clearAll()">
+
+    Clear All
+
+</button>
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<div class="info">
+
+<strong>EMI Formula:</strong>
+
+<br><br>
+
+EMI =
+P × r × (1+r)ⁿ ÷
+[(1+r)ⁿ − 1]
+
+<br><br>
+
+Where:
+
+<br>
+
+<strong>P</strong> = Principal Loan Amount
+
+<br>
+
+<strong>r</strong> = Monthly Interest Rate
+
+<br>
+
+<strong>n</strong> = Total Number of Monthly Payments
+
+<br><br>
+
+<strong>Example:</strong>
+For a ₹5,00,000 loan at 8.5% annual interest
+for 5 years, the calculator calculates the exact
+monthly EMI, total interest and total repayment.
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+    © Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+/* =========================================
+   STATE
+========================================= */
+
+let tenureMode = "years";
+
+let lastCalculation = null;
+
+
+/* =========================================
+   FORMAT MONEY
+========================================= */
+
+function money(value){
+
+    if(
+        !Number.isFinite(value)
+    )
+        return "₹0.00";
+
+    return "₹" +
+        value.toLocaleString(
+            "en-IN",
+            {
+                minimumFractionDigits:2,
+                maximumFractionDigits:2
+            }
+        );
+}
+
+
+/* =========================================
+   TENURE BUTTONS
+========================================= */
+
+document
+.querySelectorAll(".tenure-btn")
+.forEach(function(button){
+
+    button.addEventListener(
+        "click",
+        function(){
+
+            document
+            .querySelectorAll(".tenure-btn")
+            .forEach(function(b){
+
+                b.classList.remove(
+                    "active"
+                );
+
+            });
+
+
+            button.classList.add(
+                "active"
+            );
+
+
+            tenureMode =
+                button.dataset.tenure;
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   EMI FORMULA
+========================================= */
+
+function calculateMonthlyEMI(
+    principal,
+    annualRate,
+    months
+){
+
+    const monthlyRate =
+        annualRate / 12 / 100;
+
+
+    if(
+        monthlyRate === 0
+    ){
+
+        return principal / months;
+
+    }
+
+
+    const factor =
+        Math.pow(
+            1 + monthlyRate,
+            months
+        );
+
+
+    return (
+        principal *
+        monthlyRate *
+        factor
+    ) /
+    (
+        factor - 1
+    );
+
+}
+
+
+/* =========================================
+   ROUND
+========================================= */
+
+function roundMoney(value){
+
+    return Math.round(
+        value * 100
+    ) / 100;
+
+}
+
+
+/* =========================================
+   MAIN EMI
+========================================= */
+
+function calculateEMI(){
+
+    const principal =
+        Number(
+            document
+            .getElementById(
+                "loanAmount"
+            )
+            .value
+        );
+
+
+    const annualRate =
+        Number(
+            document
+            .getElementById(
+                "interestRate"
+            )
+            .value
+        );
+
+
+    const tenure =
+        Number(
+            document
+            .getElementById(
+                "tenure"
+            )
+            .value
+        );
+
+
+    if(
+        !Number.isFinite(principal) ||
+        principal <= 0
+    ){
+
+        alert(
+            "Please enter a valid loan amount."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !Number.isFinite(annualRate) ||
+        annualRate < 0
+    ){
+
+        alert(
+            "Please enter a valid interest rate."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !Number.isFinite(tenure) ||
+        tenure <= 0
+    ){
+
+        alert(
+            "Please enter a valid loan tenure."
+        );
+
+        return;
+
+    }
+
+
+    let months;
+
+
+    if(
+        tenureMode === "years"
+    ){
+
+        months =
+            Math.round(
+                tenure * 12
+            );
+
+    }else{
+
+        months =
+            Math.round(
+                tenure
+            );
+
+    }
+
+
+    if(
+        months <= 0
+    ){
+
+        alert(
+            "Loan tenure must be at least 1 month."
+        );
+
+        return;
+
+    }
+
+
+    const emi =
+        calculateMonthlyEMI(
+            principal,
+            annualRate,
+            months
+        );
+
+
+    const totalPayment =
+        emi * months;
+
+
+    const totalInterest =
+        totalPayment -
+        principal;
+
+
+    lastCalculation = {
+
+        principal:
+            principal,
+
+        annualRate:
+            annualRate,
+
+        months:
+            months,
+
+        emi:
+            emi,
+
+        totalPayment:
+            totalPayment,
+
+        totalInterest:
+            totalInterest
+
+    };
+
+
+    /* =========================
+       BASIC RESULT
+    ========================= */
+
+    document
+    .getElementById(
+        "emiValue"
+    )
+    .textContent =
+        money(emi);
+
+
+    document
+    .getElementById(
+        "principalValue"
+    )
+    .textContent =
+        money(principal);
+
+
+    document
+    .getElementById(
+        "interestValue"
+    )
+    .textContent =
+        money(totalInterest);
+
+
+    document
+    .getElementById(
+        "totalValue"
+    )
+    .textContent =
+        money(totalPayment);
+
+
+    document
+    .getElementById(
+        "monthsValue"
+    )
+    .textContent =
+        months.toLocaleString(
+            "en-IN"
+        );
+
+
+    /* =========================
+       BREAKUP
+    ========================= */
+
+    const principalPercent =
+        totalPayment > 0
+        ?
+        principal /
+        totalPayment *
+        100
+        :
+        0;
+
+
+    const interestPercent =
+        100 -
+        principalPercent;
+
+
+    document
+    .getElementById(
+        "principalBar"
+    )
+    .style.width =
+        principalPercent + "%";
+
+
+    document
+    .getElementById(
+        "interestBar"
+    ).style.width =
+        interestPercent + "%";
+
+
+    document
+    .getElementById(
+        "principalLegend"
+    )
+    .textContent =
+        money(principal);
+
+
+    document
+    .getElementById(
+        "interestLegend"
+    )
+    .textContent =
+        money(totalInterest);
+
+
+    /* =========================
+       SCHEDULE
+    ========================= */
+
+    generateSchedule(
+        principal,
+        annualRate,
+        months,
+        emi
+    );
+
+
+    /* =========================
+       SHOW RESULT
+    ========================= */
+
+    document
+    .getElementById(
+        "result"
+    )
+    .classList.add(
+        "show"
+    );
+
+
+    document
+    .getElementById(
+        "result"
+    )
+    .scrollIntoView({
+        behavior:"smooth",
+        block:"nearest"
+    });
+
+}
+
+
+/* =========================================
+   YEARLY SCHEDULE
+========================================= */
+
+function generateSchedule(
+    principal,
+    annualRate,
+    months,
+    emi
+){
+
+    const tbody =
+        document.getElementById(
+            "scheduleBody"
+        );
+
+
+    tbody.innerHTML = "";
+
+
+    let balance =
+        principal;
+
+
+    const monthlyRate =
+        annualRate /
+        12 /
+        100;
+
+
+    let yearPrincipal = 0;
+
+    let yearInterest = 0;
+
+    let yearPayment = 0;
+
+    let openingBalance =
+        balance;
+
+    let year = 1;
+
+
+    for(
+        let month=1;
+        month<=months;
+        month++
+    ){
+
+        let interest =
+            balance *
+            monthlyRate;
+
+
+        let principalPart;
+
+
+        if(
+            annualRate === 0
+        ){
+
+            interest = 0;
+
+        }
+
+
+        principalPart =
+            emi -
+            interest;
+
+
+        /*
+           Last EMI correction.
+
+           This prevents a tiny negative
+           closing balance caused by
+           floating point rounding.
+        */
+
+        if(
+            principalPart > balance
+        ){
+
+            principalPart =
+                balance;
+
+        }
+
+
+        const payment =
+            principalPart +
+            interest;
+
+
+        balance -=
+            principalPart;
+
+
+        if(
+            Math.abs(balance)
+            < 0.01
+        ){
+
+            balance=0;
+
+        }
+
+
+        yearPrincipal +=
+            principalPart;
+
+        yearInterest +=
+            interest;
+
+        yearPayment +=
+            payment;
+
+
+        /*
+           End of year
+        */
+
+        if(
+            month % 12 === 0 ||
+            month === months
+        ){
+
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            row.innerHTML =
+
+                "<td>"+
+                year+
+                "</td>"+
+
+                "<td>"+
+                money(openingBalance)+
+                "</td>"+
+
+                "<td>"+
+                money(yearPrincipal)+
+                "</td>"+
+
+                "<td>"+
+                money(yearInterest)+
+                "</td>"+
+
+                "<td>"+
+                money(yearPayment)+
+                "</td>"+
+
+                "<td>"+
+                money(balance)+
+                "</td>";
+
+
+            tbody.appendChild(
+                row
+            );
+
+
+            year++;
+
+
+            openingBalance =
+                balance;
+
+
+            yearPrincipal=0;
+
+            yearInterest=0;
+
+            yearPayment=0;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   PREPAYMENT ANALYSIS
+========================================= */
+
+function calculatePrepayment(){
+
+    if(
+        !lastCalculation
+    ){
+
+        alert(
+            "First calculate your EMI."
+        );
+
+        return;
+
+    }
+
+
+    const extra =
+        Number(
+            document
+            .getElementById(
+                "extraPayment"
+            )
+            .value
+        ) || 0;
+
+
+    const lump =
+        Number(
+            document
+            .getElementById(
+                "lumpPayment"
+            )
+            .value
+        ) || 0;
+
+
+    if(
+        extra < 0 ||
+        lump < 0
+    ){
+
+        alert(
+            "Prepayment cannot be negative."
+        );
+
+        return;
+
+    }
+
+
+    const principal =
+        lastCalculation.principal;
+
+
+    const annualRate =
+        lastCalculation.annualRate;
+
+
+    const originalEMI =
+        lastCalculation.emi;
+
+
+    const originalMonths =
+        lastCalculation.months;
+
+
+    const monthlyRate =
+        annualRate /
+        12 /
+        100;
+
+
+    /*
+       Apply one-time prepayment
+       immediately to principal.
+    */
+
+    let balance =
+        Math.max(
+            0,
+            principal - lump
+        );
+
+
+    const payment =
+        originalEMI +
+        extra;
+
+
+    let months=0;
+
+    let totalInterest=0;
+
+
+    if(
+        balance === 0
+    ){
+
+        months=0;
+
+    }else if(
+        payment <=
+        balance * monthlyRate &&
+        monthlyRate > 0
+    ){
+
+        alert(
+            "Extra payment is too small to cover monthly interest."
+        );
+
+        return;
+
+    }else{
+
+        while(
+            balance > 0 &&
+            months < 1200
+        ){
+
+            let interest =
+                balance *
+                monthlyRate;
+
+
+            let principalPart;
+
+
+            if(
+                monthlyRate === 0
+            ){
+
+                principalPart =
+                    payment;
+
+            }else{
+
+                principalPart =
+                    payment -
+                    interest;
+
+            }
+
+
+            if(
+                principalPart > balance
+            ){
+
+                principalPart =
+                    balance;
+
+            }
+
+
+            balance -=
+                principalPart;
+
+
+            totalInterest +=
+                interest;
+
+
+            months++;
+
+
+            if(
+                months >= 1200
+            )
+                break;
+
+        }
+
+    }
+
+
+    const originalInterest =
+        lastCalculation.totalInterest;
+
+
+    const interestSaved =
+        Math.max(
+            0,
+            originalInterest -
+            totalInterest
+        );
+
+
+    const monthsSaved =
+        Math.max(
+            0,
+            originalMonths -
+            months
+        );
+
+
+    const yearsSaved =
+        Math.floor(
+            monthsSaved / 12
+        );
+
+
+    const remainingMonths =
+        monthsSaved % 12;
+
+
+    let savedText = "";
+
+
+    if(
+        yearsSaved > 0
+    ){
+
+        savedText +=
+            yearsSaved+
+            " year(s) ";
+
+    }
+
+
+    if(
+        remainingMonths > 0
+    ){
+
+        savedText +=
+            remainingMonths+
+            " month(s)";
+
+    }
+
+
+    if(
+        !savedText
+    ){
+
+        savedText =
+            "0 months";
+
+    }
+
+
+    const box =
+        document.getElementById(
+            "prepayResult"
+        );
+
+
+    box.innerHTML =
+
+        "<strong>Prepayment Result</strong>"+
+        "<br><br>"+
+
+        "New loan duration: <strong>"+
+        months+
+        " months</strong>"+
+        "<br>"+
+
+        "Time saved: <strong>"+
+        savedText+
+        "</strong>"+
+        "<br>"+
+
+        "Estimated interest saved: <strong>"+
+        money(interestSaved)+
+        "</strong>"+
+        "<br>"+
+
+        "Extra monthly payment: <strong>"+
+        money(extra)+
+        "</strong>"+
+        "<br>"+
+
+        "One-time prepayment: <strong>"+
+        money(lump)+
+        "</strong>";
+
+
+    box.classList.add(
+        "show"
+    );
+
+}
+
+
+/* =========================================
+   COPY RESULT
+========================================= */
+
+function copyResult(){
+
+    if(
+        !lastCalculation
+    ){
+
+        alert(
+            "Calculate EMI first."
+        );
+
+        return;
+
+    }
+
+
+    const c =
+        lastCalculation;
+
+
+    const text =
+
+        "AdiyogiTools EMI Calculation\n\n"+
+
+        "Loan Amount: "+
+        money(c.principal)+
+        "\n"+
+
+        "Interest Rate: "+
+        c.annualRate+
+        "% p.a.\n"+
+
+        "Tenure: "+
+        c.months+
+        " months\n"+
+
+        "Monthly EMI: "+
+        money(c.emi)+
+        "\n"+
+
+        "Total Interest: "+
+        money(c.totalInterest)+
+        "\n"+
+
+        "Total Payment: "+
+        money(c.totalPayment);
+
+
+    if(
+        navigator.clipboard
+    ){
+
+        navigator.clipboard
+        .writeText(text)
+        .then(function(){
+
+            alert(
+                "EMI summary copied!"
+            );
+
+        })
+        .catch(function(){
+
+            alert(text);
+
+        });
+
+    }else{
+
+        alert(text);
+
+    }
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+    document
+    .getElementById(
+        "loanAmount"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "interestRate"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "tenure"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "extraPayment"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "lumpPayment"
+    )
+    .value = "";
+
+
+    document
+    .getElementById(
+        "result"
+    )
+    .classList.remove(
+        "show"
+    );
+
+
+    document
+    .getElementById(
+        "prepayResult"
+    )
+    .classList.remove(
+        "show"
+    );
+
+
+    document
+    .getElementById(
+        "scheduleBody"
+    )
+    .innerHTML = "";
+
+
+    tenureMode =
+        "years";
+
+
+    lastCalculation =
+        null;
+
+
+    document
+    .querySelectorAll(
+        ".tenure-btn"
+    )
+    .forEach(function(button){
+
+        button.classList.toggle(
+            "active",
+            button.dataset.tenure ===
+            "years"
+        );
+
+    });
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter"
+        ){
+
+            const active =
+                document.activeElement;
+
+
+            if(
+                active &&
+                (
+                    active.id ===
+                    "extraPayment" ||
+                    active.id ===
+                    "lumpPayment"
+                )
+            ){
+
+                calculatePrepayment();
+
+            }else{
+
+                calculateEMI();
+
+            }
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+
+</html>
