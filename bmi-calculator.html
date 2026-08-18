@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>BMI Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free BMI Calculator to calculate Body Mass Index using height and weight. Supports metric and imperial units.">
+
+<meta name="robots"
+content="index, follow">
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+    min-height:100%;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#f3f4f6;
+
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header{
+
+    min-height:62px;
+
+    padding:10px 16px;
+
+    background:#0d1322;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.brand{
+
+    font-size:19px;
+
+    font-weight:700;
+}
+
+.badge{
+
+    padding:8px 11px;
+
+    border-radius:12px;
+
+    background:#192842;
+
+    color:#9edbff;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:720px;
+
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.title{
+
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+.title-icon{
+
+    font-size:48px;
+
+    margin-bottom:7px;
+}
+
+.title h1{
+
+    font-size:29px;
+
+    margin-bottom:7px;
+}
+
+.title p{
+
+    color:#6b7280;
+
+    font-size:15px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card{
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.section{
+
+    margin-bottom:20px;
+}
+
+.section-title{
+
+    font-size:16px;
+
+    font-weight:800;
+
+    color:#1f2937;
+
+    margin-bottom:12px;
+}
+
+
+/* =========================================
+   UNIT BUTTONS
+========================================= */
+
+.unit-buttons{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-bottom:16px;
+}
+
+.unit-btn{
+
+    height:45px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    font-weight:700;
+}
+
+.unit-btn.active{
+
+    background:#7545f5;
+
+    border-color:#7545f5;
+
+    color:white;
+}
+
+.unit-btn:active{
+
+    transform:scale(.97);
+}
+
+
+/* =========================================
+   INPUT
+========================================= */
+
+.input-group{
+
+    margin-bottom:14px;
+}
+
+.label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:12px;
+
+    font-weight:700;
+}
+
+.input{
+
+    width:100%;
+
+    height:50px;
+
+    padding:0 13px;
+
+    border:2px solid #d8deea;
+
+    border-radius:11px;
+
+    background:white;
+
+    color:#111827;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.input:focus{
+
+    border-color:#7545f5;
+}
+
+
+/* =========================================
+   HEIGHT FEET INCH
+========================================= */
+
+.height-imperial{
+
+    display:none;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:9px;
+}
+
+.height-imperial.show{
+
+    display:grid;
+}
+
+
+/* =========================================
+   CALCULATE
+========================================= */
+
+.calculate{
+
+    width:100%;
+
+    height:53px;
+
+    margin-top:4px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+
+    transform:scale(.98);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result{
+
+    display:none;
+
+    margin-top:18px;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+
+    text-align:center;
+}
+
+.result.show{
+
+    display:block;
+}
+
+.result-title{
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    margin-bottom:7px;
+}
+
+.bmi-value{
+
+    font-size:42px;
+
+    font-weight:800;
+
+    color:#5d32d4;
+
+    margin-bottom:7px;
+}
+
+.bmi-category{
+
+    display:inline-block;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    background:white;
+
+    color:#5d32d4;
+
+    font-size:14px;
+
+    font-weight:800;
+
+    margin-bottom:14px;
+}
+
+.result-message{
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+
+/* =========================================
+   RESULT GRID
+========================================= */
+
+.result-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+
+    margin-top:15px;
+}
+
+.result-box{
+
+    background:white;
+
+    border-radius:11px;
+
+    padding:12px 7px;
+}
+
+.result-label{
+
+    color:#6b7280;
+
+    font-size:10px;
+
+    margin-bottom:5px;
+}
+
+.result-value{
+
+    color:#111827;
+
+    font-size:14px;
+
+    font-weight:800;
+}
+
+
+/* =========================================
+   BMI SCALE
+========================================= */
+
+.scale{
+
+    margin-top:17px;
+
+    text-align:left;
+}
+
+.scale-title{
+
+    color:#374151;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+.scale-bar{
+
+    width:100%;
+
+    height:12px;
+
+    border-radius:10px;
+
+    background:
+    linear-gradient(
+        to right,
+        #60a5fa 0%,
+        #60a5fa 30%,
+        #34d399 30%,
+        #34d399 50%,
+        #fbbf24 50%,
+        #fbbf24 70%,
+        #f87171 70%,
+        #f87171 100%
+    );
+
+    position:relative;
+}
+
+.scale-marker{
+
+    position:absolute;
+
+    top:-5px;
+
+    width:4px;
+
+    height:22px;
+
+    border-radius:4px;
+
+    background:#111827;
+
+    transform:translateX(-50%);
+
+    transition:left .3s;
+}
+
+.scale-labels{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:5px;
+
+    color:#6b7280;
+
+    font-size:9px;
+}
+
+
+/* =========================================
+   CLEAR / COPY
+========================================= */
+
+.secondary{
+
+    width:100%;
+
+    height:45px;
+
+    margin-top:9px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f8fafc;
+
+    color:#5d32d4;
+
+    font-size:13px;
+
+    font-weight:700;
+}
+
+.secondary:active{
+
+    transform:scale(.98);
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.info{
+
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+
+    color:#111827;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:500px){
+
+    .brand{
+
+        font-size:17px;
+    }
+
+    .container{
+
+        padding:18px 11px 35px;
+    }
+
+    .title-icon{
+
+        font-size:42px;
+    }
+
+    .title h1{
+
+        font-size:25px;
+    }
+
+    .card{
+
+        padding:14px;
+
+        border-radius:17px;
+    }
+
+    .bmi-value{
+
+        font-size:38px;
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media(max-width:360px){
+
+    .badge{
+
+        display:none;
+    }
+
+    .title h1{
+
+        font-size:23px;
+    }
+
+    .result-grid{
+
+        grid-template-columns:
+        1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+BMI CALCULATOR
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================================
+     TITLE
+========================================= -->
+
+<section class="title">
+
+<div class="title-icon">
+⚖️
+</div>
+
+<h1>
+BMI Calculator
+</h1>
+
+<p>
+Calculate your Body Mass Index using your height and weight.
+</p>
+
+</section>
+
+
+<!-- =========================================
+     MAIN CARD
+========================================= -->
+
+<section class="card">
+
+
+<!-- =========================================
+     UNIT
+========================================= -->
+
+<div class="section">
+
+<div class="section-title">
+📏 Select Unit
+</div>
+
+
+<div class="unit-buttons">
+
+<button
+type="button"
+id="metricBtn"
+class="unit-btn active"
+onclick="setUnit('metric')">
+
+Metric
+<br>
+
+<small>
+kg / cm
+</small>
+
+</button>
+
+
+<button
+type="button"
+id="imperialBtn"
+class="unit-btn"
+onclick="setUnit('imperial')">
+
+Imperial
+<br>
+
+<small>
+lb / ft / in
+</small>
+
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     HEIGHT
+========================================= -->
+
+<div class="section">
+
+<div class="section-title">
+📏 Height
+</div>
+
+
+<!-- METRIC -->
+
+<div
+id="metricHeight"
+class="input-group">
+
+<label class="label">
+Height (cm)
+</label>
+
+<input
+id="heightCm"
+class="input"
+type="number"
+inputmode="decimal"
+step="0.1"
+min="1"
+placeholder="Example: 170">
+
+</div>
+
+
+<!-- IMPERIAL -->
+
+<div
+id="imperialHeight"
+class="height-imperial">
+
+<div class="input-group">
+
+<label class="label">
+Feet
+</label>
+
+<input
+id="heightFt"
+class="input"
+type="number"
+inputmode="numeric"
+min="0"
+placeholder="Example: 5">
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Inches
+</label>
+
+<input
+id="heightIn"
+class="input"
+type="number"
+inputmode="decimal"
+step="0.1"
+min="0"
+placeholder="Example: 7">
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     WEIGHT
+========================================= -->
+
+<div class="section">
+
+<div class="section-title">
+⚖️ Weight
+</div>
+
+
+<div
+id="metricWeight"
+class="input-group">
+
+<label class="label">
+Weight (kg)
+</label>
+
+<input
+id="weightKg"
+class="input"
+type="number"
+inputmode="decimal"
+step="0.1"
+min="1"
+placeholder="Example: 65">
+
+</div>
+
+
+<div
+id="imperialWeight"
+class="input-group"
+style="display:none;">
+
+<label class="label">
+Weight (lb)
+</label>
+
+<input
+id="weightLb"
+class="input"
+type="number"
+inputmode="decimal"
+step="0.1"
+min="1"
+placeholder="Example: 143">
+
+</div>
+
+</div>
+
+
+<!-- =========================================
+     CALCULATE
+========================================= -->
+
+<button
+type="button"
+class="calculate"
+onclick="calculateBMI()">
+
+Calculate BMI
+
+</button>
+
+
+<!-- =========================================
+     RESULT
+========================================= -->
+
+<div
+id="result"
+class="result">
+
+<div class="result-title">
+Your BMI
+</div>
+
+
+<div
+id="bmiValue"
+class="bmi-value">
+—
+</div>
+
+
+<div
+id="bmiCategory"
+class="bmi-category">
+—
+</div>
+
+
+<div
+id="resultMessage"
+class="result-message">
+—
+</div>
+
+
+<div class="result-grid">
+
+
+<div class="result-box">
+
+<div class="result-label">
+HEALTHY BMI
+</div>
+
+<div
+id="healthyBMI"
+class="result-value">
+18.5 – 24.9
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-label">
+YOUR HEIGHT
+</div>
+
+<div
+id="resultHeight"
+class="result-value">
+—
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-label">
+YOUR WEIGHT
+</div>
+
+<div
+id="resultWeight"
+class="result-value">
+—
+</div>
+
+</div>
+
+
+<div class="result-box">
+
+<div class="result-label">
+HEALTHY WEIGHT
+</div>
+
+<div
+id="healthyWeight"
+class="result-value">
+—
+</div>
+
+</div>
+
+</div>
+
+
+<!-- BMI SCALE -->
+
+<div class="scale">
+
+<div class="scale-title">
+BMI Scale
+</div>
+
+<div class="scale-bar">
+
+<div
+id="scaleMarker"
+class="scale-marker"
+style="left:0%;">
+</div>
+
+</div>
+
+<div class="scale-labels">
+
+<span>
+Under
+</span>
+
+<span>
+Normal
+</span>
+
+<span>
+Over
+</span>
+
+<span>
+Obese
+</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================================
+     COPY
+========================================= -->
+
+<button
+type="button"
+class="secondary"
+onclick="copyResult()">
+
+📋 Copy Result
+
+</button>
+
+
+<!-- =========================================
+     CLEAR
+========================================= -->
+
+<button
+type="button"
+class="secondary"
+onclick="clearAll()">
+
+🧹 Clear All
+
+</button>
+
+
+<!-- =========================================
+     INFO
+========================================= -->
+
+<div class="info">
+
+<strong>
+BMI Categories:
+</strong>
+
+<br><br>
+
+• Below 18.5 — Underweight
+
+<br>
+
+• 18.5 – 24.9 — Normal weight
+
+<br>
+
+• 25.0 – 29.9 — Overweight
+
+<br>
+
+• 30.0 and above — Obesity
+
+<br><br>
+
+<strong>
+Formula:
+</strong>
+
+<br>
+
+BMI = Weight (kg) ÷ Height² (m²)
+
+<br><br>
+
+BMI is a screening measure and does not by itself diagnose health conditions.
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+/* =========================================
+   STATE
+========================================= */
+
+let unit = "metric";
+
+let lastResult = "";
+
+
+/* =========================================
+   SET UNIT
+========================================= */
+
+function setUnit(type){
+
+unit = type;
+
+
+const metricBtn =
+document.getElementById(
+"metricBtn"
+);
+
+const imperialBtn =
+document.getElementById(
+"imperialBtn"
+);
+
+
+metricBtn.classList.toggle(
+"active",
+type === "metric"
+);
+
+imperialBtn.classList.toggle(
+"active",
+type === "imperial"
+);
+
+
+if(type === "metric"){
+
+document.getElementById(
+"metricHeight"
+).style.display = "block";
+
+document.getElementById(
+"imperialHeight"
+).classList.remove(
+"show"
+);
+
+document.getElementById(
+"metricWeight"
+).style.display = "block";
+
+document.getElementById(
+"imperialWeight"
+).style.display = "none";
+
+}else{
+
+document.getElementById(
+"metricHeight"
+).style.display = "none";
+
+document.getElementById(
+"imperialHeight"
+).classList.add(
+"show"
+);
+
+document.getElementById(
+"metricWeight"
+).style.display = "none";
+
+document.getElementById(
+"imperialWeight"
+).style.display = "block";
+
+}
+
+}
+
+
+/* =========================================
+   CALCULATE BMI
+========================================= */
+
+function calculateBMI(){
+
+let heightMeters;
+
+let weightKg;
+
+let displayHeight;
+
+let displayWeight;
+
+
+/* =====================================
+   METRIC
+===================================== */
+
+if(unit === "metric"){
+
+const heightCm =
+Number(
+document.getElementById(
+"heightCm"
+).value
+);
+
+const weight =
+Number(
+document.getElementById(
+"weightKg"
+).value
+);
+
+
+if(
+!Number.isFinite(heightCm) ||
+heightCm <= 0
+){
+
+alert(
+"Please enter a valid height."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(weight) ||
+weight <= 0
+){
+
+alert(
+"Please enter a valid weight."
+);
+
+return;
+
+}
+
+
+heightMeters =
+heightCm / 100;
+
+weightKg =
+weight;
+
+displayHeight =
+heightCm.toFixed(1) +
+" cm";
+
+displayWeight =
+weight.toFixed(1) +
+" kg";
+
+}
+
+
+/* =====================================
+   IMPERIAL
+===================================== */
+
+else{
+
+const feet =
+Number(
+document.getElementById(
+"heightFt"
+).value
+);
+
+const inches =
+Number(
+document.getElementById(
+"heightIn"
+).value || 0
+);
+
+const pounds =
+Number(
+document.getElementById(
+"weightLb"
+).value
+);
+
+
+if(
+!Number.isFinite(feet) ||
+feet < 0
+){
+
+alert(
+"Please enter valid feet."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(inches) ||
+inches < 0 ||
+inches >= 12
+){
+
+alert(
+"Please enter inches between 0 and 11.99."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(pounds) ||
+pounds <= 0
+){
+
+alert(
+"Please enter a valid weight."
+);
+
+return;
+
+}
+
+
+const totalInches =
+feet * 12 +
+inches;
+
+
+if(totalInches <= 0){
+
+alert(
+"Please enter a valid height."
+);
+
+return;
+
+}
+
+
+heightMeters =
+totalInches *
+0.0254;
+
+
+weightKg =
+pounds *
+0.45359237;
+
+
+displayHeight =
+feet +
+" ft " +
+inches +
+" in";
+
+
+displayWeight =
+pounds.toFixed(1) +
+" lb";
+
+}
+
+
+/* =====================================
+   BMI FORMULA
+===================================== */
+
+const bmi =
+weightKg /
+(
+heightMeters *
+heightMeters
+);
+
+
+const bmiRounded =
+bmi.toFixed(1);
+
+
+/* =====================================
+   CATEGORY
+===================================== */
+
+let category;
+
+let message;
+
+
+if(bmi < 18.5){
+
+category =
+"Underweight";
+
+message =
+"Your BMI is below the normal range.";
+
+}
+
+else if(bmi < 25){
+
+category =
+"Normal Weight";
+
+message =
+"Your BMI is within the normal range.";
+
+}
+
+else if(bmi < 30){
+
+category =
+"Overweight";
+
+message =
+"Your BMI is above the normal range.";
+
+}
+
+else{
+
+category =
+"Obesity";
+
+message =
+"Your BMI is in the obesity range.";
+
+}
+
+
+/* =====================================
+   HEALTHY WEIGHT RANGE
+===================================== */
+
+const minHealthyWeight =
+18.5 *
+heightMeters *
+heightMeters;
+
+
+const maxHealthyWeight =
+24.9 *
+heightMeters *
+heightMeters;
+
+
+let healthyWeightText;
+
+
+if(unit === "metric"){
+
+healthyWeightText =
+minHealthyWeight.toFixed(1) +
+" – " +
+maxHealthyWeight.toFixed(1) +
+" kg";
+
+}else{
+
+healthyWeightText =
+(
+minHealthyWeight /
+0.45359237
+).toFixed(1) +
+" – " +
+(
+maxHealthyWeight /
+0.45359237
+).toFixed(1) +
+" lb";
+
+}
+
+
+/* =====================================
+   DISPLAY
+===================================== */
+
+document.getElementById(
+"bmiValue"
+).textContent =
+bmiRounded;
+
+
+document.getElementById(
+"bmiCategory"
+).textContent =
+category;
+
+
+document.getElementById(
+"resultMessage"
+).textContent =
+message;
+
+
+document.getElementById(
+"resultHeight"
+).textContent =
+displayHeight;
+
+
+document.getElementById(
+"resultWeight"
+).textContent =
+displayWeight;
+
+
+document.getElementById(
+"healthyWeight"
+).textContent =
+healthyWeightText;
+
+
+document.getElementById(
+"result"
+).classList.add(
+"show"
+);
+
+
+/* =====================================
+   SCALE MARKER
+===================================== */
+
+let marker;
+
+if(bmi < 15){
+
+marker = 0;
+
+}
+
+else if(bmi > 40){
+
+marker = 100;
+
+}
+
+else{
+
+marker =
+(
+(bmi - 15) /
+25
+) * 100;
+
+}
+
+
+marker =
+Math.max(
+0,
+Math.min(
+100,
+marker
+)
+);
+
+
+document.getElementById(
+"scaleMarker"
+).style.left =
+marker + "%";
+
+
+/* =====================================
+   COPY DATA
+===================================== */
+
+lastResult =
+
+"BMI Calculator\n\n" +
+
+"BMI: " +
+bmiRounded +
+
+"\nCategory: " +
+category +
+
+"\nHeight: " +
+displayHeight +
+
+"\nWeight: " +
+displayWeight +
+
+"\nHealthy BMI: 18.5 – 24.9" +
+
+"\nHealthy Weight: " +
+healthyWeightText;
+
+}
+
+
+/* =========================================
+   COPY
+========================================= */
+
+function copyResult(){
+
+if(!lastResult){
+
+alert(
+"Please calculate BMI first."
+);
+
+return;
+
+}
+
+
+const text =
+"AdiyogiTools\n\n" +
+lastResult;
+
+
+if(navigator.clipboard){
+
+navigator.clipboard
+.writeText(text)
+.then(function(){
+
+alert(
+"Result copied!"
+);
+
+})
+.catch(function(){
+
+alert(text);
+
+});
+
+}else{
+
+alert(text);
+
+}
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+document
+.querySelectorAll(
+"input"
+)
+.forEach(function(input){
+
+input.value = "";
+
+});
+
+
+document.getElementById(
+"result"
+).classList.remove(
+"show"
+);
+
+
+document.getElementById(
+"scaleMarker"
+).style.left =
+"0%";
+
+
+lastResult = "";
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter"
+){
+
+calculateBMI();
+
+}
+
+});
+
+
+/* =========================================
+   INITIAL
+========================================= */
+
+setUnit("metric");
+
+</script>
+
+
+</body>
+
+</html>
