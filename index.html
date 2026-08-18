@@ -14,7 +14,7 @@ content="width=device-width, initial-scale=1.0">
 content="Adiyogi Tools provides free online calculators, image tools, PDF tools, converters and useful everyday utilities.">
 
 <meta name="keywords"
-content="free online tools, calculator, image tools, PDF tools, Adiyogi Tools">
+content="free online tools, calculator, image tools, PDF tools, Word to PDF, converters, Adiyogi Tools">
 
 <meta name="robots" content="index, follow">
 
@@ -45,9 +45,9 @@ body{
     Helvetica,
     sans-serif;
 
-    background:#f7f6fb;
+    background:#f3eee5;
 
-    color:#172033;
+    color:#182333;
 
     overflow-x:hidden;
 
@@ -65,33 +65,48 @@ input{
 
 
 /* =====================================================
-   VARIABLES
+   CLASSIC COLOR PALETTE
 ===================================================== */
 
 :root{
 
-    --purple:#7651d9;
-    --purple-dark:#5735a8;
-    --purple-light:#a78bfa;
-
-    --lavender:#f1eaff;
-    --lavender-2:#faf8ff;
-
-    --navy:#0d1024;
-    --navy-2:#151936;
-
-    --text:#172033;
-    --muted:#718096;
+    /* Main */
+    --beige:#f3eee5;
+    --beige-light:#f8f5ef;
 
     --white:#ffffff;
+    --white-soft:#fdfcf9;
 
-    --border:#e5e2ed;
+    /* Navy */
+    --navy:#101b2d;
+    --navy-light:#17263b;
+    --navy-soft:#24344a;
 
+    /* Camel */
+    --camel:#b4875a;
+    --camel-dark:#8f673f;
+    --camel-light:#d2b08a;
+
+    /* Sage */
+    --sage:#879985;
+    --sage-light:#dce4da;
+    --sage-dark:#637462;
+
+    /* Text */
+    --text:#182333;
+    --text-light:#526070;
+    --muted:#7c8792;
+
+    /* Border */
+    --border:#e2dbd0;
+
+    /* Shadows */
     --shadow:
-    0 8px 25px rgba(30,25,60,.06);
+    0 8px 25px rgba(35,28,20,.06);
 
     --shadow-hover:
-    0 18px 40px rgba(76,45,140,.13);
+    0 18px 42px rgba(35,28,20,.13);
+
 }
 
 
@@ -104,7 +119,7 @@ input{
     min-height:72px;
 
     background:
-    rgba(10,13,34,.97);
+    rgba(16,27,45,.98);
 
     color:white;
 
@@ -121,9 +136,9 @@ input{
     z-index:1000;
 
     border-bottom:
-    1px solid rgba(255,255,255,.08);
+    1px solid rgba(212,176,138,.18);
 
-    backdrop-filter:blur(15px);
+    backdrop-filter:blur(14px);
 
 }
 
@@ -142,22 +157,24 @@ input{
 
     white-space:nowrap;
 
+    letter-spacing:-.3px;
+
 }
 
 
 .logo-icon{
 
-    width:38px;
+    width:39px;
 
-    height:38px;
+    height:39px;
 
     border-radius:11px;
 
     background:
     linear-gradient(
         135deg,
-        #8b5cf6,
-        #4c1d95
+        #c49a70,
+        #8e6742
     );
 
     display:flex;
@@ -169,13 +186,15 @@ input{
     font-size:21px;
 
     box-shadow:
-    0 5px 20px rgba(124,58,237,.35);
+    0 6px 20px rgba(180,135,90,.25);
 
 }
 
 
 .logo span{
-    color:#a78bfa;
+
+    color:#d2b08a;
+
 }
 
 
@@ -191,21 +210,21 @@ input{
 
     font-size:14px;
 
-    color:#d1d5db;
+    color:#d9e0e7;
 
 }
 
 
 .nav-links a{
 
-    transition:.2s;
+    transition:.25s;
 
 }
 
 
 .nav-links a:hover{
 
-    color:white;
+    color:#d2b08a;
 
 }
 
@@ -225,11 +244,11 @@ input{
 
 .nav-search input{
 
-    width:250px;
+    width:245px;
 
     height:42px;
 
-    border-radius:11px;
+    border-radius:9px;
 
     border:
     1px solid rgba(255,255,255,.14);
@@ -247,7 +266,9 @@ input{
 
 
 .nav-search input::placeholder{
-    color:#9ca3af;
+
+    color:#aeb8c3;
+
 }
 
 
@@ -259,18 +280,19 @@ input{
 
     height:42px;
 
-    border:0;
+    border:1px solid
+    rgba(255,255,255,.1);
 
     border-radius:50%;
 
     background:
-    rgba(255,255,255,.08);
+    rgba(255,255,255,.07);
 
     color:white;
 
     cursor:pointer;
 
-    font-size:19px;
+    font-size:18px;
 
 }
 
@@ -286,22 +308,22 @@ input{
     background:
 
     radial-gradient(
-        circle at 80% 30%,
-        rgba(124,58,237,.32),
-        transparent 35%
+        circle at 82% 25%,
+        rgba(180,135,90,.22),
+        transparent 32%
     ),
 
     radial-gradient(
-        circle at 60% 80%,
-        rgba(76,29,149,.22),
+        circle at 55% 90%,
+        rgba(135,153,133,.16),
         transparent 35%
     ),
 
     linear-gradient(
         135deg,
-        #080b20,
-        #111537 55%,
-        #241254
+        #101b2d,
+        #17263b 58%,
+        #22324a
     );
 
     color:white;
@@ -313,6 +335,28 @@ input{
 }
 
 
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:400px;
+
+    height:400px;
+
+    border-radius:50%;
+
+    border:1px solid
+    rgba(210,176,138,.12);
+
+    right:-150px;
+
+    top:-150px;
+
+}
+
+
 .hero-container{
 
     max-width:1250px;
@@ -320,7 +364,7 @@ input{
     margin:auto;
 
     padding:
-    75px 35px 80px;
+    78px 35px 82px;
 
     display:grid;
 
@@ -348,16 +392,16 @@ input{
     border-radius:30px;
 
     background:
-    rgba(124,58,237,.2);
+    rgba(180,135,90,.13);
 
     border:
-    1px solid rgba(167,139,250,.25);
+    1px solid rgba(210,176,138,.28);
 
-    color:#e9d5ff;
+    color:#ead4b9;
 
-    font-size:14px;
+    font-size:13px;
 
-    margin-bottom:25px;
+    margin-bottom:24px;
 
 }
 
@@ -370,9 +414,11 @@ input{
     serif;
 
     font-size:
-    clamp(42px,5vw,68px);
+    clamp(42px,5vw,67px);
 
     line-height:1.05;
+
+    font-weight:700;
 
     margin-bottom:22px;
 
@@ -382,19 +428,21 @@ input{
 
 
 .hero h1 span{
-    color:#a78bfa;
+
+    color:#d2b08a;
+
 }
 
 
 .hero-text{
 
-    color:#cbd5e1;
+    color:#cbd5df;
 
     font-size:17px;
 
-    line-height:1.7;
+    line-height:1.75;
 
-    max-width:620px;
+    max-width:610px;
 
     margin-bottom:28px;
 
@@ -407,7 +455,7 @@ input{
 
     flex-wrap:wrap;
 
-    gap:12px;
+    gap:10px;
 
     margin-bottom:28px;
 
@@ -417,19 +465,19 @@ input{
 .hero-feature{
 
     padding:
-    11px 15px;
+    10px 14px;
 
     border:
-    1px solid rgba(255,255,255,.12);
+    1px solid rgba(255,255,255,.11);
 
-    border-radius:10px;
+    border-radius:8px;
 
     background:
-    rgba(255,255,255,.04);
+    rgba(255,255,255,.045);
 
-    color:#e5e7eb;
+    color:#dce3ea;
 
-    font-size:13px;
+    font-size:12px;
 
 }
 
@@ -444,9 +492,12 @@ input{
 
     background:white;
 
-    border-radius:12px;
+    border-radius:9px;
 
     overflow:hidden;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.18);
 
 }
 
@@ -464,7 +515,7 @@ input{
 
     font-size:15px;
 
-    color:#111827;
+    color:#182333;
 
 }
 
@@ -478,8 +529,8 @@ input{
     background:
     linear-gradient(
         135deg,
-        #7c3aed,
-        #6d28d9
+        #b4875a,
+        #956b43
     );
 
     color:white;
@@ -518,20 +569,20 @@ input{
 
     height:285px;
 
-    border-radius:18px;
+    border-radius:17px;
 
     background:
     linear-gradient(
         145deg,
-        #252936,
-        #090b12
+        #303845,
+        #080d16
     );
 
     border:
-    5px solid #374151;
+    5px solid #3f4a57;
 
     box-shadow:
-    0 30px 70px rgba(0,0,0,.5);
+    0 30px 70px rgba(0,0,0,.48);
 
     transform:
     perspective(1000px)
@@ -551,13 +602,13 @@ input{
 
     inset:12px;
 
-    border-radius:9px;
+    border-radius:8px;
 
     background:
     linear-gradient(
         135deg,
-        #171a35,
-        #28205a
+        #172438,
+        #26364a
     );
 
     padding:18px;
@@ -567,7 +618,9 @@ input{
 
 .screen-title{
 
-    color:white;
+    color:#e7d0b3;
+
+    font-family:Georgia,serif;
 
     font-size:15px;
 
@@ -594,13 +647,13 @@ input{
 
     height:48px;
 
-    border-radius:7px;
+    border-radius:6px;
 
     background:
-    rgba(255,255,255,.08);
+    rgba(255,255,255,.075);
 
     border:
-    1px solid rgba(255,255,255,.08);
+    1px solid rgba(210,176,138,.12);
 
 }
 
@@ -621,7 +674,7 @@ input{
 
     transform:translateX(-50%);
 
-    background:#4b5563;
+    background:#4b5662;
 
     border-radius:
     0 0 30px 30px;
@@ -638,13 +691,13 @@ input{
 
     position:absolute;
 
-    width:70px;
+    width:67px;
 
-    height:70px;
+    height:67px;
 
-    border-radius:16px;
+    border-radius:15px;
 
-    background:white;
+    background:#fffdf9;
 
     display:flex;
 
@@ -652,10 +705,10 @@ input{
 
     justify-content:center;
 
-    font-size:34px;
+    font-size:31px;
 
     box-shadow:
-    0 15px 35px rgba(0,0,0,.3);
+    0 15px 35px rgba(0,0,0,.25);
 
     z-index:5;
 
@@ -696,7 +749,7 @@ input{
     }
 
     50%{
-        transform:translateY(-12px);
+        transform:translateY(-10px);
     }
 
 }
@@ -713,7 +766,7 @@ input{
     margin:auto;
 
     padding:
-    55px 30px 80px;
+    58px 30px 85px;
 
 }
 
@@ -743,9 +796,16 @@ input{
 
     gap:12px;
 
-    font-size:23px;
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-    font-weight:800;
+    font-size:25px;
+
+    font-weight:700;
+
+    color:#17263a;
 
 }
 
@@ -760,8 +820,8 @@ input{
 
     background:
     linear-gradient(
-        #7c3aed,
-        #a78bfa
+        #b4875a,
+        #879985
     );
 
     border-radius:5px;
@@ -771,11 +831,18 @@ input{
 
 .view-all{
 
-    color:#6d28d9;
+    color:#8f673f;
 
-    font-size:14px;
+    font-size:13px;
 
     font-weight:700;
+
+}
+
+
+.view-all:hover{
+
+    color:#637462;
 
 }
 
@@ -793,7 +860,7 @@ input{
 
     gap:14px;
 
-    margin-bottom:55px;
+    margin-bottom:58px;
 
 }
 
@@ -804,13 +871,13 @@ input{
     linear-gradient(
         145deg,
         #ffffff,
-        #faf9ff
+        #fbf9f4
     );
 
     border:
     1px solid var(--border);
 
-    border-radius:16px;
+    border-radius:14px;
 
     padding:
     22px 10px;
@@ -831,7 +898,7 @@ input{
 
     box-shadow:var(--shadow-hover);
 
-    border-color:#d8ccf5;
+    border-color:#d3b99b;
 
 }
 
@@ -845,9 +912,9 @@ input{
     margin:
     0 auto 10px;
 
-    border-radius:14px;
+    border-radius:13px;
 
-    background:#f1eaff;
+    background:#f0e8dc;
 
     display:flex;
 
@@ -855,14 +922,14 @@ input{
 
     justify-content:center;
 
-    font-size:27px;
+    font-size:26px;
 
 }
 
 
 .category-card h3{
 
-    font-size:14px;
+    font-size:13px;
 
     margin-bottom:5px;
 
@@ -871,15 +938,15 @@ input{
 
 .category-card p{
 
-    font-size:11px;
+    font-size:10px;
 
-    color:#94a3b8;
+    color:#89938d;
 
 }
 
 
 /* =====================================================
-   TOOL GRID
+   ALL TOOL CARDS
 ===================================================== */
 
 .tool-grid{
@@ -891,7 +958,7 @@ input{
 
     gap:18px;
 
-    margin-bottom:55px;
+    margin-bottom:58px;
 
 }
 
@@ -902,13 +969,13 @@ input{
     linear-gradient(
         145deg,
         #ffffff,
-        #faf9ff
+        #fbfaf7
     );
 
     border:
     1px solid var(--border);
 
-    border-radius:18px;
+    border-radius:16px;
 
     padding:20px;
 
@@ -937,7 +1004,7 @@ input{
 
     box-shadow:var(--shadow-hover);
 
-    border-color:#cfc0f5;
+    border-color:#d0b393;
 
 }
 
@@ -948,7 +1015,7 @@ input{
 
     height:52px;
 
-    border-radius:14px;
+    border-radius:13px;
 
     display:flex;
 
@@ -956,9 +1023,12 @@ input{
 
     justify-content:center;
 
-    font-size:26px;
+    font-size:25px;
 
-    background:#f1eaff;
+    background:#f0e8dc;
+
+    border:
+    1px solid #eadfce;
 
 }
 
@@ -972,18 +1042,23 @@ input{
 
 .tool-content h3{
 
-    font-size:15px;
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-size:16px;
 
     margin-bottom:7px;
 
-    color:#172033;
+    color:#182333;
 
 }
 
 
 .tool-content p{
 
-    color:#718096;
+    color:#71808a;
 
     font-size:12px;
 
@@ -993,7 +1068,7 @@ input{
 
 
 /* =====================================================
-   PREMIUM DIRECTORY CARDS
+   DIRECTORY CARDS
 ===================================================== */
 
 .directory-grid{
@@ -1005,7 +1080,7 @@ input{
 
     gap:18px;
 
-    margin-bottom:55px;
+    margin-bottom:58px;
 
 }
 
@@ -1016,15 +1091,15 @@ input{
     linear-gradient(
         145deg,
         #ffffff,
-        #faf9ff
+        #fbfaf7
     );
 
     border:
     1px solid var(--border);
 
-    border-radius:18px;
+    border-radius:16px;
 
-    min-height:145px;
+    min-height:140px;
 
     padding:20px;
 
@@ -1049,29 +1124,27 @@ input{
 
     overflow:hidden;
 
-    color:#172033;
-
 }
 
 
-.directory-grid a::before{
+.directory-grid a::after{
 
     content:"";
 
     position:absolute;
 
-    width:120px;
+    width:130px;
 
-    height:120px;
+    height:130px;
 
     border-radius:50%;
 
     background:
-    rgba(124,58,237,.06);
+    rgba(135,153,133,.09);
+
+    right:-55px;
 
     top:-55px;
-
-    right:-45px;
 
     pointer-events:none;
 
@@ -1083,7 +1156,7 @@ input{
     transform:
     translateY(-6px);
 
-    border-color:#cfc0f5;
+    border-color:#d0b393;
 
     box-shadow:var(--shadow-hover);
 
@@ -1096,7 +1169,7 @@ input{
 
     height:52px;
 
-    border-radius:14px;
+    border-radius:13px;
 
     display:flex;
 
@@ -1104,9 +1177,12 @@ input{
 
     justify-content:center;
 
-    background:#f1eaff;
+    background:#f0e8dc;
 
-    font-size:27px;
+    border:
+    1px solid #eadfce;
+
+    font-size:26px;
 
     position:relative;
 
@@ -1127,18 +1203,30 @@ input{
 
     z-index:1;
 
-    font-size:15px;
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+    font-size:16px;
 
     font-weight:700;
+
+    color:#182333;
 
 }
 
 
 .directory-grid a small{
 
-    color:#718096;
+    color:#77858d;
 
-    font-size:12px;
+    font-family:
+    Inter,
+    Arial,
+    sans-serif;
+
+    font-size:11px;
 
     font-weight:400;
 
@@ -1148,7 +1236,7 @@ input{
 
 
 /* =====================================================
-   DIRECTORY BOX
+   DIRECTORY INFO BOX
 ===================================================== */
 
 .directory{
@@ -1156,23 +1244,28 @@ input{
     background:
     linear-gradient(
         135deg,
-        #faf7ff,
-        #f3efff
+        #e8eee6,
+        #f5f0e8
     );
 
     border:
-    1px solid #e5d9ff;
+    1px solid #d2dbd0;
 
-    border-radius:20px;
+    border-radius:18px;
 
     padding:30px;
 
-    margin-top:30px;
+    margin-top:25px;
 
 }
 
 
 .directory h2{
+
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
     font-size:24px;
 
@@ -1190,15 +1283,18 @@ input{
     background:
     linear-gradient(
         135deg,
-        #080b20,
-        #121632
+        #101b2d,
+        #17263b
     );
 
-    color:#94a3b8;
+    color:#aeb9c4;
 
-    padding:45px 30px;
+    padding:48px 30px;
 
     text-align:center;
+
+    border-top:
+    3px solid #b4875a;
 
 }
 
@@ -1207,9 +1303,14 @@ input{
 
     color:white;
 
-    font-size:22px;
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-    font-weight:800;
+    font-size:25px;
+
+    font-weight:700;
 
     margin-bottom:10px;
 
@@ -1217,7 +1318,9 @@ input{
 
 
 .footer-logo span{
-    color:#a78bfa;
+
+    color:#d2b08a;
+
 }
 
 
@@ -1238,7 +1341,7 @@ input{
 
     flex-wrap:wrap;
 
-    gap:20px;
+    gap:22px;
 
     margin:20px 0;
 
@@ -1246,7 +1349,9 @@ input{
 
 
 .footer-links a:hover{
-    color:white;
+
+    color:#d2b08a;
+
 }
 
 
@@ -1257,13 +1362,20 @@ input{
 @media(max-width:1100px){
 
     .nav-links{
+
         margin-left:30px;
+
         gap:16px;
+
     }
 
+
     .nav-search input{
+
         width:180px;
+
     }
+
 
     .hero-container{
 
@@ -1273,6 +1385,7 @@ input{
 
     }
 
+
     .hero-text{
 
         margin-left:auto;
@@ -1281,11 +1394,13 @@ input{
 
     }
 
+
     .hero-features{
 
         justify-content:center;
 
     }
+
 
     .hero-search{
 
@@ -1293,11 +1408,13 @@ input{
 
     }
 
+
     .hero-visual{
 
         margin-top:20px;
 
     }
+
 
     .category-grid{
 
@@ -1306,12 +1423,14 @@ input{
 
     }
 
+
     .tool-grid{
 
         grid-template-columns:
         repeat(2,1fr);
 
     }
+
 
     .directory-grid{
 
@@ -1340,23 +1459,27 @@ input{
 
 
     .nav-links{
+
         display:none;
+
     }
 
 
     .nav-search{
+
         margin-left:auto;
+
     }
 
 
     .nav-search input{
+
         display:none;
+
     }
 
 
     .theme-btn{
-
-        margin-left:7px;
 
         width:40px;
 
@@ -1375,7 +1498,7 @@ input{
     .hero-container{
 
         padding:
-        55px 18px 70px;
+        52px 18px 68px;
 
         gap:30px;
 
@@ -1442,44 +1565,48 @@ input{
 
         height:52px;
 
-        font-size:25px;
+        font-size:24px;
 
     }
 
 
     .float-1{
+
         left:0;
+
     }
 
 
     .float-2{
+
         right:0;
+
     }
 
 
     .main{
 
         padding:
-        40px 15px 60px;
+        42px 15px 60px;
 
     }
 
 
     .section-title{
 
-        font-size:20px;
+        font-size:21px;
 
     }
 
 
-    /* 1 COLUMN MOBILE */
+    /* CATEGORY */
 
     .category-grid{
 
         grid-template-columns:
         repeat(2,1fr);
 
-        gap:12px;
+        gap:11px;
 
     }
 
@@ -1492,22 +1619,24 @@ input{
     }
 
 
+    /* TOOL CARDS */
+
     .tool-grid{
 
         grid-template-columns:1fr;
 
-        gap:14px;
+        gap:13px;
 
     }
 
 
     .tool-card{
 
-        min-height:115px;
+        min-height:112px;
 
         padding:17px 16px;
 
-        border-radius:17px;
+        border-radius:16px;
 
     }
 
@@ -1521,22 +1650,22 @@ input{
     }
 
 
-    /* DIRECTORY MOBILE */
+    /* DIRECTORY CARDS */
 
     .directory-grid{
 
         grid-template-columns:1fr;
 
-        gap:14px;
+        gap:13px;
 
     }
 
 
     .directory-grid a{
 
-        min-height:120px;
+        min-height:112px;
 
-        padding:18px;
+        padding:17px;
 
         flex-direction:row;
 
@@ -1544,7 +1673,7 @@ input{
 
         justify-content:flex-start;
 
-        border-radius:17px;
+        border-radius:16px;
 
     }
 
@@ -1633,7 +1762,7 @@ input{
 
     .category-card{
 
-        min-height:125px;
+        min-height:120px;
 
     }
 
@@ -1660,66 +1789,90 @@ input{
 
 body.dark-page{
 
-    background:#0c1020;
+    background:#0c1420;
 
-    color:#f8fafc;
+    color:#f5f2ec;
 
 }
 
 
-body.dark-page .category-card,
-body.dark-page .tool-card,
-body.dark-page .directory-grid a{
+body.dark-page
+.category-card,
+body.dark-page
+.tool-card,
+body.dark-page
+.directory-grid a{
 
     background:
     linear-gradient(
         145deg,
-        #151a30,
-        #11162a
+        #172235,
+        #121c2b
     );
 
-    border-color:#29314b;
+    border-color:#2c3a4d;
 
-    color:#f8fafc;
-
-}
-
-
-body.dark-page .tool-content h3,
-body.dark-page .directory-grid a div{
-
-    color:#f8fafc;
+    color:#f5f2ec;
 
 }
 
 
-body.dark-page .tool-content p,
-body.dark-page .directory-grid a small{
+body.dark-page
+.tool-content h3,
+body.dark-page
+.directory-grid a div{
 
-    color:#9ca3af;
-
-}
-
-
-body.dark-page .category-card p{
-
-    color:#9ca3af;
+    color:#f5f2ec;
 
 }
 
 
-body.dark-page .directory{
+body.dark-page
+.tool-content p,
+body.dark-page
+.directory-grid a small{
 
-    background:#13182d;
-
-    border-color:#303957;
+    color:#aab5bd;
 
 }
 
 
-body.dark-page .section-title{
+body.dark-page
+.category-card p{
 
-    color:#f8fafc;
+    color:#aab5bd;
+
+}
+
+
+body.dark-page
+.directory{
+
+    background:#162232;
+
+    border-color:#304052;
+
+}
+
+
+body.dark-page
+.section-title{
+
+    color:#f5f2ec;
+
+}
+
+
+body.dark-page
+.tool-icon,
+body.dark-page
+.directory-grid a span,
+body.dark-page
+.category-icon{
+
+    background:#263426;
+
+    border-color:#3b4b3a;
 
 }
 
@@ -2216,6 +2369,28 @@ body.dark-page .section-title{
 </a>
 
 
+<a href="fraction.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🔢
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Fraction Calculator
+        </h3>
+
+        <p>
+            Add, subtract, multiply and divide fractions.
+        </p>
+
+    </div>
+
+</a>
+
+
 <a href="emi-calculator.html"
    class="tool-card">
 
@@ -2326,6 +2501,28 @@ body.dark-page .section-title{
 </a>
 
 
+<a href="discount-calculator.html"
+   class="tool-card">
+
+    <div class="tool-icon">
+        🏷️
+    </div>
+
+    <div class="tool-content">
+
+        <h3>
+            Discount Calculator
+        </h3>
+
+        <p>
+            Calculate discount and final price.
+        </p>
+
+    </div>
+
+</a>
+
+
 <a href="age-calculator.html"
    class="tool-card">
 
@@ -2377,7 +2574,7 @@ body.dark-page .section-title{
 
 
 <!-- =====================================================
-     FINANCE
+     FINANCE TOOLS
 ===================================================== -->
 
 <section id="finance">
@@ -2577,10 +2774,13 @@ body.dark-page .section-title{
     <span>🖼️</span>
 
     <div>
+
         Image Resizer
+
         <small>
             Resize images easily
         </small>
+
     </div>
 
 </a>
@@ -2591,10 +2791,13 @@ body.dark-page .section-title{
     <span>📄</span>
 
     <div>
+
         Image to PDF
+
         <small>
             Convert images into PDF
         </small>
+
     </div>
 
 </a>
@@ -2605,10 +2808,13 @@ body.dark-page .section-title{
     <span>📦</span>
 
     <div>
+
         Image Resize by KB
+
         <small>
             Resize to target file size
         </small>
+
     </div>
 
 </a>
@@ -2619,10 +2825,13 @@ body.dark-page .section-title{
     <span>✂️</span>
 
     <div>
+
         Image Crop
+
         <small>
             Crop images online
         </small>
+
     </div>
 
 </a>
@@ -2633,10 +2842,13 @@ body.dark-page .section-title{
     <span>🪪</span>
 
     <div>
+
         Passport Photo Maker
+
         <small>
             Create passport photos
         </small>
+
     </div>
 
 </a>
@@ -2647,10 +2859,13 @@ body.dark-page .section-title{
     <span>✍️</span>
 
     <div>
+
         Signature Resize
+
         <small>
             Resize signature images
         </small>
+
     </div>
 
 </a>
@@ -2685,10 +2900,13 @@ body.dark-page .section-title{
     <span>📉</span>
 
     <div>
+
         PDF Compress
+
         <small>
             Reduce PDF file size
         </small>
+
     </div>
 
 </a>
@@ -2699,10 +2917,13 @@ body.dark-page .section-title{
     <span>🔗</span>
 
     <div>
+
         PDF Merge
+
         <small>
             Combine multiple PDFs
         </small>
+
     </div>
 
 </a>
@@ -2713,10 +2934,13 @@ body.dark-page .section-title{
     <span>✂️</span>
 
     <div>
+
         PDF Split
+
         <small>
             Split PDF pages
         </small>
+
     </div>
 
 </a>
@@ -2727,10 +2951,32 @@ body.dark-page .section-title{
     <span>🌐</span>
 
     <div>
+
         PDF Translator
+
         <small>
             Translate PDF documents
         </small>
+
+    </div>
+
+</a>
+
+
+<!-- WORD TO PDF -->
+
+<a href="word-to-pdf.html">
+
+    <span>📝</span>
+
+    <div>
+
+        Word to PDF
+
+        <small>
+            Convert Word documents to PDF
+        </small>
+
     </div>
 
 </a>
@@ -2765,10 +3011,13 @@ body.dark-page .section-title{
     <span>📐</span>
 
     <div>
+
         Unit Converter
+
         <small>
             Length, weight, area and more
         </small>
+
     </div>
 
 </a>
@@ -2779,10 +3028,13 @@ body.dark-page .section-title{
     <span>💱</span>
 
     <div>
+
         Currency Converter
+
         <small>
             Convert between currencies
         </small>
+
     </div>
 
 </a>
@@ -2817,10 +3069,13 @@ body.dark-page .section-title{
     <span>⚖️</span>
 
     <div>
+
         BMI Calculator
+
         <small>
             Calculate Body Mass Index
         </small>
+
     </div>
 
 </a>
@@ -2831,10 +3086,13 @@ body.dark-page .section-title{
     <span>🔥</span>
 
     <div>
+
         Calorie Calculator
+
         <small>
             Estimate daily calorie needs
         </small>
+
     </div>
 
 </a>
@@ -2869,10 +3127,13 @@ body.dark-page .section-title{
     <span>🎂</span>
 
     <div>
+
         Age Calculator
+
         <small>
             Calculate exact age
         </small>
+
     </div>
 
 </a>
@@ -2883,10 +3144,13 @@ body.dark-page .section-title{
     <span>📅</span>
 
     <div>
+
         Date Calculator
+
         <small>
             Add or subtract dates
         </small>
+
     </div>
 
 </a>
@@ -2897,10 +3161,13 @@ body.dark-page .section-title{
     <span>⏱️</span>
 
     <div>
+
         Time Calculator
+
         <small>
             Calculate time differences
         </small>
+
     </div>
 
 </a>
@@ -2935,10 +3202,13 @@ body.dark-page .section-title{
     <span>🔤</span>
 
     <div>
+
         Text Tools
+
         <small>
             More text utilities coming soon
         </small>
+
     </div>
 
 </a>
@@ -2949,10 +3219,13 @@ body.dark-page .section-title{
     <span>📝</span>
 
     <div>
+
         Text Formatter
+
         <small>
             More tools coming soon
         </small>
+
     </div>
 
 </a>
@@ -3023,7 +3296,7 @@ body.dark-page .section-title{
 <script>
 
 /* =====================================================
-   SEARCH TOOL
+   SEARCH
 ===================================================== */
 
 function searchTool(){
@@ -3064,8 +3337,8 @@ function searchTool(){
 
         if(
             text.includes(value) &&
-            link.href &&
-            !link.href.endsWith("#")
+            link.getAttribute("href") &&
+            link.getAttribute("href") !== "#"
         ){
 
             window.location.href =
@@ -3085,7 +3358,7 @@ function searchTool(){
 
 
 /* =====================================================
-   ENTER SEARCH
+   HERO ENTER
 ===================================================== */
 
 document
@@ -3128,7 +3401,7 @@ document
                 .getElementById(
                     "heroSearch"
                 )
-                .value = value;
+                .value=value;
 
 
                 searchTool();
