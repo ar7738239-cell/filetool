@@ -69,53 +69,76 @@ input{
 
 :root{
 
-    /* TRUE BLACK */
     --black:#000000;
 
-    /* CHARCOAL */
     --charcoal:#4A4A4A;
 
-    /* SOFT GREY / GREIGE */
     --greige:#CBCBCB;
 
-    /* CREAM / IVORY */
     --ivory:#FFFFE3;
 
-    /* CRISP WHITE */
     --white:#FFFFFF;
 
-    /* DUSTY BLUE */
     --dusty-blue:#6D8196;
 
-    /* NAVY BLUE */
     --navy:#172536;
 
-    /* CAMEL */
     --camel:#B58B5A;
 
-    /* CHOCOLATE BROWN */
     --chocolate:#5A3825;
 
-    /* SAGE GREEN */
     --sage:#8A9A7B;
 
-    /* ANTIQUE ROSE */
     --rose:#B98F8F;
 
-    /* LIGHT TONES */
     --cream:#F7F3E8;
+
     --beige:#E9E0D0;
+
     --soft-blue:#E5EBF0;
+
     --soft-sage:#E5EBDD;
+
     --soft-rose:#F0E3E1;
 
     --text:#242424;
+
     --muted:#707070;
 
     --border:#D8D4CC;
 
     --shadow:
     0 10px 30px rgba(74,74,74,.10);
+}
+
+
+/* =====================================================
+   BODY CLASSIC BACKGROUND
+===================================================== */
+
+body{
+
+    background:
+
+    radial-gradient(
+        circle at 5% 15%,
+        rgba(181,139,90,.07),
+        transparent 25%
+    ),
+
+    radial-gradient(
+        circle at 95% 40%,
+        rgba(109,129,150,.07),
+        transparent 28%
+    ),
+
+    linear-gradient(
+        135deg,
+        #FFFFE3,
+        #F7F3E8 45%,
+        #EDE9DF
+    );
+
 }
 
 
@@ -128,7 +151,12 @@ input{
     min-height:72px;
 
     background:
-    var(--navy);
+    linear-gradient(
+        110deg,
+        #172536,
+        #263746 55%,
+        #4A4A4A
+    );
 
     color:
     var(--white);
@@ -179,7 +207,11 @@ input{
     border-radius:11px;
 
     background:
-    var(--dusty-blue);
+    linear-gradient(
+        135deg,
+        #6D8196,
+        #8A9A7B
+    );
 
     display:flex;
 
@@ -289,7 +321,11 @@ input{
     border-radius:50%;
 
     background:
-    var(--camel);
+    linear-gradient(
+        135deg,
+        #B58B5A,
+        #5A3825
+    );
 
     color:
     var(--white);
@@ -323,6 +359,12 @@ input{
         circle at 20% 90%,
         rgba(138,154,123,.28),
         transparent 34%
+    ),
+
+    radial-gradient(
+        circle at 60% 60%,
+        rgba(185,143,143,.12),
+        transparent 30%
     ),
 
     linear-gradient(
@@ -473,7 +515,6 @@ input{
 
     border-color:
     rgba(181,139,90,.45);
-
 }
 
 
@@ -481,7 +522,6 @@ input{
 
     border-color:
     rgba(138,154,123,.45);
-
 }
 
 
@@ -489,7 +529,6 @@ input{
 
     border-color:
     rgba(109,129,150,.45);
-
 }
 
 
@@ -497,7 +536,6 @@ input{
 
     border-color:
     rgba(185,143,143,.45);
-
 }
 
 
@@ -550,7 +588,11 @@ input{
     border:0;
 
     background:
-    var(--camel);
+    linear-gradient(
+        135deg,
+        #B58B5A,
+        #8E683F
+    );
 
     color:
     var(--white);
@@ -719,9 +761,6 @@ input{
 
     border-radius:16px;
 
-    background:
-    var(--white);
-
     display:flex;
 
     align-items:center;
@@ -750,7 +789,11 @@ input{
     left:25px;
 
     background:
-    var(--soft-rose);
+    linear-gradient(
+        135deg,
+        #F0E3E1,
+        #E9E0D0
+    );
 }
 
 
@@ -761,7 +804,11 @@ input{
     right:10px;
 
     background:
-    var(--soft-blue);
+    linear-gradient(
+        135deg,
+        #E5EBF0,
+        #E5EBDD
+    );
 
     animation-delay:1s;
 }
@@ -774,7 +821,11 @@ input{
     left:40px;
 
     background:
-    var(--soft-sage);
+    linear-gradient(
+        135deg,
+        #E5EBDD,
+        #FFFFE3
+    );
 
     animation-delay:2s;
 }
@@ -787,7 +838,11 @@ input{
     right:45px;
 
     background:
-    var(--beige);
+    linear-gradient(
+        135deg,
+        #E9E0D0,
+        #F0E3E1
+    );
 
     animation-delay:3s;
 }
@@ -863,8 +918,10 @@ input{
 
     background:
     linear-gradient(
+        180deg,
         var(--camel),
-        var(--dusty-blue)
+        var(--dusty-blue),
+        var(--sage)
     );
 
     border-radius:5px;
@@ -906,15 +963,19 @@ input{
 }
 
 
+/* =====================================================
+   CATEGORY CARDS
+   MULTI COLOUR CLASSIC GRADIENTS
+===================================================== */
+
 .category-card{
 
-    background:
-    var(--white);
+    min-height:145px;
 
     border:
-    1px solid var(--border);
+    1px solid rgba(74,74,74,.14);
 
-    border-radius:13px;
+    border-radius:15px;
 
     padding:
     22px 10px;
@@ -922,104 +983,205 @@ input{
     text-align:center;
 
     box-shadow:
-    var(--shadow);
+    0 8px 25px rgba(74,74,74,.09);
 
-    transition:.25s;
+    transition:.3s;
 
     position:relative;
 
     overflow:hidden;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    backdrop-filter:blur(4px);
 }
 
 
-.category-card::before{
+/* soft shine */
+
+.category-card::after{
 
     content:"";
 
     position:absolute;
 
-    top:0;
+    width:120px;
 
-    left:0;
+    height:120px;
 
-    width:100%;
+    border-radius:50%;
 
-    height:4px;
+    top:-65px;
+
+    right:-45px;
 
     background:
-    var(--dusty-blue);
+    rgba(255,255,255,.25);
 
-    opacity:.8;
+    pointer-events:none;
 }
 
 
-.category-card:nth-child(2)::before{
+/* CALCULATORS */
+
+.category-card:nth-child(1){
 
     background:
-    var(--sage);
+    linear-gradient(
+        135deg,
+        #FFFFFF 0%,
+        #F7F3E8 45%,
+        #E9E0D0 100%
+    );
 }
 
 
-.category-card:nth-child(3)::before{
+/* IMAGE TOOLS */
+
+.category-card:nth-child(2){
 
     background:
-    var(--camel);
+    linear-gradient(
+        135deg,
+        #FFFFFF 0%,
+        #E5EBF0 48%,
+        #D4DEE6 100%
+    );
 }
 
 
-.category-card:nth-child(4)::before{
+/* PDF TOOLS */
+
+.category-card:nth-child(3){
 
     background:
-    var(--rose);
+    linear-gradient(
+        135deg,
+        #FFFFE3 0%,
+        #F7F1E9 45%,
+        #E9E0D0 100%
+    );
 }
 
 
-.category-card:nth-child(5)::before{
+/* TEXT TOOLS */
+
+.category-card:nth-child(4){
 
     background:
-    var(--dusty-blue);
+    linear-gradient(
+        135deg,
+        #FFFFFF 0%,
+        #F0E3E1 50%,
+        #E8D5D3 100%
+    );
 }
 
 
-.category-card:nth-child(6)::before{
+/* CONVERTERS */
+
+.category-card:nth-child(5){
 
     background:
-    var(--chocolate);
+    linear-gradient(
+        135deg,
+        #FFFFFF 0%,
+        #E5EBDD 48%,
+        #D7E0D1 100%
+    );
 }
 
 
-.category-card:nth-child(7)::before{
+/* FINANCE */
+
+.category-card:nth-child(6){
 
     background:
-    var(--camel);
+    linear-gradient(
+        135deg,
+        #F7F3E8 0%,
+        #E9E0D0 50%,
+        #D7C1A2 100%
+    );
 }
 
 
-.category-card:nth-child(8)::before{
+/* DATE TIME */
+
+.category-card:nth-child(7){
 
     background:
-    var(--sage);
+    linear-gradient(
+        135deg,
+        #FFFFFF 0%,
+        #E5EBF0 48%,
+        #D9D0C2 100%
+    );
+}
+
+
+/* HEALTH */
+
+.category-card:nth-child(8){
+
+    background:
+    linear-gradient(
+        135deg,
+        #FFFFFF 0%,
+        #E5EBDD 45%,
+        #F0E3E1 100%
+    );
 }
 
 
 .category-card:hover{
 
     transform:
-    translateY(-5px);
+    translateY(-6px);
 
     box-shadow:
-    0 15px 30px rgba(74,74,74,.15);
+    0 18px 35px rgba(74,74,74,.15);
 
     border-color:
-    #B9B2A7;
+    rgba(90,56,37,.25);
 }
 
 
 .category-icon{
 
-    font-size:30px;
+    width:50px;
 
-    margin-bottom:10px;
+    height:50px;
+
+    margin:
+    0 auto 12px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:27px;
+
+    background:
+    rgba(255,255,255,.62);
+
+    border:
+    1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+    0 5px 15px rgba(74,74,74,.08);
+
+    position:relative;
+
+    z-index:2;
 }
 
 
@@ -1031,6 +1193,10 @@ input{
 
     color:
     var(--charcoal);
+
+    position:relative;
+
+    z-index:2;
 }
 
 
@@ -1039,7 +1205,11 @@ input{
     font-size:11px;
 
     color:
-    #888888;
+    #777777;
+
+    position:relative;
+
+    z-index:2;
 }
 
 
@@ -1063,7 +1233,7 @@ input{
 .tool-card{
 
     background:
-    var(--white);
+    rgba(255,255,255,.90);
 
     border:
     1px solid var(--border);
@@ -1104,72 +1274,14 @@ input{
     height:3px;
 
     background:
-    var(--dusty-blue);
+    linear-gradient(
+        90deg,
+        var(--camel),
+        var(--dusty-blue),
+        var(--sage)
+    );
 
-    opacity:.7;
-}
-
-
-.tool-card:nth-child(2)::after{
-
-    background:
-    var(--sage);
-}
-
-
-.tool-card:nth-child(3)::after{
-
-    background:
-    var(--camel);
-}
-
-
-.tool-card:nth-child(4)::after{
-
-    background:
-    var(--rose);
-}
-
-
-.tool-card:nth-child(5)::after{
-
-    background:
-    var(--dusty-blue);
-}
-
-
-.tool-card:nth-child(6)::after{
-
-    background:
-    var(--chocolate);
-}
-
-
-.tool-card:nth-child(7)::after{
-
-    background:
-    var(--camel);
-}
-
-
-.tool-card:nth-child(8)::after{
-
-    background:
-    var(--sage);
-}
-
-
-.tool-card:nth-child(9)::after{
-
-    background:
-    var(--rose);
-}
-
-
-.tool-card:nth-child(10)::after{
-
-    background:
-    var(--dusty-blue);
+    opacity:.75;
 }
 
 
@@ -1188,11 +1300,13 @@ input{
 
 .tool-icon{
 
-    min-width:42px;
+    min-width:46px;
 
-    height:42px;
+    width:46px;
 
-    border-radius:10px;
+    height:46px;
+
+    border-radius:12px;
 
     display:flex;
 
@@ -1200,41 +1314,66 @@ input{
 
     justify-content:center;
 
-    font-size:22px;
+    font-size:23px;
 
     background:
-    var(--cream);
+    linear-gradient(
+        135deg,
+        #F7F3E8,
+        #E9E0D0
+    );
 
     border:
-    1px solid var(--beige);
+    1px solid #D9D0C2;
+
+    box-shadow:
+    0 4px 12px rgba(74,74,74,.06);
+
+    flex-shrink:0;
 }
 
 
 .tool-card:nth-child(2) .tool-icon{
 
     background:
-    var(--soft-blue);
+    linear-gradient(
+        135deg,
+        #E5EBF0,
+        #D4DEE6
+    );
 }
 
 
 .tool-card:nth-child(3) .tool-icon{
 
     background:
-    var(--soft-sage);
+    linear-gradient(
+        135deg,
+        #E5EBDD,
+        #D7E0D1
+    );
 }
 
 
 .tool-card:nth-child(4) .tool-icon{
 
     background:
-    var(--soft-rose);
+    linear-gradient(
+        135deg,
+        #F0E3E1,
+        #E8D5D3
+    );
 }
 
 
 .tool-card:nth-child(5) .tool-icon{
 
     background:
-    var(--beige);
+    linear-gradient(
+        135deg,
+        #FFFFE3,
+        #E9E0D0
+    );
 }
 
 
@@ -1279,28 +1418,26 @@ input{
 
     border-radius:20px;
 
-    background:
-    rgba(255,255,255,.65);
-
     border:
     1px solid var(--border);
 
     box-shadow:
-    0 8px 25px rgba(74,74,74,.05);
+    0 8px 25px rgba(74,74,74,.06);
+
+    position:relative;
+
+    overflow:hidden;
 }
 
-
-/* =====================================================
-   FINANCE SECTION
-===================================================== */
 
 #finance{
 
     background:
     linear-gradient(
         135deg,
-        #F5EEE2,
-        #EDE8DE
+        #F7F3E8,
+        #E9E0D0 50%,
+        #E4D5C1
     );
 
     border-color:
@@ -1308,17 +1445,14 @@ input{
 }
 
 
-/* =====================================================
-   IMAGE SECTION
-===================================================== */
-
 #image-tools{
 
     background:
     linear-gradient(
         135deg,
-        #F0F4F5,
-        #E8ECEF
+        #FFFFFF,
+        #E5EBF0 48%,
+        #DCE4E8
     );
 
     border-color:
@@ -1326,17 +1460,14 @@ input{
 }
 
 
-/* =====================================================
-   PDF SECTION
-===================================================== */
-
 #pdf-tools{
 
     background:
     linear-gradient(
         135deg,
-        #F7F1E9,
-        #EFE6DA
+        #FFFFE3,
+        #F7F1E9 45%,
+        #E9E0D0
     );
 
     border-color:
@@ -1344,17 +1475,14 @@ input{
 }
 
 
-/* =====================================================
-   CONVERTERS
-===================================================== */
-
 #converters{
 
     background:
     linear-gradient(
         135deg,
-        #EDF2EB,
-        #E4EBDD
+        #FFFFFF,
+        #E5EBDD 48%,
+        #D9E1D3
     );
 
     border-color:
@@ -1362,17 +1490,14 @@ input{
 }
 
 
-/* =====================================================
-   HEALTH
-===================================================== */
-
 #health{
 
     background:
     linear-gradient(
         135deg,
-        #F3E9E7,
-        #EEE2E0
+        #FFFFFF,
+        #F0E3E1 50%,
+        #E8D5D3
     );
 
     border-color:
@@ -1380,17 +1505,14 @@ input{
 }
 
 
-/* =====================================================
-   DATE TIME
-===================================================== */
-
 #date-time{
 
     background:
     linear-gradient(
         135deg,
-        #EEF2F4,
-        #E6EAED
+        #FFFFFF,
+        #E5EBF0 48%,
+        #D9D0C2
     );
 
     border-color:
@@ -1398,17 +1520,14 @@ input{
 }
 
 
-/* =====================================================
-   TEXT TOOLS
-===================================================== */
-
 #text-tools{
 
     background:
     linear-gradient(
         135deg,
-        #F2EEE7,
-        #EAE4D9
+        #F7F3E8,
+        #E9E0D0 48%,
+        #E5EBDD
     );
 
     border-color:
@@ -1423,16 +1542,19 @@ input{
 .directory{
 
     background:
-    rgba(255,255,255,.70);
+    rgba(255,255,255,.72);
 
     border:
-    1px solid var(--border);
+    1px solid rgba(74,74,74,.12);
 
     border-radius:16px;
 
     padding:25px;
 
     margin-top:15px;
+
+    box-shadow:
+    0 5px 18px rgba(74,74,74,.05);
 }
 
 
@@ -1454,18 +1576,25 @@ input{
     grid-template-columns:
     repeat(4,1fr);
 
-    gap:12px;
+    gap:13px;
 }
 
 
-.directory a{
+/* =====================================================
+   DIRECTORY TOOL CARD
+===================================================== */
+
+.directory-grid a{
 
     background:
-    var(--white);
+    rgba(255,255,255,.94);
 
-    padding:15px;
+    min-height:65px;
 
-    border-radius:11px;
+    padding:
+    12px 14px;
+
+    border-radius:12px;
 
     border:
     1px solid #D9D5CE;
@@ -1475,7 +1604,7 @@ input{
     color:
     var(--charcoal);
 
-    transition:.2s;
+    transition:.25s;
 
     box-shadow:
     0 4px 12px rgba(74,74,74,.05);
@@ -1484,22 +1613,42 @@ input{
 
     align-items:center;
 
-    gap:8px;
+    gap:12px;
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 
-.directory a::before{
+/* small accent */
 
-    content:"◆";
+.directory-grid a::after{
 
-    font-size:8px;
+    content:"";
 
-    color:
-    var(--camel);
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    height:3px;
+
+    background:
+    linear-gradient(
+        90deg,
+        var(--camel),
+        var(--dusty-blue)
+    );
+
+    opacity:.65;
 }
 
 
-.directory a:hover{
+.directory-grid a:hover{
 
     color:
     var(--navy);
@@ -1508,42 +1657,104 @@ input{
     var(--dusty-blue);
 
     transform:
-    translateY(-2px);
+    translateY(-3px);
 
     box-shadow:
-    0 8px 18px rgba(74,74,74,.10);
+    0 10px 22px rgba(74,74,74,.11);
 }
 
 
 /* =====================================================
-   SPECIAL PDF ICON LINKS
+   DIRECTORY ICON
 ===================================================== */
 
-.directory a[href*="word-to-pdf"]::before{
+.directory-icon{
 
-    content:"📄";
-    font-size:16px;
+    width:40px;
+
+    min-width:40px;
+
+    height:40px;
+
+    border-radius:11px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:21px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #F7F3E8,
+        #E9E0D0
+    );
+
+    border:
+    1px solid #D8D0C2;
+
+    box-shadow:
+    0 3px 10px rgba(74,74,74,.06);
 }
 
 
-.directory a[href*="pdf"]::before{
+/* alternating icon colours */
 
-    content:"📄";
-    font-size:15px;
+.directory-grid a:nth-child(2) .directory-icon{
+
+    background:
+    linear-gradient(
+        135deg,
+        #E5EBF0,
+        #D5E0E7
+    );
 }
 
 
-.directory a[href*="image"]::before{
+.directory-grid a:nth-child(3) .directory-icon{
 
-    content:"🖼️";
-    font-size:15px;
+    background:
+    linear-gradient(
+        135deg,
+        #E5EBDD,
+        #D8E2D1
+    );
 }
 
 
-.directory a[href*="converter"]::before{
+.directory-grid a:nth-child(4) .directory-icon{
 
-    content:"🔄";
-    font-size:15px;
+    background:
+    linear-gradient(
+        135deg,
+        #F0E3E1,
+        #E8D5D3
+    );
+}
+
+
+.directory-grid a:nth-child(5) .directory-icon{
+
+    background:
+    linear-gradient(
+        135deg,
+        #E5EBF0,
+        #E9E0D0
+    );
+}
+
+
+.directory-grid a:nth-child(6) .directory-icon{
+
+    background:
+    linear-gradient(
+        135deg,
+        #E5EBDD,
+        #F0E3E1
+    );
 }
 
 
@@ -1554,7 +1765,12 @@ input{
 .footer{
 
     background:
-    var(--navy);
+    linear-gradient(
+        135deg,
+        #172536,
+        #263747,
+        #4A4A4A
+    );
 
     color:
     #C9CED2;
@@ -1845,8 +2061,20 @@ input{
 
     .category-card{
 
+        min-height:135px;
+
         padding:
         18px 8px;
+    }
+
+
+    .category-icon{
+
+        width:46px;
+
+        height:46px;
+
+        font-size:25px;
     }
 
 
@@ -1869,6 +2097,12 @@ input{
     .directory-grid{
 
         grid-template-columns:1fr;
+    }
+
+
+    .directory-grid a{
+
+        min-height:62px;
     }
 
 
@@ -1969,6 +2203,12 @@ input{
     .directory{
 
         padding:18px;
+    }
+
+
+    .directory-grid a{
+
+        font-size:13px;
     }
 
 }
@@ -2759,29 +2999,84 @@ input{
 
 <div class="directory-grid">
 
+
 <a href="image-resizer.html">
-    Image Resizer
+
+    <div class="directory-icon">
+        📐
+    </div>
+
+    <span>
+        Image Resizer
+    </span>
+
 </a>
+
 
 <a href="image-to-pdf.html">
-    Image to PDF
+
+    <div class="directory-icon">
+        🖼️
+    </div>
+
+    <span>
+        Image to PDF
+    </span>
+
 </a>
+
 
 <a href="image-resize-kb.html">
-    Image Resize by KB
+
+    <div class="directory-icon">
+        📦
+    </div>
+
+    <span>
+        Image Resize by KB
+    </span>
+
 </a>
+
 
 <a href="image-crop.html">
-    Image Crop
+
+    <div class="directory-icon">
+        ✂️
+    </div>
+
+    <span>
+        Image Crop
+    </span>
+
 </a>
+
 
 <a href="passport-photo.html">
-    Passport Photo Maker
+
+    <div class="directory-icon">
+        🪪
+    </div>
+
+    <span>
+        Passport Photo Maker
+    </span>
+
 </a>
 
+
 <a href="signature-resize.html">
-    Signature Resize
+
+    <div class="directory-icon">
+        ✍️
+    </div>
+
+    <span>
+        Signature Resize
+    </span>
+
 </a>
+
 
 </div>
 
@@ -2806,25 +3101,71 @@ input{
 
 <div class="directory-grid">
 
+
 <a href="pdf-compress.html">
-    PDF Compress
+
+    <div class="directory-icon">
+        🗜️
+    </div>
+
+    <span>
+        PDF Compress
+    </span>
+
 </a>
+
 
 <a href="pdf-merge.html">
-    PDF Merge
+
+    <div class="directory-icon">
+        📑
+    </div>
+
+    <span>
+        PDF Merge
+    </span>
+
 </a>
+
 
 <a href="pdf-split.html">
-    PDF Split
+
+    <div class="directory-icon">
+        ✂️
+    </div>
+
+    <span>
+        PDF Split
+    </span>
+
 </a>
+
 
 <a href="pdf-translator.html">
-    PDF Translator
+
+    <div class="directory-icon">
+        🌐
+    </div>
+
+    <span>
+        PDF Translator
+    </span>
+
 </a>
 
+
 <a href="word-to-pdf.html">
-    Word to PDF
+
+    <div class="directory-icon">
+        📝
+    </div>
+
+    <span>
+        Word to PDF
+    </span>
+
 </a>
+
 
 </div>
 
@@ -2849,13 +3190,32 @@ input{
 
 <div class="directory-grid">
 
+
 <a href="unit-converter.html">
-    Unit Converter
+
+    <div class="directory-icon">
+        📏
+    </div>
+
+    <span>
+        Unit Converter
+    </span>
+
 </a>
 
+
 <a href="currency-calculator.html">
-    Currency Converter
+
+    <div class="directory-icon">
+        💱
+    </div>
+
+    <span>
+        Currency Converter
+    </span>
+
 </a>
+
 
 </div>
 
@@ -2880,17 +3240,45 @@ input{
 
 <div class="directory-grid">
 
+
 <a href="bmi-calculator.html">
-    BMI Calculator
+
+    <div class="directory-icon">
+        ⚖️
+    </div>
+
+    <span>
+        BMI Calculator
+    </span>
+
 </a>
+
 
 <a href="calorie-calculator.html">
-    Calorie Calculator
+
+    <div class="directory-icon">
+        🍎
+    </div>
+
+    <span>
+        Calorie Calculator
+    </span>
+
 </a>
 
+
 <a href="age-calculator.html">
-    Age Calculator
+
+    <div class="directory-icon">
+        🎂
+    </div>
+
+    <span>
+        Age Calculator
+    </span>
+
 </a>
+
 
 </div>
 
@@ -2915,17 +3303,45 @@ input{
 
 <div class="directory-grid">
 
+
 <a href="age-calculator.html">
-    Age Calculator
+
+    <div class="directory-icon">
+        🎂
+    </div>
+
+    <span>
+        Age Calculator
+    </span>
+
 </a>
+
 
 <a href="date-calculator.html">
-    Date Calculator
+
+    <div class="directory-icon">
+        📅
+    </div>
+
+    <span>
+        Date Calculator
+    </span>
+
 </a>
 
+
 <a href="time-calculator.html">
-    Time Calculator
+
+    <div class="directory-icon">
+        ⏱️
+    </div>
+
+    <span>
+        Time Calculator
+    </span>
+
 </a>
+
 
 </div>
 
