@@ -3,7 +3,6 @@
 
 <head>
 
-   
 <meta charset="UTF-8">
 
 <meta name="viewport"
@@ -29,122 +28,210 @@ href="style.css">
 
 <style>
 
-/* =========================================
-   CALCULATOR HUB
-========================================= */
+/* =====================================================
+   ADIYOGI CALCULATOR HUB
+===================================================== */
 
 .calculator-page{
 
-    max-width:1100px;
+    width:100%;
+    max-width:1200px;
 
-    margin:auto;
+    margin:0 auto;
 
-    padding:20px;
+    padding:25px 20px 50px;
+
+    box-sizing:border-box;
 
 }
 
 
-/* HEADER */
+/* =====================================================
+   HEADER
+===================================================== */
 
 .calculator-header{
 
     text-align:center;
 
-    margin-bottom:30px;
+    margin-bottom:25px;
 
 }
+
 
 .calculator-header h1{
 
-    font-size:clamp(30px,6vw,46px);
+    margin:0 0 10px;
 
-    margin-bottom:10px;
+    font-size:clamp(
+        30px,
+        6vw,
+        46px
+    );
+
+    line-height:1.2;
+
+    color:#111827;
 
 }
 
+
 .calculator-header p{
 
+    max-width:700px;
+
+    margin:0 auto;
+
     color:#64748b;
+
+    font-size:16px;
 
     line-height:1.6;
 
 }
 
 
-/* SEARCH */
+/* =====================================================
+   SEARCH
+===================================================== */
 
 .calculator-search{
 
+    display:block;
+
     width:100%;
 
-    box-sizing:border-box;
+    max-width:800px;
+
+    margin:0 auto 40px;
 
     padding:15px 18px;
+
+    box-sizing:border-box;
 
     border:1px solid #cbd5e1;
 
     border-radius:14px;
 
+    background:#ffffff;
+
+    color:#111827;
+
     font-size:16px;
 
-    margin-bottom:30px;
+    outline:none;
+
+    box-shadow:
+        0 3px 12px rgba(0,0,0,.05);
 
 }
 
 
-/* CATEGORY */
+.calculator-search:focus{
+
+    border-color:#64748b;
+
+    box-shadow:
+        0 0 0 3px rgba(100,116,139,.12);
+
+}
+
+
+/* =====================================================
+   CATEGORY SECTION
+===================================================== */
+
+.calculator-section{
+
+    width:100%;
+
+    margin-bottom:48px;
+
+}
+
+
+/* =====================================================
+   CATEGORY TITLE
+===================================================== */
 
 .category-title{
 
-    margin-top:35px;
+    margin:0 0 20px;
 
-    margin-bottom:15px;
+    font-size:30px;
 
-    font-size:25px;
+    line-height:1.25;
+
+    font-weight:700;
+
+    color:#111827;
 
 }
 
 
-/* GRID */
+/* =====================================================
+   GRID
+===================================================== */
 
 .calculator-grid{
+
+    width:100%;
 
     display:grid;
 
     grid-template-columns:
-        repeat(3,1fr);
+        repeat(3,minmax(0,1fr));
 
-    gap:15px;
+    gap:20px;
+
+    align-items:stretch;
 
 }
 
 
-/* CARD */
+/* =====================================================
+   CARD
+===================================================== */
 
 .calculator-card{
 
-    display:block;
+    width:100%;
 
-    text-decoration:none;
+    min-width:0;
 
-    color:inherit;
+    min-height:220px;
 
-    background:#ffffff;
+    padding:25px 18px;
 
-    border-radius:18px;
+    box-sizing:border-box;
 
-    padding:20px;
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
-    box-shadow:
-        0 5px 20px rgba(0,0,0,.07);
+    text-decoration:none;
+
+    color:#111827;
+
+    background:#ffffff;
 
     border:1px solid #e2e8f0;
 
+    border-radius:22px;
+
+    box-shadow:
+        0 7px 22px rgba(0,0,0,.07);
+
     transition:
-        transform .2s,
-        box-shadow .2s;
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
 
 }
 
@@ -153,86 +240,346 @@ href="style.css">
 
     transform:translateY(-4px);
 
+    border-color:#cbd5e1;
+
     box-shadow:
-        0 10px 25px rgba(0,0,0,.12);
+        0 12px 30px rgba(0,0,0,.12);
 
 }
 
 
-/* ICON */
+/* =====================================================
+   ICON
+===================================================== */
 
 .calculator-icon{
 
-    font-size:42px;
+    width:70px;
 
-    margin-bottom:10px;
+    height:70px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    margin-bottom:14px;
+
+    font-size:48px;
+
+    line-height:1;
 
 }
 
+
+/* =====================================================
+   CARD TITLE
+===================================================== */
 
 .calculator-card h3{
 
-    margin:5px 0;
+    margin:0 0 8px;
 
-    font-size:18px;
+    font-size:21px;
+
+    line-height:1.25;
+
+    font-weight:700;
+
+    color:#111827;
 
 }
 
 
+/* =====================================================
+   CARD DESCRIPTION
+===================================================== */
+
 .calculator-card p{
 
-    margin:5px 0 0;
+    width:100%;
+
+    max-width:300px;
+
+    margin:0;
 
     color:#64748b;
 
-    font-size:13px;
+    font-size:14px;
 
     line-height:1.5;
 
 }
 
 
-/* MOBILE */
+/* =====================================================
+   NO SEARCH RESULTS
+===================================================== */
 
-@media(max-width:800px){
+.no-results{
+
+    display:none;
+
+    padding:30px 15px;
+
+    text-align:center;
+
+    color:#64748b;
+
+    font-size:16px;
+
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media(max-width:900px){
 
     .calculator-page{
 
-        padding:14px;
+        padding:
+            22px
+            16px
+            45px;
 
     }
+
 
     .calculator-grid{
 
         grid-template-columns:
-            repeat(2,1fr);
+            repeat(2,minmax(0,1fr));
 
-        gap:12px;
+        gap:16px;
 
     }
+
 
     .calculator-card{
 
-        padding:16px 10px;
+        min-height:205px;
 
     }
 
-    .calculator-icon{
 
-        font-size:35px;
+    .category-title{
+
+        font-size:27px;
 
     }
 
 }
 
 
-/* SMALL MOBILE */
+/* =====================================================
+   MOBILE
+===================================================== */
 
-@media(max-width:450px){
+@media(max-width:600px){
+
+    .calculator-page{
+
+        padding:
+            18px
+            14px
+            40px;
+
+    }
+
+
+    .calculator-header{
+
+        margin-bottom:20px;
+
+    }
+
+
+    .calculator-header h1{
+
+        font-size:30px;
+
+    }
+
+
+    .calculator-header p{
+
+        font-size:14px;
+
+    }
+
+
+    .calculator-search{
+
+        margin-bottom:32px;
+
+        padding:14px;
+
+        font-size:15px;
+
+    }
+
+
+    .calculator-section{
+
+        margin-bottom:38px;
+
+    }
+
+
+    .category-title{
+
+        margin-bottom:16px;
+
+        font-size:25px;
+
+    }
+
 
     .calculator-grid{
 
         grid-template-columns:1fr;
+
+        gap:15px;
+
+    }
+
+
+    .calculator-card{
+
+        min-height:190px;
+
+        padding:22px 16px;
+
+        border-radius:20px;
+
+    }
+
+
+    .calculator-icon{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:42px;
+
+        margin-bottom:12px;
+
+    }
+
+
+    .calculator-card h3{
+
+        font-size:21px;
+
+    }
+
+
+    .calculator-card p{
+
+        font-size:14px;
+
+    }
+
+}
+
+
+/* =====================================================
+   SMALL PHONE
+===================================================== */
+
+@media(max-width:380px){
+
+    .calculator-page{
+
+        padding-left:10px;
+
+        padding-right:10px;
+
+    }
+
+
+    .calculator-header h1{
+
+        font-size:27px;
+
+    }
+
+
+    .category-title{
+
+        font-size:23px;
+
+    }
+
+
+    .calculator-card{
+
+        min-height:180px;
+
+        padding:20px 13px;
+
+    }
+
+
+    .calculator-card h3{
+
+        font-size:19px;
+
+    }
+
+}
+
+
+/* =====================================================
+   DARK MODE SAFETY
+===================================================== */
+
+@media(prefers-color-scheme:dark){
+
+    .calculator-page{
+
+        color:#f8fafc;
+
+    }
+
+
+    .calculator-header h1,
+    .category-title,
+    .calculator-card h3{
+
+        color:#f8fafc;
+
+    }
+
+
+    .calculator-header p,
+    .calculator-card p{
+
+        color:#94a3b8;
+
+    }
+
+
+    .calculator-card{
+
+        background:#111827;
+
+        border-color:#273449;
+
+    }
+
+
+    .calculator-search{
+
+        background:#111827;
+
+        color:#f8fafc;
+
+        border-color:#334155;
 
     }
 
@@ -249,7 +596,9 @@ href="style.css">
 <div class="calculator-page">
 
 
-<!-- HEADER -->
+<!-- =====================================================
+     HEADER
+===================================================== -->
 
 <header class="calculator-header">
 
@@ -265,18 +614,26 @@ financial, mathematical and educational needs.
 </header>
 
 
-<!-- SEARCH -->
+<!-- =====================================================
+     SEARCH
+===================================================== -->
 
 <input
 type="search"
 id="calculatorSearch"
 class="calculator-search"
-placeholder="🔍 Search calculator...">
+placeholder="🔍 Search calculator..."
+autocomplete="off">
 
 
-<!-- =========================================
+<!-- =====================================================
      BASIC & MATH
-========================================= -->
+===================================================== -->
+
+<section
+class="calculator-section"
+data-category>
+
 
 <h2 class="category-title">
 🔢 Basic & Math Calculators
@@ -285,6 +642,8 @@ placeholder="🔍 Search calculator...">
 
 <div class="calculator-grid">
 
+
+<!-- BASIC -->
 
 <a
 href="basic-calculator.html"
@@ -305,6 +664,8 @@ Addition, subtraction, multiplication and division.
 </a>
 
 
+<!-- SCIENTIFIC -->
+
 <a
 href="scientific-calculator.html"
 class="calculator-card">
@@ -324,7 +685,11 @@ Advanced mathematical and scientific calculations.
 </a>
 
 
-<a href="percentage.html">
+<!-- PERCENTAGE -->
+
+<a
+href="percentage.html"
+class="calculator-card">
 
 <div class="calculator-icon">
 📊
@@ -340,6 +705,8 @@ Calculate percentages quickly and easily.
 
 </a>
 
+
+<!-- FRACTION -->
 
 <a
 href="fraction-calculator.html"
@@ -359,7 +726,14 @@ Add, subtract, multiply and divide fractions.
 
 </a>
 
-<a href="ratio.html">
+
+<!-- RATIO -->
+
+<a
+href="ratio.html"
+class="calculator-card">
+
+<div class="calculator-icon">
 ⚖️
 </div>
 
@@ -373,6 +747,8 @@ Calculate and simplify ratios.
 
 </a>
 
+
+<!-- AVERAGE -->
 
 <a
 href="average-calculator.html"
@@ -395,10 +771,17 @@ Calculate mean and average values.
 
 </div>
 
+</section>
 
-<!-- =========================================
-     FINANCE
-========================================= -->
+
+<!-- =====================================================
+     FINANCIAL
+===================================================== -->
+
+<section
+class="calculator-section"
+data-category>
+
 
 <h2 class="category-title">
 💰 Financial Calculators
@@ -407,6 +790,8 @@ Calculate mean and average values.
 
 <div class="calculator-grid">
 
+
+<!-- GST -->
 
 <a
 href="gst-calculator.html"
@@ -427,6 +812,8 @@ Calculate GST amount and total price.
 </a>
 
 
+<!-- EMI -->
+
 <a
 href="emi-calculator.html"
 class="calculator-card">
@@ -445,6 +832,8 @@ Calculate monthly loan EMI.
 
 </a>
 
+
+<!-- LOAN -->
 
 <a
 href="loan-calculator.html"
@@ -465,6 +854,8 @@ Estimate loan payments and interest.
 </a>
 
 
+<!-- SIMPLE INTEREST -->
+
 <a
 href="simple-interest.html"
 class="calculator-card">
@@ -484,6 +875,8 @@ Calculate simple interest and total amount.
 </a>
 
 
+<!-- COMPOUND INTEREST -->
+
 <a
 href="compound-interest.html"
 class="calculator-card">
@@ -502,6 +895,8 @@ Calculate compound interest and growth.
 
 </a>
 
+
+<!-- DISCOUNT -->
 
 <a
 href="discount-calculator.html"
@@ -524,10 +919,17 @@ Calculate discount amount and final price.
 
 </div>
 
+</section>
 
-<!-- =========================================
+
+<!-- =====================================================
      DATE & TIME
-========================================= -->
+===================================================== -->
+
+<section
+class="calculator-section"
+data-category>
+
 
 <h2 class="category-title">
 📅 Date & Time Calculators
@@ -536,6 +938,8 @@ Calculate discount amount and final price.
 
 <div class="calculator-grid">
 
+
+<!-- AGE -->
 
 <a
 href="age-calculator.html"
@@ -556,6 +960,8 @@ Calculate exact age in years, months and days.
 </a>
 
 
+<!-- DATE -->
+
 <a
 href="date-calculator.html"
 class="calculator-card">
@@ -574,6 +980,8 @@ Add or subtract days from a date.
 
 </a>
 
+
+<!-- TIME -->
 
 <a
 href="time-calculator.html"
@@ -596,10 +1004,17 @@ Calculate time differences and durations.
 
 </div>
 
+</section>
 
-<!-- =========================================
+
+<!-- =====================================================
      HEALTH
-========================================= -->
+===================================================== -->
+
+<section
+class="calculator-section"
+data-category>
+
 
 <h2 class="category-title">
 ❤️ Health & Fitness
@@ -608,6 +1023,8 @@ Calculate time differences and durations.
 
 <div class="calculator-grid">
 
+
+<!-- BMI -->
 
 <a
 href="bmi-calculator.html"
@@ -627,6 +1044,8 @@ Calculate Body Mass Index.
 
 </a>
 
+
+<!-- CALORIE -->
 
 <a
 href="calorie-calculator.html"
@@ -649,10 +1068,17 @@ Estimate daily calorie requirements.
 
 </div>
 
+</section>
 
-<!-- =========================================
+
+<!-- =====================================================
      CONVERTERS
-========================================= -->
+===================================================== -->
+
+<section
+class="calculator-section"
+data-category>
+
 
 <h2 class="category-title">
 🔄 Converters
@@ -661,6 +1087,8 @@ Estimate daily calorie requirements.
 
 <div class="calculator-grid">
 
+
+<!-- UNIT -->
 
 <a
 href="unit-converter.html"
@@ -680,6 +1108,8 @@ Convert length, weight, area, volume and more.
 
 </a>
 
+
+<!-- CURRENCY -->
 
 <a
 href="currency-calculator.html"
@@ -702,62 +1132,144 @@ Convert between different currencies.
 
 </div>
 
+</section>
+
+
+<!-- NO RESULTS -->
+
+<div
+id="noResults"
+class="no-results">
+
+🔍 No calculator found.
+
+</div>
+
 
 </div>
 
 
 <script>
 
-/* =========================================
+/* =====================================================
    CALCULATOR SEARCH
-========================================= */
+===================================================== */
 
 const search =
 document.getElementById(
-"calculatorSearch"
+    "calculatorSearch"
+);
+
+const sections =
+document.querySelectorAll(
+    ".calculator-section"
+);
+
+const noResults =
+document.getElementById(
+    "noResults"
 );
 
 
 search.addEventListener(
-"input",
-function(){
+    "input",
+    function(){
 
-const value =
-this.value.toLowerCase().trim();
+        const value =
+            this.value
+                .toLowerCase()
+                .trim();
 
 
-const cards =
-document.querySelectorAll(
-".calculator-card"
+        let totalVisible = 0;
+
+
+        sections.forEach(
+            function(section){
+
+                const cards =
+                    section.querySelectorAll(
+                        ".calculator-card"
+                    );
+
+
+                let visible =
+                    0;
+
+
+                cards.forEach(
+                    function(card){
+
+                        const text =
+                            card.innerText
+                                .toLowerCase();
+
+
+                        if(
+                            text.includes(value)
+                        ){
+
+                            card.style.display =
+                                "flex";
+
+                            visible++;
+
+                        }else{
+
+                            card.style.display =
+                                "none";
+
+                        }
+
+                    }
+                );
+
+
+                /*
+                   Hide complete category
+                   if no card matches.
+                */
+
+                if(visible===0){
+
+                    section.style.display =
+                        "none";
+
+                }else{
+
+                    section.style.display =
+                        "block";
+
+                    totalVisible +=
+                        visible;
+
+                }
+
+            }
+        );
+
+
+        /*
+           No result message
+        */
+
+        if(
+            value !== "" &&
+            totalVisible === 0
+        ){
+
+            noResults.style.display =
+                "block";
+
+        }else{
+
+            noResults.style.display =
+                "none";
+
+        }
+
+    }
 );
-
-
-cards.forEach(
-function(card){
-
-const text =
-card.innerText.toLowerCase();
-
-
-if(
-text.includes(value)
-){
-
-card.style.display =
-"block";
-
-}else{
-
-card.style.display =
-"none";
-
-}
-
-}
-
-);
-
-});
 
 </script>
 
