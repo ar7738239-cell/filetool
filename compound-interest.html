@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Compound Interest Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free Compound Interest Calculator to calculate compound interest, total amount and investment growth.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+    padding:10px 16px;
+
+    background:#0d1322;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+    border-radius:12px;
+
+    background:#192842;
+    color:#9edbff;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:720px;
+
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   INPUT GRID
+========================= */
+
+.input-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:14px;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.prefix,
+.suffix{
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#6b7280;
+
+    font-weight:700;
+}
+
+.prefix{
+    left:13px;
+}
+
+.suffix{
+    right:13px;
+}
+
+.input{
+    width:100%;
+    height:50px;
+
+    border:2px solid #d8deea;
+    border-radius:11px;
+
+    background:white;
+    color:#111827;
+
+    padding:0 38px 0 35px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.input.no-prefix{
+    padding-left:14px;
+}
+
+.input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   TIME
+========================= */
+
+.time-buttons{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:7px;
+
+    margin-top:7px;
+}
+
+.time-btn{
+    height:43px;
+
+    border:1px solid #d8deea;
+
+    border-radius:10px;
+
+    background:#f8fafc;
+
+    color:#374151;
+
+    font-size:12px;
+    font-weight:700;
+}
+
+.time-btn.active{
+    background:#7545f5;
+    border-color:#7545f5;
+    color:white;
+}
+
+.time-btn:active{
+    transform:scale(.97);
+}
+
+
+/* =========================
+   COMPOUND FREQUENCY
+========================= */
+
+.section-label{
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:7px;
+}
+
+.frequency{
+    width:100%;
+    height:50px;
+
+    border:2px solid #d8deea;
+    border-radius:11px;
+
+    background:white;
+
+    color:#111827;
+
+    padding:0 12px;
+
+    outline:none;
+
+    font-size:15px;
+
+    margin-bottom:15px;
+}
+
+.frequency:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+.calculate{
+    width:100%;
+    height:54px;
+
+    margin-top:3px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:13px;
+}
+
+
+/* =========================
+   MAIN RESULT
+========================= */
+
+.main-result{
+    background:white;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    margin-bottom:12px;
+}
+
+.main-label{
+    color:#6b7280;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.main-value{
+    color:#5d32d4;
+
+    font-size:30px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+}
+
+.summary-box{
+    background:white;
+
+    padding:12px;
+
+    border-radius:11px;
+
+    text-align:center;
+}
+
+.summary-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.summary-value{
+    color:#111827;
+
+    font-size:15px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   BREAKDOWN
+========================= */
+
+.breakdown{
+    margin-top:12px;
+
+    padding:14px;
+
+    background:white;
+
+    border-radius:13px;
+}
+
+.breakdown-title{
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.breakdown-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #eef0f4;
+
+    color:#6b7280;
+
+    font-size:13px;
+}
+
+.breakdown-row:last-child{
+    border-bottom:0;
+}
+
+.breakdown-row strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FORMULA
+========================= */
+
+.formula{
+    margin-top:12px;
+
+    padding:14px;
+
+    background:#111827;
+
+    color:white;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    line-height:1.8;
+
+    overflow-x:auto;
+}
+
+.formula strong{
+    color:#c4b5fd;
+}
+
+
+/* =========================
+   COPY / CLEAR
+========================= */
+
+.copy-btn,
+.clear{
+    width:100%;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:11px;
+
+    font-weight:700;
+}
+
+.copy-btn{
+    border:1px solid #d8deea;
+
+    background:white;
+
+    color:#374151;
+}
+
+.clear{
+    border:1px solid #d8deea;
+
+    background:#f3f4f6;
+
+    color:#374151;
+}
+
+.copy-btn:active,
+.clear:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+    .input-grid{
+        grid-template-columns:1fr;
+
+        gap:0;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:380px){
+
+    .badge{
+        display:none;
+    }
+
+    .container{
+        padding:18px 10px 35px;
+    }
+
+    .card{
+        padding:13px;
+    }
+
+    .title h1{
+        font-size:24px;
+    }
+
+    .main-value{
+        font-size:27px;
+    }
+
+    .time-buttons{
+        gap:5px;
+    }
+
+    .time-btn{
+        font-size:11px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+COMPOUND INTEREST
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+<div class="title-icon">
+📈
+</div>
+
+<h1>
+Compound Interest Calculator
+</h1>
+
+<p>
+Calculate compound interest, maturity amount and investment growth.
+</p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =========================
+     PRINCIPAL + RATE
+========================= -->
+
+<div class="input-grid">
+
+
+<div class="input-group">
+
+<label class="label">
+Principal Amount
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="principal"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 100000">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Annual Interest Rate
+</label>
+
+<div class="input-wrap">
+
+<input
+id="rate"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 8">
+
+<span class="suffix">%</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     TIME
+========================= -->
+
+<div class="input-group">
+
+<label class="label">
+Investment Period
+</label>
+
+<input
+id="time"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 5">
+
+
+<div class="section-label"
+style="margin-top:10px;">
+Time Unit
+</div>
+
+
+<div class="time-buttons">
+
+<button
+type="button"
+class="time-btn active"
+data-unit="years">
+Years
+</button>
+
+<button
+type="button"
+class="time-btn"
+data-unit="months">
+Months
+</button>
+
+<button
+type="button"
+class="time-btn"
+data-unit="days">
+Days
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     FREQUENCY
+========================= -->
+
+<div class="input-group">
+
+<label
+class="section-label">
+
+Compounding Frequency
+
+</label>
+
+
+<select
+id="frequency"
+class="frequency">
+
+<option value="1">
+Yearly — 1 time/year
+</option>
+
+<option value="2">
+Half-Yearly — 2 times/year
+</option>
+
+<option value="4">
+Quarterly — 4 times/year
+</option>
+
+<option value="12"
+selected>
+Monthly — 12 times/year
+</option>
+
+<option value="365">
+Daily — 365 times/year
+</option>
+
+</select>
+
+</div>
+
+
+<!-- =========================
+     CALCULATE
+========================= -->
+
+<button
+type="button"
+class="calculate"
+onclick="calculateCompound()">
+
+Calculate Compound Interest
+
+</button>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+id="result"
+class="result">
+
+
+<div class="result-title">
+Compound Interest Calculation
+</div>
+
+
+<div class="main-result">
+
+<div class="main-label">
+Compound Interest
+</div>
+
+<div
+id="interestResult"
+class="main-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Principal
+</div>
+
+<div
+id="principalResult"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Maturity Amount
+</div>
+
+<div
+id="amountResult"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Interest Rate
+</div>
+
+<div
+id="rateResult"
+class="summary-value">
+0%
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Period
+</div>
+
+<div
+id="timeResult"
+class="summary-value">
+0 Years
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     BREAKDOWN
+========================= -->
+
+<div class="breakdown">
+
+<div class="breakdown-title">
+Investment Breakdown
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Principal Invested
+</span>
+
+<strong
+id="breakPrincipal">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Interest Earned
+</span>
+
+<strong
+id="breakInterest">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Final Amount
+</span>
+
+<strong
+id="breakAmount">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Effective Annual Rate
+</span>
+
+<strong
+id="effectiveRate">
+0%
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Compounding
+</span>
+
+<strong
+id="frequencyResult">
+Monthly
+</strong>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     FORMULA
+========================= -->
+
+<div class="formula">
+
+<strong>
+A = P(1 + R/n)<sup>nt</sup>
+</strong>
+
+<br>
+
+CI = A − P
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     COPY
+========================= -->
+
+<button
+type="button"
+class="copy-btn"
+onclick="copySummary()">
+
+📋 Copy Result
+
+</button>
+
+
+<!-- =========================
+     CLEAR
+========================= -->
+
+<button
+type="button"
+class="clear"
+onclick="clearAll()">
+
+Clear All
+
+</button>
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<div class="info">
+
+<strong>Compound Interest Formula</strong>
+
+<br><br>
+
+A = P(1 + R/n)<sup>nt</sup>
+
+<br><br>
+
+<strong>P</strong> = Principal amount
+
+<br>
+
+<strong>R</strong> = Annual interest rate
+
+<br>
+
+<strong>n</strong> = Number of compounding periods per year
+
+<br>
+
+<strong>t</strong> = Time in years
+
+<br>
+
+<strong>A</strong> = Final amount
+
+<br>
+
+<strong>CI</strong> = Compound Interest
+
+<br><br>
+
+Example:
+
+₹10,000 invested at 8% annually for 3 years,
+compounded yearly.
+
+<br><br>
+
+The calculator automatically converts
+months and days into years.
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let timeUnit = "years";
+
+let lastResult = null;
+
+
+/* =========================================
+   MONEY FORMAT
+========================================= */
+
+function money(value){
+
+if(!Number.isFinite(value))
+return "₹0.00";
+
+return "₹" +
+value.toLocaleString(
+"en-IN",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+/* =========================================
+   NUMBER FORMAT
+========================================= */
+
+function formatNumber(value){
+
+if(
+Math.abs(value) < 1e-12
+)
+value = 0;
+
+return Number(
+value.toFixed(10)
+).toString();
+
+}
+
+
+/* =========================================
+   TIME BUTTONS
+========================================= */
+
+document
+.querySelectorAll(".time-btn")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+document
+.querySelectorAll(".time-btn")
+.forEach(function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+});
+
+
+button.classList.add(
+"active"
+);
+
+
+timeUnit =
+button.dataset.unit;
+
+});
+
+});
+
+
+/* =========================================
+   FREQUENCY NAME
+========================================= */
+
+function frequencyName(n){
+
+if(n === 1)
+return "Yearly";
+
+if(n === 2)
+return "Half-Yearly";
+
+if(n === 4)
+return "Quarterly";
+
+if(n === 12)
+return "Monthly";
+
+if(n === 365)
+return "Daily";
+
+return n + " times/year";
+
+}
+
+
+/* =========================================
+   TIME FORMAT
+========================================= */
+
+function formatTime(
+value,
+unit
+){
+
+if(unit === "years"){
+
+return value +
+(
+value === 1
+?
+" Year"
+:
+" Years"
+);
+
+}
+
+
+if(unit === "months"){
+
+return value +
+(
+value === 1
+?
+" Month"
+:
+" Months"
+);
+
+}
+
+
+return value +
+(
+value === 1
+?
+" Day"
+:
+" Days"
+);
+
+}
+
+
+/* =========================================
+   CALCULATE
+========================================= */
+
+function calculateCompound(){
+
+const principal =
+Number(
+document
+.getElementById(
+"principal"
+).value
+);
+
+
+const rate =
+Number(
+document
+.getElementById(
+"rate"
+).value
+);
+
+
+const time =
+Number(
+document
+.getElementById(
+"time"
+).value
+);
+
+
+const n =
+Number(
+document
+.getElementById(
+"frequency"
+).value
+);
+
+
+if(
+!Number.isFinite(principal) ||
+principal <= 0
+){
+
+alert(
+"Please enter a valid principal amount."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(rate) ||
+rate < 0
+){
+
+alert(
+"Please enter a valid interest rate."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(time) ||
+time <= 0
+){
+
+alert(
+"Please enter a valid investment period."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(n) ||
+n <= 0
+){
+
+alert(
+"Please select a valid compounding frequency."
+);
+
+return;
+
+}
+
+
+/* =========================
+   CONVERT TIME TO YEARS
+========================= */
+
+let years;
+
+
+if(timeUnit === "years"){
+
+years = time;
+
+}
+else if(timeUnit === "months"){
+
+years = time / 12;
+
+}
+else{
+
+years = time / 365;
+
+}
+
+
+/* =========================
+   COMPOUND INTEREST
+========================= */
+
+const decimalRate =
+rate / 100;
+
+
+/*
+   A = P(1 + R/n)^(nt)
+*/
+
+const amount =
+principal *
+Math.pow(
+1 + decimalRate / n,
+n * years
+);
+
+
+const interest =
+amount - principal;
+
+
+/* =========================
+   EFFECTIVE ANNUAL RATE
+========================= */
+
+const effectiveRate =
+(
+Math.pow(
+1 + decimalRate / n,
+n
+) - 1
+) * 100;
+
+
+/* =========================
+   DISPLAY
+========================= */
+
+document
+.getElementById(
+"interestResult"
+)
+.textContent =
+money(interest);
+
+
+document
+.getElementById(
+"principalResult"
+)
+.textContent =
+money(principal);
+
+
+document
+.getElementById(
+"amountResult"
+)
+.textContent =
+money(amount);
+
+
+document
+.getElementById(
+"rateResult"
+)
+.textContent =
+rate + "%";
+
+
+document
+.getElementById(
+"timeResult"
+)
+.textContent =
+formatTime(
+time,
+timeUnit
+);
+
+
+document
+.getElementById(
+"breakPrincipal"
+)
+.textContent =
+money(principal);
+
+
+document
+.getElementById(
+"breakInterest"
+)
+.textContent =
+money(interest);
+
+
+document
+.getElementById(
+"breakAmount"
+)
+.textContent =
+money(amount);
+
+
+document
+.getElementById(
+"effectiveRate"
+)
+.textContent =
+formatNumber(
+effectiveRate
+) + "%";
+
+
+document
+.getElementById(
+"frequencyResult"
+)
+.textContent =
+frequencyName(n);
+
+
+/* =========================
+   SAVE RESULT
+========================= */
+
+lastResult = {
+
+principal:principal,
+
+rate:rate,
+
+time:time,
+
+unit:timeUnit,
+
+years:years,
+
+frequency:n,
+
+interest:interest,
+
+amount:amount,
+
+effectiveRate:effectiveRate
+
+};
+
+
+/* =========================
+   SHOW RESULT
+========================= */
+
+document
+.getElementById(
+"result"
+)
+.classList.add(
+"show"
+);
+
+
+document
+.getElementById(
+"result"
+)
+.scrollIntoView({
+
+behavior:"smooth",
+
+block:"nearest"
+
+});
+
+}
+
+
+/* =========================================
+   COPY RESULT
+========================================= */
+
+function copySummary(){
+
+if(!lastResult){
+
+alert(
+"Calculate the compound interest first."
+);
+
+return;
+
+}
+
+
+const r =
+lastResult;
+
+
+const text =
+
+"AdiyogiTools Compound Interest Result\n\n" +
+
+"Principal: " +
+money(r.principal) +
+
+"\nInterest Rate: " +
+r.rate +
+"%" +
+
+"\nInvestment Period: " +
+formatTime(
+r.time,
+r.unit
+) +
+
+"\nCompounding: " +
+frequencyName(
+r.frequency
+) +
+
+"\nCompound Interest: " +
+money(r.interest) +
+
+"\nMaturity Amount: " +
+money(r.amount) +
+
+"\nEffective Annual Rate: " +
+formatNumber(
+r.effectiveRate
+) +
+"%";
+
+
+if(
+navigator.clipboard
+){
+
+navigator.clipboard
+.writeText(text)
+.then(function(){
+
+alert(
+"Result copied!"
+);
+
+})
+.catch(function(){
+
+alert(text);
+
+});
+
+}
+else{
+
+alert(text);
+
+}
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+document
+.getElementById(
+"principal"
+)
+.value = "";
+
+
+document
+.getElementById(
+"rate"
+)
+.value = "";
+
+
+document
+.getElementById(
+"time"
+)
+.value = "";
+
+
+document
+.getElementById(
+"frequency"
+)
+.value = "12";
+
+
+document
+.getElementById(
+"result"
+)
+.classList.remove(
+"show"
+);
+
+
+lastResult = null;
+
+
+timeUnit = "years";
+
+
+document
+.querySelectorAll(
+".time-btn"
+)
+.forEach(function(button){
+
+button.classList.toggle(
+"active",
+button.dataset.unit ===
+"years"
+);
+
+});
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter"
+){
+
+calculateCompound();
+
+}
+
+});
+
+</script>
+
+
+</body>
+
+</html>
