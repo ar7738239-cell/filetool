@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
+
+<title>Ratio Calculator - Adiyogi Tools</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+
+/* HEADER */
+
+.header{
+    min-height:62px;
+    padding:10px 16px;
+    background:#0d1322;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+    border-radius:12px;
+    background:#192842;
+    color:#9edbff;
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* CONTAINER */
+
+.container{
+    width:100%;
+    max-width:700px;
+    margin:auto;
+    padding:22px 14px 40px;
+}
+
+
+/* TITLE */
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:28px;
+    margin-bottom:6px;
+}
+
+.title p{
+    color:#6b7280;
+    font-size:15px;
+}
+
+
+/* CARD */
+
+.card{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+    padding:18px;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+}
+
+
+/* TABS */
+
+.tabs{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:6px;
+    margin-bottom:20px;
+}
+
+.tab{
+    height:44px;
+    border:0;
+    border-radius:10px;
+    background:#eef1f6;
+    color:#374151;
+    font-size:12px;
+    font-weight:700;
+}
+
+.tab.active{
+    background:#7545f5;
+    color:white;
+}
+
+.tab:active{
+    transform:scale(.97);
+}
+
+
+/* PANELS */
+
+.panel{
+    display:none;
+}
+
+.panel.active{
+    display:block;
+}
+
+
+/* LABEL */
+
+.label{
+    display:block;
+    margin:12px 0 6px;
+
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+
+/* INPUT */
+
+.input{
+    width:100%;
+    height:48px;
+
+    border:2px solid #d8deea;
+    border-radius:10px;
+
+    padding:0 12px;
+
+    outline:none;
+
+    background:#fff;
+    color:#111827;
+
+    font-size:17px;
+}
+
+.input:focus{
+    border-color:#7545f5;
+}
+
+
+/* RATIO INPUTS */
+
+.ratio-inputs{
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    gap:8px;
+    align-items:center;
+}
+
+.ratio-inputs.three{
+    grid-template-columns:
+    1fr auto 1fr auto 1fr;
+}
+
+.colon{
+    font-size:24px;
+    font-weight:800;
+    color:#7545f5;
+}
+
+
+/* BUTTON */
+
+.calculate{
+    width:100%;
+    height:52px;
+
+    margin-top:18px;
+
+    border:0;
+    border-radius:12px;
+
+    background:#7545f5;
+    color:white;
+
+    font-size:16px;
+    font-weight:700;
+
+    box-shadow:
+    0 5px 14px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+    transform:scale(.98);
+}
+
+
+/* RESULT */
+
+.result{
+    display:none;
+
+    margin-top:18px;
+    padding:17px;
+
+    border-radius:14px;
+
+    background:#f0ecff;
+    border:1px solid #d9ceff;
+
+    text-align:center;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    color:#6b7280;
+    font-size:13px;
+    margin-bottom:9px;
+}
+
+.result-main{
+    color:#5d32d4;
+    font-size:27px;
+    font-weight:800;
+    line-height:1.4;
+}
+
+.result-sub{
+    margin-top:7px;
+    color:#4b5563;
+    font-size:14px;
+}
+
+
+/* CLEAR */
+
+.clear{
+    width:100%;
+    height:44px;
+
+    margin-top:9px;
+
+    border:1px solid #d8deea;
+    border-radius:10px;
+
+    background:#f3f4f6;
+    color:#374151;
+
+    font-weight:700;
+}
+
+.clear:active{
+    transform:scale(.98);
+}
+
+
+/* INFO */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    margin-top:22px;
+    color:#9ca3af;
+    font-size:12px;
+}
+
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    .brand{
+        font-size:17px;
+    }
+
+    .container{
+        padding:18px 11px 35px;
+    }
+
+    .title-icon{
+        font-size:42px;
+    }
+
+    .title h1{
+        font-size:25px;
+    }
+
+    .card{
+        padding:14px;
+        border-radius:17px;
+    }
+
+    .tab{
+        font-size:11px;
+    }
+
+}
+
+
+/* SMALL PHONE */
+
+@media(max-width:360px){
+
+    .badge{
+        display:none;
+    }
+
+    .title h1{
+        font-size:23px;
+    }
+
+    .ratio-inputs.three{
+        gap:5px;
+    }
+
+    .input{
+        font-size:15px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+        🧮 Adiyogi Tools
+    </div>
+
+    <div class="badge">
+        RATIO
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+    <div class="title-icon">
+        ⚖️
+    </div>
+
+    <h1>
+        Ratio Calculator
+    </h1>
+
+    <p>
+        Calculate and simplify ratios easily.
+    </p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- TABS -->
+
+<div class="tabs">
+
+    <button
+        class="tab active"
+        data-tab="simplify">
+        Simplify
+    </button>
+
+    <button
+        class="tab"
+        data-tab="compare">
+        Compare
+    </button>
+
+    <button
+        class="tab"
+        data-tab="three">
+        3-Part Ratio
+    </button>
+
+</div>
+
+
+<!-- =====================================
+     SIMPLIFY
+===================================== -->
+
+<div
+    id="simplify"
+    class="panel active">
+
+    <label class="label">
+        First Value
+    </label>
+
+    <input
+        id="sA"
+        class="input"
+        type="number"
+        inputmode="decimal"
+        placeholder="Example: 24">
+
+
+    <label class="label">
+        Second Value
+    </label>
+
+    <input
+        id="sB"
+        class="input"
+        type="number"
+        inputmode="decimal"
+        placeholder="Example: 36">
+
+
+    <button
+        class="calculate"
+        onclick="simplifyRatio()">
+
+        Simplify Ratio
+
+    </button>
+
+
+    <div
+        id="sResult"
+        class="result">
+
+        <div class="result-title">
+            Simplified Ratio
+        </div>
+
+        <div
+            id="sMain"
+            class="result-main">
+        </div>
+
+        <div
+            id="sSub"
+            class="result-sub">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     COMPARE
+===================================== -->
+
+<div
+    id="compare"
+    class="panel">
+
+    <label class="label">
+        Ratio A
+    </label>
+
+    <div class="ratio-inputs">
+
+        <input
+            id="cA1"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            placeholder="12">
+
+        <div class="colon">:</div>
+
+        <input
+            id="cA2"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            placeholder="18">
+
+    </div>
+
+
+    <label class="label">
+        Ratio B
+    </label>
+
+    <div class="ratio-inputs">
+
+        <input
+            id="cB1"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            placeholder="2">
+
+        <div class="colon">:</div>
+
+        <input
+            id="cB2"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            placeholder="3">
+
+    </div>
+
+
+    <button
+        class="calculate"
+        onclick="compareRatio()">
+
+        Compare Ratios
+
+    </button>
+
+
+    <div
+        id="cResult"
+        class="result">
+
+        <div class="result-title">
+            Comparison
+        </div>
+
+        <div
+            id="cMain"
+            class="result-main">
+        </div>
+
+        <div
+            id="cSub"
+            class="result-sub">
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================
+     THREE PART
+===================================== -->
+
+<div
+    id="three"
+    class="panel">
+
+    <label class="label">
+        Enter Three Values
+    </label>
+
+    <div class="ratio-inputs three">
+
+        <input
+            id="tA"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            placeholder="12">
+
+        <div class="colon">:</div>
+
+        <input
+            id="tB"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            placeholder="18">
+
+        <div class="colon">:</div>
+
+        <input
+            id="tC"
+            class="input"
+            type="number"
+            inputmode="decimal"
+            placeholder="24">
+
+    </div>
+
+
+    <button
+        class="calculate"
+        onclick="threeRatio()">
+
+        Simplify 3-Part Ratio
+
+    </button>
+
+
+    <div
+        id="tResult"
+        class="result">
+
+        <div class="result-title">
+            Simplified Ratio
+        </div>
+
+        <div
+            id="tMain"
+            class="result-main">
+        </div>
+
+        <div
+            id="tSub"
+            class="result-sub">
+        </div>
+
+    </div>
+
+</div>
+
+
+<button
+    class="clear"
+    onclick="clearAll()">
+
+    Clear All
+
+</button>
+
+
+<div class="info">
+
+    <strong>Examples:</strong><br><br>
+
+    • 24 : 36 → <strong>2 : 3</strong><br>
+
+    • 12 : 18 and 2 : 3 → <strong>Equivalent ratios</strong><br>
+
+    • 12 : 18 : 24 → <strong>2 : 3 : 4</strong>
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+    © Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   GCD
+========================================= */
+
+function gcd(a,b){
+
+    a = Math.abs(a);
+    b = Math.abs(b);
+
+    while(b !== 0){
+
+        const temp = b;
+
+        b = a % b;
+
+        a = temp;
+
+    }
+
+    return a;
+
+}
+
+
+/* =========================================
+   INTEGER RATIO
+========================================= */
+
+function integerRatio(a,b){
+
+    if(
+        !Number.isInteger(a) ||
+        !Number.isInteger(b)
+    ){
+
+        return null;
+
+    }
+
+    const g = gcd(a,b);
+
+    if(g === 0)
+        return null;
+
+    return [
+        a/g,
+        b/g
+    ];
+
+}
+
+
+/* =========================================
+   SIMPLIFY RATIO
+========================================= */
+
+function simplifyRatio(){
+
+    const a =
+        Number(
+            document
+            .getElementById("sA")
+            .value
+        );
+
+    const b =
+        Number(
+            document
+            .getElementById("sB")
+            .value
+        );
+
+
+    if(
+        !Number.isFinite(a) ||
+        !Number.isFinite(b)
+    ){
+
+        alert(
+            "Please enter both values."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        a === 0 &&
+        b === 0
+    ){
+
+        alert(
+            "Both values cannot be zero."
+        );
+
+        return;
+
+    }
+
+
+    /*
+       For decimal ratios,
+       multiply until integers.
+    */
+
+    let x = a;
+    let y = b;
+
+    let multiplier = 1;
+
+
+    for(
+        let i=0;
+        i<6;
+        i++
+    ){
+
+        if(
+            Number.isInteger(x) &&
+            Number.isInteger(y)
+        )
+            break;
+
+        multiplier *= 10;
+
+        x = a * multiplier;
+        y = b * multiplier;
+
+    }
+
+
+    const g =
+        gcd(x,y);
+
+
+    if(!g){
+
+        alert(
+            "Could not simplify ratio."
+        );
+
+        return;
+
+    }
+
+
+    let r1 = x/g;
+    let r2 = y/g;
+
+
+    if(r2 < 0){
+
+        r1 = -r1;
+        r2 = -r2;
+
+    }
+
+
+    document
+    .getElementById("sMain")
+    .textContent =
+        r1 + " : " + r2;
+
+
+    document
+    .getElementById("sSub")
+    .textContent =
+        "Ratio value = " +
+        (a/b).toFixed(6);
+
+
+    document
+    .getElementById("sResult")
+    .classList.add("show");
+
+}
+
+
+/* =========================================
+   COMPARE
+========================================= */
+
+function compareRatio(){
+
+    const a1 =
+        Number(
+            document
+            .getElementById("cA1")
+            .value
+        );
+
+    const a2 =
+        Number(
+            document
+            .getElementById("cA2")
+            .value
+        );
+
+    const b1 =
+        Number(
+            document
+            .getElementById("cB1")
+            .value
+        );
+
+    const b2 =
+        Number(
+            document
+            .getElementById("cB2")
+            .value
+        );
+
+
+    if(
+        !Number.isFinite(a1) ||
+        !Number.isFinite(a2) ||
+        !Number.isFinite(b1) ||
+        !Number.isFinite(b2)
+    ){
+
+        alert(
+            "Please enter all values."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        a2 === 0 ||
+        b2 === 0
+    ){
+
+        alert(
+            "Second value of a ratio cannot be zero."
+        );
+
+        return;
+
+    }
+
+
+    const valueA =
+        a1/a2;
+
+    const valueB =
+        b1/b2;
+
+
+    const tolerance = 1e-10;
+
+
+    let message;
+
+
+    if(
+        Math.abs(valueA-valueB)
+        < tolerance
+    ){
+
+        message =
+            "The ratios are EQUIVALENT.";
+
+    }
+
+    else if(valueA > valueB){
+
+        message =
+            "Ratio A is GREATER.";
+
+    }
+
+    else{
+
+        message =
+            "Ratio B is GREATER.";
+
+    }
+
+
+    document
+    .getElementById("cMain")
+    .textContent =
+        message;
+
+
+    document
+    .getElementById("cSub")
+    .textContent =
+        a1 + ":" + a2 +
+        " = " +
+        valueA.toFixed(6) +
+        "\n" +
+        b1 + ":" + b2 +
+        " = " +
+        valueB.toFixed(6);
+
+
+    document
+    .getElementById("cResult")
+    .classList.add("show");
+
+}
+
+
+/* =========================================
+   THREE PART RATIO
+========================================= */
+
+function threeRatio(){
+
+    const a =
+        Number(
+            document
+            .getElementById("tA")
+            .value
+        );
+
+    const b =
+        Number(
+            document
+            .getElementById("tB")
+            .value
+        );
+
+    const c =
+        Number(
+            document
+            .getElementById("tC")
+            .value
+        );
+
+
+    if(
+        !Number.isFinite(a) ||
+        !Number.isFinite(b) ||
+        !Number.isFinite(c)
+    ){
+
+        alert(
+            "Please enter all three values."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        a === 0 &&
+        b === 0 &&
+        c === 0
+    ){
+
+        alert(
+            "All values cannot be zero."
+        );
+
+        return;
+
+    }
+
+
+    let x=a;
+    let y=b;
+    let z=c;
+
+    let multiplier=1;
+
+
+    for(
+        let i=0;
+        i<6;
+        i++
+    ){
+
+        if(
+            Number.isInteger(x) &&
+            Number.isInteger(y) &&
+            Number.isInteger(z)
+        )
+            break;
+
+        multiplier *= 10;
+
+        x=a*multiplier;
+        y=b*multiplier;
+        z=c*multiplier;
+
+    }
+
+
+    const g =
+        gcd(
+            gcd(
+                Math.abs(x),
+                Math.abs(y)
+            ),
+            Math.abs(z)
+        );
+
+
+    if(!g){
+
+        alert(
+            "Could not simplify ratio."
+        );
+
+        return;
+
+    }
+
+
+    x/=g;
+    y/=g;
+    z/=g;
+
+
+    document
+    .getElementById("tMain")
+    .textContent =
+        x + " : " + y + " : " + z;
+
+
+    document
+    .getElementById("tSub")
+    .textContent =
+        "Total parts = " +
+        (x+y+z);
+
+
+    document
+    .getElementById("tResult")
+    .classList.add("show");
+
+}
+
+
+/* =========================================
+   TABS
+========================================= */
+
+document
+.querySelectorAll(".tab")
+.forEach(function(tab){
+
+    tab.addEventListener(
+        "click",
+        function(){
+
+            document
+            .querySelectorAll(".tab")
+            .forEach(function(t){
+
+                t.classList.remove("active");
+
+            });
+
+
+            document
+            .querySelectorAll(".panel")
+            .forEach(function(panel){
+
+                panel.classList.remove("active");
+
+            });
+
+
+            tab.classList.add("active");
+
+
+            document
+            .getElementById(
+                tab.dataset.tab
+            )
+            .classList.add("active");
+
+        }
+    );
+
+});
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+    document
+    .querySelectorAll("input")
+    .forEach(function(input){
+
+        input.value = "";
+
+    });
+
+
+    document
+    .querySelectorAll(".result")
+    .forEach(function(result){
+
+        result.classList.remove("show");
+
+    });
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            const activePanel =
+                document.querySelector(
+                    ".panel.active"
+                );
+
+
+            if(
+                activePanel &&
+                activePanel.id === "simplify"
+            )
+                simplifyRatio();
+
+
+            else if(
+                activePanel &&
+                activePanel.id === "compare"
+            )
+                compareRatio();
+
+
+            else if(
+                activePanel &&
+                activePanel.id === "three"
+            )
+                threeRatio();
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
