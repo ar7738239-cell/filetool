@@ -1,0 +1,2503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Discount Calculator - AdiyogiTools</title>
+
+<meta name="description"
+content="Free Discount Calculator to calculate sale price, discount amount, savings, original price and effective discount percentage.">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,input{
+    font:inherit;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    min-height:62px;
+    padding:10px 16px;
+
+    background:#0d1322;
+    color:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.brand{
+    font-size:19px;
+    font-weight:700;
+}
+
+.badge{
+    padding:8px 11px;
+    border-radius:12px;
+
+    background:#192842;
+    color:#9edbff;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+
+/* =========================
+   PAGE
+========================= */
+
+.container{
+    width:100%;
+    max-width:720px;
+
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.title-icon{
+    font-size:48px;
+    margin-bottom:7px;
+}
+
+.title h1{
+    font-size:29px;
+    margin-bottom:7px;
+}
+
+.title p{
+    color:#6b7280;
+    font-size:15px;
+    line-height:1.5;
+}
+
+
+/* =========================
+   CARD
+========================= */
+
+.card{
+    background:white;
+
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================
+   MODE
+========================= */
+
+.mode-title{
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:8px;
+}
+
+.modes{
+    display:grid;
+
+    grid-template-columns:
+    repeat(3,1fr);
+
+    gap:7px;
+
+    margin-bottom:20px;
+}
+
+.mode{
+    min-height:48px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f8fafc;
+
+    color:#374151;
+
+    font-size:12px;
+    font-weight:700;
+
+    padding:5px;
+}
+
+.mode.active{
+    background:#7545f5;
+
+    border-color:#7545f5;
+
+    color:white;
+}
+
+.mode:active{
+    transform:scale(.97);
+}
+
+
+/* =========================
+   INPUT
+========================= */
+
+.input-group{
+    margin-bottom:15px;
+}
+
+.label{
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:13px;
+    font-weight:700;
+}
+
+.input-wrap{
+    position:relative;
+}
+
+.prefix,
+.suffix{
+    position:absolute;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#6b7280;
+
+    font-weight:700;
+
+    z-index:2;
+}
+
+.prefix{
+    left:13px;
+}
+
+.suffix{
+    right:13px;
+}
+
+.input{
+    width:100%;
+    height:50px;
+
+    border:2px solid #d8deea;
+
+    border-radius:11px;
+
+    background:white;
+
+    color:#111827;
+
+    padding:0 40px 0 35px;
+
+    outline:none;
+
+    font-size:16px;
+}
+
+.input.no-prefix{
+    padding-left:14px;
+}
+
+.input:focus{
+    border-color:#7545f5;
+}
+
+
+/* =========================
+   QUICK DISCOUNTS
+========================= */
+
+.quick-title{
+    color:#6b7280;
+
+    font-size:12px;
+    font-weight:700;
+
+    margin:10px 0 7px;
+}
+
+.quick{
+    display:grid;
+
+    grid-template-columns:
+    repeat(5,1fr);
+
+    gap:5px;
+
+    margin-bottom:15px;
+}
+
+.quick-btn{
+    height:38px;
+
+    border:1px solid #d8deea;
+
+    border-radius:9px;
+
+    background:#f8fafc;
+
+    color:#374151;
+
+    font-size:11px;
+    font-weight:700;
+}
+
+.quick-btn:active{
+    transform:scale(.95);
+}
+
+.quick-btn.active{
+    background:#eee9ff;
+
+    border-color:#7545f5;
+
+    color:#5d32d4;
+}
+
+
+/* =========================
+   SECOND DISCOUNT
+========================= */
+
+.second-section{
+    display:none;
+
+    margin-top:5px;
+
+    padding-top:15px;
+
+    border-top:1px solid #e5e7eb;
+}
+
+.second-section.show{
+    display:block;
+}
+
+.second-title{
+    font-size:13px;
+
+    font-weight:700;
+
+    color:#374151;
+
+    margin-bottom:8px;
+}
+
+
+/* =========================
+   CALCULATE
+========================= */
+
+.calculate{
+    width:100%;
+
+    height:54px;
+
+    margin-top:5px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px rgba(117,69,245,.25);
+}
+
+.calculate:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result{
+    display:none;
+
+    margin-top:20px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+}
+
+.result.show{
+    display:block;
+}
+
+.result-title{
+    text-align:center;
+
+    color:#6b7280;
+
+    font-size:13px;
+    font-weight:700;
+
+    margin-bottom:13px;
+}
+
+
+/* =========================
+   MAIN RESULT
+========================= */
+
+.main-result{
+    background:white;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    text-align:center;
+
+    margin-bottom:12px;
+}
+
+.main-label{
+    color:#6b7280;
+
+    font-size:12px;
+
+    margin-bottom:5px;
+}
+
+.main-value{
+    color:#5d32d4;
+
+    font-size:30px;
+
+    font-weight:800;
+}
+
+
+/* =========================
+   SUMMARY
+========================= */
+
+.summary-grid{
+    display:grid;
+
+    grid-template-columns:
+    1fr 1fr;
+
+    gap:8px;
+}
+
+.summary-box{
+    background:white;
+
+    padding:12px;
+
+    border-radius:11px;
+
+    text-align:center;
+}
+
+.summary-label{
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:5px;
+}
+
+.summary-value{
+    color:#111827;
+
+    font-size:15px;
+
+    font-weight:800;
+
+    word-break:break-word;
+}
+
+
+/* =========================
+   BREAKDOWN
+========================= */
+
+.breakdown{
+    margin-top:12px;
+
+    padding:14px;
+
+    background:white;
+
+    border-radius:13px;
+}
+
+.breakdown-title{
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+}
+
+.breakdown-row{
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:10px;
+
+    padding:8px 0;
+
+    border-bottom:1px solid #eef0f4;
+
+    color:#6b7280;
+
+    font-size:13px;
+}
+
+.breakdown-row:last-child{
+    border-bottom:0;
+}
+
+.breakdown-row strong{
+    color:#111827;
+
+    text-align:right;
+}
+
+
+/* =========================
+   FORMULA
+========================= */
+
+.formula{
+    margin-top:12px;
+
+    padding:14px;
+
+    background:#111827;
+
+    color:white;
+
+    border-radius:12px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    line-height:1.8;
+
+    overflow-x:auto;
+}
+
+.formula strong{
+    color:#c4b5fd;
+}
+
+
+/* =========================
+   COPY / CLEAR
+========================= */
+
+.copy-btn,
+.clear{
+    width:100%;
+
+    height:45px;
+
+    margin-top:10px;
+
+    border-radius:11px;
+
+    font-weight:700;
+}
+
+.copy-btn{
+    border:1px solid #d8deea;
+
+    background:white;
+
+    color:#374151;
+}
+
+.clear{
+    border:1px solid #d8deea;
+
+    background:#f3f4f6;
+
+    color:#374151;
+}
+
+.copy-btn:active,
+.clear:active{
+    transform:scale(.98);
+}
+
+
+/* =========================
+   INFO
+========================= */
+
+.info{
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+    color:#111827;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:500px){
+
+    .brand{
+        font-size:17px;
+    }
+
+    .container{
+        padding:18px 11px 35px;
+    }
+
+    .title-icon{
+        font-size:42px;
+    }
+
+    .title h1{
+        font-size:25px;
+    }
+
+    .card{
+        padding:14px;
+    }
+
+    .mode{
+        font-size:11px;
+    }
+
+    .main-value{
+        font-size:27px;
+    }
+
+}
+
+
+/* =========================
+   SMALL PHONE
+========================= */
+
+@media(max-width:360px){
+
+    .badge{
+        display:none;
+    }
+
+    .title h1{
+        font-size:23px;
+    }
+
+    .modes{
+        gap:5px;
+    }
+
+    .mode{
+        min-height:44px;
+
+        font-size:10px;
+    }
+
+    .quick{
+        grid-template-columns:
+        repeat(5,1fr);
+
+        gap:4px;
+    }
+
+    .quick-btn{
+        font-size:10px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+DISCOUNT
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+<div class="title-icon">
+🏷️
+</div>
+
+<h1>
+Discount Calculator
+</h1>
+
+<p>
+Calculate discount, savings, final price and original price.
+</p>
+
+</section>
+
+
+<section class="card">
+
+
+<!-- =========================
+     MODES
+========================= -->
+
+<div class="mode-title">
+Choose Calculation
+</div>
+
+<div class="modes">
+
+<button
+type="button"
+class="mode active"
+data-mode="sale">
+
+Sale Price
+
+</button>
+
+<button
+type="button"
+class="mode"
+data-mode="original">
+
+Find Original
+
+</button>
+
+<button
+type="button"
+class="mode"
+data-mode="percentage">
+
+Find Discount %
+
+</button>
+
+</div>
+
+
+<!-- =========================
+     SALE PRICE MODE
+========================= -->
+
+<div id="saleMode">
+
+
+<div class="input-group">
+
+<label class="label">
+Original Price
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="originalPrice"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 2000">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Discount Percentage
+</label>
+
+<div class="input-wrap">
+
+<input
+id="discountPercent"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="0"
+max="100"
+step="0.01"
+placeholder="Example: 20">
+
+<span class="suffix">%</span>
+
+</div>
+
+
+<div class="quick-title">
+Quick Discount
+</div>
+
+<div class="quick">
+
+<button type="button"
+class="quick-btn"
+data-value="5">
+5%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="10">
+10%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="15">
+15%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="20">
+20%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="25">
+25%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="30">
+30%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="40">
+40%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="50">
+50%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="60">
+60%
+</button>
+
+<button type="button"
+class="quick-btn"
+data-value="70">
+70%
+</button>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     SUCCESSIVE DISCOUNT
+========================= -->
+
+<div class="input-group">
+
+<label class="label">
+Second Discount (Optional)
+</label>
+
+<div class="input-wrap">
+
+<input
+id="secondDiscount"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="0"
+max="100"
+step="0.01"
+placeholder="Example: 10">
+
+<span class="suffix">%</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     ORIGINAL PRICE MODE
+========================= -->
+
+<div id="originalMode"
+style="display:none;">
+
+
+<div class="input-group">
+
+<label class="label">
+Sale Price After Discount
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="salePrice"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 1600">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Discount Percentage
+</label>
+
+<div class="input-wrap">
+
+<input
+id="originalDiscount"
+class="input no-prefix"
+type="number"
+inputmode="decimal"
+min="0"
+max="99.999999"
+step="0.01"
+placeholder="Example: 20">
+
+<span class="suffix">%</span>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     PERCENTAGE MODE
+========================= -->
+
+<div id="percentageMode"
+style="display:none;">
+
+
+<div class="input-group">
+
+<label class="label">
+Original Price
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="percentOriginal"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 2000">
+
+</div>
+
+</div>
+
+
+<div class="input-group">
+
+<label class="label">
+Final / Sale Price
+</label>
+
+<div class="input-wrap">
+
+<span class="prefix">₹</span>
+
+<input
+id="percentSale"
+class="input"
+type="number"
+inputmode="decimal"
+min="0"
+step="0.01"
+placeholder="Example: 1500">
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     CALCULATE
+========================= -->
+
+<button
+type="button"
+class="calculate"
+onclick="calculateDiscount()">
+
+Calculate Discount
+
+</button>
+
+
+<!-- =========================
+     RESULT
+========================= -->
+
+<div
+id="result"
+class="result">
+
+
+<div class="result-title">
+Discount Calculation
+</div>
+
+
+<div class="main-result">
+
+<div
+id="mainLabel"
+class="main-label">
+Final Price
+</div>
+
+<div
+id="mainValue"
+class="main-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-grid">
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Original Price
+</div>
+
+<div
+id="resultOriginal"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Discount
+</div>
+
+<div
+id="resultDiscount"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Savings
+</div>
+
+<div
+id="resultSavings"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+<div class="summary-box">
+
+<div class="summary-label">
+Final Price
+</div>
+
+<div
+id="resultFinal"
+class="summary-value">
+₹0.00
+</div>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     BREAKDOWN
+========================= -->
+
+<div class="breakdown">
+
+<div class="breakdown-title">
+Price Breakdown
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Original Price
+</span>
+
+<strong
+id="breakOriginal">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Discount %
+</span>
+
+<strong
+id="breakPercent">
+0%
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Discount Amount
+</span>
+
+<strong
+id="breakAmount">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Amount You Pay
+</span>
+
+<strong
+id="breakFinal">
+₹0.00
+</strong>
+
+</div>
+
+
+<div class="breakdown-row">
+
+<span>
+Total Savings
+</span>
+
+<strong
+id="breakSavings">
+₹0.00
+</strong>
+
+</div>
+
+
+<div
+id="secondRow"
+class="breakdown-row"
+style="display:none;">
+
+<span>
+Effective Discount
+</span>
+
+<strong
+id="effectiveDiscount">
+0%
+</strong>
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     FORMULA
+========================= -->
+
+<div
+id="formula"
+class="formula">
+
+<strong>
+Discount Amount = Original Price × Discount% / 100
+</strong>
+
+<br>
+
+Final Price = Original Price − Discount Amount
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     COPY
+========================= -->
+
+<button
+type="button"
+class="copy-btn"
+onclick="copyResult()">
+
+📋 Copy Result
+
+</button>
+
+
+<!-- =========================
+     CLEAR
+========================= -->
+
+<button
+type="button"
+class="clear"
+onclick="clearAll()">
+
+Clear All
+
+</button>
+
+
+<!-- =========================
+     INFO
+========================= -->
+
+<div class="info">
+
+<strong>How Discount Works</strong>
+
+<br><br>
+
+For a percentage discount:
+
+<br><br>
+
+<strong>
+Discount Amount
+=
+Original Price × Discount% ÷ 100
+</strong>
+
+<br><br>
+
+<strong>
+Final Price
+=
+Original Price − Discount Amount
+</strong>
+
+<br><br>
+
+Example:
+
+₹2,000 with 25% discount:
+
+<br><br>
+
+Discount = ₹2,000 × 25 ÷ 100 = ₹500
+
+<br>
+
+Final Price = ₹2,000 − ₹500 = <strong>₹1,500</strong>
+
+<br><br>
+
+<strong>Important:</strong>
+
+Two successive discounts are not simply added.
+
+For example, 20% followed by 10% gives an effective discount of 28%, not 30%, because the second discount is applied to the already reduced price.
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let currentMode = "sale";
+
+let lastResult = null;
+
+
+/* =========================================
+   ELEMENT HELPERS
+========================================= */
+
+function get(id){
+
+return document.getElementById(id);
+
+}
+
+
+/* =========================================
+   MONEY
+========================================= */
+
+function money(value){
+
+if(!Number.isFinite(value))
+return "₹0.00";
+
+return "₹" +
+
+value.toLocaleString(
+"en-IN",
+{
+minimumFractionDigits:2,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+/* =========================================
+   NUMBER
+========================================= */
+
+function numberFormat(value){
+
+if(
+Math.abs(value) < 1e-12
+)
+value = 0;
+
+return Number(
+value.toFixed(10)
+).toString();
+
+}
+
+
+/* =========================================
+   MODE BUTTONS
+========================================= */
+
+document
+.querySelectorAll(".mode")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+document
+.querySelectorAll(".mode")
+.forEach(function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+});
+
+
+button.classList.add(
+"active"
+);
+
+
+currentMode =
+button.dataset.mode;
+
+
+/* Hide all */
+
+get("saleMode")
+.style.display = "none";
+
+get("originalMode")
+.style.display = "none";
+
+get("percentageMode")
+.style.display = "none";
+
+
+/* Show selected */
+
+if(currentMode === "sale"){
+
+get("saleMode")
+.style.display = "block";
+
+}
+
+else if(
+currentMode === "original"
+){
+
+get("originalMode")
+.style.display = "block";
+
+}
+
+else{
+
+get("percentageMode")
+.style.display = "block";
+
+}
+
+
+/* Reset result */
+
+get("result")
+.classList.remove(
+"show"
+);
+
+});
+
+});
+
+
+/* =========================================
+   QUICK DISCOUNT
+========================================= */
+
+document
+.querySelectorAll(".quick-btn")
+.forEach(function(button){
+
+button.addEventListener(
+"click",
+function(){
+
+const value =
+button.dataset.value;
+
+
+get("discountPercent")
+.value =
+value;
+
+
+document
+.querySelectorAll(".quick-btn")
+.forEach(function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+});
+
+
+button.classList.add(
+"active"
+);
+
+});
+
+});
+
+
+/* =========================================
+   CALCULATE
+========================================= */
+
+function calculateDiscount(){
+
+
+/* =====================================
+   MODE 1
+===================================== */
+
+if(currentMode === "sale"){
+
+const original =
+Number(
+get("originalPrice").value
+);
+
+
+const discount =
+Number(
+get("discountPercent").value
+);
+
+
+const second =
+Number(
+get("secondDiscount").value
+) || 0;
+
+
+if(
+!Number.isFinite(original) ||
+original <= 0
+){
+
+alert(
+"Please enter a valid original price."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(discount) ||
+discount < 0 ||
+discount > 100
+){
+
+alert(
+"Discount must be between 0% and 100%."
+);
+
+return;
+
+}
+
+
+if(
+second < 0 ||
+second > 100
+){
+
+alert(
+"Second discount must be between 0% and 100%."
+);
+
+return;
+
+}
+
+
+/* First discount */
+
+const firstAmount =
+original *
+discount /
+100;
+
+
+const afterFirst =
+original -
+firstAmount;
+
+
+/* Second discount */
+
+const secondAmount =
+afterFirst *
+second /
+100;
+
+
+const finalPrice =
+afterFirst -
+secondAmount;
+
+
+const totalSavings =
+original -
+finalPrice;
+
+
+const effective =
+original === 0
+?
+0
+:
+totalSavings /
+original *
+100;
+
+
+showSaleResult(
+original,
+discount,
+firstAmount,
+finalPrice,
+totalSavings,
+second,
+effective
+);
+
+return;
+
+}
+
+
+/* =====================================
+   MODE 2
+===================================== */
+
+if(currentMode === "original"){
+
+const sale =
+Number(
+get("salePrice").value
+);
+
+
+const discount =
+Number(
+get("originalDiscount").value
+);
+
+
+if(
+!Number.isFinite(sale) ||
+sale < 0
+){
+
+alert(
+"Please enter a valid sale price."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(discount) ||
+discount < 0 ||
+discount >= 100
+){
+
+alert(
+"Discount must be between 0% and less than 100%."
+);
+
+return;
+
+}
+
+
+/*
+   Original =
+   Sale / (1 - Discount/100)
+*/
+
+const original =
+sale /
+(
+1 -
+discount / 100
+);
+
+
+const savings =
+original -
+sale;
+
+
+showOriginalResult(
+original,
+sale,
+discount,
+savings
+);
+
+return;
+
+}
+
+
+/* =====================================
+   MODE 3
+===================================== */
+
+if(currentMode === "percentage"){
+
+const original =
+Number(
+get("percentOriginal").value
+);
+
+
+const sale =
+Number(
+get("percentSale").value
+);
+
+
+if(
+!Number.isFinite(original) ||
+original <= 0
+){
+
+alert(
+"Please enter a valid original price."
+);
+
+return;
+
+}
+
+
+if(
+!Number.isFinite(sale) ||
+sale < 0
+){
+
+alert(
+"Please enter a valid final price."
+);
+
+return;
+
+}
+
+
+if(sale > original){
+
+alert(
+"Final price cannot be greater than original price."
+);
+
+return;
+
+}
+
+
+const savings =
+original -
+sale;
+
+
+const discount =
+savings /
+original *
+100;
+
+
+showPercentageResult(
+original,
+sale,
+savings,
+discount
+);
+
+}
+
+}
+
+
+/* =========================================
+   RESULT - SALE
+========================================= */
+
+function showSaleResult(
+original,
+discount,
+discountAmount,
+finalPrice,
+savings,
+second,
+effective
+){
+
+get("mainLabel")
+.textContent =
+"Final Price";
+
+
+get("mainValue")
+.textContent =
+money(finalPrice);
+
+
+get("resultOriginal")
+.textContent =
+money(original);
+
+
+get("resultDiscount")
+.textContent =
+numberFormat(discount)
++
+"%";
+
+
+get("resultSavings")
+.textContent =
+money(savings);
+
+
+get("resultFinal")
+.textContent =
+money(finalPrice);
+
+
+get("breakOriginal")
+.textContent =
+money(original);
+
+
+get("breakPercent")
+.textContent =
+numberFormat(discount)
++
+(second > 0
+?
+" + " +
+numberFormat(second) +
+"%"
+:
+"%");
+
+
+get("breakAmount")
+.textContent =
+money(
+discountAmount
+);
+
+
+get("breakFinal")
+.textContent =
+money(finalPrice);
+
+
+get("breakSavings")
+.textContent =
+money(savings);
+
+
+if(second > 0){
+
+get("secondRow")
+.style.display =
+"flex";
+
+
+get("effectiveDiscount")
+.textContent =
+numberFormat(
+effective
+)
++
+"%";
+
+}
+else{
+
+get("secondRow")
+.style.display =
+"none";
+
+}
+
+
+/* Formula */
+
+if(second > 0){
+
+get("formula")
+.innerHTML =
+
+"<strong>" +
+"Successive Discount" +
+"</strong>" +
+
+"<br>" +
+
+"After first discount = " +
+money(
+original -
+discountAmount
+) +
+
+"<br>" +
+
+"Final Price = " +
+money(finalPrice) +
+
+"<br>" +
+
+"Effective Discount = " +
+numberFormat(effective) +
+"%";
+
+}
+else{
+
+get("formula")
+.innerHTML =
+
+"<strong>" +
+"Discount Amount = Original Price × Discount% / 100" +
+"</strong>" +
+
+"<br>" +
+
+"Final Price = Original Price − Discount Amount";
+
+}
+
+
+/* Save */
+
+lastResult = {
+
+mode:"Sale Price",
+
+original:original,
+
+discount:discount,
+
+discountAmount:discountAmount,
+
+finalPrice:finalPrice,
+
+savings:savings,
+
+second:second,
+
+effective:effective
+
+};
+
+
+get("result")
+.classList.add(
+"show"
+);
+
+}
+
+
+/* =========================================
+   RESULT - ORIGINAL
+========================================= */
+
+function showOriginalResult(
+original,
+sale,
+discount,
+savings
+){
+
+get("mainLabel")
+.textContent =
+"Original Price";
+
+
+get("mainValue")
+.textContent =
+money(original);
+
+
+get("resultOriginal")
+.textContent =
+money(original);
+
+
+get("resultDiscount")
+.textContent =
+numberFormat(discount)
++
+"%";
+
+
+get("resultSavings")
+.textContent =
+money(savings);
+
+
+get("resultFinal")
+.textContent =
+money(sale);
+
+
+get("breakOriginal")
+.textContent =
+money(original);
+
+
+get("breakPercent")
+.textContent =
+numberFormat(discount)
++
+"%";
+
+
+get("breakAmount")
+.textContent =
+money(savings);
+
+
+get("breakFinal")
+.textContent =
+money(sale);
+
+
+get("breakSavings")
+.textContent =
+money(savings);
+
+
+get("secondRow")
+.style.display =
+"none";
+
+
+get("formula")
+.innerHTML =
+
+"<strong>" +
+"Original Price = Final Price ÷ (1 − Discount% / 100)" +
+"</strong>" +
+
+"<br>" +
+
+"Original Price = " +
+money(original);
+
+
+/* Save */
+
+lastResult = {
+
+mode:"Find Original",
+
+original:original,
+
+sale:sale,
+
+discount:discount,
+
+savings:savings
+
+};
+
+
+get("result")
+.classList.add(
+"show"
+);
+
+}
+
+
+/* =========================================
+   RESULT - PERCENTAGE
+========================================= */
+
+function showPercentageResult(
+original,
+sale,
+savings,
+discount
+){
+
+get("mainLabel")
+.textContent =
+"Actual Discount";
+
+
+get("mainValue")
+.textContent =
+numberFormat(discount)
++
+"%";
+
+
+get("resultOriginal")
+.textContent =
+money(original);
+
+
+get("resultDiscount")
+.textContent =
+numberFormat(discount)
++
+"%";
+
+
+get("resultSavings")
+.textContent =
+money(savings);
+
+
+get("resultFinal")
+.textContent =
+money(sale);
+
+
+get("breakOriginal")
+.textContent =
+money(original);
+
+
+get("breakPercent")
+.textContent =
+numberFormat(discount)
++
+"%";
+
+
+get("breakAmount")
+.textContent =
+money(savings);
+
+
+get("breakFinal")
+.textContent =
+money(sale);
+
+
+get("breakSavings")
+.textContent =
+money(savings);
+
+
+get("secondRow")
+.style.display =
+"none";
+
+
+get("formula")
+.innerHTML =
+
+"<strong>" +
+"Discount % = ((Original Price − Final Price) ÷ Original Price) × 100" +
+"</strong>" +
+
+"<br>" +
+
+"Actual Discount = " +
+numberFormat(discount) +
+"%";
+
+
+/* Save */
+
+lastResult = {
+
+mode:"Find Discount Percentage",
+
+original:original,
+
+sale:sale,
+
+savings:savings,
+
+discount:discount
+
+};
+
+
+get("result")
+.classList.add(
+"show"
+);
+
+}
+
+
+/* =========================================
+   COPY RESULT
+========================================= */
+
+function copyResult(){
+
+if(!lastResult){
+
+alert(
+"Calculate a discount first."
+);
+
+return;
+
+}
+
+
+const r =
+lastResult;
+
+
+let text =
+"AdiyogiTools Discount Calculator\n\n";
+
+
+if(r.mode === "Sale Price"){
+
+text +=
+"Original Price: " +
+money(r.original) +
+
+"\nDiscount: " +
+numberFormat(r.discount) +
+"%";
+
+if(r.second > 0){
+
+text +=
+"\nSecond Discount: " +
+numberFormat(r.second) +
+"%";
+
+}
+
+text +=
+
+"\nDiscount/Savings: " +
+money(r.savings) +
+
+"\nFinal Price: " +
+money(r.finalPrice);
+
+if(r.second > 0){
+
+text +=
+"\nEffective Discount: " +
+numberFormat(r.effective) +
+"%";
+
+}
+
+}
+
+
+else if(
+r.mode === "Find Original"
+){
+
+text +=
+
+"Sale Price: " +
+money(r.sale) +
+
+"\nDiscount: " +
+numberFormat(r.discount) +
+"%" +
+
+"\nOriginal Price: " +
+money(r.original) +
+
+"\nSavings: " +
+money(r.savings);
+
+}
+
+
+else{
+
+text +=
+
+"Original Price: " +
+money(r.original) +
+
+"\nFinal Price: " +
+money(r.sale) +
+
+"\nDiscount: " +
+numberFormat(r.discount) +
+"%" +
+
+"\nSavings: " +
+money(r.savings);
+
+}
+
+
+if(
+navigator.clipboard
+){
+
+navigator.clipboard
+.writeText(text)
+.then(function(){
+
+alert(
+"Result copied!"
+);
+
+})
+.catch(function(){
+
+alert(text);
+
+});
+
+}
+else{
+
+alert(text);
+
+}
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+const ids = [
+
+"originalPrice",
+
+"discountPercent",
+
+"secondDiscount",
+
+"salePrice",
+
+"originalDiscount",
+
+"percentOriginal",
+
+"percentSale"
+
+];
+
+
+ids.forEach(function(id){
+
+get(id).value = "";
+
+});
+
+
+get("result")
+.classList.remove(
+"show"
+);
+
+
+get("secondRow")
+.style.display =
+"none";
+
+
+document
+.querySelectorAll(".quick-btn")
+.forEach(function(btn){
+
+btn.classList.remove(
+"active"
+);
+
+});
+
+
+lastResult = null;
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+"keydown",
+function(event){
+
+if(
+event.key === "Enter"
+){
+
+calculateDiscount();
+
+}
+
+});
+
+</script>
+
+
+</body>
+
+</html>
