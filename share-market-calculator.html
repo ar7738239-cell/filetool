@@ -1,0 +1,3137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,
+initial-scale=1.0,
+maximum-scale=1.0,
+user-scalable=no">
+
+<title>Share Market Calculator | Adiyogi Tools</title>
+
+<meta name="description"
+content="Advanced share market calculator for SIP, lump sum, step-up SIP, SWP, CAGR, stock profit loss, average price, target price, brokerage, portfolio and dividend calculations.">
+
+<meta name="robots"
+content="index, follow">
+
+<style>
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f3f4f6;
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header{
+
+    min-height:64px;
+
+    padding:10px 16px;
+
+    background:#0d1322;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+.brand{
+
+    font-size:19px;
+
+    font-weight:700;
+
+}
+
+.badge{
+
+    padding:8px 11px;
+
+    border-radius:12px;
+
+    background:#192842;
+
+    color:#9edbff;
+
+    font-size:11px;
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   PAGE
+========================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    padding:20px 14px 50px;
+
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.title{
+
+    text-align:center;
+
+    margin-bottom:20px;
+
+}
+
+.title-icon{
+
+    font-size:48px;
+
+    margin-bottom:7px;
+
+}
+
+.title h1{
+
+    font-size:29px;
+
+    margin-bottom:7px;
+
+}
+
+.title p{
+
+    color:#6b7280;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+}
+
+
+/* =========================================
+   TABS
+========================================= */
+
+.tabs{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(4,1fr);
+
+    gap:7px;
+
+    margin-bottom:18px;
+
+}
+
+.tab{
+
+    border:0;
+
+    min-height:45px;
+
+    padding:8px 5px;
+
+    border-radius:11px;
+
+    background:#e5e7eb;
+
+    color:#374151;
+
+    font-size:12px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+}
+
+.tab.active{
+
+    background:#7545f5;
+
+    color:white;
+
+}
+
+.tab:active{
+
+    transform:scale(.97);
+
+}
+
+
+/* =========================================
+   PANEL
+========================================= */
+
+.panel{
+
+    display:none;
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.08);
+
+}
+
+.panel.active{
+
+    display:block;
+
+}
+
+.panel-title{
+
+    font-size:21px;
+
+    font-weight:800;
+
+    margin-bottom:5px;
+
+}
+
+.panel-subtitle{
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    margin-bottom:18px;
+
+}
+
+
+/* =========================================
+   FORM GRID
+========================================= */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:13px;
+
+}
+
+.field{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.field.full{
+
+    grid-column:1/-1;
+
+}
+
+.field label{
+
+    margin-bottom:6px;
+
+    color:#374151;
+
+    font-size:13px;
+
+    font-weight:700;
+
+}
+
+.field input,
+.field select{
+
+    width:100%;
+
+    height:47px;
+
+    padding:0 12px;
+
+    border:2px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f8fafc;
+
+    color:#111827;
+
+    outline:none;
+
+}
+
+.field input:focus,
+.field select:focus{
+
+    border-color:#7545f5;
+
+    background:white;
+
+}
+
+
+/* =========================================
+   BUTTON
+========================================= */
+
+.calculate{
+
+    width:100%;
+
+    min-height:52px;
+
+    margin-top:18px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+    box-shadow:
+    0 5px 14px rgba(117,69,245,.25);
+
+}
+
+.calculate:active{
+
+    transform:scale(.98);
+
+}
+
+.reset{
+
+    width:100%;
+
+    height:44px;
+
+    margin-top:9px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f3f4f6;
+
+    color:#374151;
+
+    font-weight:700;
+
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result{
+
+    display:none;
+
+    margin-top:18px;
+
+    padding:16px;
+
+    border-radius:15px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+
+}
+
+.result.show{
+
+    display:block;
+
+}
+
+.result-heading{
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.big-result{
+
+    color:#5d32d4;
+
+    font-size:30px;
+
+    font-weight:900;
+
+    margin-bottom:14px;
+
+}
+
+.result-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:9px;
+
+}
+
+.result-item{
+
+    padding:11px;
+
+    border-radius:10px;
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+}
+
+.result-item span{
+
+    display:block;
+
+    color:#6b7280;
+
+    font-size:11px;
+
+    margin-bottom:4px;
+
+}
+
+.result-item strong{
+
+    font-size:15px;
+
+    color:#111827;
+
+}
+
+
+/* =========================================
+   PROGRESS BAR
+========================================= */
+
+.bar{
+
+    height:12px;
+
+    margin-top:14px;
+
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:#e5e7eb;
+
+}
+
+.bar-fill{
+
+    height:100%;
+
+    width:0%;
+
+    background:#7545f5;
+
+    border-radius:20px;
+
+    transition:.5s;
+
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.info{
+
+    margin-top:17px;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:12px;
+
+    line-height:1.65;
+
+}
+
+.info strong{
+
+    color:#111827;
+
+}
+
+
+/* =========================================
+   SECTION
+========================================= */
+
+.section-title{
+
+    margin-top:22px;
+
+    margin-bottom:10px;
+
+    font-size:16px;
+
+    font-weight:800;
+
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+
+    text-align:center;
+
+    margin-top:25px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px){
+
+    .container{
+
+        padding:16px 10px 40px;
+
+    }
+
+    .title-icon{
+
+        font-size:42px;
+
+    }
+
+    .title h1{
+
+        font-size:25px;
+
+    }
+
+    .tabs{
+
+        grid-template-columns:
+        repeat(3,1fr);
+
+    }
+
+    .tab{
+
+        font-size:11px;
+
+    }
+
+    .panel{
+
+        padding:14px;
+
+        border-radius:17px;
+
+    }
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .field.full{
+
+        grid-column:auto;
+
+    }
+
+    .result-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .big-result{
+
+        font-size:27px;
+
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media(max-width:360px){
+
+    .brand{
+
+        font-size:16px;
+
+    }
+
+    .badge{
+
+        display:none;
+
+    }
+
+    .tabs{
+
+        gap:5px;
+
+    }
+
+    .tab{
+
+        min-height:42px;
+
+        font-size:10px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<header class="header">
+
+    <div class="brand">
+        📊 Adiyogi Tools
+    </div>
+
+    <div class="badge">
+        SHARE MARKET
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+<section class="title">
+
+    <div class="title-icon">
+        📈
+    </div>
+
+    <h1>
+        Share Market Calculator
+    </h1>
+
+    <p>
+        Advanced investment, stock, return,
+        dividend and trading calculators.
+    </p>
+
+</section>
+
+
+<!-- =========================================
+     TABS
+========================================= -->
+
+<div class="tabs">
+
+<button class="tab active"
+onclick="showPanel('sip',this)">
+SIP
+</button>
+
+<button class="tab"
+onclick="showPanel('lumpsum',this)">
+Lumpsum
+</button>
+
+<button class="tab"
+onclick="showPanel('stepup',this)">
+Step-Up
+</button>
+
+<button class="tab"
+onclick="showPanel('swp',this)">
+SWP
+</button>
+
+<button class="tab"
+onclick="showPanel('cagr',this)">
+CAGR
+</button>
+
+<button class="tab"
+onclick="showPanel('stock',this)">
+Stock P/L
+</button>
+
+<button class="tab"
+onclick="showPanel('average',this)">
+Avg Price
+</button>
+
+<button class="tab"
+onclick="showPanel('target',this)">
+Target
+</button>
+
+<button class="tab"
+onclick="showPanel('charges',this)">
+Charges
+</button>
+
+<button class="tab"
+onclick="showPanel('portfolio',this)">
+Portfolio
+</button>
+
+<button class="tab"
+onclick="showPanel('dividend',this)">
+Dividend
+</button>
+
+<button class="tab"
+onclick="showPanel('goal',this)">
+Goal
+</button>
+
+</div>
+
+
+<!-- =========================================
+     SIP
+========================================= -->
+
+<section id="sip" class="panel active">
+
+<h2 class="panel-title">
+📈 SIP Calculator
+</h2>
+
+<p class="panel-subtitle">
+Calculate SIP investment, estimated returns and final value.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Monthly Investment (₹)
+</label>
+
+<input
+id="sipAmount"
+type="number"
+value="5000"
+min="0">
+
+</div>
+
+<div class="field">
+
+<label>
+Expected Annual Return (%)
+</label>
+
+<input
+id="sipRate"
+type="number"
+value="12"
+step="0.1">
+
+</div>
+
+<div class="field">
+
+<label>
+Investment Period (Years)
+</label>
+
+<input
+id="sipYears"
+type="number"
+value="10"
+min="1">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcSIP()">
+
+Calculate SIP
+
+</button>
+
+<div id="sipResult" class="result">
+
+<div class="result-heading">
+Estimated Future Value
+</div>
+
+<div id="sipFuture"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Total Invested</span>
+<strong id="sipInvested">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Estimated Gain</span>
+<strong id="sipGain">₹0</strong>
+</div>
+
+</div>
+
+<div class="bar">
+<div id="sipBar" class="bar-fill"></div>
+</div>
+
+</div>
+
+<div class="info">
+
+<strong>Formula:</strong>
+Monthly SIP is calculated using monthly compounding based on the expected annual return. Actual market returns can vary.
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     LUMPSUM
+========================================= -->
+
+<section id="lumpsum" class="panel">
+
+<h2 class="panel-title">
+💰 Lump Sum Calculator
+</h2>
+
+<p class="panel-subtitle">
+Calculate future value of a one-time investment.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Investment Amount (₹)
+</label>
+
+<input
+id="lumpAmount"
+type="number"
+value="100000">
+
+</div>
+
+<div class="field">
+
+<label>
+Expected Annual Return (%)
+</label>
+
+<input
+id="lumpRate"
+type="number"
+value="12"
+step="0.1">
+
+</div>
+
+<div class="field">
+
+<label>
+Period (Years)
+</label>
+
+<input
+id="lumpYears"
+type="number"
+value="10">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcLumpsum()">
+
+Calculate Lumpsum
+
+</button>
+
+<div id="lumpResult" class="result">
+
+<div class="result-heading">
+Future Value
+</div>
+
+<div id="lumpFuture"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Invested</span>
+<strong id="lumpInvested">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Estimated Gain</span>
+<strong id="lumpGain">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     STEP UP SIP
+========================================= -->
+
+<section id="stepup" class="panel">
+
+<h2 class="panel-title">
+🚀 Step-Up SIP Calculator
+</h2>
+
+<p class="panel-subtitle">
+Calculate SIP with an annual increase in investment.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Starting Monthly SIP (₹)
+</label>
+
+<input
+id="stepAmount"
+type="number"
+value="5000">
+
+</div>
+
+<div class="field">
+
+<label>
+Annual Step-Up (%)
+</label>
+
+<input
+id="stepPercent"
+type="number"
+value="10"
+step="0.1">
+
+</div>
+
+<div class="field">
+
+<label>
+Expected Return (%)
+</label>
+
+<input
+id="stepRate"
+type="number"
+value="12"
+step="0.1">
+
+</div>
+
+<div class="field">
+
+<label>
+Period (Years)
+</label>
+
+<input
+id="stepYears"
+type="number"
+value="10">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcStepUp()">
+
+Calculate Step-Up SIP
+
+</button>
+
+<div id="stepResult" class="result">
+
+<div class="result-heading">
+Estimated Future Value
+</div>
+
+<div id="stepFuture"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Total Invested</span>
+<strong id="stepInvested">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Estimated Gain</span>
+<strong id="stepGain">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     SWP
+========================================= -->
+
+<section id="swp" class="panel">
+
+<h2 class="panel-title">
+🔄 SWP Calculator
+</h2>
+
+<p class="panel-subtitle">
+Estimate withdrawals and remaining investment value.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Initial Investment (₹)
+</label>
+
+<input
+id="swpAmount"
+type="number"
+value="1000000">
+
+</div>
+
+<div class="field">
+
+<label>
+Monthly Withdrawal (₹)
+</label>
+
+<input
+id="swpWithdrawal"
+type="number"
+value="10000">
+
+</div>
+
+<div class="field">
+
+<label>
+Expected Annual Return (%)
+</label>
+
+<input
+id="swpRate"
+type="number"
+value="10"
+step="0.1">
+
+</div>
+
+<div class="field">
+
+<label>
+Period (Years)
+</label>
+
+<input
+id="swpYears"
+type="number"
+value="10">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcSWP()">
+
+Calculate SWP
+
+</button>
+
+<div id="swpResult" class="result">
+
+<div class="result-heading">
+Estimated Remaining Value
+</div>
+
+<div id="swpFuture"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Total Withdrawal</span>
+<strong id="swpWithdrawn">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Initial Investment</span>
+<strong id="swpInitial">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     CAGR
+========================================= -->
+
+<section id="cagr" class="panel">
+
+<h2 class="panel-title">
+📊 CAGR Calculator
+</h2>
+
+<p class="panel-subtitle">
+Calculate annualized growth of an investment.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Initial Investment (₹)
+</label>
+
+<input
+id="cagrStart"
+type="number"
+value="100000">
+
+</div>
+
+<div class="field">
+
+<label>
+Final Value (₹)
+</label>
+
+<input
+id="cagrEnd"
+type="number"
+value="200000">
+
+</div>
+
+<div class="field">
+
+<label>
+Investment Period (Years)
+</label>
+
+<input
+id="cagrYears"
+type="number"
+value="5"
+step="0.1">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcCAGR()">
+
+Calculate CAGR
+
+</button>
+
+<div id="cagrResult" class="result">
+
+<div class="result-heading">
+Compound Annual Growth Rate
+</div>
+
+<div id="cagrValue"
+class="big-result">
+0%
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     STOCK PROFIT LOSS
+========================================= -->
+
+<section id="stock" class="panel">
+
+<h2 class="panel-title">
+📉 Stock Profit / Loss
+</h2>
+
+<p class="panel-subtitle">
+Calculate stock investment profit or loss before charges.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Buy Price (₹)
+</label>
+
+<input
+id="stockBuy"
+type="number"
+value="100"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+Sell Price (₹)
+</label>
+
+<input
+id="stockSell"
+type="number"
+value="120"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+Quantity
+</label>
+
+<input
+id="stockQty"
+type="number"
+value="100">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcStock()">
+
+Calculate Profit / Loss
+
+</button>
+
+<div id="stockResult" class="result">
+
+<div class="result-heading">
+Trading Result
+</div>
+
+<div id="stockPL"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Buy Value</span>
+<strong id="stockBuyValue">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Sell Value</span>
+<strong id="stockSellValue">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Return %</span>
+<strong id="stockReturn">0%</strong>
+</div>
+
+<div class="result-item">
+<span>Per Share P/L</span>
+<strong id="stockPerShare">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     AVERAGE PRICE
+========================================= -->
+
+<section id="average" class="panel">
+
+<h2 class="panel-title">
+🧮 Average Buy Price
+</h2>
+
+<p class="panel-subtitle">
+Calculate average price after buying shares at different prices.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+First Buy Price (₹)
+</label>
+
+<input
+id="avgPrice1"
+type="number"
+value="100"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+First Quantity
+</label>
+
+<input
+id="avgQty1"
+type="number"
+value="100">
+
+</div>
+
+<div class="field">
+
+<label>
+Second Buy Price (₹)
+</label>
+
+<input
+id="avgPrice2"
+type="number"
+value="80"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+Second Quantity
+</label>
+
+<input
+id="avgQty2"
+type="number"
+value="100">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcAverage()">
+
+Calculate Average Price
+
+</button>
+
+<div id="avgResult" class="result">
+
+<div class="result-heading">
+Weighted Average Buy Price
+</div>
+
+<div id="avgValue"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Total Quantity</span>
+<strong id="avgQty">0</strong>
+</div>
+
+<div class="result-item">
+<span>Total Investment</span>
+<strong id="avgInvestment">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     TARGET PRICE
+========================================= -->
+
+<section id="target" class="panel">
+
+<h2 class="panel-title">
+🎯 Target Price Calculator
+</h2>
+
+<p class="panel-subtitle">
+Calculate required target price for a desired return.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Current Buy Price (₹)
+</label>
+
+<input
+id="targetBuy"
+type="number"
+value="100"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+Desired Return (%)
+</label>
+
+<input
+id="targetReturn"
+type="number"
+value="20"
+step="0.1">
+
+</div>
+
+<div class="field">
+
+<label>
+Quantity
+</label>
+
+<input
+id="targetQty"
+type="number"
+value="100">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcTarget()">
+
+Calculate Target Price
+
+</button>
+
+<div id="targetResult" class="result">
+
+<div class="result-heading">
+Required Target Price
+</div>
+
+<div id="targetPrice"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Investment</span>
+<strong id="targetInvestment">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Expected Profit</span>
+<strong id="targetProfit">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     CHARGES
+========================================= -->
+
+<section id="charges" class="panel">
+
+<h2 class="panel-title">
+💸 Brokerage & Charges
+</h2>
+
+<p class="panel-subtitle">
+Estimate transaction charges. Rates below are editable.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Buy Value (₹)
+</label>
+
+<input
+id="chargeBuy"
+type="number"
+value="10000">
+
+</div>
+
+<div class="field">
+
+<label>
+Sell Value (₹)
+</label>
+
+<input
+id="chargeSell"
+type="number"
+value="12000">
+
+</div>
+
+<div class="field">
+
+<label>
+Brokerage (₹)
+</label>
+
+<input
+id="chargeBrokerage"
+type="number"
+value="20"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+STT / CTT (₹)
+</label>
+
+<input
+id="chargeSTT"
+type="number"
+value="12"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+Exchange Charges (₹)
+</label>
+
+<input
+id="chargeExchange"
+type="number"
+value="3"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+SEBI Charges (₹)
+</label>
+
+<input
+id="chargeSEBI"
+type="number"
+value="0.05"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+Stamp Duty (₹)
+</label>
+
+<input
+id="chargeStamp"
+type="number"
+value="1"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+Other Charges (₹)
+</label>
+
+<input
+id="chargeOther"
+type="number"
+value="0"
+step="0.01">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcCharges()">
+
+Calculate Charges
+
+</button>
+
+<div id="chargeResult" class="result">
+
+<div class="result-heading">
+Estimated Total Charges
+</div>
+
+<div id="totalCharges"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Total Transaction Value</span>
+<strong id="transactionValue">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Net Profit/Loss</span>
+<strong id="netPL">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+<div class="info">
+
+<strong>Important:</strong>
+Brokerage, STT/CTT, exchange charges, SEBI charges, stamp duty and taxes can vary by broker, segment and applicable rules. Edit the values above according to your broker/current applicable rates.
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     PORTFOLIO
+========================================= -->
+
+<section id="portfolio" class="panel">
+
+<h2 class="panel-title">
+📦 Portfolio Return Calculator
+</h2>
+
+<p class="panel-subtitle">
+Calculate portfolio investment, current value and return.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Total Invested (₹)
+</label>
+
+<input
+id="portInvested"
+type="number"
+value="100000">
+
+</div>
+
+<div class="field">
+
+<label>
+Current Portfolio Value (₹)
+</label>
+
+<input
+id="portCurrent"
+type="number"
+value="125000">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcPortfolio()">
+
+Calculate Portfolio Return
+
+</button>
+
+<div id="portfolioResult" class="result">
+
+<div class="result-heading">
+Portfolio Performance
+</div>
+
+<div id="portfolioPL"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Absolute Return</span>
+<strong id="portfolioPercent">0%</strong>
+</div>
+
+<div class="result-item">
+<span>Total Invested</span>
+<strong id="portfolioInvested">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Current Value</span>
+<strong id="portfolioCurrent">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     DIVIDEND
+========================================= -->
+
+<section id="dividend" class="panel">
+
+<h2 class="panel-title">
+💵 Dividend Calculator
+</h2>
+
+<p class="panel-subtitle">
+Calculate dividend income and dividend yield.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Shares Held
+</label>
+
+<input
+id="divShares"
+type="number"
+value="100">
+
+</div>
+
+<div class="field">
+
+<label>
+Dividend Per Share (₹)
+</label>
+
+<input
+id="divPerShare"
+type="number"
+value="5"
+step="0.01">
+
+</div>
+
+<div class="field">
+
+<label>
+Purchase Price Per Share (₹)
+</label>
+
+<input
+id="divPrice"
+type="number"
+value="100"
+step="0.01">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcDividend()">
+
+Calculate Dividend
+
+</button>
+
+<div id="dividendResult" class="result">
+
+<div class="result-heading">
+Dividend Income
+</div>
+
+<div id="divIncome"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Dividend Yield</span>
+<strong id="divYield">0%</strong>
+</div>
+
+<div class="result-item">
+<span>Total Investment</span>
+<strong id="divInvestment">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================================
+     GOAL
+========================================= -->
+
+<section id="goal" class="panel">
+
+<h2 class="panel-title">
+🎯 Investment Goal Calculator
+</h2>
+
+<p class="panel-subtitle">
+Estimate monthly SIP required to reach a target amount.
+</p>
+
+<div class="form-grid">
+
+<div class="field">
+
+<label>
+Target Amount (₹)
+</label>
+
+<input
+id="goalAmount"
+type="number"
+value="1000000">
+
+</div>
+
+<div class="field">
+
+<label>
+Expected Annual Return (%)
+</label>
+
+<input
+id="goalRate"
+type="number"
+value="12"
+step="0.1">
+
+</div>
+
+<div class="field">
+
+<label>
+Time Period (Years)
+</label>
+
+<input
+id="goalYears"
+type="number"
+value="10">
+
+</div>
+
+</div>
+
+<button
+class="calculate"
+onclick="calcGoal()">
+
+Calculate Required SIP
+
+</button>
+
+<div id="goalResult" class="result">
+
+<div class="result-heading">
+Required Monthly SIP
+</div>
+
+<div id="goalSIP"
+class="big-result">
+₹0
+</div>
+
+<div class="result-grid">
+
+<div class="result-item">
+<span>Target Amount</span>
+<strong id="goalTarget">₹0</strong>
+</div>
+
+<div class="result-item">
+<span>Total Investment</span>
+<strong id="goalInvested">₹0</strong>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="info">
+
+<strong>⚠️ Investment Disclaimer:</strong><br>
+
+This calculator provides mathematical estimates only. Actual stock, mutual fund and market returns are not guaranteed. Market prices, taxes, brokerage and regulatory charges may change. Do your own research before making investment decisions.
+
+</div>
+
+
+<div class="footer">
+
+© Adiyogi Tools
+
+</div>
+
+
+</main>
+
+
+<script>
+
+/* =========================================
+   COMMON FUNCTIONS
+========================================= */
+
+function money(value){
+
+    if(!Number.isFinite(value))
+        return "₹0";
+
+    return "₹" +
+        value.toLocaleString(
+            "en-IN",
+            {
+                maximumFractionDigits:2
+            }
+        );
+
+}
+
+
+function num(id){
+
+    return Number(
+        document.getElementById(id).value
+    );
+
+}
+
+
+function valid(...values){
+
+    return values.every(function(v){
+
+        return Number.isFinite(v);
+
+    });
+
+}
+
+
+function showResult(id){
+
+    document
+    .getElementById(id)
+    .classList.add("show");
+
+}
+
+
+/* =========================================
+   TABS
+========================================= */
+
+function showPanel(id,button){
+
+    document
+    .querySelectorAll(".panel")
+    .forEach(function(panel){
+
+        panel.classList.remove("active");
+
+    });
+
+
+    document
+    .querySelectorAll(".tab")
+    .forEach(function(tab){
+
+        tab.classList.remove("active");
+
+    });
+
+
+    document
+    .getElementById(id)
+    .classList.add("active");
+
+
+    button.classList.add("active");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================================
+   SIP
+========================================= */
+
+function calcSIP(){
+
+    const P = num("sipAmount");
+    const annual = num("sipRate");
+    const years = num("sipYears");
+
+    if(
+        !valid(P,annual,years) ||
+        P <= 0 ||
+        years <= 0
+    ){
+
+        alert("Please enter valid SIP values.");
+        return;
+
+    }
+
+
+    const months = years * 12;
+
+    const monthlyRate =
+        annual / 100 / 12;
+
+
+    let future;
+
+
+    if(monthlyRate === 0){
+
+        future = P * months;
+
+    }else{
+
+        future =
+            P *
+            (
+                (
+                    Math.pow(
+                        1 + monthlyRate,
+                        months
+                    ) - 1
+                ) /
+                monthlyRate
+            ) *
+            (1 + monthlyRate);
+
+    }
+
+
+    const invested =
+        P * months;
+
+
+    const gain =
+        future - invested;
+
+
+    document.getElementById(
+        "sipFuture"
+    ).textContent = money(future);
+
+
+    document.getElementById(
+        "sipInvested"
+    ).textContent = money(invested);
+
+
+    document.getElementById(
+        "sipGain"
+    ).textContent = money(gain);
+
+
+    const percentage =
+        future > 0
+        ? (invested / future) * 100
+        : 0;
+
+
+    document.getElementById(
+        "sipBar"
+    ).style.width =
+        Math.min(100,percentage) + "%";
+
+
+    showResult("sipResult");
+
+}
+
+
+/* =========================================
+   LUMP SUM
+========================================= */
+
+function calcLumpsum(){
+
+    const P = num("lumpAmount");
+    const rate = num("lumpRate");
+    const years = num("lumpYears");
+
+
+    if(
+        !valid(P,rate,years) ||
+        P <= 0 ||
+        years <= 0
+    ){
+
+        alert("Please enter valid values.");
+        return;
+
+    }
+
+
+    const future =
+        P *
+        Math.pow(
+            1 + rate / 100,
+            years
+        );
+
+
+    const gain =
+        future - P;
+
+
+    document.getElementById(
+        "lumpFuture"
+    ).textContent = money(future);
+
+
+    document.getElementById(
+        "lumpInvested"
+    ).textContent = money(P);
+
+
+    document.getElementById(
+        "lumpGain"
+    ).textContent = money(gain);
+
+
+    showResult("lumpResult");
+
+}
+
+
+/* =========================================
+   STEP UP SIP
+========================================= */
+
+function calcStepUp(){
+
+    let monthly = num("stepAmount");
+
+    const step =
+        num("stepPercent");
+
+    const annual =
+        num("stepRate");
+
+    const years =
+        num("stepYears");
+
+
+    if(
+        !valid(
+            monthly,
+            step,
+            annual,
+            years
+        ) ||
+        monthly <= 0 ||
+        years <= 0
+    ){
+
+        alert("Please enter valid values.");
+        return;
+
+    }
+
+
+    const monthlyRate =
+        annual / 100 / 12;
+
+
+    let future = 0;
+
+    let invested = 0;
+
+
+    for(
+        let year = 1;
+        year <= years;
+        year++
+    ){
+
+        for(
+            let month = 1;
+            month <= 12;
+            month++
+        ){
+
+            invested += monthly;
+
+
+            if(monthlyRate === 0){
+
+                future += monthly;
+
+            }else{
+
+                future =
+                    future *
+                    (1 + monthlyRate) +
+                    monthly;
+
+            }
+
+        }
+
+
+        monthly =
+            monthly *
+            (1 + step / 100);
+
+    }
+
+
+    const gain =
+        future - invested;
+
+
+    document.getElementById(
+        "stepFuture"
+    ).textContent = money(future);
+
+
+    document.getElementById(
+        "stepInvested"
+    ).textContent = money(invested);
+
+
+    document.getElementById(
+        "stepGain"
+    ).textContent = money(gain);
+
+
+    showResult("stepResult");
+
+}
+
+
+/* =========================================
+   SWP
+========================================= */
+
+function calcSWP(){
+
+    let balance =
+        num("swpAmount");
+
+    const withdrawal =
+        num("swpWithdrawal");
+
+    const annual =
+        num("swpRate");
+
+    const years =
+        num("swpYears");
+
+
+    if(
+        !valid(
+            balance,
+            withdrawal,
+            annual,
+            years
+        ) ||
+        balance <= 0 ||
+        withdrawal < 0 ||
+        years <= 0
+    ){
+
+        alert("Please enter valid values.");
+        return;
+
+    }
+
+
+    const monthlyRate =
+        annual / 100 / 12;
+
+
+    const months =
+        years * 12;
+
+
+    let totalWithdrawal = 0;
+
+
+    for(
+        let i = 0;
+        i < months;
+        i++
+    ){
+
+        balance =
+            balance *
+            (1 + monthlyRate);
+
+
+        const actualWithdrawal =
+            Math.min(
+                withdrawal,
+                balance
+            );
+
+
+        balance -= actualWithdrawal;
+
+        totalWithdrawal +=
+            actualWithdrawal;
+
+
+        if(balance <= 0)
+            break;
+
+    }
+
+
+    document.getElementById(
+        "swpFuture"
+    ).textContent =
+        money(Math.max(0,balance));
+
+
+    document.getElementById(
+        "swpWithdrawn"
+    ).textContent =
+        money(totalWithdrawal);
+
+
+    document.getElementById(
+        "swpInitial"
+    ).textContent =
+        money(num("swpAmount"));
+
+
+    showResult("swpResult");
+
+}
+
+
+/* =========================================
+   CAGR
+========================================= */
+
+function calcCAGR(){
+
+    const start =
+        num("cagrStart");
+
+    const end =
+        num("cagrEnd");
+
+    const years =
+        num("cagrYears");
+
+
+    if(
+        !valid(start,end,years) ||
+        start <= 0 ||
+        end <= 0 ||
+        years <= 0
+    ){
+
+        alert("Please enter valid CAGR values.");
+        return;
+
+    }
+
+
+    const cagr =
+        (
+            Math.pow(
+                end / start,
+                1 / years
+            ) - 1
+        ) * 100;
+
+
+    document.getElementById(
+        "cagrValue"
+    ).textContent =
+        cagr.toFixed(2) + "%";
+
+
+    showResult("cagrResult");
+
+}
+
+
+/* =========================================
+   STOCK PROFIT LOSS
+========================================= */
+
+function calcStock(){
+
+    const buy =
+        num("stockBuy");
+
+    const sell =
+        num("stockSell");
+
+    const qty =
+        num("stockQty");
+
+
+    if(
+        !valid(buy,sell,qty) ||
+        buy <= 0 ||
+        sell < 0 ||
+        qty <= 0
+    ){
+
+        alert("Please enter valid stock values.");
+        return;
+
+    }
+
+
+    const buyValue =
+        buy * qty;
+
+    const sellValue =
+        sell * qty;
+
+    const profit =
+        sellValue - buyValue;
+
+    const returnPercent =
+        (profit / buyValue) * 100;
+
+
+    document.getElementById(
+        "stockPL"
+    ).textContent =
+        money(profit);
+
+
+    document.getElementById(
+        "stockBuyValue"
+    ).textContent =
+        money(buyValue);
+
+
+    document.getElementById(
+        "stockSellValue"
+    ).textContent =
+        money(sellValue);
+
+
+    document.getElementById(
+        "stockReturn"
+    ).textContent =
+        returnPercent.toFixed(2) + "%";
+
+
+    document.getElementById(
+        "stockPerShare"
+    ).textContent =
+        money(sell - buy);
+
+
+    showResult("stockResult");
+
+}
+
+
+/* =========================================
+   AVERAGE BUY PRICE
+========================================= */
+
+function calcAverage(){
+
+    const price1 =
+        num("avgPrice1");
+
+    const qty1 =
+        num("avgQty1");
+
+    const price2 =
+        num("avgPrice2");
+
+    const qty2 =
+        num("avgQty2");
+
+
+    if(
+        !valid(
+            price1,
+            qty1,
+            price2,
+            qty2
+        ) ||
+        price1 < 0 ||
+        price2 < 0 ||
+        qty1 <= 0 ||
+        qty2 <= 0
+    ){
+
+        alert("Please enter valid values.");
+        return;
+
+    }
+
+
+    const totalInvestment =
+        price1 * qty1 +
+        price2 * qty2;
+
+
+    const totalQty =
+        qty1 + qty2;
+
+
+    const average =
+        totalInvestment /
+        totalQty;
+
+
+    document.getElementById(
+        "avgValue"
+    ).textContent =
+        money(average);
+
+
+    document.getElementById(
+        "avgQty"
+    ).textContent =
+        totalQty;
+
+
+    document.getElementById(
+        "avgInvestment"
+    ).textContent =
+        money(totalInvestment);
+
+
+    showResult("avgResult");
+
+}
+
+
+/* =========================================
+   TARGET PRICE
+========================================= */
+
+function calcTarget(){
+
+    const buy =
+        num("targetBuy");
+
+    const desired =
+        num("targetReturn");
+
+    const qty =
+        num("targetQty");
+
+
+    if(
+        !valid(buy,desired,qty) ||
+        buy <= 0 ||
+        qty <= 0
+    ){
+
+        alert("Please enter valid values.");
+        return;
+
+    }
+
+
+    const target =
+        buy *
+        (
+            1 + desired / 100
+        );
+
+
+    const investment =
+        buy * qty;
+
+
+    const profit =
+        investment *
+        desired / 100;
+
+
+    document.getElementById(
+        "targetPrice"
+    ).textContent =
+        money(target);
+
+
+    document.getElementById(
+        "targetInvestment"
+    ).textContent =
+        money(investment);
+
+
+    document.getElementById(
+        "targetProfit"
+    ).textContent =
+        money(profit);
+
+
+    showResult("targetResult");
+
+}
+
+
+/* =========================================
+   CHARGES
+========================================= */
+
+function calcCharges(){
+
+    const buy =
+        num("chargeBuy");
+
+    const sell =
+        num("chargeSell");
+
+    const brokerage =
+        num("chargeBrokerage");
+
+    const stt =
+        num("chargeSTT");
+
+    const exchange =
+        num("chargeExchange");
+
+    const sebi =
+        num("chargeSEBI");
+
+    const stamp =
+        num("chargeStamp");
+
+    const other =
+        num("chargeOther");
+
+
+    const values = [
+        buy,
+        sell,
+        brokerage,
+        stt,
+        exchange,
+        sebi,
+        stamp,
+        other
+    ];
+
+
+    if(
+        !valid(...values) ||
+        buy < 0 ||
+        sell < 0
+    ){
+
+        alert("Please enter valid charge values.");
+        return;
+
+    }
+
+
+    const total =
+        brokerage +
+        stt +
+        exchange +
+        sebi +
+        stamp +
+        other;
+
+
+    const grossPL =
+        sell - buy;
+
+
+    const net =
+        grossPL - total;
+
+
+    document.getElementById(
+        "totalCharges"
+    ).textContent =
+        money(total);
+
+
+    document.getElementById(
+        "transactionValue"
+    ).textContent =
+        money(buy + sell);
+
+
+    document.getElementById(
+        "netPL"
+    ).textContent =
+        money(net);
+
+
+    showResult("chargeResult");
+
+}
+
+
+/* =========================================
+   PORTFOLIO
+========================================= */
+
+function calcPortfolio(){
+
+    const invested =
+        num("portInvested");
+
+    const current =
+        num("portCurrent");
+
+
+    if(
+        !valid(invested,current) ||
+        invested <= 0 ||
+        current < 0
+    ){
+
+        alert("Please enter valid portfolio values.");
+        return;
+
+    }
+
+
+    const profit =
+        current - invested;
+
+
+    const percent =
+        profit /
+        invested *
+        100;
+
+
+    document.getElementById(
+        "portfolioPL"
+    ).textContent =
+        money(profit);
+
+
+    document.getElementById(
+        "portfolioPercent"
+    ).textContent =
+        percent.toFixed(2) + "%";
+
+
+    document.getElementById(
+        "portfolioInvested"
+    ).textContent =
+        money(invested);
+
+
+    document.getElementById(
+        "portfolioCurrent"
+    ).textContent =
+        money(current);
+
+
+    showResult("portfolioResult");
+
+}
+
+
+/* =========================================
+   DIVIDEND
+========================================= */
+
+function calcDividend(){
+
+    const shares =
+        num("divShares");
+
+    const dividend =
+        num("divPerShare");
+
+    const price =
+        num("divPrice");
+
+
+    if(
+        !valid(shares,dividend,price) ||
+        shares <= 0 ||
+        dividend < 0 ||
+        price <= 0
+    ){
+
+        alert("Please enter valid dividend values.");
+        return;
+
+    }
+
+
+    const income =
+        shares * dividend;
+
+
+    const investment =
+        shares * price;
+
+
+    const yieldPercent =
+        dividend /
+        price *
+        100;
+
+
+    document.getElementById(
+        "divIncome"
+    ).textContent =
+        money(income);
+
+
+    document.getElementById(
+        "divYield"
+    ).textContent =
+        yieldPercent.toFixed(2) + "%";
+
+
+    document.getElementById(
+        "divInvestment"
+    ).textContent =
+        money(investment);
+
+
+    showResult("dividendResult");
+
+}
+
+
+/* =========================================
+   INVESTMENT GOAL
+========================================= */
+
+function calcGoal(){
+
+    const target =
+        num("goalAmount");
+
+    const annual =
+        num("goalRate");
+
+    const years =
+        num("goalYears");
+
+
+    if(
+        !valid(target,annual,years) ||
+        target <= 0 ||
+        years <= 0
+    ){
+
+        alert("Please enter valid goal values.");
+        return;
+
+    }
+
+
+    const months =
+        years * 12;
+
+
+    const monthlyRate =
+        annual / 100 / 12;
+
+
+    let sip;
+
+
+    if(monthlyRate === 0){
+
+        sip =
+            target / months;
+
+    }else{
+
+        sip =
+            target *
+            monthlyRate /
+            (
+                (
+                    Math.pow(
+                        1 + monthlyRate,
+                        months
+                    ) - 1
+                ) *
+                (1 + monthlyRate)
+            );
+
+    }
+
+
+    const invested =
+        sip * months;
+
+
+    document.getElementById(
+        "goalSIP"
+    ).textContent =
+        money(sip);
+
+
+    document.getElementById(
+        "goalTarget"
+    ).textContent =
+        money(target);
+
+
+    document.getElementById(
+        "goalInvested"
+    ).textContent =
+        money(invested);
+
+
+    showResult("goalResult");
+
+}
+
+
+/* =========================================
+   AUTO CALCULATE SIP
+========================================= */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        calcSIP();
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>
