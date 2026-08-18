@@ -1,0 +1,1671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Currency Converter - AdiyogiTools</title>
+
+<meta name="description"
+content="Free online currency converter. Convert USD, INR, EUR, GBP, JPY and many other currencies easily.">
+
+<meta name="robots"
+content="index, follow">
+
+<link rel="canonical"
+href="https://adiyogitools.in/currency-calculator.html">
+
+
+<style>
+
+/* =========================================
+   RESET
+========================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,
+body{
+
+    min-height:100%;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    background:#f3f4f6;
+
+    color:#111827;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header{
+
+    min-height:62px;
+
+    padding:10px 16px;
+
+    background:#0d1322;
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+}
+
+.brand{
+
+    font-size:19px;
+
+    font-weight:700;
+}
+
+.badge{
+
+    padding:8px 11px;
+
+    border-radius:12px;
+
+    background:#192842;
+
+    color:#9edbff;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+
+/* =========================================
+   CONTAINER
+========================================= */
+
+.container{
+
+    width:100%;
+
+    max-width:720px;
+
+    margin:auto;
+
+    padding:22px 14px 45px;
+}
+
+
+/* =========================================
+   TITLE
+========================================= */
+
+.title{
+
+    text-align:center;
+
+    margin-bottom:20px;
+}
+
+.title-icon{
+
+    font-size:48px;
+
+    margin-bottom:7px;
+}
+
+.title h1{
+
+    font-size:29px;
+
+    margin-bottom:7px;
+}
+
+.title p{
+
+    color:#6b7280;
+
+    font-size:15px;
+
+    line-height:1.5;
+}
+
+
+/* =========================================
+   CARD
+========================================= */
+
+.card{
+
+    background:white;
+
+    border:1px solid #e5e7eb;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    box-shadow:
+    0 8px 28px rgba(0,0,0,.08);
+}
+
+
+/* =========================================
+   LABEL
+========================================= */
+
+.label{
+
+    display:block;
+
+    margin-bottom:7px;
+
+    color:#374151;
+
+    font-size:12px;
+
+    font-weight:800;
+}
+
+
+/* =========================================
+   AMOUNT
+========================================= */
+
+.amount-input{
+
+    width:100%;
+
+    height:58px;
+
+    padding:0 14px;
+
+    border:2px solid #d8deea;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#111827;
+
+    outline:none;
+
+    font-size:23px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+}
+
+.amount-input:focus{
+
+    border-color:#7545f5;
+}
+
+
+/* =========================================
+   CURRENCY ROW
+========================================= */
+
+.currency-row{
+
+    display:grid;
+
+    grid-template-columns:
+    1fr auto 1fr;
+
+    gap:9px;
+
+    align-items:end;
+}
+
+
+/* =========================================
+   SELECT BOX
+========================================= */
+
+.currency-box{
+
+    min-width:0;
+}
+
+.currency-select{
+
+    width:100%;
+
+    height:52px;
+
+    padding:0 10px;
+
+    border:2px solid #d8deea;
+
+    border-radius:12px;
+
+    background:white;
+
+    color:#111827;
+
+    outline:none;
+
+    font-size:14px;
+
+    font-weight:600;
+}
+
+.currency-select:focus{
+
+    border-color:#7545f5;
+}
+
+
+/* =========================================
+   SWAP
+========================================= */
+
+.swap{
+
+    width:45px;
+
+    height:45px;
+
+    margin-bottom:3px;
+
+    border:0;
+
+    border-radius:50%;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:21px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.swap:active{
+
+    transform:scale(.93);
+}
+
+
+/* =========================================
+   CONVERT BUTTON
+========================================= */
+
+.convert-btn{
+
+    width:100%;
+
+    height:54px;
+
+    margin-top:19px;
+
+    border:0;
+
+    border-radius:13px;
+
+    background:#7545f5;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 5px 15px
+    rgba(117,69,245,.25);
+
+    cursor:pointer;
+}
+
+.convert-btn:active{
+
+    transform:scale(.98);
+}
+
+
+/* =========================================
+   RESULT
+========================================= */
+
+.result{
+
+    display:none;
+
+    margin-top:20px;
+
+    padding:20px 15px;
+
+    border-radius:16px;
+
+    background:#f0ecff;
+
+    border:1px solid #d9ceff;
+
+    text-align:center;
+}
+
+.result.show{
+
+    display:block;
+}
+
+.result-label{
+
+    color:#6b7280;
+
+    font-size:13px;
+
+    margin-bottom:8px;
+}
+
+.result-value{
+
+    color:#5d32d4;
+
+    font-size:32px;
+
+    font-weight:800;
+
+    word-break:break-word;
+}
+
+.result-rate{
+
+    margin-top:12px;
+
+    color:#4b5563;
+
+    font-size:14px;
+
+    line-height:1.6;
+}
+
+.updated{
+
+    margin-top:8px;
+
+    color:#9ca3af;
+
+    font-size:11px;
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+.error{
+
+    display:none;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    background:#fff1f2;
+
+    border:1px solid #fecdd3;
+
+    color:#be123c;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+    text-align:center;
+}
+
+.error.show{
+
+    display:block;
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+.clear{
+
+    width:100%;
+
+    height:45px;
+
+    margin-top:9px;
+
+    border:1px solid #d8deea;
+
+    border-radius:11px;
+
+    background:#f8fafc;
+
+    color:#5d32d4;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    cursor:pointer;
+}
+
+.clear:active{
+
+    transform:scale(.98);
+}
+
+
+/* =========================================
+   INFO
+========================================= */
+
+.info{
+
+    margin-top:18px;
+
+    padding:15px;
+
+    border-radius:13px;
+
+    background:#f8fafc;
+
+    border:1px solid #e5e7eb;
+
+    color:#4b5563;
+
+    font-size:13px;
+
+    line-height:1.7;
+}
+
+.info strong{
+
+    color:#111827;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer{
+
+    text-align:center;
+
+    margin-top:22px;
+
+    color:#9ca3af;
+
+    font-size:12px;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:500px){
+
+    .brand{
+
+        font-size:17px;
+    }
+
+    .container{
+
+        padding:18px 11px 35px;
+    }
+
+    .title-icon{
+
+        font-size:42px;
+    }
+
+    .title h1{
+
+        font-size:25px;
+    }
+
+    .card{
+
+        padding:14px;
+
+        border-radius:17px;
+    }
+
+    .currency-row{
+
+        grid-template-columns:
+        1fr;
+    }
+
+    .swap{
+
+        margin:2px auto;
+
+        transform:rotate(90deg);
+    }
+
+    .swap:active{
+
+        transform:
+        rotate(90deg)
+        scale(.93);
+    }
+
+}
+
+
+/* =========================================
+   SMALL PHONE
+========================================= */
+
+@media(max-width:360px){
+
+    .badge{
+
+        display:none;
+    }
+
+    .title h1{
+
+        font-size:23px;
+    }
+
+    .amount-input{
+
+        font-size:20px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="header">
+
+<div class="brand">
+🧮 Adiyogi Tools
+</div>
+
+<div class="badge">
+CURRENCY
+</div>
+
+</header>
+
+
+<main class="container">
+
+
+<!-- =========================================
+     TITLE
+========================================= -->
+
+<section class="title">
+
+<div class="title-icon">
+💱
+</div>
+
+<h1>
+Currency Converter
+</h1>
+
+<p>
+Convert currencies quickly and easily.
+</p>
+
+</section>
+
+
+<!-- =========================================
+     CARD
+========================================= -->
+
+<section class="card">
+
+
+<!-- AMOUNT -->
+
+<label
+class="label"
+for="amount">
+
+💰 Amount
+
+</label>
+
+<input
+id="amount"
+class="amount-input"
+type="number"
+inputmode="decimal"
+step="any"
+value="1"
+placeholder="Enter amount">
+
+
+<!-- CURRENCIES -->
+
+<div class="currency-row">
+
+
+<!-- FROM -->
+
+<div class="currency-box">
+
+<label
+class="label"
+for="fromCurrency">
+
+From
+
+</label>
+
+<select
+id="fromCurrency"
+class="currency-select">
+
+</select>
+
+</div>
+
+
+<!-- SWAP -->
+
+<button
+type="button"
+class="swap"
+onclick="swapCurrencies()">
+
+⇄
+
+</button>
+
+
+<!-- TO -->
+
+<div class="currency-box">
+
+<label
+class="label"
+for="toCurrency">
+
+To
+
+</label>
+
+<select
+id="toCurrency"
+class="currency-select">
+
+</select>
+
+</div>
+
+
+</div>
+
+
+<!-- CONVERT -->
+
+<button
+type="button"
+class="convert-btn"
+onclick="convertCurrency()">
+
+💱 Convert Currency
+
+</button>
+
+
+<!-- RESULT -->
+
+<div
+id="result"
+class="result">
+
+<div class="result-label">
+Converted Amount
+</div>
+
+<div
+id="resultValue"
+class="result-value">
+—
+</div>
+
+<div
+id="resultRate"
+class="result-rate">
+</div>
+
+<div
+id="updated"
+class="updated">
+</div>
+
+</div>
+
+
+<!-- ERROR -->
+
+<div
+id="error"
+class="error">
+</div>
+
+
+<!-- CLEAR -->
+
+<button
+type="button"
+class="clear"
+onclick="clearAll()">
+
+🧹 Clear All
+
+</button>
+
+
+<!-- INFO -->
+
+<div class="info">
+
+<strong>
+Popular Currencies
+</strong>
+
+<br><br>
+
+🇮🇳 INR — Indian Rupee
+
+<br>
+
+🇺🇸 USD — US Dollar
+
+<br>
+
+🇪🇺 EUR — Euro
+
+<br>
+
+🇬🇧 GBP — British Pound
+
+<br>
+
+🇯🇵 JPY — Japanese Yen
+
+<br>
+
+🇨🇦 CAD — Canadian Dollar
+
+<br>
+
+🇦🇺 AUD — Australian Dollar
+
+<br>
+
+🇨🇭 CHF — Swiss Franc
+
+<br>
+
+🇸🇬 SGD — Singapore Dollar
+
+<br>
+
+🇦🇪 AED — UAE Dirham
+
+<br>
+
+🇨🇳 CNY — Chinese Yuan
+
+<br>
+
+🇰🇷 KRW — South Korean Won
+
+<br>
+
+🇷🇺 RUB — Russian Ruble
+
+<br>
+
+🇳🇿 NZD — New Zealand Dollar
+
+</div>
+
+
+</section>
+
+
+<div class="footer">
+© Adiyogi Tools
+</div>
+
+
+</main>
+
+
+<script>
+
+/* =========================================
+   CURRENCY DATA
+========================================= */
+
+const currencies = [
+
+{
+code:"INR",
+name:"Indian Rupee",
+flag:"🇮🇳"
+},
+
+{
+code:"USD",
+name:"US Dollar",
+flag:"🇺🇸"
+},
+
+{
+code:"EUR",
+name:"Euro",
+flag:"🇪🇺"
+},
+
+{
+code:"GBP",
+name:"British Pound",
+flag:"🇬🇧"
+},
+
+{
+code:"JPY",
+name:"Japanese Yen",
+flag:"🇯🇵"
+},
+
+{
+code:"CAD",
+name:"Canadian Dollar",
+flag:"🇨🇦"
+},
+
+{
+code:"AUD",
+name:"Australian Dollar",
+flag:"🇦🇺"
+},
+
+{
+code:"CHF",
+name:"Swiss Franc",
+flag:"🇨🇭"
+},
+
+{
+code:"SGD",
+name:"Singapore Dollar",
+flag:"🇸🇬"
+},
+
+{
+code:"AED",
+name:"UAE Dirham",
+flag:"🇦🇪"
+},
+
+{
+code:"CNY",
+name:"Chinese Yuan",
+flag:"🇨🇳"
+},
+
+{
+code:"KRW",
+name:"South Korean Won",
+flag:"🇰🇷"
+},
+
+{
+code:"RUB",
+name:"Russian Ruble",
+flag:"🇷🇺"
+},
+
+{
+code:"NZD",
+name:"New Zealand Dollar",
+flag:"🇳🇿"
+},
+
+{
+code:"HKD",
+name:"Hong Kong Dollar",
+flag:"🇭🇰"
+},
+
+{
+code:"SAR",
+name:"Saudi Riyal",
+flag:"🇸🇦"
+},
+
+{
+code:"QAR",
+name:"Qatari Riyal",
+flag:"🇶🇦"
+},
+
+{
+code:"KWD",
+name:"Kuwaiti Dinar",
+flag:"🇰🇼"
+},
+
+{
+code:"BHD",
+name:"Bahraini Dinar",
+flag:"🇧🇭"
+},
+
+{
+code:"THB",
+name:"Thai Baht",
+flag:"🇹🇭"
+},
+
+{
+code:"MYR",
+name:"Malaysian Ringgit",
+flag:"🇲🇾"
+},
+
+{
+code:"IDR",
+name:"Indonesian Rupiah",
+flag:"🇮🇩"
+},
+
+{
+code:"ZAR",
+name:"South African Rand",
+flag:"🇿🇦"
+},
+
+{
+code:"BRL",
+name:"Brazilian Real",
+flag:"🇧🇷"
+},
+
+{
+code:"MXN",
+name:"Mexican Peso",
+flag:"🇲🇽"
+}
+
+];
+
+
+/* =========================================
+   FALLBACK RATES
+   Base = USD
+========================================= */
+
+const fallbackRates = {
+
+USD:1,
+
+INR:95.6621,
+
+EUR:0.852,
+
+GBP:0.738,
+
+JPY:147.1,
+
+CAD:1.38,
+
+AUD:1.53,
+
+CHF:0.80,
+
+SGD:1.28,
+
+AED:3.6725,
+
+CNY:7.18,
+
+KRW:1390,
+
+RUB:79,
+
+NZD:1.76,
+
+HKD:7.82,
+
+SAR:3.75,
+
+QAR:3.64,
+
+KWD:0.306,
+
+BHD:0.377,
+
+THB:32.2,
+
+MYR:3.95,
+
+IDR:16500,
+
+ZAR:17.5,
+
+BRL:5.42,
+
+MXN:18.8
+
+};
+
+
+/* =========================================
+   ELEMENTS
+========================================= */
+
+const amount =
+document.getElementById(
+"amount"
+);
+
+const fromCurrency =
+document.getElementById(
+"fromCurrency"
+);
+
+const toCurrency =
+document.getElementById(
+"toCurrency"
+);
+
+const result =
+document.getElementById(
+"result"
+);
+
+const resultValue =
+document.getElementById(
+"resultValue"
+);
+
+const resultRate =
+document.getElementById(
+"resultRate"
+);
+
+const updated =
+document.getElementById(
+"updated"
+);
+
+const errorBox =
+document.getElementById(
+"error"
+);
+
+
+/* =========================================
+   POPULATE CURRENCIES
+========================================= */
+
+function populateCurrencies(){
+
+    fromCurrency.innerHTML = "";
+
+    toCurrency.innerHTML = "";
+
+
+    currencies.forEach(
+        function(currency){
+
+            const option1 =
+            document.createElement(
+                "option"
+            );
+
+            option1.value =
+            currency.code;
+
+            option1.textContent =
+            currency.flag +
+            " " +
+            currency.code +
+            " — " +
+            currency.name;
+
+
+            const option2 =
+            document.createElement(
+                "option"
+            );
+
+            option2.value =
+            currency.code;
+
+            option2.textContent =
+            currency.flag +
+            " " +
+            currency.code +
+            " — " +
+            currency.name;
+
+
+            fromCurrency.appendChild(
+                option1
+            );
+
+            toCurrency.appendChild(
+                option2
+            );
+
+        }
+    );
+
+
+    /* Default INR → USD */
+
+    fromCurrency.value =
+    "INR";
+
+    toCurrency.value =
+    "USD";
+
+}
+
+
+/* =========================================
+   FORMAT NUMBER
+========================================= */
+
+function formatNumber(value){
+
+    if(
+        !Number.isFinite(value)
+    ){
+
+        return "Error";
+
+    }
+
+
+    if(
+        Math.abs(value)<1e-12
+    ){
+
+        value=0;
+
+    }
+
+
+    if(
+        Math.abs(value)>=1e12
+    ){
+
+        return value.toExponential(8);
+
+    }
+
+
+    return Number(
+        value.toPrecision(12)
+    ).toString();
+
+}
+
+
+/* =========================================
+   GET LIVE RATE
+========================================= */
+
+async function getLiveRate(
+    from,
+    to
+){
+
+    /*
+       Frankfurter API
+       ECB based exchange rates.
+    */
+
+    const url =
+    "https://api.frankfurter.app/latest?from="+
+    encodeURIComponent(from)+
+    "&to="+
+    encodeURIComponent(to);
+
+
+    const response =
+    await fetch(url);
+
+
+    if(!response.ok){
+
+        throw new Error(
+            "Live rate unavailable"
+        );
+
+    }
+
+
+    const data =
+    await response.json();
+
+
+    if(
+        !data.rates ||
+        typeof data.rates[to] !== "number"
+    ){
+
+        throw new Error(
+            "Invalid exchange rate"
+        );
+
+    }
+
+
+    return {
+
+        rate:data.rates[to],
+
+        date:data.date,
+
+        live:true
+
+    };
+
+}
+
+
+/* =========================================
+   FALLBACK RATE
+========================================= */
+
+function getFallbackRate(
+    from,
+    to
+){
+
+    if(from===to){
+
+        return 1;
+
+    }
+
+
+    const fromUSD =
+    fallbackRates[from];
+
+    const toUSD =
+    fallbackRates[to];
+
+
+    if(
+        !fromUSD ||
+        !toUSD
+    ){
+
+        throw new Error(
+            "Currency not supported"
+        );
+
+    }
+
+
+    return toUSD / fromUSD;
+
+}
+
+
+/* =========================================
+   CONVERT
+========================================= */
+
+async function convertCurrency(){
+
+    const value =
+    Number(
+        amount.value
+    );
+
+
+    if(
+        !Number.isFinite(value) ||
+        value < 0
+    ){
+
+        showError(
+            "Please enter a valid amount."
+        );
+
+        return;
+
+    }
+
+
+    const from =
+    fromCurrency.value;
+
+    const to =
+    toCurrency.value;
+
+
+    hideError();
+
+
+    /*
+       Same currency
+    */
+
+    if(from===to){
+
+        const converted =
+        value;
+
+        showResult(
+            converted,
+            1,
+            true,
+            "Same currency"
+        );
+
+        return;
+
+    }
+
+
+    /*
+       Show loading
+    */
+
+    result.classList.add(
+        "show"
+    );
+
+    resultValue.textContent =
+    "Loading...";
+
+    resultRate.textContent =
+    "Getting latest exchange rate...";
+
+    updated.textContent =
+    "";
+
+
+    try{
+
+        /*
+           Try live API
+        */
+
+        const data =
+        await getLiveRate(
+            from,
+            to
+        );
+
+
+        const converted =
+        value * data.rate;
+
+
+        showResult(
+            converted,
+            data.rate,
+            true,
+            data.date
+        );
+
+
+    }catch(error){
+
+        /*
+           If API fails,
+           use fallback.
+        */
+
+        try{
+
+            const rate =
+            getFallbackRate(
+                from,
+                to
+            );
+
+
+            const converted =
+            value * rate;
+
+
+            showResult(
+                converted,
+                rate,
+                false,
+                "Fallback reference rate"
+            );
+
+
+        }catch{
+
+            showError(
+                "Unable to get exchange rate. Please check your internet connection and try again."
+            );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   SHOW RESULT
+========================================= */
+
+function showResult(
+    converted,
+    rate,
+    live,
+    date
+){
+
+    result.classList.add(
+        "show"
+    );
+
+
+    resultValue.textContent =
+    formatNumber(
+        converted
+    ) +
+    " " +
+    toCurrency.value;
+
+
+    resultRate.textContent =
+    "1 " +
+    fromCurrency.value +
+    " = " +
+    formatNumber(rate) +
+    " " +
+    toCurrency.value;
+
+
+    if(live){
+
+        updated.textContent =
+        "Rate source: Live exchange-rate data • " +
+        date;
+
+    }else{
+
+        updated.textContent =
+        "Indicative fallback rate • Verify before financial transactions.";
+
+    }
+
+}
+
+
+/* =========================================
+   SWAP
+========================================= */
+
+function swapCurrencies(){
+
+    const oldFrom =
+    fromCurrency.value;
+
+    fromCurrency.value =
+    toCurrency.value;
+
+    toCurrency.value =
+    oldFrom;
+
+
+    if(
+        amount.value !== ""
+    ){
+
+        convertCurrency();
+
+    }
+
+}
+
+
+/* =========================================
+   ERROR
+========================================= */
+
+function showError(message){
+
+    errorBox.textContent =
+    message;
+
+    errorBox.classList.add(
+        "show"
+    );
+
+    result.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =========================================
+   HIDE ERROR
+========================================= */
+
+function hideError(){
+
+    errorBox.classList.remove(
+        "show"
+    );
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearAll(){
+
+    amount.value =
+    "";
+
+    result.classList.remove(
+        "show"
+    );
+
+    hideError();
+
+    fromCurrency.value =
+    "INR";
+
+    toCurrency.value =
+    "USD";
+
+}
+
+
+/* =========================================
+   ENTER KEY
+========================================= */
+
+document.addEventListener(
+    "keydown",
+    function(event){
+
+        if(
+            event.key === "Enter"
+        ){
+
+            convertCurrency();
+
+        }
+
+    }
+);
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+populateCurrencies();
+
+</script>
+
+
+</body>
+
+</html>
