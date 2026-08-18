@@ -11,10 +11,10 @@ content="width=device-width, initial-scale=1.0">
 <title>Adiyogi Tools - Free Online Tools</title>
 
 <meta name="description"
-content="Adiyogi Tools - Free online calculators, image tools, PDF tools, converters and useful everyday utilities.">
+content="Adiyogi Tools provides free online calculators, image tools, PDF tools, converters and useful everyday utilities.">
 
 <meta name="keywords"
-content="free online tools, calculators, image tools, PDF tools, converters, Adiyogi Tools">
+content="free online tools, calculator, image tools, PDF tools, Adiyogi Tools">
 
 <meta name="robots" content="index, follow">
 
@@ -40,16 +40,16 @@ html{
 body{
 
     font-family:
+    Inter,
     Arial,
     Helvetica,
     sans-serif;
 
-    background:#CBCBCB;
+    background:#FFFFE3;
 
-    color:#4A4A4A;
+    color:#242424;
 
     overflow-x:hidden;
-
 }
 
 a{
@@ -64,33 +64,58 @@ input{
 
 
 /* =====================================================
-   COLOR PALETTE
+   CLASSIC COLOUR PALETTE
 ===================================================== */
 
 :root{
 
-    --ink:#4A4A4A;
+    /* TRUE BLACK */
+    --black:#000000;
 
-    --grey:#CBCBCB;
+    /* CHARCOAL */
+    --charcoal:#4A4A4A;
 
+    /* SOFT GREY / GREIGE */
+    --greige:#CBCBCB;
+
+    /* CREAM / IVORY */
     --ivory:#FFFFE3;
 
-    --blue:#6D8196;
+    /* CRISP WHITE */
+    --white:#FFFFFF;
 
-    --white:#ffffff;
+    /* DUSTY BLUE */
+    --dusty-blue:#6D8196;
 
-    --dark:#353535;
+    /* NAVY BLUE */
+    --navy:#172536;
 
-    --border:#b9b9b9;
+    /* CAMEL */
+    --camel:#B58B5A;
 
-    --soft-border:#dedede;
+    /* CHOCOLATE BROWN */
+    --chocolate:#5A3825;
+
+    /* SAGE GREEN */
+    --sage:#8A9A7B;
+
+    /* ANTIQUE ROSE */
+    --rose:#B98F8F;
+
+    /* LIGHT TONES */
+    --cream:#F7F3E8;
+    --beige:#E9E0D0;
+    --soft-blue:#E5EBF0;
+    --soft-sage:#E5EBDD;
+    --soft-rose:#F0E3E1;
+
+    --text:#242424;
+    --muted:#707070;
+
+    --border:#D8D4CC;
 
     --shadow:
-    0 6px 22px rgba(74,74,74,.10);
-
-    --shadow-hover:
-    0 14px 35px rgba(74,74,74,.18);
-
+    0 10px 30px rgba(74,74,74,.10);
 }
 
 
@@ -100,17 +125,20 @@ input{
 
 .navbar{
 
-    min-height:74px;
+    min-height:72px;
 
-    background:#4A4A4A;
+    background:
+    var(--navy);
 
-    color:#FFFFE3;
+    color:
+    var(--white);
 
     display:flex;
 
     align-items:center;
 
-    padding:0 5%;
+    padding:
+    0 5%;
 
     position:sticky;
 
@@ -119,12 +147,12 @@ input{
     z-index:1000;
 
     border-bottom:
-    1px solid rgba(255,255,227,.18);
+    1px solid rgba(255,255,255,.12);
 
+    box-shadow:
+    0 4px 20px rgba(23,37,54,.18);
 }
 
-
-/* LOGO */
 
 .logo{
 
@@ -132,33 +160,26 @@ input{
 
     align-items:center;
 
-    gap:11px;
+    gap:10px;
 
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+    font-size:22px;
 
-    font-size:23px;
-
-    font-weight:700;
+    font-weight:800;
 
     white-space:nowrap;
-
 }
 
 
 .logo-icon{
 
-    width:40px;
+    width:38px;
 
-    height:40px;
+    height:38px;
 
-    border-radius:9px;
+    border-radius:11px;
 
-    background:#FFFFE3;
-
-    color:#4A4A4A;
+    background:
+    var(--dusty-blue);
 
     display:flex;
 
@@ -168,17 +189,20 @@ input{
 
     font-size:21px;
 
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.25);
+
+    border:
+    1px solid rgba(255,255,255,.18);
 }
 
 
 .logo span{
 
-    color:#CBCBCB;
-
+    color:
+    #D8C3A5;
 }
 
-
-/* NAV LINKS */
 
 .nav-links{
 
@@ -186,32 +210,29 @@ input{
 
     align-items:center;
 
-    gap:28px;
+    gap:30px;
 
-    margin-left:70px;
+    margin-left:80px;
 
     font-size:14px;
 
-    color:#CBCBCB;
-
+    color:
+    #E8E4DA;
 }
 
 
 .nav-links a{
 
     transition:.2s;
-
 }
 
 
 .nav-links a:hover{
 
-    color:#FFFFE3;
-
+    color:
+    var(--white);
 }
 
-
-/* NAV SEARCH */
 
 .nav-search{
 
@@ -222,55 +243,63 @@ input{
     align-items:center;
 
     gap:8px;
-
 }
 
 
 .nav-search input{
 
-    width:240px;
+    width:260px;
 
-    height:40px;
+    height:42px;
 
-    border-radius:6px;
+    border-radius:10px;
 
     border:
-    1px solid #777;
+    1px solid rgba(255,255,255,.18);
 
-    background:#5a5a5a;
+    background:
+    rgba(255,255,255,.08);
 
-    color:#FFFFE3;
+    color:white;
 
-    padding:0 13px;
+    padding:
+    0 14px;
 
     outline:none;
-
 }
 
 
 .nav-search input::placeholder{
 
-    color:#CBCBCB;
-
+    color:
+    #C8C8C8;
 }
 
 
 .theme-btn{
 
-    width:40px;
+    margin-left:15px;
 
-    height:40px;
+    width:42px;
 
-    border:1px solid #777;
+    height:42px;
 
-    border-radius:6px;
+    border:0;
 
-    background:#5a5a5a;
+    border-radius:50%;
 
-    color:#FFFFE3;
+    background:
+    var(--camel);
+
+    color:
+    var(--white);
 
     cursor:pointer;
 
+    font-size:19px;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.2);
 }
 
 
@@ -280,11 +309,35 @@ input{
 
 .hero{
 
-    background:#FFFFE3;
+    min-height:520px;
 
-    border-bottom:
-    1px solid #bdbdbd;
+    background:
 
+    radial-gradient(
+        circle at 85% 20%,
+        rgba(109,129,150,.35),
+        transparent 32%
+    ),
+
+    radial-gradient(
+        circle at 20% 90%,
+        rgba(138,154,123,.28),
+        transparent 34%
+    ),
+
+    linear-gradient(
+        135deg,
+        #172536,
+        #263747 52%,
+        #4A4A4A
+    );
+
+    color:
+    var(--white);
+
+    position:relative;
+
+    overflow:hidden;
 }
 
 
@@ -295,42 +348,48 @@ input{
     margin:auto;
 
     padding:
-    82px 35px 88px;
+    75px 35px 80px;
 
     display:grid;
 
     grid-template-columns:
-    1.05fr .95fr;
+    1fr 1fr;
 
     align-items:center;
 
-    gap:65px;
-
+    gap:50px;
 }
 
 
-/* HERO LEFT */
+/* =====================================================
+   HERO TEXT
+===================================================== */
 
 .hero-badge{
 
-    display:inline-block;
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:8px;
 
     padding:
-    8px 14px;
+    9px 16px;
+
+    border-radius:30px;
+
+    background:
+    rgba(181,139,90,.20);
 
     border:
-    1px solid #6D8196;
+    1px solid rgba(216,195,165,.35);
 
-    border-radius:3px;
+    color:
+    #F3E8D0;
 
-    color:#6D8196;
+    font-size:14px;
 
-    font-size:12px;
-
-    letter-spacing:.5px;
-
-    margin-bottom:23px;
-
+    margin-bottom:25px;
 }
 
 
@@ -341,45 +400,42 @@ input{
     "Times New Roman",
     serif;
 
-    font-weight:400;
-
     font-size:
-    clamp(43px,5vw,68px);
+    clamp(42px,5vw,68px);
 
     line-height:1.05;
 
-    color:#4A4A4A;
-
-    letter-spacing:-2px;
-
     margin-bottom:22px;
 
+    letter-spacing:-1.5px;
 }
 
 
 .hero h1 span{
 
-    color:#6D8196;
-
+    color:
+    #D8C3A5;
 }
 
 
 .hero-text{
 
-    max-width:600px;
+    color:
+    #E2E2E2;
 
-    font-size:16px;
+    font-size:17px;
 
-    line-height:1.8;
+    line-height:1.7;
 
-    color:#666;
+    max-width:620px;
 
-    margin-bottom:27px;
-
+    margin-bottom:28px;
 }
 
 
-/* HERO FEATURES */
+/* =====================================================
+   HERO FEATURES
+===================================================== */
 
 .hero-features{
 
@@ -387,33 +443,67 @@ input{
 
     flex-wrap:wrap;
 
-    gap:9px;
+    gap:12px;
 
-    margin-bottom:27px;
-
+    margin-bottom:28px;
 }
 
 
 .hero-feature{
 
     padding:
-    9px 12px;
+    11px 15px;
 
     border:
-    1px solid #CBCBCB;
+    1px solid rgba(255,255,255,.16);
 
-    background:#ffffff;
+    border-radius:10px;
 
-    color:#4A4A4A;
+    background:
+    rgba(255,255,255,.07);
 
-    font-size:12px;
+    color:
+    #F1EEE7;
 
-    border-radius:3px;
+    font-size:13px;
+}
+
+
+.hero-feature:nth-child(1){
+
+    border-color:
+    rgba(181,139,90,.45);
 
 }
 
 
-/* SEARCH */
+.hero-feature:nth-child(2){
+
+    border-color:
+    rgba(138,154,123,.45);
+
+}
+
+
+.hero-feature:nth-child(3){
+
+    border-color:
+    rgba(109,129,150,.45);
+
+}
+
+
+.hero-feature:nth-child(4){
+
+    border-color:
+    rgba(185,143,143,.45);
+
+}
+
+
+/* =====================================================
+   HERO SEARCH
+===================================================== */
 
 .hero-search{
 
@@ -421,13 +511,17 @@ input{
 
     max-width:560px;
 
-    height:52px;
+    height:54px;
 
-    border:
-    1px solid #999;
+    background:
+    var(--white);
 
-    background:white;
+    border-radius:10px;
 
+    overflow:hidden;
+
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.20);
 }
 
 
@@ -440,36 +534,37 @@ input{
     outline:0;
 
     padding:
-    0 17px;
+    0 18px;
 
-    color:#4A4A4A;
+    font-size:15px;
 
-    background:white;
-
+    color:
+    var(--charcoal);
 }
 
 
 .hero-search button{
 
-    width:115px;
+    width:120px;
 
     border:0;
 
-    background:#6D8196;
+    background:
+    var(--camel);
 
-    color:white;
-
-    cursor:pointer;
+    color:
+    var(--white);
 
     font-weight:700;
 
+    cursor:pointer;
 }
 
 
 .hero-search button:hover{
 
-    background:#4A4A4A;
-
+    background:
+    var(--chocolate);
 }
 
 
@@ -479,7 +574,7 @@ input{
 
 .hero-visual{
 
-    min-height:350px;
+    min-height:360px;
 
     position:relative;
 
@@ -488,37 +583,40 @@ input{
     align-items:center;
 
     justify-content:center;
-
 }
 
 
-/* LAPTOP */
-
 .laptop{
 
-    width:455px;
+    width:470px;
 
     max-width:100%;
 
-    height:280px;
+    height:285px;
 
-    background:#4A4A4A;
+    border-radius:18px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #4A4A4A,
+        #111111
+    );
 
     border:
-    5px solid #353535;
-
-    border-radius:10px;
-
-    position:relative;
+    5px solid #707070;
 
     box-shadow:
-    0 25px 45px rgba(74,74,74,.25);
+    0 30px 70px rgba(0,0,0,.50);
 
     transform:
     perspective(1000px)
-    rotateY(-6deg)
-    rotateX(2deg);
+    rotateY(-8deg)
+    rotateX(3deg);
 
+    position:relative;
+
+    z-index:2;
 }
 
 
@@ -528,27 +626,29 @@ input{
 
     inset:12px;
 
-    background:#6D8196;
+    border-radius:9px;
 
-    border-radius:4px;
+    background:
+    linear-gradient(
+        135deg,
+        #172536,
+        #6D8196
+    );
 
-    padding:17px;
-
+    padding:18px;
 }
 
 
 .screen-title{
 
-    font-family:
-    Georgia,
-    serif;
+    color:
+    var(--white);
 
-    color:#FFFFE3;
+    font-size:15px;
 
-    font-size:17px;
+    font-weight:700;
 
     margin-bottom:15px;
-
 }
 
 
@@ -560,20 +660,20 @@ input{
     repeat(4,1fr);
 
     gap:8px;
-
 }
 
 
 .screen-box{
 
-    height:46px;
+    height:48px;
 
-    background:#FFFFE3;
+    border-radius:7px;
 
-    opacity:.88;
+    background:
+    rgba(255,255,255,.12);
 
-    border-radius:3px;
-
+    border:
+    1px solid rgba(255,255,255,.12);
 }
 
 
@@ -581,35 +681,46 @@ input{
 
     position:absolute;
 
-    width:520px;
+    width:540px;
 
     max-width:115%;
 
-    height:15px;
+    height:18px;
 
-    bottom:-20px;
+    bottom:-22px;
 
     left:50%;
 
-    transform:translateX(-50%);
+    transform:
+    translateX(-50%);
 
-    background:#4A4A4A;
+    background:
+    var(--charcoal);
 
     border-radius:
-    0 0 20px 20px;
+    0 0 30px 30px;
 
+    box-shadow:
+    0 12px 25px rgba(0,0,0,.4);
 }
 
 
-/* FLOATING ICONS */
+/* =====================================================
+   FLOATING ICONS
+===================================================== */
 
 .float-icon{
 
     position:absolute;
 
-    width:62px;
+    width:70px;
 
-    height:62px;
+    height:70px;
+
+    border-radius:16px;
+
+    background:
+    var(--white);
 
     display:flex;
 
@@ -617,39 +728,80 @@ input{
 
     justify-content:center;
 
-    background:white;
-
-    border:
-    1px solid #bdbdbd;
-
-    border-radius:7px;
-
-    font-size:28px;
+    font-size:34px;
 
     box-shadow:
-    0 10px 25px rgba(74,74,74,.16);
+    0 15px 35px rgba(0,0,0,.25);
 
+    z-index:5;
+
+    animation:
+    float 4s ease-in-out infinite;
+
+    border:
+    1px solid var(--greige);
 }
 
 
 .float-1{
-    left:15px;
-    top:25px;
+
+    top:20px;
+
+    left:25px;
+
+    background:
+    var(--soft-rose);
 }
+
 
 .float-2{
-    right:0;
-    top:65px;
+
+    top:80px;
+
+    right:10px;
+
+    background:
+    var(--soft-blue);
+
+    animation-delay:1s;
 }
+
 
 .float-3{
-    left:35px;
+
     bottom:20px;
+
+    left:40px;
+
+    background:
+    var(--soft-sage);
+
+    animation-delay:2s;
 }
 
+
 .float-4{
-    right:35px;
-    bottom:40px;
+
+    bottom:45px;
+
+    right:45px;
+
+    background:
+    var(--beige);
+
+    animation-delay:3s;
+}
+
+
+@keyframes float{
+
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
 }
 
 
@@ -664,8 +816,7 @@ input{
     margin:auto;
 
     padding:
-    60px 30px 85px;
-
+    55px 30px 80px;
 }
 
 
@@ -681,8 +832,7 @@ input{
 
     justify-content:space-between;
 
-    margin-bottom:21px;
-
+    margin-bottom:22px;
 }
 
 
@@ -694,17 +844,12 @@ input{
 
     gap:12px;
 
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+    font-size:23px;
 
-    font-size:25px;
+    font-weight:800;
 
-    font-weight:400;
-
-    color:#4A4A4A;
-
+    color:
+    var(--charcoal);
 }
 
 
@@ -712,35 +857,40 @@ input{
 
     content:"";
 
-    width:4px;
+    width:5px;
 
     height:28px;
 
-    background:#6D8196;
+    background:
+    linear-gradient(
+        var(--camel),
+        var(--dusty-blue)
+    );
 
+    border-radius:5px;
 }
 
 
 .view-all{
 
-    font-size:13px;
+    color:
+    var(--dusty-blue);
 
-    color:#6D8196;
+    font-size:14px;
 
     font-weight:700;
-
 }
 
 
 .view-all:hover{
 
-    color:#4A4A4A;
-
+    color:
+    var(--chocolate);
 }
 
 
 /* =====================================================
-   CATEGORY CARDS
+   CATEGORY GRID
 ===================================================== */
 
 .category-grid{
@@ -750,38 +900,105 @@ input{
     grid-template-columns:
     repeat(8,1fr);
 
-    gap:13px;
+    gap:14px;
 
-    margin-bottom:58px;
-
+    margin-bottom:55px;
 }
 
 
 .category-card{
 
-    background:#FFFFE3;
+    background:
+    var(--white);
 
     border:
-    1px solid #bcbcbc;
+    1px solid var(--border);
 
-    min-height:135px;
+    border-radius:13px;
 
-    padding:19px 8px;
-
-    display:flex;
-
-    flex-direction:column;
-
-    align-items:center;
-
-    justify-content:center;
+    padding:
+    22px 10px;
 
     text-align:center;
 
-    box-shadow:var(--shadow);
+    box-shadow:
+    var(--shadow);
 
     transition:.25s;
 
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.category-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:4px;
+
+    background:
+    var(--dusty-blue);
+
+    opacity:.8;
+}
+
+
+.category-card:nth-child(2)::before{
+
+    background:
+    var(--sage);
+}
+
+
+.category-card:nth-child(3)::before{
+
+    background:
+    var(--camel);
+}
+
+
+.category-card:nth-child(4)::before{
+
+    background:
+    var(--rose);
+}
+
+
+.category-card:nth-child(5)::before{
+
+    background:
+    var(--dusty-blue);
+}
+
+
+.category-card:nth-child(6)::before{
+
+    background:
+    var(--chocolate);
+}
+
+
+.category-card:nth-child(7)::before{
+
+    background:
+    var(--camel);
+}
+
+
+.category-card:nth-child(8)::before{
+
+    background:
+    var(--sage);
 }
 
 
@@ -790,64 +1007,44 @@ input{
     transform:
     translateY(-5px);
 
-    border-color:#6D8196;
+    box-shadow:
+    0 15px 30px rgba(74,74,74,.15);
 
-    box-shadow:var(--shadow-hover);
-
+    border-color:
+    #B9B2A7;
 }
 
 
 .category-icon{
 
-    width:48px;
-
-    height:48px;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    background:#CBCBCB;
-
-    color:#4A4A4A;
-
-    border-radius:5px;
-
-    font-size:25px;
+    font-size:30px;
 
     margin-bottom:10px;
-
 }
 
 
 .category-card h3{
 
-    font-family:
-    Georgia,
-    serif;
-
     font-size:14px;
-
-    font-weight:400;
 
     margin-bottom:5px;
 
+    color:
+    var(--charcoal);
 }
 
 
 .category-card p{
 
-    color:#6D8196;
+    font-size:11px;
 
-    font-size:10px;
-
+    color:
+    #888888;
 }
 
 
 /* =====================================================
-   TOOL CARDS
+   POPULAR CALCULATORS
 ===================================================== */
 
 .tool-grid{
@@ -855,56 +1052,147 @@ input{
     display:grid;
 
     grid-template-columns:
-    repeat(4,1fr);
+    repeat(5,1fr);
 
-    gap:16px;
+    gap:15px;
 
-    margin-bottom:58px;
-
+    margin-bottom:55px;
 }
 
 
 .tool-card{
 
-    background:#ffffff;
+    background:
+    var(--white);
 
     border:
-    1px solid #c5c5c5;
+    1px solid var(--border);
 
-    min-height:125px;
+    border-radius:14px;
 
-    padding:19px;
+    padding:18px;
 
     display:flex;
 
     align-items:flex-start;
 
-    gap:14px;
-
-    box-shadow:var(--shadow);
+    gap:13px;
 
     transition:.25s;
 
+    box-shadow:
+    0 5px 18px rgba(74,74,74,.07);
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+
+.tool-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    height:3px;
+
+    background:
+    var(--dusty-blue);
+
+    opacity:.7;
+}
+
+
+.tool-card:nth-child(2)::after{
+
+    background:
+    var(--sage);
+}
+
+
+.tool-card:nth-child(3)::after{
+
+    background:
+    var(--camel);
+}
+
+
+.tool-card:nth-child(4)::after{
+
+    background:
+    var(--rose);
+}
+
+
+.tool-card:nth-child(5)::after{
+
+    background:
+    var(--dusty-blue);
+}
+
+
+.tool-card:nth-child(6)::after{
+
+    background:
+    var(--chocolate);
+}
+
+
+.tool-card:nth-child(7)::after{
+
+    background:
+    var(--camel);
+}
+
+
+.tool-card:nth-child(8)::after{
+
+    background:
+    var(--sage);
+}
+
+
+.tool-card:nth-child(9)::after{
+
+    background:
+    var(--rose);
+}
+
+
+.tool-card:nth-child(10)::after{
+
+    background:
+    var(--dusty-blue);
 }
 
 
 .tool-card:hover{
 
     transform:
-    translateY(-5px);
+    translateY(-4px);
 
-    border-color:#6D8196;
+    box-shadow:
+    0 15px 30px rgba(74,74,74,.13);
 
-    box-shadow:var(--shadow-hover);
-
+    border-color:
+    #B8B0A4;
 }
 
 
 .tool-icon{
 
-    min-width:52px;
+    min-width:42px;
 
-    height:52px;
+    height:42px;
+
+    border-radius:10px;
 
     display:flex;
 
@@ -912,47 +1200,252 @@ input{
 
     justify-content:center;
 
-    background:#CBCBCB;
+    font-size:22px;
 
-    border-radius:5px;
+    background:
+    var(--cream);
 
-    font-size:25px;
+    border:
+    1px solid var(--beige);
+}
 
+
+.tool-card:nth-child(2) .tool-icon{
+
+    background:
+    var(--soft-blue);
+}
+
+
+.tool-card:nth-child(3) .tool-icon{
+
+    background:
+    var(--soft-sage);
+}
+
+
+.tool-card:nth-child(4) .tool-icon{
+
+    background:
+    var(--soft-rose);
+}
+
+
+.tool-card:nth-child(5) .tool-icon{
+
+    background:
+    var(--beige);
 }
 
 
 .tool-content h3{
 
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+    font-size:14px;
 
-    font-size:16px;
+    margin-bottom:6px;
 
-    font-weight:400;
-
-    color:#4A4A4A;
-
-    margin-bottom:7px;
-
+    color:
+    var(--charcoal);
 }
 
 
 .tool-content p{
 
-    color:#777;
+    color:
+    #777777;
 
-    font-size:12px;
+    font-size:11px;
 
-    line-height:1.55;
-
+    line-height:1.5;
 }
 
 
 /* =====================================================
-   DIRECTORY TOOL CARDS
+   SECTION BOXES
 ===================================================== */
+
+#finance,
+#image-tools,
+#pdf-tools,
+#converters,
+#health,
+#date-time,
+#text-tools{
+
+    margin-top:45px;
+
+    padding:
+    25px;
+
+    border-radius:20px;
+
+    background:
+    rgba(255,255,255,.65);
+
+    border:
+    1px solid var(--border);
+
+    box-shadow:
+    0 8px 25px rgba(74,74,74,.05);
+}
+
+
+/* =====================================================
+   FINANCE SECTION
+===================================================== */
+
+#finance{
+
+    background:
+    linear-gradient(
+        135deg,
+        #F5EEE2,
+        #EDE8DE
+    );
+
+    border-color:
+    #D8C8B3;
+}
+
+
+/* =====================================================
+   IMAGE SECTION
+===================================================== */
+
+#image-tools{
+
+    background:
+    linear-gradient(
+        135deg,
+        #F0F4F5,
+        #E8ECEF
+    );
+
+    border-color:
+    #C8D1D8;
+}
+
+
+/* =====================================================
+   PDF SECTION
+===================================================== */
+
+#pdf-tools{
+
+    background:
+    linear-gradient(
+        135deg,
+        #F7F1E9,
+        #EFE6DA
+    );
+
+    border-color:
+    #D7C5B2;
+}
+
+
+/* =====================================================
+   CONVERTERS
+===================================================== */
+
+#converters{
+
+    background:
+    linear-gradient(
+        135deg,
+        #EDF2EB,
+        #E4EBDD
+    );
+
+    border-color:
+    #C9D2C1;
+}
+
+
+/* =====================================================
+   HEALTH
+===================================================== */
+
+#health{
+
+    background:
+    linear-gradient(
+        135deg,
+        #F3E9E7,
+        #EEE2E0
+    );
+
+    border-color:
+    #D9C3C0;
+}
+
+
+/* =====================================================
+   DATE TIME
+===================================================== */
+
+#date-time{
+
+    background:
+    linear-gradient(
+        135deg,
+        #EEF2F4,
+        #E6EAED
+    );
+
+    border-color:
+    #CAD2D8;
+}
+
+
+/* =====================================================
+   TEXT TOOLS
+===================================================== */
+
+#text-tools{
+
+    background:
+    linear-gradient(
+        135deg,
+        #F2EEE7,
+        #EAE4D9
+    );
+
+    border-color:
+    #D6CCBC;
+}
+
+
+/* =====================================================
+   DIRECTORY
+===================================================== */
+
+.directory{
+
+    background:
+    rgba(255,255,255,.70);
+
+    border:
+    1px solid var(--border);
+
+    border-radius:16px;
+
+    padding:25px;
+
+    margin-top:15px;
+}
+
+
+.directory h2{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+    color:
+    var(--charcoal);
+}
+
 
 .directory-grid{
 
@@ -961,176 +1454,96 @@ input{
     grid-template-columns:
     repeat(4,1fr);
 
-    gap:16px;
-
-    margin-bottom:58px;
-
+    gap:12px;
 }
 
 
-.directory-grid a{
+.directory a{
 
-    min-height:145px;
+    background:
+    var(--white);
 
-    background:#ffffff;
+    padding:15px;
+
+    border-radius:11px;
 
     border:
-    1px solid #c5c5c5;
+    1px solid #D9D5CE;
 
-    padding:19px;
+    font-size:13px;
 
-    display:flex;
+    color:
+    var(--charcoal);
 
-    flex-direction:column;
+    transition:.2s;
 
-    justify-content:center;
-
-    align-items:flex-start;
-
-    gap:11px;
-
-    box-shadow:var(--shadow);
-
-    position:relative;
-
-    overflow:hidden;
-
-    transition:.25s;
-
-}
-
-
-.directory-grid a:hover{
-
-    transform:
-    translateY(-5px);
-
-    border-color:#6D8196;
-
-    box-shadow:var(--shadow-hover);
-
-}
-
-
-/* small blue side line */
-
-.directory-grid a::before{
-
-    content:"";
-
-    position:absolute;
-
-    width:4px;
-
-    height:100%;
-
-    left:0;
-
-    top:0;
-
-    background:#6D8196;
-
-}
-
-
-.directory-grid a span{
-
-    width:50px;
-
-    height:50px;
+    box-shadow:
+    0 4px 12px rgba(74,74,74,.05);
 
     display:flex;
 
     align-items:center;
 
-    justify-content:center;
-
-    background:#CBCBCB;
-
-    border-radius:5px;
-
-    font-size:25px;
-
+    gap:8px;
 }
 
 
-.directory-grid a div{
+.directory a::before{
 
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+    content:"◆";
 
-    font-size:16px;
+    font-size:8px;
 
-    color:#4A4A4A;
-
+    color:
+    var(--camel);
 }
 
 
-.directory-grid a small{
+.directory a:hover{
 
-    display:block;
+    color:
+    var(--navy);
 
-    margin-top:5px;
+    border-color:
+    var(--dusty-blue);
 
-    font-family:
-    Arial,
-    Helvetica,
-    sans-serif;
+    transform:
+    translateY(-2px);
 
-    color:#7b7b7b;
-
-    font-size:11px;
-
-    line-height:1.45;
-
+    box-shadow:
+    0 8px 18px rgba(74,74,74,.10);
 }
 
 
 /* =====================================================
-   SPECIAL TEXT BOX
+   SPECIAL PDF ICON LINKS
 ===================================================== */
 
-.directory{
+.directory a[href*="word-to-pdf"]::before{
 
-    background:#FFFFE3;
-
-    border:
-    1px solid #c5c5c5;
-
-    padding:28px;
-
-    margin-top:20px;
-
+    content:"📄";
+    font-size:16px;
 }
 
 
-.directory h2{
+.directory a[href*="pdf"]::before{
 
-    font-family:
-    Georgia,
-    serif;
-
-    font-weight:400;
-
-    font-size:24px;
-
-    color:#4A4A4A;
-
-    margin-bottom:9px;
-
+    content:"📄";
+    font-size:15px;
 }
 
 
-.directory p{
+.directory a[href*="image"]::before{
 
-    color:#6D8196;
+    content:"🖼️";
+    font-size:15px;
+}
 
-    font-size:13px;
 
-    line-height:1.7;
+.directory a[href*="converter"]::before{
 
+    content:"🔄";
+    font-size:15px;
 }
 
 
@@ -1140,40 +1553,39 @@ input{
 
 .footer{
 
-    background:#4A4A4A;
+    background:
+    var(--navy);
 
-    color:#CBCBCB;
+    color:
+    #C9CED2;
 
-    padding:48px 30px;
+    padding:
+    45px 30px;
 
     text-align:center;
 
     border-top:
-    4px solid #6D8196;
-
+    4px solid var(--camel);
 }
 
 
 .footer-logo{
 
-    font-family:
-    Georgia,
-    "Times New Roman",
-    serif;
+    color:
+    var(--white);
 
-    color:#FFFFE3;
+    font-size:22px;
 
-    font-size:25px;
+    font-weight:800;
 
     margin-bottom:10px;
-
 }
 
 
 .footer-logo span{
 
-    color:#CBCBCB;
-
+    color:
+    #D8C3A5;
 }
 
 
@@ -1182,7 +1594,6 @@ input{
     font-size:13px;
 
     line-height:1.7;
-
 }
 
 
@@ -1194,17 +1605,16 @@ input{
 
     flex-wrap:wrap;
 
-    gap:22px;
+    gap:20px;
 
     margin:20px 0;
-
 }
 
 
 .footer-links a:hover{
 
-    color:#FFFFE3;
-
+    color:
+    var(--white);
 }
 
 
@@ -1212,30 +1622,28 @@ input{
    TABLET
 ===================================================== */
 
-@media(max-width:1100px){
+@media(max-width:1000px){
 
     .nav-links{
 
         margin-left:30px;
 
         gap:16px;
-
     }
 
 
     .nav-search input{
 
         width:170px;
-
     }
 
 
     .hero-container{
 
-        grid-template-columns:1fr;
+        grid-template-columns:
+        1fr;
 
         text-align:center;
-
     }
 
 
@@ -1244,28 +1652,24 @@ input{
         margin-left:auto;
 
         margin-right:auto;
-
     }
 
 
     .hero-features{
 
         justify-content:center;
-
     }
 
 
     .hero-search{
 
         margin:auto;
-
     }
 
 
     .hero-visual{
 
-        margin-top:25px;
-
+        margin-top:20px;
     }
 
 
@@ -1273,15 +1677,13 @@ input{
 
         grid-template-columns:
         repeat(4,1fr);
-
     }
 
 
     .tool-grid{
 
         grid-template-columns:
-        repeat(2,1fr);
-
+        repeat(3,1fr);
     }
 
 
@@ -1289,7 +1691,6 @@ input{
 
         grid-template-columns:
         repeat(2,1fr);
-
     }
 
 }
@@ -1303,88 +1704,64 @@ input{
 
     .navbar{
 
+        height:auto;
+
         min-height:64px;
 
         padding:
-        11px 15px;
-
+        12px 15px;
     }
 
 
     .nav-links{
 
         display:none;
-
     }
 
 
     .nav-search{
 
         margin-left:auto;
-
     }
 
 
     .nav-search input{
 
         display:none;
-
     }
 
 
     .theme-btn{
 
-        width:38px;
-
-        height:38px;
-
+        margin-left:7px;
     }
 
 
-    .logo{
+    .hero{
 
-        font-size:19px;
-
+        min-height:auto;
     }
 
-
-    .logo-icon{
-
-        width:34px;
-
-        height:34px;
-
-        font-size:18px;
-
-    }
-
-
-    /* HERO */
 
     .hero-container{
 
         padding:
-        52px 17px 65px;
+        55px 18px 70px;
 
-        gap:35px;
-
+        gap:30px;
     }
 
 
     .hero h1{
 
         font-size:
-        clamp(38px,11vw,51px);
-
-        letter-spacing:-1.2px;
-
+        clamp(38px,11vw,52px);
     }
 
 
     .hero-text{
 
         font-size:15px;
-
     }
 
 
@@ -1393,174 +1770,120 @@ input{
         width:100%;
 
         height:50px;
-
     }
 
 
     .hero-search button{
 
         width:95px;
-
     }
 
 
     .hero-visual{
 
-        min-height:270px;
-
+        min-height:280px;
     }
 
 
     .laptop{
 
-        width:335px;
+        width:340px;
 
-        height:207px;
-
+        height:210px;
     }
 
 
     .laptop-base{
 
-        width:370px;
-
+        width:380px;
     }
 
 
     .float-icon{
 
-        width:50px;
+        width:52px;
 
-        height:50px;
+        height:52px;
 
-        font-size:23px;
-
+        font-size:25px;
     }
 
 
     .float-1{
 
         left:0;
-
     }
 
 
     .float-2{
 
         right:0;
-
     }
 
-
-    .float-3{
-
-        left:20px;
-
-    }
-
-
-    .float-4{
-
-        right:20px;
-
-    }
-
-
-    /* MAIN */
 
     .main{
 
         padding:
-        42px 14px 60px;
-
+        40px 15px 60px;
     }
 
 
     .section-title{
 
-        font-size:21px;
-
+        font-size:20px;
     }
 
-
-    /* CATEGORIES */
 
     .category-grid{
 
         grid-template-columns:
         repeat(2,1fr);
 
-        gap:11px;
-
+        gap:10px;
     }
 
 
     .category-card{
 
-        min-height:120px;
-
-        padding:16px 7px;
-
+        padding:
+        18px 8px;
     }
 
 
-    /* ALL TOOLS */
-
     .tool-grid{
 
-        grid-template-columns:1fr;
+        grid-template-columns:
+        repeat(2,1fr);
 
-        gap:12px;
-
+        gap:10px;
     }
 
 
     .tool-card{
 
-        min-height:108px;
-
-        padding:17px;
-
+        padding:
+        14px 10px;
     }
 
-
-    /* DIRECTORY */
 
     .directory-grid{
 
         grid-template-columns:1fr;
-
-        gap:12px;
-
     }
 
 
-    .directory-grid a{
+    #finance,
+    #image-tools,
+    #pdf-tools,
+    #converters,
+    #health,
+    #date-time,
+    #text-tools{
 
-        min-height:105px;
+        padding:
+        17px;
 
-        flex-direction:row;
-
-        align-items:center;
-
-        gap:15px;
-
-        padding:16px;
-
-    }
-
-
-    .directory-grid a span{
-
-        min-width:50px;
-
-    }
-
-
-    .directory{
-
-        padding:22px;
-
+        border-radius:16px;
     }
 
 }
@@ -1572,18 +1895,40 @@ input{
 
 @media(max-width:420px){
 
+    .logo{
+
+        font-size:18px;
+    }
+
+
+    .logo-icon{
+
+        width:32px;
+
+        height:32px;
+
+        font-size:18px;
+    }
+
+
+    .theme-btn{
+
+        width:36px;
+
+        height:36px;
+    }
+
+
     .hero-container{
 
         padding:
-        45px 14px 58px;
-
+        45px 14px 60px;
     }
 
 
     .hero h1{
 
         font-size:36px;
-
     }
 
 
@@ -1592,8 +1937,7 @@ input{
         font-size:11px;
 
         padding:
-        8px 9px;
-
+        9px 10px;
     }
 
 
@@ -1601,129 +1945,31 @@ input{
 
         grid-template-columns:
         repeat(2,1fr);
+    }
 
+
+    .tool-grid{
+
+        grid-template-columns:1fr;
     }
 
 
     .section-header{
 
         align-items:flex-start;
-
     }
 
 
     .view-all{
 
-        font-size:11px;
-
+        font-size:12px;
     }
 
-}
 
+    .directory{
 
-/* =====================================================
-   DARK MODE
-===================================================== */
-
-body.dark-page{
-
-    background:#353535;
-
-    color:#CBCBCB;
-
-}
-
-
-body.dark-page
-.hero{
-
-    background:#4A4A4A;
-
-}
-
-
-body.dark-page
-.hero h1,
-body.dark-page
-.section-title{
-
-    color:#FFFFE3;
-
-}
-
-
-body.dark-page
-.hero-text{
-
-    color:#CBCBCB;
-
-}
-
-
-body.dark-page
-.category-card,
-body.dark-page
-.tool-card,
-body.dark-page
-.directory-grid a{
-
-    background:#4A4A4A;
-
-    border-color:#666;
-
-}
-
-
-body.dark-page
-.category-card h3,
-body.dark-page
-.tool-content h3,
-body.dark-page
-.directory-grid a div{
-
-    color:#FFFFE3;
-
-}
-
-
-body.dark-page
-.tool-content p,
-body.dark-page
-.directory-grid a small{
-
-    color:#CBCBCB;
-
-}
-
-
-body.dark-page
-.category-icon,
-body.dark-page
-.tool-icon,
-body.dark-page
-.directory-grid a span{
-
-    background:#6D8196;
-
-    color:#FFFFE3;
-
-}
-
-
-body.dark-page
-.directory{
-
-    background:#4A4A4A;
-
-    border-color:#666;
-
-}
-
-
-body.dark-page
-.directory h2{
-
-    color:#FFFFE3;
+        padding:18px;
+    }
 
 }
 
@@ -1787,9 +2033,7 @@ body.dark-page
         <button
         class="theme-btn"
         onclick="toggleTheme()">
-
             🌙
-
         </button>
 
     </div>
@@ -1810,25 +2054,28 @@ body.dark-page
 <div>
 
     <div class="hero-badge">
-
-        ✦ 100% Free Online Tools
-
+        ✨ 100% Free Online Tools
     </div>
 
 
     <h1>
 
-        Simple Tools.
-        <span>Beautifully Made.</span>
+        All-in-One
+        <span>Free Tools</span>
+
+        <br>
+
+        for Everyday Needs
 
     </h1>
 
 
     <p class="hero-text">
 
-        Calculators, converters, image tools,
-        PDF utilities and everyday tools —
-        all in one clean and simple place.
+        From calculations to conversions,
+        image tools to PDF utilities —
+        everything you need in one place.
+        Fast, simple and free.
 
     </p>
 
@@ -1836,11 +2083,11 @@ body.dark-page
     <div class="hero-features">
 
         <div class="hero-feature">
-            ⚡ Fast
+            ⚡ Fast & Easy
         </div>
 
         <div class="hero-feature">
-            🔒 Private
+            🔒 Secure & Private
         </div>
 
         <div class="hero-feature">
@@ -1848,8 +2095,7 @@ body.dark-page
         </div>
 
         <div class="hero-feature">
-            💯 Free
-
+            💯 Free Forever
         </div>
 
     </div>
@@ -1863,9 +2109,7 @@ body.dark-page
         placeholder="Search any tool...">
 
         <button onclick="searchTool()">
-
-            Search
-
+            🔍 Search
         </button>
 
     </div>
@@ -1874,7 +2118,9 @@ body.dark-page
 
 
 
-<!-- HERO VISUAL -->
+<!-- =====================================================
+     HERO VISUAL
+===================================================== -->
 
 <div class="hero-visual">
 
@@ -1884,15 +2130,15 @@ body.dark-page
     </div>
 
     <div class="float-icon float-2">
-        📄
-    </div>
-
-    <div class="float-icon float-3">
         🖼️
     </div>
 
+    <div class="float-icon float-3">
+        📄
+    </div>
+
     <div class="float-icon float-4">
-        🔄
+        💻
     </div>
 
 
@@ -1903,7 +2149,6 @@ body.dark-page
             <div class="screen-title">
                 Adiyogi Tools
             </div>
-
 
             <div class="screen-grid">
 
@@ -1965,9 +2210,7 @@ body.dark-page
 
     <a href="calculator.html"
        class="view-all">
-
         View All →
-
     </a>
 
 </div>
@@ -2140,9 +2383,7 @@ body.dark-page
 
     <a href="calculator.html"
        class="view-all">
-
         View All →
-
     </a>
 
 </div>
@@ -2154,14 +2395,19 @@ body.dark-page
 <a href="basic-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">🧮</div>
+    <div class="tool-icon">
+        🧮
+    </div>
 
     <div class="tool-content">
 
-        <h3>Basic Calculator</h3>
+        <h3>
+            Basic Calculator
+        </h3>
 
         <p>
-            Perform basic arithmetic operations easily.
+            Perform basic arithmetic
+            operations easily.
         </p>
 
     </div>
@@ -2172,14 +2418,19 @@ body.dark-page
 <a href="scientific-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">🔬</div>
+    <div class="tool-icon">
+        🔬
+    </div>
 
     <div class="tool-content">
 
-        <h3>Scientific Calculator</h3>
+        <h3>
+            Scientific Calculator
+        </h3>
 
         <p>
-            Advanced scientific calculations.
+            Advanced scientific
+            calculations.
         </p>
 
     </div>
@@ -2190,32 +2441,19 @@ body.dark-page
 <a href="percentage.html"
    class="tool-card">
 
-    <div class="tool-icon">📊</div>
-
-    <div class="tool-content">
-
-        <h3>Percentage Calculator</h3>
-
-        <p>
-            Calculate percentages instantly.
-        </p>
-
+    <div class="tool-icon">
+        📊
     </div>
 
-</a>
-
-
-<a href="fraction.html"
-   class="tool-card">
-
-    <div class="tool-icon">🔢</div>
-
     <div class="tool-content">
 
-        <h3>Fraction Calculator</h3>
+        <h3>
+            Percentage Calculator
+        </h3>
 
         <p>
-            Add, subtract, multiply and divide fractions.
+            Calculate percentages
+            instantly.
         </p>
 
     </div>
@@ -2226,14 +2464,19 @@ body.dark-page
 <a href="emi-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">💳</div>
+    <div class="tool-icon">
+        💳
+    </div>
 
     <div class="tool-content">
 
-        <h3>EMI Calculator</h3>
+        <h3>
+            EMI Calculator
+        </h3>
 
         <p>
-            Calculate your loan EMI instantly.
+            Calculate your loan EMI
+            instantly.
         </p>
 
     </div>
@@ -2244,14 +2487,19 @@ body.dark-page
 <a href="gst-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">🧾</div>
+    <div class="tool-icon">
+        🧾
+    </div>
 
     <div class="tool-content">
 
-        <h3>GST Calculator</h3>
+        <h3>
+            GST Calculator
+        </h3>
 
         <p>
-            Calculate GST for your bill amount.
+            Calculate GST for your
+            bill amount.
         </p>
 
     </div>
@@ -2262,14 +2510,19 @@ body.dark-page
 <a href="loan-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">🏦</div>
+    <div class="tool-icon">
+        🏦
+    </div>
 
     <div class="tool-content">
 
-        <h3>Loan Calculator</h3>
+        <h3>
+            Loan Calculator
+        </h3>
 
         <p>
-            Calculate loan payments and interest.
+            Calculate loan payments
+            and interest.
         </p>
 
     </div>
@@ -2280,14 +2533,19 @@ body.dark-page
 <a href="compound-interest.html"
    class="tool-card">
 
-    <div class="tool-icon">📈</div>
+    <div class="tool-icon">
+        📈
+    </div>
 
     <div class="tool-content">
 
-        <h3>Compound Interest</h3>
+        <h3>
+            Compound Interest
+        </h3>
 
         <p>
-            Calculate compound interest easily.
+            Calculate compound
+            interest easily.
         </p>
 
     </div>
@@ -2298,32 +2556,19 @@ body.dark-page
 <a href="simple-interest.html"
    class="tool-card">
 
-    <div class="tool-icon">💵</div>
-
-    <div class="tool-content">
-
-        <h3>Simple Interest</h3>
-
-        <p>
-            Calculate simple interest instantly.
-        </p>
-
+    <div class="tool-icon">
+        💵
     </div>
 
-</a>
-
-
-<a href="discount-calculator.html"
-   class="tool-card">
-
-    <div class="tool-icon">🏷️</div>
-
     <div class="tool-content">
 
-        <h3>Discount Calculator</h3>
+        <h3>
+            Simple Interest
+        </h3>
 
         <p>
-            Calculate discount and final price.
+            Calculate simple
+            interest instantly.
         </p>
 
     </div>
@@ -2334,14 +2579,19 @@ body.dark-page
 <a href="age-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">🎂</div>
+    <div class="tool-icon">
+        🎂
+    </div>
 
     <div class="tool-content">
 
-        <h3>Age Calculator</h3>
+        <h3>
+            Age Calculator
+        </h3>
 
         <p>
-            Calculate your exact age.
+            Calculate your exact
+            age.
         </p>
 
     </div>
@@ -2352,14 +2602,19 @@ body.dark-page
 <a href="bmi-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">⚖️</div>
+    <div class="tool-icon">
+        ⚖️
+    </div>
 
     <div class="tool-content">
 
-        <h3>BMI Calculator</h3>
+        <h3>
+            BMI Calculator
+        </h3>
 
         <p>
-            Check your Body Mass Index.
+            Check your Body Mass
+            Index.
         </p>
 
     </div>
@@ -2382,7 +2637,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        Finance Tools
+        💰 Finance Tools
     </h2>
 
 </div>
@@ -2394,14 +2649,19 @@ body.dark-page
 <a href="share-market-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">📊</div>
+    <div class="tool-icon">
+        📊
+    </div>
 
     <div class="tool-content">
 
-        <h3>Share Market Calculator</h3>
+        <h3>
+            Share Market Calculator
+        </h3>
 
         <p>
-            SIP, returns, profit, charges and more.
+            SIP, returns, profit,
+            charges and more.
         </p>
 
     </div>
@@ -2412,14 +2672,19 @@ body.dark-page
 <a href="gst-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">🧾</div>
+    <div class="tool-icon">
+        🧾
+    </div>
 
     <div class="tool-content">
 
-        <h3>GST Calculator</h3>
+        <h3>
+            GST Calculator
+        </h3>
 
         <p>
-            Calculate GST and final amount.
+            Calculate GST and
+            final amount.
         </p>
 
     </div>
@@ -2430,11 +2695,15 @@ body.dark-page
 <a href="emi-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">💳</div>
+    <div class="tool-icon">
+        💳
+    </div>
 
     <div class="tool-content">
 
-        <h3>EMI Calculator</h3>
+        <h3>
+            EMI Calculator
+        </h3>
 
         <p>
             Calculate monthly EMI.
@@ -2448,68 +2717,18 @@ body.dark-page
 <a href="loan-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">🏦</div>
+    <div class="tool-icon">
+        🏦
+    </div>
 
     <div class="tool-content">
 
-        <h3>Loan Calculator</h3>
+        <h3>
+            Loan Calculator
+        </h3>
 
         <p>
             Estimate loan payments.
-        </p>
-
-    </div>
-
-</a>
-
-
-<a href="simple-interest.html"
-   class="tool-card">
-
-    <div class="tool-icon">💵</div>
-
-    <div class="tool-content">
-
-        <h3>Simple Interest</h3>
-
-        <p>
-            Calculate simple interest.
-        </p>
-
-    </div>
-
-</a>
-
-
-<a href="compound-interest.html"
-   class="tool-card">
-
-    <div class="tool-icon">📈</div>
-
-    <div class="tool-content">
-
-        <h3>Compound Interest</h3>
-
-        <p>
-            Calculate compound interest.
-        </p>
-
-    </div>
-
-</a>
-
-
-<a href="discount-calculator.html"
-   class="tool-card">
-
-    <div class="tool-icon">🏷️</div>
-
-    <div class="tool-content">
-
-        <h3>Discount Calculator</h3>
-
-        <p>
-            Calculate discount and final price.
         </p>
 
     </div>
@@ -2532,7 +2751,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        Image Tools
+        🖼️ Image Tools
     </h2>
 
 </div>
@@ -2540,108 +2759,29 @@ body.dark-page
 
 <div class="directory-grid">
 
-
 <a href="image-resizer.html">
-
-    <span>🖼️</span>
-
-    <div>
-
-        Image Resizer
-
-        <small>
-            Resize images easily
-        </small>
-
-    </div>
-
+    Image Resizer
 </a>
-
 
 <a href="image-to-pdf.html">
-
-    <span>📄</span>
-
-    <div>
-
-        Image to PDF
-
-        <small>
-            Convert images into PDF
-        </small>
-
-    </div>
-
+    Image to PDF
 </a>
-
 
 <a href="image-resize-kb.html">
-
-    <span>📦</span>
-
-    <div>
-
-        Image Resize by KB
-
-        <small>
-            Resize to target file size
-        </small>
-
-    </div>
-
+    Image Resize by KB
 </a>
-
 
 <a href="image-crop.html">
-
-    <span>✂️</span>
-
-    <div>
-
-        Image Crop
-
-        <small>
-            Crop images online
-        </small>
-
-    </div>
-
+    Image Crop
 </a>
-
 
 <a href="passport-photo.html">
-
-    <span>🪪</span>
-
-    <div>
-
-        Passport Photo Maker
-
-        <small>
-            Create passport photos
-        </small>
-
-    </div>
-
+    Passport Photo Maker
 </a>
-
 
 <a href="signature-resize.html">
-
-    <span>✍️</span>
-
-    <div>
-
-        Signature Resize
-
-        <small>
-            Resize signature images
-        </small>
-
-    </div>
-
+    Signature Resize
 </a>
-
 
 </div>
 
@@ -2658,7 +2798,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        PDF Tools
+        📄 PDF Tools
     </h2>
 
 </div>
@@ -2666,91 +2806,25 @@ body.dark-page
 
 <div class="directory-grid">
 
-
 <a href="pdf-compress.html">
-
-    <span>📉</span>
-
-    <div>
-
-        PDF Compress
-
-        <small>
-            Reduce PDF file size
-        </small>
-
-    </div>
-
+    PDF Compress
 </a>
-
 
 <a href="pdf-merge.html">
-
-    <span>🔗</span>
-
-    <div>
-
-        PDF Merge
-
-        <small>
-            Combine multiple PDFs
-        </small>
-
-    </div>
-
+    PDF Merge
 </a>
-
 
 <a href="pdf-split.html">
-
-    <span>✂️</span>
-
-    <div>
-
-        PDF Split
-
-        <small>
-            Split PDF pages
-        </small>
-
-    </div>
-
+    PDF Split
 </a>
-
 
 <a href="pdf-translator.html">
-
-    <span>🌐</span>
-
-    <div>
-
-        PDF Translator
-
-        <small>
-            Translate PDF documents
-        </small>
-
-    </div>
-
+    PDF Translator
 </a>
-
 
 <a href="word-to-pdf.html">
-
-    <span>📝</span>
-
-    <div>
-
-        Word to PDF
-
-        <small>
-            Convert Word documents to PDF
-        </small>
-
-    </div>
-
+    Word to PDF
 </a>
-
 
 </div>
 
@@ -2767,7 +2841,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        Converters
+        🔄 Converters
     </h2>
 
 </div>
@@ -2775,40 +2849,13 @@ body.dark-page
 
 <div class="directory-grid">
 
-
 <a href="unit-converter.html">
-
-    <span>📐</span>
-
-    <div>
-
-        Unit Converter
-
-        <small>
-            Length, weight, area and more
-        </small>
-
-    </div>
-
+    Unit Converter
 </a>
-
 
 <a href="currency-calculator.html">
-
-    <span>💱</span>
-
-    <div>
-
-        Currency Converter
-
-        <small>
-            Convert between currencies
-        </small>
-
-    </div>
-
+    Currency Converter
 </a>
-
 
 </div>
 
@@ -2825,7 +2872,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        Health & Fitness
+        ❤️ Health & Fitness
     </h2>
 
 </div>
@@ -2833,40 +2880,17 @@ body.dark-page
 
 <div class="directory-grid">
 
-
 <a href="bmi-calculator.html">
-
-    <span>⚖️</span>
-
-    <div>
-
-        BMI Calculator
-
-        <small>
-            Calculate Body Mass Index
-        </small>
-
-    </div>
-
+    BMI Calculator
 </a>
-
 
 <a href="calorie-calculator.html">
-
-    <span>🔥</span>
-
-    <div>
-
-        Calorie Calculator
-
-        <small>
-            Estimate daily calorie needs
-        </small>
-
-    </div>
-
+    Calorie Calculator
 </a>
 
+<a href="age-calculator.html">
+    Age Calculator
+</a>
 
 </div>
 
@@ -2883,7 +2907,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        Date & Time
+        📅 Date & Time
     </h2>
 
 </div>
@@ -2891,57 +2915,17 @@ body.dark-page
 
 <div class="directory-grid">
 
-
 <a href="age-calculator.html">
-
-    <span>🎂</span>
-
-    <div>
-
-        Age Calculator
-
-        <small>
-            Calculate exact age
-        </small>
-
-    </div>
-
+    Age Calculator
 </a>
-
 
 <a href="date-calculator.html">
-
-    <span>📅</span>
-
-    <div>
-
-        Date Calculator
-
-        <small>
-            Add or subtract dates
-        </small>
-
-    </div>
-
+    Date Calculator
 </a>
-
 
 <a href="time-calculator.html">
-
-    <span>⏱️</span>
-
-    <div>
-
-        Time Calculator
-
-        <small>
-            Calculate time differences
-        </small>
-
-    </div>
-
+    Time Calculator
 </a>
-
 
 </div>
 
@@ -2958,48 +2942,22 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        Text Tools
+        🔤 Text Tools
     </h2>
 
 </div>
 
 
-<div class="directory-grid">
+<div class="directory">
 
+    <h2>
+        More Tools Coming Soon 🚀
+    </h2>
 
-<a href="#">
-
-    <span>🔤</span>
-
-    <div>
-
-        Text Tools
-
-        <small>
-            More text utilities coming soon
-        </small>
-
-    </div>
-
-</a>
-
-
-<a href="#">
-
-    <span>📝</span>
-
-    <div>
-
-        Text Formatter
-
-        <small>
-            More tools coming soon
-        </small>
-
-    </div>
-
-</a>
-
+    <p style="color:#707070;">
+        Adiyogi Tools is continuously expanding
+        with new free online utilities.
+    </p>
 
 </div>
 
@@ -3017,17 +2975,12 @@ body.dark-page
 <footer class="footer">
 
     <div class="footer-logo">
-
         Adiyogi <span>Tools</span>
-
     </div>
 
-
     <p>
-
         Free online tools for everyday needs.
         Fast, simple and easy to use.
-
     </p>
 
 
@@ -3053,10 +3006,7 @@ body.dark-page
 
 
     <p>
-
-        © 2026 Adiyogi Tools.
-        All rights reserved.
-
+        © 2026 Adiyogi Tools. All rights reserved.
     </p>
 
 </footer>
@@ -3100,15 +3050,7 @@ function searchTool(){
         .toLowerCase();
 
 
-        const href =
-        link.getAttribute("href");
-
-
-        if(
-            text.includes(value) &&
-            href &&
-            href !== "#"
-        ){
+        if(text.includes(value)){
 
             window.location.href =
             link.href;
@@ -3127,7 +3069,7 @@ function searchTool(){
 
 
 /* =====================================================
-   HERO ENTER
+   ENTER SEARCH
 ===================================================== */
 
 document
@@ -3167,11 +3109,8 @@ document
             if(value){
 
                 document
-                .getElementById(
-                    "heroSearch"
-                )
-                .value=value;
-
+                .getElementById("heroSearch")
+                .value = value;
 
                 searchTool();
 
@@ -3184,7 +3123,7 @@ document
 
 
 /* =====================================================
-   THEME
+   THEME BUTTON
 ===================================================== */
 
 function toggleTheme(){
@@ -3192,27 +3131,6 @@ function toggleTheme(){
     document.body.classList.toggle(
         "dark-page"
     );
-
-
-    const btn =
-    document.querySelector(
-        ".theme-btn"
-    );
-
-
-    if(
-        document.body.classList.contains(
-            "dark-page"
-        )
-    ){
-
-        btn.textContent="☀️";
-
-    }else{
-
-        btn.textContent="🌙";
-
-    }
 
 }
 
