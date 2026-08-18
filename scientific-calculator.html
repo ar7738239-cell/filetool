@@ -11,7 +11,165 @@ initial-scale=1.0,
 maximum-scale=1.0,
 user-scalable=no">
 
-<title>Adiyogi Scientific Calculator</title>
+<!-- =====================================================
+     BASIC SEO
+===================================================== -->
+
+<title>Scientific Calculator Online Free | AdiyogiTools</title>
+
+<meta name="description"
+content="Use AdiyogiTools free online scientific calculator for trigonometry, logarithms, powers, roots, fractions, factorials, statistics, matrices, vectors, engineering calculations and more.">
+
+<meta name="keywords"
+content="scientific calculator, online scientific calculator, free scientific calculator, engineering calculator, trigonometric calculator, fraction calculator, matrix calculator, vector calculator">
+
+<meta name="robots"
+content="index, follow, max-image-preview:large">
+
+<meta name="author"
+content="AdiyogiTools">
+
+<meta name="theme-color"
+content="#080d19">
+
+<link rel="canonical"
+href="https://adiyogitools.in/scientific-calculator.html">
+
+
+<!-- =====================================================
+     OPEN GRAPH
+===================================================== -->
+
+<meta property="og:type"
+content="website">
+
+<meta property="og:title"
+content="Scientific Calculator Online Free | AdiyogiTools">
+
+<meta property="og:description"
+content="Free online scientific calculator with trigonometry, logarithms, powers, roots, fractions, statistics, matrices, vectors and engineering tools.">
+
+<meta property="og:url"
+content="https://adiyogitools.in/scientific-calculator.html">
+
+<meta property="og:site_name"
+content="AdiyogiTools">
+
+
+<!-- =====================================================
+     TWITTER
+===================================================== -->
+
+<meta name="twitter:card"
+content="summary">
+
+<meta name="twitter:title"
+content="Scientific Calculator Online Free | AdiyogiTools">
+
+<meta name="twitter:description"
+content="Free online scientific calculator for students, engineers and everyday mathematical calculations.">
+
+
+<!-- =====================================================
+     STRUCTURED DATA
+===================================================== -->
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "@id":"https://adiyogitools.in/scientific-calculator.html#scientific-calculator",
+  "name":"Scientific Calculator",
+  "url":"https://adiyogitools.in/scientific-calculator.html",
+  "description":"Free online scientific calculator for trigonometry, logarithms, powers, roots, fractions, factorials and engineering calculations.",
+  "applicationCategory":"CalculatorApplication",
+  "applicationSubCategory":"Scientific Calculator",
+  "operatingSystem":"Any",
+  "browserRequirements":"Requires JavaScript",
+  "isAccessibleForFree":true,
+  "offers":{
+    "@type":"Offer",
+    "price":"0",
+    "priceCurrency":"INR"
+  },
+  "publisher":{
+    "@type":"Organization",
+    "name":"AdiyogiTools",
+    "url":"https://adiyogitools.in/"
+  }
+}
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BreadcrumbList",
+  "itemListElement":[
+    {
+      "@type":"ListItem",
+      "position":1,
+      "name":"AdiyogiTools",
+      "item":"https://adiyogitools.in/"
+    },
+    {
+      "@type":"ListItem",
+      "position":2,
+      "name":"Calculators",
+      "item":"https://adiyogitools.in/calculator.html"
+    },
+    {
+      "@type":"ListItem",
+      "position":3,
+      "name":"Scientific Calculator",
+      "item":"https://adiyogitools.in/scientific-calculator.html"
+    }
+  ]
+}
+</script>
+
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {
+      "@type":"Question",
+      "name":"What is a scientific calculator?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"A scientific calculator is an online calculator that supports advanced mathematical functions such as trigonometry, logarithms, powers, roots, factorials, fractions and other scientific calculations."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Is this scientific calculator free?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. The AdiyogiTools scientific calculator is free to use online."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can I use degrees and radians?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. The calculator supports DEG, RAD and GRAD angle modes."
+      }
+    },
+    {
+      "@type":"Question",
+      "name":"Can this calculator solve engineering calculations?",
+      "acceptedAnswer":{
+        "@type":"Answer",
+        "text":"Yes. It includes engineering tools such as derivatives, numerical integration, limits, equations, matrices, vectors, statistics, unit conversion and engineering constants."
+      }
+    }
+  ]
+}
+</script>
+
 
 <style>
 
@@ -26,27 +184,38 @@ user-scalable=no">
     -webkit-tap-highlight-color:transparent;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 html,
 body{
     width:100%;
-    height:100%;
-    overflow:hidden;
-    background:#080d19;
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
+    min-height:100%;
 }
 
 body{
+    background:#080d19;
+    color:#ffffff;
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
     overscroll-behavior:none;
+}
+
+button,
+input,
+select,
+textarea{
+    font:inherit;
 }
 
 button{
     border:0;
     outline:0;
-    font:inherit;
     user-select:none;
     -webkit-user-select:none;
-    -webkit-touch-callout:none;
     cursor:pointer;
     touch-action:manipulation;
 }
@@ -57,19 +226,12 @@ button{
 ===================================================== */
 
 .app{
-
     width:100%;
     max-width:900px;
-
-    height:100dvh;
-
+    min-height:100dvh;
     margin:auto;
-
     display:flex;
     flex-direction:column;
-
-    overflow:hidden;
-
     background:#080d19;
 }
 
@@ -79,9 +241,8 @@ button{
 ===================================================== */
 
 .header{
-
-    height:46px;
-    min-height:46px;
+    height:48px;
+    min-height:48px;
 
     display:flex;
     align-items:center;
@@ -92,33 +253,50 @@ button{
     background:#0d1322;
 
     border-bottom:1px solid #202a40;
+
+    position:sticky;
+    top:0;
+    z-index:100;
 }
 
 .brand{
-
     font-size:18px;
     font-weight:700;
-
     white-space:nowrap;
 }
 
 .header-right{
-
     display:flex;
     gap:4px;
 }
 
 .badge{
-
     background:#192842;
-
     color:#9edbff;
-
     border-radius:10px;
-
     padding:7px 8px;
-
     font-size:10px;
+}
+
+
+/* =====================================================
+   SEO BREADCRUMB
+===================================================== */
+
+.breadcrumb{
+    padding:8px 10px 4px;
+    background:#080d19;
+    font-size:11px;
+    color:#8793aa;
+}
+
+.breadcrumb a{
+    color:#9edbff;
+    text-decoration:none;
+}
+
+.breadcrumb span{
+    margin:0 4px;
 }
 
 
@@ -127,48 +305,35 @@ button{
 ===================================================== */
 
 .display-area{
-
     flex:none;
-
     padding:4px 10px;
-
     background:#080d19;
 }
 
 .mode-row{
-
     height:20px;
-
     display:flex;
     align-items:center;
-
     gap:18px;
-
     padding-left:5px;
-
     font-size:11px;
-
     font-weight:700;
-
     color:#aab4c8;
 }
 
 .mode-row .active{
-
     color:#65d7ff;
 }
 
 
 /* =====================================================
-   MAIN CALCULATOR DISPLAY
+   DISPLAY
 ===================================================== */
 
 .display{
-
     height:82px;
 
     background:#dceaea;
-
     color:#111820;
 
     border-radius:14px;
@@ -176,44 +341,30 @@ button{
     padding:5px 10px;
 
     display:flex;
-
     flex-direction:column;
-
     justify-content:space-between;
 
     overflow:hidden;
 
     box-shadow:
-    inset 0 0 0 1px #c2d4d4;
+        inset 0 0 0 1px #c2d4d4;
 }
 
-
-/*
-   Expression is now a real visual area.
-
-   Fraction is rendered INSIDE this area.
-*/
-
 .expression{
-
     height:50px;
 
     display:flex;
-
     align-items:center;
-
     justify-content:flex-end;
 
     gap:3px;
 
     font-size:18px;
-
     line-height:24px;
 
     white-space:nowrap;
 
     overflow-x:auto;
-
     overflow-y:hidden;
 
     padding:0 2px;
@@ -225,29 +376,20 @@ button{
     display:none;
 }
 
-
 .expr-text{
-
     display:inline-block;
 }
 
-
-/* Cursor */
-
 .expr-cursor{
-
     display:inline-block;
 
     width:2px;
-
     height:26px;
 
     background:#111820;
 
-    vertical-align:middle;
-
     animation:
-    blink 1s steps(2,start) infinite;
+        blink 1s steps(2,start) infinite;
 }
 
 @keyframes blink{
@@ -260,27 +402,22 @@ button{
 
 
 /* =====================================================
-   INLINE FRACTION
+   FRACTION
 ===================================================== */
 
 .inline-frac{
-
     display:inline-flex;
 
     flex-direction:column;
-
     align-items:stretch;
-
     justify-content:center;
 
     vertical-align:middle;
 
     min-width:34px;
-
     max-width:170px;
 
     line-height:18px;
-
     font-size:17px;
 
     margin:0 2px;
@@ -288,7 +425,6 @@ button{
 
 .frac-num,
 .frac-den{
-
     min-height:18px;
 
     padding:0 5px;
@@ -301,48 +437,34 @@ button{
 }
 
 .frac-line{
-
     height:2px;
-
     background:#111820;
-
     width:100%;
-
     min-width:28px;
 }
 
-
-/*
-   Active fraction gets a small purple
-   outline so user knows where typing goes.
-*/
-
 .inline-frac.active{
-
     outline:2px solid #7545f5;
-
     border-radius:4px;
 }
 
 .inline-frac.active .frac-line{
-
     background:#7545f5;
 }
 
 .frac-placeholder{
-
     opacity:.45;
 }
 
 
-/* Answer */
+/* =====================================================
+   ANSWER
+===================================================== */
 
 .answer{
-
     height:30px;
 
     font-size:25px;
-
     line-height:30px;
 
     font-weight:700;
@@ -356,17 +478,14 @@ button{
 
 
 /* =====================================================
-   CONTROL ROW
+   CONTROLS
 ===================================================== */
 
 .controls{
-
     flex:none;
 
     display:grid;
-
-    grid-template-columns:
-    repeat(8,1fr);
+    grid-template-columns:repeat(8,1fr);
 
     gap:4px;
 
@@ -374,29 +493,23 @@ button{
 }
 
 .ctrl{
-
     height:31px;
 
     border-radius:9px;
 
     background:#293249;
-
     color:white;
 
     font-size:11px;
-
     font-weight:700;
 }
 
 .ctrl.active{
-
     background:#7545f5;
 }
 
 .ctrl:active{
-
     transform:scale(.95);
-
     background:#46536e;
 }
 
@@ -406,13 +519,11 @@ button{
 ===================================================== */
 
 .scroll-area{
-
     flex:1;
 
     min-height:0;
 
     overflow-y:auto;
-
     overflow-x:hidden;
 
     padding:2px 8px 20px;
@@ -427,7 +538,6 @@ button{
 }
 
 .scroll-area::-webkit-scrollbar{
-
     display:none;
 }
 
@@ -437,66 +547,50 @@ button{
 ===================================================== */
 
 .keypad{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(6,1fr);
-
+    grid-template-columns:repeat(6,1fr);
     gap:4px;
 }
 
 .key{
-
     height:41px;
 
     border-radius:10px;
 
     background:#252e42;
-
     color:white;
 
     font-size:14px;
-
     font-weight:500;
 }
 
 .key:active{
-
     transform:scale(.95);
-
     background:#46536e;
 }
 
 .func{
-
     background:#30394e;
 }
 
 .operator{
-
     background:#454e62;
 }
 
 .orange{
-
     background:#f27d4d;
-
     color:#111;
 }
 
 .green{
-
     background:#18a968;
 }
 
 .yellow{
-
     color:#ffe85a;
 }
 
 .purple{
-
     color:#d7b0ff;
 }
 
@@ -506,7 +600,6 @@ button{
 ===================================================== */
 
 .tools{
-
     margin:7px 5px 0;
 
     padding:9px;
@@ -519,46 +612,114 @@ button{
 }
 
 .tools-title{
-
     font-size:15px;
-
     font-weight:700;
-
     margin-bottom:7px;
 }
 
 .tools-grid{
-
     display:grid;
-
-    grid-template-columns:
-    repeat(2,1fr);
-
+    grid-template-columns:repeat(2,1fr);
     gap:5px;
 }
 
 .tool-btn{
-
     height:39px;
 
     border-radius:9px;
 
     background:#273149;
-
     color:white;
 
     border:1px solid #3a4862;
 
     font-size:12px;
-
     font-weight:700;
 }
 
 .tool-btn:active{
-
     transform:scale(.97);
-
     background:#465570;
+}
+
+
+/* =====================================================
+   SEO INFORMATION
+===================================================== */
+
+.seo-content{
+    background:#0d1424;
+    border-top:1px solid #202a40;
+    padding:25px 15px 30px;
+}
+
+.seo-content h1{
+    font-size:26px;
+    line-height:1.25;
+    margin-bottom:12px;
+}
+
+.seo-content h2{
+    font-size:21px;
+    margin:25px 0 10px;
+    color:#9edbff;
+}
+
+.seo-content h3{
+    font-size:17px;
+    margin:18px 0 7px;
+    color:#ffffff;
+}
+
+.seo-content p,
+.seo-content li{
+    color:#b8c1d1;
+    font-size:14px;
+    line-height:1.75;
+}
+
+.seo-content ul{
+    padding-left:20px;
+}
+
+.seo-content a{
+    color:#65d7ff;
+    text-decoration:none;
+}
+
+.seo-content a:hover{
+    text-decoration:underline;
+}
+
+
+/* =====================================================
+   FAQ
+===================================================== */
+
+.faq{
+    margin-top:20px;
+}
+
+.faq-item{
+    background:#111a2c;
+    border:1px solid #29354d;
+    border-radius:12px;
+    margin-bottom:8px;
+    overflow:hidden;
+}
+
+.faq-item summary{
+    cursor:pointer;
+    padding:13px;
+    font-weight:700;
+    color:#ffffff;
+}
+
+.faq-answer{
+    padding:0 13px 13px;
+    color:#b8c1d1;
+    font-size:14px;
+    line-height:1.7;
 }
 
 
@@ -567,17 +728,13 @@ button{
 ===================================================== */
 
 .modal{
-
     position:fixed;
-
     inset:0;
-
     z-index:9999;
 
     display:none;
 
     align-items:center;
-
     justify-content:center;
 
     padding:15px;
@@ -586,12 +743,10 @@ button{
 }
 
 .modal.show{
-
     display:flex;
 }
 
 .modal-box{
-
     width:min(500px,100%);
 
     max-height:90dvh;
@@ -608,18 +763,14 @@ button{
 }
 
 .modal-title{
-
     font-size:20px;
-
     font-weight:700;
-
     margin-bottom:12px;
 }
 
 .modal input,
 .modal select,
 .modal textarea{
-
     width:100%;
 
     padding:11px;
@@ -627,7 +778,6 @@ button{
     margin:5px 0;
 
     background:#202a3d;
-
     color:white;
 
     border:1px solid #3b4861;
@@ -638,21 +788,16 @@ button{
 }
 
 .modal textarea{
-
     min-height:90px;
 }
 
 .modal-buttons{
-
     display:flex;
-
     gap:7px;
-
     margin-top:10px;
 }
 
 .modal-buttons button{
-
     flex:1;
 
     height:42px;
@@ -667,12 +812,10 @@ button{
 }
 
 .modal-buttons .primary{
-
     background:#7545f5;
 }
 
 .result{
-
     margin-top:10px;
 
     padding:12px;
@@ -690,120 +833,128 @@ button{
 
 
 /* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+    background:#070b14;
+
+    border-top:1px solid #202a40;
+
+    text-align:center;
+
+    padding:25px 15px;
+
+    color:#8793aa;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+.footer strong{
+    color:white;
+}
+
+.footer a{
+    color:#65d7ff;
+    text-decoration:none;
+    margin:0 6px;
+}
+
+
+/* =====================================================
    MOBILE
 ===================================================== */
 
 @media(max-width:500px){
 
     .brand{
-
         font-size:16px;
     }
 
     .badge{
-
         font-size:9px;
-
         padding:6px;
     }
 
     .display{
-
         height:80px;
     }
 
     .expression{
-
         font-size:16px;
     }
 
     .inline-frac{
-
         font-size:16px;
     }
 
     .answer{
-
         font-size:25px;
     }
 
     .controls{
-
         padding:3px 8px;
-
         gap:3px;
     }
 
     .ctrl{
-
         height:30px;
-
         font-size:10px;
     }
 
     .keypad{
-
         gap:3px;
     }
 
     .key{
-
         height:39px;
-
         border-radius:9px;
-
         font-size:13px;
+    }
+
+    .seo-content h1{
+        font-size:23px;
+    }
+
+    .seo-content h2{
+        font-size:19px;
     }
 
 }
 
-
-/* =====================================================
-   SMALL PHONE
-===================================================== */
-
 @media(max-width:380px){
 
     .header{
-
         height:42px;
-
         min-height:42px;
     }
 
     .brand{
-
         font-size:14px;
     }
 
     .badge{
-
         font-size:8px;
-
         padding:5px;
     }
 
     .display{
-
         height:74px;
     }
 
     .key{
-
         height:36px;
-
         font-size:12px;
     }
 
     .ctrl{
-
         height:28px;
-
         font-size:9px;
     }
 
     .inline-frac{
-
         font-size:14px;
     }
 
@@ -851,7 +1002,33 @@ v4.0
 
 
 <!-- =====================================================
-     MAIN DISPLAY
+     BREADCRUMB
+===================================================== -->
+
+<nav class="breadcrumb"
+aria-label="Breadcrumb">
+
+<a href="index.html">
+AdiyogiTools
+</a>
+
+<span>›</span>
+
+<a href="calculator.html">
+Calculators
+</a>
+
+<span>›</span>
+
+<span>
+Scientific Calculator
+</span>
+
+</nav>
+
+
+<!-- =====================================================
+     DISPLAY
 ===================================================== -->
 
 <section class="display-area">
@@ -952,7 +1129,7 @@ data-action="second">
 
 
 <!-- =====================================================
-     KEYPAD SCROLL
+     CALCULATOR
 ===================================================== -->
 
 <div class="scroll-area">
@@ -963,369 +1140,112 @@ data-action="second">
 
 <!-- TRIG -->
 
-<button class="key func"
-data-insert="sin(">
-sin
-</button>
-
-<button class="key func"
-data-insert="cos(">
-cos
-</button>
-
-<button class="key func"
-data-insert="tan(">
-tan
-</button>
-
-<button class="key func"
-data-insert="asin(">
-sin⁻¹
-</button>
-
-<button class="key func"
-data-insert="acos(">
-cos⁻¹
-</button>
-
-<button class="key func"
-data-insert="atan(">
-tan⁻¹
-</button>
+<button class="key func" data-insert="sin(">sin</button>
+<button class="key func" data-insert="cos(">cos</button>
+<button class="key func" data-insert="tan(">tan</button>
+<button class="key func" data-insert="asin(">sin⁻¹</button>
+<button class="key func" data-insert="acos(">cos⁻¹</button>
+<button class="key func" data-insert="atan(">tan⁻¹</button>
 
 
 <!-- HYPERBOLIC -->
 
-<button class="key func"
-data-insert="sinh(">
-sinh
-</button>
-
-<button class="key func"
-data-insert="cosh(">
-cosh
-</button>
-
-<button class="key func"
-data-insert="tanh(">
-tanh
-</button>
-
-<button class="key func"
-data-insert="log(">
-log
-</button>
-
-<button class="key func"
-data-insert="ln(">
-ln
-</button>
-
-<button class="key func"
-data-insert="exp(">
-eˣ
-</button>
+<button class="key func" data-insert="sinh(">sinh</button>
+<button class="key func" data-insert="cosh(">cosh</button>
+<button class="key func" data-insert="tanh(">tanh</button>
+<button class="key func" data-insert="log(">log</button>
+<button class="key func" data-insert="ln(">ln</button>
+<button class="key func" data-insert="exp(">eˣ</button>
 
 
 <!-- ROOT / POWER -->
 
-<button class="key func"
-data-insert="sqrt(">
-√
-</button>
-
-<button class="key func"
-data-insert="cbrt(">
-∛
-</button>
-
-<button class="key func"
-data-insert="^2">
-x²
-</button>
-
-<button class="key func"
-data-insert="^">
-xʸ
-</button>
-
-<button class="key func"
-data-insert="inv(">
-1/x
-</button>
-
-<button class="key func"
-data-insert="abs(">
-|x|
-</button>
+<button class="key func" data-insert="sqrt(">√</button>
+<button class="key func" data-insert="cbrt(">∛</button>
+<button class="key func" data-insert="^2">x²</button>
+<button class="key func" data-insert="^">xʸ</button>
+<button class="key func" data-insert="inv(">1/x</button>
+<button class="key func" data-insert="abs(">|x|</button>
 
 
 <!-- ROUNDING -->
 
-<button class="key func"
-data-insert="floor(">
-Floor
-</button>
-
-<button class="key func"
-data-insert="ceil(">
-Ceil
-</button>
-
-<button class="key func"
-data-insert="round(">
-Round
-</button>
-
-<button class="key func"
-data-insert="fact(">
-n!
-</button>
-
-<button class="key func"
-data-insert="mod(">
-mod
-</button>
-
-<button class="key func"
-data-insert="sign(">
-sign
-</button>
+<button class="key func" data-insert="floor(">Floor</button>
+<button class="key func" data-insert="ceil(">Ceil</button>
+<button class="key func" data-insert="round(">Round</button>
+<button class="key func" data-insert="fact(">n!</button>
+<button class="key func" data-insert="mod(">mod</button>
+<button class="key func" data-insert="sign(">sign</button>
 
 
 <!-- NUMBER THEORY -->
 
-<button class="key yellow"
-data-insert="npr(">
-nPr
-</button>
-
-<button class="key yellow"
-data-insert="ncr(">
-nCr
-</button>
-
-<button class="key yellow"
-data-insert="gcd(">
-GCD
-</button>
-
-<button class="key yellow"
-data-insert="lcm(">
-LCM
-</button>
-
-<button class="key"
-data-insert="logb(">
-logₐ
-</button>
-
-<button class="key"
-data-insert="pi">
-π
-</button>
+<button class="key yellow" data-insert="npr(">nPr</button>
+<button class="key yellow" data-insert="ncr(">nCr</button>
+<button class="key yellow" data-insert="gcd(">GCD</button>
+<button class="key yellow" data-insert="lcm(">LCM</button>
+<button class="key" data-insert="logb(">logₐ</button>
+<button class="key" data-insert="pi">π</button>
 
 
 <!-- MEMORY -->
 
-<button class="key yellow"
-data-action="mc">
-MC
-</button>
-
-<button class="key yellow"
-data-action="mr">
-MR
-</button>
-
-<button class="key yellow"
-data-action="mplus">
-M+
-</button>
-
-<button class="key yellow"
-data-action="mminus">
-M−
-</button>
-
-<button class="key yellow"
-data-action="ms">
-MS
-</button>
-
-<button class="key"
-data-insert="e">
-e
-</button>
+<button class="key yellow" data-action="mc">MC</button>
+<button class="key yellow" data-action="mr">MR</button>
+<button class="key yellow" data-action="mplus">M+</button>
+<button class="key yellow" data-action="mminus">M−</button>
+<button class="key yellow" data-action="ms">MS</button>
+<button class="key" data-insert="e">e</button>
 
 
 <!-- 7 8 9 -->
 
-<button class="key"
-data-insert="7">
-7
-</button>
-
-<button class="key"
-data-insert="8">
-8
-</button>
-
-<button class="key"
-data-insert="9">
-9
-</button>
-
-<button class="key operator"
-data-insert="/">
-÷
-</button>
-
-<button class="key operator"
-data-insert="%">
-%
-</button>
-
-<button class="key orange"
-data-action="clear">
-AC
-</button>
+<button class="key" data-insert="7">7</button>
+<button class="key" data-insert="8">8</button>
+<button class="key" data-insert="9">9</button>
+<button class="key operator" data-insert="/">÷</button>
+<button class="key operator" data-insert="%">%</button>
+<button class="key orange" data-action="clear">AC</button>
 
 
 <!-- 4 5 6 -->
 
-<button class="key"
-data-insert="4">
-4
-</button>
-
-<button class="key"
-data-insert="5">
-5
-</button>
-
-<button class="key"
-data-insert="6">
-6
-</button>
-
-<button class="key operator"
-data-insert="*">
-×
-</button>
-
-<button class="key operator"
-data-insert="mod(">
-MOD
-</button>
-
-<button class="key"
-data-insert="-">
-(−)
-</button>
+<button class="key" data-insert="4">4</button>
+<button class="key" data-insert="5">5</button>
+<button class="key" data-insert="6">6</button>
+<button class="key operator" data-insert="*">×</button>
+<button class="key operator" data-insert="mod(">MOD</button>
+<button class="key" data-insert="-">(−)</button>
 
 
 <!-- 1 2 3 -->
 
-<button class="key"
-data-insert="1">
-1
-</button>
-
-<button class="key"
-data-insert="2">
-2
-</button>
-
-<button class="key"
-data-insert="3">
-3
-</button>
-
-<button class="key operator"
-data-insert="+">
-+
-</button>
-
-<button class="key operator"
-data-insert="-">
-−
-</button>
-
-<button class="key"
-data-insert="(">
-(
-</button>
+<button class="key" data-insert="1">1</button>
+<button class="key" data-insert="2">2</button>
+<button class="key" data-insert="3">3</button>
+<button class="key operator" data-insert="+">+</button>
+<button class="key operator" data-insert="-">−</button>
+<button class="key" data-insert="(">(</button>
 
 
 <!-- 0 -->
 
-<button class="key"
-data-insert="0">
-0
-</button>
-
-<button class="key"
-data-insert=".">
-.
-</button>
-
-<button class="key"
-data-insert="Ans">
-Ans
-</button>
-
-<button class="key"
-data-insert="(">
-(
-</button>
-
-<button class="key"
-data-insert=")">
-)
-</button>
-
-<button class="key green"
-data-action="calculate">
-=
-</button>
+<button class="key" data-insert="0">0</button>
+<button class="key" data-insert=".">.</button>
+<button class="key" data-insert="Ans">Ans</button>
+<button class="key" data-insert="(">(</button>
+<button class="key" data-insert=")">)</button>
+<button class="key green" data-action="calculate">=</button>
 
 
 <!-- EXTRA -->
 
-<button class="key purple"
-data-action="backspace">
-⌫
-</button>
-
-<button class="key purple"
-data-insert="pi">
-π
-</button>
-
-<button class="key purple"
-data-insert="e">
-e
-</button>
-
-
-<!-- IMPORTANT: INLINE FRACTION -->
-
-<button class="key purple"
-data-action="fraction">
-a⁄b
-</button>
-
-
-<button class="key purple"
-data-insert=",">
-,
-</button>
-
-<button class="key purple"
-data-action="history">
-History
-</button>
+<button class="key purple" data-action="backspace">⌫</button>
+<button class="key purple" data-insert="pi">π</button>
+<button class="key purple" data-insert="e">e</button>
+<button class="key purple" data-action="fraction">a⁄b</button>
+<button class="key purple" data-insert=",">,</button>
+<button class="key purple" data-action="history">History</button>
 
 
 </div>
@@ -1343,53 +1263,43 @@ History
 
 <div class="tools-grid">
 
-<button class="tool-btn"
-data-tool="derivative">
+<button class="tool-btn" data-tool="derivative">
 d/dx
 </button>
 
-<button class="tool-btn"
-data-tool="integral">
+<button class="tool-btn" data-tool="integral">
 ∫ Integral
 </button>
 
-<button class="tool-btn"
-data-tool="limit">
+<button class="tool-btn" data-tool="limit">
 Limit
 </button>
 
-<button class="tool-btn"
-data-tool="equation">
+<button class="tool-btn" data-tool="equation">
 Equation
 </button>
 
-<button class="tool-btn"
-data-tool="matrix">
+<button class="tool-btn" data-tool="matrix">
 Matrix
 </button>
 
-<button class="tool-btn"
-data-tool="vector">
+<button class="tool-btn" data-tool="vector">
 Vector
 </button>
 
-<button class="tool-btn"
-data-tool="complex">
+<button class="tool-btn" data-tool="complex">
 Complex
 </button>
 
-<button class="tool-btn"
-data-tool="stats">
+<button class="tool-btn" data-tool="stats">
 Statistics
 </button>
 
-<button class="tool-btn"
-data-tool="converter">
+<button class="tool-btn" data-tool="converter">
 Unit Converter
 </button>
 
-<button class="tool-btn"
-data-tool="constants">
+<button class="tool-btn" data-tool="constants">
 Constants
 </button>
 
@@ -1398,15 +1308,296 @@ Constants
 </section>
 
 
+<!-- =====================================================
+     SEO CONTENT
+===================================================== -->
+
+<section class="seo-content">
+
+<h1>
+Scientific Calculator Online Free
+</h1>
+
+<p>
+Use the AdiyogiTools scientific calculator online for
+advanced mathematical, scientific and engineering
+calculations. The calculator supports trigonometric
+functions, logarithms, powers, roots, fractions,
+factorials, memory functions and more.
+</p>
+
+
+<h2>
+Free Online Scientific Calculator
+</h2>
+
+<p>
+This free scientific calculator is designed for students,
+engineers and anyone who needs advanced calculations
+directly from a mobile phone, tablet or computer.
+No installation is required.
+</p>
+
+
+<h2>
+Scientific Calculator Features
+</h2>
+
+<ul>
+
+<li>
+Trigonometric functions including sin, cos and tan.
+</li>
+
+<li>
+Inverse trigonometric functions including sin⁻¹,
+cos⁻¹ and tan⁻¹.
+</li>
+
+<li>
+DEG, RAD and GRAD angle modes.
+</li>
+
+<li>
+Logarithm and natural logarithm calculations.
+</li>
+
+<li>
+Square root, cube root and powers.
+</li>
+
+<li>
+Factorial, absolute value and rounding functions.
+</li>
+
+<li>
+Fractions with numerator and denominator input.
+</li>
+
+<li>
+Memory functions including MC, MR, M+, M− and MS.
+</li>
+
+<li>
+GCD, LCM, modulo and other number operations.
+</li>
+
+<li>
+Calculation history and previous answer support.
+</li>
+
+</ul>
+
+
+<h2>
+Engineering Calculator Tools
+</h2>
+
+<p>
+The calculator also includes additional tools useful for
+engineering and mathematical calculations.
+</p>
+
+<ul>
+
+<li>Numerical derivative</li>
+<li>Numerical integration</li>
+<li>Numerical limit</li>
+<li>Equation solver</li>
+<li>Matrix calculator</li>
+<li>Vector calculator</li>
+<li>Complex number tool</li>
+<li>Statistics calculator</li>
+<li>Unit converter</li>
+<li>Engineering constants</li>
+
+</ul>
+
+
+<h2>
+How to Use the Scientific Calculator
+</h2>
+
+<ol style="padding-left:20px;color:#b8c1d1;line-height:1.8;">
+
+<li>
+Select DEG, RAD or GRAD depending on your calculation.
+</li>
+
+<li>
+Enter numbers using the calculator keypad.
+</li>
+
+<li>
+Choose the required mathematical or scientific function.
+</li>
+
+<li>
+Use brackets for grouped mathematical expressions.
+</li>
+
+<li>
+Press the <b>=</b> button to calculate the result.
+</li>
+
+<li>
+Use the memory buttons when you need to store or recall
+a value.
+</li>
+
+</ol>
+
+
+<h2>
+Other Free Calculators
+</h2>
+
+<p>
+
+Explore more free calculators from AdiyogiTools:
+
+<a href="basic-calculator.html">
+Basic Calculator
+</a>,
+
+<a href="percentage.html">
+Percentage Calculator
+</a>,
+
+<a href="fraction-calculator.html">
+Fraction Calculator
+</a>,
+
+<a href="average-calculator.html">
+Average Calculator
+</a>,
+
+<a href="emi-calculator.html">
+EMI Calculator
+</a>,
+
+<a href="gst-calculator.html">
+GST Calculator
+</a>,
+
+<a href="loan-calculator.html">
+Loan Calculator
+</a>,
+
+<a href="simple-interest-calculator.html">
+Simple Interest Calculator
+</a>,
+
+<a href="compound-interest-calculator.html">
+Compound Interest Calculator
+</a>,
+
+<a href="unit-converter.html">
+Unit Converter
+</a>,
+
+<a href="currency-calculator.html">
+Currency Converter
+</a>
+
+and
+
+<a href="share-market-calculator.html">
+Share Market Calculator
+</a>.
+
+</p>
+
+
+<!-- =====================================================
+     FAQ
+===================================================== -->
+
+<div class="faq">
+
+<h2>
+Frequently Asked Questions
+</h2>
+
+
+<details class="faq-item">
+
+<summary>
+What is a scientific calculator?
+</summary>
+
+<div class="faq-answer">
+
+A scientific calculator is an advanced calculator that
+supports functions such as trigonometry, logarithms,
+powers, roots, factorials, fractions and other scientific
+mathematical operations.
+
 </div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Is this scientific calculator free?
+</summary>
+
+<div class="faq-answer">
+
+Yes. The AdiyogiTools scientific calculator is free to
+use online and does not require installation.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Can I calculate in degrees and radians?
+</summary>
+
+<div class="faq-answer">
+
+Yes. You can switch between DEG, RAD and GRAD modes
+depending on the type of trigonometric calculation.
+
+</div>
+
+</details>
+
+
+<details class="faq-item">
+
+<summary>
+Can I use this calculator for engineering calculations?
+</summary>
+
+<div class="faq-answer">
+
+Yes. The calculator includes engineering tools for
+derivatives, numerical integration, limits, equations,
+matrices, vectors, statistics, unit conversion and
+engineering constants.
+
+</div>
+
+</details>
+
+
+</div>
+
+</section>
+
 
 </div>
 
 
 <!-- =====================================================
      MODAL
-     Only engineering tools use modal.
-     FRACTION DOES NOT USE MODAL.
 ===================================================== -->
 
 <div
@@ -1432,8 +1623,7 @@ style="display:none">
 
 <div class="modal-buttons">
 
-<button
-id="modalClose">
+<button id="modalClose">
 Close
 </button>
 
@@ -1448,6 +1638,47 @@ Calculate
 </div>
 
 </div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+<p>
+🕉️ <strong>AdiyogiTools</strong> — Free Online Tools
+</p>
+
+<p>
+
+<a href="index.html">
+Home
+</a>
+
+<a href="calculator.html">
+All Calculators
+</a>
+
+<a href="about.html">
+About
+</a>
+
+<a href="contact.html">
+Contact
+</a>
+
+<a href="privacy.html">
+Privacy Policy
+</a>
+
+</p>
+
+<p>
+© 2026 AdiyogiTools. All rights reserved.
+</p>
+
+</footer>
 
 
 <script>
@@ -1474,21 +1705,36 @@ const history = [];
    ELEMENTS
 ===================================================== */
 
-const $ = id => document.getElementById(id);
+const $ = id =>
+    document.getElementById(id);
 
-const expressionDisplay = $("expression");
-const answerDisplay = $("answer");
-const angleBadge = $("angleBadge");
+const expressionDisplay =
+    $("expression");
 
-const modal = $("modal");
-const modalTitle = $("modalTitle");
-const modalContent = $("modalContent");
-const modalResult = $("modalResult");
-const modalCalculate = $("modalCalculate");
+const answerDisplay =
+    $("answer");
+
+const angleBadge =
+    $("angleBadge");
+
+const modal =
+    $("modal");
+
+const modalTitle =
+    $("modalTitle");
+
+const modalContent =
+    $("modalContent");
+
+const modalResult =
+    $("modalResult");
+
+const modalCalculate =
+    $("modalCalculate");
 
 
 /* =====================================================
-   FORMAT NUMBER
+   FORMAT
 ===================================================== */
 
 function formatNumber(n){
@@ -1509,7 +1755,7 @@ function formatNumber(n){
 
 
 /* =====================================================
-   HTML ESCAPE
+   ESCAPE HTML
 ===================================================== */
 
 function escapeHtml(s){
@@ -1518,12 +1764,13 @@ function escapeHtml(s){
         .replace(/&/g,"&amp;")
         .replace(/</g,"&lt;")
         .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;");
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 }
 
 
 /* =====================================================
-   RENDER DISPLAY
+   RENDER
 ===================================================== */
 
 function render(){
@@ -1540,6 +1787,7 @@ function render(){
                 '</span>';
 
         }
+
         else if(t.type === "frac"){
 
             const active =
@@ -1553,25 +1801,32 @@ function render(){
                 '">' +
 
                 '<span class="frac-num">' +
+
                 (
                     t.num
                     ? escapeHtml(t.num)
-                    : '<span class="frac-placeholder">?</span>'
+                    :
+                    '<span class="frac-placeholder">?</span>'
                 ) +
+
                 '</span>' +
 
                 '<span class="frac-line"></span>' +
 
                 '<span class="frac-den">' +
+
                 (
                     t.den
                     ? escapeHtml(t.den)
-                    : '<span class="frac-placeholder">?</span>'
+                    :
+                    '<span class="frac-placeholder">?</span>'
                 ) +
+
                 '</span>' +
 
                 '</span>';
         }
+
 
         if(
             i === cursor - 1 &&
@@ -1595,7 +1850,8 @@ function render(){
     }
 
 
-    expressionDisplay.innerHTML = html;
+    expressionDisplay.innerHTML =
+        html;
 
     answerDisplay.textContent =
         formatNumber(answer);
@@ -1616,7 +1872,9 @@ function render(){
             });
 
         }
+
     }
+
 }
 
 
@@ -1642,6 +1900,7 @@ function setAngle(mode){
             );
 
         });
+
 }
 
 
@@ -1675,34 +1934,18 @@ function fromRad(x){
 
 function insert(value){
 
-    /*
-       Fraction active:
-       input goes directly into
-       numerator or denominator.
-    */
-
     if(activeFraction){
 
-        if(fractionPart === "num"){
-
+        if(fractionPart === "num")
             activeFraction.num += value;
-
-        }
-        else{
-
+        else
             activeFraction.den += value;
-
-        }
 
         render();
 
         return;
     }
 
-
-    /*
-       Normal calculator input
-    */
 
     tokens.splice(
         cursor,
@@ -1743,23 +1986,11 @@ function insertFraction(){
 
     cursor++;
 
-    activeFraction = fraction;
+    activeFraction =
+        fraction;
 
-    fractionPart = "num";
-
-    render();
-}
-
-
-/* =====================================================
-   EXIT FRACTION
-===================================================== */
-
-function exitFraction(){
-
-    activeFraction = null;
-
-    fractionPart = "num";
+    fractionPart =
+        "num";
 
     render();
 }
@@ -1771,10 +2002,6 @@ function exitFraction(){
 
 function backspace(){
 
-    /*
-       Inside fraction
-    */
-
     if(activeFraction){
 
         let text =
@@ -1785,29 +2012,19 @@ function backspace(){
 
         if(text.length > 0){
 
-            if(fractionPart === "num"){
-
+            if(fractionPart === "num")
                 activeFraction.num =
                     text.slice(0,-1);
 
-            }
-            else{
-
+            else
                 activeFraction.den =
                     text.slice(0,-1);
-
-            }
 
             render();
 
             return;
         }
 
-
-        /*
-           Empty denominator:
-           return to numerator
-        */
 
         if(fractionPart === "den"){
 
@@ -1819,13 +2036,10 @@ function backspace(){
         }
 
 
-        /*
-           Empty numerator:
-           remove fraction
-        */
-
         const index =
-            tokens.indexOf(activeFraction);
+            tokens.indexOf(
+                activeFraction
+            );
 
 
         if(index >= 0){
@@ -1847,10 +2061,6 @@ function backspace(){
     }
 
 
-    /*
-       Normal text
-    */
-
     if(cursor <= 0)
         return;
 
@@ -1869,6 +2079,7 @@ function backspace(){
             t.value.slice(0,-1);
 
     }
+
     else{
 
         tokens.splice(
@@ -1877,6 +2088,7 @@ function backspace(){
         );
 
         cursor--;
+
     }
 
 
@@ -1885,7 +2097,7 @@ function backspace(){
 
 
 /* =====================================================
-   CURSOR LEFT
+   CURSORS
 ===================================================== */
 
 function moveLeft(){
@@ -1893,7 +2105,6 @@ function moveLeft(){
     if(activeFraction){
 
         activeFraction = null;
-
         fractionPart = "num";
 
         if(cursor > 0)
@@ -1912,15 +2123,14 @@ function moveLeft(){
 }
 
 
-/* =====================================================
-   CURSOR RIGHT
-===================================================== */
-
 function moveRight(){
 
     if(activeFraction){
 
-        exitFraction();
+        activeFraction = null;
+        fractionPart = "num";
+
+        render();
 
         return;
     }
@@ -1932,10 +2142,6 @@ function moveRight(){
     render();
 }
 
-
-/* =====================================================
-   CURSOR UP
-===================================================== */
 
 function moveUp(){
 
@@ -1958,16 +2164,13 @@ function moveUp(){
         activeFraction =
             tokens[cursor - 1];
 
-        fractionPart = "num";
+        fractionPart =
+            "num";
 
         render();
     }
 }
 
-
-/* =====================================================
-   CURSOR DOWN
-===================================================== */
 
 function moveDown(){
 
@@ -1990,7 +2193,8 @@ function moveDown(){
         activeFraction =
             tokens[cursor - 1];
 
-        fractionPart = "den";
+        fractionPart =
+            "den";
 
         render();
     }
@@ -2004,13 +2208,10 @@ function moveDown(){
 function clearAll(){
 
     tokens = [];
-
     cursor = 0;
-
     answer = 0;
 
     activeFraction = null;
-
     fractionPart = "num";
 
     render();
@@ -2018,14 +2219,13 @@ function clearAll(){
 
 
 /* =====================================================
-   TOKEN → MATH
+   TOKEN TO STRING
 ===================================================== */
 
 function tokenToString(t){
 
-    if(t.type === "text"){
+    if(t.type === "text")
         return t.value;
-    }
 
 
     if(t.type === "frac"){
@@ -2036,21 +2236,6 @@ function tokenToString(t){
         const denominator =
             t.den || "1";
 
-        /*
-           IMPORTANT:
-           Numerator aur denominator
-           dono ko separately bracket karna hai.
-
-           Example:
-
-           3+4
-           ───
-            9
-
-           internally:
-
-           ((3+4)/(9))
-        */
 
         return (
             "((" +
@@ -2094,6 +2279,7 @@ function factorial(n){
 
     let r = 1;
 
+
     for(
         let i = 2;
         i <= n;
@@ -2101,7 +2287,9 @@ function factorial(n){
     ){
 
         r *= i;
+
     }
+
 
     return r;
 }
@@ -2113,22 +2301,25 @@ function factorial(n){
 
 function gcd(a,b){
 
-    a = Math.abs(
-        Math.trunc(a)
-    );
+    a =
+        Math.abs(
+            Math.trunc(a)
+        );
 
-    b = Math.abs(
-        Math.trunc(b)
-    );
+    b =
+        Math.abs(
+            Math.trunc(b)
+        );
 
 
     while(b){
 
-        const temp = a % b;
+        const temp =
+            a % b;
 
         a = b;
-
         b = temp;
+
     }
 
 
@@ -2156,6 +2347,17 @@ function lcm(a,b){
 ===================================================== */
 
 function evalBasic(s){
+
+    if(
+        !/^[0-9+\-*/().\s]+$/.test(s)
+    ){
+
+        throw new Error(
+            "Invalid expression"
+        );
+
+    }
+
 
     return Function(
         "answer",
@@ -2188,21 +2390,11 @@ function evaluate(expr){
     );
 
 
-    /*
-       IMPORTANT:
-       e is handled only when it is
-       a standalone constant.
-    */
-
     x = x.replace(
         /\be\b/g,
         "Math.E"
     );
 
-
-    /*
-       Scientific functions
-    */
 
     x = x
 
@@ -2249,19 +2441,15 @@ function evaluate(expr){
         );
 
 
-    /*
-       Power
-    */
-
     x = x.replace(
         /\^/g,
         "**"
     );
 
 
-    /*
-       Trigonometry
-    */
+    /* =================================================
+       TRIGONOMETRY
+    ================================================= */
 
     x = x.replace(
         /SIN\(([^()]*)\)/g,
@@ -2317,9 +2505,9 @@ function evaluate(expr){
     );
 
 
-    /*
-       Inverse trig
-    */
+    /* =================================================
+       INVERSE TRIG
+    ================================================= */
 
     x = x.replace(
         /ASIN\(([^()]*)\)/g,
@@ -2375,9 +2563,9 @@ function evaluate(expr){
     );
 
 
-    /*
-       Factorial
-    */
+    /* =================================================
+       FACTORIAL
+    ================================================= */
 
     x = x.replace(
         /FACT\(([^()]*)\)/g,
@@ -2395,9 +2583,9 @@ function evaluate(expr){
     );
 
 
-    /*
-       Inverse
-    */
+    /* =================================================
+       INVERSE
+    ================================================= */
 
     x = x.replace(
         /INV\(([^()]*)\)/g,
@@ -2414,9 +2602,9 @@ function evaluate(expr){
     );
 
 
-    /*
+    /* =================================================
        GCD
-    */
+    ================================================= */
 
     x = x.replace(
         /GCD\(([^,()]+),([^()]+)\)/g,
@@ -2437,9 +2625,9 @@ function evaluate(expr){
     );
 
 
-    /*
+    /* =================================================
        LCM
-    */
+    ================================================= */
 
     x = x.replace(
         /LCM\(([^,()]+),([^()]+)\)/g,
@@ -2460,9 +2648,9 @@ function evaluate(expr){
     );
 
 
-    /*
+    /* =================================================
        MOD
-    */
+    ================================================= */
 
     x = x.replace(
         /MOD\(([^,()]+),([^()]+)\)/g,
@@ -2482,9 +2670,9 @@ function evaluate(expr){
     );
 
 
-    /*
+    /* =================================================
        LOG BASE
-    */
+    ================================================= */
 
     x = x.replace(
         /LOGB\(([^,()]+),([^()]+)\)/g,
@@ -2510,18 +2698,15 @@ function evaluate(expr){
     );
 
 
-    /*
-       FIXED SECURITY CHECK
-
-       This was the ERROR in your
-       previous code.
-    */
+    /* =================================================
+       SECURITY
+    ================================================= */
 
     const dangerousChars =
         /[;{}\[\]'"`<>]/;
 
     const dangerousWords =
-        /\b(window|document|alert|function|constructor|prototype)\b/i;
+        /\b(window|document|alert|function|constructor|prototype|eval)\b/i;
 
 
     if(
@@ -2532,12 +2717,9 @@ function evaluate(expr){
         throw new Error(
             "Invalid expression"
         );
+
     }
 
-
-    /*
-       FINAL CALCULATION
-    */
 
     const result =
         Function(
@@ -2583,7 +2765,8 @@ function calculate(){
             evaluate(expr);
 
 
-        answer = result;
+        answer =
+            result;
 
 
         history.unshift({
@@ -2601,6 +2784,7 @@ function calculate(){
         render();
 
     }
+
     catch(error){
 
         console.error(
@@ -2610,6 +2794,7 @@ function calculate(){
 
         answerDisplay.textContent =
             "Error";
+
     }
 }
 
@@ -2643,6 +2828,7 @@ function memoryStore(){
 
     }
     catch{}
+
 }
 
 
@@ -2657,6 +2843,7 @@ function memoryAdd(){
 
     }
     catch{}
+
 }
 
 
@@ -2671,6 +2858,7 @@ function memorySub(){
 
     }
     catch{}
+
 }
 
 
@@ -2693,7 +2881,8 @@ function openModal(
     modalResult.style.display =
         "none";
 
-    modalResult.textContent = "";
+    modalResult.textContent =
+        "";
 
     modal.classList.add(
         "show"
@@ -2744,6 +2933,7 @@ function showHistory(){
             "No calculation history.";
 
     }
+
     else{
 
         text =
@@ -2759,6 +2949,7 @@ function showHistory(){
                     )
             )
             .join("\n\n");
+
     }
 
 
@@ -2787,7 +2978,7 @@ function showHistory(){
 
 
 /* =====================================================
-   ENGINEERING TOOLS
+   DERIVATIVE
 ===================================================== */
 
 function openDerivative(){
@@ -2819,7 +3010,9 @@ function openDerivative(){
                         $("dxValue").value
                     );
 
-                const h = 0.00001;
+                const h =
+                    0.00001;
+
 
                 const fn =
                     Function(
@@ -2834,7 +3027,8 @@ function openDerivative(){
                     (
                         fn(x+h) -
                         fn(x-h)
-                    ) /
+                    )
+                    /
                     (2*h);
 
 
@@ -2844,16 +3038,24 @@ function openDerivative(){
                 );
 
             }
+
             catch{
 
                 showResult(
                     "Derivative Error"
                 );
+
             }
+
         }
+
     );
 }
 
+
+/* =====================================================
+   INTEGRAL
+===================================================== */
 
 function openIntegral(){
 
@@ -2894,10 +3096,12 @@ function openIntegral(){
                         $("intB").value
                     );
 
-                const n = 1000;
+                const n =
+                    1000;
 
                 const h =
                     (b-a)/n;
+
 
                 const fn =
                     Function(
@@ -2929,6 +3133,7 @@ function openIntegral(){
                         sum += y;
 
                     }
+
                     else if(
                         i%2===0
                     ){
@@ -2936,10 +3141,13 @@ function openIntegral(){
                         sum += 2*y;
 
                     }
+
                     else{
 
                         sum += 4*y;
+
                     }
+
                 }
 
 
@@ -2951,16 +3159,24 @@ function openIntegral(){
                 );
 
             }
+
             catch{
 
                 showResult(
                     "Integration Error"
                 );
+
             }
+
         }
+
     );
 }
 
+
+/* =====================================================
+   LIMIT
+===================================================== */
 
 function openLimit(){
 
@@ -2991,7 +3207,9 @@ function openLimit(){
                         $("limitX").value
                     );
 
-                const h = 0.0000001;
+                const h =
+                    0.0000001;
+
 
                 const fn =
                     Function(
@@ -3021,19 +3239,28 @@ function openLimit(){
                     formatNumber(
                         (left+right)/2
                     )
+
                 );
 
             }
+
             catch{
 
                 showResult(
                     "Limit Error"
                 );
+
             }
+
         }
+
     );
 }
 
+
+/* =====================================================
+   EQUATION
+===================================================== */
 
 function openEquation(){
 
@@ -3081,7 +3308,8 @@ function openEquation(){
                     i++
                 ){
 
-                    const h = 0.000001;
+                    const h =
+                        0.000001;
 
                     const fx =
                         fn(x);
@@ -3090,7 +3318,8 @@ function openEquation(){
                         (
                             fn(x+h) -
                             fn(x-h)
-                        ) /
+                        )
+                        /
                         (2*h);
 
 
@@ -3113,10 +3342,12 @@ function openEquation(){
                         x = next;
 
                         break;
+
                     }
 
 
                     x = next;
+
                 }
 
 
@@ -3126,19 +3357,23 @@ function openEquation(){
                 );
 
             }
+
             catch{
 
                 showResult(
                     "Could not solve equation."
                 );
+
             }
+
         }
+
     );
 }
 
 
 /* =====================================================
-   SIMPLE MATRIX
+   MATRIX
 ===================================================== */
 
 function parseMatrix(text){
@@ -3165,13 +3400,15 @@ function parseMatrix(text){
                     v =>
                         !Number.isFinite(v)
                 ) ||
-                row.length !== a[0].length
+                row.length !==
+                a[0].length
         )
     ){
 
         throw new Error(
             "Invalid matrix"
         );
+
     }
 
 
@@ -3191,6 +3428,7 @@ function determinant(a){
             -
             a[0][1] * a[1][0]
         );
+
     }
 
 
@@ -3227,6 +3465,7 @@ function determinant(a){
             )
 
         );
+
     }
 
 
@@ -3306,31 +3545,37 @@ function openMatrix(){
 
                     formatNumber(
                         A[1][1]/d
-                    ) +
+                    )
+                    +
                     "   " +
                     formatNumber(
                         -A[0][1]/d
-                    ) +
-
+                    )
+                    +
                     "\n" +
-
                     formatNumber(
                         -A[1][0]/d
-                    ) +
+                    )
+                    +
                     "   " +
                     formatNumber(
                         A[0][0]/d
                     )
+
                 );
 
             }
+
             catch{
 
                 showResult(
                     "Matrix Error"
                 );
+
             }
+
         }
+
     );
 }
 
@@ -3510,19 +3755,24 @@ function openVector(){
                         fromRad(
                             Math.acos(ratio)
                         )
-                    ) +
+                    )
+                    +
                     " " +
                     angleMode
                 );
 
             }
+
             catch{
 
                 showResult(
                     "Vector Error"
                 );
+
             }
+
         }
+
     );
 }
 
@@ -3635,8 +3885,11 @@ function openStats(){
                 formatNumber(
                     Math.sqrt(variance)
                 )
+
             );
+
         }
+
     );
 }
 
@@ -3712,17 +3965,22 @@ function openConverter(){
 
             showResult(
 
-                formatNumber(v) +
+                formatNumber(v)
+                +
                 " " +
                 f +
                 " = " +
                 formatNumber(
                     v*k[f]/k[t]
-                ) +
+                )
+                +
                 " " +
                 t
+
             );
+
         }
+
     );
 }
 
@@ -3768,13 +4026,9 @@ function openConstants(){
             const values = {
 
                 g:9.80665,
-
                 c:299792458,
-
                 G:6.67430e-11,
-
                 R:8.314462618,
-
                 NA:6.02214076e23
 
             };
@@ -3789,7 +4043,9 @@ function openConstants(){
                 " = " +
                 values[key]
             );
+
         }
+
     );
 }
 
@@ -3839,7 +4095,9 @@ function openComplex(){
             showResult(
                 "Complex calculator ready."
             );
+
         }
+
     );
 }
 
@@ -3862,10 +4120,6 @@ document.addEventListener(
             return;
 
 
-        /*
-           INSERT BUTTON
-        */
-
         if(
             button.dataset.insert !==
             undefined
@@ -3883,10 +4137,6 @@ document.addEventListener(
             button.dataset.action;
 
 
-        /*
-           ANGLE
-        */
-
         if(action === "angle"){
 
             setAngle(
@@ -3897,14 +4147,9 @@ document.addEventListener(
         }
 
 
-        /*
-           CURSOR
-        */
-
         if(action === "left"){
 
             moveLeft();
-
             return;
         }
 
@@ -3912,7 +4157,6 @@ document.addEventListener(
         if(action === "right"){
 
             moveRight();
-
             return;
         }
 
@@ -3920,7 +4164,6 @@ document.addEventListener(
         if(action === "up"){
 
             moveUp();
-
             return;
         }
 
@@ -3928,14 +4171,9 @@ document.addEventListener(
         if(action === "down"){
 
             moveDown();
-
             return;
         }
 
-
-        /*
-           2nd
-        */
 
         if(action === "second"){
 
@@ -3950,74 +4188,44 @@ document.addEventListener(
         }
 
 
-        /*
-           CLEAR
-        */
-
         if(action === "clear"){
 
             clearAll();
-
             return;
         }
 
-
-        /*
-           BACKSPACE
-        */
 
         if(action === "backspace"){
 
             backspace();
-
             return;
         }
 
-
-        /*
-           CALCULATE
-        */
 
         if(action === "calculate"){
 
             calculate();
-
             return;
         }
 
-
-        /*
-           FRACTION
-        */
 
         if(action === "fraction"){
 
             insertFraction();
-
             return;
         }
 
-
-        /*
-           HISTORY
-        */
 
         if(action === "history"){
 
             showHistory();
-
             return;
         }
 
 
-        /*
-           MEMORY
-        */
-
         if(action === "mc"){
 
             memoryClear();
-
             return;
         }
 
@@ -4025,7 +4233,6 @@ document.addEventListener(
         if(action === "mr"){
 
             memoryRecall();
-
             return;
         }
 
@@ -4033,7 +4240,6 @@ document.addEventListener(
         if(action === "mplus"){
 
             memoryAdd();
-
             return;
         }
 
@@ -4041,7 +4247,6 @@ document.addEventListener(
         if(action === "mminus"){
 
             memorySub();
-
             return;
         }
 
@@ -4049,14 +4254,9 @@ document.addEventListener(
         if(action === "ms"){
 
             memoryStore();
-
             return;
         }
 
-
-        /*
-           ENGINEERING TOOLS
-        */
 
         const tool =
             button.dataset.tool;
@@ -4097,7 +4297,7 @@ document.addEventListener(
 
 
 /* =====================================================
-   KEYBOARD SUPPORT
+   KEYBOARD
 ===================================================== */
 
 document.addEventListener(
@@ -4209,6 +4409,25 @@ document.addEventListener(
             clearAll();
 
             e.preventDefault();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   MODAL OUTSIDE CLICK
+===================================================== */
+
+modal.addEventListener(
+    "click",
+    function(e){
+
+        if(e.target === modal){
+
+            closeModal();
+
         }
 
     }
@@ -4225,10 +4444,6 @@ render();
 
 </script>
 
-
-      
-
-      
 
 </body>
 
