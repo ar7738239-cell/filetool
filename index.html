@@ -11,10 +11,10 @@ content="width=device-width, initial-scale=1.0">
 <title>Adiyogi Tools - Free Online Tools</title>
 
 <meta name="description"
-content="Adiyogi Tools provides free online calculators, image tools, PDF tools, converters and useful everyday utilities.">
+content="Adiyogi Tools - Free online calculators, image tools, PDF tools, converters and useful everyday utilities.">
 
 <meta name="keywords"
-content="free online tools, calculator, image tools, PDF tools, Word to PDF, converters, Adiyogi Tools">
+content="free online tools, calculators, image tools, PDF tools, converters, Adiyogi Tools">
 
 <meta name="robots" content="index, follow">
 
@@ -40,14 +40,13 @@ html{
 body{
 
     font-family:
-    Inter,
     Arial,
     Helvetica,
     sans-serif;
 
-    background:#f3eee5;
+    background:#CBCBCB;
 
-    color:#182333;
+    color:#4A4A4A;
 
     overflow-x:hidden;
 
@@ -65,47 +64,32 @@ input{
 
 
 /* =====================================================
-   CLASSIC COLOR PALETTE
+   COLOR PALETTE
 ===================================================== */
 
 :root{
 
-    /* Main */
-    --beige:#f3eee5;
-    --beige-light:#f8f5ef;
+    --ink:#4A4A4A;
+
+    --grey:#CBCBCB;
+
+    --ivory:#FFFFE3;
+
+    --blue:#6D8196;
 
     --white:#ffffff;
-    --white-soft:#fdfcf9;
 
-    /* Navy */
-    --navy:#101b2d;
-    --navy-light:#17263b;
-    --navy-soft:#24344a;
+    --dark:#353535;
 
-    /* Camel */
-    --camel:#b4875a;
-    --camel-dark:#8f673f;
-    --camel-light:#d2b08a;
+    --border:#b9b9b9;
 
-    /* Sage */
-    --sage:#879985;
-    --sage-light:#dce4da;
-    --sage-dark:#637462;
+    --soft-border:#dedede;
 
-    /* Text */
-    --text:#182333;
-    --text-light:#526070;
-    --muted:#7c8792;
-
-    /* Border */
-    --border:#e2dbd0;
-
-    /* Shadows */
     --shadow:
-    0 8px 25px rgba(35,28,20,.06);
+    0 6px 22px rgba(74,74,74,.10);
 
     --shadow-hover:
-    0 18px 42px rgba(35,28,20,.13);
+    0 14px 35px rgba(74,74,74,.18);
 
 }
 
@@ -116,12 +100,11 @@ input{
 
 .navbar{
 
-    min-height:72px;
+    min-height:74px;
 
-    background:
-    rgba(16,27,45,.98);
+    background:#4A4A4A;
 
-    color:white;
+    color:#FFFFE3;
 
     display:flex;
 
@@ -136,12 +119,12 @@ input{
     z-index:1000;
 
     border-bottom:
-    1px solid rgba(212,176,138,.18);
-
-    backdrop-filter:blur(14px);
+    1px solid rgba(255,255,227,.18);
 
 }
 
+
+/* LOGO */
 
 .logo{
 
@@ -149,33 +132,33 @@ input{
 
     align-items:center;
 
-    gap:10px;
+    gap:11px;
 
-    font-size:22px;
+    font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
 
-    font-weight:800;
+    font-size:23px;
+
+    font-weight:700;
 
     white-space:nowrap;
-
-    letter-spacing:-.3px;
 
 }
 
 
 .logo-icon{
 
-    width:39px;
+    width:40px;
 
-    height:39px;
+    height:40px;
 
-    border-radius:11px;
+    border-radius:9px;
 
-    background:
-    linear-gradient(
-        135deg,
-        #c49a70,
-        #8e6742
-    );
+    background:#FFFFE3;
+
+    color:#4A4A4A;
 
     display:flex;
 
@@ -185,18 +168,17 @@ input{
 
     font-size:21px;
 
-    box-shadow:
-    0 6px 20px rgba(180,135,90,.25);
-
 }
 
 
 .logo span{
 
-    color:#d2b08a;
+    color:#CBCBCB;
 
 }
 
+
+/* NAV LINKS */
 
 .nav-links{
 
@@ -210,24 +192,26 @@ input{
 
     font-size:14px;
 
-    color:#d9e0e7;
+    color:#CBCBCB;
 
 }
 
 
 .nav-links a{
 
-    transition:.25s;
+    transition:.2s;
 
 }
 
 
 .nav-links a:hover{
 
-    color:#d2b08a;
+    color:#FFFFE3;
 
 }
 
+
+/* NAV SEARCH */
 
 .nav-search{
 
@@ -244,21 +228,20 @@ input{
 
 .nav-search input{
 
-    width:245px;
+    width:240px;
 
-    height:42px;
+    height:40px;
 
-    border-radius:9px;
+    border-radius:6px;
 
     border:
-    1px solid rgba(255,255,255,.14);
+    1px solid #777;
 
-    background:
-    rgba(255,255,255,.06);
+    background:#5a5a5a;
 
-    color:white;
+    color:#FFFFE3;
 
-    padding:0 14px;
+    padding:0 13px;
 
     outline:none;
 
@@ -267,32 +250,26 @@ input{
 
 .nav-search input::placeholder{
 
-    color:#aeb8c3;
+    color:#CBCBCB;
 
 }
 
 
 .theme-btn{
 
-    margin-left:8px;
+    width:40px;
 
-    width:42px;
+    height:40px;
 
-    height:42px;
+    border:1px solid #777;
 
-    border:1px solid
-    rgba(255,255,255,.1);
+    border-radius:6px;
 
-    border-radius:50%;
+    background:#5a5a5a;
 
-    background:
-    rgba(255,255,255,.07);
-
-    color:white;
+    color:#FFFFE3;
 
     cursor:pointer;
-
-    font-size:18px;
 
 }
 
@@ -303,56 +280,10 @@ input{
 
 .hero{
 
-    min-height:520px;
+    background:#FFFFE3;
 
-    background:
-
-    radial-gradient(
-        circle at 82% 25%,
-        rgba(180,135,90,.22),
-        transparent 32%
-    ),
-
-    radial-gradient(
-        circle at 55% 90%,
-        rgba(135,153,133,.16),
-        transparent 35%
-    ),
-
-    linear-gradient(
-        135deg,
-        #101b2d,
-        #17263b 58%,
-        #22324a
-    );
-
-    color:white;
-
-    position:relative;
-
-    overflow:hidden;
-
-}
-
-
-.hero::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:400px;
-
-    height:400px;
-
-    border-radius:50%;
-
-    border:1px solid
-    rgba(210,176,138,.12);
-
-    right:-150px;
-
-    top:-150px;
+    border-bottom:
+    1px solid #bdbdbd;
 
 }
 
@@ -364,44 +295,41 @@ input{
     margin:auto;
 
     padding:
-    78px 35px 82px;
+    82px 35px 88px;
 
     display:grid;
 
     grid-template-columns:
-    1fr 1fr;
+    1.05fr .95fr;
 
     align-items:center;
 
-    gap:50px;
+    gap:65px;
 
 }
 
 
+/* HERO LEFT */
+
 .hero-badge{
 
-    display:inline-flex;
-
-    align-items:center;
-
-    gap:8px;
+    display:inline-block;
 
     padding:
-    9px 16px;
-
-    border-radius:30px;
-
-    background:
-    rgba(180,135,90,.13);
+    8px 14px;
 
     border:
-    1px solid rgba(210,176,138,.28);
+    1px solid #6D8196;
 
-    color:#ead4b9;
+    border-radius:3px;
 
-    font-size:13px;
+    color:#6D8196;
 
-    margin-bottom:24px;
+    font-size:12px;
+
+    letter-spacing:.5px;
+
+    margin-bottom:23px;
 
 }
 
@@ -413,41 +341,45 @@ input{
     "Times New Roman",
     serif;
 
+    font-weight:400;
+
     font-size:
-    clamp(42px,5vw,67px);
+    clamp(43px,5vw,68px);
 
     line-height:1.05;
 
-    font-weight:700;
+    color:#4A4A4A;
+
+    letter-spacing:-2px;
 
     margin-bottom:22px;
-
-    letter-spacing:-1.5px;
 
 }
 
 
 .hero h1 span{
 
-    color:#d2b08a;
+    color:#6D8196;
 
 }
 
 
 .hero-text{
 
-    color:#cbd5df;
+    max-width:600px;
 
-    font-size:17px;
+    font-size:16px;
 
-    line-height:1.75;
+    line-height:1.8;
 
-    max-width:610px;
+    color:#666;
 
-    margin-bottom:28px;
+    margin-bottom:27px;
 
 }
 
+
+/* HERO FEATURES */
 
 .hero-features{
 
@@ -455,9 +387,9 @@ input{
 
     flex-wrap:wrap;
 
-    gap:10px;
+    gap:9px;
 
-    margin-bottom:28px;
+    margin-bottom:27px;
 
 }
 
@@ -465,22 +397,23 @@ input{
 .hero-feature{
 
     padding:
-    10px 14px;
+    9px 12px;
 
     border:
-    1px solid rgba(255,255,255,.11);
+    1px solid #CBCBCB;
 
-    border-radius:8px;
+    background:#ffffff;
 
-    background:
-    rgba(255,255,255,.045);
-
-    color:#dce3ea;
+    color:#4A4A4A;
 
     font-size:12px;
 
+    border-radius:3px;
+
 }
 
+
+/* SEARCH */
 
 .hero-search{
 
@@ -488,16 +421,12 @@ input{
 
     max-width:560px;
 
-    height:54px;
+    height:52px;
+
+    border:
+    1px solid #999;
 
     background:white;
-
-    border-radius:9px;
-
-    overflow:hidden;
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,.18);
 
 }
 
@@ -511,44 +440,46 @@ input{
     outline:0;
 
     padding:
-    0 18px;
+    0 17px;
 
-    font-size:15px;
+    color:#4A4A4A;
 
-    color:#182333;
+    background:white;
 
 }
 
 
 .hero-search button{
 
-    width:120px;
+    width:115px;
 
     border:0;
 
-    background:
-    linear-gradient(
-        135deg,
-        #b4875a,
-        #956b43
-    );
+    background:#6D8196;
 
     color:white;
 
+    cursor:pointer;
+
     font-weight:700;
 
-    cursor:pointer;
+}
+
+
+.hero-search button:hover{
+
+    background:#4A4A4A;
 
 }
 
 
 /* =====================================================
-   HERO LAPTOP
+   HERO VISUAL
 ===================================================== */
 
 .hero-visual{
 
-    min-height:360px;
+    min-height:350px;
 
     position:relative;
 
@@ -561,37 +492,32 @@ input{
 }
 
 
+/* LAPTOP */
+
 .laptop{
 
-    width:470px;
+    width:455px;
 
     max-width:100%;
 
-    height:285px;
+    height:280px;
 
-    border-radius:17px;
-
-    background:
-    linear-gradient(
-        145deg,
-        #303845,
-        #080d16
-    );
+    background:#4A4A4A;
 
     border:
-    5px solid #3f4a57;
+    5px solid #353535;
 
-    box-shadow:
-    0 30px 70px rgba(0,0,0,.48);
-
-    transform:
-    perspective(1000px)
-    rotateY(-8deg)
-    rotateX(3deg);
+    border-radius:10px;
 
     position:relative;
 
-    z-index:2;
+    box-shadow:
+    0 25px 45px rgba(74,74,74,.25);
+
+    transform:
+    perspective(1000px)
+    rotateY(-6deg)
+    rotateX(2deg);
 
 }
 
@@ -602,29 +528,24 @@ input{
 
     inset:12px;
 
-    border-radius:8px;
+    background:#6D8196;
 
-    background:
-    linear-gradient(
-        135deg,
-        #172438,
-        #26364a
-    );
+    border-radius:4px;
 
-    padding:18px;
+    padding:17px;
 
 }
 
 
 .screen-title{
 
-    color:#e7d0b3;
+    font-family:
+    Georgia,
+    serif;
 
-    font-family:Georgia,serif;
+    color:#FFFFE3;
 
-    font-size:15px;
-
-    font-weight:700;
+    font-size:17px;
 
     margin-bottom:15px;
 
@@ -645,15 +566,13 @@ input{
 
 .screen-box{
 
-    height:48px;
+    height:46px;
 
-    border-radius:6px;
+    background:#FFFFE3;
 
-    background:
-    rgba(255,255,255,.075);
+    opacity:.88;
 
-    border:
-    1px solid rgba(210,176,138,.12);
+    border-radius:3px;
 
 }
 
@@ -662,25 +581,22 @@ input{
 
     position:absolute;
 
-    width:540px;
+    width:520px;
 
     max-width:115%;
 
-    height:18px;
+    height:15px;
 
-    bottom:-22px;
+    bottom:-20px;
 
     left:50%;
 
     transform:translateX(-50%);
 
-    background:#4b5662;
+    background:#4A4A4A;
 
     border-radius:
-    0 0 30px 30px;
-
-    box-shadow:
-    0 12px 25px rgba(0,0,0,.4);
+    0 0 20px 20px;
 
 }
 
@@ -691,13 +607,9 @@ input{
 
     position:absolute;
 
-    width:67px;
+    width:62px;
 
-    height:67px;
-
-    border-radius:15px;
-
-    background:#fffdf9;
+    height:62px;
 
     display:flex;
 
@@ -705,53 +617,39 @@ input{
 
     justify-content:center;
 
-    font-size:31px;
+    background:white;
+
+    border:
+    1px solid #bdbdbd;
+
+    border-radius:7px;
+
+    font-size:28px;
 
     box-shadow:
-    0 15px 35px rgba(0,0,0,.25);
-
-    z-index:5;
-
-    animation:
-    float 4s ease-in-out infinite;
+    0 10px 25px rgba(74,74,74,.16);
 
 }
 
 
 .float-1{
-    top:20px;
-    left:25px;
+    left:15px;
+    top:25px;
 }
 
 .float-2{
-    top:80px;
-    right:10px;
-    animation-delay:1s;
+    right:0;
+    top:65px;
 }
 
 .float-3{
+    left:35px;
     bottom:20px;
-    left:40px;
-    animation-delay:2s;
 }
 
 .float-4{
-    bottom:45px;
-    right:45px;
-    animation-delay:3s;
-}
-
-
-@keyframes float{
-
-    0%,100%{
-        transform:translateY(0);
-    }
-
-    50%{
-        transform:translateY(-10px);
-    }
-
+    right:35px;
+    bottom:40px;
 }
 
 
@@ -766,7 +664,7 @@ input{
     margin:auto;
 
     padding:
-    58px 30px 85px;
+    60px 30px 85px;
 
 }
 
@@ -783,7 +681,7 @@ input{
 
     justify-content:space-between;
 
-    margin-bottom:22px;
+    margin-bottom:21px;
 
 }
 
@@ -803,9 +701,9 @@ input{
 
     font-size:25px;
 
-    font-weight:700;
+    font-weight:400;
 
-    color:#17263a;
+    color:#4A4A4A;
 
 }
 
@@ -814,26 +712,20 @@ input{
 
     content:"";
 
-    width:5px;
+    width:4px;
 
     height:28px;
 
-    background:
-    linear-gradient(
-        #b4875a,
-        #879985
-    );
-
-    border-radius:5px;
+    background:#6D8196;
 
 }
 
 
 .view-all{
 
-    color:#8f673f;
-
     font-size:13px;
+
+    color:#6D8196;
 
     font-weight:700;
 
@@ -842,13 +734,13 @@ input{
 
 .view-all:hover{
 
-    color:#637462;
+    color:#4A4A4A;
 
 }
 
 
 /* =====================================================
-   CATEGORY GRID
+   CATEGORY CARDS
 ===================================================== */
 
 .category-grid{
@@ -858,7 +750,7 @@ input{
     grid-template-columns:
     repeat(8,1fr);
 
-    gap:14px;
+    gap:13px;
 
     margin-bottom:58px;
 
@@ -867,20 +759,22 @@ input{
 
 .category-card{
 
-    background:
-    linear-gradient(
-        145deg,
-        #ffffff,
-        #fbf9f4
-    );
+    background:#FFFFE3;
 
     border:
-    1px solid var(--border);
+    1px solid #bcbcbc;
 
-    border-radius:14px;
+    min-height:135px;
 
-    padding:
-    22px 10px;
+    padding:19px 8px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
 
     text-align:center;
 
@@ -896,25 +790,18 @@ input{
     transform:
     translateY(-5px);
 
-    box-shadow:var(--shadow-hover);
+    border-color:#6D8196;
 
-    border-color:#d3b99b;
+    box-shadow:var(--shadow-hover);
 
 }
 
 
 .category-icon{
 
-    width:50px;
+    width:48px;
 
-    height:50px;
-
-    margin:
-    0 auto 10px;
-
-    border-radius:13px;
-
-    background:#f0e8dc;
+    height:48px;
 
     display:flex;
 
@@ -922,14 +809,28 @@ input{
 
     justify-content:center;
 
-    font-size:26px;
+    background:#CBCBCB;
+
+    color:#4A4A4A;
+
+    border-radius:5px;
+
+    font-size:25px;
+
+    margin-bottom:10px;
 
 }
 
 
 .category-card h3{
 
-    font-size:13px;
+    font-family:
+    Georgia,
+    serif;
+
+    font-size:14px;
+
+    font-weight:400;
 
     margin-bottom:5px;
 
@@ -938,15 +839,15 @@ input{
 
 .category-card p{
 
-    font-size:10px;
+    color:#6D8196;
 
-    color:#89938d;
+    font-size:10px;
 
 }
 
 
 /* =====================================================
-   ALL TOOL CARDS
+   TOOL CARDS
 ===================================================== */
 
 .tool-grid{
@@ -956,7 +857,7 @@ input{
     grid-template-columns:
     repeat(4,1fr);
 
-    gap:18px;
+    gap:16px;
 
     margin-bottom:58px;
 
@@ -965,21 +866,14 @@ input{
 
 .tool-card{
 
-    background:
-    linear-gradient(
-        145deg,
-        #ffffff,
-        #fbfaf7
-    );
+    background:#ffffff;
 
     border:
-    1px solid var(--border);
+    1px solid #c5c5c5;
 
-    border-radius:16px;
+    min-height:125px;
 
-    padding:20px;
-
-    min-height:130px;
+    padding:19px;
 
     display:flex;
 
@@ -987,12 +881,9 @@ input{
 
     gap:14px;
 
-    transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    border-color .25s ease;
-
     box-shadow:var(--shadow);
+
+    transition:.25s;
 
 }
 
@@ -1000,11 +891,11 @@ input{
 .tool-card:hover{
 
     transform:
-    translateY(-6px);
+    translateY(-5px);
+
+    border-color:#6D8196;
 
     box-shadow:var(--shadow-hover);
-
-    border-color:#d0b393;
 
 }
 
@@ -1015,27 +906,17 @@ input{
 
     height:52px;
 
-    border-radius:13px;
-
     display:flex;
 
     align-items:center;
 
     justify-content:center;
 
+    background:#CBCBCB;
+
+    border-radius:5px;
+
     font-size:25px;
-
-    background:#f0e8dc;
-
-    border:
-    1px solid #eadfce;
-
-}
-
-
-.tool-content{
-
-    padding-top:2px;
 
 }
 
@@ -1049,16 +930,18 @@ input{
 
     font-size:16px;
 
-    margin-bottom:7px;
+    font-weight:400;
 
-    color:#182333;
+    color:#4A4A4A;
+
+    margin-bottom:7px;
 
 }
 
 
 .tool-content p{
 
-    color:#71808a;
+    color:#777;
 
     font-size:12px;
 
@@ -1068,7 +951,7 @@ input{
 
 
 /* =====================================================
-   DIRECTORY CARDS
+   DIRECTORY TOOL CARDS
 ===================================================== */
 
 .directory-grid{
@@ -1078,7 +961,7 @@ input{
     grid-template-columns:
     repeat(4,1fr);
 
-    gap:18px;
+    gap:16px;
 
     margin-bottom:58px;
 
@@ -1087,66 +970,32 @@ input{
 
 .directory-grid a{
 
-    background:
-    linear-gradient(
-        145deg,
-        #ffffff,
-        #fbfaf7
-    );
+    min-height:145px;
+
+    background:#ffffff;
 
     border:
-    1px solid var(--border);
+    1px solid #c5c5c5;
 
-    border-radius:16px;
-
-    min-height:140px;
-
-    padding:20px;
+    padding:19px;
 
     display:flex;
 
     flex-direction:column;
 
-    align-items:flex-start;
-
     justify-content:center;
+
+    align-items:flex-start;
 
     gap:11px;
 
     box-shadow:var(--shadow);
 
-    transition:
-    transform .25s ease,
-    box-shadow .25s ease,
-    border-color .25s ease;
-
     position:relative;
 
     overflow:hidden;
 
-}
-
-
-.directory-grid a::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:130px;
-
-    height:130px;
-
-    border-radius:50%;
-
-    background:
-    rgba(135,153,133,.09);
-
-    right:-55px;
-
-    top:-55px;
-
-    pointer-events:none;
+    transition:.25s;
 
 }
 
@@ -1154,22 +1003,41 @@ input{
 .directory-grid a:hover{
 
     transform:
-    translateY(-6px);
+    translateY(-5px);
 
-    border-color:#d0b393;
+    border-color:#6D8196;
 
     box-shadow:var(--shadow-hover);
 
 }
 
 
+/* small blue side line */
+
+.directory-grid a::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:4px;
+
+    height:100%;
+
+    left:0;
+
+    top:0;
+
+    background:#6D8196;
+
+}
+
+
 .directory-grid a span{
 
-    width:52px;
+    width:50px;
 
-    height:52px;
-
-    border-radius:13px;
+    height:50px;
 
     display:flex;
 
@@ -1177,31 +1045,16 @@ input{
 
     justify-content:center;
 
-    background:#f0e8dc;
+    background:#CBCBCB;
 
-    border:
-    1px solid #eadfce;
+    border-radius:5px;
 
-    font-size:26px;
-
-    position:relative;
-
-    z-index:1;
+    font-size:25px;
 
 }
 
 
 .directory-grid a div{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:5px;
-
-    position:relative;
-
-    z-index:1;
 
     font-family:
     Georgia,
@@ -1210,52 +1063,45 @@ input{
 
     font-size:16px;
 
-    font-weight:700;
-
-    color:#182333;
+    color:#4A4A4A;
 
 }
 
 
 .directory-grid a small{
 
-    color:#77858d;
+    display:block;
+
+    margin-top:5px;
 
     font-family:
-    Inter,
     Arial,
+    Helvetica,
     sans-serif;
+
+    color:#7b7b7b;
 
     font-size:11px;
 
-    font-weight:400;
-
-    line-height:1.5;
+    line-height:1.45;
 
 }
 
 
 /* =====================================================
-   DIRECTORY INFO BOX
+   SPECIAL TEXT BOX
 ===================================================== */
 
 .directory{
 
-    background:
-    linear-gradient(
-        135deg,
-        #e8eee6,
-        #f5f0e8
-    );
+    background:#FFFFE3;
 
     border:
-    1px solid #d2dbd0;
+    1px solid #c5c5c5;
 
-    border-radius:18px;
+    padding:28px;
 
-    padding:30px;
-
-    margin-top:25px;
+    margin-top:20px;
 
 }
 
@@ -1264,12 +1110,26 @@ input{
 
     font-family:
     Georgia,
-    "Times New Roman",
     serif;
+
+    font-weight:400;
 
     font-size:24px;
 
-    margin-bottom:10px;
+    color:#4A4A4A;
+
+    margin-bottom:9px;
+
+}
+
+
+.directory p{
+
+    color:#6D8196;
+
+    font-size:13px;
+
+    line-height:1.7;
 
 }
 
@@ -1280,37 +1140,30 @@ input{
 
 .footer{
 
-    background:
-    linear-gradient(
-        135deg,
-        #101b2d,
-        #17263b
-    );
+    background:#4A4A4A;
 
-    color:#aeb9c4;
+    color:#CBCBCB;
 
     padding:48px 30px;
 
     text-align:center;
 
     border-top:
-    3px solid #b4875a;
+    4px solid #6D8196;
 
 }
 
 
 .footer-logo{
 
-    color:white;
-
     font-family:
     Georgia,
     "Times New Roman",
     serif;
 
-    font-size:25px;
+    color:#FFFFE3;
 
-    font-weight:700;
+    font-size:25px;
 
     margin-bottom:10px;
 
@@ -1319,7 +1172,7 @@ input{
 
 .footer-logo span{
 
-    color:#d2b08a;
+    color:#CBCBCB;
 
 }
 
@@ -1350,7 +1203,7 @@ input{
 
 .footer-links a:hover{
 
-    color:#d2b08a;
+    color:#FFFFE3;
 
 }
 
@@ -1372,7 +1225,7 @@ input{
 
     .nav-search input{
 
-        width:180px;
+        width:170px;
 
     }
 
@@ -1411,7 +1264,7 @@ input{
 
     .hero-visual{
 
-        margin-top:20px;
+        margin-top:25px;
 
     }
 
@@ -1453,7 +1306,7 @@ input{
         min-height:64px;
 
         padding:
-        12px 15px;
+        11px 15px;
 
     }
 
@@ -1481,26 +1334,39 @@ input{
 
     .theme-btn{
 
-        width:40px;
+        width:38px;
 
-        height:40px;
+        height:38px;
+
+    }
+
+
+    .logo{
+
+        font-size:19px;
 
     }
 
 
-    .hero{
+    .logo-icon{
 
-        min-height:auto;
+        width:34px;
+
+        height:34px;
+
+        font-size:18px;
 
     }
 
+
+    /* HERO */
 
     .hero-container{
 
         padding:
-        52px 18px 68px;
+        52px 17px 65px;
 
-        gap:30px;
+        gap:35px;
 
     }
 
@@ -1508,7 +1374,9 @@ input{
     .hero h1{
 
         font-size:
-        clamp(38px,11vw,52px);
+        clamp(38px,11vw,51px);
+
+        letter-spacing:-1.2px;
 
     }
 
@@ -1538,34 +1406,34 @@ input{
 
     .hero-visual{
 
-        min-height:280px;
+        min-height:270px;
 
     }
 
 
     .laptop{
 
-        width:340px;
+        width:335px;
 
-        height:210px;
+        height:207px;
 
     }
 
 
     .laptop-base{
 
-        width:380px;
+        width:370px;
 
     }
 
 
     .float-icon{
 
-        width:52px;
+        width:50px;
 
-        height:52px;
+        height:50px;
 
-        font-size:24px;
+        font-size:23px;
 
     }
 
@@ -1584,10 +1452,26 @@ input{
     }
 
 
+    .float-3{
+
+        left:20px;
+
+    }
+
+
+    .float-4{
+
+        right:20px;
+
+    }
+
+
+    /* MAIN */
+
     .main{
 
         padding:
-        42px 15px 60px;
+        42px 14px 60px;
 
     }
 
@@ -1599,7 +1483,7 @@ input{
     }
 
 
-    /* CATEGORY */
+    /* CATEGORIES */
 
     .category-grid{
 
@@ -1613,74 +1497,62 @@ input{
 
     .category-card{
 
-        padding:
-        18px 8px;
+        min-height:120px;
+
+        padding:16px 7px;
 
     }
 
 
-    /* TOOL CARDS */
+    /* ALL TOOLS */
 
     .tool-grid{
 
         grid-template-columns:1fr;
 
-        gap:13px;
+        gap:12px;
 
     }
 
 
     .tool-card{
 
-        min-height:112px;
+        min-height:108px;
 
-        padding:17px 16px;
-
-        border-radius:16px;
+        padding:17px;
 
     }
 
 
-    .tool-icon{
-
-        min-width:52px;
-
-        height:52px;
-
-    }
-
-
-    /* DIRECTORY CARDS */
+    /* DIRECTORY */
 
     .directory-grid{
 
         grid-template-columns:1fr;
 
-        gap:13px;
+        gap:12px;
 
     }
 
 
     .directory-grid a{
 
-        min-height:112px;
-
-        padding:17px;
+        min-height:105px;
 
         flex-direction:row;
 
         align-items:center;
 
-        justify-content:flex-start;
+        gap:15px;
 
-        border-radius:16px;
+        padding:16px;
 
     }
 
 
     .directory-grid a span{
 
-        min-width:52px;
+        min-width:50px;
 
     }
 
@@ -1700,37 +1572,10 @@ input{
 
 @media(max-width:420px){
 
-    .logo{
-
-        font-size:18px;
-
-    }
-
-
-    .logo-icon{
-
-        width:32px;
-
-        height:32px;
-
-        font-size:18px;
-
-    }
-
-
-    .theme-btn{
-
-        width:36px;
-
-        height:36px;
-
-    }
-
-
     .hero-container{
 
         padding:
-        45px 14px 60px;
+        45px 14px 58px;
 
     }
 
@@ -1747,7 +1592,7 @@ input{
         font-size:11px;
 
         padding:
-        9px 10px;
+        8px 9px;
 
     }
 
@@ -1756,13 +1601,6 @@ input{
 
         grid-template-columns:
         repeat(2,1fr);
-
-    }
-
-
-    .category-card{
-
-        min-height:120px;
 
     }
 
@@ -1776,7 +1614,7 @@ input{
 
     .view-all{
 
-        font-size:12px;
+        font-size:11px;
 
     }
 
@@ -1789,9 +1627,35 @@ input{
 
 body.dark-page{
 
-    background:#0c1420;
+    background:#353535;
 
-    color:#f5f2ec;
+    color:#CBCBCB;
+
+}
+
+
+body.dark-page
+.hero{
+
+    background:#4A4A4A;
+
+}
+
+
+body.dark-page
+.hero h1,
+body.dark-page
+.section-title{
+
+    color:#FFFFE3;
+
+}
+
+
+body.dark-page
+.hero-text{
+
+    color:#CBCBCB;
 
 }
 
@@ -1803,26 +1667,21 @@ body.dark-page
 body.dark-page
 .directory-grid a{
 
-    background:
-    linear-gradient(
-        145deg,
-        #172235,
-        #121c2b
-    );
+    background:#4A4A4A;
 
-    border-color:#2c3a4d;
-
-    color:#f5f2ec;
+    border-color:#666;
 
 }
 
 
 body.dark-page
+.category-card h3,
+body.dark-page
 .tool-content h3,
 body.dark-page
 .directory-grid a div{
 
-    color:#f5f2ec;
+    color:#FFFFE3;
 
 }
 
@@ -1832,15 +1691,21 @@ body.dark-page
 body.dark-page
 .directory-grid a small{
 
-    color:#aab5bd;
+    color:#CBCBCB;
 
 }
 
 
 body.dark-page
-.category-card p{
+.category-icon,
+body.dark-page
+.tool-icon,
+body.dark-page
+.directory-grid a span{
 
-    color:#aab5bd;
+    background:#6D8196;
+
+    color:#FFFFE3;
 
 }
 
@@ -1848,31 +1713,17 @@ body.dark-page
 body.dark-page
 .directory{
 
-    background:#162232;
+    background:#4A4A4A;
 
-    border-color:#304052;
-
-}
-
-
-body.dark-page
-.section-title{
-
-    color:#f5f2ec;
+    border-color:#666;
 
 }
 
 
 body.dark-page
-.tool-icon,
-body.dark-page
-.directory-grid a span,
-body.dark-page
-.category-icon{
+.directory h2{
 
-    background:#263426;
-
-    border-color:#3b4b3a;
+    color:#FFFFE3;
 
 }
 
@@ -1960,29 +1811,24 @@ body.dark-page
 
     <div class="hero-badge">
 
-        ✨ 100% Free Online Tools
+        ✦ 100% Free Online Tools
 
     </div>
 
 
     <h1>
 
-        All-in-One
-        <span>Free Tools</span>
-
-        <br>
-
-        for Everyday Needs
+        Simple Tools.
+        <span>Beautifully Made.</span>
 
     </h1>
 
 
     <p class="hero-text">
 
-        From calculations to conversions,
-        image tools to PDF utilities —
-        everything you need in one place.
-        Fast, simple and free.
+        Calculators, converters, image tools,
+        PDF utilities and everyday tools —
+        all in one clean and simple place.
 
     </p>
 
@@ -1990,11 +1836,11 @@ body.dark-page
     <div class="hero-features">
 
         <div class="hero-feature">
-            ⚡ Fast & Easy
+            ⚡ Fast
         </div>
 
         <div class="hero-feature">
-            🔒 Secure & Private
+            🔒 Private
         </div>
 
         <div class="hero-feature">
@@ -2002,7 +1848,8 @@ body.dark-page
         </div>
 
         <div class="hero-feature">
-            💯 Free Forever
+            💯 Free
+
         </div>
 
     </div>
@@ -2017,7 +1864,7 @@ body.dark-page
 
         <button onclick="searchTool()">
 
-            🔍 Search
+            Search
 
         </button>
 
@@ -2037,15 +1884,15 @@ body.dark-page
     </div>
 
     <div class="float-icon float-2">
-        🖼️
-    </div>
-
-    <div class="float-icon float-3">
         📄
     </div>
 
+    <div class="float-icon float-3">
+        🖼️
+    </div>
+
     <div class="float-icon float-4">
-        💻
+        🔄
     </div>
 
 
@@ -2056,6 +1903,7 @@ body.dark-page
             <div class="screen-title">
                 Adiyogi Tools
             </div>
+
 
             <div class="screen-grid">
 
@@ -2306,15 +2154,11 @@ body.dark-page
 <a href="basic-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🧮
-    </div>
+    <div class="tool-icon">🧮</div>
 
     <div class="tool-content">
 
-        <h3>
-            Basic Calculator
-        </h3>
+        <h3>Basic Calculator</h3>
 
         <p>
             Perform basic arithmetic operations easily.
@@ -2328,15 +2172,11 @@ body.dark-page
 <a href="scientific-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🔬
-    </div>
+    <div class="tool-icon">🔬</div>
 
     <div class="tool-content">
 
-        <h3>
-            Scientific Calculator
-        </h3>
+        <h3>Scientific Calculator</h3>
 
         <p>
             Advanced scientific calculations.
@@ -2350,15 +2190,11 @@ body.dark-page
 <a href="percentage.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        📊
-    </div>
+    <div class="tool-icon">📊</div>
 
     <div class="tool-content">
 
-        <h3>
-            Percentage Calculator
-        </h3>
+        <h3>Percentage Calculator</h3>
 
         <p>
             Calculate percentages instantly.
@@ -2372,15 +2208,11 @@ body.dark-page
 <a href="fraction.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🔢
-    </div>
+    <div class="tool-icon">🔢</div>
 
     <div class="tool-content">
 
-        <h3>
-            Fraction Calculator
-        </h3>
+        <h3>Fraction Calculator</h3>
 
         <p>
             Add, subtract, multiply and divide fractions.
@@ -2394,15 +2226,11 @@ body.dark-page
 <a href="emi-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        💳
-    </div>
+    <div class="tool-icon">💳</div>
 
     <div class="tool-content">
 
-        <h3>
-            EMI Calculator
-        </h3>
+        <h3>EMI Calculator</h3>
 
         <p>
             Calculate your loan EMI instantly.
@@ -2416,15 +2244,11 @@ body.dark-page
 <a href="gst-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🧾
-    </div>
+    <div class="tool-icon">🧾</div>
 
     <div class="tool-content">
 
-        <h3>
-            GST Calculator
-        </h3>
+        <h3>GST Calculator</h3>
 
         <p>
             Calculate GST for your bill amount.
@@ -2438,15 +2262,11 @@ body.dark-page
 <a href="loan-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🏦
-    </div>
+    <div class="tool-icon">🏦</div>
 
     <div class="tool-content">
 
-        <h3>
-            Loan Calculator
-        </h3>
+        <h3>Loan Calculator</h3>
 
         <p>
             Calculate loan payments and interest.
@@ -2460,15 +2280,11 @@ body.dark-page
 <a href="compound-interest.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        📈
-    </div>
+    <div class="tool-icon">📈</div>
 
     <div class="tool-content">
 
-        <h3>
-            Compound Interest
-        </h3>
+        <h3>Compound Interest</h3>
 
         <p>
             Calculate compound interest easily.
@@ -2482,15 +2298,11 @@ body.dark-page
 <a href="simple-interest.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        💵
-    </div>
+    <div class="tool-icon">💵</div>
 
     <div class="tool-content">
 
-        <h3>
-            Simple Interest
-        </h3>
+        <h3>Simple Interest</h3>
 
         <p>
             Calculate simple interest instantly.
@@ -2504,15 +2316,11 @@ body.dark-page
 <a href="discount-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🏷️
-    </div>
+    <div class="tool-icon">🏷️</div>
 
     <div class="tool-content">
 
-        <h3>
-            Discount Calculator
-        </h3>
+        <h3>Discount Calculator</h3>
 
         <p>
             Calculate discount and final price.
@@ -2526,15 +2334,11 @@ body.dark-page
 <a href="age-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🎂
-    </div>
+    <div class="tool-icon">🎂</div>
 
     <div class="tool-content">
 
-        <h3>
-            Age Calculator
-        </h3>
+        <h3>Age Calculator</h3>
 
         <p>
             Calculate your exact age.
@@ -2548,15 +2352,11 @@ body.dark-page
 <a href="bmi-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        ⚖️
-    </div>
+    <div class="tool-icon">⚖️</div>
 
     <div class="tool-content">
 
-        <h3>
-            BMI Calculator
-        </h3>
+        <h3>BMI Calculator</h3>
 
         <p>
             Check your Body Mass Index.
@@ -2574,7 +2374,7 @@ body.dark-page
 
 
 <!-- =====================================================
-     FINANCE TOOLS
+     FINANCE
 ===================================================== -->
 
 <section id="finance">
@@ -2582,7 +2382,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        💰 Finance Tools
+        Finance Tools
     </h2>
 
 </div>
@@ -2594,15 +2394,11 @@ body.dark-page
 <a href="share-market-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        📊
-    </div>
+    <div class="tool-icon">📊</div>
 
     <div class="tool-content">
 
-        <h3>
-            Share Market Calculator
-        </h3>
+        <h3>Share Market Calculator</h3>
 
         <p>
             SIP, returns, profit, charges and more.
@@ -2616,15 +2412,11 @@ body.dark-page
 <a href="gst-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🧾
-    </div>
+    <div class="tool-icon">🧾</div>
 
     <div class="tool-content">
 
-        <h3>
-            GST Calculator
-        </h3>
+        <h3>GST Calculator</h3>
 
         <p>
             Calculate GST and final amount.
@@ -2638,15 +2430,11 @@ body.dark-page
 <a href="emi-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        💳
-    </div>
+    <div class="tool-icon">💳</div>
 
     <div class="tool-content">
 
-        <h3>
-            EMI Calculator
-        </h3>
+        <h3>EMI Calculator</h3>
 
         <p>
             Calculate monthly EMI.
@@ -2660,15 +2448,11 @@ body.dark-page
 <a href="loan-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🏦
-    </div>
+    <div class="tool-icon">🏦</div>
 
     <div class="tool-content">
 
-        <h3>
-            Loan Calculator
-        </h3>
+        <h3>Loan Calculator</h3>
 
         <p>
             Estimate loan payments.
@@ -2682,15 +2466,11 @@ body.dark-page
 <a href="simple-interest.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        💵
-    </div>
+    <div class="tool-icon">💵</div>
 
     <div class="tool-content">
 
-        <h3>
-            Simple Interest
-        </h3>
+        <h3>Simple Interest</h3>
 
         <p>
             Calculate simple interest.
@@ -2704,15 +2484,11 @@ body.dark-page
 <a href="compound-interest.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        📈
-    </div>
+    <div class="tool-icon">📈</div>
 
     <div class="tool-content">
 
-        <h3>
-            Compound Interest
-        </h3>
+        <h3>Compound Interest</h3>
 
         <p>
             Calculate compound interest.
@@ -2726,15 +2502,11 @@ body.dark-page
 <a href="discount-calculator.html"
    class="tool-card">
 
-    <div class="tool-icon">
-        🏷️
-    </div>
+    <div class="tool-icon">🏷️</div>
 
     <div class="tool-content">
 
-        <h3>
-            Discount Calculator
-        </h3>
+        <h3>Discount Calculator</h3>
 
         <p>
             Calculate discount and final price.
@@ -2760,7 +2532,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        🖼️ Image Tools
+        Image Tools
     </h2>
 
 </div>
@@ -2886,7 +2658,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        📄 PDF Tools
+        PDF Tools
     </h2>
 
 </div>
@@ -2963,8 +2735,6 @@ body.dark-page
 </a>
 
 
-<!-- WORD TO PDF -->
-
 <a href="word-to-pdf.html">
 
     <span>📝</span>
@@ -2997,7 +2767,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        🔄 Converters
+        Converters
     </h2>
 
 </div>
@@ -3055,7 +2825,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        ❤️ Health & Fitness
+        Health & Fitness
     </h2>
 
 </div>
@@ -3113,7 +2883,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        📅 Date & Time
+        Date & Time
     </h2>
 
 </div>
@@ -3188,7 +2958,7 @@ body.dark-page
 <div class="section-header">
 
     <h2 class="section-title">
-        🔤 Text Tools
+        Text Tools
     </h2>
 
 </div>
@@ -3301,13 +3071,10 @@ body.dark-page
 
 function searchTool(){
 
-    const input =
-    document.getElementById(
-        "heroSearch"
-    );
-
     const value =
-    input.value
+    document
+    .getElementById("heroSearch")
+    .value
     .toLowerCase()
     .trim();
 
@@ -3323,9 +3090,7 @@ function searchTool(){
 
 
     const links =
-    document.querySelectorAll(
-        "a"
-    );
+    document.querySelectorAll("a");
 
 
     for(const link of links){
@@ -3335,10 +3100,14 @@ function searchTool(){
         .toLowerCase();
 
 
+        const href =
+        link.getAttribute("href");
+
+
         if(
             text.includes(value) &&
-            link.getAttribute("href") &&
-            link.getAttribute("href") !== "#"
+            href &&
+            href !== "#"
         ){
 
             window.location.href =
@@ -3415,7 +3184,7 @@ document
 
 
 /* =====================================================
-   DARK MODE
+   THEME
 ===================================================== */
 
 function toggleTheme(){
@@ -3425,7 +3194,7 @@ function toggleTheme(){
     );
 
 
-    const button =
+    const btn =
     document.querySelector(
         ".theme-btn"
     );
@@ -3437,11 +3206,11 @@ function toggleTheme(){
         )
     ){
 
-        button.textContent="☀️";
+        btn.textContent="☀️";
 
     }else{
 
-        button.textContent="🌙";
+        btn.textContent="🌙";
 
     }
 
