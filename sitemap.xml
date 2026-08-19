@@ -2,6 +2,10 @@
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+    <!-- =====================================================
+         MAIN WEBSITE
+    ====================================================== -->
+
     <url>
         <loc>https://adiyogitools.in/</loc>
     </url>
@@ -23,7 +27,9 @@
     </url>
 
 
-    <!-- IMAGE TOOLS -->
+    <!-- =====================================================
+         IMAGE TOOLS
+    ====================================================== -->
 
     <url>
         <loc>https://adiyogitools.in/image-resizer.html</loc>
@@ -54,7 +60,9 @@
     </url>
 
 
-    <!-- PDF TOOLS -->
+    <!-- =====================================================
+         PDF TOOLS
+    ====================================================== -->
 
     <url>
         <loc>https://adiyogitools.in/word-to-pdf.html</loc>
@@ -77,7 +85,9 @@
     </url>
 
 
-    <!-- FORM TOOLS -->
+    <!-- =====================================================
+         FORM / OTHER TOOLS
+    ====================================================== -->
 
     <url>
         <loc>https://adiyogitools.in/passport-photo.html</loc>
@@ -89,6 +99,120 @@
 
     <url>
         <loc>https://adiyogitools.in/qr-generator.html</loc>
+    </url>
+
+
+    <!-- =====================================================
+         CALCULATOR MAIN PAGE
+    ====================================================== -->
+
+    <url>
+        <loc>https://adiyogitools.in/calculator.html</loc>
+    </url>
+
+
+    <!-- =====================================================
+         BASIC & MATH CALCULATORS
+    ====================================================== -->
+
+    <url>
+        <loc>https://adiyogitools.in/basic-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/scientific-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/percentage.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/fraction-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/ratio-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/average-calculator.html</loc>
+    </url>
+
+
+    <!-- =====================================================
+         FINANCIAL CALCULATORS
+    ====================================================== -->
+
+    <url>
+        <loc>https://adiyogitools.in/share-market-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/gst-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/emi-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/loan-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/simple-interest.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/compound-interest.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/discount-calculator.html</loc>
+    </url>
+
+
+    <!-- =====================================================
+         DATE & TIME CALCULATORS
+    ====================================================== -->
+
+    <url>
+        <loc>https://adiyogitools.in/age-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/date-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/time-calculator.html</loc>
+    </url>
+
+
+    <!-- =====================================================
+         HEALTH & FITNESS
+    ====================================================== -->
+
+    <url>
+        <loc>https://adiyogitools.in/bmi-calculator.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/calorie-calculator.html</loc>
+    </url>
+
+
+    <!-- =====================================================
+         CONVERTERS
+    ====================================================== -->
+
+    <url>
+        <loc>https://adiyogitools.in/unit-converter.html</loc>
+    </url>
+
+    <url>
+        <loc>https://adiyogitools.in/currency-calculator.html</loc>
     </url>
 
 </urlset>
